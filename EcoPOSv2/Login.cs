@@ -110,8 +110,7 @@ namespace EcoPOSv2
                 string attempt_status = "";
 
                 sql.AddParam("@user_name", tbUsername.Text);
-                sql.AddParam("@password", CreateMD5(tbPassword.Text));
-                string checkuser = sql.ReturnResult("SELECT COUNT(*) as result FROM users WHERE user_name = @user_name AND password = @password");
+                string checkuser = sql.ReturnResult("SELECT COUNT(*) as result FROM users WHERE user_name = @user_name");
 
                 if (sql.HasException(true)) return;
 
@@ -254,6 +253,13 @@ namespace EcoPOSv2
                         tbPassword.Clear();
                         tbUsername.Focus();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("This user is not exist in our database. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbUsername.Clear();
+                    tbPassword.Clear();
+                    tbUsername.Focus();
                 }
             }
         }
