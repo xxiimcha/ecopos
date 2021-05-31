@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -43,20 +44,24 @@ namespace EcoPOSv2
             seconds = 3;
 
             //DATABASE CONNECTION CHECKER
-            sql.Query("select * from users");
+            string constring = SQLControl.constring;
+            SqlConnection con = new SqlConnection(constring);
 
-            if(sql.HasException())
+            try
             {
-
-            }
-            else
-            {
+                con.Open();
+                con.Close();
                 //DITO LAHAT NG ADDIONAL FUNCTION
 
 
 
                 //HULI TO LAGI
                 CountDownTimer.Start();
+            }
+            catch (Exception)
+            {
+                DatabaseSettings ds = new DatabaseSettings();
+                ds.ShowDialog();
             }
         }
 

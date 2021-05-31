@@ -61,7 +61,7 @@ namespace EcoPOSv2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PC")]
+        [global::System.Configuration.DefaultSettingValueAttribute("PC1")]
         public string dbServerName {
             get {
                 return ((string)(this["dbServerName"]));
