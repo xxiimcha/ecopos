@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using EcoPOSv2;
 
-namespace ECOPOSSQLControl
+namespace EcoPOSControl
 {
     class SQLControl
     {
