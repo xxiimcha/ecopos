@@ -16,8 +16,7 @@ namespace EcoPOSv2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DatabaseSettings());
-
+            Application.Run(new ContinueSession());
         }
     }
 }
