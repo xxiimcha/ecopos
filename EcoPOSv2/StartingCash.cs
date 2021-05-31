@@ -10,14 +10,11 @@ using System.Windows.Forms;
 
 namespace EcoPOSv2
 {
-    public partial class Main : Form
+    public partial class StartingCash : Form
     {
-
-        
-        public Main()
+        public StartingCash()
         {
             InitializeComponent();
         }
-        public string current_id, current_username, current_user_first_name;
     }
 }
