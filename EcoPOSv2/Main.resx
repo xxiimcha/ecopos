@@ -149,7 +149,7 @@
         wdj/BxK5kyFE/nYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="guna2Button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnMore.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAABHFJREFUeF7t
         2suPFFUUBvBGpauqZ2BBRIlbjS8UiCBD36rWiQsfceGKYIxiIMCCTNethgFDwmISwt9AFKKS4MZE8bVw
@@ -195,7 +195,7 @@
         9mnnoTSEAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="guna2Button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnXReading.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAqtJREFUeF7t
         nTFrFEEYhi8Qbnf1Chv9E2IZEatLaaFW6dyZtQ1kZxeuTBGTIoqFf0AQTKf4C/wFaidWkt5/oE1A57tM

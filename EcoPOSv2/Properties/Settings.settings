@@ -12,7 +12,7 @@
       <Value Profile="(Default)">EcoPOS</Value>
     </Setting>
     <Setting Name="dbServerName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">PC1</Value>
+      <Value Profile="(Default)">PC</Value>
     </Setting>
   </Settings>
 </SettingsFile>

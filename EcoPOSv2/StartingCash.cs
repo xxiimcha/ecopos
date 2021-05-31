@@ -16,5 +16,6 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        public string open_by_userID, open_by_user_name;
     }
 }

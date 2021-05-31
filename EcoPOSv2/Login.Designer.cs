@@ -39,8 +39,8 @@
             this.lblDateTime = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbClose = new Guna.UI.WinForms.GunaControlBox();
             this.tClock = new System.Windows.Forms.Timer(this.components);
+            this.lblStoreIsClosed = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -58,7 +58,7 @@
             this.guna2Panel1.Controls.Add(this.tbPassword);
             this.guna2Panel1.Controls.Add(this.tbUsername);
             this.guna2Panel1.Controls.Add(this.pictureBox1);
-            this.guna2Panel1.Location = new System.Drawing.Point(480, 93);
+            this.guna2Panel1.Location = new System.Drawing.Point(488, 108);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(465, 684);
@@ -78,6 +78,7 @@
             this.btnLogin.Size = new System.Drawing.Size(260, 63);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "LOGIN";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label3
             // 
@@ -166,9 +167,9 @@
             // 
             this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.Green;
-            this.lblDateTime.Location = new System.Drawing.Point(-1, 18);
+            this.lblDateTime.Location = new System.Drawing.Point(2, 18);
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(1423, 72);
+            this.lblDateTime.Size = new System.Drawing.Size(1436, 72);
             this.lblDateTime.TabIndex = 49;
             this.lblDateTime.Text = "12:00:00 PM";
             this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -176,7 +177,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::EcoPOSv2.Properties.Resources.wno;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 701);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 740);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(217, 148);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -187,39 +188,37 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1367, 827);
+            this.label1.Location = new System.Drawing.Point(1371, 850);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 25);
             this.label1.TabIndex = 51;
             this.label1.Text = "v2.0";
-            // 
-            // cbClose
-            // 
-            this.cbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbClose.AnimationHoverSpeed = 0.07F;
-            this.cbClose.AnimationSpeed = 0.03F;
-            this.cbClose.IconColor = System.Drawing.Color.Black;
-            this.cbClose.IconSize = 15F;
-            this.cbClose.Location = new System.Drawing.Point(1372, 1);
-            this.cbClose.Name = "cbClose";
-            this.cbClose.OnHoverBackColor = System.Drawing.Color.Black;
-            this.cbClose.OnHoverIconColor = System.Drawing.Color.White;
-            this.cbClose.OnPressedColor = System.Drawing.Color.Black;
-            this.cbClose.Size = new System.Drawing.Size(50, 39);
-            this.cbClose.TabIndex = 52;
             // 
             // tClock
             // 
             this.tClock.Enabled = true;
             this.tClock.Tick += new System.EventHandler(this.tClock_Tick);
             // 
+            // lblStoreIsClosed
+            // 
+            this.lblStoreIsClosed.AutoSize = true;
+            this.lblStoreIsClosed.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStoreIsClosed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.lblStoreIsClosed.Location = new System.Drawing.Point(431, 795);
+            this.lblStoreIsClosed.Name = "lblStoreIsClosed";
+            this.lblStoreIsClosed.Size = new System.Drawing.Size(579, 37);
+            this.lblStoreIsClosed.TabIndex = 53;
+            this.lblStoreIsClosed.Text = "Store is closed for today. Come back tomorrow!";
+            this.lblStoreIsClosed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblStoreIsClosed.Visible = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1424, 861);
-            this.Controls.Add(this.cbClose);
+            this.ClientSize = new System.Drawing.Size(1440, 900);
+            this.Controls.Add(this.lblStoreIsClosed);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblDateTime);
@@ -228,7 +227,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
+            this.Load += new System.EventHandler(this.Login_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -250,7 +249,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TileButton btnLogin;
-        private Guna.UI.WinForms.GunaControlBox cbClose;
         private System.Windows.Forms.Timer tClock;
+        internal System.Windows.Forms.Label lblStoreIsClosed;
     }
 }

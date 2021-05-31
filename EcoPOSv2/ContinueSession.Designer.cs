@@ -249,6 +249,7 @@
             this.Name = "ContinueSession";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContinueSession";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContinueSession_FormClosing);
             this.Load += new System.EventHandler(this.ContinueSession_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

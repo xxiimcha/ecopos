@@ -21,5 +21,10 @@ namespace EcoPOSv2
         {
 
         }
+
+        private void ContinueSession_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

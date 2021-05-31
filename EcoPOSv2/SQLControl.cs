@@ -100,7 +100,27 @@ namespace EcoPOSControl
                     DBCon.Close();
             }
         }
+        //SQL CONNECTION CHECK
+        public string CheckConnection()
+        {
+            string connectionStatus = "No database";
 
+            try
+            {
+                DBCon.Open();
+
+                if (DBCon.State == ConnectionState.Open)
+                {
+                    connectionStatus = "success";
+                    DBCon.Close();
+                }
+                else
+                    connectionStatus = "failed";
+            }
+            catch (Exception) { }
+
+            return connectionStatus;
+        }
         public string ReturnResult(string Query)
         {
             // RESET QUERY STATS

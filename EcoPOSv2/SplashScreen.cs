@@ -23,9 +23,6 @@ namespace EcoPOSv2
         SQLControl sql = new SQLControl();
         int seconds = 0;
 
-
-
-        //DECLARING AREA
         public static SplashScreen Instance
         {
             get
@@ -44,25 +41,22 @@ namespace EcoPOSv2
             seconds = 3;
 
             //DATABASE CONNECTION CHECKER
-            string constring = SQLControl.constring;
-            SqlConnection con = new SqlConnection(constring);
+            string connection = sql.CheckConnection();
 
-            try
+            if(connection == "success")
             {
-                con.Open();
-                con.Close();
                 //DITO LAHAT NG ADDIONAL FUNCTION
-
 
 
                 //HULI TO LAGI
                 CountDownTimer.Start();
             }
-            catch (Exception)
+            else
             {
                 DatabaseSettings ds = new DatabaseSettings();
                 ds.ShowDialog();
             }
+
         }
 
         private void CountDownTimer_Tick(object sender, EventArgs e)
