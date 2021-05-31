@@ -1,7 +1,9 @@
-﻿using System;
+﻿using EcoPOSControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,32 @@ namespace EcoPOSv2
         public DatabaseSettings()
         {
             InitializeComponent();
+        }
+        //CLEAR ALL FIELDS
+        void clearallfields()
+        {
+            tbDatabaseName.Clear();
+            tbPassword.Clear();
+            tbServerName.Clear();
+            tbUsername.Clear();
+
+            tbServerName.Focus();
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.dbServerName = tbServerName.Text;
+            Properties.Settings.Default.dbName = tbDatabaseName.Text;
+            Properties.Settings.Default.dbUser = tbUsername.Text;
+            Properties.Settings.Default.dbPass = tbPassword.Text;
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("Database setup applied. Application will be restart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            clearallfields();
         }
     }
 }

@@ -38,8 +38,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnLogin = new Guna.UI2.WinForms.Guna2TileButton();
-            this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnReset = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnSaveSettings = new Guna.UI2.WinForms.Guna2TileButton();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +58,7 @@
             this.tbServerName.Location = new System.Drawing.Point(123, 78);
             this.tbServerName.Name = "tbServerName";
             this.tbServerName.Size = new System.Drawing.Size(223, 25);
-            this.tbServerName.TabIndex = 1;
+            this.tbServerName.TabIndex = 0;
             // 
             // label2
             // 
@@ -91,7 +91,7 @@
             this.tbDatabaseName.Location = new System.Drawing.Point(123, 109);
             this.tbDatabaseName.Name = "tbDatabaseName";
             this.tbDatabaseName.Size = new System.Drawing.Size(223, 25);
-            this.tbDatabaseName.TabIndex = 5;
+            this.tbDatabaseName.TabIndex = 1;
             // 
             // label3
             // 
@@ -109,7 +109,7 @@
             this.tbUsername.Location = new System.Drawing.Point(123, 140);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(223, 25);
-            this.tbUsername.TabIndex = 7;
+            this.tbUsername.TabIndex = 2;
             // 
             // label4
             // 
@@ -127,7 +127,8 @@
             this.tbPassword.Location = new System.Drawing.Point(123, 170);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(223, 25);
-            this.tbPassword.TabIndex = 9;
+            this.tbPassword.TabIndex = 3;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -139,50 +140,52 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Password:";
             // 
-            // btnLogin
+            // btnReset
             // 
-            this.btnLogin.BorderColor = System.Drawing.Color.IndianRed;
-            this.btnLogin.BorderRadius = 5;
-            this.btnLogin.BorderThickness = 1;
-            this.btnLogin.CheckedState.Parent = this.btnLogin;
-            this.btnLogin.CustomImages.Parent = this.btnLogin;
-            this.btnLogin.FillColor = System.Drawing.Color.White;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.Black;
-            this.btnLogin.HoverState.Parent = this.btnLogin;
-            this.btnLogin.Location = new System.Drawing.Point(223, 307);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
-            this.btnLogin.Size = new System.Drawing.Size(123, 45);
-            this.btnLogin.TabIndex = 10;
-            this.btnLogin.Text = "RESET";
+            this.btnReset.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnReset.BorderRadius = 5;
+            this.btnReset.BorderThickness = 1;
+            this.btnReset.CheckedState.Parent = this.btnReset;
+            this.btnReset.CustomImages.Parent = this.btnReset;
+            this.btnReset.FillColor = System.Drawing.Color.White;
+            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.ForeColor = System.Drawing.Color.Black;
+            this.btnReset.HoverState.Parent = this.btnReset;
+            this.btnReset.Location = new System.Drawing.Point(223, 237);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.ShadowDecoration.Parent = this.btnReset;
+            this.btnReset.Size = new System.Drawing.Size(123, 45);
+            this.btnReset.TabIndex = 5;
+            this.btnReset.Text = "RESET";
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // guna2TileButton1
+            // btnSaveSettings
             // 
-            this.guna2TileButton1.BackColor = System.Drawing.Color.White;
-            this.guna2TileButton1.BorderColor = System.Drawing.Color.IndianRed;
-            this.guna2TileButton1.BorderRadius = 5;
-            this.guna2TileButton1.CheckedState.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.CustomImages.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TileButton1.ForeColor = System.Drawing.Color.Black;
-            this.guna2TileButton1.HoverState.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.Location = new System.Drawing.Point(12, 307);
-            this.guna2TileButton1.Name = "guna2TileButton1";
-            this.guna2TileButton1.ShadowDecoration.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.Size = new System.Drawing.Size(205, 45);
-            this.guna2TileButton1.TabIndex = 11;
-            this.guna2TileButton1.Text = "SAVE SETTINGS";
+            this.btnSaveSettings.BackColor = System.Drawing.Color.White;
+            this.btnSaveSettings.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnSaveSettings.BorderRadius = 5;
+            this.btnSaveSettings.CheckedState.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.CustomImages.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSaveSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveSettings.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveSettings.HoverState.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.Location = new System.Drawing.Point(12, 237);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.ShadowDecoration.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.Size = new System.Drawing.Size(205, 45);
+            this.btnSaveSettings.TabIndex = 4;
+            this.btnSaveSettings.Text = "SAVE SETTINGS";
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
             // DatabaseSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(358, 368);
-            this.Controls.Add(this.guna2TileButton1);
-            this.Controls.Add(this.btnLogin);
+            this.ClientSize = new System.Drawing.Size(358, 295);
+            this.Controls.Add(this.btnSaveSettings);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbUsername);
@@ -214,7 +217,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2TileButton btnLogin;
-        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
+        private Guna.UI2.WinForms.Guna2TileButton btnReset;
+        private Guna.UI2.WinForms.Guna2TileButton btnSaveSettings;
     }
 }
