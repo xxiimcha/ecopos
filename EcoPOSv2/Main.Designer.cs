@@ -88,6 +88,7 @@
             this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.guna2Button12 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -135,6 +136,7 @@
             // gunaPanel1
             // 
             this.gunaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gunaPanel1.Controls.Add(this.guna2Button12);
             this.gunaPanel1.Controls.Add(this.guna2Button5);
             this.gunaPanel1.Controls.Add(this.btnMore);
             this.gunaPanel1.Controls.Add(this.guna2Button3);
@@ -910,6 +912,27 @@
             this.label7.Text = "PRICE MODE:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // guna2Button12
+            // 
+            this.guna2Button12.CheckedState.Parent = this.guna2Button12;
+            this.guna2Button12.CustomImages.Parent = this.guna2Button12;
+            this.guna2Button12.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.guna2Button12.FillColor = System.Drawing.Color.White;
+            this.guna2Button12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.guna2Button12.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button12.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2Button12.HoverState.Parent = this.guna2Button12;
+            this.guna2Button12.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button12.Image")));
+            this.guna2Button12.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button12.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2Button12.Location = new System.Drawing.Point(0, 744);
+            this.guna2Button12.Name = "guna2Button12";
+            this.guna2Button12.ShadowDecoration.Parent = this.guna2Button12;
+            this.guna2Button12.Size = new System.Drawing.Size(274, 60);
+            this.guna2Button12.TabIndex = 11;
+            this.guna2Button12.Text = "Item Checker (CTRL + I)";
+            this.guna2Button12.TextOffset = new System.Drawing.Point(10, 0);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -995,9 +1018,5 @@
         internal System.Windows.Forms.Label label23;
         internal System.Windows.Forms.Label label20;
         internal System.Windows.Forms.Label label21;
-        public System.Windows.Forms.Label lblUser;
-        public Guna.UI2.WinForms.Guna2Button btnXReading;
-        public Guna.UI2.WinForms.Guna2Button guna2Button3;
-        public Guna.UI2.WinForms.Guna2Button btnMore;
     }
 }
