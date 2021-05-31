@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ECOPOSSQLControl;
+using EcoPOSControl;
 
 namespace EcoPOSv2
 {
@@ -42,8 +42,22 @@ namespace EcoPOSv2
             _splashScreen = this;
             seconds = 3;
 
-            //HULI TO LAGI
-            CountDownTimer.Start();
+            //DATABASE CONNECTION CHECKER
+            sql.Query("select * from users");
+
+            if(sql.HasException())
+            {
+
+            }
+            else
+            {
+                //DITO LAHAT NG ADDIONAL FUNCTION
+
+
+
+                //HULI TO LAGI
+                CountDownTimer.Start();
+            }
         }
 
         private void CountDownTimer_Tick(object sender, EventArgs e)
@@ -53,7 +67,11 @@ namespace EcoPOSv2
             if (seconds == 0)
             {
                 CountDownTimer.Stop();
-                
+
+                Login l = new Login();
+                l.Show();
+
+                this.Hide();
                 //DECLARE LOGIN FORM
             }
         }
