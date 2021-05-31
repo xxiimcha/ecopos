@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnLogin = new Guna.UI2.WinForms.Guna2TileButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tbUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDateTime = new System.Windows.Forms.Label();
-            this.tbUsername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.tbPassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLogin = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -61,52 +61,40 @@
             this.guna2Panel1.Size = new System.Drawing.Size(465, 684);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // pictureBox1
+            // btnLogin
             // 
-            this.pictureBox1.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
-            this.pictureBox1.Location = new System.Drawing.Point(115, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 224);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.btnLogin.CheckedState.Parent = this.btnLogin;
+            this.btnLogin.CustomImages.Parent = this.btnLogin;
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.HoverState.Parent = this.btnLogin;
+            this.btnLogin.Location = new System.Drawing.Point(102, 537);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
+            this.btnLogin.Size = new System.Drawing.Size(260, 63);
+            this.btnLogin.TabIndex = 8;
+            this.btnLogin.Text = "LOGIN";
             // 
-            // lblDateTime
+            // label3
             // 
-            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.ForeColor = System.Drawing.Color.Green;
-            this.lblDateTime.Location = new System.Drawing.Point(439, 18);
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(546, 72);
-            this.lblDateTime.TabIndex = 49;
-            this.lblDateTime.Text = "12:00:00 PM";
-            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 408);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 17);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "PASSWORD:";
             // 
-            // tbUsername
+            // label2
             // 
-            this.tbUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbUsername.BorderRadius = 10;
-            this.tbUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbUsername.DefaultText = "";
-            this.tbUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbUsername.DisabledState.Parent = this.tbUsername;
-            this.tbUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbUsername.FocusedState.Parent = this.tbUsername;
-            this.tbUsername.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbUsername.HoverState.Parent = this.tbUsername;
-            this.tbUsername.Location = new System.Drawing.Point(13, 348);
-            this.tbUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbUsername.Name = "tbUsername";
-            this.tbUsername.PasswordChar = '\0';
-            this.tbUsername.PlaceholderText = "";
-            this.tbUsername.SelectedText = "";
-            this.tbUsername.ShadowDecoration.Parent = this.tbUsername;
-            this.tbUsername.Size = new System.Drawing.Size(439, 55);
-            this.tbUsername.TabIndex = 4;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 329);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "USERNAME:";
             // 
             // tbPassword
             // 
@@ -135,25 +123,52 @@
             this.tbPassword.TabIndex = 5;
             this.tbPassword.UseSystemPasswordChar = true;
             // 
-            // label2
+            // tbUsername
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 329);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "USERNAME:";
+            this.tbUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbUsername.BorderRadius = 10;
+            this.tbUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbUsername.DefaultText = "";
+            this.tbUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbUsername.DisabledState.Parent = this.tbUsername;
+            this.tbUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbUsername.FocusedState.Parent = this.tbUsername;
+            this.tbUsername.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbUsername.HoverState.Parent = this.tbUsername;
+            this.tbUsername.Location = new System.Drawing.Point(13, 348);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.PasswordChar = '\0';
+            this.tbUsername.PlaceholderText = "";
+            this.tbUsername.SelectedText = "";
+            this.tbUsername.ShadowDecoration.Parent = this.tbUsername;
+            this.tbUsername.Size = new System.Drawing.Size(439, 55);
+            this.tbUsername.TabIndex = 4;
             // 
-            // label3
+            // pictureBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 408);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "PASSWORD:";
+            this.pictureBox1.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
+            this.pictureBox1.Location = new System.Drawing.Point(115, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(235, 224);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateTime.ForeColor = System.Drawing.Color.Green;
+            this.lblDateTime.Location = new System.Drawing.Point(439, 18);
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(546, 72);
+            this.lblDateTime.TabIndex = 49;
+            this.lblDateTime.Text = "12:00:00 PM";
+            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox2
             // 
@@ -175,21 +190,6 @@
             this.label1.TabIndex = 51;
             this.label1.Text = "v2.0";
             // 
-            // btnLogin
-            // 
-            this.btnLogin.CheckedState.Parent = this.btnLogin;
-            this.btnLogin.CustomImages.Parent = this.btnLogin;
-            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 18F);
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.HoverState.Parent = this.btnLogin;
-            this.btnLogin.Location = new System.Drawing.Point(102, 537);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
-            this.btnLogin.Size = new System.Drawing.Size(260, 63);
-            this.btnLogin.TabIndex = 8;
-            this.btnLogin.Text = "LOGIN";
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +204,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
