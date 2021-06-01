@@ -30,9 +30,9 @@
         {
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2TileButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbCash = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,48 +59,12 @@
             this.guna2Panel1.BorderThickness = 2;
             this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.label2);
-            this.guna2Panel1.Controls.Add(this.tbUsername);
+            this.guna2Panel1.Controls.Add(this.tbCash);
             this.guna2Panel1.Location = new System.Drawing.Point(12, 35);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(296, 227);
             this.guna2Panel1.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 30);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "STARTING CASH";
-            // 
-            // tbUsername
-            // 
-            this.tbUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbUsername.BorderRadius = 10;
-            this.tbUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tbUsername.DefaultText = "";
-            this.tbUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.tbUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.tbUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbUsername.DisabledState.Parent = this.tbUsername;
-            this.tbUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbUsername.FocusedState.Parent = this.tbUsername;
-            this.tbUsername.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.tbUsername.HoverState.Parent = this.tbUsername;
-            this.tbUsername.Location = new System.Drawing.Point(12, 61);
-            this.tbUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbUsername.Name = "tbUsername";
-            this.tbUsername.PasswordChar = '\0';
-            this.tbUsername.PlaceholderText = "";
-            this.tbUsername.SelectedText = "";
-            this.tbUsername.ShadowDecoration.Parent = this.tbUsername;
-            this.tbUsername.Size = new System.Drawing.Size(277, 55);
-            this.tbUsername.TabIndex = 5;
             // 
             // btnConfirm
             // 
@@ -116,6 +80,43 @@
             this.btnConfirm.Size = new System.Drawing.Size(227, 50);
             this.btnConfirm.TabIndex = 9;
             this.btnConfirm.Text = "CONFIRM";
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(7, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(178, 30);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "STARTING CASH";
+            // 
+            // tbCash
+            // 
+            this.tbCash.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbCash.BorderRadius = 10;
+            this.tbCash.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbCash.DefaultText = "";
+            this.tbCash.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbCash.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbCash.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbCash.DisabledState.Parent = this.tbCash;
+            this.tbCash.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbCash.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbCash.FocusedState.Parent = this.tbCash;
+            this.tbCash.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCash.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbCash.HoverState.Parent = this.tbCash;
+            this.tbCash.Location = new System.Drawing.Point(12, 61);
+            this.tbCash.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbCash.Name = "tbCash";
+            this.tbCash.PasswordChar = '\0';
+            this.tbCash.PlaceholderText = "";
+            this.tbCash.SelectedText = "";
+            this.tbCash.ShadowDecoration.Parent = this.tbCash;
+            this.tbCash.Size = new System.Drawing.Size(277, 55);
+            this.tbCash.TabIndex = 5;
             // 
             // StartingCash
             // 
@@ -140,7 +141,7 @@
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox tbUsername;
+        private Guna.UI2.WinForms.Guna2TextBox tbCash;
         private Guna.UI2.WinForms.Guna2TileButton btnConfirm;
     }
 }
