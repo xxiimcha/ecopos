@@ -117,6 +117,7 @@
             this.tbCash.ShadowDecoration.Parent = this.tbCash;
             this.tbCash.Size = new System.Drawing.Size(277, 55);
             this.tbCash.TabIndex = 5;
+            this.tbCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCash_KeyDown);
             // 
             // StartingCash
             // 

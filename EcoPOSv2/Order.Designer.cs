@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.OrderPanel = new System.Windows.Forms.Panel();
             this.enteredOrdersPanel = new System.Windows.Forms.Panel();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -41,6 +41,10 @@
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnPayment = new Guna.UI2.WinForms.Guna2Button();
+            this.btnRedeem = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnVoid = new Guna.UI2.WinForms.Guna2Button();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -65,18 +69,14 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnVoidItem = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button8 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDiscount = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.OrderPanel.SuspendLayout();
             this.enteredOrdersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
@@ -108,35 +108,35 @@
             // 
             this.guna2DataGridView1.AllowUserToAddRows = false;
             this.guna2DataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.guna2DataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.guna2DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.guna2DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.guna2DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.guna2DataGridView1.ColumnHeadersHeight = 21;
             this.guna2DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.guna2DataGridView1.EnableHeadersVisualStyles = false;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(3, 75);
@@ -219,10 +219,10 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.guna2Button4);
-            this.panel4.Controls.Add(this.guna2Button3);
-            this.panel4.Controls.Add(this.guna2Button2);
-            this.panel4.Controls.Add(this.guna2Button1);
+            this.panel4.Controls.Add(this.btnPayment);
+            this.panel4.Controls.Add(this.btnRedeem);
+            this.panel4.Controls.Add(this.btnCancel);
+            this.panel4.Controls.Add(this.btnVoid);
             this.panel4.Controls.Add(this.label30);
             this.panel4.Controls.Add(this.label31);
             this.panel4.Controls.Add(this.label28);
@@ -247,10 +247,10 @@
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.guna2Button10);
+            this.panel4.Controls.Add(this.btnVoidItem);
             this.panel4.Controls.Add(this.guna2Button11);
-            this.panel4.Controls.Add(this.guna2Button9);
-            this.panel4.Controls.Add(this.guna2Button8);
+            this.panel4.Controls.Add(this.btnCustomer);
+            this.panel4.Controls.Add(this.btnDiscount);
             this.panel4.Controls.Add(this.guna2Panel1);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
@@ -258,6 +258,80 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(391, 866);
             this.panel4.TabIndex = 0;
+            // 
+            // btnPayment
+            // 
+            this.btnPayment.BackColor = System.Drawing.Color.White;
+            this.btnPayment.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnPayment.BorderThickness = 2;
+            this.btnPayment.CheckedState.Parent = this.btnPayment;
+            this.btnPayment.CustomImages.Parent = this.btnPayment;
+            this.btnPayment.FillColor = System.Drawing.Color.White;
+            this.btnPayment.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.btnPayment.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnPayment.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPayment.HoverState.Parent = this.btnPayment;
+            this.btnPayment.Location = new System.Drawing.Point(5, 777);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.ShadowDecoration.Parent = this.btnPayment;
+            this.btnPayment.Size = new System.Drawing.Size(378, 76);
+            this.btnPayment.TabIndex = 49;
+            this.btnPayment.Text = "PAYMENT (CTRL + P)";
+            // 
+            // btnRedeem
+            // 
+            this.btnRedeem.BackColor = System.Drawing.Color.White;
+            this.btnRedeem.BorderColor = System.Drawing.Color.DarkBlue;
+            this.btnRedeem.BorderThickness = 2;
+            this.btnRedeem.CheckedState.Parent = this.btnRedeem;
+            this.btnRedeem.CustomImages.Parent = this.btnRedeem;
+            this.btnRedeem.FillColor = System.Drawing.Color.White;
+            this.btnRedeem.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnRedeem.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnRedeem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRedeem.HoverState.Parent = this.btnRedeem;
+            this.btnRedeem.Location = new System.Drawing.Point(5, 601);
+            this.btnRedeem.Name = "btnRedeem";
+            this.btnRedeem.ShadowDecoration.Parent = this.btnRedeem;
+            this.btnRedeem.Size = new System.Drawing.Size(188, 52);
+            this.btnRedeem.TabIndex = 48;
+            this.btnRedeem.Text = "REDEEM ITEM (F7)";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BorderColor = System.Drawing.Color.Goldenrod;
+            this.btnCancel.BorderThickness = 2;
+            this.btnCancel.CheckedState.Parent = this.btnCancel;
+            this.btnCancel.CustomImages.Parent = this.btnCancel;
+            this.btnCancel.FillColor = System.Drawing.Color.White;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCancel.ForeColor = System.Drawing.Color.Goldenrod;
+            this.btnCancel.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancel.HoverState.Parent = this.btnCancel;
+            this.btnCancel.Location = new System.Drawing.Point(196, 546);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
+            this.btnCancel.Size = new System.Drawing.Size(188, 52);
+            this.btnCancel.TabIndex = 47;
+            this.btnCancel.Text = "CANCEL TRANSACTION (F4)";
+            // 
+            // btnVoid
+            // 
+            this.btnVoid.BorderColor = System.Drawing.Color.Red;
+            this.btnVoid.BorderThickness = 2;
+            this.btnVoid.CheckedState.Parent = this.btnVoid;
+            this.btnVoid.CustomImages.Parent = this.btnVoid;
+            this.btnVoid.FillColor = System.Drawing.Color.White;
+            this.btnVoid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnVoid.ForeColor = System.Drawing.Color.Red;
+            this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVoid.HoverState.Parent = this.btnVoid;
+            this.btnVoid.Location = new System.Drawing.Point(5, 546);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
+            this.btnVoid.Size = new System.Drawing.Size(188, 52);
+            this.btnVoid.TabIndex = 46;
+            this.btnVoid.Text = "VOID TRANSACTION (F3)";
             // 
             // label30
             // 
@@ -559,23 +633,23 @@
             this.label8.Text = "Order No.";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // guna2Button10
+            // btnVoidItem
             // 
-            this.guna2Button10.BorderColor = System.Drawing.Color.Red;
-            this.guna2Button10.BorderThickness = 1;
-            this.guna2Button10.CheckedState.Parent = this.guna2Button10;
-            this.guna2Button10.CustomImages.Parent = this.guna2Button10;
-            this.guna2Button10.FillColor = System.Drawing.Color.White;
-            this.guna2Button10.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button10.ForeColor = System.Drawing.Color.Red;
-            this.guna2Button10.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button10.HoverState.Parent = this.guna2Button10;
-            this.guna2Button10.Location = new System.Drawing.Point(293, 82);
-            this.guna2Button10.Name = "guna2Button10";
-            this.guna2Button10.ShadowDecoration.Parent = this.guna2Button10;
-            this.guna2Button10.Size = new System.Drawing.Size(95, 45);
-            this.guna2Button10.TabIndex = 21;
-            this.guna2Button10.Text = "VOID ITEM (CTRL + V)";
+            this.btnVoidItem.BorderColor = System.Drawing.Color.Red;
+            this.btnVoidItem.BorderThickness = 1;
+            this.btnVoidItem.CheckedState.Parent = this.btnVoidItem;
+            this.btnVoidItem.CustomImages.Parent = this.btnVoidItem;
+            this.btnVoidItem.FillColor = System.Drawing.Color.White;
+            this.btnVoidItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnVoidItem.ForeColor = System.Drawing.Color.Red;
+            this.btnVoidItem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVoidItem.HoverState.Parent = this.btnVoidItem;
+            this.btnVoidItem.Location = new System.Drawing.Point(293, 82);
+            this.btnVoidItem.Name = "btnVoidItem";
+            this.btnVoidItem.ShadowDecoration.Parent = this.btnVoidItem;
+            this.btnVoidItem.Size = new System.Drawing.Size(95, 45);
+            this.btnVoidItem.TabIndex = 21;
+            this.btnVoidItem.Text = "VOID ITEM (CTRL + V)";
             // 
             // guna2Button11
             // 
@@ -595,41 +669,41 @@
             this.guna2Button11.TabIndex = 20;
             this.guna2Button11.Text = "QUANTITY (CTRL +Q)";
             // 
-            // guna2Button9
+            // btnCustomer
             // 
-            this.guna2Button9.BorderColor = System.Drawing.Color.Navy;
-            this.guna2Button9.BorderThickness = 1;
-            this.guna2Button9.CheckedState.Parent = this.guna2Button9;
-            this.guna2Button9.CustomImages.Parent = this.guna2Button9;
-            this.guna2Button9.FillColor = System.Drawing.Color.White;
-            this.guna2Button9.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button9.ForeColor = System.Drawing.Color.Navy;
-            this.guna2Button9.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button9.HoverState.Parent = this.guna2Button9;
-            this.guna2Button9.Location = new System.Drawing.Point(99, 82);
-            this.guna2Button9.Name = "guna2Button9";
-            this.guna2Button9.ShadowDecoration.Parent = this.guna2Button9;
-            this.guna2Button9.Size = new System.Drawing.Size(95, 45);
-            this.guna2Button9.TabIndex = 19;
-            this.guna2Button9.Text = "CUSTOMER (CTRL + C)";
+            this.btnCustomer.BorderColor = System.Drawing.Color.Navy;
+            this.btnCustomer.BorderThickness = 1;
+            this.btnCustomer.CheckedState.Parent = this.btnCustomer;
+            this.btnCustomer.CustomImages.Parent = this.btnCustomer;
+            this.btnCustomer.FillColor = System.Drawing.Color.White;
+            this.btnCustomer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCustomer.ForeColor = System.Drawing.Color.Navy;
+            this.btnCustomer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCustomer.HoverState.Parent = this.btnCustomer;
+            this.btnCustomer.Location = new System.Drawing.Point(99, 82);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.ShadowDecoration.Parent = this.btnCustomer;
+            this.btnCustomer.Size = new System.Drawing.Size(95, 45);
+            this.btnCustomer.TabIndex = 19;
+            this.btnCustomer.Text = "CUSTOMER (CTRL + C)";
             // 
-            // guna2Button8
+            // btnDiscount
             // 
-            this.guna2Button8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.guna2Button8.BorderThickness = 1;
-            this.guna2Button8.CheckedState.Parent = this.guna2Button8;
-            this.guna2Button8.CustomImages.Parent = this.guna2Button8;
-            this.guna2Button8.FillColor = System.Drawing.Color.White;
-            this.guna2Button8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.guna2Button8.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button8.HoverState.Parent = this.guna2Button8;
-            this.guna2Button8.Location = new System.Drawing.Point(2, 82);
-            this.guna2Button8.Name = "guna2Button8";
-            this.guna2Button8.ShadowDecoration.Parent = this.guna2Button8;
-            this.guna2Button8.Size = new System.Drawing.Size(95, 45);
-            this.guna2Button8.TabIndex = 18;
-            this.guna2Button8.Text = "DISCOUNT (CTRL + D)";
+            this.btnDiscount.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnDiscount.BorderThickness = 1;
+            this.btnDiscount.CheckedState.Parent = this.btnDiscount;
+            this.btnDiscount.CustomImages.Parent = this.btnDiscount;
+            this.btnDiscount.FillColor = System.Drawing.Color.White;
+            this.btnDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnDiscount.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDiscount.HoverState.Parent = this.btnDiscount;
+            this.btnDiscount.Location = new System.Drawing.Point(2, 82);
+            this.btnDiscount.Name = "btnDiscount";
+            this.btnDiscount.ShadowDecoration.Parent = this.btnDiscount;
+            this.btnDiscount.Size = new System.Drawing.Size(95, 45);
+            this.btnDiscount.TabIndex = 18;
+            this.btnDiscount.Text = "DISCOUNT (CTRL + D)";
             // 
             // guna2Panel1
             // 
@@ -692,80 +766,6 @@
             this.label7.Text = "PRICE MODE:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.Red;
-            this.guna2Button1.BorderThickness = 2;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Red;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(5, 546);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(188, 52);
-            this.guna2Button1.TabIndex = 46;
-            this.guna2Button1.Text = "VOID TRANSACTION (F3)";
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BorderColor = System.Drawing.Color.Goldenrod;
-            this.guna2Button2.BorderThickness = 2;
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.FillColor = System.Drawing.Color.White;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.Goldenrod;
-            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Location = new System.Drawing.Point(196, 546);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(188, 52);
-            this.guna2Button2.TabIndex = 47;
-            this.guna2Button2.Text = "CANCEL TRANSACTION (F4)";
-            // 
-            // guna2Button3
-            // 
-            this.guna2Button3.BackColor = System.Drawing.Color.White;
-            this.guna2Button3.BorderColor = System.Drawing.Color.DarkBlue;
-            this.guna2Button3.BorderThickness = 2;
-            this.guna2Button3.CheckedState.Parent = this.guna2Button3;
-            this.guna2Button3.CustomImages.Parent = this.guna2Button3;
-            this.guna2Button3.FillColor = System.Drawing.Color.White;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button3.ForeColor = System.Drawing.Color.DarkBlue;
-            this.guna2Button3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button3.HoverState.Parent = this.guna2Button3;
-            this.guna2Button3.Location = new System.Drawing.Point(5, 601);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.ShadowDecoration.Parent = this.guna2Button3;
-            this.guna2Button3.Size = new System.Drawing.Size(188, 52);
-            this.guna2Button3.TabIndex = 48;
-            this.guna2Button3.Text = "REDEEM ITEM (F7)";
-            // 
-            // guna2Button4
-            // 
-            this.guna2Button4.BackColor = System.Drawing.Color.White;
-            this.guna2Button4.BorderColor = System.Drawing.Color.ForestGreen;
-            this.guna2Button4.BorderThickness = 2;
-            this.guna2Button4.CheckedState.Parent = this.guna2Button4;
-            this.guna2Button4.CustomImages.Parent = this.guna2Button4;
-            this.guna2Button4.FillColor = System.Drawing.Color.White;
-            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.guna2Button4.ForeColor = System.Drawing.Color.ForestGreen;
-            this.guna2Button4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button4.HoverState.Parent = this.guna2Button4;
-            this.guna2Button4.Location = new System.Drawing.Point(5, 777);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.ShadowDecoration.Parent = this.guna2Button4;
-            this.guna2Button4.Size = new System.Drawing.Size(378, 76);
-            this.guna2Button4.TabIndex = 49;
-            this.guna2Button4.Text = "PAYMENT (CTRL + P)";
-            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -824,17 +824,17 @@
         internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.Label label9;
         internal System.Windows.Forms.Label label8;
-        private Guna.UI2.WinForms.Guna2Button guna2Button10;
         private Guna.UI2.WinForms.Guna2Button guna2Button11;
-        private Guna.UI2.WinForms.Guna2Button guna2Button9;
-        private Guna.UI2.WinForms.Guna2Button guna2Button8;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button7;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
         internal System.Windows.Forms.Label label7;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        public Guna.UI2.WinForms.Guna2Button btnPayment;
+        public Guna.UI2.WinForms.Guna2Button btnCustomer;
+        public Guna.UI2.WinForms.Guna2Button btnDiscount;
+        public Guna.UI2.WinForms.Guna2Button btnVoidItem;
+        public Guna.UI2.WinForms.Guna2Button btnVoid;
+        public Guna.UI2.WinForms.Guna2Button btnCancel;
+        public Guna.UI2.WinForms.Guna2Button btnRedeem;
     }
 }

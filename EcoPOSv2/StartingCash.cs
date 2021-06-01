@@ -13,6 +13,18 @@ namespace EcoPOSv2
         SQLControl sql = new SQLControl();
         public string open_by_userID, open_by_user_name;
 
+
+
+        //METHODS
+
+        //METHODS
+        private void tbCash_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnConfirm.PerformClick();
+            }
+        }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             // generate zreading
@@ -62,7 +74,7 @@ namespace EcoPOSv2
             if (sql.HasException(true))return;
 
             // restart order form
-            Form1.pnlChild.Controls.Clear();
+            Main.Instance.pnlChild.Controls.Clear();
 
             Order frmOrder = new Order();
             Main.Instance.OpenChildForm(frmOrder);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,10 @@ namespace EcoPOSv2
         }
         //VARIABLES
         public string current_id, current_username, current_user_first_name;
+
+        Helper Helper = new Helper();
+        FormLoad OL = new FormLoad();
+        RolePermission RP = new RolePermission();
 
         public string dynamicDB;
 
@@ -113,9 +118,51 @@ namespace EcoPOSv2
 
         public List<bool> bypass_list = new List<bool>();
         //VARIABLES
+
+        //METHODS
+        public void OpenChildForm(Form childform)
+        {
+
+            // close current child form
+            if (currentChildForm != null)
+                currentChildForm.Close();
+
+            // if current child form is the same then do nothing
+
+            if (currentChildForm == childform)
+                return;
+
+            // set new child form
+            currentChildForm = childform;
+            childform.TopLevel = false;
+            childform.FormBorderStyle = FormBorderStyle.None;
+            childform.Dock = DockStyle.Fill;
+            pnlChild.Controls.Add(childform);
+            pnlChild.Tag = childform;
+            childform.BringToFront();
+            childform.Show();
+        }
+
+        //METHODS
         private void Main_Load(object sender, EventArgs e)
         {
             _main = this;
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            Order frmOrder = new Order();
+            RP.Order(frmOrder);
+            OL.changeForm(frmOrder, currentChildForm, pnlChild);
+        }
+
+        private void tmrCurrentDateTime_Tick(object sender, EventArgs e)
+        {
+            lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt , MMM, dd, yyyy");
+        }
+        private void btnCalculator_Click(object sender, EventArgs e)
+        {
+            Process.Start("calc.exe");
         }
     }
 }

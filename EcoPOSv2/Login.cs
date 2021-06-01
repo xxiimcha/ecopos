@@ -148,10 +148,10 @@ namespace EcoPOSv2
 
                         //show main form
 
+                        ShiftStart(current_userID, current_user_name);
+
                         Main.Instance.Show();
                         this.Close();
-
-                        ShiftStart(current_userID, current_user_name);
                     }
                     else
                     {
@@ -222,6 +222,9 @@ namespace EcoPOSv2
                         if (sql.HasException(true)) return;
 
                         ShiftStart(current_userID, current_user_name);
+
+                        Main.Instance.Show();
+                        this.Close();
                     }
                     else
                     {

@@ -66,6 +66,8 @@
     <Compile Include="DatabaseSettings.Designer.cs">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLoad.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

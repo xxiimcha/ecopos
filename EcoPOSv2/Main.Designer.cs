@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblUser = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDateTime = new System.Windows.Forms.Label();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
-            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnclosetemp = new Guna.UI2.WinForms.Guna2Button();
             this.btnMore = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCalculator = new Guna.UI2.WinForms.Guna2Button();
             this.btnXReading = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnOrder = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
+            this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -54,7 +56,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.lblUser);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblDateTime);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -72,25 +74,25 @@
             this.lblUser.Text = "010.";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // lblDateTime
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(11, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(359, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Current Date and Time";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateTime.ForeColor = System.Drawing.Color.White;
+            this.lblDateTime.Location = new System.Drawing.Point(11, 0);
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(359, 32);
+            this.lblDateTime.TabIndex = 1;
+            this.lblDateTime.Text = "Current Date and Time";
+            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gunaPanel1
             // 
             this.gunaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gunaPanel1.Controls.Add(this.guna2Button5);
+            this.gunaPanel1.Controls.Add(this.btnclosetemp);
             this.gunaPanel1.Controls.Add(this.btnMore);
-            this.gunaPanel1.Controls.Add(this.guna2Button3);
+            this.gunaPanel1.Controls.Add(this.btnCalculator);
             this.gunaPanel1.Controls.Add(this.btnXReading);
-            this.gunaPanel1.Controls.Add(this.guna2Button2);
+            this.gunaPanel1.Controls.Add(this.btnOrder);
             this.gunaPanel1.Controls.Add(this.panel2);
             this.gunaPanel1.Controls.Add(this.pictureBox1);
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -99,26 +101,26 @@
             this.gunaPanel1.Size = new System.Drawing.Size(276, 866);
             this.gunaPanel1.TabIndex = 1;
             // 
-            // guna2Button5
+            // btnclosetemp
             // 
-            this.guna2Button5.CheckedState.Parent = this.guna2Button5;
-            this.guna2Button5.CustomImages.Parent = this.guna2Button5;
-            this.guna2Button5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Button5.FillColor = System.Drawing.Color.White;
-            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.guna2Button5.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button5.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button5.HoverState.Parent = this.guna2Button5;
-            this.guna2Button5.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button5.Image")));
-            this.guna2Button5.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button5.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2Button5.Location = new System.Drawing.Point(0, 804);
-            this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.ShadowDecoration.Parent = this.guna2Button5;
-            this.guna2Button5.Size = new System.Drawing.Size(274, 60);
-            this.guna2Button5.TabIndex = 10;
-            this.guna2Button5.Text = "Close (Temporary)";
-            this.guna2Button5.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnclosetemp.CheckedState.Parent = this.btnclosetemp;
+            this.btnclosetemp.CustomImages.Parent = this.btnclosetemp;
+            this.btnclosetemp.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnclosetemp.FillColor = System.Drawing.Color.White;
+            this.btnclosetemp.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnclosetemp.ForeColor = System.Drawing.Color.Black;
+            this.btnclosetemp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnclosetemp.HoverState.Parent = this.btnclosetemp;
+            this.btnclosetemp.Image = ((System.Drawing.Image)(resources.GetObject("btnclosetemp.Image")));
+            this.btnclosetemp.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnclosetemp.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnclosetemp.Location = new System.Drawing.Point(0, 804);
+            this.btnclosetemp.Name = "btnclosetemp";
+            this.btnclosetemp.ShadowDecoration.Parent = this.btnclosetemp;
+            this.btnclosetemp.Size = new System.Drawing.Size(274, 60);
+            this.btnclosetemp.TabIndex = 10;
+            this.btnclosetemp.Text = "Close (Temporary)";
+            this.btnclosetemp.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // btnMore
             // 
@@ -140,25 +142,26 @@
             this.btnMore.TabIndex = 9;
             this.btnMore.Text = "More (F10)";
             // 
-            // guna2Button3
+            // btnCalculator
             // 
-            this.guna2Button3.CheckedState.Parent = this.guna2Button3;
-            this.guna2Button3.CustomImages.Parent = this.guna2Button3;
-            this.guna2Button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button3.FillColor = System.Drawing.Color.White;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.guna2Button3.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button3.HoverState.Parent = this.guna2Button3;
-            this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
-            this.guna2Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button3.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2Button3.Location = new System.Drawing.Point(0, 375);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.ShadowDecoration.Parent = this.guna2Button3;
-            this.guna2Button3.Size = new System.Drawing.Size(274, 60);
-            this.guna2Button3.TabIndex = 8;
-            this.guna2Button3.Text = "Calculator (F9)";
+            this.btnCalculator.CheckedState.Parent = this.btnCalculator;
+            this.btnCalculator.CustomImages.Parent = this.btnCalculator;
+            this.btnCalculator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCalculator.FillColor = System.Drawing.Color.White;
+            this.btnCalculator.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnCalculator.ForeColor = System.Drawing.Color.Black;
+            this.btnCalculator.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCalculator.HoverState.Parent = this.btnCalculator;
+            this.btnCalculator.Image = ((System.Drawing.Image)(resources.GetObject("btnCalculator.Image")));
+            this.btnCalculator.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCalculator.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnCalculator.Location = new System.Drawing.Point(0, 375);
+            this.btnCalculator.Name = "btnCalculator";
+            this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
+            this.btnCalculator.Size = new System.Drawing.Size(274, 60);
+            this.btnCalculator.TabIndex = 8;
+            this.btnCalculator.Text = "Calculator (F9)";
+            this.btnCalculator.Click += new System.EventHandler(this.btnCalculator_Click);
             // 
             // btnXReading
             // 
@@ -181,25 +184,26 @@
             this.btnXReading.Text = "Switch Cashier (X-Read) (F8)";
             this.btnXReading.TextOffset = new System.Drawing.Point(20, 0);
             // 
-            // guna2Button2
+            // btnOrder
             // 
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Button2.FillColor = System.Drawing.Color.White;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.guna2Button2.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2Button2.Location = new System.Drawing.Point(0, 255);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(274, 60);
-            this.guna2Button2.TabIndex = 6;
-            this.guna2Button2.Text = "Order (F2)";
+            this.btnOrder.CheckedState.Parent = this.btnOrder;
+            this.btnOrder.CustomImages.Parent = this.btnOrder;
+            this.btnOrder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOrder.FillColor = System.Drawing.Color.White;
+            this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnOrder.ForeColor = System.Drawing.Color.Black;
+            this.btnOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOrder.HoverState.Parent = this.btnOrder;
+            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
+            this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOrder.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnOrder.Location = new System.Drawing.Point(0, 255);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
+            this.btnOrder.Size = new System.Drawing.Size(274, 60);
+            this.btnOrder.TabIndex = 6;
+            this.btnOrder.Text = "Order (F2)";
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // panel2
             // 
@@ -265,6 +269,11 @@
             this.pnlChild.Size = new System.Drawing.Size(1164, 866);
             this.pnlChild.TabIndex = 2;
             // 
+            // tmrCurrentDateTime
+            // 
+            this.tmrCurrentDateTime.Enabled = true;
+            this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,19 +301,20 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDateTime;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button btnOrder;
+        private Guna.UI2.WinForms.Guna2Button btnclosetemp;
         public System.Windows.Forms.Label lblUser;
         public Guna.UI2.WinForms.Guna2Button btnXReading;
-        public Guna.UI2.WinForms.Guna2Button guna2Button3;
+        public Guna.UI2.WinForms.Guna2Button btnCalculator;
         public Guna.UI2.WinForms.Guna2Button btnMore;
-        private System.Windows.Forms.Panel pnlChild;
+        public System.Windows.Forms.Panel pnlChild;
+        internal System.Windows.Forms.Timer tmrCurrentDateTime;
     }
 }
