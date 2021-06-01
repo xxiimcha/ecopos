@@ -41,6 +41,10 @@
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -73,10 +77,6 @@
             this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.OrderPanel.SuspendLayout();
             this.enteredOrdersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
@@ -258,6 +258,80 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(391, 866);
             this.panel4.TabIndex = 0;
+            // 
+            // guna2Button4
+            // 
+            this.guna2Button4.BackColor = System.Drawing.Color.White;
+            this.guna2Button4.BorderColor = System.Drawing.Color.ForestGreen;
+            this.guna2Button4.BorderThickness = 2;
+            this.guna2Button4.CheckedState.Parent = this.guna2Button4;
+            this.guna2Button4.CustomImages.Parent = this.guna2Button4;
+            this.guna2Button4.FillColor = System.Drawing.Color.White;
+            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.guna2Button4.ForeColor = System.Drawing.Color.ForestGreen;
+            this.guna2Button4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2Button4.HoverState.Parent = this.guna2Button4;
+            this.guna2Button4.Location = new System.Drawing.Point(5, 777);
+            this.guna2Button4.Name = "guna2Button4";
+            this.guna2Button4.ShadowDecoration.Parent = this.guna2Button4;
+            this.guna2Button4.Size = new System.Drawing.Size(378, 76);
+            this.guna2Button4.TabIndex = 49;
+            this.guna2Button4.Text = "PAYMENT (CTRL + P)";
+            // 
+            // guna2Button3
+            // 
+            this.guna2Button3.BackColor = System.Drawing.Color.White;
+            this.guna2Button3.BorderColor = System.Drawing.Color.DarkBlue;
+            this.guna2Button3.BorderThickness = 2;
+            this.guna2Button3.CheckedState.Parent = this.guna2Button3;
+            this.guna2Button3.CustomImages.Parent = this.guna2Button3;
+            this.guna2Button3.FillColor = System.Drawing.Color.White;
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2Button3.ForeColor = System.Drawing.Color.DarkBlue;
+            this.guna2Button3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2Button3.HoverState.Parent = this.guna2Button3;
+            this.guna2Button3.Location = new System.Drawing.Point(5, 601);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.ShadowDecoration.Parent = this.guna2Button3;
+            this.guna2Button3.Size = new System.Drawing.Size(188, 52);
+            this.guna2Button3.TabIndex = 48;
+            this.guna2Button3.Text = "REDEEM ITEM (F7)";
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.BorderColor = System.Drawing.Color.Goldenrod;
+            this.guna2Button2.BorderThickness = 2;
+            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
+            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
+            this.guna2Button2.FillColor = System.Drawing.Color.White;
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.Goldenrod;
+            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2Button2.HoverState.Parent = this.guna2Button2;
+            this.guna2Button2.Location = new System.Drawing.Point(196, 546);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
+            this.guna2Button2.Size = new System.Drawing.Size(188, 52);
+            this.guna2Button2.TabIndex = 47;
+            this.guna2Button2.Text = "CANCEL TRANSACTION (F4)";
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BorderColor = System.Drawing.Color.Red;
+            this.guna2Button1.BorderThickness = 2;
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.Red;
+            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(5, 546);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(188, 52);
+            this.guna2Button1.TabIndex = 46;
+            this.guna2Button1.Text = "VOID TRANSACTION (F3)";
             // 
             // label30
             // 
@@ -691,80 +765,6 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "PRICE MODE:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.Red;
-            this.guna2Button1.BorderThickness = 2;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Red;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(5, 546);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(188, 52);
-            this.guna2Button1.TabIndex = 46;
-            this.guna2Button1.Text = "VOID TRANSACTION (F3)";
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BorderColor = System.Drawing.Color.Goldenrod;
-            this.guna2Button2.BorderThickness = 2;
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.FillColor = System.Drawing.Color.White;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.Goldenrod;
-            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Location = new System.Drawing.Point(196, 546);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(188, 52);
-            this.guna2Button2.TabIndex = 47;
-            this.guna2Button2.Text = "CANCEL TRANSACTION (F4)";
-            // 
-            // guna2Button3
-            // 
-            this.guna2Button3.BackColor = System.Drawing.Color.White;
-            this.guna2Button3.BorderColor = System.Drawing.Color.DarkBlue;
-            this.guna2Button3.BorderThickness = 2;
-            this.guna2Button3.CheckedState.Parent = this.guna2Button3;
-            this.guna2Button3.CustomImages.Parent = this.guna2Button3;
-            this.guna2Button3.FillColor = System.Drawing.Color.White;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2Button3.ForeColor = System.Drawing.Color.DarkBlue;
-            this.guna2Button3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button3.HoverState.Parent = this.guna2Button3;
-            this.guna2Button3.Location = new System.Drawing.Point(5, 601);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.ShadowDecoration.Parent = this.guna2Button3;
-            this.guna2Button3.Size = new System.Drawing.Size(188, 52);
-            this.guna2Button3.TabIndex = 48;
-            this.guna2Button3.Text = "REDEEM ITEM (F7)";
-            // 
-            // guna2Button4
-            // 
-            this.guna2Button4.BackColor = System.Drawing.Color.White;
-            this.guna2Button4.BorderColor = System.Drawing.Color.ForestGreen;
-            this.guna2Button4.BorderThickness = 2;
-            this.guna2Button4.CheckedState.Parent = this.guna2Button4;
-            this.guna2Button4.CustomImages.Parent = this.guna2Button4;
-            this.guna2Button4.FillColor = System.Drawing.Color.White;
-            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.guna2Button4.ForeColor = System.Drawing.Color.ForestGreen;
-            this.guna2Button4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button4.HoverState.Parent = this.guna2Button4;
-            this.guna2Button4.Location = new System.Drawing.Point(5, 777);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.ShadowDecoration.Parent = this.guna2Button4;
-            this.guna2Button4.Size = new System.Drawing.Size(378, 76);
-            this.guna2Button4.TabIndex = 49;
-            this.guna2Button4.Text = "PAYMENT (CTRL + P)";
             // 
             // Order
             // 
