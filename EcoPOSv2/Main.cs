@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EcoPOSControl;
 
 namespace EcoPOSv2
 {
@@ -119,7 +120,37 @@ namespace EcoPOSv2
         public List<bool> bypass_list = new List<bool>();
         //VARIABLES
 
+        SQLControl sql = new SQLControl();
+
         //METHODS
+        public void store_bypass_list()
+        {
+            bypass_list.Add(bp_ord_payment);
+            bypass_list.Add(bp_ord_customer);
+            bypass_list.Add(bp_ord_discount);
+            bypass_list.Add(bp_ord_void_item);
+            bypass_list.Add(bp_ord_void_transaction);
+            bypass_list.Add(bp_ord_cancel_transaction);
+            bypass_list.Add(bp_ord_refund_transaction);
+            bypass_list.Add(bp_ord_return_exchange);
+            bypass_list.Add(bp_ord_redeem_item);
+            bypass_list.Add(bp_home_switch_cashier);
+            bypass_list.Add(bp_home_more);
+            bypass_list.Add(bp_more_ejournal);
+            bypass_list.Add(bp_more_customer_membership);
+            bypass_list.Add(bp_more_pay_in_out);
+            bypass_list.Add(bp_more_logs);
+            bypass_list.Add(bp_more_redeem_settings);
+            bypass_list.Add(bp_more_manage_discounts);
+            bypass_list.Add(bp_more_manage_products);
+            bypass_list.Add(bp_more_inventory);
+            bypass_list.Add(bp_more_close_store);
+            bypass_list.Add(bp_more_database);
+            bypass_list.Add(bp_more_settings);
+            bypass_list.Add(bp_pay_payment_method);
+            bypass_list.Add(bp_pay_gift_certificate);
+        }
+
         public void OpenChildForm(Form childform)
         {
 
@@ -142,11 +173,117 @@ namespace EcoPOSv2
             childform.BringToFront();
             childform.Show();
         }
+        private void BindSD()
+        {
+            SQLControl SQL = new SQLControl();
 
+            SQL.Query("SELECT * FROM store_details WHERE configuration_ID = 1");
+            if (SQL.HasException(true))
+                return;
+
+            foreach (DataRow dr in SQL.DBDT.Rows)
+            {
+                sd_business_name = dr["business_name"].ToString();
+                sd_business_address = dr["business_address"].ToString();
+                sd_business_contact_no = dr["business_contact_no"].ToString();
+                sd_tax_payer = dr["tax_payer"].ToString();
+                sd_vat_reg_tin = dr["vat_reg_tin"].ToString();
+                sd_min = dr["min"].ToString();
+                sd_sn = dr["sn"].ToString();
+                sd_accreditation_no = dr["accreditation_no"].ToString();
+                sd_an_date_issued = dr["an_date_issued"].ToString();
+                sd_an_valid_until = dr["an_valid_until"].ToString();
+                sd_ptu_no = dr["ptu_no"].ToString();
+                sd_pn_date_issued = dr["pn_date_issued"].ToString();
+                sd_pn_valid_until = dr["pn_valid_until"].ToString();
+            }
+        }
+        private void BindPD()
+        {
+            int count_records = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM printers_devices"));
+            if (sql.HasException(true))
+                return;
+
+            if (count_records == 1)
+            {
+                sql.Query("SELECT * FROM printers_devices WHERE configuration_ID = 1");
+                if (sql.HasException(true))
+                    return;
+
+                foreach (DataRow dr in sql.DBDT.Rows)
+                {
+                    pd_receipt_printer = dr["receipt_printer_name"].ToString();
+                    pd_report_printer = dr["receipt_printer_name"].ToString();
+                    pd_customer_display_enabled = Convert.ToBoolean(dr["customer_display_enabled"].ToString());
+                    pd_customer_display_port = dr["customer_display_port"].ToString();
+                }
+            }
+        }
+        private void BindRL()
+        {
+            SQLControl SQL = new SQLControl();
+
+            int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));
+            if (SQL.HasException(true))
+                return;
+
+            if (count_records == 1)
+            {
+                SQL.Query("SELECT * FROM receipt_layout WHERE configuration_ID = 1");
+                if (SQL.HasException(true))
+                    return;
+
+                foreach (DataRow dr in SQL.DBDT.Rows)
+                {
+                    rl_footer_text = dr["receipt_footer_text"].ToString();
+                }   
+            }
+        }
+
+        public void UpdateMemberCards()
+        {
+            SQLControl SQL = new SQLControl();
+
+            SQL.Query(" UPDATE member_card SET status = 'Expired' WHERE date_expired < (SELECT GETDATE()) AND activation_span <> 0");
+
+            if (SQL.HasException(true))
+                return;
+        }
+
+        public void UpdateGiftCards()
+        {
+            SQLControl SQL = new SQLControl();
+
+            SQL.Query("UPDATE giftcard SET status = 'Expired' WHERE expiration < (SELECT GETDATE())");
+
+            if (SQL.HasException(true))
+                return;
+        }
         //METHODS
         private void Main_Load(object sender, EventArgs e)
         {
             _main = this;
+
+            Order frmOrder = new Order();
+            OL.changeForm(frmOrder, currentChildForm, pnlChild);
+            frmOrder.tbBarcode.Focus();
+
+            tmrCurrentDateTime.Start();
+
+            SQLControl SQL = new SQLControl();
+            string connection = SQL.CheckConnection();
+
+            if (connection == "Connection success")
+            {
+                BindSD();
+                BindPD();
+                BindRL();
+
+                UpdateMemberCards();
+                UpdateGiftCards();
+            }
+
+            store_bypass_list();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
@@ -154,6 +291,11 @@ namespace EcoPOSv2
             Order frmOrder = new Order();
             RP.Order(frmOrder);
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
+        }
+
+        private void btnclosetemp_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void tmrCurrentDateTime_Tick(object sender, EventArgs e)

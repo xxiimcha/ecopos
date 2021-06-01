@@ -78,7 +78,7 @@ namespace EcoPOSv2
 
             Order frmOrder = new Order();
             Main.Instance.OpenChildForm(frmOrder);
-            frmOrder.txtBarcode.Focus();
+            frmOrder.tbBarcode.Focus();
 
             Close();
         }
