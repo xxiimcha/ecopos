@@ -23,9 +23,9 @@ namespace EcoPOSControl
         [DllImport(@"user32.dll")]
         static extern short GetAsyncKeyState(Keys vKey);
         public static string servername = EcoPOSv2.Properties.Settings.Default.dbServerName;
-        public static string dbName = EcoPOSv2.Properties.Settings.Default.dbName;
-        public static string dbuser = EcoPOSv2.Properties.Settings.Default.dbUser;
-        public static string dbpass = EcoPOSv2.Properties.Settings.Default.dbPass;
+        public static string dbName = EcoPOSv2.Properties.Settings.Default.dbName; //GALING SA SETTINGS
+        public static string dbuser = EcoPOSv2.Properties.Settings.Default.dbUser; //GALING SA SETTINGS
+        public static string dbpass = EcoPOSv2.Properties.Settings.Default.dbPass; //GALING SA SETTINGS
         public static string constring = @"Data Source=" + servername + ";Initial Catalog=" + dbName + "; user=" + dbuser + "; password=" + dbpass + ";";
         public SqlConnection DBCon = new SqlConnection(constring);
         private SqlCommand DBCmd;
@@ -115,7 +115,9 @@ namespace EcoPOSControl
                     DBCon.Close();
                 }
                 else
+                {
                     connectionStatus = "failed";
+                }  
             }
             catch (Exception) { }
 

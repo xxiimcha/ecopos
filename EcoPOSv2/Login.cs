@@ -107,11 +107,10 @@ namespace EcoPOSv2
             }
             else
             {
-                string attempt_status = "Log In Failed";
+                string attempt_status = "";
 
                 sql.AddParam("@user_name", tbUsername.Text);
-                sql.AddParam("@password", CreateMD5(tbPassword.Text));
-                string checkuser = sql.ReturnResult("SELECT COUNT(*) as result FROM users WHERE user_name = @user_name AND password = @password");
+                string checkuser = sql.ReturnResult("SELECT COUNT(*) as result FROM users WHERE user_name = @user_name");
 
                 if (sql.HasException(true)) return;
 
@@ -120,13 +119,14 @@ namespace EcoPOSv2
                     sql.AddParam("@user_name", tbUsername.Text);
                     sql.AddParam("@password", CreateMD5(tbPassword.Text));
 
-
                     sql.Query("SELECT * FROM admin_accts WHERE user_name = @user_name AND password = @password");
 
                     if (sql.HasException(true)) return;
 
                     if(sql.DBDT.Rows.Count > 0)
                     {
+                        attempt_status = "Log In Success";
+
                         foreach (DataRow dr in sql.DBDT.Rows)
                         {
                             current_userID = dr["adminID"].ToString();
@@ -155,23 +155,49 @@ namespace EcoPOSv2
                     }
                     else
                     {
-                        MessageBox.Show("Data is not exist", "Error Admin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        attempt_status = "Log In Failed";
+
+                        sql.AddParam("@user_name", tbUsername.Text);
+                        sql.Query("SELECT * FROM admin_accts WHERE user_name = @user_name");
+
+                        if (sql.HasException(true)) return;
+
+                        foreach (DataRow dr in sql.DBDT.Rows)
+                        {
+                            current_userID = dr["adminID"].ToString();
+                        }
+                        //record Login
+
+                        sql.AddParam("@userID", current_userID);
+                        sql.AddParam("@user_name", tbUsername.Text);
+                        sql.AddParam("@attempt_status", attempt_status);
+
+                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()))");
+
+                        if (sql.HasException(true)) return;
+
+                        //LOGIN ERROR MESSAGE & CLEARING
+                        MessageBox.Show("Login failed! Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        tbUsername.Clear();
+                        tbPassword.Clear();
+                        tbUsername.Focus();
                     }
                 }
                 else if(checkuser == "1")
                 {
                     int roleID = 0;
-                    attempt_status = "Log In Success";
 
                     sql.AddParam("@user_name", tbUsername.Text);
                     sql.AddParam("@password", CreateMD5(tbPassword.Text));
-
 
                     sql.Query("SELECT * FROM users WHERE user_name = @user_name AND password = @password");
                     if (sql.HasException(true))return;
 
                     if(sql.DBDT.Rows.Count > 0)
                     {
+                        attempt_status = "Log In Success";
+
                         foreach (DataRow dr in sql.DBDT.Rows)
                         {
                             current_userID = dr["userID"].ToString();
@@ -199,8 +225,41 @@ namespace EcoPOSv2
                     }
                     else
                     {
-                        MessageBox.Show("Data is not exist", "Error Users", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        attempt_status = "Log In Failed";
+
+                        sql.AddParam("@user_name", tbUsername.Text);
+                        sql.Query("SELECT * FROM users WHERE user_name = @user_name");
+
+                        if (sql.HasException(true)) return;
+
+                        foreach (DataRow dr in sql.DBDT.Rows)
+                        {
+                            current_userID = dr["userID"].ToString();
+                        }
+                        //record Login
+
+                        sql.AddParam("@userID", current_userID);
+                        sql.AddParam("@user_name", tbUsername.Text);
+                        sql.AddParam("@attempt_status", attempt_status);
+
+                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()))");
+
+                        if (sql.HasException(true)) return;
+
+                        //LOGIN ERROR MESSAGE & CLEARING
+                        MessageBox.Show("Login failed! Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        tbUsername.Clear();
+                        tbPassword.Clear();
+                        tbUsername.Focus();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("This user is not exist in our database. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbUsername.Clear();
+                    tbPassword.Clear();
+                    tbUsername.Focus();
                 }
             }
         }
