@@ -87,6 +87,12 @@
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
     <Compile Include="RolePermission.cs" />
+    <Compile Include="SecureXReading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SecureXReading.Designer.cs">
+      <DependentUpon>SecureXReading.cs</DependentUpon>
+    </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,12 @@
     </Compile>
     <Compile Include="StartingCash.Designer.cs">
       <DependentUpon>StartingCash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XReading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XReading.Designer.cs">
+      <DependentUpon>XReading.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ContinueSession.resx">
       <DependentUpon>ContinueSession.cs</DependentUpon>
@@ -117,6 +129,9 @@
     <EmbeddedResource Include="Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SecureXReading.resx">
+      <DependentUpon>SecureXReading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="StartingCash.resx">
       <DependentUpon>StartingCash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XReading.resx">
+      <DependentUpon>XReading.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
