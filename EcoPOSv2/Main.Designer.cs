@@ -90,7 +90,6 @@
             // 
             this.gunaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gunaPanel1.Controls.Add(this.guna2Button1);
-            this.gunaPanel1.Controls.Add(this.guna2Button5);
             this.gunaPanel1.Controls.Add(this.btnclosetemp);
             this.gunaPanel1.Controls.Add(this.btnMore);
             this.gunaPanel1.Controls.Add(this.btnCalculator);

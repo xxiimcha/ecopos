@@ -33,7 +33,7 @@ public class FormLoad
         currentButton = senderBtn;
     }
 
-    public void changeForm(Form childform, ref Form currentChildForm, ref Panel pnlChild)
+    public void changeForm(Form childform, Form currentChildForm, Panel pnlChild)
     {
 
         // close current child form
