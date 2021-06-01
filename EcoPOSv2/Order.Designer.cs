@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.OrderPanel = new System.Windows.Forms.Panel();
             this.enteredOrdersPanel = new System.Windows.Forms.Panel();
             this.dgvCart = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -45,9 +45,9 @@
             this.btnRedeem = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnVoid = new Guna.UI2.WinForms.Guna2Button();
-            this.label30 = new System.Windows.Forms.Label();
+            this.lblOperation = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.lblCustomer = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.lblOrderNumber = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnVoidItem = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
             this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.btnDiscount = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -108,35 +108,35 @@
             // 
             this.dgvCart.AllowUserToAddRows = false;
             this.dgvCart.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.White;
             this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCart.ColumnHeadersHeight = 21;
             this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCart.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCart.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvCart.EnableHeadersVisualStyles = false;
             this.dgvCart.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCart.Location = new System.Drawing.Point(3, 75);
@@ -224,9 +224,9 @@
             this.panel4.Controls.Add(this.btnRedeem);
             this.panel4.Controls.Add(this.btnCancel);
             this.panel4.Controls.Add(this.btnVoid);
-            this.panel4.Controls.Add(this.label30);
+            this.panel4.Controls.Add(this.lblOperation);
             this.panel4.Controls.Add(this.label31);
-            this.panel4.Controls.Add(this.label28);
+            this.panel4.Controls.Add(this.lblCustomer);
             this.panel4.Controls.Add(this.label29);
             this.panel4.Controls.Add(this.label26);
             this.panel4.Controls.Add(this.label27);
@@ -249,7 +249,7 @@
             this.panel4.Controls.Add(this.lblOrderNumber);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.btnVoidItem);
-            this.panel4.Controls.Add(this.guna2Button11);
+            this.panel4.Controls.Add(this.btnQuantity);
             this.panel4.Controls.Add(this.btnCustomer);
             this.panel4.Controls.Add(this.btnDiscount);
             this.panel4.Controls.Add(this.guna2Panel1);
@@ -316,6 +316,7 @@
             this.btnCancel.Size = new System.Drawing.Size(188, 52);
             this.btnCancel.TabIndex = 47;
             this.btnCancel.Text = "CANCEL TRANSACTION (F4)";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnVoid
             // 
@@ -334,18 +335,19 @@
             this.btnVoid.Size = new System.Drawing.Size(188, 52);
             this.btnVoid.TabIndex = 46;
             this.btnVoid.Text = "VOID TRANSACTION (F3)";
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
-            // label30
+            // lblOperation
             // 
-            this.label30.BackColor = System.Drawing.Color.White;
-            this.label30.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Black;
-            this.label30.Location = new System.Drawing.Point(195, 420);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(191, 21);
-            this.label30.TabIndex = 45;
-            this.label30.Text = "Name";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblOperation.BackColor = System.Drawing.Color.White;
+            this.lblOperation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOperation.ForeColor = System.Drawing.Color.Black;
+            this.lblOperation.Location = new System.Drawing.Point(195, 420);
+            this.lblOperation.Name = "lblOperation";
+            this.lblOperation.Size = new System.Drawing.Size(191, 21);
+            this.lblOperation.TabIndex = 45;
+            this.lblOperation.Text = "Name";
+            this.lblOperation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label31
             // 
@@ -360,17 +362,17 @@
             this.label31.Text = "Operation";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label28
+            // lblCustomer
             // 
-            this.label28.BackColor = System.Drawing.Color.White;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(195, 399);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(191, 21);
-            this.label28.TabIndex = 43;
-            this.label28.Text = "Name";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCustomer.BackColor = System.Drawing.Color.White;
+            this.lblCustomer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomer.ForeColor = System.Drawing.Color.Black;
+            this.lblCustomer.Location = new System.Drawing.Point(195, 399);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(191, 21);
+            this.lblCustomer.TabIndex = 43;
+            this.lblCustomer.Text = "Name";
+            this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label29
             // 
@@ -653,23 +655,24 @@
             this.btnVoidItem.TabIndex = 21;
             this.btnVoidItem.Text = "VOID ITEM (CTRL + V)";
             // 
-            // guna2Button11
+            // btnQuantity
             // 
-            this.guna2Button11.BorderColor = System.Drawing.Color.Green;
-            this.guna2Button11.BorderThickness = 1;
-            this.guna2Button11.CheckedState.Parent = this.guna2Button11;
-            this.guna2Button11.CustomImages.Parent = this.guna2Button11;
-            this.guna2Button11.FillColor = System.Drawing.Color.White;
-            this.guna2Button11.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button11.ForeColor = System.Drawing.Color.Green;
-            this.guna2Button11.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button11.HoverState.Parent = this.guna2Button11;
-            this.guna2Button11.Location = new System.Drawing.Point(196, 82);
-            this.guna2Button11.Name = "guna2Button11";
-            this.guna2Button11.ShadowDecoration.Parent = this.guna2Button11;
-            this.guna2Button11.Size = new System.Drawing.Size(95, 45);
-            this.guna2Button11.TabIndex = 20;
-            this.guna2Button11.Text = "QUANTITY (CTRL +Q)";
+            this.btnQuantity.BorderColor = System.Drawing.Color.Green;
+            this.btnQuantity.BorderThickness = 1;
+            this.btnQuantity.CheckedState.Parent = this.btnQuantity;
+            this.btnQuantity.CustomImages.Parent = this.btnQuantity;
+            this.btnQuantity.FillColor = System.Drawing.Color.White;
+            this.btnQuantity.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnQuantity.ForeColor = System.Drawing.Color.Green;
+            this.btnQuantity.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnQuantity.HoverState.Parent = this.btnQuantity;
+            this.btnQuantity.Location = new System.Drawing.Point(196, 82);
+            this.btnQuantity.Name = "btnQuantity";
+            this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
+            this.btnQuantity.Size = new System.Drawing.Size(95, 45);
+            this.btnQuantity.TabIndex = 20;
+            this.btnQuantity.Text = "QUANTITY (CTRL +Q)";
+            this.btnQuantity.Click += new System.EventHandler(this.btnQuantity_Click);
             // 
             // btnCustomer
             // 
@@ -706,6 +709,7 @@
             this.btnDiscount.Size = new System.Drawing.Size(95, 45);
             this.btnDiscount.TabIndex = 18;
             this.btnDiscount.Text = "DISCOUNT (CTRL + D)";
+            this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
             // 
             // guna2Panel1
             // 
@@ -805,9 +809,9 @@
         internal System.Windows.Forms.TextBox tbBarcode;
         internal System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel4;
-        internal System.Windows.Forms.Label label30;
+        internal System.Windows.Forms.Label lblOperation;
         internal System.Windows.Forms.Label label31;
-        internal System.Windows.Forms.Label label28;
+        internal System.Windows.Forms.Label lblCustomer;
         internal System.Windows.Forms.Label label29;
         internal System.Windows.Forms.Label label26;
         internal System.Windows.Forms.Label label27;
@@ -829,7 +833,7 @@
         internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.Label lblOrderNumber;
         internal System.Windows.Forms.Label label8;
-        private Guna.UI2.WinForms.Guna2Button guna2Button11;
+        private Guna.UI2.WinForms.Guna2Button btnQuantity;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button btnWholeSale;
         private Guna.UI2.WinForms.Guna2Button btnRetail;

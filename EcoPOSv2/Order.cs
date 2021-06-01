@@ -306,51 +306,147 @@ namespace EcoPOSv2
 
         private void Order_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode & !Keys.Modifiers) == Keys.D && e.Modifiers == Keys.Control)
-                btnDiscount.PerformClick();
-            else if ((e.KeyCode & !Keys.Modifiers) == Keys.C && e.Modifiers == Keys.Control)
-                btnCustomer.PerformClick();
-            else if ((e.KeyCode & !Keys.Modifiers) == Keys.Q && e.Modifiers == Keys.Control)
-                btnQuantity.PerformClick();
-            else if ((e.KeyCode & !Keys.Modifiers) == Keys.I && e.Modifiers == Keys.Control)
-                btnSeeItem.PerformClick();
-            else if ((e.KeyCode & !Keys.Modifiers) == Keys.V && e.Modifiers == Keys.Control)
-                btnVoidItem.PerformClick();
-            else if ((e.KeyCode & !Keys.Modifiers) == Keys.P && e.Modifiers == Keys.Control)
-                btnPayment.PerformClick();
-            else if (e.KeyCode == Keys.F3)
-                btnVoid.PerformClick();
-            else if (e.KeyCode == Keys.F4)
-                btnCancel.PerformClick();
-            else if (e.KeyCode == Keys.F7)
-                btnRedeem.PerformClick();
-            else if (e.KeyCode == Keys.F11)
-            {
-                UserBypass frmUserBypass = new UserBypass();
-                frmUserBypass.frmOrder = this;
-                frmUserBypass.fromOrder = true;
-                frmUserBypass.ShowDialog();
-            }
-            else if (e.KeyCode == Keys.F12)
-            {
-                foreach (var item in Main.Instance.bypass_list)
+            //if (e.KeyCode != Keys.Modifiers == Keys.D && e.Modifiers == Keys.Control)
+            //    btnDiscount.PerformClick();
+            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.C && e.Modifiers == Keys.Control)
+            //    btnCustomer.PerformClick();
+            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.Q && e.Modifiers == Keys.Control)
+            //    btnQuantity.PerformClick();
+            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.I && e.Modifiers == Keys.Control)
+            //    btnSeeItem.PerformClick();
+            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.V && e.Modifiers == Keys.Control)
+            //    btnVoidItem.PerformClick();
+            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.P && e.Modifiers == Keys.Control)
+            //    btnPayment.PerformClick();
+            //else if (e.KeyCode == Keys.F3)
+            //    btnVoid.PerformClick();
+            //else if (e.KeyCode == Keys.F4)
+            //    btnCancel.PerformClick();
+            //else if (e.KeyCode == Keys.F7)
+            //    btnRedeem.PerformClick();
+            //else if (e.KeyCode == Keys.F11)
+            //{
+            //    UserBypass frmUserBypass = new UserBypass();
+            //    frmUserBypass.frmOrder = this;
+            //    frmUserBypass.fromOrder = true;
+            //    frmUserBypass.ShowDialog();
+            //}
+            //else if (e.KeyCode == Keys.F12)
+            //{
+            //    foreach (var item in Main.Instance.bypass_list)
 
-                    item = false;
+            //        item = false;
 
-                Main.Instance.by_pass_user = false;
-                Main.Instance.by_pass_userID = 0;
-                Main.Instance.by_pass_user_name = "";
-                Main.Instance.lblByPassUser.Text = "";
+            //    Main.Instance.by_pass_user = false;
+            //    Main.Instance.by_pass_userID = 0;
+            //    Main.Instance.by_pass_user_name = "";
+            //    Main.Instance.lblByPassUser.Text = "";
 
-                RP.Order(this);
-                RP.Home(Main.Instance);
-            }
-            else if ((e.KeyCode & !Keys.Modifiers) == Keys.X && e.Modifiers == Keys.Control)
+            //    RP.Order(this);
+            //    RP.Home(Main.Instance);
+            //}
+            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.X && e.Modifiers == Keys.Control)
+            //{
+            //    Form2 frmForm2 = new Form2();
+            //    frmForm2.frmOrder = this;
+            //    frmForm2.ShowDialog();
+            //}
+        }
+
+        private void btnDiscount_Click(object sender, EventArgs e)
+        {
+            if(lblDiscount.Text == "0.00")
             {
-                Form2 frmForm2 = new Form2();
-                frmForm2.frmOrder = this;
-                frmForm2.ShowDialog();
+                btnQuantity.Enabled = true;
+                btnCustomer.Enabled = true;
+                btnDiscount.Enabled = true;
+                tbBarcode.Enabled = true;
             }
+            else
+            {
+                btnQuantity.Enabled = false;
+                btnCustomer.Enabled = false;
+                btnDiscount.Enabled = false;
+                tbBarcode.Enabled = false;
+            }
+
+            DiscountOption frmDiscountOption = new DiscountOption();
+            frmDiscountOption.frmOrder = this;
+            frmDiscountOption.ShowDialog();
+        }
+
+        private void btnQuantity_Click(object sender, EventArgs e)
+        {
+            if (dgvCart.SelectedRows.Count > 0)
+            {
+                Quantity frmQuantity = new Quantity();
+                frmQuantity.frmOrder = this;
+                frmQuantity.itemID = dgvCart.CurrentRow.Cells[0].Value.ToString;
+                frmQuantity.lblItem.Text = dgvCart.CurrentRow.Cells[2].Value.ToString;
+                frmQuantity.txtQuantity.Text = dgvCart.CurrentRow.Cells[11].Value.ToString;
+
+                frmQuantity.ShowDialog();
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            apply_regular_discount_fix_amt = false;
+            apply_special_discount = false;
+            apply_member = false;
+            regular_disc_amt = 0;
+
+            is_refund = false;
+            is_return = false;
+
+            LoadOrder();
+            GetTotal();
+            lblCustomer.Text = "";
+            lblOperation.Text = "Order/Payment";
+            tbBarcode.Enabled = true;
+
+            if (dgvCart.Rows.Count == 0)
+                return;
+
+            SQL.Query("DELETE FROM order_cart");
+
+            if (SQL.HasException(true))
+                return;
+
+            SQL.Query(@"UPDATE order_no SET action = 1, discountID = 0, cus_type = 0, cus_name = '',
+                       cus_ID_no = 0, cus_mem_ID = 0, disc_amt = 0, cus_rewardable = 0, cus_amt_per_pt = 0, 
+                       return_order_ref = 0, refund_order_ref = 0 WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+
+            if (SQL.HasException(true))
+                return;
+        }
+
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
+            if (dgvCart.SelectedRows.Count == 0)
+                return;
+
+            // save to void item
+            SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
+            SQL.AddParam("@userID", Main.Instance.current_id);
+
+            SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
+                       static_price_vat, static_price_inclusive, quantity, userID) SELECT itemID, productID, 
+                       (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
+                       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID
+                       FROM order_cart WHERE productID = @productID");
+
+            if (SQL.HasException(true))
+                return;
+
+            SQL.AddParam("@itemID", dgvCart.CurrentRow.Cells[0].Value.ToString());
+            SQL.Query("DELETE FROM order_cart WHERE itemID = @itemID");
+
+            if (SQL.HasException(true))
+                return;
+
+            LoadOrder();
+            GetTotal();
         }
 
         private void btnRetail_Click(object sender, EventArgs e)
