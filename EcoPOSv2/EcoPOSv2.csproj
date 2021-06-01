@@ -80,13 +80,73 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="OCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCustomer.Designer.cs">
+      <DependentUpon>OCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment.Designer.cs">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PChange.Designer.cs">
+      <DependentUpon>PChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PGiftCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PGiftCard.Designer.cs">
+      <DependentUpon>PGiftCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Quantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quantity.Designer.cs">
+      <DependentUpon>Quantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RDMQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RDMQuantity.Designer.cs">
+      <DependentUpon>RDMQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RedeemCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedeemCart.Designer.cs">
+      <DependentUpon>RedeemCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegularDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegularDiscount.Designer.cs">
+      <DependentUpon>RegularDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="RolePermission.cs" />
+    <Compile Include="SeeItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeeItem.Designer.cs">
+      <DependentUpon>SeeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialDiscount.Designer.cs">
+      <DependentUpon>SpecialDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +162,18 @@
     <Compile Include="StartingCash.Designer.cs">
       <DependentUpon>StartingCash.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserBypass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserBypass.Designer.cs">
+      <DependentUpon>UserBypass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoidTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoidTransaction.Designer.cs">
+      <DependentUpon>VoidTransaction.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ContinueSession.resx">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,8 +186,38 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OCustomer.resx">
+      <DependentUpon>OCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment.resx">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PChange.resx">
+      <DependentUpon>PChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PGiftCard.resx">
+      <DependentUpon>PGiftCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quantity.resx">
+      <DependentUpon>Quantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RDMQuantity.resx">
+      <DependentUpon>RDMQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedeemCart.resx">
+      <DependentUpon>RedeemCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegularDiscount.resx">
+      <DependentUpon>RegularDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeeItem.resx">
+      <DependentUpon>SeeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialDiscount.resx">
+      <DependentUpon>SpecialDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
@@ -132,6 +234,12 @@
     </Compile>
     <EmbeddedResource Include="StartingCash.resx">
       <DependentUpon>StartingCash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserBypass.resx">
+      <DependentUpon>UserBypass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoidTransaction.resx">
+      <DependentUpon>VoidTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

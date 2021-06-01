@@ -1,5 +1,4 @@
-﻿using Guna.UI2.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EcoPOSv2
 {
-    public partial class Order : Form
+    public partial class Quantity : Form
     {
-        public Order()
+        public Quantity()
         {
             InitializeComponent();
         }
