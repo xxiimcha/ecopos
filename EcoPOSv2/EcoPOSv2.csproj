@@ -66,6 +66,12 @@
     <Compile Include="DatabaseSettings.Designer.cs">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiscountOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscountOption.Designer.cs">
+      <DependentUpon>DiscountOption.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLoad.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Login.cs">
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseSettings.resx">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscountOption.resx">
+      <DependentUpon>DiscountOption.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
