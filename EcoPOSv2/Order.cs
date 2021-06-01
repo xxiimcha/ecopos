@@ -29,6 +29,8 @@ namespace EcoPOSv2
 
         public bool is_refund = false;
         public bool is_return = false;
+
+        string type, insert_type_query;
         //METHODS
         public void LoadOrder()
         {
@@ -139,8 +141,8 @@ namespace EcoPOSv2
 
                 lblDiscount.Text = regular_disc_amt.ToString();
                 lblTotal.Text = String.Format((total - regular_disc_amt).ToString(), "#,##0.00");
-                lblVAT.Text = string.Format(vat - regular_disc_amt - (regular_disc_amt / 1.12M).ToString(), "#,##0.00");
-                lblVATSale.Text = String.Format((vat_sale - (regular_disc_amt / 1.12))).ToString(), "#,##0.00");
+                lblVAT.Text = String.Format((vat - regular_disc_amt - (regular_disc_amt / 1.12M)).ToString(), "#,##0.00");
+                lblVATSale.Text = String.Format((vat_sale - (regular_disc_amt / 1.12M)).ToString(), "#,##0.00");
             }
         }
 
@@ -165,7 +167,7 @@ namespace EcoPOSv2
             RP.Payment(frmPayment);
             frmPayment.frmOrder = this;
             frmPayment.lblCustomerID.Text = customerID;
-            frmPayment.cbxUsePoints.Text = (card_balance, "#,##0.00");
+            frmPayment.cbxUsePoints.Text = string.Format(card_balance.ToString(), "#,##0.00");
             frmPayment.card_balance = card_balance;
             frmPayment.lblTotal.Text = lblTotal.Text;
             frmPayment.lblGrandTotal.Text = lblTotal.Text;
@@ -207,8 +209,7 @@ namespace EcoPOSv2
             {
                 if (System.Convert.ToDecimal(lblTotal.Text) > 0)
                 {
-                    Notification.PopUp("Error", "Exchange item cannot be higher than return item.");
-                    return;
+                    MessageBox.Show("Exchange item cannot be higher than return item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 frmPayment.change = System.Convert.ToDecimal(lblTotal.Text);
@@ -235,19 +236,9 @@ namespace EcoPOSv2
             }
             frmPayment.Show(this);
         }
-
+        
         private void tbBarcode_KeyUp(object sender, KeyEventArgs e)
         {
-            string insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
-            string type = "R";
-
-            if (rbWholesale.Checked)
-            {
-                type = "W";
-                insert_type_query = "wp_exclusive, wp_tax, wp_inclusive";
-            }
-
-
             if (e.KeyCode == Keys.Enter)
             {
                 if (tbBarcode.Text == "")
@@ -297,14 +288,75 @@ namespace EcoPOSv2
 
                     LoadOrder();
                     GetTotal();
-                    txtBarcode.Clear();
-                    txtBarcode.Focus();
+                    tbBarcode.Clear();
+                    tbBarcode.Focus();
                 }
                 else
                 {
                     MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnWholeSale_Click(object sender, EventArgs e)
+        {
+            type = "W";
+            insert_type_query = "wp_exclusive, wp_tax, wp_inclusive";
+        }
+
+        private void Order_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode & !Keys.Modifiers) == Keys.D && e.Modifiers == Keys.Control)
+                btnDiscount.PerformClick();
+            else if ((e.KeyCode & !Keys.Modifiers) == Keys.C && e.Modifiers == Keys.Control)
+                btnCustomer.PerformClick();
+            else if ((e.KeyCode & !Keys.Modifiers) == Keys.Q && e.Modifiers == Keys.Control)
+                btnQuantity.PerformClick();
+            else if ((e.KeyCode & !Keys.Modifiers) == Keys.I && e.Modifiers == Keys.Control)
+                btnSeeItem.PerformClick();
+            else if ((e.KeyCode & !Keys.Modifiers) == Keys.V && e.Modifiers == Keys.Control)
+                btnVoidItem.PerformClick();
+            else if ((e.KeyCode & !Keys.Modifiers) == Keys.P && e.Modifiers == Keys.Control)
+                btnPayment.PerformClick();
+            else if (e.KeyCode == Keys.F3)
+                btnVoid.PerformClick();
+            else if (e.KeyCode == Keys.F4)
+                btnCancel.PerformClick();
+            else if (e.KeyCode == Keys.F7)
+                btnRedeem.PerformClick();
+            else if (e.KeyCode == Keys.F11)
+            {
+                UserBypass frmUserBypass = new UserBypass();
+                frmUserBypass.frmOrder = this;
+                frmUserBypass.fromOrder = true;
+                frmUserBypass.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.F12)
+            {
+                foreach (var item in Main.Instance.bypass_list)
+
+                    item = false;
+
+                Main.Instance.by_pass_user = false;
+                Main.Instance.by_pass_userID = 0;
+                Main.Instance.by_pass_user_name = "";
+                Main.Instance.lblByPassUser.Text = "";
+
+                RP.Order(this);
+                RP.Home(Main.Instance);
+            }
+            else if ((e.KeyCode & !Keys.Modifiers) == Keys.X && e.Modifiers == Keys.Control)
+            {
+                Form2 frmForm2 = new Form2();
+                frmForm2.frmOrder = this;
+                frmForm2.ShowDialog();
+            }
+        }
+
+        private void btnRetail_Click(object sender, EventArgs e)
+        {
+            insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
+            type = "R";
         }
     }
 }
