@@ -14,73 +14,73 @@ using Microsoft.VisualBasic;
 
 public class RolePermission
 {
-    //public void Order(Order frm)
-    //{
-    //    if (Main.Instance.by_pass_user)
-    //    {
-    //        if (Main.Instance.bp_ord_payment == false)
-    //            frm.btnPayment.Enabled = false;
-    //        if (Main.Instance.bp_ord_customer == false)
-    //            frm.btnCustomer.Enabled = false;
-    //        if (Main.Instance.bp_ord_discount == false)
-    //            frm.btnDiscount.Enabled = false;
-    //        if (Main.Instance.bp_ord_void_item == false)
-    //            frm.btnVoidItem.Enabled = false;
-    //        if (Main.Instance.bp_ord_void_transaction == false)
-    //            frm.btnVoid.Enabled = false;
-    //        if (Main.Instance.bp_ord_cancel_transaction == false)
-    //            frm.btnCancel.Enabled = false;
-    //        if (Main.Instance.bp_ord_redeem_item == false)
-    //            frm.btnRedeem.Enabled = false;
+    public void Order(Order frm)
+    {
+        if (Main.Instance.by_pass_user)
+        {
+            if (Main.Instance.bp_ord_payment == false)
+                frm.btnPayment.Enabled = false;
+            if (Main.Instance.bp_ord_customer == false)
+                frm.btnCustomer.Enabled = false;
+            if (Main.Instance.bp_ord_discount == false)
+                frm.btnDiscount.Enabled = false;
+            if (Main.Instance.bp_ord_void_item == false)
+                frm.btnVoidItem.Enabled = false;
+            if (Main.Instance.bp_ord_void_transaction == false)
+                frm.btnVoid.Enabled = false;
+            if (Main.Instance.bp_ord_cancel_transaction == false)
+                frm.btnCancel.Enabled = false;
+            if (Main.Instance.bp_ord_redeem_item == false)
+                frm.btnRedeem.Enabled = false;
 
-    //        if (Main.Instance.bp_ord_payment == true)
-    //            frm.btnPayment.Enabled = true;
-    //        if (Main.Instance.bp_ord_customer == true)
-    //            frm.btnCustomer.Enabled = true;
-    //        if (Main.Instance.bp_ord_discount == true)
-    //            frm.btnDiscount.Enabled = true;
-    //        if (Main.Instance.bp_ord_void_item == true)
-    //            frm.btnVoidItem.Enabled = true;
-    //        if (Main.Instance.bp_ord_void_transaction == true)
-    //            frm.btnVoid.Enabled = true;
-    //        if (Main.Instance.bp_ord_cancel_transaction == true)
-    //            frm.btnCancel.Enabled = true;
-    //        if (Main.Instance.bp_ord_redeem_item == true)
-    //            frm.btnRedeem.Enabled = true;
-    //    }
-    //    else
-    //    {
-    //        if (Main.Instance.rp_ord_payment == false)
-    //            frm.btnPayment.Enabled = false;
-    //        if (Main.Instance.rp_ord_customer == false)
-    //            frm.btnCustomer.Enabled = false;
-    //        if (Main.Instance.rp_ord_discount == false)
-    //            frm.btnDiscount.Enabled = false;
-    //        if (Main.Instance.rp_ord_void_item == false)
-    //            frm.btnVoidItem.Enabled = false;
-    //        if (Main.Instance.rp_ord_void_transaction == false)
-    //            frm.btnVoid.Enabled = false;
-    //        if (Main.Instance.rp_ord_cancel_transaction == false)
-    //            frm.btnCancel.Enabled = false;
-    //        if (Main.Instance.rp_ord_redeem_item == false)
-    //            frm.btnRedeem.Enabled = false;
+            if (Main.Instance.bp_ord_payment == true)
+                frm.btnPayment.Enabled = true;
+            if (Main.Instance.bp_ord_customer == true)
+                frm.btnCustomer.Enabled = true;
+            if (Main.Instance.bp_ord_discount == true)
+                frm.btnDiscount.Enabled = true;
+            if (Main.Instance.bp_ord_void_item == true)
+                frm.btnVoidItem.Enabled = true;
+            if (Main.Instance.bp_ord_void_transaction == true)
+                frm.btnVoid.Enabled = true;
+            if (Main.Instance.bp_ord_cancel_transaction == true)
+                frm.btnCancel.Enabled = true;
+            if (Main.Instance.bp_ord_redeem_item == true)
+                frm.btnRedeem.Enabled = true;
+        }
+        else
+        {
+            if (Main.Instance.rp_ord_payment == false)
+                frm.btnPayment.Enabled = false;
+            if (Main.Instance.rp_ord_customer == false)
+                frm.btnCustomer.Enabled = false;
+            if (Main.Instance.rp_ord_discount == false)
+                frm.btnDiscount.Enabled = false;
+            if (Main.Instance.rp_ord_void_item == false)
+                frm.btnVoidItem.Enabled = false;
+            if (Main.Instance.rp_ord_void_transaction == false)
+                frm.btnVoid.Enabled = false;
+            if (Main.Instance.rp_ord_cancel_transaction == false)
+                frm.btnCancel.Enabled = false;
+            if (Main.Instance.rp_ord_redeem_item == false)
+                frm.btnRedeem.Enabled = false;
 
-    //        if (Main.Instance.rp_ord_payment == true)
-    //            frm.btnPayment.Enabled = true;
-    //        if (Main.Instance.rp_ord_customer == true)
-    //            frm.btnCustomer.Enabled = true;
-    //        if (Main.Instance.rp_ord_discount == true)
-    //            frm.btnDiscount.Enabled = true;
-    //        if (Main.Instance.rp_ord_void_item == true)
-    //            frm.btnVoidItem.Enabled = true;
-    //        if (Main.Instance.rp_ord_void_transaction == true)
-    //            frm.btnVoid.Enabled = true;
-    //        if (Main.Instance.rp_ord_cancel_transaction == true)
-    //            frm.btnCancel.Enabled = true;
-    //        if (Main.Instance.rp_ord_redeem_item == true)
-    //            frm.btnRedeem.Enabled = true;
-    //    }
-    //}
+            if (Main.Instance.rp_ord_payment == true)
+                frm.btnPayment.Enabled = true;
+            if (Main.Instance.rp_ord_customer == true)
+                frm.btnCustomer.Enabled = true;
+            if (Main.Instance.rp_ord_discount == true)
+                frm.btnDiscount.Enabled = true;
+            if (Main.Instance.rp_ord_void_item == true)
+                frm.btnVoidItem.Enabled = true;
+            if (Main.Instance.rp_ord_void_transaction == true)
+                frm.btnVoid.Enabled = true;
+            if (Main.Instance.rp_ord_cancel_transaction == true)
+                frm.btnCancel.Enabled = true;
+            if (Main.Instance.rp_ord_redeem_item == true)
+                frm.btnRedeem.Enabled = true;
+        }
+    }
 
     public void Home(Main frm)
     {
