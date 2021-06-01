@@ -25,6 +25,8 @@ namespace EcoPOSv2
 
         public string current_userID = "0";
         public string current_user_name = "";
+
+        private Helper HP = new Helper();
         //DECLARING VARIABLES
 
         //METHODS
@@ -53,7 +55,7 @@ namespace EcoPOSv2
                 ContinueSession cs = new ContinueSession();
                 cs.Show();
 
-                //this.Close();
+                this.Close();
             }
         }
         private void ShiftStart(string userID, string user_name)
@@ -117,7 +119,7 @@ namespace EcoPOSv2
                 if (checkuser == "0")
                 {
                     sql.AddParam("@user_name", tbUsername.Text);
-                    sql.AddParam("@password", CreateMD5(tbPassword.Text));
+                    sql.AddParam("@password", HP.Encrypt(tbPassword.Text));
 
                     sql.Query("SELECT * FROM admin_accts WHERE user_name = @user_name AND password = @password");
 
@@ -189,7 +191,7 @@ namespace EcoPOSv2
                     int roleID = 0;
 
                     sql.AddParam("@user_name", tbUsername.Text);
-                    sql.AddParam("@password", CreateMD5(tbPassword.Text));
+                    sql.AddParam("@password", HP.Encrypt(tbPassword.Text));
 
                     sql.Query("SELECT * FROM users WHERE user_name = @user_name AND password = @password");
                     if (sql.HasException(true))return;
@@ -266,38 +268,6 @@ namespace EcoPOSv2
                 }
             }
         }
-
-        public string CreateMD5(string passcode)
-        {
-            string hash = "EAAATSPassword@J2021$"; //EAAATSPassword@J2021$
-            byte[] data = UTF8Encoding.UTF8.GetBytes(passcode);
-
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
-
-            tripleDES.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
-            tripleDES.Mode = CipherMode.ECB;
-
-            ICryptoTransform transform = tripleDES.CreateEncryptor();
-            byte[] result = transform.TransformFinalBlock(data, 0, data.Length);
-
-            return Convert.ToBase64String(result);
-
-            //DECRYPTING MD5 SOURCE CODE
-            //string hash = "EAAATSPassword@J2021$";
-            //byte[] data = Convert.FromBase64String(passcode);
-
-            //MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            //TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
-
-            //tripleDES.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
-            //tripleDES.Mode = CipherMode.ECB;
-
-            //ICryptoTransform transform = tripleDES.CreateDecryptor();
-            //byte[] result = transform.TransformFinalBlock(data, 0, data.Length);
-
-            //return UTF8Encoding.UTF8.GetString(result);
-        }
         //METHODS
 
         private void Login_Load(object sender, EventArgs e)
@@ -320,19 +290,19 @@ namespace EcoPOSv2
 
             if (sql.HasException(true)) return;
 
-            if(connection == "success")
+            if (connection == "success")
             {
                 int check_records = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM store_details"));
 
                 if (sql.HasException(true)) return;
 
-                if(check_records == 1)
+                if (check_records == 1)
                 {
                     login();
                 }
                 else
                 {
-                    MessageBox.Show("No store details found.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

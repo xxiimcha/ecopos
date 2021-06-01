@@ -16,5 +16,8 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        public Payment frmPayment;
+
+        private int count = 0;
     }
 }

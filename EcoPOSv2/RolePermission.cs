@@ -110,33 +110,33 @@ public class RolePermission
         }
     }
 
-    //public void Payment(Payment frm)
-    //{
-    //    if (Main.Instance.by_pass_user)
-    //    {
-    //        if (Main.Instance.bp_pay_payment_method == false)
-    //            frm.cmbMethod.Enabled = false;
-    //        if (Main.Instance.bp_pay_gift_certificate == false)
-    //            frm.btnGC.Enabled = false;
+    public void Payment(Payment frm)
+    {
+        if (Main.Instance.by_pass_user)
+        {
+            if (Main.Instance.bp_pay_payment_method == false)
+                frm.cmbMethod.Enabled = false;
+            if (Main.Instance.bp_pay_gift_certificate == false)
+                frm.btnGC.Enabled = false;
 
-    //        if (Main.Instance.bp_pay_payment_method == true)
-    //            frm.cmbMethod.Enabled = true;
-    //        if (Main.Instance.bp_pay_gift_certificate == true)
-    //            frm.btnGC.Enabled = true;
-    //    }
-    //    else
-    //    {
-    //        if (Main.Instance.rp_pay_payment_method == false)
-    //            frm.cmbMethod.Enabled = false;
-    //        if (Main.Instance.rp_pay_gift_certificate == false)
-    //            frm.btnGC.Enabled = false;
+            if (Main.Instance.bp_pay_payment_method == true)
+                frm.cmbMethod.Enabled = true;
+            if (Main.Instance.bp_pay_gift_certificate == true)
+                frm.btnGC.Enabled = true;
+        }
+        else
+        {
+            if (Main.Instance.rp_pay_payment_method == false)
+                frm.cmbMethod.Enabled = false;
+            if (Main.Instance.rp_pay_gift_certificate == false)
+                frm.btnGC.Enabled = false;
 
-    //        if (Main.Instance.rp_pay_payment_method == true)
-    //            frm.cmbMethod.Enabled = true;
-    //        if (Main.Instance.rp_pay_gift_certificate == true)
-    //            frm.btnGC.Enabled = true;
-    //    }
-    //}
+            if (Main.Instance.rp_pay_payment_method == true)
+                frm.cmbMethod.Enabled = true;
+            if (Main.Instance.rp_pay_gift_certificate == true)
+                frm.btnGC.Enabled = true;
+        }
+    }
 
     //public void More(More frm)
     //{

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoPOSControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,8 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        private SQLControl SQL = new SQLControl();
+        public Order frmOrder;
+        public string itemID;
     }
 }

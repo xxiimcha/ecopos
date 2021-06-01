@@ -39,6 +39,8 @@ namespace EcoPOSv2
 
         public string dynamicDB;
 
+        public Order frmOrder;
+
         public DataSet ds = new DataSet();
         public Form currentChildForm;
 

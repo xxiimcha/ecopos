@@ -172,8 +172,8 @@ namespace EcoPOSv2
             frmPayment.card_balance = card_balance;
             frmPayment.lblTotal.Text = lblTotal.Text;
             frmPayment.lblGrandTotal.Text = lblTotal.Text;
-            frmPayment.grand_total = double.Parse(lblTotal.Text, CultureInfo.CreateSpecificCulture("en-US"));
-            frmPayment.total = double.Parse(lblTotal.Text, CultureInfo.CreateSpecificCulture("en-US"));
+            frmPayment.grand_total = (decimal)double.Parse(lblTotal.Text, CultureInfo.CreateSpecificCulture("en-US"));
+            frmPayment.total = (decimal)double.Parse(lblTotal.Text, CultureInfo.CreateSpecificCulture("en-US"));
             frmPayment.action = action;
 
 
@@ -382,9 +382,9 @@ namespace EcoPOSv2
             {
                 Quantity frmQuantity = new Quantity();
                 frmQuantity.frmOrder = this;
-                frmQuantity.itemID = dgvCart.CurrentRow.Cells[0].Value.ToString;
-                frmQuantity.lblItem.Text = dgvCart.CurrentRow.Cells[2].Value.ToString;
-                frmQuantity.txtQuantity.Text = dgvCart.CurrentRow.Cells[11].Value.ToString;
+                frmQuantity.itemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
+                frmQuantity.lblItem.Text = dgvCart.CurrentRow.Cells[2].Value.ToString();
+                frmQuantity.txtQuantity.Text = dgvCart.CurrentRow.Cells[11].Value.ToString();
 
                 frmQuantity.ShowDialog();
             }
@@ -448,6 +448,11 @@ namespace EcoPOSv2
 
             LoadOrder();
             GetTotal();
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnRetail_Click(object sender, EventArgs e)

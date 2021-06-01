@@ -16,5 +16,6 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        public Order frmOrder;
     }
 }

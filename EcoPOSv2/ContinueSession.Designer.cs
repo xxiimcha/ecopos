@@ -94,6 +94,7 @@
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(320, 32);
             this.tbPassword.TabIndex = 70;
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 
             // Label7
             // 
@@ -141,6 +142,7 @@
             this.tbCSPassword.PasswordChar = '*';
             this.tbCSPassword.Size = new System.Drawing.Size(320, 32);
             this.tbCSPassword.TabIndex = 64;
+            this.tbCSPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCSPassword_KeyDown);
             // 
             // lblCS_Username
             // 
@@ -195,6 +197,7 @@
             this.btnContinueSession.Size = new System.Drawing.Size(210, 40);
             this.btnContinueSession.TabIndex = 71;
             this.btnContinueSession.Text = "Continue Session";
+            this.btnContinueSession.Click += new System.EventHandler(this.btnContinueSession_Click);
             // 
             // btnLoginAdmin
             // 
@@ -213,6 +216,7 @@
             this.btnLoginAdmin.Size = new System.Drawing.Size(210, 40);
             this.btnLoginAdmin.TabIndex = 72;
             this.btnLoginAdmin.Text = "Login Administrator";
+            this.btnLoginAdmin.Click += new System.EventHandler(this.btnLoginAdmin_Click);
             // 
             // label6
             // 

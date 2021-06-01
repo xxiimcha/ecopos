@@ -64,6 +64,7 @@
             this.btnPay = new System.Windows.Forms.Button();
             this.btnDot = new System.Windows.Forms.Button();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
+            this.btnErase = new System.Windows.Forms.Button();
             this.TableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -297,6 +298,7 @@
             this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.TableLayoutPanel2.Controls.Add(this.btnErase, 0, 3);
             this.TableLayoutPanel2.Controls.Add(this.btn0, 1, 3);
             this.TableLayoutPanel2.Controls.Add(this.btn3, 2, 2);
             this.TableLayoutPanel2.Controls.Add(this.btn2, 1, 2);
@@ -336,6 +338,7 @@
             this.btn0.TabIndex = 14;
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = false;
+            this.btn0.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn3
             // 
@@ -351,6 +354,7 @@
             this.btn3.TabIndex = 11;
             this.btn3.Text = "3";
             this.btn3.UseVisualStyleBackColor = false;
+            this.btn3.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn2
             // 
@@ -366,6 +370,7 @@
             this.btn2.TabIndex = 10;
             this.btn2.Text = "2";
             this.btn2.UseVisualStyleBackColor = false;
+            this.btn2.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn1
             // 
@@ -381,6 +386,7 @@
             this.btn1.TabIndex = 9;
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = false;
+            this.btn1.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn6
             // 
@@ -396,6 +402,7 @@
             this.btn6.TabIndex = 7;
             this.btn6.Text = "6";
             this.btn6.UseVisualStyleBackColor = false;
+            this.btn6.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn5
             // 
@@ -411,6 +418,7 @@
             this.btn5.TabIndex = 6;
             this.btn5.Text = "5";
             this.btn5.UseVisualStyleBackColor = false;
+            this.btn5.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn4
             // 
@@ -426,6 +434,7 @@
             this.btn4.TabIndex = 5;
             this.btn4.Text = "4";
             this.btn4.UseVisualStyleBackColor = false;
+            this.btn4.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn9
             // 
@@ -441,6 +450,7 @@
             this.btn9.TabIndex = 3;
             this.btn9.Text = "9";
             this.btn9.UseVisualStyleBackColor = false;
+            this.btn9.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn8
             // 
@@ -456,6 +466,7 @@
             this.btn8.TabIndex = 2;
             this.btn8.Text = "8";
             this.btn8.UseVisualStyleBackColor = false;
+            this.btn8.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btn7
             // 
@@ -471,6 +482,7 @@
             this.btn7.TabIndex = 1;
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = false;
+            this.btn7.Click += new System.EventHandler(this.btn0_Click);
             // 
             // btnExact
             // 
@@ -486,6 +498,7 @@
             this.btnExact.TabIndex = 15;
             this.btnExact.Text = "Exact (F1)";
             this.btnExact.UseVisualStyleBackColor = false;
+            this.btnExact.Click += new System.EventHandler(this.btnExact_Click);
             // 
             // btnGC
             // 
@@ -501,6 +514,7 @@
             this.btnGC.TabIndex = 17;
             this.btnGC.Text = "Gift Card (F2)";
             this.btnGC.UseVisualStyleBackColor = false;
+            this.btnGC.Click += new System.EventHandler(this.btnGC_Click);
             // 
             // btnRemoveGC
             // 
@@ -516,6 +530,7 @@
             this.btnRemoveGC.TabIndex = 18;
             this.btnRemoveGC.Text = "Remove GC (F3)";
             this.btnRemoveGC.UseVisualStyleBackColor = false;
+            this.btnRemoveGC.Click += new System.EventHandler(this.btnRemoveGC_Click);
             // 
             // btnPay
             // 
@@ -531,6 +546,7 @@
             this.btnPay.TabIndex = 19;
             this.btnPay.Text = "Pay (Enter)";
             this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // btnDot
             // 
@@ -546,6 +562,7 @@
             this.btnDot.TabIndex = 13;
             this.btnDot.Text = ".";
             this.btnDot.UseVisualStyleBackColor = false;
+            this.btnDot.Click += new System.EventHandler(this.btn0_Click);
             // 
             // gunaControlBox1
             // 
@@ -561,6 +578,22 @@
             this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
             this.gunaControlBox1.Size = new System.Drawing.Size(54, 45);
             this.gunaControlBox1.TabIndex = 80;
+            // 
+            // btnErase
+            // 
+            this.btnErase.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnErase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnErase.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnErase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnErase.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnErase.ForeColor = System.Drawing.Color.Black;
+            this.btnErase.Location = new System.Drawing.Point(3, 210);
+            this.btnErase.Name = "btnErase";
+            this.btnErase.Size = new System.Drawing.Size(110, 64);
+            this.btnErase.TabIndex = 20;
+            this.btnErase.Text = "<";
+            this.btnErase.UseVisualStyleBackColor = false;
+            this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
             // 
             // Payment
             // 
@@ -593,6 +626,7 @@
             this.Name = "Payment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
+            this.Load += new System.EventHandler(this.Payment_Load);
             this.TableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -637,5 +671,6 @@
         internal System.Windows.Forms.Button btnPay;
         internal System.Windows.Forms.Button btnDot;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
+        internal System.Windows.Forms.Button btnErase;
     }
 }
