@@ -117,6 +117,7 @@
             this.Name = "PGiftCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PGiftCard";
+            this.Load += new System.EventHandler(this.PGiftCard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

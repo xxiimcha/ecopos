@@ -441,9 +441,9 @@ namespace EcoPOSv2
 
         private void btnRemoveGC_Click(object sender, EventArgs e)
         {
-            decimal deduct_gc = (decimal)double.Parse(lblDeductGC.Text, CultureInfo.CreateSpecificCulture("en-US"));
+            decimal deduct_gc = Math.Round(decimal.Parse(lblDeductGC.ToString()), 2);
             grand_total = grand_total + deduct_gc;
-            lblGrandTotal.Text = String.Format(grand_total.ToString(), "#,##0.00");
+            lblGrandTotal.Text = Math.Round(decimal.Parse(grand_total.ToString()), 2).ToString();
             lblGCNo.Text = "0";
             lblDeductGC.Text = "0.00";
         }

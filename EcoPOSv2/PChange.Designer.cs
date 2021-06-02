@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PChange));
             this.lblChange = new System.Windows.Forms.Label();
             this.Label9 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnReprint = new Guna.UI2.WinForms.Guna2Button();
+            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            this.tmrClose = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblChange
@@ -58,49 +60,56 @@
             this.Label9.TabIndex = 37;
             this.Label9.Text = "Change";
             // 
-            // guna2Button1
+            // btnReprint
             // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.Orange;
-            this.guna2Button1.BorderThickness = 2;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Orange;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2Button1.ImageSize = new System.Drawing.Size(35, 35);
-            this.guna2Button1.Location = new System.Drawing.Point(8, 147);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(257, 57);
-            this.guna2Button1.TabIndex = 39;
-            this.guna2Button1.Text = "REPRINT";
-            this.guna2Button1.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnReprint.BorderColor = System.Drawing.Color.Orange;
+            this.btnReprint.BorderThickness = 2;
+            this.btnReprint.CheckedState.Parent = this.btnReprint;
+            this.btnReprint.CustomImages.Parent = this.btnReprint;
+            this.btnReprint.FillColor = System.Drawing.Color.White;
+            this.btnReprint.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnReprint.ForeColor = System.Drawing.Color.Orange;
+            this.btnReprint.HoverState.Parent = this.btnReprint;
+            this.btnReprint.Image = ((System.Drawing.Image)(resources.GetObject("btnReprint.Image")));
+            this.btnReprint.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnReprint.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnReprint.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnReprint.Location = new System.Drawing.Point(8, 147);
+            this.btnReprint.Name = "btnReprint";
+            this.btnReprint.ShadowDecoration.Parent = this.btnReprint;
+            this.btnReprint.Size = new System.Drawing.Size(257, 57);
+            this.btnReprint.TabIndex = 39;
+            this.btnReprint.Text = "REPRINT";
+            this.btnReprint.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnReprint.Click += new System.EventHandler(this.btnReprint_Click);
             // 
-            // guna2Button2
+            // btnConfirm
             // 
-            this.guna2Button2.BorderColor = System.Drawing.Color.Green;
-            this.guna2Button2.BorderThickness = 2;
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.FillColor = System.Drawing.Color.White;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.guna2Button2.ForeColor = System.Drawing.Color.Green;
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2Button2.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2Button2.Location = new System.Drawing.Point(273, 147);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(257, 57);
-            this.guna2Button2.TabIndex = 40;
-            this.guna2Button2.Text = "CONFIRM";
-            this.guna2Button2.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderThickness = 2;
+            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
+            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
+            this.btnConfirm.FillColor = System.Drawing.Color.White;
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
+            this.btnConfirm.HoverState.Parent = this.btnConfirm;
+            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
+            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnConfirm.Location = new System.Drawing.Point(273, 147);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
+            this.btnConfirm.Size = new System.Drawing.Size(257, 57);
+            this.btnConfirm.TabIndex = 40;
+            this.btnConfirm.Text = "CONFIRM";
+            this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // tmrClose
+            // 
+            this.tmrClose.Interval = 1000;
+            this.tmrClose.Tick += new System.EventHandler(this.tmrClose_Tick);
             // 
             // PChange
             // 
@@ -108,14 +117,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(539, 216);
-            this.Controls.Add(this.guna2Button2);
-            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.btnConfirm);
+            this.Controls.Add(this.btnReprint);
             this.Controls.Add(this.lblChange);
             this.Controls.Add(this.Label9);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PChange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PChange";
+            this.Load += new System.EventHandler(this.PChange_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PChange_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,7 +136,8 @@
 
         internal System.Windows.Forms.Label lblChange;
         internal System.Windows.Forms.Label Label9;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnReprint;
+        private Guna.UI2.WinForms.Guna2Button btnConfirm;
+        internal System.Windows.Forms.Timer tmrClose;
     }
 }
