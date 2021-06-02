@@ -183,16 +183,6 @@ namespace EcoPOSv2
         {
             cmbMethod.SelectedIndex = -1;
         }
-
-        private void btn0_Click(object sender, EventArgs e)
-        {
-            if (txtAmount.Text == "0")
-            {
-                txtAmount.Text = "";
-                txtAmount.Text += (sender as Button).Text;
-            }
-        }
-
         private void btnExact_Click(object sender, EventArgs e)
         {
             txtAmount.Text = lblGrandTotal.Text;
@@ -387,6 +377,34 @@ namespace EcoPOSv2
             PGiftCard frmPGiftCard = new PGiftCard();
             frmPGiftCard.frmPayment = this;
             frmPGiftCard.ShowDialog();
+        }
+
+        private void txtAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAmount.Text == "")
+            {
+                decimal total = 0M;
+
+                decimal amount = Math.Round(total, 2);
+
+                change = amount - grand_total;
+                lblChange.Text = Math.Round(change, 2).ToString();
+            }
+            else
+            {
+                decimal amount = Math.Round(decimal.Parse(txtAmount.Text), 2);
+
+                change = amount - grand_total;
+                lblChange.Text = Math.Round(change, 2).ToString();
+            }
+        }
+
+        private void txtAmount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Space)
+            {
+                btnExact.PerformClick();
+            }
         }
     }
 }

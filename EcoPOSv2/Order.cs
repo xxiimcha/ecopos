@@ -93,9 +93,6 @@ namespace EcoPOSv2
 
             foreach (DataRow r in SQL.DBDT.Rows)
             {
-
-
-
                 // check if discount > 1300
 
                 decimal discount;
@@ -104,16 +101,17 @@ namespace EcoPOSv2
                     return;
 
                 discount = Convert.ToDecimal(r["Discount"].ToString());
-                if ( Convert.ToInt32(r["Discount"].ToString()) > 1300 & (check_if_PWDSC == 1 | check_if_PWDSC == 2))
-                    discount = 1300;
+                if ( Convert.ToDecimal(r["Discount"].ToString()) > 1300M & (check_if_PWDSC == 1 | check_if_PWDSC == 2))
+                    discount = 1300M;
 
 
-                lblItems.Text = String.Format(r["Qty"].ToString(),"#,##0.00");
+                lblItems.Text = r["Qty"].ToString();
                 lblSubtotal.Text = String.Format(r["Subtotal"].ToString(), "#,##0.00");
                 lblDiscount.Text = discount.ToString();
-                lblTotal.Text = String.Format(r["Total"].ToString(), "#,##0.00");
-                lblVAT.Text = String.Format(r["VAT"].ToString(), "#,##0.00");
-                lblLessVAT.Text = String.Format(r["LessVAT"].ToString(), "#,##0.00");
+                lblTotal.Text = Math.Round(decimal.Parse(r["Total"].ToString()),2).ToString();
+                //lblTotal.Text = r["Total"].ToString();
+                lblVAT.Text = Math.Round(decimal.Parse(r["VAT"].ToString()), 2).ToString();
+                lblLessVAT.Text = r["LessVAT"].ToString();
             }
 
             lblVATSale.Text = String.Format(Convert.ToDecimal(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE is_vat_exempt = 0) > 0,
@@ -136,9 +134,9 @@ namespace EcoPOSv2
                 decimal vat_sale = 0;
                 decimal vat = 0;
 
-                total = (decimal)double.Parse(lblTotal.Text, CultureInfo.CreateSpecificCulture("en-US"));
-                vat_sale = (decimal)double.Parse(lblVATSale.Text, CultureInfo.CreateSpecificCulture("en-US"));
-                vat = (decimal)double.Parse(lblVAT.Text, CultureInfo.CreateSpecificCulture("en-US"));
+                total = decimal.Parse(lblTotal.Text);
+                vat_sale = decimal.Parse(lblVATSale.Text);
+                vat = decimal.Parse(lblVAT.Text);
 
                 lblDiscount.Text = regular_disc_amt.ToString();
                 lblTotal.Text = String.Format((total - regular_disc_amt).ToString(), "#,##0.00");
@@ -168,12 +166,12 @@ namespace EcoPOSv2
             RP.Payment(frmPayment);
             frmPayment.frmOrder = this;
             frmPayment.lblCustomerID.Text = customerID;
-            frmPayment.cbxUsePoints.Text = string.Format(card_balance.ToString(), "#,##0.00");
+            frmPayment.cbxUsePoints.Text = Math.Round(card_balance, 2).ToString();
             frmPayment.card_balance = card_balance;
             frmPayment.lblTotal.Text = lblTotal.Text;
             frmPayment.lblGrandTotal.Text = lblTotal.Text;
-            frmPayment.grand_total = (decimal)double.Parse(lblTotal.Text, CultureInfo.CreateSpecificCulture("en-US"));
-            frmPayment.total = (decimal)double.Parse(lblTotal.Text, CultureInfo.CreateSpecificCulture("en-US"));
+            frmPayment.grand_total = Math.Round(decimal.Parse(lblTotal.Text), 2);
+            frmPayment.total = Math.Round(decimal.Parse(lblTotal.Text), 2);
             frmPayment.action = action;
 
 
@@ -189,17 +187,6 @@ namespace EcoPOSv2
 
 
                 frmPayment.txtAmount.Enabled = false;
-                frmPayment.btn0.Enabled = false;
-                frmPayment.btn1.Enabled = false;
-                frmPayment.btn2.Enabled = false;
-                frmPayment.btn3.Enabled = false;
-                frmPayment.btn4.Enabled = false;
-                frmPayment.btn5.Enabled = false;
-                frmPayment.btn6.Enabled = false;
-                frmPayment.btn7.Enabled = false;
-                frmPayment.btn8.Enabled = false;
-                frmPayment.btn9.Enabled = false;
-                frmPayment.btnDot.Enabled = false;
                 frmPayment.btnExact.Enabled = false;
                 frmPayment.btnGC.Enabled = false;
                 frmPayment.btnRemoveGC.Enabled = false;
@@ -218,17 +205,6 @@ namespace EcoPOSv2
 
 
                 frmPayment.txtAmount.Enabled = false;
-                frmPayment.btn0.Enabled = false;
-                frmPayment.btn1.Enabled = false;
-                frmPayment.btn2.Enabled = false;
-                frmPayment.btn3.Enabled = false;
-                frmPayment.btn4.Enabled = false;
-                frmPayment.btn5.Enabled = false;
-                frmPayment.btn6.Enabled = false;
-                frmPayment.btn7.Enabled = false;
-                frmPayment.btn8.Enabled = false;
-                frmPayment.btn9.Enabled = false;
-                frmPayment.btnDot.Enabled = false;
                 frmPayment.btnExact.Enabled = false;
                 frmPayment.btnGC.Enabled = false;
                 frmPayment.btnRemoveGC.Enabled = false;
@@ -453,6 +429,11 @@ namespace EcoPOSv2
         private void btnCustomer_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Order_Load(object sender, EventArgs e)
+        {
+            btnRetail.PerformClick();
         }
 
         private void btnRetail_Click(object sender, EventArgs e)
