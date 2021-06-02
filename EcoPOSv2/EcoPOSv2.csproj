@@ -216,6 +216,12 @@
     <Compile Include="XReading.Designer.cs">
       <DependentUpon>XReading.cs</DependentUpon>
     </Compile>
+    <Compile Include="XReadingRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XReadingRecords.Designer.cs">
+      <DependentUpon>XReadingRecords.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ContinueSession.resx">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XReading.resx">
       <DependentUpon>XReading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XReadingRecords.resx">
+      <DependentUpon>XReadingRecords.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
