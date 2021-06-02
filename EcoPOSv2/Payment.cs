@@ -81,19 +81,19 @@ namespace EcoPOSv2
                     report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
                     report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
                     report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
-                    report.SetParameterValue("subtotal", String.Format("{0:N2}", r["subtotal"].ToString()));
-                    report.SetParameterValue("less_vat", String.Format("{0:N2}", r["less_vat"].ToString()));
-                    report.SetParameterValue("discount", String.Format("{0:N2}", r["disc_amt"].ToString()));
-                    report.SetParameterValue("points_deduct", String.Format("{0:N2}", r["cus_pts_deducted"].ToString()));
-                    report.SetParameterValue("giftcard_deduct", String.Format("{0:N2}", r["giftcard_deducted"].ToString()));
-                    report.SetParameterValue("total", String.Format("{0:N2}", r["grand_total"].ToString()));
-                    report.SetParameterValue("vatable_sales", String.Format("{0:N2}", r["vatable_sale"].ToString()));
-                    report.SetParameterValue("vat_12", String.Format("{0:N2}", r["vat_12"].ToString()));
-                    report.SetParameterValue("vat_exempt_sales", String.Format("{0:N2}", r["vat_exempt_sale"].ToString()));
-                    report.SetParameterValue("zero_rated_sales", String.Format("{0:N2}", r["zero_rated_sale"].ToString()));
-                    report.SetParameterValue("giftcard_no", String.Format("{0:N2}", r["giftcard_no"].ToString()));
-                    report.SetParameterValue("cash", String.Format("{0:N2}", r["payment_amt"].ToString()));
-                    report.SetParameterValue("change", String.Format("{0:N2}", r["change"].ToString()));
+                    report.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()),2).ToString());
+                    report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
+                    report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
+                    report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
+                    report.SetParameterValue("giftcard_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
+                    report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
+                    report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
+                    report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
+                    report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
+                    report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
+                    report.SetParameterValue("giftcard_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
+                    report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
+                    report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
                     report.SetParameterValue("cus_name", r["cus_name"].ToString());
                     report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
 
@@ -469,10 +469,14 @@ namespace EcoPOSv2
             }
             else
             {
-                decimal amount = Math.Round(decimal.Parse(txtAmount.Text), 2);
+                try
+                {
+                    decimal amount = Math.Round(decimal.Parse(txtAmount.Text), 2);
 
-                change = amount - grand_total;
-                lblChange.Text = Math.Round(change, 2).ToString();
+                    change = amount - grand_total;
+                    lblChange.Text = Math.Round(change, 2).ToString();
+                }
+                catch (Exception) { }
             }
 
             txtAmount.Text = txtAmount.Text.Replace(" ", "");
