@@ -198,6 +198,12 @@
     <Compile Include="Terminal.Designer.cs">
       <DependentUpon>Terminal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions.Designer.cs">
+      <DependentUpon>Transactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="XReading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Terminal.resx">
       <DependentUpon>Terminal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions.resx">
+      <DependentUpon>Transactions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XReading.resx">
       <DependentUpon>XReading.cs</DependentUpon>
