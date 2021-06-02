@@ -208,7 +208,7 @@ namespace EcoPOSv2
 
             if (count_records == 1)
             {
-                sql.Query("SELECT * FROM printers_devices WHERE configuration_ID = 1");
+                sql.Query("SELECT * FROM printers_devices WHERE configuration_ID = 2");
                 if (sql.HasException(true))
                     return;
 
@@ -272,18 +272,12 @@ namespace EcoPOSv2
 
             tmrCurrentDateTime.Start();
 
-            SQLControl SQL = new SQLControl();
-            string connection = SQL.CheckConnection();
+            BindSD();
+            BindPD();
+            BindRL();
 
-            if (connection == "Connection success")
-            {
-                BindSD();
-                BindPD();
-                BindRL();
-
-                UpdateMemberCards();
-                UpdateGiftCards();
-            }
+            UpdateMemberCards();
+            UpdateGiftCards();
 
             store_bypass_list();
         }
@@ -298,6 +292,12 @@ namespace EcoPOSv2
         private void btnclosetemp_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnMore_Click(object sender, EventArgs e)
+        {
+            Devices d = new Devices();
+            d.ShowDialog();
         }
 
         private void tmrCurrentDateTime_Tick(object sender, EventArgs e)

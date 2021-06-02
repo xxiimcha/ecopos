@@ -271,6 +271,9 @@ namespace EcoPOSv2
                 else
                 {
                     MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    tbBarcode.Clear();
+                    tbBarcode.Focus();
                 }
             }
         }
@@ -376,8 +379,6 @@ namespace EcoPOSv2
             is_refund = false;
             is_return = false;
 
-            LoadOrder();
-            GetTotal();
             lblCustomer.Text = "";
             lblOperation.Text = "Order/Payment";
             tbBarcode.Enabled = true;
@@ -396,9 +397,27 @@ namespace EcoPOSv2
 
             if (SQL.HasException(true))
                 return;
+
+            LoadOrder();
+            GetTotal();
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Order_Load(object sender, EventArgs e)
+        {
+            btnRetail.PerformClick();
+        }
+
+        private void btnVoidItem_Click(object sender, EventArgs e)
         {
             if (dgvCart.SelectedRows.Count == 0)
                 return;
@@ -424,16 +443,6 @@ namespace EcoPOSv2
 
             LoadOrder();
             GetTotal();
-        }
-
-        private void btnCustomer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Order_Load(object sender, EventArgs e)
-        {
-            btnRetail.PerformClick();
         }
 
         private void btnRetail_Click(object sender, EventArgs e)

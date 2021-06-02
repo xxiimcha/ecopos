@@ -165,6 +165,7 @@
             this.btnMore.Size = new System.Drawing.Size(274, 60);
             this.btnMore.TabIndex = 9;
             this.btnMore.Text = "More (F10)";
+            this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
             // 
             // btnCalculator
             // 

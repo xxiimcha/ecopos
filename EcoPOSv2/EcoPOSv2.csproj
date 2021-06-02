@@ -69,6 +69,12 @@
     <Compile Include="DatabaseSettings.Designer.cs">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devices.Designer.cs">
+      <DependentUpon>Devices.cs</DependentUpon>
+    </Compile>
     <Compile Include="DiscountOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,10 +113,10 @@
     <Compile Include="Payment.Designer.cs">
       <DependentUpon>Payment.cs</DependentUpon>
     </Compile>
-    <Compile Include="PaymentReceipt.cs">
+    <Compile Include="PaymentR.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PaymentReceipt.rpt</DependentUpon>
+      <DependentUpon>PaymentR.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="PChange.cs">
@@ -195,6 +201,9 @@
     <EmbeddedResource Include="DatabaseSettings.resx">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Devices.resx">
+      <DependentUpon>Devices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DiscountOption.resx">
       <DependentUpon>DiscountOption.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,9 +222,9 @@
     <EmbeddedResource Include="Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PaymentReceipt.rpt">
+    <EmbeddedResource Include="PaymentR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PaymentReceipt.cs</LastGenOutput>
+      <LastGenOutput>PaymentR.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PChange.resx">
       <DependentUpon>PChange.cs</DependentUpon>

@@ -16,14 +16,14 @@ namespace EcoPOSv2 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PaymentReceipt : ReportClass {
+    public class PaymentR : ReportClass {
         
-        public PaymentReceipt() {
+        public PaymentR() {
         }
         
         public override string ResourceName {
             get {
-                return "PaymentReceipt.rpt";
+                return "PaymentR.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace EcoPOSv2 {
         
         public override string FullResourceName {
             get {
-                return "EcoPOSv2.PaymentReceipt.rpt";
+                return "EcoPOSv2.PaymentR.rpt";
             }
             set {
                 // Do nothing
@@ -674,9 +674,9 @@ namespace EcoPOSv2 {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPaymentReceipt : Component, ICachedReport {
+    public class CachedPaymentR : Component, ICachedReport {
         
-        public CachedPaymentReceipt() {
+        public CachedPaymentR() {
         }
         
         [Browsable(false)]
@@ -713,7 +713,7 @@ namespace EcoPOSv2 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PaymentReceipt rpt = new PaymentReceipt();
+            PaymentR rpt = new PaymentR();
             rpt.Site = this.Site;
             return rpt;
         }

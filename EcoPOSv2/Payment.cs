@@ -29,8 +29,8 @@ namespace EcoPOSv2
         public decimal change;
         public decimal grand_total;
         public decimal total;
-        private string note = "";
-        public PaymentReceipt report = new PaymentReceipt();
+        private string note = " ";
+        public PaymentR report;
         //VARIABLES
 
         //METHODS
@@ -61,7 +61,7 @@ namespace EcoPOSv2
 
             DataSet ds = new DataSet();
 
-            report = new PaymentReceipt();
+            report = new PaymentR();
 
             try
             {
@@ -70,67 +70,33 @@ namespace EcoPOSv2
 
                 report.SetDataSource(ds);
 
-                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
-                           SELECT * INTO #Temp_users
-                           FROM
-                           (
-                           SELECT ID, user_name, first_name FROM
-                           (
-                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
-                           UNION ALL
-                           SELECT userID, user_name, first_name FROM users
-                           ) x
-                           ) as a;
-                           SELECT date_time,
-                           order_ref_temp, 
-                           u.first_name as 'user_first_name', 
-                           no_of_items, 
-                           subtotal, 
-                           less_vat, 
-                           disc_amt, 
-                           cus_pts_deducted, 
-                           grand_total,
-                           vatable_sale,
-                           vat_12,
-                           vat_exempt_sale,
-                           zero_rated_sale,
-                           payment_amt, 
-                           change,
-                           giftcard_no, 
-                           giftcard_deducted,
-                           IIF(cus_name = '', '0', cus_name) as 'cus_name',
-                           cus_special_ID_no,
-                           refund_order_ref_temp,
-                           return_order_ref_temp
-                           FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
-                           WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)");
+                SQL.Query("IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)");
 
                 if (SQL.HasException(true))
                     return;
 
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
-                    report.SetParameterValue("date_time", r["date_time"]);
-                    report.SetParameterValue("invoice_no", r["order_ref_temp"]);
-                    report.SetParameterValue("user_first_name", r["user_first_name"]);
-                    report.SetParameterValue("no_of_items", r["no_of_items"]);
-                    report.SetParameterValue("subtotal", String.Format(r["subtotal"].ToString(), "#,##0.00"));
-                    report.SetParameterValue("less_vat", String.Format(r["less_vat"].ToString(), "-#,##0.00"));
-                    report.SetParameterValue("discount", String.Format(r["disc_amt"].ToString(), "-#,##0.00"));
-                    report.SetParameterValue("points_deduct", String.Format(r["cus_pts_deducted"].ToString(), "-#,##0.00"));
-                    report.SetParameterValue("giftcard_deduct", String.Format(r["giftcard_deducted"].ToString(), "-#,##0.00"));
-                    report.SetParameterValue("total", String.Format(r["grand_total"].ToString()), "#,##0.00");
-                    report.SetParameterValue("vatable_sales", String.Format(r["vatable_sale"].ToString(), "#,##0.00"));
-                    report.SetParameterValue("vat_12", String.Format(r["vat_12"].ToString(), "#,##0.00").ToString());
-                    report.SetParameterValue("vat_exempt_sales", String.Format(r["vat_exempt_sale"].ToString(), "#,##0.00"));
-                    report.SetParameterValue("zero_rated_sales", String.Format(r["zero_rated_sale"].ToString(), "#,##0.00").ToString());
-                    report.SetParameterValue("giftcard_no", r["giftcard_no"]);
-                    report.SetParameterValue("cash", String.Format(r["payment_amt"].ToString(), "#,##0.00"));
-                    report.SetParameterValue("change", String.Format(r["change"].ToString(), "#,##0.00"));
-                    report.SetParameterValue("cus_name", r["cus_name"]);
-                    report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"]);
+                    report.SetParameterValue("date_time", r["date_time"].ToString());
+                    report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
+                    report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
+                    report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
+                    report.SetParameterValue("subtotal", String.Format("{0:N2}", r["subtotal"].ToString()));
+                    report.SetParameterValue("less_vat", String.Format("{0:N2}", r["less_vat"].ToString()));
+                    report.SetParameterValue("discount", String.Format("{0:N2}", r["disc_amt"].ToString()));
+                    report.SetParameterValue("points_deduct", String.Format("{0:N2}", r["cus_pts_deducted"].ToString()));
+                    report.SetParameterValue("giftcard_deduct", String.Format("{0:N2}", r["giftcard_deducted"].ToString()));
+                    report.SetParameterValue("total", String.Format("{0:N2}", r["grand_total"].ToString()));
+                    report.SetParameterValue("vatable_sales", String.Format("{0:N2}", r["vatable_sale"].ToString()));
+                    report.SetParameterValue("vat_12", String.Format("{0:N2}", r["vat_12"].ToString()));
+                    report.SetParameterValue("vat_exempt_sales", String.Format("{0:N2}", r["vat_exempt_sale"].ToString()));
+                    report.SetParameterValue("zero_rated_sales", String.Format("{0:N2}", r["zero_rated_sale"].ToString()));
+                    report.SetParameterValue("giftcard_no", String.Format("{0:N2}", r["giftcard_no"].ToString()));
+                    report.SetParameterValue("cash", String.Format("{0:N2}", r["payment_amt"].ToString()));
+                    report.SetParameterValue("change", String.Format("{0:N2}", r["change"].ToString()));
+                    report.SetParameterValue("cus_name", r["cus_name"].ToString());
+                    report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
 
-                    report.SetParameterValue("note", "");
                 }
 
                 report.SetParameterValue("business_name", Main.Instance.sd_business_name);
@@ -140,29 +106,139 @@ namespace EcoPOSv2
                 report.SetParameterValue("sn", Main.Instance.sd_sn);
                 report.SetParameterValue("min", Main.Instance.sd_min);
                 report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+
+                int no_of_prints = 1;
+
+                if (frmOrder.apply_regular_discount_fix_amt | frmOrder.apply_special_discount | frmOrder.apply_member)
+                    no_of_prints = 2;
+
+                for (var i = 1; i <= no_of_prints; i++)
+                {
+                    if (i == 1)
+                        report.SetParameterValue("note", note + "CUSTOMERS COPY");
+                    if (i == 2)
+                        report.SetParameterValue("note", note + "ACCOUNTING COPY");
+
+                    PrintReceipt();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 report.Dispose();
             }
-
-
-            int no_of_prints = 1;
-
-            if (frmOrder.apply_regular_discount_fix_amt | frmOrder.apply_special_discount | frmOrder.apply_member)
-                no_of_prints = 2;
-
-            for (var i = 1; i <= no_of_prints; i++)
-            {
-                if (i == 1)
-                    report.SetParameterValue("note", note + "CUSTOMERS COPY");
-                if (i == 2)
-                    report.SetParameterValue("note", note + "ACCOUNTING COPY");
-
-                PrintReceipt();
-            }
         }
+
+        //private void GenerateReceipt()
+        //{
+        //    bool checkprinter = PrinterExists(Main.Instance.pd_receipt_printer);
+
+        //    if (checkprinter == false)
+        //    {
+        //        MessageBox.Show("Printer is offline", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+
+
+        //    DataSet ds = new DataSet();
+
+        //    report = new PaymentR();
+
+        //    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)", SQL.DBCon);
+        //    SQL.DBDA.Fill(ds, "transaction_items");
+
+        //    report.SetDataSource(ds);
+
+        //    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+        //                   SELECT * INTO #Temp_users
+        //                   FROM
+        //                   (
+        //                   SELECT ID, user_name, first_name FROM
+        //                   (
+        //                   SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
+        //                   UNION ALL
+        //                   SELECT userID, user_name, first_name FROM users
+        //                   ) x
+        //                   ) as a;
+        //                   SELECT date_time,
+        //                   order_ref_temp, 
+        //                   u.first_name as 'user_first_name', 
+        //                   no_of_items, 
+        //                   subtotal, 
+        //                   less_vat, 
+        //                   disc_amt, 
+        //                   cus_pts_deducted, 
+        //                   grand_total,
+        //                   vatable_sale,
+        //                   vat_12,
+        //                   vat_exempt_sale,
+        //                   zero_rated_sale,
+        //                   payment_amt, 
+        //                   change,
+        //                   giftcard_no, 
+        //                   giftcard_deducted,
+        //                   IIF(cus_name = '', '0', cus_name) as 'cus_name',
+        //                   cus_special_ID_no,
+        //                   refund_order_ref_temp,
+        //                   return_order_ref_temp
+        //                   FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+        //                   WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)");
+
+        //    if (SQL.HasException(true))
+        //        return;
+
+        //    foreach (DataRow r in SQL.DBDT.Rows)
+        //    {
+        //        report.SetParameterValue("date_time", r["date_time"]);
+        //        report.SetParameterValue("invoice_no", r["order_ref_temp"]);
+        //        report.SetParameterValue("user_first_name", r["user_first_name"]);
+        //        report.SetParameterValue("no_of_items", r["no_of_items"]);
+        //        report.SetParameterValue("subtotal", String.Format(r["subtotal"].ToString(), "#,##0.00"));
+        //        report.SetParameterValue("less_vat", String.Format(r["less_vat"].ToString(), "-#,##0.00"));
+        //        report.SetParameterValue("discount", String.Format(r["disc_amt"].ToString(), "-#,##0.00"));
+        //        report.SetParameterValue("points_deduct", String.Format(r["cus_pts_deducted"].ToString(), "-#,##0.00"));
+        //        report.SetParameterValue("giftcard_deduct", String.Format(r["giftcard_deducted"].ToString(), "-#,##0.00"));
+        //        report.SetParameterValue("total", String.Format(r["grand_total"].ToString()), "#,##0.00");
+        //        report.SetParameterValue("vatable_sales", String.Format(r["vatable_sale"].ToString(), "#,##0.00"));
+        //        report.SetParameterValue("vat_12", String.Format(r["vat_12"].ToString(), "#,##0.00").ToString());
+        //        report.SetParameterValue("vat_exempt_sales", String.Format(r["vat_exempt_sale"].ToString(), "#,##0.00"));
+        //        report.SetParameterValue("zero_rated_sales", String.Format(r["zero_rated_sale"].ToString(), "#,##0.00").ToString());
+        //        report.SetParameterValue("giftcard_no", r["giftcard_no"]);
+        //        report.SetParameterValue("cash", String.Format(r["payment_amt"].ToString(), "#,##0.00"));
+        //        report.SetParameterValue("change", String.Format(r["change"].ToString(), "#,##0.00"));
+        //        report.SetParameterValue("cus_name", r["cus_name"]);
+        //        report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"]);
+
+        //        report.SetParameterValue("note", "");
+        //    }
+
+        //    report.SetParameterValue("business_name", Main.Instance.sd_business_name);
+        //    report.SetParameterValue("business_address", Main.Instance.sd_business_address);
+        //    report.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+        //    report.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
+        //    report.SetParameterValue("sn", Main.Instance.sd_sn);
+        //    report.SetParameterValue("min", Main.Instance.sd_min);
+        //    report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+
+        //    int no_of_prints = 1;
+
+        //    if (frmOrder.apply_regular_discount_fix_amt || frmOrder.apply_special_discount || frmOrder.apply_member)
+        //    {
+        //        no_of_prints = 2;
+        //    }
+
+
+        //    if (no_of_prints == 1)
+        //    {
+        //        report.SetParameterValue("note", note + "CUSTOMERS COPY");
+
+        //        PrintReceipt();
+        //    }
+        //    else if (no_of_prints == 2)
+        //    {
+        //        report.SetParameterValue("note", note + "ACCOUNTING COPY");
+
+        //        PrintReceipt();
+        //    }
         public void PrintReceipt()
         {
             if (Main.Instance.pd_receipt_printer == "")
@@ -383,6 +459,7 @@ namespace EcoPOSv2
         {
             if (txtAmount.Text == "")
             {
+                txtAmount.SelectAll();
                 decimal total = 0M;
 
                 decimal amount = Math.Round(total, 2);
@@ -397,6 +474,9 @@ namespace EcoPOSv2
                 change = amount - grand_total;
                 lblChange.Text = Math.Round(change, 2).ToString();
             }
+
+            txtAmount.Text = txtAmount.Text.Replace(" ", "");
+            txtAmount.SelectionStart = txtAmount.Text.Length;
         }
 
         private void txtAmount_KeyDown(object sender, KeyEventArgs e)
