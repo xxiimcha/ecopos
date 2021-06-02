@@ -54,6 +54,7 @@
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.CrystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.TableLayoutPanel3.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.TableLayoutPanel4.SuspendLayout();
@@ -437,6 +438,7 @@
             this.TableLayoutPanel1.ColumnCount = 2;
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.25558F));
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75.74442F));
+            this.TableLayoutPanel1.Controls.Add(this.CrystalReportViewer1, 0, 0);
             this.TableLayoutPanel1.Controls.Add(this.Panel3, 0, 0);
             this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -445,6 +447,23 @@
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutPanel1.Size = new System.Drawing.Size(1164, 866);
             this.TableLayoutPanel1.TabIndex = 4;
+            // 
+            // CrystalReportViewer1
+            // 
+            this.CrystalReportViewer1.ActiveViewIndex = -1;
+            this.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CrystalReportViewer1.DisplayStatusBar = false;
+            this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CrystalReportViewer1.Location = new System.Drawing.Point(285, 3);
+            this.CrystalReportViewer1.Name = "CrystalReportViewer1";
+            this.CrystalReportViewer1.ShowCloseButton = false;
+            this.CrystalReportViewer1.ShowCopyButton = false;
+            this.CrystalReportViewer1.ShowGroupTreeButton = false;
+            this.CrystalReportViewer1.ShowParameterPanelButton = false;
+            this.CrystalReportViewer1.Size = new System.Drawing.Size(876, 860);
+            this.CrystalReportViewer1.TabIndex = 2;
+            this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // StaffReport
             // 
@@ -498,5 +517,6 @@
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel2;
         internal System.Windows.Forms.Panel Panel3;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
+        internal CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer1;
     }
 }
