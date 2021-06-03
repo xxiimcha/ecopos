@@ -28,44 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnContinueSession = new Guna.UI2.WinForms.Guna2TileButton();
-            this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2TileButton2 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnContinueSession = new Guna.UI2.WinForms.Guna2TileButton();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnContinueSession
+            // guna2Panel1
             // 
-            this.btnContinueSession.BorderColor = System.Drawing.Color.ForestGreen;
-            this.btnContinueSession.BorderThickness = 2;
-            this.btnContinueSession.CheckedState.Parent = this.btnContinueSession;
-            this.btnContinueSession.CustomImages.Parent = this.btnContinueSession;
-            this.btnContinueSession.FillColor = System.Drawing.Color.White;
-            this.btnContinueSession.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinueSession.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
-            this.btnContinueSession.HoverState.Parent = this.btnContinueSession;
-            this.btnContinueSession.Location = new System.Drawing.Point(33, 29);
-            this.btnContinueSession.Name = "btnContinueSession";
-            this.btnContinueSession.ShadowDecoration.Parent = this.btnContinueSession;
-            this.btnContinueSession.Size = new System.Drawing.Size(248, 53);
-            this.btnContinueSession.TabIndex = 72;
-            this.btnContinueSession.Text = "Regular Discount";
-            // 
-            // guna2TileButton1
-            // 
-            this.guna2TileButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.guna2TileButton1.BorderThickness = 2;
-            this.guna2TileButton1.CheckedState.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.CustomImages.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.FillColor = System.Drawing.Color.White;
-            this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TileButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.guna2TileButton1.HoverState.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.Location = new System.Drawing.Point(33, 97);
-            this.guna2TileButton1.Name = "guna2TileButton1";
-            this.guna2TileButton1.ShadowDecoration.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.Size = new System.Drawing.Size(248, 53);
-            this.guna2TileButton1.TabIndex = 73;
-            this.guna2TileButton1.Text = "Special Discount (PWD/SC/Athlete)";
+            this.guna2Panel1.Controls.Add(this.guna2TileButton2);
+            this.guna2Panel1.Controls.Add(this.guna2TileButton1);
+            this.guna2Panel1.Controls.Add(this.btnContinueSession);
+            this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(310, 246);
+            this.guna2Panel1.TabIndex = 0;
             // 
             // guna2TileButton2
             // 
@@ -77,33 +56,68 @@
             this.guna2TileButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TileButton2.ForeColor = System.Drawing.Color.Red;
             this.guna2TileButton2.HoverState.Parent = this.guna2TileButton2;
-            this.guna2TileButton2.Location = new System.Drawing.Point(33, 168);
+            this.guna2TileButton2.Location = new System.Drawing.Point(31, 166);
             this.guna2TileButton2.Name = "guna2TileButton2";
             this.guna2TileButton2.ShadowDecoration.Parent = this.guna2TileButton2;
             this.guna2TileButton2.Size = new System.Drawing.Size(248, 53);
-            this.guna2TileButton2.TabIndex = 74;
+            this.guna2TileButton2.TabIndex = 77;
             this.guna2TileButton2.Text = "Cancel";
+            // 
+            // guna2TileButton1
+            // 
+            this.guna2TileButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.guna2TileButton1.BorderThickness = 2;
+            this.guna2TileButton1.CheckedState.Parent = this.guna2TileButton1;
+            this.guna2TileButton1.CustomImages.Parent = this.guna2TileButton1;
+            this.guna2TileButton1.FillColor = System.Drawing.Color.White;
+            this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TileButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.guna2TileButton1.HoverState.Parent = this.guna2TileButton1;
+            this.guna2TileButton1.Location = new System.Drawing.Point(31, 95);
+            this.guna2TileButton1.Name = "guna2TileButton1";
+            this.guna2TileButton1.ShadowDecoration.Parent = this.guna2TileButton1;
+            this.guna2TileButton1.Size = new System.Drawing.Size(248, 53);
+            this.guna2TileButton1.TabIndex = 76;
+            this.guna2TileButton1.Text = "Special Discount (PWD/SC/Athlete)";
+            // 
+            // btnContinueSession
+            // 
+            this.btnContinueSession.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnContinueSession.BorderThickness = 2;
+            this.btnContinueSession.CheckedState.Parent = this.btnContinueSession;
+            this.btnContinueSession.CustomImages.Parent = this.btnContinueSession;
+            this.btnContinueSession.FillColor = System.Drawing.Color.White;
+            this.btnContinueSession.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContinueSession.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnContinueSession.HoverState.Parent = this.btnContinueSession;
+            this.btnContinueSession.Location = new System.Drawing.Point(31, 27);
+            this.btnContinueSession.Name = "btnContinueSession";
+            this.btnContinueSession.ShadowDecoration.Parent = this.btnContinueSession;
+            this.btnContinueSession.Size = new System.Drawing.Size(248, 53);
+            this.btnContinueSession.TabIndex = 75;
+            this.btnContinueSession.Text = "Regular Discount";
             // 
             // DiscountOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(315, 251);
-            this.Controls.Add(this.guna2TileButton2);
-            this.Controls.Add(this.guna2TileButton1);
-            this.Controls.Add(this.btnContinueSession);
+            this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DiscountOption";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiscountOption";
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2TileButton btnContinueSession;
-        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton2;
+        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
+        private Guna.UI2.WinForms.Guna2TileButton btnContinueSession;
     }
 }
