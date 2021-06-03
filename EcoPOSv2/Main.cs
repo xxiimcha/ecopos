@@ -9,15 +9,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
+using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Main : Form
+    public partial class Main : GlobalHotKeyForm
     {
         public Main()
         {
             InitializeComponent();
+            AddHotKeyRegisterer(ClickOrder, HotKeyMods.None, ConsoleKey.F2);
+            AddHotKeyRegisterer(OpenCalculator, HotKeyMods.None, ConsoleKey.F9);
+            AddHotKeyRegisterer(ClickMore, HotKeyMods.None, ConsoleKey.F10);
+            AddHotKeyRegisterer(ClickSeeItem, HotKeyMods.Control, ConsoleKey.I);
         }
+
+        private void ClickSeeItem(object sender, EventArgs e)
+        {
+            btnItemChecker.PerformClick();
+        }
+
+        private void ClickMore(object sender, EventArgs e)
+        {
+            btnMore.PerformClick();
+        }
+
+        private void OpenCalculator(object sender, EventArgs e)
+        {
+            btnCalculator.PerformClick();
+        }
+
+        private void ClickOrder(object sender, EventArgs e)
+        {
+            btnOrder.PerformClick();
+        }
+
         public static Main _main;
         public static Main Instance
         {

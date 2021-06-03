@@ -20,6 +20,30 @@ namespace EcoPOSv2
         {
             InitializeComponent();
             AddHotKeyRegisterer(OpenPayment, HotKeyMods.Control, ConsoleKey.P);
+            AddHotKeyRegisterer(OpenDiscount, HotKeyMods.Control, ConsoleKey.D);
+            AddHotKeyRegisterer(Openquantity, HotKeyMods.Control, ConsoleKey.Q);
+            AddHotKeyRegisterer(OpenVoidItem, HotKeyMods.Control, ConsoleKey.V);
+            AddHotKeyRegisterer(ClickCancelTransaction, HotKeyMods.None, ConsoleKey.F4);
+        }
+
+        private void ClickCancelTransaction(object sender, EventArgs e)
+        {
+            btnCancel.PerformClick();
+        }
+
+        private void OpenVoidItem(object sender, EventArgs e)
+        {
+            btnVoidItem.PerformClick();
+        }
+
+        private void Openquantity(object sender, EventArgs e)
+        {
+            btnQuantity.PerformClick();
+        }
+
+        private void OpenDiscount(object sender, EventArgs e)
+        {
+            btnDiscount.PerformClick();
         }
 
         private void OpenPayment(object sender, EventArgs e)
