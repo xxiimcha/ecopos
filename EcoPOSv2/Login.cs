@@ -302,6 +302,7 @@ namespace EcoPOSv2
                 }
                 else
                 {
+                    new Notification().PopUp("No store details found.","Error");
                     MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
