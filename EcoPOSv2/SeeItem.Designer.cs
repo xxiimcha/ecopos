@@ -28,93 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeeItem));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeeItem));
-            this.txtBarcode = new System.Windows.Forms.TextBox();
-            this.Label3 = new System.Windows.Forms.Label();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnConfirm = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.rbWholesale = new System.Windows.Forms.RadioButton();
             this.rbRetail = new System.Windows.Forms.RadioButton();
             this.Label2 = new System.Windows.Forms.Label();
-            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.btnConfirm = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtBarcode
+            // guna2Panel1
             // 
-            this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBarcode.ForeColor = System.Drawing.Color.Black;
-            this.txtBarcode.Location = new System.Drawing.Point(108, 41);
-            this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(624, 33);
-            this.txtBarcode.TabIndex = 44;
-            this.txtBarcode.Tag = "";
+            this.guna2Panel1.Controls.Add(this.btnConfirm);
+            this.guna2Panel1.Controls.Add(this.dgvProducts);
+            this.guna2Panel1.Controls.Add(this.gunaControlBox1);
+            this.guna2Panel1.Controls.Add(this.rbWholesale);
+            this.guna2Panel1.Controls.Add(this.rbRetail);
+            this.guna2Panel1.Controls.Add(this.Label2);
+            this.guna2Panel1.Controls.Add(this.txtBarcode);
+            this.guna2Panel1.Controls.Add(this.Label3);
+            this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(826, 676);
+            this.guna2Panel1.TabIndex = 0;
             // 
-            // Label3
+            // btnConfirm
             // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(8, 43);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(100, 28);
-            this.Label3.TabIndex = 43;
-            this.Label3.Text = "Barcode #";
-            // 
-            // rbWholesale
-            // 
-            this.rbWholesale.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbWholesale.ForeColor = System.Drawing.Color.Black;
-            this.rbWholesale.Location = new System.Drawing.Point(669, 80);
-            this.rbWholesale.Name = "rbWholesale";
-            this.rbWholesale.Size = new System.Drawing.Size(142, 31);
-            this.rbWholesale.TabIndex = 47;
-            this.rbWholesale.Text = "Wholesale";
-            this.rbWholesale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbWholesale.UseVisualStyleBackColor = true;
-            // 
-            // rbRetail
-            // 
-            this.rbRetail.Checked = true;
-            this.rbRetail.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbRetail.ForeColor = System.Drawing.Color.Black;
-            this.rbRetail.Location = new System.Drawing.Point(567, 80);
-            this.rbRetail.Name = "rbRetail";
-            this.rbRetail.Size = new System.Drawing.Size(96, 31);
-            this.rbRetail.TabIndex = 46;
-            this.rbRetail.TabStop = true;
-            this.rbRetail.Text = "Retail";
-            this.rbRetail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rbRetail.UseVisualStyleBackColor = true;
-            // 
-            // Label2
-            // 
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.ForeColor = System.Drawing.Color.Black;
-            this.Label2.Location = new System.Drawing.Point(8, 77);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(509, 37);
-            this.Label2.TabIndex = 45;
-            this.Label2.Text = "Price Mode:";
-            this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // gunaControlBox1
-            // 
-            this.gunaControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaControlBox1.AnimationHoverSpeed = 0.07F;
-            this.gunaControlBox1.AnimationSpeed = 0.03F;
-            this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(786, 2);
-            this.gunaControlBox1.Name = "gunaControlBox1";
-            this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
-            this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.Size = new System.Drawing.Size(40, 40);
-            this.gunaControlBox1.TabIndex = 48;
+            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
+            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
+            this.btnConfirm.FillColor = System.Drawing.Color.Transparent;
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.HoverState.Parent = this.btnConfirm;
+            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
+            this.btnConfirm.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnConfirm.Location = new System.Drawing.Point(735, 35);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
+            this.btnConfirm.Size = new System.Drawing.Size(50, 50);
+            this.btnConfirm.TabIndex = 58;
             // 
             // dgvProducts
             // 
@@ -144,7 +106,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProducts.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvProducts.Location = new System.Drawing.Point(13, 117);
+            this.dgvProducts.Location = new System.Drawing.Point(12, 119);
             this.dgvProducts.MultiSelect = false;
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
@@ -158,25 +120,81 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(798, 533);
-            this.dgvProducts.TabIndex = 49;
+            this.dgvProducts.Size = new System.Drawing.Size(803, 554);
+            this.dgvProducts.TabIndex = 57;
             // 
-            // btnConfirm
+            // gunaControlBox1
             // 
-            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
-            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
-            this.btnConfirm.FillColor = System.Drawing.Color.Transparent;
-            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnConfirm.ForeColor = System.Drawing.Color.White;
-            this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
-            this.btnConfirm.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnConfirm.Location = new System.Drawing.Point(738, 32);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
-            this.btnConfirm.Size = new System.Drawing.Size(50, 50);
-            this.btnConfirm.TabIndex = 50;
+            this.gunaControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gunaControlBox1.AnimationHoverSpeed = 0.07F;
+            this.gunaControlBox1.AnimationSpeed = 0.03F;
+            this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
+            this.gunaControlBox1.IconSize = 15F;
+            this.gunaControlBox1.Location = new System.Drawing.Point(782, 4);
+            this.gunaControlBox1.Name = "gunaControlBox1";
+            this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
+            this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
+            this.gunaControlBox1.Size = new System.Drawing.Size(40, 40);
+            this.gunaControlBox1.TabIndex = 56;
+            // 
+            // rbWholesale
+            // 
+            this.rbWholesale.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbWholesale.ForeColor = System.Drawing.Color.Black;
+            this.rbWholesale.Location = new System.Drawing.Point(665, 82);
+            this.rbWholesale.Name = "rbWholesale";
+            this.rbWholesale.Size = new System.Drawing.Size(142, 31);
+            this.rbWholesale.TabIndex = 55;
+            this.rbWholesale.Text = "Wholesale";
+            this.rbWholesale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbWholesale.UseVisualStyleBackColor = true;
+            // 
+            // rbRetail
+            // 
+            this.rbRetail.Checked = true;
+            this.rbRetail.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbRetail.ForeColor = System.Drawing.Color.Black;
+            this.rbRetail.Location = new System.Drawing.Point(563, 82);
+            this.rbRetail.Name = "rbRetail";
+            this.rbRetail.Size = new System.Drawing.Size(96, 31);
+            this.rbRetail.TabIndex = 54;
+            this.rbRetail.TabStop = true;
+            this.rbRetail.Text = "Retail";
+            this.rbRetail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbRetail.UseVisualStyleBackColor = true;
+            // 
+            // Label2
+            // 
+            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.ForeColor = System.Drawing.Color.Black;
+            this.Label2.Location = new System.Drawing.Point(4, 79);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(509, 37);
+            this.Label2.TabIndex = 53;
+            this.Label2.Text = "Price Mode:";
+            this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.ForeColor = System.Drawing.Color.Black;
+            this.txtBarcode.Location = new System.Drawing.Point(104, 43);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(624, 33);
+            this.txtBarcode.TabIndex = 52;
+            this.txtBarcode.Tag = "";
+            // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.Color.Black;
+            this.Label3.Location = new System.Drawing.Point(4, 45);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(100, 28);
+            this.Label3.TabIndex = 51;
+            this.Label3.Text = "Barcode #";
             // 
             // SeeItem
             // 
@@ -184,33 +202,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(830, 680);
-            this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.dgvProducts);
-            this.Controls.Add(this.gunaControlBox1);
-            this.Controls.Add(this.rbWholesale);
-            this.Controls.Add(this.rbRetail);
-            this.Controls.Add(this.Label2);
-            this.Controls.Add(this.txtBarcode);
-            this.Controls.Add(this.Label3);
+            this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SeeItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SeeItem";
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        internal System.Windows.Forms.TextBox txtBarcode;
-        internal System.Windows.Forms.Label Label3;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2CircleButton btnConfirm;
+        internal System.Windows.Forms.DataGridView dgvProducts;
+        private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         internal System.Windows.Forms.RadioButton rbWholesale;
         internal System.Windows.Forms.RadioButton rbRetail;
         internal System.Windows.Forms.Label Label2;
-        private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        internal System.Windows.Forms.DataGridView dgvProducts;
-        private Guna.UI2.WinForms.Guna2CircleButton btnConfirm;
+        internal System.Windows.Forms.TextBox txtBarcode;
+        internal System.Windows.Forms.Label Label3;
     }
 }

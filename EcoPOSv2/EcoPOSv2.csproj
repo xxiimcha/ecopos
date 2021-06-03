@@ -33,14 +33,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Design.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp">
       <HintPath>..\..\..\..\Downloads\FontAwesome.Sharp.dll</HintPath>
     </Reference>
-
     <Reference Include="Guna.UI">
       <HintPath>..\..\..\..\Desktop\Guna.UI.dll</HintPath>
     </Reference>
@@ -86,7 +92,7 @@
     </Compile>
     <Compile Include="DiscountOption.Designer.cs">
       <DependentUpon>DiscountOption.cs</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="DVOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,12 +104,6 @@
     </Compile>
     <Compile Include="E-Journal.Designer.cs">
       <DependentUpon>E-Journal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLoad.cs" />
     <Compile Include="Helper.cs" />
@@ -197,7 +197,7 @@
     </Compile>
     <Compile Include="SpecialDiscount.Designer.cs">
       <DependentUpon>SpecialDiscount.cs</DependentUpon>
-      </Compile>
+    </Compile>
     <Compile Include="Prompt.cs">
       <SubType>Form</SubType>
     </Compile>

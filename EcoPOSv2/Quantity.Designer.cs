@@ -29,55 +29,31 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Quantity));
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
+            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.lblItem = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
-            this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
-            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblItem
+            // guna2Panel1
             // 
-            this.lblItem.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItem.ForeColor = System.Drawing.Color.Black;
-            this.lblItem.Location = new System.Drawing.Point(108, 25);
-            this.lblItem.Name = "lblItem";
-            this.lblItem.Size = new System.Drawing.Size(403, 28);
-            this.lblItem.TabIndex = 46;
-            // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(19, 25);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(51, 28);
-            this.Label1.TabIndex = 45;
-            this.Label1.Text = "Item";
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
-            this.txtQuantity.Location = new System.Drawing.Point(113, 68);
-            this.txtQuantity.Multiline = true;
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(398, 33);
-            this.txtQuantity.TabIndex = 44;
-            this.txtQuantity.Tag = "";
-            // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(19, 68);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(88, 28);
-            this.Label3.TabIndex = 43;
-            this.Label3.Text = "Quantity";
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.btnQuantity);
+            this.guna2Panel1.Controls.Add(this.btnConfirm);
+            this.guna2Panel1.Controls.Add(this.lblItem);
+            this.guna2Panel1.Controls.Add(this.Label1);
+            this.guna2Panel1.Controls.Add(this.txtQuantity);
+            this.guna2Panel1.Controls.Add(this.Label3);
+            this.guna2Panel1.Location = new System.Drawing.Point(2, 3);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(529, 210);
+            this.guna2Panel1.TabIndex = 0;
             // 
             // btnQuantity
             // 
@@ -93,11 +69,11 @@
             this.btnQuantity.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnQuantity.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnQuantity.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnQuantity.Location = new System.Drawing.Point(24, 149);
+            this.btnQuantity.Location = new System.Drawing.Point(23, 139);
             this.btnQuantity.Name = "btnQuantity";
             this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
             this.btnQuantity.Size = new System.Drawing.Size(238, 57);
-            this.btnQuantity.TabIndex = 52;
+            this.btnQuantity.TabIndex = 58;
             this.btnQuantity.Text = "CANCEL";
             this.btnQuantity.TextOffset = new System.Drawing.Point(10, 0);
             // 
@@ -115,41 +91,81 @@
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(273, 149);
+            this.btnConfirm.Location = new System.Drawing.Point(272, 139);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(238, 57);
-            this.btnConfirm.TabIndex = 51;
+            this.btnConfirm.TabIndex = 57;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            // 
+            // lblItem
+            // 
+            this.lblItem.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItem.ForeColor = System.Drawing.Color.Black;
+            this.lblItem.Location = new System.Drawing.Point(107, 15);
+            this.lblItem.Name = "lblItem";
+            this.lblItem.Size = new System.Drawing.Size(403, 28);
+            this.lblItem.TabIndex = 56;
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.ForeColor = System.Drawing.Color.Black;
+            this.Label1.Location = new System.Drawing.Point(18, 15);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(51, 28);
+            this.Label1.TabIndex = 55;
+            this.Label1.Text = "Item";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
+            this.txtQuantity.Location = new System.Drawing.Point(112, 58);
+            this.txtQuantity.Multiline = true;
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(398, 33);
+            this.txtQuantity.TabIndex = 54;
+            this.txtQuantity.Tag = "";
+            // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.Color.Black;
+            this.Label3.Location = new System.Drawing.Point(18, 58);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(88, 28);
+            this.Label3.TabIndex = 53;
+            this.Label3.Text = "Quantity";
             // 
             // Quantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(533, 218);
-            this.Controls.Add(this.btnQuantity);
-            this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.lblItem);
-            this.Controls.Add(this.Label1);
-            this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.Label3);
+            this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Quantity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quantity";
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Button btnQuantity;
+        private Guna.UI2.WinForms.Guna2Button btnConfirm;
         internal System.Windows.Forms.Label lblItem;
         public System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.TextBox txtQuantity;
         internal System.Windows.Forms.Label Label3;
-        private Guna.UI2.WinForms.Guna2Button btnQuantity;
-        private Guna.UI2.WinForms.Guna2Button btnConfirm;
     }
 }

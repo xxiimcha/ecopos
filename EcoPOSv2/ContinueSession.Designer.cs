@@ -182,14 +182,14 @@
             // 
             // btnContinueSession
             // 
-            this.btnContinueSession.BorderColor = System.Drawing.Color.Orange;
+            this.btnContinueSession.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnContinueSession.BorderRadius = 5;
             this.btnContinueSession.BorderThickness = 1;
             this.btnContinueSession.CheckedState.Parent = this.btnContinueSession;
             this.btnContinueSession.CustomImages.Parent = this.btnContinueSession;
             this.btnContinueSession.FillColor = System.Drawing.Color.White;
             this.btnContinueSession.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinueSession.ForeColor = System.Drawing.Color.Orange;
+            this.btnContinueSession.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnContinueSession.HoverState.Parent = this.btnContinueSession;
             this.btnContinueSession.Location = new System.Drawing.Point(231, 182);
             this.btnContinueSession.Name = "btnContinueSession";

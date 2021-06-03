@@ -166,9 +166,9 @@
             this.btnSaveSettings.BorderRadius = 5;
             this.btnSaveSettings.CheckedState.Parent = this.btnSaveSettings;
             this.btnSaveSettings.CustomImages.Parent = this.btnSaveSettings;
-            this.btnSaveSettings.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSaveSettings.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
             this.btnSaveSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveSettings.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveSettings.ForeColor = System.Drawing.Color.White;
             this.btnSaveSettings.HoverState.Parent = this.btnSaveSettings;
             this.btnSaveSettings.Location = new System.Drawing.Point(12, 237);
             this.btnSaveSettings.Name = "btnSaveSettings";

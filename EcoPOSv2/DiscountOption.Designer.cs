@@ -36,12 +36,12 @@
             // btnContinueSession
             // 
             this.btnContinueSession.BorderColor = System.Drawing.Color.ForestGreen;
-            this.btnContinueSession.BorderThickness = 1;
+            this.btnContinueSession.BorderThickness = 2;
             this.btnContinueSession.CheckedState.Parent = this.btnContinueSession;
             this.btnContinueSession.CustomImages.Parent = this.btnContinueSession;
             this.btnContinueSession.FillColor = System.Drawing.Color.White;
             this.btnContinueSession.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinueSession.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnContinueSession.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
             this.btnContinueSession.HoverState.Parent = this.btnContinueSession;
             this.btnContinueSession.Location = new System.Drawing.Point(33, 29);
             this.btnContinueSession.Name = "btnContinueSession";
@@ -52,13 +52,13 @@
             // 
             // guna2TileButton1
             // 
-            this.guna2TileButton1.BorderColor = System.Drawing.Color.DarkOrange;
-            this.guna2TileButton1.BorderThickness = 1;
+            this.guna2TileButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.guna2TileButton1.BorderThickness = 2;
             this.guna2TileButton1.CheckedState.Parent = this.guna2TileButton1;
             this.guna2TileButton1.CustomImages.Parent = this.guna2TileButton1;
             this.guna2TileButton1.FillColor = System.Drawing.Color.White;
             this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TileButton1.ForeColor = System.Drawing.Color.DarkOrange;
+            this.guna2TileButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.guna2TileButton1.HoverState.Parent = this.guna2TileButton1;
             this.guna2TileButton1.Location = new System.Drawing.Point(33, 97);
             this.guna2TileButton1.Name = "guna2TileButton1";
@@ -70,7 +70,7 @@
             // guna2TileButton2
             // 
             this.guna2TileButton2.BorderColor = System.Drawing.Color.Red;
-            this.guna2TileButton2.BorderThickness = 1;
+            this.guna2TileButton2.BorderThickness = 2;
             this.guna2TileButton2.CheckedState.Parent = this.guna2TileButton2;
             this.guna2TileButton2.CustomImages.Parent = this.guna2TileButton2;
             this.guna2TileButton2.FillColor = System.Drawing.Color.White;

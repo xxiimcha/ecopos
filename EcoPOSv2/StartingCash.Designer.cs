@@ -56,7 +56,7 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderRadius = 20;
-            this.guna2Panel1.BorderThickness = 2;
+            this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.tbCash);
@@ -85,10 +85,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(7, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 30);
+            this.label2.Size = new System.Drawing.Size(166, 30);
             this.label2.TabIndex = 7;
             this.label2.Text = "STARTING CASH";
             // 
@@ -108,7 +108,7 @@
             this.tbCash.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCash.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbCash.HoverState.Parent = this.tbCash;
-            this.tbCash.Location = new System.Drawing.Point(12, 61);
+            this.tbCash.Location = new System.Drawing.Point(12, 56);
             this.tbCash.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbCash.Name = "tbCash";
             this.tbCash.PasswordChar = '\0';
