@@ -263,22 +263,6 @@ namespace EcoPOSv2
         {
             txtAmount.Text = lblGrandTotal.Text;
         }
-
-        private void btnErase_Click(object sender, EventArgs e)
-        {
-            string s = txtAmount.Text;
-
-            if (s.Length > 1)
-            {
-                s = s.Substring(0, s.Length - 1);
-            }
-            else
-            {
-                s = "0";
-            }
-            txtAmount.Text = s;
-        }
-
         private void btnPay_Click(object sender, EventArgs e)
         {
             #region transaction_details

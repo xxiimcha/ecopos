@@ -71,9 +71,10 @@
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(257, 57);
-            this.btnConfirm.TabIndex = 44;
+            this.btnConfirm.TabIndex = 0;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnReprint
             // 
@@ -93,9 +94,10 @@
             this.btnReprint.Name = "btnReprint";
             this.btnReprint.ShadowDecoration.Parent = this.btnReprint;
             this.btnReprint.Size = new System.Drawing.Size(257, 57);
-            this.btnReprint.TabIndex = 43;
+            this.btnReprint.TabIndex = 1;
             this.btnReprint.Text = "REPRINT";
             this.btnReprint.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnReprint.Click += new System.EventHandler(this.btnReprint_Click);
             // 
             // lblChange
             // 
@@ -123,6 +125,7 @@
             // tmrClose
             // 
             this.tmrClose.Interval = 1000;
+            this.tmrClose.Tick += new System.EventHandler(this.tmrClose_Tick);
             // 
             // PChange
             // 
@@ -136,7 +139,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PChange";
             this.Load += new System.EventHandler(this.PChange_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PChange_KeyDown);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);

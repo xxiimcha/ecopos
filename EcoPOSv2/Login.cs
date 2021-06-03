@@ -105,7 +105,7 @@ namespace EcoPOSv2
         {
             if(tbUsername.Text == "" || tbPassword.Text == "")
             {
-
+                new Notification().PopUp("Incomplete field(s)", "Error", "error");
             }
             else
             {
@@ -152,6 +152,8 @@ namespace EcoPOSv2
 
                         ShiftStart(current_userID, current_user_name);
 
+                        new Notification().PopUp("Admin login Success!", "Success!", "success");
+
                         Main.Instance.Show();
                         this.Close();
                     }
@@ -179,7 +181,7 @@ namespace EcoPOSv2
                         if (sql.HasException(true)) return;
 
                         //LOGIN ERROR MESSAGE & CLEARING
-                        MessageBox.Show("Login failed! Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        new Notification().PopUp("Login failed! Please try again.", "Login Error", "error");
 
                         tbUsername.Clear();
                         tbPassword.Clear();
@@ -225,6 +227,8 @@ namespace EcoPOSv2
 
                         ShiftStart(current_userID, current_user_name);
 
+                        new Notification().PopUp("User login Success!", "Success!", "success");
+
                         Main.Instance.Show();
                         this.Close();
                     }
@@ -252,7 +256,8 @@ namespace EcoPOSv2
                         if (sql.HasException(true)) return;
 
                         //LOGIN ERROR MESSAGE & CLEARING
-                        MessageBox.Show("Login failed! Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        new Notification().PopUp("Login failed! Please try again.", "Login Error", "error");
+                        //MessageBox.Show("Login failed! Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         tbUsername.Clear();
                         tbPassword.Clear();
@@ -261,7 +266,8 @@ namespace EcoPOSv2
                 }
                 else
                 {
-                    MessageBox.Show("This user is not exist in our database. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new Notification().PopUp("This user is not exist in our database. Please try again.", "Error", "error");
+                    //MessageBox.Show("This user is not exist in our database. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbUsername.Clear();
                     tbPassword.Clear();
                     tbUsername.Focus();
@@ -302,8 +308,8 @@ namespace EcoPOSv2
                 }
                 else
                 {
-                    new Notification().PopUp("No store details found.","Error");
-                    MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new Notification().PopUp("No store details found.","Error","error");
+                    //MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

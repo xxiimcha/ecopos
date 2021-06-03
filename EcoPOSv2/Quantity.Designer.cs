@@ -76,6 +76,7 @@
             this.btnQuantity.TabIndex = 58;
             this.btnQuantity.Text = "CANCEL";
             this.btnQuantity.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnQuantity.Click += new System.EventHandler(this.btnQuantity_Click);
             // 
             // btnConfirm
             // 
@@ -98,6 +99,7 @@
             this.btnConfirm.TabIndex = 57;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // lblItem
             // 
@@ -129,6 +131,7 @@
             this.txtQuantity.Size = new System.Drawing.Size(398, 33);
             this.txtQuantity.TabIndex = 54;
             this.txtQuantity.Tag = "";
+            this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
             // 
             // Label3
             // 
@@ -152,6 +155,7 @@
             this.Name = "Quantity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quantity";
+            this.Load += new System.EventHandler(this.Quantity_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);

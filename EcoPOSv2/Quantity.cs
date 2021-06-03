@@ -20,5 +20,40 @@ namespace EcoPOSv2
         private SQLControl SQL = new SQLControl();
         public Order frmOrder;
         public string itemID;
+
+        private void Quantity_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (txtQuantity.Text == "" | txtQuantity.Text == "0")
+                return;
+
+            SQL.AddParam("@itemID", itemID);
+            SQL.AddParam("@quantity", txtQuantity.Text);
+
+            SQL.Query("UPDATE order_cart SET quantity = @quantity WHERE itemID = @itemID");
+
+            if (SQL.HasException(true))
+                return;
+
+            frmOrder.LoadOrder();
+            frmOrder.GetTotal();
+            Close();
+            frmOrder.tbBarcode.Focus();
+        }
+
+        private void btnQuantity_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void txtQuantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnConfirm.PerformClick();
+        }
     }
 }

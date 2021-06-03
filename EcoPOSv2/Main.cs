@@ -300,6 +300,13 @@ namespace EcoPOSv2
             d.ShowDialog();
         }
 
+        private void btnSeeItem_Click(object sender, EventArgs e)
+        {
+            SeeItem frmSeeItem = new SeeItem();
+            //frmSeeItem.frmOrder = this;
+            frmSeeItem.ShowDialog();
+        }
+
         private void tmrCurrentDateTime_Tick(object sender, EventArgs e)
         {
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt , MMM, dd, yyyy");

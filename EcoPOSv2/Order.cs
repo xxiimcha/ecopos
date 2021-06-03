@@ -10,15 +10,87 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
+using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Order : Form
+    public partial class Order : GlobalHotKeyForm
     {
         public Order()
         {
             InitializeComponent();
+            AddHotKeyRegisterer(OpenPayment, HotKeyMods.Control, ConsoleKey.P);
         }
+
+        private void OpenPayment(object sender, EventArgs e)
+        {
+            if (dgvCart.Rows.Count == 0)
+            {
+                new Notification().PopUp("Orders cart is empty.", "Error", "error");
+            }
+
+            int action = Convert.ToInt32(SQL.ReturnResult("SELECT action FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)"));
+
+            string customerID = SQL.ReturnResult("SELECT cus_ID_No FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            if (SQL.HasException(true)) return;
+
+
+            SQL.AddParam("@customerID", customerID);
+            decimal card_balance = Convert.ToDecimal(SQL.ReturnResult("SELECT IIF(@customerID <> 0, (SELECT card_balance FROM member_card WHERE customerID = @customerID), 0.00)"));
+            if (SQL.HasException(true)) return;
+
+            Payment frmPayment = new Payment();
+            RP.Payment(frmPayment);
+            frmPayment.frmOrder = this;
+            frmPayment.lblCustomerID.Text = customerID;
+            frmPayment.cbxUsePoints.Text = Math.Round(card_balance, 2).ToString();
+            frmPayment.card_balance = card_balance;
+            frmPayment.lblTotal.Text = lblTotal.Text;
+            frmPayment.lblGrandTotal.Text = lblTotal.Text;
+            frmPayment.grand_total = Math.Round(decimal.Parse(lblTotal.Text), 2);
+            frmPayment.total = Math.Round(decimal.Parse(lblTotal.Text), 2);
+            frmPayment.action = action;
+
+
+            if (action == 1)
+            {
+                frmPayment.change = System.Convert.ToDecimal("-" + lblTotal.Text);
+                frmPayment.lblChange.Text = "-" + lblTotal.Text;
+            }
+            else if (action == 2)
+            {
+                frmPayment.change = 0;
+                frmPayment.lblChange.Text = "0";
+
+
+                frmPayment.txtAmount.Enabled = false;
+                frmPayment.btnExact.Enabled = false;
+                frmPayment.btnGC.Enabled = false;
+                frmPayment.btnRemoveGC.Enabled = false;
+                frmPayment.cbxUsePoints.Enabled = false;
+                frmPayment.cmbMethod.Enabled = false;
+            }
+            else if (action == 3)
+            {
+                if (System.Convert.ToDecimal(lblTotal.Text) > 0)
+                {
+                    MessageBox.Show("Exchange item cannot be higher than return item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                frmPayment.change = System.Convert.ToDecimal(lblTotal.Text);
+                frmPayment.lblChange.Text = lblTotal.Text;
+
+
+                frmPayment.txtAmount.Enabled = false;
+                frmPayment.btnExact.Enabled = false;
+                frmPayment.btnGC.Enabled = false;
+                frmPayment.btnRemoveGC.Enabled = false;
+                frmPayment.cbxUsePoints.Enabled = false;
+                frmPayment.cmbMethod.Enabled = false;
+            }
+            frmPayment.Show(this);
+        }
+
         SQLControl SQL = new SQLControl();
 
         private RolePermission RP = new RolePermission();
@@ -150,7 +222,9 @@ namespace EcoPOSv2
         private void btnPayment_Click(object sender, EventArgs e)
         {
             if (dgvCart.Rows.Count == 0)
-                return;
+            {
+                new Notification().PopUp("Orders cart is empty.", "Error", "error");
+            }
 
             int action = Convert.ToInt32(SQL.ReturnResult("SELECT action FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)"));
 
@@ -219,7 +293,10 @@ namespace EcoPOSv2
             if (e.KeyCode == Keys.Enter)
             {
                 if (tbBarcode.Text == "")
+                {
                     return;
+                    //new Notification().PopUp("")
+                }
 
 
                 SQL.AddParam("@barcode", tbBarcode.Text);
@@ -270,7 +347,8 @@ namespace EcoPOSv2
                 }
                 else
                 {
-                    MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new Notification().PopUp("No item found!", "Barcode not registered.", "Error");
+                    //MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     tbBarcode.Clear();
                     tbBarcode.Focus();
@@ -415,6 +493,11 @@ namespace EcoPOSv2
         private void Order_Load(object sender, EventArgs e)
         {
             btnRetail.PerformClick();
+            LoadOrder();
+            LoadOrderNo();
+            GetTotal();
+
+            tbBarcode.Focus();
         }
 
         private void btnVoidItem_Click(object sender, EventArgs e)

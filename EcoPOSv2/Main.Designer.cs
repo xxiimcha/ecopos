@@ -34,7 +34,7 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSeeItem = new Guna.UI2.WinForms.Guna2Button();
             this.btnclosetemp = new Guna.UI2.WinForms.Guna2Button();
             this.btnMore = new Guna.UI2.WinForms.Guna2Button();
             this.btnCalculator = new Guna.UI2.WinForms.Guna2Button();
@@ -89,7 +89,7 @@
             // gunaPanel1
             // 
             this.gunaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gunaPanel1.Controls.Add(this.guna2Button1);
+            this.gunaPanel1.Controls.Add(this.btnSeeItem);
             this.gunaPanel1.Controls.Add(this.btnclosetemp);
             this.gunaPanel1.Controls.Add(this.btnMore);
             this.gunaPanel1.Controls.Add(this.btnCalculator);
@@ -103,26 +103,27 @@
             this.gunaPanel1.Size = new System.Drawing.Size(276, 866);
             this.gunaPanel1.TabIndex = 1;
             // 
-            // guna2Button1
+            // btnSeeItem
             // 
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Button1.FillColor = System.Drawing.Color.White;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(45, 45);
-            this.guna2Button1.Location = new System.Drawing.Point(0, 744);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(274, 60);
-            this.guna2Button1.TabIndex = 11;
-            this.guna2Button1.Text = "SEE ITEM (CTRL + I)";
-            this.guna2Button1.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnSeeItem.CheckedState.Parent = this.btnSeeItem;
+            this.btnSeeItem.CustomImages.Parent = this.btnSeeItem;
+            this.btnSeeItem.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSeeItem.FillColor = System.Drawing.Color.White;
+            this.btnSeeItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnSeeItem.ForeColor = System.Drawing.Color.Black;
+            this.btnSeeItem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSeeItem.HoverState.Parent = this.btnSeeItem;
+            this.btnSeeItem.Image = ((System.Drawing.Image)(resources.GetObject("btnSeeItem.Image")));
+            this.btnSeeItem.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSeeItem.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnSeeItem.Location = new System.Drawing.Point(0, 744);
+            this.btnSeeItem.Name = "btnSeeItem";
+            this.btnSeeItem.ShadowDecoration.Parent = this.btnSeeItem;
+            this.btnSeeItem.Size = new System.Drawing.Size(274, 60);
+            this.btnSeeItem.TabIndex = 11;
+            this.btnSeeItem.Text = "SEE ITEM (CTRL + I)";
+            this.btnSeeItem.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnSeeItem.Click += new System.EventHandler(this.btnSeeItem_Click);
             // 
             // btnclosetemp
             // 
@@ -338,7 +339,7 @@
         public Guna.UI2.WinForms.Guna2Button btnXReading;
         public Guna.UI2.WinForms.Guna2Button btnCalculator;
         public Guna.UI2.WinForms.Guna2Button btnMore;
-        public Guna.UI2.WinForms.Guna2Button guna2Button1;
+        public Guna.UI2.WinForms.Guna2Button btnSeeItem;
         public System.Windows.Forms.Panel pnlChild;
         internal System.Windows.Forms.Timer tmrCurrentDateTime;
     }

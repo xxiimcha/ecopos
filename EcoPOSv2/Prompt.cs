@@ -16,5 +16,15 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        Helper Helper = new Helper();
+
+        DataSet ds = new DataSet();
+        bool userfound = false;
+        bool runOnlyOnce = false;
+        int validation_type = 0;
+        private void btnProceed_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

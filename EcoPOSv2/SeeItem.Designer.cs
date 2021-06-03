@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeeItem));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnConfirm = new Guna.UI2.WinForms.Guna2CircleButton();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
+            this.btnCLose = new Guna.UI.WinForms.GunaControlBox();
             this.rbWholesale = new System.Windows.Forms.RadioButton();
             this.rbRetail = new System.Windows.Forms.RadioButton();
             this.Label2 = new System.Windows.Forms.Label();
@@ -47,9 +45,8 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.dgvProducts);
-            this.guna2Panel1.Controls.Add(this.gunaControlBox1);
+            this.guna2Panel1.Controls.Add(this.btnCLose);
             this.guna2Panel1.Controls.Add(this.rbWholesale);
             this.guna2Panel1.Controls.Add(this.rbRetail);
             this.guna2Panel1.Controls.Add(this.Label2);
@@ -61,23 +58,6 @@
             this.guna2Panel1.Size = new System.Drawing.Size(826, 676);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // btnConfirm
-            // 
-            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
-            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
-            this.btnConfirm.FillColor = System.Drawing.Color.Transparent;
-            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnConfirm.ForeColor = System.Drawing.Color.White;
-            this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
-            this.btnConfirm.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnConfirm.Location = new System.Drawing.Point(735, 35);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
-            this.btnConfirm.Size = new System.Drawing.Size(50, 50);
-            this.btnConfirm.TabIndex = 58;
-            // 
             // dgvProducts
             // 
             this.dgvProducts.AllowUserToAddRows = false;
@@ -86,7 +66,7 @@
             this.dgvProducts.AllowUserToResizeRows = false;
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvProducts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -122,21 +102,22 @@
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(803, 554);
             this.dgvProducts.TabIndex = 57;
+            this.dgvProducts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvProducts_KeyUp);
             // 
-            // gunaControlBox1
+            // btnCLose
             // 
-            this.gunaControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gunaControlBox1.AnimationHoverSpeed = 0.07F;
-            this.gunaControlBox1.AnimationSpeed = 0.03F;
-            this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(782, 4);
-            this.gunaControlBox1.Name = "gunaControlBox1";
-            this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
-            this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.Size = new System.Drawing.Size(40, 40);
-            this.gunaControlBox1.TabIndex = 56;
+            this.btnCLose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCLose.AnimationHoverSpeed = 0.07F;
+            this.btnCLose.AnimationSpeed = 0.03F;
+            this.btnCLose.IconColor = System.Drawing.Color.Black;
+            this.btnCLose.IconSize = 15F;
+            this.btnCLose.Location = new System.Drawing.Point(782, 4);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnCLose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnCLose.Size = new System.Drawing.Size(40, 40);
+            this.btnCLose.TabIndex = 56;
             // 
             // rbWholesale
             // 
@@ -184,6 +165,7 @@
             this.txtBarcode.Size = new System.Drawing.Size(624, 33);
             this.txtBarcode.TabIndex = 52;
             this.txtBarcode.Tag = "";
+            this.txtBarcode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyUp);
             // 
             // Label3
             // 
@@ -207,6 +189,7 @@
             this.Name = "SeeItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SeeItem";
+            this.Load += new System.EventHandler(this.SeeItem_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
@@ -217,9 +200,8 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2CircleButton btnConfirm;
         internal System.Windows.Forms.DataGridView dgvProducts;
-        private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
+        private Guna.UI.WinForms.GunaControlBox btnCLose;
         internal System.Windows.Forms.RadioButton rbWholesale;
         internal System.Windows.Forms.RadioButton rbRetail;
         internal System.Windows.Forms.Label Label2;

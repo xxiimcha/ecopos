@@ -30,12 +30,12 @@
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
+            this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnExact = new System.Windows.Forms.Button();
             this.btnGC = new System.Windows.Forms.Button();
             this.btnRemoveGC = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
-            this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
-            this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cbxUsePoints = new System.Windows.Forms.CheckBox();
             this.Label6 = new System.Windows.Forms.Label();
             this.lblCustomerID = new System.Windows.Forms.Label();
@@ -102,66 +102,6 @@
             this.label5.TabIndex = 103;
             this.label5.Text = "AMOUNT TENDERED:";
             // 
-            // btnExact
-            // 
-            this.btnExact.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExact.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnExact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExact.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExact.ForeColor = System.Drawing.Color.Black;
-            this.btnExact.Location = new System.Drawing.Point(351, 3);
-            this.btnExact.Name = "btnExact";
-            this.btnExact.Size = new System.Drawing.Size(230, 63);
-            this.btnExact.TabIndex = 15;
-            this.btnExact.Text = "Exact (F1)";
-            this.btnExact.UseVisualStyleBackColor = false;
-            // 
-            // btnGC
-            // 
-            this.btnGC.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGC.ForeColor = System.Drawing.Color.Black;
-            this.btnGC.Location = new System.Drawing.Point(351, 72);
-            this.btnGC.Name = "btnGC";
-            this.btnGC.Size = new System.Drawing.Size(230, 63);
-            this.btnGC.TabIndex = 17;
-            this.btnGC.Text = "Gift Card (F2)";
-            this.btnGC.UseVisualStyleBackColor = false;
-            // 
-            // btnRemoveGC
-            // 
-            this.btnRemoveGC.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRemoveGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveGC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnRemoveGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveGC.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoveGC.Location = new System.Drawing.Point(351, 141);
-            this.btnRemoveGC.Name = "btnRemoveGC";
-            this.btnRemoveGC.Size = new System.Drawing.Size(230, 63);
-            this.btnRemoveGC.TabIndex = 18;
-            this.btnRemoveGC.Text = "Remove GC (F3)";
-            this.btnRemoveGC.UseVisualStyleBackColor = false;
-            // 
-            // btnPay
-            // 
-            this.btnPay.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnPay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPay.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(351, 210);
-            this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(230, 64);
-            this.btnPay.TabIndex = 19;
-            this.btnPay.Text = "Pay (Enter)";
-            this.btnPay.UseVisualStyleBackColor = false;
-            // 
             // gunaControlBox1
             // 
             this.gunaControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -198,6 +138,70 @@
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TableLayoutPanel2.Size = new System.Drawing.Size(584, 277);
             this.TableLayoutPanel2.TabIndex = 101;
+            // 
+            // btnExact
+            // 
+            this.btnExact.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExact.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnExact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExact.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExact.ForeColor = System.Drawing.Color.Black;
+            this.btnExact.Location = new System.Drawing.Point(351, 3);
+            this.btnExact.Name = "btnExact";
+            this.btnExact.Size = new System.Drawing.Size(230, 63);
+            this.btnExact.TabIndex = 15;
+            this.btnExact.Text = "Exact (F1)";
+            this.btnExact.UseVisualStyleBackColor = false;
+            this.btnExact.Click += new System.EventHandler(this.btnExact_Click);
+            // 
+            // btnGC
+            // 
+            this.btnGC.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGC.ForeColor = System.Drawing.Color.Black;
+            this.btnGC.Location = new System.Drawing.Point(351, 72);
+            this.btnGC.Name = "btnGC";
+            this.btnGC.Size = new System.Drawing.Size(230, 63);
+            this.btnGC.TabIndex = 17;
+            this.btnGC.Text = "Gift Card (F2)";
+            this.btnGC.UseVisualStyleBackColor = false;
+            this.btnGC.Click += new System.EventHandler(this.btnGC_Click);
+            // 
+            // btnRemoveGC
+            // 
+            this.btnRemoveGC.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnRemoveGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemoveGC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnRemoveGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveGC.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoveGC.Location = new System.Drawing.Point(351, 141);
+            this.btnRemoveGC.Name = "btnRemoveGC";
+            this.btnRemoveGC.Size = new System.Drawing.Size(230, 63);
+            this.btnRemoveGC.TabIndex = 18;
+            this.btnRemoveGC.Text = "Remove GC (F3)";
+            this.btnRemoveGC.UseVisualStyleBackColor = false;
+            this.btnRemoveGC.Click += new System.EventHandler(this.btnRemoveGC_Click);
+            // 
+            // btnPay
+            // 
+            this.btnPay.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnPay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPay.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.ForeColor = System.Drawing.Color.Black;
+            this.btnPay.Location = new System.Drawing.Point(351, 210);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(230, 64);
+            this.btnPay.TabIndex = 19;
+            this.btnPay.Text = "Pay (Enter)";
+            this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // cbxUsePoints
             // 
@@ -421,6 +425,8 @@
             this.txtAmount.TabIndex = 82;
             this.txtAmount.Text = "0";
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
+            this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmount_KeyDown);
             // 
             // Payment
             // 

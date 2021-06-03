@@ -7,37 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class PChange : Form
+    public partial class PChange : GlobalHotKeyForm
     {
         public PChange()
         {
             InitializeComponent();
+            //GLOBAL HOTKEY
+            //AddHotKeyRegisterer(CloseForm, HotKeyMods.Control, ConsoleKey.Insert);
+            AddHotKeyRegisterer(CloseForm, HotKeyMods.None,ConsoleKey.Enter);
+            //GLOBAL HOTKEY
         }
+
+        private void CloseForm(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         public Payment frmPayment;
 
         private int count = 0;
 
         private void PChange_Load(object sender, EventArgs e)
         {
-            tmrClose.Start();
+            //tmrClose.Start();
+            btnConfirm.Focus();
         }
-
-        private void PChange_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                this.Close();
-            }
-
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
-
         private void btnReprint_Click(object sender, EventArgs e)
         {
             frmPayment.report.SetParameterValue("note", "###REPRINT###");
@@ -46,10 +44,11 @@ namespace EcoPOSv2
 
         private void tmrClose_Tick(object sender, EventArgs e)
         {
+            count++;
             if (count == 5)
+            {
                 Close();
-            else
-                count = count + 1;
+            }
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

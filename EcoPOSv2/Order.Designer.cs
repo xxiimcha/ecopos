@@ -40,7 +40,6 @@
             this.btnPayment = new Guna.UI2.WinForms.Guna2Button();
             this.btnRedeem = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            this.btnVoid = new Guna.UI2.WinForms.Guna2Button();
             this.lblOperation = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.lblCustomer = new System.Windows.Forms.Label();
@@ -73,6 +72,7 @@
             this.btnWholeSale = new Guna.UI2.WinForms.Guna2Button();
             this.btnRetail = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnVoid = new Guna.UI2.WinForms.Guna2Button();
             this.OrderPanel.SuspendLayout();
             this.enteredOrdersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -284,25 +284,6 @@
             this.btnCancel.TabIndex = 47;
             this.btnCancel.Text = "CANCEL TRANSACTION (F4)";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnVoid
-            // 
-            this.btnVoid.BorderColor = System.Drawing.Color.Red;
-            this.btnVoid.BorderThickness = 2;
-            this.btnVoid.CheckedState.Parent = this.btnVoid;
-            this.btnVoid.CustomImages.Parent = this.btnVoid;
-            this.btnVoid.FillColor = System.Drawing.Color.White;
-            this.btnVoid.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnVoid.ForeColor = System.Drawing.Color.Red;
-            this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnVoid.HoverState.Parent = this.btnVoid;
-            this.btnVoid.Location = new System.Drawing.Point(5, 546);
-            this.btnVoid.Name = "btnVoid";
-            this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
-            this.btnVoid.Size = new System.Drawing.Size(188, 52);
-            this.btnVoid.TabIndex = 46;
-            this.btnVoid.Text = "VOID TRANSACTION (F3)";
-            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // lblOperation
             // 
@@ -743,6 +724,25 @@
             this.label7.Text = "PRICE MODE:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnVoid
+            // 
+            this.btnVoid.BorderColor = System.Drawing.Color.Red;
+            this.btnVoid.BorderThickness = 2;
+            this.btnVoid.CheckedState.Parent = this.btnVoid;
+            this.btnVoid.CustomImages.Parent = this.btnVoid;
+            this.btnVoid.FillColor = System.Drawing.Color.White;
+            this.btnVoid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnVoid.ForeColor = System.Drawing.Color.Red;
+            this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVoid.HoverState.Parent = this.btnVoid;
+            this.btnVoid.Location = new System.Drawing.Point(5, 546);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
+            this.btnVoid.Size = new System.Drawing.Size(188, 52);
+            this.btnVoid.TabIndex = 46;
+            this.btnVoid.Text = "VOID TRANSACTION (F3)";
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
+            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -807,9 +807,9 @@
         public Guna.UI2.WinForms.Guna2Button btnCustomer;
         public Guna.UI2.WinForms.Guna2Button btnDiscount;
         public Guna.UI2.WinForms.Guna2Button btnVoidItem;
-        public Guna.UI2.WinForms.Guna2Button btnVoid;
         public Guna.UI2.WinForms.Guna2Button btnCancel;
         public Guna.UI2.WinForms.Guna2Button btnRedeem;
         public System.Windows.Forms.Label lblZeroRated;
+        public Guna.UI2.WinForms.Guna2Button btnVoid;
     }
 }
