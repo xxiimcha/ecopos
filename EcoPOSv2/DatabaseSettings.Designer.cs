@@ -142,7 +142,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnReset.BorderColor = System.Drawing.Color.Maroon;
             this.btnReset.BorderRadius = 5;
             this.btnReset.BorderThickness = 1;
             this.btnReset.CheckedState.Parent = this.btnReset;
@@ -196,6 +196,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbServerName);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DatabaseSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

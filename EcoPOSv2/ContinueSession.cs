@@ -133,12 +133,15 @@ namespace EcoPOSv2
                     Main.Instance.lblUser.Text = r["first_name"].ToString() + " " + r["last_name"].ToString();
                 }
 
+                new Notification().PopUp("Login Success!", "Success", "success");
+
                 Main.Instance.Show();
                 Close();
             }
             else
             {
-                MessageBox.Show("Incorrect password.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                new Notification().PopUp("Incorrect username or password.", "Error", "error");
+                //MessageBox.Show("Incorrect password.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -165,12 +168,15 @@ namespace EcoPOSv2
                     Main.Instance.lblUser.Text = r["first_name"].ToString() + " " + r["last_name"].ToString();
                 }
 
+                new Notification().PopUp("Login Success!","Success","success");
+
                 Main.Instance.Show();
                 Close();
             }
             else
             {
-               MessageBox.Show("Incorrect username or password.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                new Notification().PopUp("Incorrect Username or password", "Error", "error");
+               //MessageBox.Show("Incorrect username or password.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

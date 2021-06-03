@@ -101,7 +101,8 @@ namespace EcoPOSv2
             Main.Instance.pd_customer_display_enabled = cbxEnable_CD.Checked;
             Main.Instance.pd_customer_display_port = cmbPort.Text;
 
-            MessageBox.Show("Settings has been saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            new Notification().PopUp("Settings has been saved.","Success");
+            //MessageBox.Show("Settings has been saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
