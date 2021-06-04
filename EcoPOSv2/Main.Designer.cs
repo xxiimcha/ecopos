@@ -209,6 +209,7 @@
             this.btnXReading.TabIndex = 7;
             this.btnXReading.Text = "Switch Cashier (X-Read) (F8)";
             this.btnXReading.TextOffset = new System.Drawing.Point(20, 0);
+            this.btnXReading.Click += new System.EventHandler(this.btnXReading_Click);
             // 
             // btnOrder
             // 

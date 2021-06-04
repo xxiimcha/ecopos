@@ -102,6 +102,7 @@
     <Compile Include="AOperation.Designer.cs">
       <DependentUpon>AOperation.cs</DependentUpon>
     </Compile>
+    <Compile Include="AssignValidation.cs" />
     <Compile Include="ContinueSession.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +343,12 @@
     <Compile Include="XReadingRecords.Designer.cs">
       <DependentUpon>XReadingRecords.cs</DependentUpon>
     </Compile>
+    <Compile Include="XReadingReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XReadingReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ZReadingRecords.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -490,6 +497,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XReadingRecords.resx">
       <DependentUpon>XReadingRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XReadingReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>XReadingReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ZReadingRecords.resx">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>

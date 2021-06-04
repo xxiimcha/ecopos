@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnSaveSettings = new Guna.UI2.WinForms.Guna2TileButton();
-            this.btnReset = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnProceed = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2TileButton();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
@@ -40,8 +40,8 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.btnSaveSettings);
-            this.guna2Panel1.Controls.Add(this.btnReset);
+            this.guna2Panel1.Controls.Add(this.btnProceed);
+            this.guna2Panel1.Controls.Add(this.btnCancel);
             this.guna2Panel1.Controls.Add(this.txtPassword);
             this.guna2Panel1.Controls.Add(this.Label1);
             this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
@@ -50,41 +50,43 @@
             this.guna2Panel1.Size = new System.Drawing.Size(392, 181);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // btnSaveSettings
+            // btnProceed
             // 
-            this.btnSaveSettings.BackColor = System.Drawing.Color.White;
-            this.btnSaveSettings.BorderColor = System.Drawing.Color.IndianRed;
-            this.btnSaveSettings.BorderRadius = 5;
-            this.btnSaveSettings.CheckedState.Parent = this.btnSaveSettings;
-            this.btnSaveSettings.CustomImages.Parent = this.btnSaveSettings;
-            this.btnSaveSettings.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
-            this.btnSaveSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSaveSettings.HoverState.Parent = this.btnSaveSettings;
-            this.btnSaveSettings.Location = new System.Drawing.Point(29, 121);
-            this.btnSaveSettings.Name = "btnSaveSettings";
-            this.btnSaveSettings.ShadowDecoration.Parent = this.btnSaveSettings;
-            this.btnSaveSettings.Size = new System.Drawing.Size(205, 45);
-            this.btnSaveSettings.TabIndex = 23;
-            this.btnSaveSettings.Text = "PROCEED";
+            this.btnProceed.BackColor = System.Drawing.Color.White;
+            this.btnProceed.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnProceed.BorderRadius = 5;
+            this.btnProceed.CheckedState.Parent = this.btnProceed;
+            this.btnProceed.CustomImages.Parent = this.btnProceed;
+            this.btnProceed.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnProceed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProceed.ForeColor = System.Drawing.Color.White;
+            this.btnProceed.HoverState.Parent = this.btnProceed;
+            this.btnProceed.Location = new System.Drawing.Point(29, 121);
+            this.btnProceed.Name = "btnProceed";
+            this.btnProceed.ShadowDecoration.Parent = this.btnProceed;
+            this.btnProceed.Size = new System.Drawing.Size(205, 45);
+            this.btnProceed.TabIndex = 23;
+            this.btnProceed.Text = "PROCEED";
+            this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click);
             // 
-            // btnReset
+            // btnCancel
             // 
-            this.btnReset.BorderColor = System.Drawing.Color.IndianRed;
-            this.btnReset.BorderRadius = 5;
-            this.btnReset.BorderThickness = 1;
-            this.btnReset.CheckedState.Parent = this.btnReset;
-            this.btnReset.CustomImages.Parent = this.btnReset;
-            this.btnReset.FillColor = System.Drawing.Color.White;
-            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.HoverState.Parent = this.btnReset;
-            this.btnReset.Location = new System.Drawing.Point(240, 121);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.ShadowDecoration.Parent = this.btnReset;
-            this.btnReset.Size = new System.Drawing.Size(123, 45);
-            this.btnReset.TabIndex = 24;
-            this.btnReset.Text = "CANCEL";
+            this.btnCancel.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnCancel.BorderRadius = 5;
+            this.btnCancel.BorderThickness = 1;
+            this.btnCancel.CheckedState.Parent = this.btnCancel;
+            this.btnCancel.CustomImages.Parent = this.btnCancel;
+            this.btnCancel.FillColor = System.Drawing.Color.White;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.HoverState.Parent = this.btnCancel;
+            this.btnCancel.Location = new System.Drawing.Point(240, 121);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
+            this.btnCancel.Size = new System.Drawing.Size(123, 45);
+            this.btnCancel.TabIndex = 24;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtPassword
             // 
@@ -95,6 +97,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(354, 32);
             this.txtPassword.TabIndex = 22;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // Label1
             // 
@@ -127,8 +130,8 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TileButton btnSaveSettings;
-        private Guna.UI2.WinForms.Guna2TileButton btnReset;
+        private Guna.UI2.WinForms.Guna2TileButton btnProceed;
+        private Guna.UI2.WinForms.Guna2TileButton btnCancel;
         internal System.Windows.Forms.TextBox txtPassword;
         internal System.Windows.Forms.Label Label1;
     }
