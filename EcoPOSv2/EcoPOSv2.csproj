@@ -72,6 +72,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditWarehouse.Designer.cs">
+      <DependentUpon>AddEditWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdjustCost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdjustCost.Designer.cs">
+      <DependentUpon>AdjustCost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdjustInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdjustInventory.Designer.cs">
+      <DependentUpon>AdjustInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AInventory.Designer.cs">
+      <DependentUpon>AInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AOperation.Designer.cs">
+      <DependentUpon>AOperation.cs</DependentUpon>
+    </Compile>
     <Compile Include="ContinueSession.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +175,12 @@
     </Compile>
     <Compile Include="Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OREditInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OREditInfo.Designer.cs">
+      <DependentUpon>OREditInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs">
       <SubType>Form</SubType>
@@ -312,6 +348,21 @@
     <Compile Include="ZReadingRecords.Designer.cs">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddEditWarehouse.resx">
+      <DependentUpon>AddEditWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdjustCost.resx">
+      <DependentUpon>AdjustCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdjustInventory.resx">
+      <DependentUpon>AdjustInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AInventory.resx">
+      <DependentUpon>AInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AOperation.resx">
+      <DependentUpon>AOperation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContinueSession.resx">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OREditInfo.resx">
+      <DependentUpon>OREditInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
