@@ -102,36 +102,14 @@
     <Compile Include="AOperation.Designer.cs">
       <DependentUpon>AOperation.cs</DependentUpon>
     </Compile>
-    <Compile Include="APurchase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="APurchase.Designer.cs">
-      <DependentUpon>APurchase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AReturn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AReturn.Designer.cs">
-      <DependentUpon>AReturn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ASupplier.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ASupplier.Designer.cs">
-      <DependentUpon>ASupplier.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AWarehouse.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AWarehouse.Designer.cs">
-      <DependentUpon>AWarehouse.cs</DependentUpon>
-    </Compile>
+    <Compile Include="AssignValidation.cs" />
     <Compile Include="ContinueSession.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ContinueSession.Designer.cs">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlBehavior.cs" />
     <Compile Include="DatabaseSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +344,12 @@
     <Compile Include="XReadingRecords.Designer.cs">
       <DependentUpon>XReadingRecords.cs</DependentUpon>
     </Compile>
+    <Compile Include="XReadingReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XReadingReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ZReadingRecords.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,18 +370,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AOperation.resx">
       <DependentUpon>AOperation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="APurchase.resx">
-      <DependentUpon>APurchase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AReturn.resx">
-      <DependentUpon>AReturn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ASupplier.resx">
-      <DependentUpon>ASupplier.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AWarehouse.resx">
-      <DependentUpon>AWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ContinueSession.resx">
       <DependentUpon>ContinueSession.cs</DependentUpon>
@@ -526,6 +498,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XReadingRecords.resx">
       <DependentUpon>XReadingRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XReadingReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>XReadingReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ZReadingRecords.resx">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>

@@ -415,12 +415,7 @@ namespace EcoPOSv2
 
             #endregion
 
-            Advance_OrderNo();
-            frmOrder.LoadOrder();
-            frmOrder.GetTotal();
-            frmOrder.LoadOrderNo();
-            frmOrder.tbBarcode.Focus();
-            Close();
+            this.Close();
         }
 
         private void btnRemoveGC_Click(object sender, EventArgs e)

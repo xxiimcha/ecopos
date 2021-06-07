@@ -82,6 +82,7 @@ namespace EcoPOSv2
             this.btnSaveSettings.Size = new System.Drawing.Size(209, 45);
             this.btnSaveSettings.TabIndex = 79;
             this.btnSaveSettings.Text = "SAVE SETTINGS";
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
             // btnCancel
             // 
@@ -101,6 +102,7 @@ namespace EcoPOSv2
             this.btnCancel.Size = new System.Drawing.Size(209, 45);
             this.btnCancel.TabIndex = 78;
             this.btnCancel.Text = "CANCEL";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Label4
             // 
@@ -241,6 +243,7 @@ namespace EcoPOSv2
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Devices";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devices";
             this.Load += new System.EventHandler(this.Devices_Load);
             this.panel1.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoPOSControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,7 @@ namespace EcoPOSv2
             AddHotKeyRegisterer(CloseForm, HotKeyMods.None,ConsoleKey.Enter);
             //GLOBAL HOTKEY
         }
-
+        SQLControl SQL = new SQLControl();
         private void CloseForm(object sender, EventArgs e)
         {
             this.Close();
@@ -50,10 +51,29 @@ namespace EcoPOSv2
                 Close();
             }
         }
+        public void Advance_OrderNo()
+        {
+            SQL.Query(@"INSERT INTO order_no (order_no)
+                       SELECT (order_no + 1) FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
 
+            if (SQL.HasException(true))
+                return;
+
+            Order.Instance.LoadOrderNo();
+        }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            Advance_OrderNo();
+            Order.Instance.LoadOrder();
+            Order.Instance.GetTotal();
+            Order.Instance.LoadOrderNo();
+            Order.Instance.tbBarcode.Focus();
+
+
+            //Order.Instance.LoadOrder();
+            //Order.Instance.GetTotal();
         }
     }
 }

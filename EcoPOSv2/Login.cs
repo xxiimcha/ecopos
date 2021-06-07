@@ -152,7 +152,7 @@ namespace EcoPOSv2
 
                         ShiftStart(current_userID, current_user_name);
 
-                        new Notification().PopUp("Admin login Success!", "Success!", "success");
+                        //new Notification().PopUp("Admin login Success!", "Success!", "success");
 
                         Main.Instance.Show();
                         this.Close();
@@ -227,7 +227,7 @@ namespace EcoPOSv2
 
                         ShiftStart(current_userID, current_user_name);
 
-                        new Notification().PopUp("User login Success!", "Success!", "success");
+                        //new Notification().PopUp("User login Success!", "Success!", "success");
 
                         Main.Instance.Show();
                         this.Close();
@@ -257,7 +257,6 @@ namespace EcoPOSv2
 
                         //LOGIN ERROR MESSAGE & CLEARING
                         new Notification().PopUp("Login failed! Please try again.", "Login Error", "error");
-                        //MessageBox.Show("Login failed! Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         tbUsername.Clear();
                         tbPassword.Clear();
@@ -311,6 +310,14 @@ namespace EcoPOSv2
                     new Notification().PopUp("No store details found.","Error","error");
                     //MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void tbPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
             }
         }
     }

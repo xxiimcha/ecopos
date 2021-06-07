@@ -20,8 +20,14 @@ namespace EcoPOSv2
             InitializeComponent();
             AddHotKeyRegisterer(ClickOrder, HotKeyMods.None, ConsoleKey.F2);
             AddHotKeyRegisterer(OpenCalculator, HotKeyMods.None, ConsoleKey.F9);
+            AddHotKeyRegisterer(ClickXReading, HotKeyMods.None, ConsoleKey.F8);
             AddHotKeyRegisterer(ClickMore, HotKeyMods.None, ConsoleKey.F10);
             AddHotKeyRegisterer(ClickSeeItem, HotKeyMods.Control, ConsoleKey.I);
+        }
+
+        private void ClickXReading(object sender, EventArgs e)
+        {
+            btnXReading.PerformClick();
         }
 
         private void ClickSeeItem(object sender, EventArgs e)
@@ -292,9 +298,13 @@ namespace EcoPOSv2
         {
             _main = this;
 
+            btnOrder.PerformClick();
+
             Order frmOrder = new Order();
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
             frmOrder.tbBarcode.Focus();
+
+            Order.Instance.GetTotal();
 
             tmrCurrentDateTime.Start();
 
@@ -313,6 +323,8 @@ namespace EcoPOSv2
             Order frmOrder = new Order();
             RP.Order(frmOrder);
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
+
+            Order.Instance.GetTotal();
         }
 
         private void btnclosetemp_Click(object sender, EventArgs e)
@@ -331,6 +343,13 @@ namespace EcoPOSv2
             SeeItem frmSeeItem = new SeeItem();
             //frmSeeItem.frmOrder = this;
             frmSeeItem.ShowDialog();
+        }
+
+        private void btnXReading_Click(object sender, EventArgs e)
+        {
+            SecureXReading frmSecureXReading = new SecureXReading();
+
+            frmSecureXReading.ShowDialog();
         }
 
         private void tmrCurrentDateTime_Tick(object sender, EventArgs e)

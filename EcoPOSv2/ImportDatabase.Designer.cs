@@ -45,6 +45,7 @@
             this.btnConfirm.TabIndex = 11;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnChooseFile
             // 
@@ -74,12 +75,13 @@
             // OpenFileDialog1
             // 
             this.OpenFileDialog1.FileName = "OpenFileDialog1";
+            this.OpenFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog1_FileOk);
             // 
             // ImportDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 186);
+            this.ClientSize = new System.Drawing.Size(284, 176);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnChooseFile);
             this.Controls.Add(this.txtDatabase);

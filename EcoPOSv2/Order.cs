@@ -16,6 +16,19 @@ namespace EcoPOSv2
 {
     public partial class Order : GlobalHotKeyForm
     {
+        public static Order _order;
+        public static Order Instance
+        {
+            get
+            {
+                if (_order == null)
+                {
+                    _order = new Order();
+                }
+                return _order;
+            }
+        }
+
         public Order()
         {
             InitializeComponent();
@@ -24,95 +37,6 @@ namespace EcoPOSv2
             AddHotKeyRegisterer(Openquantity, HotKeyMods.Control, ConsoleKey.Q);
             AddHotKeyRegisterer(OpenVoidItem, HotKeyMods.Control, ConsoleKey.V);
             AddHotKeyRegisterer(ClickCancelTransaction, HotKeyMods.None, ConsoleKey.F4);
-        }
-
-        private void ClickCancelTransaction(object sender, EventArgs e)
-        {
-            btnCancel.PerformClick();
-        }
-
-        private void OpenVoidItem(object sender, EventArgs e)
-        {
-            btnVoidItem.PerformClick();
-        }
-
-        private void Openquantity(object sender, EventArgs e)
-        {
-            btnQuantity.PerformClick();
-        }
-
-        private void OpenDiscount(object sender, EventArgs e)
-        {
-            btnDiscount.PerformClick();
-        }
-
-        private void OpenPayment(object sender, EventArgs e)
-        {
-            if (dgvCart.Rows.Count == 0)
-            {
-                new Notification().PopUp("Orders cart is empty.", "Error", "error");
-            }
-
-            int action = Convert.ToInt32(SQL.ReturnResult("SELECT action FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)"));
-
-            string customerID = SQL.ReturnResult("SELECT cus_ID_No FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
-            if (SQL.HasException(true)) return;
-
-
-            SQL.AddParam("@customerID", customerID);
-            decimal card_balance = Convert.ToDecimal(SQL.ReturnResult("SELECT IIF(@customerID <> 0, (SELECT card_balance FROM member_card WHERE customerID = @customerID), 0.00)"));
-            if (SQL.HasException(true)) return;
-
-            Payment frmPayment = new Payment();
-            RP.Payment(frmPayment);
-            frmPayment.frmOrder = this;
-            frmPayment.lblCustomerID.Text = customerID;
-            frmPayment.cbxUsePoints.Text = Math.Round(card_balance, 2).ToString();
-            frmPayment.card_balance = card_balance;
-            frmPayment.lblTotal.Text = lblTotal.Text;
-            frmPayment.lblGrandTotal.Text = lblTotal.Text;
-            frmPayment.grand_total = Math.Round(decimal.Parse(lblTotal.Text), 2);
-            frmPayment.total = Math.Round(decimal.Parse(lblTotal.Text), 2);
-            frmPayment.action = action;
-
-
-            if (action == 1)
-            {
-                frmPayment.change = System.Convert.ToDecimal("-" + lblTotal.Text);
-                frmPayment.lblChange.Text = "-" + lblTotal.Text;
-            }
-            else if (action == 2)
-            {
-                frmPayment.change = 0;
-                frmPayment.lblChange.Text = "0";
-
-
-                frmPayment.txtAmount.Enabled = false;
-                frmPayment.btnExact.Enabled = false;
-                frmPayment.btnGC.Enabled = false;
-                frmPayment.btnRemoveGC.Enabled = false;
-                frmPayment.cbxUsePoints.Enabled = false;
-                frmPayment.cmbMethod.Enabled = false;
-            }
-            else if (action == 3)
-            {
-                if (System.Convert.ToDecimal(lblTotal.Text) > 0)
-                {
-                    MessageBox.Show("Exchange item cannot be higher than return item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                frmPayment.change = System.Convert.ToDecimal(lblTotal.Text);
-                frmPayment.lblChange.Text = lblTotal.Text;
-
-
-                frmPayment.txtAmount.Enabled = false;
-                frmPayment.btnExact.Enabled = false;
-                frmPayment.btnGC.Enabled = false;
-                frmPayment.btnRemoveGC.Enabled = false;
-                frmPayment.cbxUsePoints.Enabled = false;
-                frmPayment.cmbMethod.Enabled = false;
-            }
-            frmPayment.Show(this);
         }
 
         SQLControl SQL = new SQLControl();
@@ -295,7 +219,7 @@ namespace EcoPOSv2
             {
                 if (System.Convert.ToDecimal(lblTotal.Text) > 0)
                 {
-                    MessageBox.Show("Exchange item cannot be higher than return item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    new Notification().PopUp("Exchange item cannot be higher than return item.", "Error", "error");
                 }
 
                 frmPayment.change = System.Convert.ToDecimal(lblTotal.Text);
@@ -371,7 +295,7 @@ namespace EcoPOSv2
                 }
                 else
                 {
-                    new Notification().PopUp("No item found!", "Barcode not registered.", "Error");
+                    new Notification().PopUp("No item found!", "Barcode not registered.", "error");
                     //MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     tbBarcode.Clear();
@@ -516,12 +440,18 @@ namespace EcoPOSv2
 
         private void Order_Load(object sender, EventArgs e)
         {
+            _order = this;
+
             btnRetail.PerformClick();
             LoadOrder();
             LoadOrderNo();
             GetTotal();
 
-            tbBarcode.Focus();
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
+
+            //tbBarcode.Focus();
+            //tbBarcode.Clear();
         }
 
         private void btnVoidItem_Click(object sender, EventArgs e)
@@ -552,10 +482,109 @@ namespace EcoPOSv2
             GetTotal();
         }
 
+        private void dgvCart_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = tbBarcode;
+            tbBarcode.Clear();
+        }
+
         private void btnRetail_Click(object sender, EventArgs e)
         {
             insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
             type = "R";
+        }
+
+
+
+        //GLOBAL HOTKEYS
+        private void ClickCancelTransaction(object sender, EventArgs e)
+        {
+            btnCancel.PerformClick();
+        }
+
+        private void OpenVoidItem(object sender, EventArgs e)
+        {
+            btnVoidItem.PerformClick();
+        }
+
+        private void Openquantity(object sender, EventArgs e)
+        {
+            btnQuantity.PerformClick();
+        }
+
+        private void OpenDiscount(object sender, EventArgs e)
+        {
+            btnDiscount.PerformClick();
+        }
+
+        private void OpenPayment(object sender, EventArgs e)
+        {
+            //btnPayment.PerformClick();
+            if (dgvCart.Rows.Count == 0)
+            {
+                new Notification().PopUp("Orders cart is empty.", "Error", "error");
+            }
+
+            int action = Convert.ToInt32(SQL.ReturnResult("SELECT action FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)"));
+
+            string customerID = SQL.ReturnResult("SELECT cus_ID_No FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            if (SQL.HasException(true)) return;
+
+
+            SQL.AddParam("@customerID", customerID);
+            decimal card_balance = Convert.ToDecimal(SQL.ReturnResult("SELECT IIF(@customerID <> 0, (SELECT card_balance FROM member_card WHERE customerID = @customerID), 0.00)"));
+            if (SQL.HasException(true)) return;
+
+            Payment frmPayment = new Payment();
+            RP.Payment(frmPayment);
+            frmPayment.frmOrder = this;
+            frmPayment.lblCustomerID.Text = customerID;
+            frmPayment.cbxUsePoints.Text = Math.Round(card_balance, 2).ToString();
+            frmPayment.card_balance = card_balance;
+            frmPayment.lblTotal.Text = lblTotal.Text;
+            frmPayment.lblGrandTotal.Text = lblTotal.Text;
+            frmPayment.grand_total = Math.Round(decimal.Parse(lblTotal.Text), 2);
+            frmPayment.total = Math.Round(decimal.Parse(lblTotal.Text), 2);
+            frmPayment.action = action;
+
+
+            if (action == 1)
+            {
+                frmPayment.change = System.Convert.ToDecimal("-" + lblTotal.Text);
+                frmPayment.lblChange.Text = "-" + lblTotal.Text;
+            }
+            else if (action == 2)
+            {
+                frmPayment.change = 0;
+                frmPayment.lblChange.Text = "0";
+
+
+                frmPayment.txtAmount.Enabled = false;
+                frmPayment.btnExact.Enabled = false;
+                frmPayment.btnGC.Enabled = false;
+                frmPayment.btnRemoveGC.Enabled = false;
+                frmPayment.cbxUsePoints.Enabled = false;
+                frmPayment.cmbMethod.Enabled = false;
+            }
+            else if (action == 3)
+            {
+                if (System.Convert.ToDecimal(lblTotal.Text) > 0)
+                {
+                    MessageBox.Show("Exchange item cannot be higher than return item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                frmPayment.change = System.Convert.ToDecimal(lblTotal.Text);
+                frmPayment.lblChange.Text = lblTotal.Text;
+
+
+                frmPayment.txtAmount.Enabled = false;
+                frmPayment.btnExact.Enabled = false;
+                frmPayment.btnGC.Enabled = false;
+                frmPayment.btnRemoveGC.Enabled = false;
+                frmPayment.cbxUsePoints.Enabled = false;
+                frmPayment.cmbMethod.Enabled = false;
+            }
+            frmPayment.Show(this);
         }
     }
 }

@@ -101,5 +101,15 @@ namespace EcoPOSv2
             dgvProducts.DataSource = SQL.DBDT;
             dgvProducts.Columns[0].Visible = false;
         }
+
+        private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space)
+            {
+                txtBarcode.Clear();
+                txtBarcode.Focus();
+                txtBarcode.Text = txtBarcode.Text.Replace(" ", "");
+            }
+        }
     }
 }
