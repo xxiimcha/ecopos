@@ -9,7 +9,7 @@ using Microsoft.VisualBasic;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
-namespace EcoPOSv2
+namespace EcoPOSv2TextValidation
 {
     public sealed class Strings { }
     class TextBoxValidation
@@ -24,7 +24,30 @@ namespace EcoPOSv2
             NumberDash = 4,
             NotNull = 5
         }
-
+        public void AssignValidationTB(System.Windows.Forms.TextBox CTRL, ValidationType Validation_Type)
+        {
+            System.Windows.Forms.TextBox txt = CTRL;
+            switch (Validation_Type)
+            {
+                case ValidationType.NumbersOnly:
+                    txt.KeyPress += NumbersOnly;
+                    break;
+                case ValidationType.CharactersOnly:
+                    txt.KeyPress += CharactersOnly;
+                    break;
+                case ValidationType.Decimal:
+                    txt.KeyPress += Decimals;
+                    break;
+                case ValidationType.NumberDash:
+                    txt.KeyPress += NumberDash;
+                    break;
+                case ValidationType.NotNull:
+                    txt.Leave += NotNull;
+                    break;
+                default:
+                    break;
+            }
+        }
         public void AssignValidation(Guna.UI2.WinForms.Guna2TextBox CTRL, ValidationType Validation_Type)
         {
             Guna.UI2.WinForms.Guna2TextBox txt = CTRL;

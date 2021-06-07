@@ -109,6 +109,7 @@
     <Compile Include="ContinueSession.Designer.cs">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlBehavior.cs" />
     <Compile Include="DatabaseSettings.cs">
       <SubType>Form</SubType>
     </Compile>

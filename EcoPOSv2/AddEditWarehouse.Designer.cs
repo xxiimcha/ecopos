@@ -72,6 +72,7 @@
             this.btnCancel.TabIndex = 58;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
             // 
@@ -94,6 +95,7 @@
             this.btnConfirm.TabIndex = 57;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // Label2
             // 
@@ -116,6 +118,7 @@
             this.txtName.Size = new System.Drawing.Size(402, 33);
             this.txtName.TabIndex = 30;
             this.txtName.Tag = "";
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // AddEditWarehouse
             // 
@@ -128,6 +131,7 @@
             this.Name = "AddEditWarehouse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddEditWarehouse";
+            this.Load += new System.EventHandler(this.AddEditWarehouse_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
