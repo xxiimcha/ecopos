@@ -120,6 +120,7 @@
             this.dgvAdjInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdjInventory.Size = new System.Drawing.Size(558, 558);
             this.dgvAdjInventory.TabIndex = 39;
+            this.dgvAdjInventory.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdjInventory_CellEndEdit);
             // 
             // Panel1
             // 
@@ -149,6 +150,7 @@
             this.btnDelete.Size = new System.Drawing.Size(167, 44);
             this.btnDelete.TabIndex = 20;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -168,6 +170,7 @@
             this.btnSave.Size = new System.Drawing.Size(167, 44);
             this.btnSave.TabIndex = 19;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Panel2
             // 
@@ -215,6 +218,7 @@
             this.Name = "AdjustInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdjustInventory";
+            this.Load += new System.EventHandler(this.AdjustInventory_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.TableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdjInventory)).EndInit();

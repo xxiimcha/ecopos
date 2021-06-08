@@ -22,7 +22,7 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         List<TextBox> requiredFields = new List<TextBox>();
 
-        //public AWarehouse frmAWarehouse; /////TEMPORARY COMMENT
+        public AWarehouse frmAWarehouse;
 
         public string action;
         public string warehouseID;
@@ -51,8 +51,8 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            //AWarehouse.dgvWarehouse.DataSource = SQL.DBDT; /////TEMPORARY COMMENT
-            //AWarehouse.dgvWarehouse.Columns(0).Visible = false; /////TEMPORARY COMMENT
+            AWarehouse.Instance.dgvWarehouse.DataSource = SQL.DBDT; 
+            AWarehouse.Instance.dgvWarehouse.Columns[0].Visible = false;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -119,7 +119,7 @@ namespace EcoPOSv2
                                 if (SQL.HasException(true))
                                     return;
 
-                                // frmAWarehouse.LoadWarehouse(); /////TEMPORARY COMMENT
+                                frmAWarehouse.LoadWarehouse();
                                 new Notification().PopUp("Item saved.", "", "information");
                             }
                             else
