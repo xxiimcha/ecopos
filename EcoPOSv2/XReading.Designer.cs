@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XReading));
             this.pnlPreview = new Guna.UI2.WinForms.Guna2Panel();
             this.lblAdjustments = new System.Windows.Forms.Label();
@@ -351,28 +351,28 @@
             this.dgvPaymentMethod.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaymentMethod.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentMethod.ColumnHeadersVisible = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPaymentMethod.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaymentMethod.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.dgvPaymentMethod.Location = new System.Drawing.Point(617, 191);
             this.dgvPaymentMethod.Name = "dgvPaymentMethod";
             this.dgvPaymentMethod.ReadOnly = true;
             this.dgvPaymentMethod.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPaymentMethod.Size = new System.Drawing.Size(309, 350);
             this.dgvPaymentMethod.TabIndex = 69;
             // 
@@ -382,7 +382,7 @@
             this.lblBeginningInvoice.ForeColor = System.Drawing.Color.Black;
             this.lblBeginningInvoice.Location = new System.Drawing.Point(10, 395);
             this.lblBeginningInvoice.Name = "lblBeginningInvoice";
-            this.lblBeginningInvoice.Size = new System.Drawing.Size(252, 25);
+            this.lblBeginningInvoice.Size = new System.Drawing.Size(288, 25);
             this.lblBeginningInvoice.TabIndex = 68;
             this.lblBeginningInvoice.Text = "0";
             this.lblBeginningInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -520,7 +520,7 @@
             this.lblEndingInvoice.ForeColor = System.Drawing.Color.Black;
             this.lblEndingInvoice.Location = new System.Drawing.Point(10, 461);
             this.lblEndingInvoice.Name = "lblEndingInvoice";
-            this.lblEndingInvoice.Size = new System.Drawing.Size(252, 25);
+            this.lblEndingInvoice.Size = new System.Drawing.Size(288, 25);
             this.lblEndingInvoice.TabIndex = 56;
             this.lblEndingInvoice.Text = "0";
             this.lblEndingInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

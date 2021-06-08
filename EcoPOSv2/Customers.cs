@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace EcoPOSv2
 {
-    public partial class Settings : Form
+    public partial class Customers : Form
     {
-        public Settings()
+        public Customers()
         {
             InitializeComponent();
-        }
-
-        private void BtnStore_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

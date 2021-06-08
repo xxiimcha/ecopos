@@ -134,6 +134,18 @@
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlBehavior.cs" />
+    <Compile Include="Customers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers.Designer.cs">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Database.Designer.cs">
+      <DependentUpon>Database.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,11 +214,23 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logs.Designer.cs">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageDiscounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageDiscounts.Designer.cs">
+      <DependentUpon>ManageDiscounts.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageProducts.cs">
       <SubType>Form</SubType>
@@ -279,6 +303,12 @@
     </Compile>
     <Compile Include="RedeemCart.Designer.cs">
       <DependentUpon>RedeemCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RedeemSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RedeemSettings.Designer.cs">
+      <DependentUpon>RedeemSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="RegularDiscount.cs">
       <SubType>Form</SubType>
@@ -440,6 +470,12 @@
       <DependentUpon>XReadingReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ZReading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZReading.Designer.cs">
+      <DependentUpon>ZReading.cs</DependentUpon>
+    </Compile>
     <Compile Include="ZReadingRecords.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -476,6 +512,12 @@
     <EmbeddedResource Include="ContinueSession.resx">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Customers.resx">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database.resx">
+      <DependentUpon>Database.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DatabaseSettings.resx">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -509,8 +551,14 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Logs.resx">
+      <DependentUpon>Logs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageDiscounts.resx">
+      <DependentUpon>ManageDiscounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageProducts.resx">
       <DependentUpon>ManageProducts.cs</DependentUpon>
@@ -548,6 +596,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RedeemCart.resx">
       <DependentUpon>RedeemCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedeemSettings.resx">
+      <DependentUpon>RedeemSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegularDiscount.resx">
       <DependentUpon>RegularDiscount.cs</DependentUpon>
@@ -637,6 +688,9 @@
     <EmbeddedResource Include="XReadingReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>XReadingReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZReading.resx">
+      <DependentUpon>ZReading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZReadingRecords.resx">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>

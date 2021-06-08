@@ -141,6 +141,7 @@
             this.btnStore.TabIndex = 9;
             this.btnStore.Text = "Store";
             this.btnStore.UseVisualStyleBackColor = false;
+            this.btnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // Settings
             // 
