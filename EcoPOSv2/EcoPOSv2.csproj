@@ -140,6 +140,12 @@
     <Compile Include="DatabaseSettings.Designer.cs">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Developer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Developer.Designer.cs">
+      <DependentUpon>Developer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Devices.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,18 @@
     </Compile>
     <Compile Include="E-Journal.Designer.cs">
       <DependentUpon>E-Journal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditReceiptFooter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditReceiptFooter.Designer.cs">
+      <DependentUpon>EditReceiptFooter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSD.Designer.cs">
+      <DependentUpon>EditSD.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLoad.cs" />
     <Compile Include="Helper.cs" />
@@ -269,11 +287,23 @@
       <DependentUpon>RegularDiscount.cs</DependentUpon>
     </Compile>
     <Compile Include="RolePermission.cs" />
+    <Compile Include="SecureZReading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SecureZReading.Designer.cs">
+      <DependentUpon>SecureZReading.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeeItem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SeeItem.Designer.cs">
       <DependentUpon>SeeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="SpecialDiscount.cs">
       <SubType>Form</SubType>
@@ -320,17 +350,41 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLControl.cs" />
+    <Compile Include="Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Staff.Designer.cs">
+      <DependentUpon>Staff.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StaffReport.Designer.cs">
       <DependentUpon>StaffReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaffType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffType.Designer.cs">
+      <DependentUpon>StaffType.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartingCash.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StartingCash.Designer.cs">
       <DependentUpon>StartingCash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store.Designer.cs">
+      <DependentUpon>Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrainingMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainingMode.Designer.cs">
+      <DependentUpon>TrainingMode.cs</DependentUpon>
     </Compile>
     <Compile Include="UserBypass.cs">
       <SubType>Form</SubType>
@@ -425,6 +479,9 @@
     <EmbeddedResource Include="DatabaseSettings.resx">
       <DependentUpon>DatabaseSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Developer.resx">
+      <DependentUpon>Developer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Devices.resx">
       <DependentUpon>Devices.cs</DependentUpon>
     </EmbeddedResource>
@@ -436,6 +493,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="E-Journal.resx">
       <DependentUpon>E-Journal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditReceiptFooter.resx">
+      <DependentUpon>EditReceiptFooter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSD.resx">
+      <DependentUpon>EditSD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportDatabase.resx">
       <DependentUpon>ImportDatabase.cs</DependentUpon>
@@ -489,8 +552,14 @@
     <EmbeddedResource Include="RegularDiscount.resx">
       <DependentUpon>RegularDiscount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SecureZReading.resx">
+      <DependentUpon>SecureZReading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeeItem.resx">
       <DependentUpon>SeeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpecialDiscount.resx">
       <DependentUpon>SpecialDiscount.cs</DependentUpon>
@@ -523,11 +592,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Staff.resx">
+      <DependentUpon>Staff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffReport.resx">
       <DependentUpon>StaffReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StaffType.resx">
+      <DependentUpon>StaffType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StartingCash.resx">
       <DependentUpon>StartingCash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store.resx">
+      <DependentUpon>Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainingMode.resx">
+      <DependentUpon>TrainingMode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserBypass.resx">
       <DependentUpon>UserBypass.cs</DependentUpon>

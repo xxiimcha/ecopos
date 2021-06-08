@@ -1,6 +1,6 @@
 ﻿namespace EcoPOSv2
 {
-    partial class AdjustCost
+    partial class EditReceiptFooter
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdjustCost));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditReceiptFooter));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.Label4 = new System.Windows.Forms.Label();
+            this.txtReceiptFooter = new System.Windows.Forms.TextBox();
+            this.Label9 = new System.Windows.Forms.Label();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
-            this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.Label5 = new System.Windows.Forms.Label();
-            this.Label2 = new System.Windows.Forms.Label();
-            this.txtNewCost = new System.Windows.Forms.TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.White;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.btnCancel);
             this.guna2Panel1.Controls.Add(this.btnConfirm);
-            this.guna2Panel1.Controls.Add(this.txtRemarks);
-            this.guna2Panel1.Controls.Add(this.Label5);
-            this.guna2Panel1.Controls.Add(this.Label2);
-            this.guna2Panel1.Controls.Add(this.txtNewCost);
+            this.guna2Panel1.Controls.Add(this.Label4);
+            this.guna2Panel1.Controls.Add(this.txtReceiptFooter);
+            this.guna2Panel1.Controls.Add(this.Label9);
             this.guna2Panel1.Location = new System.Drawing.Point(1, 1);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(425, 353);
+            this.guna2Panel1.Size = new System.Drawing.Size(527, 367);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // Label4
+            // 
+            this.Label4.AutoSize = true;
+            this.Label4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.ForeColor = System.Drawing.Color.Black;
+            this.Label4.Location = new System.Drawing.Point(18, 67);
+            this.Label4.Name = "Label4";
+            this.Label4.Size = new System.Drawing.Size(161, 25);
+            this.Label4.TabIndex = 56;
+            this.Label4.Text = "Receipt Footer Text";
+            // 
+            // txtReceiptFooter
+            // 
+            this.txtReceiptFooter.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReceiptFooter.Location = new System.Drawing.Point(23, 104);
+            this.txtReceiptFooter.Multiline = true;
+            this.txtReceiptFooter.Name = "txtReceiptFooter";
+            this.txtReceiptFooter.Size = new System.Drawing.Size(486, 174);
+            this.txtReceiptFooter.TabIndex = 57;
+            // 
+            // Label9
+            // 
+            this.Label9.AutoSize = true;
+            this.Label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label9.ForeColor = System.Drawing.Color.Black;
+            this.Label9.Location = new System.Drawing.Point(17, 22);
+            this.Label9.Name = "Label9";
+            this.Label9.Size = new System.Drawing.Size(55, 32);
+            this.Label9.TabIndex = 54;
+            this.Label9.Text = "Edit";
             // 
             // btnCancel
             // 
@@ -67,14 +99,13 @@
             this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnCancel.Location = new System.Drawing.Point(224, 285);
+            this.btnCancel.Location = new System.Drawing.Point(275, 293);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(189, 57);
-            this.btnCancel.TabIndex = 56;
+            this.btnCancel.TabIndex = 59;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
             // 
@@ -90,72 +121,25 @@
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(11, 285);
+            this.btnConfirm.Location = new System.Drawing.Point(62, 293);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(189, 57);
-            this.btnConfirm.TabIndex = 55;
+            this.btnConfirm.TabIndex = 58;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // txtRemarks
-            // 
-            this.txtRemarks.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRemarks.ForeColor = System.Drawing.Color.Black;
-            this.txtRemarks.Location = new System.Drawing.Point(11, 133);
-            this.txtRemarks.Multiline = true;
-            this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(402, 135);
-            this.txtRemarks.TabIndex = 46;
-            this.txtRemarks.Tag = "";
-            // 
-            // Label5
-            // 
-            this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.ForeColor = System.Drawing.Color.Black;
-            this.Label5.Location = new System.Drawing.Point(11, 99);
-            this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(85, 28);
-            this.Label5.TabIndex = 47;
-            this.Label5.Text = "Remarks";
-            this.Label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.ForeColor = System.Drawing.Color.Black;
-            this.Label2.Location = new System.Drawing.Point(11, 16);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(92, 28);
-            this.Label2.TabIndex = 45;
-            this.Label2.Text = "New cost";
-            // 
-            // txtNewCost
-            // 
-            this.txtNewCost.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNewCost.ForeColor = System.Drawing.Color.Black;
-            this.txtNewCost.Location = new System.Drawing.Point(11, 52);
-            this.txtNewCost.Multiline = true;
-            this.txtNewCost.Name = "txtNewCost";
-            this.txtNewCost.Size = new System.Drawing.Size(402, 33);
-            this.txtNewCost.TabIndex = 42;
-            this.txtNewCost.Tag = "";
-            // 
-            // AdjustCost
+            // EditReceiptFooter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(427, 355);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ClientSize = new System.Drawing.Size(529, 369);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AdjustCost";
+            this.Name = "EditReceiptFooter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdjustCost";
-            this.Load += new System.EventHandler(this.AdjustCost_Load);
+            this.Text = "EditReceiptFooter";
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -165,10 +149,9 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        internal System.Windows.Forms.TextBox txtRemarks;
-        internal System.Windows.Forms.Label Label5;
-        internal System.Windows.Forms.Label Label2;
-        internal System.Windows.Forms.TextBox txtNewCost;
+        internal System.Windows.Forms.Label Label4;
+        internal System.Windows.Forms.TextBox txtReceiptFooter;
+        internal System.Windows.Forms.Label Label9;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Button btnConfirm;
     }
