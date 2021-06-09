@@ -94,6 +94,7 @@
             this.btnSelectAll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSelectAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
             // dgvProducts
             // 
@@ -140,6 +141,7 @@
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(337, 801);
             this.dgvProducts.TabIndex = 39;
+            this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             // 
             // TableLayoutPanel4
             // 
@@ -218,6 +220,7 @@
             this.btnReturn.Text = "Return";
             this.btnReturn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // Label5
             // 
@@ -289,6 +292,7 @@
             this.dgvPurchaseOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPurchaseOrder.Size = new System.Drawing.Size(220, 801);
             this.dgvPurchaseOrder.TabIndex = 40;
+            this.dgvPurchaseOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchaseOrder_CellClick);
             // 
             // TableLayoutPanel3
             // 
@@ -323,6 +327,7 @@
             this.txtSearchProducts.TabIndex = 39;
             this.txtSearchProducts.Tag = "Search purchase order";
             this.txtSearchProducts.Text = "Search purchase order";
+            this.txtSearchProducts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProducts_KeyUp);
             // 
             // TableLayoutPanel2
             // 
@@ -366,6 +371,7 @@
             this.btnRemoveItem.Text = "Remove item";
             this.btnRemoveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveItem.UseVisualStyleBackColor = true;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
             // 
             // dgvReturn
             // 
@@ -411,6 +417,7 @@
             this.dgvReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReturn.Size = new System.Drawing.Size(337, 800);
             this.dgvReturn.TabIndex = 39;
+            this.dgvReturn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReturn_CellEndEdit);
             // 
             // Panel6
             // 
@@ -484,6 +491,7 @@
             this.Name = "AReturn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AReturn";
+            this.Load += new System.EventHandler(this.AReturn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.TableLayoutPanel4.ResumeLayout(false);
             this.Panel5.ResumeLayout(false);
