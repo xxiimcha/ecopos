@@ -274,6 +274,12 @@
       <DependentUpon>PaymentR.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PaymentReceipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PChange.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +421,12 @@
     </Compile>
     <Compile Include="TrainingMode.Designer.cs">
       <DependentUpon>TrainingMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserBypass.cs">
       <SubType>Form</SubType>
@@ -582,6 +594,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PaymentR.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="PaymentReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PaymentReceipt.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="PChange.resx">
       <DependentUpon>PChange.cs</DependentUpon>
     </EmbeddedResource>
@@ -660,6 +676,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrainingMode.resx">
       <DependentUpon>TrainingMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransactionsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionsReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UserBypass.resx">
       <DependentUpon>UserBypass.cs</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoPOSControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace EcoPOSv2
         public Customers()
         {
             InitializeComponent();
+        }
+        private FormLoad OL = new FormLoad();
+        private SQLControl SQL = new SQLControl();
+
+        private Panel currentPanel;
+        private Button currentBtn;
+
+        private TransactionsReport report = new TransactionsReport();
+        private PaymentReceipt reprint_receipt = new PaymentReceipt();
+
+        private bool dgvMT_ClickedOnce = false;
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
