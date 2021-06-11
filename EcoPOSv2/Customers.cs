@@ -33,6 +33,30 @@ namespace EcoPOSv2
         Boolean clickbtnCustomer, clickMembership, clickMemberTransactions, clickMC = false;
 
         //METHODS
+        public static Customers _Customers;
+        public static Customers Instance
+        {
+            get
+            {
+                if (_Customers == null)
+                {
+                    _Customers = new Customers();
+                }
+                return _Customers;
+            }
+        }
+        private void ClearCard_Mem()
+        {
+            txtMC_Status.Clear();
+            txtMC_Search.Clear();
+            txtMC_Owner.Clear();
+            txtMC_Membership.Clear();
+            txtMC_ID.Clear();
+            txtMC_CardNo.Clear();
+            txtMC_Balance.Clear();
+
+            LoadCard();
+        }
         private void ClearFields_Mem()
         {
             txtMem_AmtPerPoint.Clear();
@@ -49,8 +73,21 @@ namespace EcoPOSv2
             rbMem_RewardableYes.Checked = false;
             rbMem_TypeAmount.Checked = false;
             rbMem_TypePercentage.Checked = false;
-        }
 
+            LoadMembership();
+        }
+        public void ClearFields_Card()
+        {
+            txtMC_Balance.Clear();
+            txtMC_CardNo.Clear();
+            txtMC_ID.Clear();
+            txtMC_Membership.Clear();
+            txtMC_Owner.Clear();
+            txtMC_Search.Clear();
+            txtMC_Status.Clear();
+
+            LoadCard();
+        }
         public void LoadCard()
         {
             SQL.Query("SELECT cardID, card_no FROM member_card ORDER BY card_no ASC");
@@ -153,11 +190,15 @@ namespace EcoPOSv2
             txtCus_ID.Clear();
             txtCus_Name.Clear();
             txtCus_Search.Clear();
+
+            LoadCustomer();
         }
 
         //METHODS
         private void Customers_Load(object sender, EventArgs e)
         {
+            _Customers = this;
+
             pnlCustomer.BringToFront();
             clickbtnCustomer = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions,btnMC);
@@ -636,6 +677,144 @@ namespace EcoPOSv2
             {
                 dgvMembership.Sort(dgvMembership.Columns[1], ListSortDirection.Descending);
                 btnMem_Sort.IconChar = IconChar.SortAlphaDown;
+            }
+        }
+
+        private void dgvCard_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+
+            SQL.AddParam("@cardID", dgvCard.CurrentRow.Cells[0].Value.ToString());
+
+            SQL.Query("SELECT * FROM member_card WHERE cardID = @cardID");
+            if (SQL.HasException(true))
+                return;
+
+            foreach (DataRow r in SQL.DBDT.Rows)
+            {
+                txtMC_ID.Text = r["cardID"].ToString();
+                txtMC_CardNo.Text = r["card_no"].ToString();
+                txtMC_Membership.Text = r["member_type_ID"].ToString();
+                txtMC_Owner.Text = r["customer_name"].ToString();
+                txtMC_Balance.Text = r["card_balance"].ToString();
+                txtMC_Status.Text = r["status"].ToString();
+            }
+        }
+
+        private void btnMC_RegisterCard_Click(object sender, EventArgs e)
+        {
+            if (txtMC_Balance.Text != "" || txtMC_CardNo.Text != "" || txtMC_Membership.Text != "" || txtMC_Status.Text != "")
+            {
+
+                // check for duplicate names
+                SQL.AddParam("@card_no", txtMC_CardNo.Text);
+                int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM member_card WHERE card_no = @card_no) > 0,'1', '0') as result"));
+
+                if (SQL.HasException(true))
+                    return;
+
+                if (result == 0)
+                {
+                    SQL.AddParam("@card_no", txtMC_CardNo.Text);
+
+                    SQL.Query(@"INSERT INTO member_card (card_no, member_type_ID, customerID, customer_name, card_balance, status)
+                                       VALUES (@card_no, 0, 0, '', 0, 'Available')");
+                    if (SQL.HasException(true))
+                        return;
+
+                    ClearFields_Card();
+                    LoadCard();
+                    new Notification().PopUp("Data saved.","","information");
+                }
+                else
+                    new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+            }
+        }
+
+        private void btnMC_LostReplaceCard_Click(object sender, EventArgs e)
+        {
+            DialogResult approval = MessageBox.Show("Replace this card? Details of this card will be transferred to a new card", "Lost/Replacement", MessageBoxButtons.YesNo);
+
+            if (txtMC_Status.Text == "Owner removed")
+            {
+                new Notification().PopUp("This card is unavailable", "Replacement failed", "error");
+                return;
+            }
+
+
+            if (approval == DialogResult.Yes)
+            {
+                ReplaceCard frmReplaceCard = new ReplaceCard();
+                frmReplaceCard.old_card = txtMC_CardNo.Text;
+                frmReplaceCard.ShowDialog();
+            }
+        }
+
+        private void btnMC_ReactivateCard_Click(object sender, EventArgs e)
+        {
+            if (txtMC_Status.Text == "Active")
+                new Notification().PopUp("Card is already active", "", "error");
+            else if (txtMC_Status.Text == "Expired")
+            {
+                DialogResult approval = MessageBox.Show("Activate this card?", "Re-Activation Card", MessageBoxButtons.YesNo);
+
+                if (approval == DialogResult.Yes)
+                {
+                    SQL.AddParam("@card_no", txtMC_CardNo.Text);
+
+                    SQL.Query("UPDATE member_card SET Status = 'Active' WHERE card_no = @card_no");
+                    if (SQL.HasException(true))
+                        return;
+                }
+            }
+            else
+                new Notification().PopUp("This card is unavailable", "Re-activation failed", "error");
+        }
+
+        private void btnMC_NewCard_Click(object sender, EventArgs e)
+        {
+            ClearCard_Mem();
+        }
+
+        private void txtMC_ID_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMC_ID.Text != "")
+                txtMC_CardNo.Enabled = false;
+            else
+                txtMC_CardNo.Enabled = true;
+        }
+
+        private void txtMC_Search_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtMC_Search.Text == "")
+                LoadCard();
+            else
+            {
+                SQL.AddParam("@find", txtMC_Search.Text + "%");
+
+                SQL.Query(@"SELECT cardID, card_no FROM member_card WHERE card_no LIKE @find 
+                           OR customer_name LIKE @find ORDER BY card_no ASC");
+
+                if (SQL.HasException(true))
+                    return;
+
+                dgvCard.DataSource = SQL.DBDT;
+                dgvCard.Columns[0].Visible = false;
+            }
+        }
+
+        private void btnMC_Sort_Click(object sender, EventArgs e)
+        {
+            if (btnMC_Sort.IconChar == IconChar.SortAlphaDown)
+            {
+                dgvCard.Sort(dgvCard.Columns[1], ListSortDirection.Ascending);
+                btnMC_Sort.IconChar = IconChar.SortAlphaUp;
+            }
+            else
+            {
+                dgvCard.Sort(dgvCard.Columns[1], ListSortDirection.Descending);
+                btnMC_Sort.IconChar = IconChar.SortAlphaDown;
             }
         }
 
