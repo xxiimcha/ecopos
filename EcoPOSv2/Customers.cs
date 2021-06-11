@@ -1,4 +1,5 @@
 ﻿using EcoPOSControl;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,8 +32,45 @@ namespace EcoPOSv2
 
         Boolean clickbtnCustomer, clickMembership, clickMemberTransactions, clickMC = false;
 
-
         //METHODS
+        private void ClearFields_Mem()
+        {
+            txtMem_AmtPerPoint.Clear();
+            txtMem_DiscAmount.Clear();
+            txtMem_Expiration.Clear();
+            txtMem_ID.Clear();
+            txtMem_Name.Clear();
+            txtMem_Search.Clear();
+            txtMC_Membership.Clear();
+
+            rbMem_DiscNo.Checked = false;
+            rbMem_DiscYes.Checked = false;
+            rbMem_RewardableNo.Checked = false;
+            rbMem_RewardableYes.Checked = false;
+            rbMem_TypeAmount.Checked = false;
+            rbMem_TypePercentage.Checked = false;
+        }
+
+        public void LoadCard()
+        {
+            SQL.Query("SELECT cardID, card_no FROM member_card ORDER BY card_no ASC");
+            if (SQL.HasException(true))
+                return;
+
+            dgvCard.DataSource = SQL.DBDT;
+            dgvCard.Columns[0].Visible = false;
+        }
+
+        private void LoadMembership()
+        {
+            SQL.Query("SELECT member_type_ID, name FROM membership ORDER BY name ASC");
+            if (SQL.HasException(true))
+                return;
+
+            dgvMembership.DataSource = SQL.DBDT;
+            dgvMembership.Columns[0].Visible = false;
+        }
+
         void SelectedButtonContainer(Button getButtonCustomer, Button getButtonMembership, Button getButtonMemberTransactions, Button getButtonMC)
         {
             Color col = ColorTranslator.FromHtml("#EB545C");
@@ -260,6 +298,345 @@ namespace EcoPOSv2
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
             }
                 
+        }
+
+        private void btnCus_Delete_Click(object sender, EventArgs e)
+        {
+            DialogResult approval = MessageBox.Show("Delete this customer?", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+            if (approval == DialogResult.Yes)
+            {
+                if (txtCus_ID.Text == "")
+                {
+                    new Notification().PopUp("No customer selected.", "", "error");
+                    return;
+                }
+
+                SQL.AddParam("@customerID", txtCus_ID.Text);
+                SQL.Query("DELETE FROM customer WHERE customerID = @customerID");
+
+                if (SQL.HasException(true))
+                    return;
+
+                SQL.AddParam("@customerID", txtCus_ID.Text);
+                SQL.Query("UPDATE member_card SET status = 'Owner removed' WHERE customerID = @customerID");
+
+                if (SQL.HasException(true))
+                    return;
+
+                LoadCustomer();
+
+                ClearFields_Cus();
+
+                new Notification().PopUp("Item deleted.", "", "information");
+            }
+        }
+
+        private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+
+            SQL.AddParam("@customerID", dgvCustomer.CurrentRow.Cells[0].Value.ToString());
+
+            SQL.Query("SELECT * FROM customer WHERE customerID = @customerID");
+            if (SQL.HasException(true))
+                return;
+
+            foreach (DataRow r in SQL.DBDT.Rows)
+            {
+                txtCus_ID.Text = r["customerID"].ToString();
+                txtCus_Name.Text = r["name"].ToString();
+                txtCus_Contact.Text = r["contact"].ToString();
+                dtpCus_Bday.Value = DateTime.Parse(r["birthday"].ToString());
+                txtCus_Add1.Text = r["add1"].ToString();
+                txtCus_Add2.Text = r["add2"].ToString();
+                txtCus_Email.Text = r["email"].ToString();
+                cmbCus_Membership.SelectedValue = r["member_type_ID"].ToString();
+                txtCus_CardNo.Text = r["card_no"].ToString();
+            }
+        }
+
+        private void txtCus_Search_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtCus_Search.Text == "")
+                LoadCustomer();
+            else
+            {
+                SQL.AddParam("@find", txtCus_Search.Text + "%");
+
+                SQL.Query("SELECT customerID, name FROM customer WHERE name LIKE @find ORDER BY name ASC");
+                if (SQL.HasException(true))
+                    return;
+
+                dgvCustomer.DataSource = SQL.DBDT;
+                dgvCustomer.Columns[0].Visible = false;
+            }
+        }
+
+        private void btnCus_Sort_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomer.RowCount == 0)
+                return;
+
+            if (btnCus_Sort.IconChar == IconChar.SortAlphaDown)
+            {
+                dgvCustomer.Sort(dgvCustomer.Columns[1], ListSortDirection.Ascending);
+                btnCus_Sort.IconChar = IconChar.SortAlphaUp;
+            }
+            else
+            {
+                dgvCustomer.Sort(dgvCustomer.Columns[1], ListSortDirection.Descending);
+                btnCus_Sort.IconChar = IconChar.SortAlphaDown;
+            }
+        }
+
+        private void dgvMembership_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                SQL.AddParam("@member_type_ID", dgvMembership.CurrentRow.Cells[0].Value.ToString());
+                SQL.Query("SELECT * FROM membership WHERE member_type_ID = @member_type_ID");
+
+                if (SQL.HasException(true)) return;
+
+                foreach (DataRow dr in SQL.DBDT.Rows)
+                {
+                    txtMem_ID.Text = dr["member_type_ID"].ToString();
+                    txtMem_Name.Text = dr["name"].ToString();
+                    txtMem_DiscAmount.Text = dr["disc_amt"].ToString();
+                    txtMem_Expiration.Text = dr["expiration"].ToString();
+                    txtMem_AmtPerPoint.Text = dr["amt_per_pt"].ToString();
+
+                    if (Convert.ToBoolean(dr["discountable"].ToString()))
+                    {
+                        rbMem_DiscYes.Checked = true;
+                    }
+                    else
+                    {
+                        rbMem_DiscYes.Checked = false;
+                    }
+
+                    if (Convert.ToInt32(dr["disc_type"].ToString()) == 1)
+                    {
+                        rbMem_TypeAmount.Checked = true;
+                    }
+                    else
+                    {
+                        rbMem_TypePercentage.Checked = false;
+                    }
+
+
+                    if (Convert.ToBoolean(dr["rewardable"].ToString()))
+                    {
+                        rbMem_RewardableYes.Checked = true;
+                    }
+                    else
+                    {
+                        rbMem_RewardableYes.Checked = false;
+                    }
+                }
+            }
+        }
+
+        private void btnMem_Save_Click(object sender, EventArgs e)
+        {
+            if (txtMem_Name.Text != "" || txtMem_DiscAmount.Text != "" || txtMem_Expiration.Text == "" || txtMem_AmtPerPoint.Text == "")
+            {
+                string action = "Update";
+                bool discountable = false;
+                int disc_type = 2;
+                bool rewardable = false;
+
+                if (txtMem_ID.Text == "")
+                    action = "New";
+
+
+
+                if (rbMem_DiscYes.Checked)
+                    discountable = true;
+
+                if (rbMem_TypeAmount.Checked)
+                    disc_type = 1;
+
+                if (rbMem_RewardableYes.Checked)
+                    rewardable = true;
+
+
+
+                switch (action)
+                {
+                    case "New":
+                        {
+                            // check for duplicate names
+                            SQL.AddParam("@name", txtMem_Name.Text);
+                            int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM membership WHERE name = @name) > 0,'1', '0') as result"));
+
+                            if (SQL.HasException(true))
+                                return;
+
+                            if (result == 0)
+                            {
+                                SQL.AddParam("@name", txtMem_Name.Text);
+                                SQL.AddParam("@discountable", discountable);
+                                SQL.AddParam("@disc_amt", txtMem_DiscAmount.Text);
+                                SQL.AddParam("@disc_type", disc_type);
+                                SQL.AddParam("@expiration", txtMem_Expiration.Text);
+                                SQL.AddParam("@rewardable", rewardable);
+                                SQL.AddParam("@amt_per_pt", txtMem_AmtPerPoint.Text);
+
+                                SQL.Query(@"INSERT INTO membership (name, discountable, disc_amt, disc_type, 
+                                        expiration, rewardable, amt_per_pt) VALUES (@name, @discountable, 
+                                        @disc_amt, @disc_type, @expiration, @rewardable, @amt_per_pt)");
+
+                                if (SQL.HasException(true))
+                                    return;
+                                ClearFields_Mem();
+                                new Notification().PopUp("Data saved.","","information");
+                            }
+                            else
+                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                            break;
+                        }
+
+                    default:
+                        {
+                            SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                            SQL.AddParam("@name", txtMem_Name.Text);
+
+                            string result = SQL.ReturnResult(@"SELECT IIF((
+                SELECT COUNT(*) as duplicatecount FROM membership WHERE name = @name AND member_type_ID <> @member_type_ID) > 0,
+                1, 0) as result");
+
+                            if (SQL.HasException(true))
+                                return;
+
+
+                            if (result == "0")
+                            {
+                                SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                                SQL.AddParam("@name", txtMem_Name.Text);
+                                SQL.AddParam("@discountable", discountable);
+                                SQL.AddParam("@disc_amt", txtMem_DiscAmount.Text);
+                                SQL.AddParam("@disc_type", disc_type);
+                                SQL.AddParam("@expiration", txtMem_Expiration.Text);
+                                SQL.AddParam("@rewardable", rewardable);
+                                SQL.AddParam("@amt_per_pt", txtMem_AmtPerPoint.Text);
+
+                                SQL.Query(@"UPDATE membership SET name = @name, discountable = @discountable, 
+                                        disc_amt = @disc_amt, disc_type = @disc_type, expiration = @expiration, 
+                                        rewardable = @rewardable, amt_per_pt = @amt_per_pt WHERE member_type_ID = @member_type_ID");
+
+                                if (SQL.HasException(true))
+                                    return;
+
+                                new Notification().PopUp("Data saved.", "", "information");
+                            }
+                            else
+                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                            break;
+                        }
+                }
+                LoadMembership();
+                OL.ComboValues(cmbCus_Membership, "member_type_ID", "name", "membership");
+            }
+            else
+                new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+        }
+
+        private void rbMem_DiscYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbMem_DiscYes.Checked)
+            {
+                txtMem_DiscAmount.Enabled = true;
+                rbMem_TypeAmount.Enabled = true;
+                rbMem_TypePercentage.Enabled = true;
+            }
+            else
+            {
+                txtMem_DiscAmount.Text = "0.00";
+                txtMem_DiscAmount.Enabled = false;
+                rbMem_TypeAmount.Enabled = false;
+                rbMem_TypePercentage.Enabled = false;
+            }
+        }
+
+        private void rbMem_RewardableYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbMem_RewardableYes.Checked)
+                txtMem_AmtPerPoint.Enabled = true;
+            else
+            {
+                txtMem_AmtPerPoint.Text = "0";
+                txtMem_AmtPerPoint.Enabled = false;
+            }
+        }
+
+        private void txtMem_Search_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMem_Search.Text == "")
+                LoadMembership();
+            else
+            {
+                SQL.AddParam("@find", txtMem_Search.Text + "%");
+
+                SQL.Query("SELECT member_type_ID, name FROM membership WHERE name LIKE @find ORDER BY name ASC");
+                if (SQL.HasException(true))
+                    return;
+
+                dgvMembership.DataSource = SQL.DBDT;
+                dgvMembership.Columns[0].Visible = false;
+            }
+        }
+
+        private void btnMem_Delete_Click(object sender, EventArgs e)
+        {
+            DialogResult approval = MessageBox.Show("Delete this member?", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+            if (approval == DialogResult.Yes)
+            {
+                if (txtMem_ID.Text == "")
+                {
+                    new Notification().PopUp("No item selected.", "", "error");
+                    return;
+                }
+
+                SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                SQL.Query("DELETE FROM membership WHERE member_type_ID = @member_type_ID");
+
+                if (SQL.HasException(true))
+                    return;
+
+                LoadMembership();
+
+                ClearFields_Mem();
+
+                new Notification().PopUp("Item deleted.", "", "information");
+
+                OL.ComboValues(cmbCus_Membership, "member_type_ID", "name", "membership");
+            }
+        }
+
+        private void btnMem_New_Click(object sender, EventArgs e)
+        {
+            ClearFields_Mem();
+        }
+
+        private void btnMem_Sort_Click(object sender, EventArgs e)
+        {
+            if (dgvMembership.RowCount == 0)
+                return;
+
+            if (btnMem_Sort.IconChar == IconChar.SortAlphaDown)
+            {
+                dgvMembership.Sort(dgvMembership.Columns[1], ListSortDirection.Ascending);
+                btnMem_Sort.IconChar = IconChar.SortAlphaUp;
+            }
+            else
+            {
+                dgvMembership.Sort(dgvMembership.Columns[1], ListSortDirection.Descending);
+                btnMem_Sort.IconChar = IconChar.SortAlphaDown;
+            }
         }
 
         private void btnMembership_Click(object sender, EventArgs e)
