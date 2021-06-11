@@ -44,8 +44,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="FontAwesome.Sharp">
-      <HintPath>\\PC\users\PC\Desktop\Shared\FontAwesome.Sharp.dll</HintPath>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI">
       <HintPath>..\..\..\..\Desktop\Guna.UI.dll</HintPath>
@@ -114,7 +114,6 @@
     <Compile Include="AReturn.Designer.cs">
       <DependentUpon>AReturn.cs</DependentUpon>
     </Compile>
-    <Compile Include="AssignValidation.cs" />
     <Compile Include="ASupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,7 +132,6 @@
     <Compile Include="ContinueSession.Designer.cs">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlBehavior.cs" />
     <Compile Include="Customers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -715,6 +713,11 @@
     <EmbeddedResource Include="ZReadingRecords.resx">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -746,6 +749,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
