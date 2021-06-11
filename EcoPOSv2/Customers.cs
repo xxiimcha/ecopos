@@ -837,6 +837,8 @@ namespace EcoPOSv2
             pnlMC.BringToFront();
             clickMC = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+
+            //Comment
         }
     }
 }
