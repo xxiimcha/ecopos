@@ -1,10 +1,17 @@
-﻿using EcoPOSControl;
+﻿using CrystalDecisions.Shared;
+using EcoPOSControl;
 using FontAwesome.Sharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +39,6 @@ namespace EcoPOSv2
 
         Boolean clickbtnCustomer, clickMembership, clickMemberTransactions, clickMC = false;
 
-        //METHODS
         public static Customers _Customers;
         public static Customers Instance
         {
@@ -45,6 +51,97 @@ namespace EcoPOSv2
                 return _Customers;
             }
         }
+        //METHODS
+
+        public void ExportDgvToPDF(string title, DataGridView dvg)
+        {
+            if (dvg.Rows.Count == 0)
+            {
+                new Notification().PopUp("No records show in grid.", "", "error");
+                return;
+            }
+
+            SaveFileDialog saveFilePath = new SaveFileDialog();
+            saveFilePath.Filter = "PDF Files (*.pdf*)|*.pdf";
+
+            if (saveFilePath.ShowDialog() == DialogResult.OK)
+            {
+                //Creating iTextSharp Table from the DataTable data
+                PdfPTable pdfTable = new PdfPTable(dvg.ColumnCount);
+                pdfTable.DefaultCell.Padding = 5;
+                pdfTable.WidthPercentage = 100;
+                pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                pdfTable.DefaultCell.BorderWidth = 1;
+
+                //Adding Header row
+                foreach (DataGridViewColumn column in dvg.Columns)
+                {
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                    cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+                    BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                    iTextSharp.text.Font font = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
+                    pdfTable.AddCell(cell);
+                }
+
+                //Adding DataRow
+                foreach (DataGridViewRow row in dvg.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        pdfTable.AddCell(cell.Value.ToString());
+                    }
+                }
+                string date = DateTime.Now.ToString("MM-dd-yyyy");
+                //Exporting to PDF
+                //string folderPath = "C:\\Users\\" + Environment.UserName + "\\Desktop\\";
+                //if (!Directory.Exists(folderPath))
+                //{
+                //    Directory.CreateDirectory(folderPath);
+                //}
+                using (FileStream stream = new FileStream(saveFilePath + "Transaction Reports-" + date + ".pdf", FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A4.Rotate(), 10, 10, 42, 35);
+                    PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    Paragraph Header = new Paragraph("Transaction Reports", FontFactory.GetFont(FontFactory.TIMES, 45, iTextSharp.text.Font.NORMAL));
+                    Header.Alignment = Element.ALIGN_CENTER;
+                    PdfPTable footerTbl = new PdfPTable(1);
+                    footerTbl.TotalWidth = 300;
+                    Paragraph paragraph = new Paragraph();
+                    pdfDoc.Add(Header);
+                    Paragraph Space = new Paragraph(" ");
+                    pdfDoc.Add(Space);
+                    paragraph.Add(title);
+                    paragraph.Alignment = Element.ALIGN_CENTER;
+                    paragraph.SpacingAfter = 5.0F;
+                    paragraph.Add(new Paragraph(" "));
+                    pdfDoc.Add(paragraph);
+                    pdfDoc.Add(pdfTable);
+                    pdfDoc.Close();
+                    stream.Close();
+
+                    new Notification().PopUp("Transaction Reports has been Created as PDF", "", "success");
+                }
+            }
+        }
+
+
+        public static bool PrinterExists(string printerName)
+        {
+            if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
+            return PrinterSettings.InstalledPrinters.Cast<string>().Any(name => printerName.ToUpper().Trim() == name.ToUpper().Trim());
+        }
+
+        private void LoadMT_Customers()
+        {
+            OL.ComboValuesQuery(cmbMT_Customer, @"SELECT customerID, name FROM
+                                         (
+                                          SELECT 0 as 'customerID', 'All customers' as 'name', 1 as ord
+                                          UNION ALL
+                                          SELECT customerID, (name + ' (' + card_no + ')'), 2 as ord FROM customer
+                                         ) x ORDER BY ord, name ASC", "customerID", "name");
+        }
+
         private void ClearCard_Mem()
         {
             txtMC_Status.Clear();
@@ -815,6 +912,249 @@ namespace EcoPOSv2
             {
                 dgvCard.Sort(dgvCard.Columns[1], ListSortDirection.Descending);
                 btnMC_Sort.IconChar = IconChar.SortAlphaDown;
+            }
+        }
+
+        private void btnMT_PrintReceipt_Click(object sender, EventArgs e)
+        {
+            if (dgvMT_ClickedOnce == false)
+                return;
+
+            reprint_receipt = new PaymentReceipt();
+
+            DataSet ds = new DataSet();
+
+            try
+            {
+                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                SQL.DBDA.Fill(ds, "transaction_items");
+
+                reprint_receipt.SetDataSource(ds);
+
+                SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
+
+                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                           SELECT * INTO #Temp_users
+                           FROM
+                           (
+                           SELECT ID, user_name, first_name FROM
+                           (
+                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
+                           UNION ALL
+                           SELECT userID, user_name, first_name FROM users
+                           ) x
+                           ) as a;
+                           SELECT date_time,
+                           order_ref_temp, 
+                           u.first_name as 'user_first_name', 
+                           no_of_items, 
+                           subtotal, 
+                           less_vat, 
+                           disc_amt, 
+                           cus_pts_deducted, 
+                           grand_total,
+                           vatable_sale,
+                           vat_12,
+                           vat_exempt_sale,
+                           zero_rated_sale,
+                           payment_amt, 
+                           change,
+                           giftcard_no, 
+                           giftcard_deducted,
+                           IIF(cus_name = '', '0', cus_name) as 'cus_name',
+                           cus_special_ID_no,
+                           refund_order_ref_temp, 
+                           return_order_ref_temp, 
+                           action 
+                           FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                           WHERE order_ref = @order_ref");
+
+                if (SQL.HasException(true))
+                    return;
+
+                foreach (DataRow r in SQL.DBDT.Rows)
+                {
+                    reprint_receipt.SetParameterValue("date_time", r["date_time"].ToString());
+                    reprint_receipt.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
+                    reprint_receipt.SetParameterValue("user_first_name", r["user_first_name"].ToString());
+                    reprint_receipt.SetParameterValue("no_of_items", r["no_of_items"].ToString());
+                    reprint_receipt.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("giftcard_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("giftcard_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
+                    reprint_receipt.SetParameterValue("cus_name", r["cus_name"].ToString());
+                    reprint_receipt.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+
+                    string note = "###REPRINT###";
+
+                    if (Convert.ToInt32(r["action"].ToString()) == 2)
+                        note = note + Constants.vbCrLf + "REFUND FROM INVOICE # " + r["refund_order_ref_temp"].ToString();
+                    else if (Convert.ToInt32(r["action"].ToString()) == 3)
+                        note = note + Constants.vbCrLf + "RETURN ITEM FROM INVOICE # " + r["return_order_ref_temp"].ToString();
+                    else if (Convert.ToInt32(r["action"].ToString()) == 4)
+                        note = note + Constants.vbCrLf + "VOID TRANSACTION";
+
+                    reprint_receipt.SetParameterValue("note", note);
+                }
+
+                reprint_receipt.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                reprint_receipt.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                reprint_receipt.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+                reprint_receipt.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
+                reprint_receipt.SetParameterValue("sn", Main.Instance.sd_sn);
+                reprint_receipt.SetParameterValue("min", Main.Instance.sd_min);
+                reprint_receipt.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox(ex.Message);
+                reprint_receipt.Dispose();
+            }
+
+            // print
+            if (Main.Instance.pd_receipt_printer == "")
+            {
+                new Notification().PopUp("No receipt printer selected.", "Error printing", "error");
+                return;
+            }
+
+
+            bool checkprinter = PrinterExists(Main.Instance.pd_receipt_printer);
+
+            if (checkprinter == false)
+            {
+                new Notification().PopUp("Printer is offline","error","error");
+                return;
+            }
+
+
+            reprint_receipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+            reprint_receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+            reprint_receipt.PrintToPrinter(1, false, 0, 0);
+        }
+
+        private void btnMT_ExportReport_Click(object sender, EventArgs e)
+        {
+            ExportDgvToPDF("Member Transactions", dgvMT_Records);
+        }
+
+        private void btnMT_Sort_Click(object sender, EventArgs e)
+        {
+            if (dgvMT_Records.RowCount == 0)
+                return;
+
+            if (btnMT_Sort.IconChar == IconChar.SortAlphaDown)
+            {
+                dgvMT_Records.Sort(dgvMT_Records.Columns[1], ListSortDirection.Ascending);
+                btnMT_Sort.IconChar = IconChar.SortAlphaUp;
+            }
+            else
+            {
+                dgvMT_Records.Sort(dgvMT_Records.Columns[1], ListSortDirection.Descending);
+                btnMT_Sort.IconChar = IconChar.SortAlphaDown;
+            }
+        }
+
+        private void btnMT_SrcDate_Click(object sender, EventArgs e)
+        {
+            string cus_query = "cus_ID_no <> 0";
+
+            if (cmbMT_Customer.SelectedIndex != 0)
+                cus_query = "cus_ID_no = " + cmbMT_Customer.SelectedValue;
+
+            SQL.AddParam("@from", dtpMT_From.Value);
+            SQL.AddParam("@to", dtpMT_To.Value);
+
+            SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Date', cus_name as 'Customer', 
+                       mc.card_no as 'Card #', CONVERT(DECIMAL(18,2), grand_total) as 'Total' FROM transaction_details INNER JOIN member_card as mc ON transaction_details.cus_ID_no = mc.customerID
+                       WHERE date_time BETWEEN @from AND @to AND cus_type = 4 AND " + cus_query + " ORDER BY date_time DESC");
+
+            if (SQL.HasException(true))
+                return;
+
+            dgvMT_Records.DataSource = SQL.DBDT;
+            dgvMT_Records.Columns[0].Visible = false;
+        }
+
+        private void dgvMT_Records_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+
+            dgvMT_ClickedOnce = true;
+
+            report = new TransactionsReport();
+
+            DataSet ds = new DataSet();
+
+            try
+            {
+                CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
+
+                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                SQL.DBDA.Fill(ds, "transaction_items");
+
+                report.SetDataSource(ds);
+
+                SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
+
+                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                           SELECT * INTO #Temp_users
+                           FROM
+                           (
+                           SELECT ID, user_name, first_name FROM
+                           (
+                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
+                           UNION ALL
+                           SELECT userID, user_name, first_name FROM users
+                           ) x
+                           ) as a;
+                           SELECT td.*, u.first_name as 'user_first_name' FROM transaction_details as td 
+                           INNER JOIN #Temp_users as u ON td.userID = u.ID
+                           WHERE order_ref = @order_ref");
+
+                if (SQL.HasException(true))
+                    return;
+
+                foreach (DataRow r in SQL.DBDT.Rows)
+                {
+                    report.SetParameterValue("date_time", r["date_time"].ToString());
+                    report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
+                    report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
+                    report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
+                    report.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()), 2).ToString());
+                    report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
+                    report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
+                    report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
+                    report.SetParameterValue("giftcard_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
+                    report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
+                    report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
+                    report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
+                    report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
+                    report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
+                    report.SetParameterValue("giftcard_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
+                    report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
+                    report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
+                    report.SetParameterValue("cus_name", r["cus_name"].ToString());
+                    report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+
+                    CrystalReportViewer1.ReportSource = report;
+                    CrystalReportViewer1.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox(ex.ToString());
+                report.Dispose();
             }
         }
 
