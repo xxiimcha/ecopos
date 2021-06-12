@@ -154,6 +154,7 @@
             this.btnExportProducts.Text = "Export Products";
             this.btnExportProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportProducts.UseVisualStyleBackColor = true;
+            this.btnExportProducts.Click += new System.EventHandler(this.btnExportProducts_Click);
             // 
             // btnImportProducts
             // 
