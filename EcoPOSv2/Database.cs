@@ -20,6 +20,13 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         void ExportDgvToExcel(DataGridView dgv)
         {
+            if(dgv.Rows.Count == 0)
+            {
+                new Notification().PopUp("No records found!","error","error");
+                return;
+            }
+
+
             SaveFileDialog savefilepath = new SaveFileDialog();
             savefilepath.Filter = "Excel File (*.xlsx*)|*.xlsx";
 
@@ -51,6 +58,8 @@ namespace EcoPOSv2
                     //worksheet.SaveAs(savefilepath.FileName);
                     workbook.SaveAs(savefilepath.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                     apps.Quit();
+
+                    new Notification().PopUp("Export success", "", "information");
                 }
             }
         }
@@ -60,7 +69,7 @@ namespace EcoPOSv2
 
             if (SQL.HasException(true)) return;
 
-
+            ExportDgvToExcel(dgv);
         }
     }
 }
