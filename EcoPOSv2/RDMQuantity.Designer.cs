@@ -76,6 +76,7 @@
             this.btnQuantity.TabIndex = 60;
             this.btnQuantity.Text = "CANCEL";
             this.btnQuantity.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnQuantity.Click += new System.EventHandler(this.BtnQuantity_Click);
             // 
             // btnConfirm
             // 
@@ -98,6 +99,7 @@
             this.btnConfirm.TabIndex = 59;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // lblItem
             // 
@@ -155,6 +157,7 @@
             this.Name = "RDMQuantity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RDMQuantity";
+            this.Load += new System.EventHandler(this.RDMQuantity_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
