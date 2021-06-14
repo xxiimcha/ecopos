@@ -32,8 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvAdjInventory = new System.Windows.Forms.DataGridView();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
@@ -41,8 +42,9 @@
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
-            this.TableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdjInventory)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
+            this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,30 +53,12 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.TableLayoutPanel1);
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
             this.guna2Panel1.Location = new System.Drawing.Point(1, 1);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(564, 689);
             this.guna2Panel1.TabIndex = 0;
-            // 
-            // TableLayoutPanel1
-            // 
-            this.TableLayoutPanel1.ColumnCount = 1;
-            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel1.Controls.Add(this.dgvAdjInventory, 0, 1);
-            this.TableLayoutPanel1.Controls.Add(this.Panel1, 0, 2);
-            this.TableLayoutPanel1.Controls.Add(this.Panel2, 0, 0);
-            this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanel1.Name = "TableLayoutPanel1";
-            this.TableLayoutPanel1.RowCount = 3;
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.9629F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.946192F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(564, 689);
-            this.TableLayoutPanel1.TabIndex = 2;
             // 
             // dgvAdjInventory
             // 
@@ -120,7 +104,35 @@
             this.dgvAdjInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdjInventory.Size = new System.Drawing.Size(558, 558);
             this.dgvAdjInventory.TabIndex = 39;
-            this.dgvAdjInventory.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdjInventory_CellEndEdit);
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel2.BorderThickness = 1;
+            this.guna2Panel2.Controls.Add(this.TableLayoutPanel1);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
+            this.guna2Panel2.Size = new System.Drawing.Size(564, 689);
+            this.guna2Panel2.TabIndex = 1;
+            // 
+            // TableLayoutPanel1
+            // 
+            this.TableLayoutPanel1.ColumnCount = 1;
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanel1.Controls.Add(this.dgvAdjInventory, 0, 1);
+            this.TableLayoutPanel1.Controls.Add(this.Panel1, 0, 2);
+            this.TableLayoutPanel1.Controls.Add(this.Panel2, 0, 0);
+            this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.TableLayoutPanel1.Name = "TableLayoutPanel1";
+            this.TableLayoutPanel1.RowCount = 3;
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.9629F));
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.946192F));
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(564, 689);
+            this.TableLayoutPanel1.TabIndex = 2;
             // 
             // Panel1
             // 
@@ -150,7 +162,6 @@
             this.btnDelete.Size = new System.Drawing.Size(167, 44);
             this.btnDelete.TabIndex = 20;
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -170,7 +181,6 @@
             this.btnSave.Size = new System.Drawing.Size(167, 44);
             this.btnSave.TabIndex = 19;
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Panel2
             // 
@@ -220,8 +230,9 @@
             this.Text = "AdjustInventory";
             this.Load += new System.EventHandler(this.AdjustInventory_Load);
             this.guna2Panel1.ResumeLayout(false);
-            this.TableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdjInventory)).EndInit();
+            this.guna2Panel2.ResumeLayout(false);
+            this.TableLayoutPanel1.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
             this.Panel2.ResumeLayout(false);
             this.Panel2.PerformLayout();
@@ -232,6 +243,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
         internal System.Windows.Forms.DataGridView dgvAdjInventory;
         internal System.Windows.Forms.Panel Panel1;

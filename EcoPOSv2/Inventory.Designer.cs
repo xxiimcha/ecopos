@@ -97,6 +97,7 @@
             this.btnOR.TabIndex = 13;
             this.btnOR.Text = "Operation Record";
             this.btnOR.UseVisualStyleBackColor = false;
+            this.btnOR.Click += new System.EventHandler(this.BtnOR_Click);
             // 
             // btnWarehouse
             // 
@@ -118,6 +119,7 @@
             this.btnWarehouse.TabIndex = 14;
             this.btnWarehouse.Text = "Warehouse";
             this.btnWarehouse.UseVisualStyleBackColor = false;
+            this.btnWarehouse.Click += new System.EventHandler(this.BtnWarehouse_Click);
             // 
             // btnSupplier
             // 
@@ -139,6 +141,7 @@
             this.btnSupplier.TabIndex = 12;
             this.btnSupplier.Text = "Supplier";
             this.btnSupplier.UseVisualStyleBackColor = false;
+            this.btnSupplier.Click += new System.EventHandler(this.BtnSupplier_Click);
             // 
             // btnReturn
             // 
@@ -160,6 +163,7 @@
             this.btnReturn.TabIndex = 9;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
             // 
             // btnPurchase
             // 
@@ -181,6 +185,7 @@
             this.btnPurchase.TabIndex = 8;
             this.btnPurchase.Text = "Purchase";
             this.btnPurchase.UseVisualStyleBackColor = false;
+            this.btnPurchase.Click += new System.EventHandler(this.BtnPurchase_Click);
             // 
             // btnInventory
             // 
@@ -202,6 +207,7 @@
             this.btnInventory.TabIndex = 7;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = false;
+            this.btnInventory.Click += new System.EventHandler(this.BtnInventory_Click);
             // 
             // Inventory
             // 
@@ -214,6 +220,7 @@
             this.Name = "Inventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory";
+            this.Load += new System.EventHandler(this.Inventory_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
