@@ -68,6 +68,7 @@
             this.btnPrintersDevices.Text = "Printers and Devices";
             this.btnPrintersDevices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintersDevices.UseVisualStyleBackColor = false;
+            this.btnPrintersDevices.Click += new System.EventHandler(this.BtnPrintersDevices_Click);
             // 
             // btnEditReceiptFooter
             // 
@@ -90,6 +91,7 @@
             this.btnEditReceiptFooter.Text = "Edit Receipt Footer Text";
             this.btnEditReceiptFooter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditReceiptFooter.UseVisualStyleBackColor = false;
+            this.btnEditReceiptFooter.Click += new System.EventHandler(this.BtnEditReceiptFooter_Click);
             // 
             // btnSeeStoreDetails
             // 
@@ -112,6 +114,7 @@
             this.btnSeeStoreDetails.Text = "See Store Details";
             this.btnSeeStoreDetails.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSeeStoreDetails.UseVisualStyleBackColor = false;
+            this.btnSeeStoreDetails.Click += new System.EventHandler(this.BtnSeeStoreDetails_Click);
             // 
             // Store
             // 

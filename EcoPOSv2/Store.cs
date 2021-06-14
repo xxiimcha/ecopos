@@ -16,5 +16,24 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+
+        private void BtnEditReceiptFooter_Click(object sender, EventArgs e)
+        {
+            var frmEditReceiptFooter = new EditReceiptFooter();
+            frmEditReceiptFooter.ShowDialog();
+        }
+
+        private void BtnSeeStoreDetails_Click(object sender, EventArgs e)
+        {
+            var frmEditSD = new EditSD();
+            frmEditSD.btnSave.Enabled = false;
+            frmEditSD.ShowDialog();
+        }
+
+        private void BtnPrintersDevices_Click(object sender, EventArgs e)
+        {
+            var frmDevices = new Devices();
+            frmDevices.ShowDialog();
+        }
     }
 }
