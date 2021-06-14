@@ -819,6 +819,7 @@
             this.btnGC_Sort.Size = new System.Drawing.Size(44, 40);
             this.btnGC_Sort.TabIndex = 24;
             this.btnGC_Sort.UseVisualStyleBackColor = false;
+            this.btnGC_Sort.Click += new System.EventHandler(this.btnGC_Sort_Click);
             // 
             // dgvGC
             // 
@@ -865,6 +866,7 @@
             this.dgvGC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGC.Size = new System.Drawing.Size(299, 775);
             this.dgvGC.TabIndex = 38;
+            this.dgvGC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGC_CellClick);
             // 
             // Panel9
             // 
@@ -1582,6 +1584,7 @@
             this.btnGC.TabIndex = 10;
             this.btnGC.Text = "Gift Card";
             this.btnGC.UseVisualStyleBackColor = false;
+            this.btnGC.Click += new System.EventHandler(this.btnGC_Click);
             // 
             // btnAPT
             // 
@@ -1603,6 +1606,7 @@
             this.btnAPT.TabIndex = 9;
             this.btnAPT.Text = "Awarded Points Transactions";
             this.btnAPT.UseVisualStyleBackColor = false;
+            this.btnAPT.Click += new System.EventHandler(this.btnAPT_Click);
             // 
             // btnRT
             // 
@@ -1624,6 +1628,7 @@
             this.btnRT.TabIndex = 8;
             this.btnRT.Text = "Redeem Transactions";
             this.btnRT.UseVisualStyleBackColor = false;
+            this.btnRT.Click += new System.EventHandler(this.btnRT_Click);
             // 
             // btnRI
             // 
@@ -1645,6 +1650,7 @@
             this.btnRI.TabIndex = 7;
             this.btnRI.Text = "Redeemable Items";
             this.btnRI.UseVisualStyleBackColor = false;
+            this.btnRI.Click += new System.EventHandler(this.btnRI_Click);
             // 
             // Panel1
             // 
