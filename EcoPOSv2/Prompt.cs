@@ -82,7 +82,8 @@ namespace EcoPOSv2
 
         private void Prompt_Load(object sender, EventArgs e)
         {
-            ds = Helper.LoadFromXMLfile(@"C:\Users\WNO\Desktop\EcoPOS BIR Revisions\EcoPOS\EcoPOS\Dataset\SU.xml");
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            ds = Helper.LoadFromXMLfile(path+"\\SU.xml");
         }
     }
 }
