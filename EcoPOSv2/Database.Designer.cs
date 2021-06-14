@@ -68,6 +68,7 @@
             this.btnImportGC.Text = "Import Gift Card";
             this.btnImportGC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportGC.UseVisualStyleBackColor = true;
+            this.btnImportGC.Click += new System.EventHandler(this.btnImportGC_Click);
             // 
             // Label1
             // 
@@ -112,6 +113,7 @@
             this.btnImportMembership.Text = "Import Membership";
             this.btnImportMembership.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportMembership.UseVisualStyleBackColor = true;
+            this.btnImportMembership.Click += new System.EventHandler(this.btnImportMembership_Click);
             // 
             // btnExportGC
             // 
@@ -133,6 +135,7 @@
             this.btnExportGC.Text = "Export Gift Card";
             this.btnExportGC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportGC.UseVisualStyleBackColor = true;
+            this.btnExportGC.Click += new System.EventHandler(this.btnExportGC_Click);
             // 
             // btnExportProducts
             // 
@@ -154,6 +157,7 @@
             this.btnExportProducts.Text = "Export Products";
             this.btnExportProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportProducts.UseVisualStyleBackColor = true;
+            this.btnExportProducts.Click += new System.EventHandler(this.btnExportProducts_Click);
             // 
             // btnImportProducts
             // 
@@ -175,6 +179,7 @@
             this.btnImportProducts.Text = "Import Products";
             this.btnImportProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportProducts.UseVisualStyleBackColor = true;
+            this.btnImportProducts.Click += new System.EventHandler(this.btnImportProducts_Click);
             // 
             // btnExportCategory
             // 
@@ -196,6 +201,7 @@
             this.btnExportCategory.Text = "Export Category";
             this.btnExportCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportCategory.UseVisualStyleBackColor = true;
+            this.btnExportCategory.Click += new System.EventHandler(this.btnExportCategory_Click);
             // 
             // btnImportCategory
             // 
@@ -217,6 +223,7 @@
             this.btnImportCategory.Text = "Import Category";
             this.btnImportCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportCategory.UseVisualStyleBackColor = true;
+            this.btnImportCategory.Click += new System.EventHandler(this.btnImportCategory_Click);
             // 
             // btnExportCustomer
             // 
@@ -238,6 +245,7 @@
             this.btnExportCustomer.Text = "Export Customer";
             this.btnExportCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportCustomer.UseVisualStyleBackColor = true;
+            this.btnExportCustomer.Click += new System.EventHandler(this.btnExportCustomer_Click);
             // 
             // btnImportCustomer
             // 
@@ -259,6 +267,7 @@
             this.btnImportCustomer.Text = "Import Customer";
             this.btnImportCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportCustomer.UseVisualStyleBackColor = true;
+            this.btnImportCustomer.Click += new System.EventHandler(this.btnImportCustomer_Click);
             // 
             // btnExportMC
             // 
@@ -280,6 +289,7 @@
             this.btnExportMC.Text = "Export Member Card";
             this.btnExportMC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportMC.UseVisualStyleBackColor = true;
+            this.btnExportMC.Click += new System.EventHandler(this.btnExportMC_Click);
             // 
             // btnImportMC
             // 
@@ -301,6 +311,7 @@
             this.btnImportMC.Text = "Import Member Card";
             this.btnImportMC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportMC.UseVisualStyleBackColor = true;
+            this.btnImportMC.Click += new System.EventHandler(this.btnImportMC_Click);
             // 
             // btnExportMembership
             // 
@@ -322,6 +333,7 @@
             this.btnExportMembership.Text = "Export Membership";
             this.btnExportMembership.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportMembership.UseVisualStyleBackColor = true;
+            this.btnExportMembership.Click += new System.EventHandler(this.btnExportMembership_Click);
             // 
             // TableLayoutPanel1
             // 

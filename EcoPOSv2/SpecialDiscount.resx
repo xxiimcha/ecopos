@@ -153,7 +153,7 @@
         2xY9Buedfny32qA5g8FgMBgMBoPBYDAYDIaWIPIv2W12buf8pPoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="guna2Button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnConfirm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAB69JREFUeF7t
         XVuoVFUY/iu6l12oDNEzF8soHwsqK8vKogsEkQQRUR47xz171FMIEb1ILwUaSBklvWREFEVB+FBSZlqB

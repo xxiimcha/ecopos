@@ -16,5 +16,22 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+
+        private void btnChangeStoreSettings_Click(object sender, EventArgs e)
+        {
+            EditSD frmEditSD = new EditSD();
+            frmEditSD.ShowDialog();
+        }
+
+        private void btnImportDatabase_Click(object sender, EventArgs e)
+        {
+            ImportDatabase frmImportDatabase = new ImportDatabase();
+            frmImportDatabase.ShowDialog();
+        }
+
+        private void btnShowMainForm_Click(object sender, EventArgs e)
+        {
+            Main.Instance.Show();
+        }
     }
 }

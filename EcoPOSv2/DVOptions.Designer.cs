@@ -51,6 +51,7 @@
             this.btnShowMainForm.TabIndex = 6;
             this.btnShowMainForm.Text = "Show main form";
             this.btnShowMainForm.UseVisualStyleBackColor = true;
+            this.btnShowMainForm.Click += new System.EventHandler(this.btnShowMainForm_Click);
             // 
             // btnImportDatabase
             // 
@@ -60,6 +61,7 @@
             this.btnImportDatabase.TabIndex = 5;
             this.btnImportDatabase.Text = "Import database";
             this.btnImportDatabase.UseVisualStyleBackColor = true;
+            this.btnImportDatabase.Click += new System.EventHandler(this.btnImportDatabase_Click);
             // 
             // btnChangeStoreSettings
             // 
@@ -69,6 +71,7 @@
             this.btnChangeStoreSettings.TabIndex = 4;
             this.btnChangeStoreSettings.Text = "Change store details";
             this.btnChangeStoreSettings.UseVisualStyleBackColor = true;
+            this.btnChangeStoreSettings.Click += new System.EventHandler(this.btnChangeStoreSettings_Click);
             // 
             // DVOptions
             // 

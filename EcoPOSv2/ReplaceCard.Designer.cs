@@ -52,6 +52,7 @@
             this.btnConfirm.TabIndex = 4;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // txtCardNo
             // 
@@ -59,6 +60,7 @@
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(260, 20);
             this.txtCardNo.TabIndex = 3;
+            this.txtCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCardNo_KeyDown);
             // 
             // ReplaceCard
             // 

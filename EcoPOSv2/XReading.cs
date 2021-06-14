@@ -428,7 +428,7 @@ namespace EcoPOSv2
                     report.SetParameterValue("printed_on", datetime_now);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Interaction.MsgBox(ex.Message);
                 report.Dispose();

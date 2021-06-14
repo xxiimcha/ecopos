@@ -57,6 +57,7 @@
             this.cmbSheet.Name = "cmbSheet";
             this.cmbSheet.Size = new System.Drawing.Size(259, 21);
             this.cmbSheet.TabIndex = 11;
+            this.cmbSheet.SelectedIndexChanged += new System.EventHandler(this.cmbSheet_SelectedIndexChanged);
             // 
             // btnImport
             // 
@@ -66,6 +67,7 @@
             this.btnImport.TabIndex = 10;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnBrowse
             // 
@@ -75,6 +77,7 @@
             this.btnBrowse.TabIndex = 9;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // txtFile
             // 

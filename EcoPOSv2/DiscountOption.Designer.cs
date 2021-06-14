@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2TileButton2 = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnContinueSession = new Guna.UI2.WinForms.Guna2TileButton();
             this.guna2Panel1.SuspendLayout();
@@ -37,7 +37,7 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.guna2TileButton2);
+            this.guna2Panel1.Controls.Add(this.btnCancel);
             this.guna2Panel1.Controls.Add(this.guna2TileButton1);
             this.guna2Panel1.Controls.Add(this.btnContinueSession);
             this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
@@ -46,22 +46,23 @@
             this.guna2Panel1.Size = new System.Drawing.Size(310, 246);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // guna2TileButton2
+            // btnCancel
             // 
-            this.guna2TileButton2.BorderColor = System.Drawing.Color.Red;
-            this.guna2TileButton2.BorderThickness = 2;
-            this.guna2TileButton2.CheckedState.Parent = this.guna2TileButton2;
-            this.guna2TileButton2.CustomImages.Parent = this.guna2TileButton2;
-            this.guna2TileButton2.FillColor = System.Drawing.Color.White;
-            this.guna2TileButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TileButton2.ForeColor = System.Drawing.Color.Red;
-            this.guna2TileButton2.HoverState.Parent = this.guna2TileButton2;
-            this.guna2TileButton2.Location = new System.Drawing.Point(31, 166);
-            this.guna2TileButton2.Name = "guna2TileButton2";
-            this.guna2TileButton2.ShadowDecoration.Parent = this.guna2TileButton2;
-            this.guna2TileButton2.Size = new System.Drawing.Size(248, 53);
-            this.guna2TileButton2.TabIndex = 77;
-            this.guna2TileButton2.Text = "Cancel";
+            this.btnCancel.BorderColor = System.Drawing.Color.Red;
+            this.btnCancel.BorderThickness = 2;
+            this.btnCancel.CheckedState.Parent = this.btnCancel;
+            this.btnCancel.CustomImages.Parent = this.btnCancel;
+            this.btnCancel.FillColor = System.Drawing.Color.White;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Red;
+            this.btnCancel.HoverState.Parent = this.btnCancel;
+            this.btnCancel.Location = new System.Drawing.Point(31, 166);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
+            this.btnCancel.Size = new System.Drawing.Size(248, 53);
+            this.btnCancel.TabIndex = 77;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // guna2TileButton1
             // 
@@ -79,6 +80,7 @@
             this.guna2TileButton1.Size = new System.Drawing.Size(248, 53);
             this.guna2TileButton1.TabIndex = 76;
             this.guna2TileButton1.Text = "Special Discount (PWD/SC/Athlete)";
+            this.guna2TileButton1.Click += new System.EventHandler(this.guna2TileButton1_Click);
             // 
             // btnContinueSession
             // 
@@ -96,6 +98,7 @@
             this.btnContinueSession.Size = new System.Drawing.Size(248, 53);
             this.btnContinueSession.TabIndex = 75;
             this.btnContinueSession.Text = "Regular Discount";
+            this.btnContinueSession.Click += new System.EventHandler(this.btnContinueSession_Click);
             // 
             // DiscountOption
             // 
@@ -116,7 +119,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton2;
+        private Guna.UI2.WinForms.Guna2TileButton btnCancel;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
         private Guna.UI2.WinForms.Guna2TileButton btnContinueSession;
     }

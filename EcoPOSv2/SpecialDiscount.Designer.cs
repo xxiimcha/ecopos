@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpecialDiscount));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.cmbDesc = new System.Windows.Forms.ComboBox();
             this.txtIDNo = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -44,7 +44,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.Controls.Add(this.guna2Button1);
-            this.guna2Panel1.Controls.Add(this.guna2Button2);
+            this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.cmbDesc);
             this.guna2Panel1.Controls.Add(this.txtIDNo);
             this.guna2Panel1.Controls.Add(this.txtName);
@@ -78,28 +78,30 @@
             this.guna2Button1.TabIndex = 62;
             this.guna2Button1.Text = "CANCEL";
             this.guna2Button1.TextOffset = new System.Drawing.Point(10, 0);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // guna2Button2
+            // btnConfirm
             // 
-            this.guna2Button2.BorderColor = System.Drawing.Color.Green;
-            this.guna2Button2.BorderThickness = 2;
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.FillColor = System.Drawing.Color.White;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.guna2Button2.ForeColor = System.Drawing.Color.Green;
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button2.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2Button2.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2Button2.Location = new System.Drawing.Point(276, 153);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(238, 57);
-            this.guna2Button2.TabIndex = 61;
-            this.guna2Button2.Text = "CONFIRM";
-            this.guna2Button2.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderThickness = 2;
+            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
+            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
+            this.btnConfirm.FillColor = System.Drawing.Color.White;
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
+            this.btnConfirm.HoverState.Parent = this.btnConfirm;
+            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
+            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnConfirm.Location = new System.Drawing.Point(276, 153);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
+            this.btnConfirm.Size = new System.Drawing.Size(238, 57);
+            this.btnConfirm.TabIndex = 61;
+            this.btnConfirm.Text = "CONFIRM";
+            this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // cmbDesc
             // 
@@ -185,6 +187,7 @@
             this.Name = "SpecialDiscount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SpecialDiscount";
+            this.Load += new System.EventHandler(this.SpecialDiscount_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -195,7 +198,7 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnConfirm;
         internal System.Windows.Forms.ComboBox cmbDesc;
         internal System.Windows.Forms.TextBox txtIDNo;
         internal System.Windows.Forms.TextBox txtName;

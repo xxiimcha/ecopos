@@ -16,5 +16,10 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+
+        private void btnTrainingMode_Click(object sender, EventArgs e)
+        {
+            new Prompt().Pop(2);
+        }
     }
 }
