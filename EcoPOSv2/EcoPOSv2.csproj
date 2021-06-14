@@ -340,6 +340,12 @@
     <Compile Include="RedeemSettings.Designer.cs">
       <DependentUpon>RedeemSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="RedeemTransactionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RedeemTransactionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RegularDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,6 +650,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RedeemSettings.resx">
       <DependentUpon>RedeemSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedeemTransactionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RedeemTransactionReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RegularDiscount.resx">
       <DependentUpon>RegularDiscount.cs</DependentUpon>
