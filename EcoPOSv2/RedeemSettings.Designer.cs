@@ -37,13 +37,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedeemSettings));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedeemSettings));
             this.dgvAPT_Records = new System.Windows.Forms.DataGridView();
             this.dtpRT_From = new System.Windows.Forms.DateTimePicker();
             this.dtpRT_To = new System.Windows.Forms.DateTimePicker();
@@ -88,6 +88,9 @@
             this.TableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Panel10 = new System.Windows.Forms.Panel();
+            this.btnProduct_Delete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnProduct_Save = new Guna.UI2.WinForms.Guna2Button();
+            this.btnProduct_New = new FontAwesome.Sharp.IconButton();
             this.TableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlGC = new System.Windows.Forms.Panel();
             this.dgvRI_RedeemItems = new System.Windows.Forms.DataGridView();
@@ -119,6 +122,7 @@
             this.txtRI_Points = new System.Windows.Forms.TextBox();
             this.Label16 = new System.Windows.Forms.Label();
             this.Panel5 = new System.Windows.Forms.Panel();
+            this.btnRI_Save = new Guna.UI2.WinForms.Guna2Button();
             this.pnlRI = new System.Windows.Forms.Panel();
             this.pnlParent = new System.Windows.Forms.Panel();
             this.pnlAPT = new System.Windows.Forms.Panel();
@@ -127,10 +131,6 @@
             this.btnRT = new FontAwesome.Sharp.IconButton();
             this.btnRI = new FontAwesome.Sharp.IconButton();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.btnProduct_Delete = new Guna.UI2.WinForms.Guna2Button();
-            this.btnProduct_Save = new Guna.UI2.WinForms.Guna2Button();
-            this.btnProduct_New = new FontAwesome.Sharp.IconButton();
-            this.btnRI_Save = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAPT_Records)).BeginInit();
             this.TableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRT_Records)).BeginInit();
@@ -920,6 +920,70 @@
             this.Panel10.Size = new System.Drawing.Size(855, 60);
             this.Panel10.TabIndex = 1;
             // 
+            // btnProduct_Delete
+            // 
+            this.btnProduct_Delete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnProduct_Delete.BorderThickness = 2;
+            this.btnProduct_Delete.CheckedState.Parent = this.btnProduct_Delete;
+            this.btnProduct_Delete.CustomImages.Parent = this.btnProduct_Delete;
+            this.btnProduct_Delete.FillColor = System.Drawing.Color.White;
+            this.btnProduct_Delete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnProduct_Delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnProduct_Delete.HoverState.Parent = this.btnProduct_Delete;
+            this.btnProduct_Delete.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct_Delete.Image")));
+            this.btnProduct_Delete.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnProduct_Delete.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnProduct_Delete.Location = new System.Drawing.Point(230, 10);
+            this.btnProduct_Delete.Name = "btnProduct_Delete";
+            this.btnProduct_Delete.ShadowDecoration.Parent = this.btnProduct_Delete;
+            this.btnProduct_Delete.Size = new System.Drawing.Size(120, 40);
+            this.btnProduct_Delete.TabIndex = 70;
+            this.btnProduct_Delete.Text = "DELETE";
+            this.btnProduct_Delete.TextOffset = new System.Drawing.Point(10, 0);
+            // 
+            // btnProduct_Save
+            // 
+            this.btnProduct_Save.BorderColor = System.Drawing.Color.Green;
+            this.btnProduct_Save.BorderThickness = 2;
+            this.btnProduct_Save.CheckedState.Parent = this.btnProduct_Save;
+            this.btnProduct_Save.CustomImages.Parent = this.btnProduct_Save;
+            this.btnProduct_Save.FillColor = System.Drawing.Color.White;
+            this.btnProduct_Save.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnProduct_Save.ForeColor = System.Drawing.Color.Green;
+            this.btnProduct_Save.HoverState.Parent = this.btnProduct_Save;
+            this.btnProduct_Save.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct_Save.Image")));
+            this.btnProduct_Save.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnProduct_Save.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnProduct_Save.Location = new System.Drawing.Point(356, 10);
+            this.btnProduct_Save.Name = "btnProduct_Save";
+            this.btnProduct_Save.ShadowDecoration.Parent = this.btnProduct_Save;
+            this.btnProduct_Save.Size = new System.Drawing.Size(120, 40);
+            this.btnProduct_Save.TabIndex = 69;
+            this.btnProduct_Save.Text = "SAVE";
+            this.btnProduct_Save.TextOffset = new System.Drawing.Point(10, 0);
+            // 
+            // btnProduct_New
+            // 
+            this.btnProduct_New.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnProduct_New.BackColor = System.Drawing.Color.White;
+            this.btnProduct_New.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
+            this.btnProduct_New.FlatAppearance.BorderSize = 2;
+            this.btnProduct_New.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduct_New.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProduct_New.ForeColor = System.Drawing.Color.Orange;
+            this.btnProduct_New.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnProduct_New.IconColor = System.Drawing.Color.Orange;
+            this.btnProduct_New.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnProduct_New.IconSize = 30;
+            this.btnProduct_New.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProduct_New.Location = new System.Drawing.Point(482, 10);
+            this.btnProduct_New.Name = "btnProduct_New";
+            this.btnProduct_New.Size = new System.Drawing.Size(142, 40);
+            this.btnProduct_New.TabIndex = 68;
+            this.btnProduct_New.Text = "ADD NEW";
+            this.btnProduct_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProduct_New.UseVisualStyleBackColor = false;
+            // 
             // TableLayoutPanel8
             // 
             this.TableLayoutPanel8.ColumnCount = 2;
@@ -1447,6 +1511,27 @@
             this.Panel5.Size = new System.Drawing.Size(382, 60);
             this.Panel5.TabIndex = 12;
             // 
+            // btnRI_Save
+            // 
+            this.btnRI_Save.BorderColor = System.Drawing.Color.Green;
+            this.btnRI_Save.BorderThickness = 2;
+            this.btnRI_Save.CheckedState.Parent = this.btnRI_Save;
+            this.btnRI_Save.CustomImages.Parent = this.btnRI_Save;
+            this.btnRI_Save.FillColor = System.Drawing.Color.White;
+            this.btnRI_Save.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnRI_Save.ForeColor = System.Drawing.Color.Green;
+            this.btnRI_Save.HoverState.Parent = this.btnRI_Save;
+            this.btnRI_Save.Image = ((System.Drawing.Image)(resources.GetObject("btnRI_Save.Image")));
+            this.btnRI_Save.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRI_Save.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnRI_Save.Location = new System.Drawing.Point(131, 10);
+            this.btnRI_Save.Name = "btnRI_Save";
+            this.btnRI_Save.ShadowDecoration.Parent = this.btnRI_Save;
+            this.btnRI_Save.Size = new System.Drawing.Size(120, 40);
+            this.btnRI_Save.TabIndex = 61;
+            this.btnRI_Save.Text = "SAVE";
+            this.btnRI_Save.TextOffset = new System.Drawing.Point(10, 0);
+            // 
             // pnlRI
             // 
             this.pnlRI.Controls.Add(this.TableLayoutPanel9);
@@ -1573,91 +1658,6 @@
             this.Panel1.Size = new System.Drawing.Size(1164, 39);
             this.Panel1.TabIndex = 6;
             // 
-            // btnProduct_Delete
-            // 
-            this.btnProduct_Delete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnProduct_Delete.BorderThickness = 2;
-            this.btnProduct_Delete.CheckedState.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.CustomImages.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.FillColor = System.Drawing.Color.White;
-            this.btnProduct_Delete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnProduct_Delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnProduct_Delete.HoverState.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct_Delete.Image")));
-            this.btnProduct_Delete.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnProduct_Delete.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnProduct_Delete.Location = new System.Drawing.Point(230, 10);
-            this.btnProduct_Delete.Name = "btnProduct_Delete";
-            this.btnProduct_Delete.ShadowDecoration.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.Size = new System.Drawing.Size(120, 40);
-            this.btnProduct_Delete.TabIndex = 70;
-            this.btnProduct_Delete.Text = "DELETE";
-            this.btnProduct_Delete.TextOffset = new System.Drawing.Point(10, 0);
-            // 
-            // btnProduct_Save
-            // 
-            this.btnProduct_Save.BorderColor = System.Drawing.Color.Green;
-            this.btnProduct_Save.BorderThickness = 2;
-            this.btnProduct_Save.CheckedState.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.CustomImages.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.FillColor = System.Drawing.Color.White;
-            this.btnProduct_Save.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnProduct_Save.ForeColor = System.Drawing.Color.Green;
-            this.btnProduct_Save.HoverState.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct_Save.Image")));
-            this.btnProduct_Save.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnProduct_Save.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnProduct_Save.Location = new System.Drawing.Point(356, 10);
-            this.btnProduct_Save.Name = "btnProduct_Save";
-            this.btnProduct_Save.ShadowDecoration.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.Size = new System.Drawing.Size(120, 40);
-            this.btnProduct_Save.TabIndex = 69;
-            this.btnProduct_Save.Text = "SAVE";
-            this.btnProduct_Save.TextOffset = new System.Drawing.Point(10, 0);
-            // 
-            // btnProduct_New
-            // 
-            this.btnProduct_New.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnProduct_New.BackColor = System.Drawing.Color.White;
-            this.btnProduct_New.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
-            this.btnProduct_New.FlatAppearance.BorderSize = 2;
-            this.btnProduct_New.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduct_New.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduct_New.ForeColor = System.Drawing.Color.Orange;
-            this.btnProduct_New.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnProduct_New.IconColor = System.Drawing.Color.Orange;
-            this.btnProduct_New.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnProduct_New.IconSize = 30;
-            this.btnProduct_New.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProduct_New.Location = new System.Drawing.Point(482, 10);
-            this.btnProduct_New.Name = "btnProduct_New";
-            this.btnProduct_New.Size = new System.Drawing.Size(142, 40);
-            this.btnProduct_New.TabIndex = 68;
-            this.btnProduct_New.Text = "ADD NEW";
-            this.btnProduct_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProduct_New.UseVisualStyleBackColor = false;
-            // 
-            // btnRI_Save
-            // 
-            this.btnRI_Save.BorderColor = System.Drawing.Color.Green;
-            this.btnRI_Save.BorderThickness = 2;
-            this.btnRI_Save.CheckedState.Parent = this.btnRI_Save;
-            this.btnRI_Save.CustomImages.Parent = this.btnRI_Save;
-            this.btnRI_Save.FillColor = System.Drawing.Color.White;
-            this.btnRI_Save.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnRI_Save.ForeColor = System.Drawing.Color.Green;
-            this.btnRI_Save.HoverState.Parent = this.btnRI_Save;
-            this.btnRI_Save.Image = ((System.Drawing.Image)(resources.GetObject("btnRI_Save.Image")));
-            this.btnRI_Save.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnRI_Save.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnRI_Save.Location = new System.Drawing.Point(131, 10);
-            this.btnRI_Save.Name = "btnRI_Save";
-            this.btnRI_Save.ShadowDecoration.Parent = this.btnRI_Save;
-            this.btnRI_Save.Size = new System.Drawing.Size(120, 40);
-            this.btnRI_Save.TabIndex = 61;
-            this.btnRI_Save.Text = "SAVE";
-            this.btnRI_Save.TextOffset = new System.Drawing.Point(10, 0);
-            // 
             // RedeemSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1670,6 +1670,7 @@
             this.Name = "RedeemSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedeemSettings";
+            this.Load += new System.EventHandler(this.RedeemSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAPT_Records)).EndInit();
             this.TableLayoutPanel4.ResumeLayout(false);
             this.TableLayoutPanel4.PerformLayout();

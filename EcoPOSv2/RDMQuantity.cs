@@ -16,6 +16,8 @@ namespace EcoPOSv2
     {
         private SQLControl SQL = new SQLControl();
         public int itemID;
+        public RedeemCart frmRedeemCart;
+
 
         public RDMQuantity()
         {
