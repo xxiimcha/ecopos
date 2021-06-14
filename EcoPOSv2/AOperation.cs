@@ -73,6 +73,9 @@ namespace EcoPOSv2
         private void AOperation_Load(object sender, EventArgs e)
         {
             _AOperation = this;
+
+            dtpFrom.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
+            dtpTo.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
         }
     }
 }
