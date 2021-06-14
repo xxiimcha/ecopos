@@ -76,6 +76,7 @@
             this.btnCancel.TabIndex = 56;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnConfirm
             // 
@@ -98,6 +99,7 @@
             this.btnConfirm.TabIndex = 55;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // Label3
             // 
@@ -154,6 +156,7 @@
             this.Name = "OREditInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OREditInfo";
+            this.Load += new System.EventHandler(this.OREditInfo_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -434,6 +434,7 @@
     <Compile Include="Store.Designer.cs">
       <DependentUpon>Store.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextBoxValidation.cs" />
     <Compile Include="TrainingMode.cs">
       <SubType>Form</SubType>
     </Compile>
