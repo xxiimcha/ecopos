@@ -101,6 +101,7 @@
             this.btnDeveloper.TabIndex = 13;
             this.btnDeveloper.Text = "Developer";
             this.btnDeveloper.UseVisualStyleBackColor = false;
+            this.btnDeveloper.Click += new System.EventHandler(this.BtnDeveloper_Click);
             // 
             // btnStaff
             // 
@@ -121,6 +122,7 @@
             this.btnStaff.TabIndex = 10;
             this.btnStaff.Text = "Staff";
             this.btnStaff.UseVisualStyleBackColor = false;
+            this.btnStaff.Click += new System.EventHandler(this.BtnStaff_Click);
             // 
             // btnStore
             // 
@@ -154,6 +156,7 @@
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.pnlChild.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);

@@ -120,7 +120,7 @@
             this.btnSave.ShadowDecoration.Parent = this.btnSave;
             this.btnSave.Size = new System.Drawing.Size(189, 57);
             this.btnSave.TabIndex = 57;
-            this.btnSave.Text = "CONFIRM";
+            this.btnSave.Text = "SAVE";
             this.btnSave.TextOffset = new System.Drawing.Point(10, 0);
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -515,6 +515,6 @@
         internal System.Windows.Forms.Label Label8;
         internal System.Windows.Forms.Timer tmrClose;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
-        private Guna.UI2.WinForms.Guna2Button btnSave;
+        public Guna.UI2.WinForms.Guna2Button btnSave;
     }
 }

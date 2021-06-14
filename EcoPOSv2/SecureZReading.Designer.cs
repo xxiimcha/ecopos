@@ -67,6 +67,7 @@
             this.btnProceed.Size = new System.Drawing.Size(205, 45);
             this.btnProceed.TabIndex = 23;
             this.btnProceed.Text = "PROCEED";
+            this.btnProceed.Click += new System.EventHandler(this.BtnProceed_Click);
             // 
             // btnCancel
             // 
