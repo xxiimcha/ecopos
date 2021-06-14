@@ -58,7 +58,7 @@
             this.Label4.ForeColor = System.Drawing.Color.Black;
             this.Label4.Location = new System.Drawing.Point(3, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(321, 34);
+            this.Label4.Size = new System.Drawing.Size(322, 34);
             this.Label4.TabIndex = 23;
             this.Label4.Text = "Business Name";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -70,9 +70,9 @@
             this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(330, 0);
+            this.Label1.Location = new System.Drawing.Point(331, 0);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(831, 34);
+            this.Label1.Size = new System.Drawing.Size(830, 34);
             this.Label1.TabIndex = 24;
             this.Label1.Text = "0";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -86,7 +86,7 @@
             this.Label5.ForeColor = System.Drawing.Color.Black;
             this.Label5.Location = new System.Drawing.Point(3, 68);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(321, 34);
+            this.Label5.Size = new System.Drawing.Size(322, 34);
             this.Label5.TabIndex = 27;
             this.Label5.Text = "Name of the tax payer";
             this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -98,9 +98,9 @@
             this.Label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label7.ForeColor = System.Drawing.Color.Black;
-            this.Label7.Location = new System.Drawing.Point(330, 68);
+            this.Label7.Location = new System.Drawing.Point(331, 68);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(831, 34);
+            this.Label7.Size = new System.Drawing.Size(830, 34);
             this.Label7.TabIndex = 29;
             this.Label7.Text = "0";
             this.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -112,9 +112,9 @@
             this.Label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label6.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label6.ForeColor = System.Drawing.Color.Black;
-            this.Label6.Location = new System.Drawing.Point(330, 102);
+            this.Label6.Location = new System.Drawing.Point(331, 102);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(831, 34);
+            this.Label6.Size = new System.Drawing.Size(830, 34);
             this.Label6.TabIndex = 28;
             this.Label6.Text = "0";
             this.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -126,9 +126,9 @@
             this.Label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label2.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.Black;
-            this.Label2.Location = new System.Drawing.Point(330, 34);
+            this.Label2.Location = new System.Drawing.Point(331, 34);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(831, 34);
+            this.Label2.Size = new System.Drawing.Size(830, 34);
             this.Label2.TabIndex = 25;
             this.Label2.Text = "0";
             this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -142,7 +142,7 @@
             this.Label3.ForeColor = System.Drawing.Color.Black;
             this.Label3.Location = new System.Drawing.Point(3, 102);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(321, 34);
+            this.Label3.Size = new System.Drawing.Size(322, 34);
             this.Label3.TabIndex = 26;
             this.Label3.Text = "VAT/Non-VAT REG TIN";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -156,7 +156,7 @@
             this.Label8.ForeColor = System.Drawing.Color.Black;
             this.Label8.Location = new System.Drawing.Point(3, 34);
             this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(321, 34);
+            this.Label8.Size = new System.Drawing.Size(322, 34);
             this.Label8.TabIndex = 30;
             this.Label8.Text = "Business address";
             this.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,7 +170,7 @@
             this.Label11.ForeColor = System.Drawing.Color.Black;
             this.Label11.Location = new System.Drawing.Point(3, 170);
             this.Label11.Name = "Label11";
-            this.Label11.Size = new System.Drawing.Size(321, 34);
+            this.Label11.Size = new System.Drawing.Size(322, 34);
             this.Label11.TabIndex = 33;
             this.Label11.Text = "Serial Number (SN)";
             this.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -182,9 +182,9 @@
             this.Label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label12.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label12.ForeColor = System.Drawing.Color.Black;
-            this.Label12.Location = new System.Drawing.Point(330, 170);
+            this.Label12.Location = new System.Drawing.Point(331, 170);
             this.Label12.Name = "Label12";
-            this.Label12.Size = new System.Drawing.Size(831, 34);
+            this.Label12.Size = new System.Drawing.Size(830, 34);
             this.Label12.TabIndex = 34;
             this.Label12.Text = "0";
             this.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -196,9 +196,9 @@
             this.Label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label15.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label15.ForeColor = System.Drawing.Color.Black;
-            this.Label15.Location = new System.Drawing.Point(330, 204);
+            this.Label15.Location = new System.Drawing.Point(331, 204);
             this.Label15.Name = "Label15";
-            this.Label15.Size = new System.Drawing.Size(831, 34);
+            this.Label15.Size = new System.Drawing.Size(830, 34);
             this.Label15.TabIndex = 37;
             this.Label15.Text = "0";
             this.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -210,9 +210,9 @@
             this.Label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label17.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label17.ForeColor = System.Drawing.Color.Black;
-            this.Label17.Location = new System.Drawing.Point(330, 238);
+            this.Label17.Location = new System.Drawing.Point(331, 238);
             this.Label17.Name = "Label17";
-            this.Label17.Size = new System.Drawing.Size(831, 35);
+            this.Label17.Size = new System.Drawing.Size(830, 35);
             this.Label17.TabIndex = 39;
             this.Label17.Text = "0";
             this.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,9 +224,9 @@
             this.Label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label9.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label9.ForeColor = System.Drawing.Color.Black;
-            this.Label9.Location = new System.Drawing.Point(330, 136);
+            this.Label9.Location = new System.Drawing.Point(331, 136);
             this.Label9.Name = "Label9";
-            this.Label9.Size = new System.Drawing.Size(831, 34);
+            this.Label9.Size = new System.Drawing.Size(830, 34);
             this.Label9.TabIndex = 31;
             this.Label9.Text = "0";
             this.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -240,7 +240,7 @@
             this.Label10.ForeColor = System.Drawing.Color.Black;
             this.Label10.Location = new System.Drawing.Point(3, 136);
             this.Label10.Name = "Label10";
-            this.Label10.Size = new System.Drawing.Size(321, 34);
+            this.Label10.Size = new System.Drawing.Size(322, 34);
             this.Label10.TabIndex = 32;
             this.Label10.Text = "Machine Identification Number (MIN)\r\n";
             this.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -254,7 +254,7 @@
             this.Label13.ForeColor = System.Drawing.Color.Black;
             this.Label13.Location = new System.Drawing.Point(3, 238);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(321, 35);
+            this.Label13.Size = new System.Drawing.Size(322, 35);
             this.Label13.TabIndex = 35;
             this.Label13.Text = "Permit To Use (PTU) No.,  Date Issued, Valid Until";
             this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -268,7 +268,7 @@
             this.Label14.ForeColor = System.Drawing.Color.Black;
             this.Label14.Location = new System.Drawing.Point(3, 204);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(321, 34);
+            this.Label14.Size = new System.Drawing.Size(322, 34);
             this.Label14.TabIndex = 41;
             this.Label14.Text = "Accreditation No.,  Date Issued, Valid Until";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -333,6 +333,7 @@
             this.btnTrainingMode.Text = "Training Mode";
             this.btnTrainingMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTrainingMode.UseVisualStyleBackColor = false;
+            this.btnTrainingMode.Click += new System.EventHandler(this.btnTrainingMode_Click);
             // 
             // Developer
             // 

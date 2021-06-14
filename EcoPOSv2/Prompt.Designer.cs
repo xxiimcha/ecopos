@@ -91,6 +91,7 @@
             this.Name = "Prompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prompt";
+            this.Load += new System.EventHandler(this.Prompt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

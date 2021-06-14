@@ -17,5 +17,26 @@ namespace EcoPOSv2
             InitializeComponent();
         }
         public Order frmOrder;
+
+        private void btnContinueSession_Click(object sender, EventArgs e)
+        {
+            RegularDiscount frmRegularDiscount = new RegularDiscount();
+            frmRegularDiscount.frmOrder = frmOrder;
+            frmRegularDiscount.frmDiscountOption = this;
+            frmRegularDiscount.ShowDialog();
+        }
+
+        private void guna2TileButton1_Click(object sender, EventArgs e)
+        {
+            SpecialDiscount frmSpecialDiscount = new SpecialDiscount();
+            frmSpecialDiscount.frmOrder = frmOrder;
+            frmSpecialDiscount.frmDiscountOption = this;
+            frmSpecialDiscount.ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
