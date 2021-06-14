@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -157,6 +158,11 @@ namespace EcoPOSv2
         SQLControl sql = new SQLControl();
 
         //METHODS
+        public static bool PrinterExists(string printerName)
+        {
+            if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
+            return PrinterSettings.InstalledPrinters.Cast<string>().Any(name => printerName.ToUpper().Trim() == name.ToUpper().Trim());
+        }
         public void store_bypass_list()
         {
             bypass_list.Add(bp_ord_payment);
