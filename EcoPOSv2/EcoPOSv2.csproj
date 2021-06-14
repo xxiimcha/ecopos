@@ -149,6 +149,7 @@
     <Compile Include="ContinueSession.Designer.cs">
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlBehavior.cs" />
     <Compile Include="Customers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +212,7 @@
     </Compile>
     <Compile Include="ExportImport.cs" />
     <Compile Include="FormLoad.cs" />
+    <Compile Include="GroupAction.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="ImportDatabase.cs">
       <SubType>Form</SubType>
