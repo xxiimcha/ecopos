@@ -36,26 +36,26 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedeemCart));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
-            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnReset = new Guna.UI2.WinForms.Guna2TileButton();
+            this.dgvRedeemItems = new System.Windows.Forms.DataGridView();
+            this.txtSearchItem = new System.Windows.Forms.TextBox();
+            this.dgvRedeemCart = new System.Windows.Forms.DataGridView();
+            this.Panel3 = new System.Windows.Forms.Panel();
+            this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
+            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.lblRemainingPoints = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
             this.lblBalance = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblItems = new System.Windows.Forms.Label();
-            this.dgvRedeemItems = new System.Windows.Forms.DataGridView();
-            this.txtSearchItem = new System.Windows.Forms.TextBox();
-            this.dgvRedeemCart = new System.Windows.Forms.DataGridView();
-            this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
             this.Label7 = new System.Windows.Forms.Label();
             this.Label8 = new System.Windows.Forms.Label();
             this.lblCardNo = new System.Windows.Forms.Label();
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
-            this.Panel3 = new System.Windows.Forms.Panel();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemCart)).BeginInit();
@@ -66,7 +66,7 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.guna2TileButton1);
+            this.guna2Panel1.Controls.Add(this.btnDelete);
             this.guna2Panel1.Controls.Add(this.btnReset);
             this.guna2Panel1.Controls.Add(this.dgvRedeemItems);
             this.guna2Panel1.Controls.Add(this.txtSearchItem);
@@ -78,44 +78,22 @@
             this.guna2Panel1.Size = new System.Drawing.Size(970, 697);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // guna2TileButton1
+            // btnDelete
             // 
-            this.guna2TileButton1.BorderColor = System.Drawing.Color.Red;
-            this.guna2TileButton1.BorderThickness = 2;
-            this.guna2TileButton1.CheckedState.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.CustomImages.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.FillColor = System.Drawing.Color.White;
-            this.guna2TileButton1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TileButton1.ForeColor = System.Drawing.Color.Red;
-            this.guna2TileButton1.HoverState.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.Location = new System.Drawing.Point(565, 47);
-            this.guna2TileButton1.Name = "guna2TileButton1";
-            this.guna2TileButton1.ShadowDecoration.Parent = this.guna2TileButton1;
-            this.guna2TileButton1.Size = new System.Drawing.Size(78, 45);
-            this.guna2TileButton1.TabIndex = 81;
-            this.guna2TileButton1.Text = "X";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
-            this.btnConfirm.BorderThickness = 2;
-            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
-            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
-            this.btnConfirm.FillColor = System.Drawing.Color.White;
-            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
-            this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
-            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(324, 193);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
-            this.btnConfirm.Size = new System.Drawing.Size(238, 45);
-            this.btnConfirm.TabIndex = 56;
-            this.btnConfirm.Text = "REDEEM";
-            this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnDelete.BorderColor = System.Drawing.Color.Red;
+            this.btnDelete.BorderThickness = 2;
+            this.btnDelete.CheckedState.Parent = this.btnDelete;
+            this.btnDelete.CustomImages.Parent = this.btnDelete;
+            this.btnDelete.FillColor = System.Drawing.Color.White;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.HoverState.Parent = this.btnDelete;
+            this.btnDelete.Location = new System.Drawing.Point(565, 47);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
+            this.btnDelete.Size = new System.Drawing.Size(78, 45);
+            this.btnDelete.TabIndex = 81;
+            this.btnDelete.Text = "X";
             // 
             // btnReset
             // 
@@ -133,74 +111,6 @@
             this.btnReset.Size = new System.Drawing.Size(78, 45);
             this.btnReset.TabIndex = 80;
             this.btnReset.Text = "Qty";
-            // 
-            // lblRemainingPoints
-            // 
-            this.lblRemainingPoints.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRemainingPoints.ForeColor = System.Drawing.Color.Black;
-            this.lblRemainingPoints.Location = new System.Drawing.Point(326, 139);
-            this.lblRemainingPoints.Name = "lblRemainingPoints";
-            this.lblRemainingPoints.Size = new System.Drawing.Size(295, 26);
-            this.lblRemainingPoints.TabIndex = 55;
-            this.lblRemainingPoints.Text = "0.00";
-            this.lblRemainingPoints.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Label5
-            // 
-            this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.ForeColor = System.Drawing.Color.Black;
-            this.Label5.Location = new System.Drawing.Point(489, 118);
-            this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(131, 21);
-            this.Label5.TabIndex = 54;
-            this.Label5.Text = "Remaining Points";
-            this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblBalance
-            // 
-            this.lblBalance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBalance.ForeColor = System.Drawing.Color.Black;
-            this.lblBalance.Location = new System.Drawing.Point(5, 149);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(293, 26);
-            this.lblBalance.TabIndex = 53;
-            this.lblBalance.Text = "0.00";
-            this.lblBalance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(6, 128);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(63, 21);
-            this.Label3.TabIndex = 52;
-            this.Label3.Text = "Balance";
-            this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblTotal.Location = new System.Drawing.Point(326, 88);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(295, 26);
-            this.lblTotal.TabIndex = 51;
-            this.lblTotal.Text = "0.00";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblItems
-            // 
-            this.lblItems.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItems.ForeColor = System.Drawing.Color.Black;
-            this.lblItems.Location = new System.Drawing.Point(327, 36);
-            this.lblItems.Name = "lblItems";
-            this.lblItems.Size = new System.Drawing.Size(294, 25);
-            this.lblItems.TabIndex = 50;
-            this.lblItems.Text = "0.00";
-            this.lblItems.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dgvRedeemItems
             // 
@@ -303,6 +213,27 @@
             this.dgvRedeemCart.Size = new System.Drawing.Size(556, 441);
             this.dgvRedeemCart.TabIndex = 77;
             // 
+            // Panel3
+            // 
+            this.Panel3.Controls.Add(this.btnQuantity);
+            this.Panel3.Controls.Add(this.btnConfirm);
+            this.Panel3.Controls.Add(this.lblRemainingPoints);
+            this.Panel3.Controls.Add(this.Label5);
+            this.Panel3.Controls.Add(this.lblBalance);
+            this.Panel3.Controls.Add(this.Label3);
+            this.Panel3.Controls.Add(this.lblTotal);
+            this.Panel3.Controls.Add(this.lblItems);
+            this.Panel3.Controls.Add(this.Label7);
+            this.Panel3.Controls.Add(this.Label8);
+            this.Panel3.Controls.Add(this.lblCardNo);
+            this.Panel3.Controls.Add(this.lblCustomerName);
+            this.Panel3.Controls.Add(this.Label1);
+            this.Panel3.Controls.Add(this.Label6);
+            this.Panel3.Location = new System.Drawing.Point(2, 448);
+            this.Panel3.Name = "Panel3";
+            this.Panel3.Size = new System.Drawing.Size(636, 249);
+            this.Panel3.TabIndex = 76;
+            // 
             // btnQuantity
             // 
             this.btnQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -324,6 +255,96 @@
             this.btnQuantity.TabIndex = 57;
             this.btnQuantity.Text = "CANCEL";
             this.btnQuantity.TextOffset = new System.Drawing.Point(10, 0);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderThickness = 2;
+            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
+            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
+            this.btnConfirm.FillColor = System.Drawing.Color.White;
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
+            this.btnConfirm.HoverState.Parent = this.btnConfirm;
+            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
+            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnConfirm.Location = new System.Drawing.Point(324, 193);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
+            this.btnConfirm.Size = new System.Drawing.Size(238, 45);
+            this.btnConfirm.TabIndex = 56;
+            this.btnConfirm.Text = "REDEEM";
+            this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            // 
+            // lblRemainingPoints
+            // 
+            this.lblRemainingPoints.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemainingPoints.ForeColor = System.Drawing.Color.Black;
+            this.lblRemainingPoints.Location = new System.Drawing.Point(326, 139);
+            this.lblRemainingPoints.Name = "lblRemainingPoints";
+            this.lblRemainingPoints.Size = new System.Drawing.Size(295, 26);
+            this.lblRemainingPoints.TabIndex = 55;
+            this.lblRemainingPoints.Text = "0.00";
+            this.lblRemainingPoints.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Label5
+            // 
+            this.Label5.AutoSize = true;
+            this.Label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label5.ForeColor = System.Drawing.Color.Black;
+            this.Label5.Location = new System.Drawing.Point(489, 118);
+            this.Label5.Name = "Label5";
+            this.Label5.Size = new System.Drawing.Size(131, 21);
+            this.Label5.TabIndex = 54;
+            this.Label5.Text = "Remaining Points";
+            this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBalance.ForeColor = System.Drawing.Color.Black;
+            this.lblBalance.Location = new System.Drawing.Point(5, 149);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(293, 26);
+            this.lblBalance.TabIndex = 53;
+            this.lblBalance.Text = "0.00";
+            this.lblBalance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.Color.Black;
+            this.Label3.Location = new System.Drawing.Point(6, 128);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(63, 21);
+            this.Label3.TabIndex = 52;
+            this.Label3.Text = "Balance";
+            this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.Black;
+            this.lblTotal.Location = new System.Drawing.Point(326, 88);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(295, 26);
+            this.lblTotal.TabIndex = 51;
+            this.lblTotal.Text = "0.00";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblItems
+            // 
+            this.lblItems.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItems.ForeColor = System.Drawing.Color.Black;
+            this.lblItems.Location = new System.Drawing.Point(327, 36);
+            this.lblItems.Name = "lblItems";
+            this.lblItems.Size = new System.Drawing.Size(294, 25);
+            this.lblItems.TabIndex = 50;
+            this.lblItems.Text = "0.00";
+            this.lblItems.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Label7
             // 
@@ -395,27 +416,6 @@
             this.Label6.Text = "Customer";
             this.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Panel3
-            // 
-            this.Panel3.Controls.Add(this.btnQuantity);
-            this.Panel3.Controls.Add(this.btnConfirm);
-            this.Panel3.Controls.Add(this.lblRemainingPoints);
-            this.Panel3.Controls.Add(this.Label5);
-            this.Panel3.Controls.Add(this.lblBalance);
-            this.Panel3.Controls.Add(this.Label3);
-            this.Panel3.Controls.Add(this.lblTotal);
-            this.Panel3.Controls.Add(this.lblItems);
-            this.Panel3.Controls.Add(this.Label7);
-            this.Panel3.Controls.Add(this.Label8);
-            this.Panel3.Controls.Add(this.lblCardNo);
-            this.Panel3.Controls.Add(this.lblCustomerName);
-            this.Panel3.Controls.Add(this.Label1);
-            this.Panel3.Controls.Add(this.Label6);
-            this.Panel3.Location = new System.Drawing.Point(2, 448);
-            this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(636, 249);
-            this.Panel3.TabIndex = 76;
-            // 
             // RedeemCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,6 +427,7 @@
             this.Name = "RedeemCart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedeemCart";
+            this.Load += new System.EventHandler(this.RedeemCart_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemItems)).EndInit();
@@ -440,7 +441,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
+        private Guna.UI2.WinForms.Guna2TileButton btnDelete;
         private Guna.UI2.WinForms.Guna2TileButton btnReset;
         internal System.Windows.Forms.DataGridView dgvRedeemItems;
         internal System.Windows.Forms.TextBox txtSearchItem;

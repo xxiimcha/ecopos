@@ -328,6 +328,12 @@
     <Compile Include="RedeemCart.Designer.cs">
       <DependentUpon>RedeemCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="RedeemReceipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RedeemReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RedeemSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -630,6 +636,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RedeemCart.resx">
       <DependentUpon>RedeemCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RedeemReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RedeemReceipt.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RedeemSettings.resx">
       <DependentUpon>RedeemSettings.cs</DependentUpon>
