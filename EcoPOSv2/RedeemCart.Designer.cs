@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedeemCart));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnDelete = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnRemove = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnQuantity = new Guna.UI2.WinForms.Guna2TileButton();
             this.dgvRedeemItems = new System.Windows.Forms.DataGridView();
             this.txtSearchItem = new System.Windows.Forms.TextBox();
             this.dgvRedeemCart = new System.Windows.Forms.DataGridView();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnProceed = new Guna.UI2.WinForms.Guna2Button();
             this.lblRemainingPoints = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
             this.lblBalance = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.btnDelete);
+            this.guna2Panel1.Controls.Add(this.btnRemove);
             this.guna2Panel1.Controls.Add(this.btnQuantity);
             this.guna2Panel1.Controls.Add(this.dgvRedeemItems);
             this.guna2Panel1.Controls.Add(this.txtSearchItem);
@@ -78,22 +78,23 @@
             this.guna2Panel1.Size = new System.Drawing.Size(970, 697);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // btnDelete
+            // btnRemove
             // 
-            this.btnDelete.BorderColor = System.Drawing.Color.Red;
-            this.btnDelete.BorderThickness = 2;
-            this.btnDelete.CheckedState.Parent = this.btnDelete;
-            this.btnDelete.CustomImages.Parent = this.btnDelete;
-            this.btnDelete.FillColor = System.Drawing.Color.White;
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.HoverState.Parent = this.btnDelete;
-            this.btnDelete.Location = new System.Drawing.Point(565, 47);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
-            this.btnDelete.Size = new System.Drawing.Size(78, 45);
-            this.btnDelete.TabIndex = 81;
-            this.btnDelete.Text = "X";
+            this.btnRemove.BorderColor = System.Drawing.Color.Red;
+            this.btnRemove.BorderThickness = 2;
+            this.btnRemove.CheckedState.Parent = this.btnRemove;
+            this.btnRemove.CustomImages.Parent = this.btnRemove;
+            this.btnRemove.FillColor = System.Drawing.Color.White;
+            this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.Red;
+            this.btnRemove.HoverState.Parent = this.btnRemove;
+            this.btnRemove.Location = new System.Drawing.Point(565, 47);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.ShadowDecoration.Parent = this.btnRemove;
+            this.btnRemove.Size = new System.Drawing.Size(78, 45);
+            this.btnRemove.TabIndex = 81;
+            this.btnRemove.Text = "X";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnQuantity
             // 
@@ -123,40 +124,41 @@
             this.dgvRedeemItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRedeemItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvRedeemItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvRedeemItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemItems.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemItems.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvRedeemItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvRedeemItems.Location = new System.Drawing.Point(647, 40);
             this.dgvRedeemItems.MultiSelect = false;
             this.dgvRedeemItems.Name = "dgvRedeemItems";
             this.dgvRedeemItems.ReadOnly = true;
             this.dgvRedeemItems.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemItems.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvRedeemItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRedeemItems.Size = new System.Drawing.Size(322, 654);
             this.dgvRedeemItems.TabIndex = 79;
+            this.dgvRedeemItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRedeemItems_CellClick);
             // 
             // txtSearchItem
             // 
@@ -168,6 +170,8 @@
             this.txtSearchItem.TabIndex = 78;
             this.txtSearchItem.Tag = "Search item/barcode";
             this.txtSearchItem.Text = "Search item/barcode";
+            this.txtSearchItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchItem_KeyDown);
+            this.txtSearchItem.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchItem_KeyUp);
             // 
             // dgvRedeemCart
             // 
@@ -179,45 +183,46 @@
             this.dgvRedeemCart.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRedeemCart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvRedeemCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvRedeemCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemCart.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemCart.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvRedeemCart.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvRedeemCart.Location = new System.Drawing.Point(5, 1);
             this.dgvRedeemCart.MultiSelect = false;
             this.dgvRedeemCart.Name = "dgvRedeemCart";
             this.dgvRedeemCart.ReadOnly = true;
             this.dgvRedeemCart.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemCart.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemCart.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvRedeemCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRedeemCart.Size = new System.Drawing.Size(556, 441);
             this.dgvRedeemCart.TabIndex = 77;
+            this.dgvRedeemCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRedeemCart_CellClick);
             // 
             // Panel3
             // 
             this.Panel3.Controls.Add(this.btnCancel);
-            this.Panel3.Controls.Add(this.btnConfirm);
+            this.Panel3.Controls.Add(this.btnProceed);
             this.Panel3.Controls.Add(this.lblRemainingPoints);
             this.Panel3.Controls.Add(this.Label5);
             this.Panel3.Controls.Add(this.lblBalance);
@@ -256,28 +261,30 @@
             this.btnCancel.TabIndex = 57;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnConfirm
+            // btnProceed
             // 
-            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
-            this.btnConfirm.BorderThickness = 2;
-            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
-            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
-            this.btnConfirm.FillColor = System.Drawing.Color.White;
-            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
-            this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
-            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(324, 193);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
-            this.btnConfirm.Size = new System.Drawing.Size(238, 45);
-            this.btnConfirm.TabIndex = 56;
-            this.btnConfirm.Text = "REDEEM";
-            this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnProceed.BorderColor = System.Drawing.Color.Green;
+            this.btnProceed.BorderThickness = 2;
+            this.btnProceed.CheckedState.Parent = this.btnProceed;
+            this.btnProceed.CustomImages.Parent = this.btnProceed;
+            this.btnProceed.FillColor = System.Drawing.Color.White;
+            this.btnProceed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnProceed.ForeColor = System.Drawing.Color.Green;
+            this.btnProceed.HoverState.Parent = this.btnProceed;
+            this.btnProceed.Image = ((System.Drawing.Image)(resources.GetObject("btnProceed.Image")));
+            this.btnProceed.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnProceed.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnProceed.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnProceed.Location = new System.Drawing.Point(324, 193);
+            this.btnProceed.Name = "btnProceed";
+            this.btnProceed.ShadowDecoration.Parent = this.btnProceed;
+            this.btnProceed.Size = new System.Drawing.Size(238, 45);
+            this.btnProceed.TabIndex = 56;
+            this.btnProceed.Text = "REDEEM";
+            this.btnProceed.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click);
             // 
             // lblRemainingPoints
             // 
@@ -442,14 +449,14 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TileButton btnDelete;
+        private Guna.UI2.WinForms.Guna2TileButton btnRemove;
         private Guna.UI2.WinForms.Guna2TileButton btnQuantity;
         internal System.Windows.Forms.DataGridView dgvRedeemItems;
         internal System.Windows.Forms.TextBox txtSearchItem;
         internal System.Windows.Forms.DataGridView dgvRedeemCart;
         internal System.Windows.Forms.Panel Panel3;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
-        private Guna.UI2.WinForms.Guna2Button btnConfirm;
+        private Guna.UI2.WinForms.Guna2Button btnProceed;
         internal System.Windows.Forms.Label lblRemainingPoints;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.Label lblBalance;
