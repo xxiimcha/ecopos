@@ -66,6 +66,7 @@
             this.txtNameCard.Size = new System.Drawing.Size(394, 36);
             this.txtNameCard.TabIndex = 44;
             this.txtNameCard.Tag = "";
+            this.txtNameCard.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNameCard_KeyUp);
             // 
             // Label3
             // 
@@ -94,6 +95,7 @@
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(50, 50);
             this.btnConfirm.TabIndex = 45;
+            this.btnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // dgvCustomer
             // 
@@ -139,6 +141,7 @@
             this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomer.Size = new System.Drawing.Size(564, 492);
             this.dgvCustomer.TabIndex = 46;
+            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCustomer_CellClick);
             // 
             // label1
             // 
@@ -167,6 +170,7 @@
             this.Name = "OCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OCustomer";
+            this.Load += new System.EventHandler(this.OCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
