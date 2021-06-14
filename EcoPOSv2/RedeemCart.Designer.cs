@@ -37,12 +37,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedeemCart));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDelete = new Guna.UI2.WinForms.Guna2TileButton();
-            this.btnReset = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnQuantity = new Guna.UI2.WinForms.Guna2TileButton();
             this.dgvRedeemItems = new System.Windows.Forms.DataGridView();
             this.txtSearchItem = new System.Windows.Forms.TextBox();
             this.dgvRedeemCart = new System.Windows.Forms.DataGridView();
             this.Panel3 = new System.Windows.Forms.Panel();
-            this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.lblRemainingPoints = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.btnDelete);
-            this.guna2Panel1.Controls.Add(this.btnReset);
+            this.guna2Panel1.Controls.Add(this.btnQuantity);
             this.guna2Panel1.Controls.Add(this.dgvRedeemItems);
             this.guna2Panel1.Controls.Add(this.txtSearchItem);
             this.guna2Panel1.Controls.Add(this.dgvRedeemCart);
@@ -95,22 +95,23 @@
             this.btnDelete.TabIndex = 81;
             this.btnDelete.Text = "X";
             // 
-            // btnReset
+            // btnQuantity
             // 
-            this.btnReset.BorderColor = System.Drawing.Color.ForestGreen;
-            this.btnReset.BorderThickness = 2;
-            this.btnReset.CheckedState.Parent = this.btnReset;
-            this.btnReset.CustomImages.Parent = this.btnReset;
-            this.btnReset.FillColor = System.Drawing.Color.White;
-            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.ForeColor = System.Drawing.Color.ForestGreen;
-            this.btnReset.HoverState.Parent = this.btnReset;
-            this.btnReset.Location = new System.Drawing.Point(565, -1);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.ShadowDecoration.Parent = this.btnReset;
-            this.btnReset.Size = new System.Drawing.Size(78, 45);
-            this.btnReset.TabIndex = 80;
-            this.btnReset.Text = "Qty";
+            this.btnQuantity.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnQuantity.BorderThickness = 2;
+            this.btnQuantity.CheckedState.Parent = this.btnQuantity;
+            this.btnQuantity.CustomImages.Parent = this.btnQuantity;
+            this.btnQuantity.FillColor = System.Drawing.Color.White;
+            this.btnQuantity.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuantity.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnQuantity.HoverState.Parent = this.btnQuantity;
+            this.btnQuantity.Location = new System.Drawing.Point(565, -1);
+            this.btnQuantity.Name = "btnQuantity";
+            this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
+            this.btnQuantity.Size = new System.Drawing.Size(78, 45);
+            this.btnQuantity.TabIndex = 80;
+            this.btnQuantity.Text = "Qty";
+            this.btnQuantity.Click += new System.EventHandler(this.btnQuantity_Click);
             // 
             // dgvRedeemItems
             // 
@@ -215,7 +216,7 @@
             // 
             // Panel3
             // 
-            this.Panel3.Controls.Add(this.btnQuantity);
+            this.Panel3.Controls.Add(this.btnCancel);
             this.Panel3.Controls.Add(this.btnConfirm);
             this.Panel3.Controls.Add(this.lblRemainingPoints);
             this.Panel3.Controls.Add(this.Label5);
@@ -234,27 +235,27 @@
             this.Panel3.Size = new System.Drawing.Size(636, 249);
             this.Panel3.TabIndex = 76;
             // 
-            // btnQuantity
+            // btnCancel
             // 
-            this.btnQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnQuantity.BorderThickness = 2;
-            this.btnQuantity.CheckedState.Parent = this.btnQuantity;
-            this.btnQuantity.CustomImages.Parent = this.btnQuantity;
-            this.btnQuantity.FillColor = System.Drawing.Color.White;
-            this.btnQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnQuantity.HoverState.Parent = this.btnQuantity;
-            this.btnQuantity.Image = ((System.Drawing.Image)(resources.GetObject("btnQuantity.Image")));
-            this.btnQuantity.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnQuantity.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnQuantity.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnQuantity.Location = new System.Drawing.Point(75, 193);
-            this.btnQuantity.Name = "btnQuantity";
-            this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
-            this.btnQuantity.Size = new System.Drawing.Size(238, 45);
-            this.btnQuantity.TabIndex = 57;
-            this.btnQuantity.Text = "CANCEL";
-            this.btnQuantity.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.BorderThickness = 2;
+            this.btnCancel.CheckedState.Parent = this.btnCancel;
+            this.btnCancel.CustomImages.Parent = this.btnCancel;
+            this.btnCancel.FillColor = System.Drawing.Color.White;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.HoverState.Parent = this.btnCancel;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnCancel.Location = new System.Drawing.Point(75, 193);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
+            this.btnCancel.Size = new System.Drawing.Size(238, 45);
+            this.btnCancel.TabIndex = 57;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // btnConfirm
             // 
@@ -442,12 +443,12 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2TileButton btnDelete;
-        private Guna.UI2.WinForms.Guna2TileButton btnReset;
+        private Guna.UI2.WinForms.Guna2TileButton btnQuantity;
         internal System.Windows.Forms.DataGridView dgvRedeemItems;
         internal System.Windows.Forms.TextBox txtSearchItem;
         internal System.Windows.Forms.DataGridView dgvRedeemCart;
         internal System.Windows.Forms.Panel Panel3;
-        private Guna.UI2.WinForms.Guna2Button btnQuantity;
+        private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Button btnConfirm;
         internal System.Windows.Forms.Label lblRemainingPoints;
         internal System.Windows.Forms.Label Label5;

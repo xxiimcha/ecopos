@@ -81,10 +81,13 @@ namespace EcoPOSv2
 
             foreach (DataRow r in SQL.DBDT.Rows)
             {
-                lblItems.Text = r["Quantity"].ToString();
-                lblTotal.Text = Format(r("Total"), "#,##0.00");
+                decimal items = decimal.Parse(r["Quantity"].ToString());
+                decimal total = decimal.Parse(r["Total"].ToString());
 
-                lblRemainingPoints.Text = Format(card_balance - r("Total"), "#,##0.00");
+                lblItems.Text = items.ToString("N2");
+                lblTotal.Text = total.ToString("N2");
+
+                lblRemainingPoints.Text = (card_balance - total).ToString("N2");
             }
         }
 
@@ -97,6 +100,22 @@ namespace EcoPOSv2
             LoadItems();
             Control c = (Control)txtSearchItem;
             ControlBehavior.SetBehavior(ref c, Behavior.ClearSearch);
+        }
+
+        private void btnQuantity_Click(object sender, EventArgs e)
+        {
+            if (clickOnce_dgvRedeemCart == false)
+                return;
+
+            if (dgvRedeemCart.SelectedRows.Count == 0)
+                return;
+
+            RDMQuantity frmRDMQuantity = new RDMQuantity();
+            frmRDMQuantity.itemID = dgvRedeemCart.CurrentRow.Cells[0].Value.ToString();
+            frmRDMQuantity.lblItem.Text = dgvRedeemCart.CurrentRow.Cells[2].Value.ToString();
+            frmRDMQuantity.txtQuantity.Text = dgvRedeemCart.CurrentRow.Cells[4].Value.ToString();
+            frmRDMQuantity.frmRedeemCart = this;
+            frmRDMQuantity.ShowDialog();
         }
     }
 }
