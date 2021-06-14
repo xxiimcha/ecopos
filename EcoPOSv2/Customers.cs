@@ -27,6 +27,7 @@ namespace EcoPOSv2
         }
         private FormLoad OL = new FormLoad();
         private SQLControl SQL = new SQLControl();
+        ExportImport EI = new ExportImport();
 
         Panel currentPanel;
         Button currentBtn;
@@ -52,80 +53,6 @@ namespace EcoPOSv2
             }
         }
         //METHODS
-
-        public void ExportDgvToPDF(string title, DataGridView dvg)
-        {
-            if (dvg.Rows.Count == 0)
-            {
-                new Notification().PopUp("No records show in grid.", "", "error");
-                return;
-            }
-
-            SaveFileDialog saveFilePath = new SaveFileDialog();
-            saveFilePath.Filter = "PDF Files (*.pdf*)|*.pdf";
-
-            if (saveFilePath.ShowDialog() == DialogResult.OK)
-            {
-                //Creating iTextSharp Table from the DataTable data
-                PdfPTable pdfTable = new PdfPTable(dvg.ColumnCount);
-                pdfTable.DefaultCell.Padding = 5;
-                pdfTable.WidthPercentage = 100;
-                pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-                pdfTable.DefaultCell.BorderWidth = 1;
-
-                //Adding Header row
-                foreach (DataGridViewColumn column in dvg.Columns)
-                {
-                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                    cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                    BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    iTextSharp.text.Font font = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
-                    pdfTable.AddCell(cell);
-                }
-
-                //Adding DataRow
-                foreach (DataGridViewRow row in dvg.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        pdfTable.AddCell(cell.Value.ToString());
-                    }
-                }
-                string date = DateTime.Now.ToString("MM-dd-yyyy");
-                //Exporting to PDF
-                //string folderPath = "C:\\Users\\" + Environment.UserName + "\\Desktop\\";
-                //if (!Directory.Exists(folderPath))
-                //{
-                //    Directory.CreateDirectory(folderPath);
-                //}
-                using (FileStream stream = new FileStream(saveFilePath + "Transaction Reports-" + date + ".pdf", FileMode.Create))
-                {
-                    Document pdfDoc = new Document(PageSize.A4.Rotate(), 10, 10, 42, 35);
-                    PdfWriter.GetInstance(pdfDoc, stream);
-                    pdfDoc.Open();
-                    Paragraph Header = new Paragraph("Transaction Reports", FontFactory.GetFont(FontFactory.TIMES, 45, iTextSharp.text.Font.NORMAL));
-                    Header.Alignment = Element.ALIGN_CENTER;
-                    PdfPTable footerTbl = new PdfPTable(1);
-                    footerTbl.TotalWidth = 300;
-                    Paragraph paragraph = new Paragraph();
-                    pdfDoc.Add(Header);
-                    Paragraph Space = new Paragraph(" ");
-                    pdfDoc.Add(Space);
-                    paragraph.Add(title);
-                    paragraph.Alignment = Element.ALIGN_CENTER;
-                    paragraph.SpacingAfter = 5.0F;
-                    paragraph.Add(new Paragraph(" "));
-                    pdfDoc.Add(paragraph);
-                    pdfDoc.Add(pdfTable);
-                    pdfDoc.Close();
-                    stream.Close();
-
-                    new Notification().PopUp("Transaction Reports has been Created as PDF", "", "success");
-                }
-            }
-        }
-
-
         public static bool PrinterExists(string printerName)
         {
             if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
@@ -1044,7 +971,7 @@ namespace EcoPOSv2
 
         private void btnMT_ExportReport_Click(object sender, EventArgs e)
         {
-            ExportDgvToPDF("Member Transactions", dgvMT_Records);
+            EI.ExportDgvToPDF("Member Transactions", dgvMT_Records);
         }
 
         private void btnMT_Sort_Click(object sender, EventArgs e)

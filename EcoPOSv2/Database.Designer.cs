@@ -176,6 +176,7 @@
             this.btnImportProducts.Text = "Import Products";
             this.btnImportProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImportProducts.UseVisualStyleBackColor = true;
+            this.btnImportProducts.Click += new System.EventHandler(this.btnImportProducts_Click);
             // 
             // btnExportCategory
             // 
