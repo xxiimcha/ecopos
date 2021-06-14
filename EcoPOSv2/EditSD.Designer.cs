@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSD));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.TableLayout1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtContactNo = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.dtpAN_DateIssued = new System.Windows.Forms.DateTimePicker();
             this.Label8 = new System.Windows.Forms.Label();
             this.tmrClose = new System.Windows.Forms.Timer(this.components);
-            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.TableLayout1.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,52 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(744, 671);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.BorderThickness = 2;
+            this.btnCancel.CheckedState.Parent = this.btnCancel;
+            this.btnCancel.CustomImages.Parent = this.btnCancel;
+            this.btnCancel.FillColor = System.Drawing.Color.White;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.HoverState.Parent = this.btnCancel;
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnCancel.Location = new System.Drawing.Point(399, 546);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
+            this.btnCancel.Size = new System.Drawing.Size(189, 57);
+            this.btnCancel.TabIndex = 58;
+            this.btnCancel.Text = "CANCEL";
+            this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BorderColor = System.Drawing.Color.Green;
+            this.btnSave.BorderThickness = 2;
+            this.btnSave.CheckedState.Parent = this.btnSave;
+            this.btnSave.CustomImages.Parent = this.btnSave;
+            this.btnSave.FillColor = System.Drawing.Color.White;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.Green;
+            this.btnSave.HoverState.Parent = this.btnSave;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSave.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnSave.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnSave.Location = new System.Drawing.Point(180, 546);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.ShadowDecoration.Parent = this.btnSave;
+            this.btnSave.Size = new System.Drawing.Size(189, 57);
+            this.btnSave.TabIndex = 57;
+            this.btnSave.Text = "CONFIRM";
+            this.btnSave.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // TableLayout1
             // 
@@ -419,50 +465,6 @@
             // 
             this.tmrClose.Interval = 1000;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancel.BorderThickness = 2;
-            this.btnCancel.CheckedState.Parent = this.btnCancel;
-            this.btnCancel.CustomImages.Parent = this.btnCancel;
-            this.btnCancel.FillColor = System.Drawing.Color.White;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnCancel.Location = new System.Drawing.Point(399, 546);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
-            this.btnCancel.Size = new System.Drawing.Size(189, 57);
-            this.btnCancel.TabIndex = 58;
-            this.btnCancel.Text = "CANCEL";
-            this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BorderColor = System.Drawing.Color.Green;
-            this.btnSave.BorderThickness = 2;
-            this.btnSave.CheckedState.Parent = this.btnSave;
-            this.btnSave.CustomImages.Parent = this.btnSave;
-            this.btnSave.FillColor = System.Drawing.Color.White;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.Green;
-            this.btnSave.HoverState.Parent = this.btnSave;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSave.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnSave.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnSave.Location = new System.Drawing.Point(180, 546);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.ShadowDecoration.Parent = this.btnSave;
-            this.btnSave.Size = new System.Drawing.Size(189, 57);
-            this.btnSave.TabIndex = 57;
-            this.btnSave.Text = "CONFIRM";
-            this.btnSave.TextOffset = new System.Drawing.Point(10, 0);
-            // 
             // EditSD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,6 +475,7 @@
             this.Name = "EditSD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditSD";
+            this.Load += new System.EventHandler(this.EditSD_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.TableLayout1.ResumeLayout(false);
             this.TableLayout1.PerformLayout();

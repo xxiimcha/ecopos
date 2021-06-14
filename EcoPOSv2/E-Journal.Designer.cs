@@ -105,6 +105,7 @@
             this.btnVoid.TabIndex = 19;
             this.btnVoid.Text = "Void";
             this.btnVoid.UseVisualStyleBackColor = false;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // btnTerminal
             // 
@@ -126,6 +127,7 @@
             this.btnTerminal.TabIndex = 12;
             this.btnTerminal.Text = "Terminal";
             this.btnTerminal.UseVisualStyleBackColor = false;
+            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
             // 
             // btnTransactions
             // 
@@ -147,6 +149,7 @@
             this.btnTransactions.TabIndex = 20;
             this.btnTransactions.Text = "Transactions";
             this.btnTransactions.UseVisualStyleBackColor = false;
+            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
             // 
             // btnStaff
             // 
@@ -168,6 +171,7 @@
             this.btnStaff.TabIndex = 13;
             this.btnStaff.Text = "Staff";
             this.btnStaff.UseVisualStyleBackColor = false;
+            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // btnXReading
             // 
@@ -189,6 +193,7 @@
             this.btnXReading.TabIndex = 17;
             this.btnXReading.Text = "X-Reading";
             this.btnXReading.UseVisualStyleBackColor = false;
+            this.btnXReading.Click += new System.EventHandler(this.btnXReading_Click);
             // 
             // btnZReading
             // 
@@ -210,6 +215,7 @@
             this.btnZReading.TabIndex = 16;
             this.btnZReading.Text = "Z-Reading";
             this.btnZReading.UseVisualStyleBackColor = false;
+            this.btnZReading.Click += new System.EventHandler(this.btnZReading_Click);
             // 
             // btnSD
             // 
@@ -231,6 +237,7 @@
             this.btnSD.TabIndex = 14;
             this.btnSD.Text = "Special Discounts";
             this.btnSD.UseVisualStyleBackColor = false;
+            this.btnSD.Click += new System.EventHandler(this.btnSD_Click);
             // 
             // btnRD
             // 
@@ -252,6 +259,7 @@
             this.btnRD.TabIndex = 15;
             this.btnRD.Text = "Regular Discounts";
             this.btnRD.UseVisualStyleBackColor = false;
+            this.btnRD.Click += new System.EventHandler(this.btnRD_Click);
             // 
             // pnlChild
             // 
@@ -270,6 +278,7 @@
             this.Name = "E_Journal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E_Journal";
+            this.Load += new System.EventHandler(this.E_Journal_Load);
             this.TableLayoutPanel2.ResumeLayout(false);
             this.TableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
