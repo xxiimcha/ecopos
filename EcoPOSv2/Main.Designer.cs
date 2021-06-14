@@ -44,18 +44,20 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
+            this.lblByPassUser = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.lblByPassUser);
             this.panel1.Controls.Add(this.lblUser);
             this.panel1.Controls.Add(this.lblDateTime);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -96,7 +98,7 @@
             this.gunaPanel1.Controls.Add(this.btnXReading);
             this.gunaPanel1.Controls.Add(this.btnOrder);
             this.gunaPanel1.Controls.Add(this.panel2);
-            this.gunaPanel1.Controls.Add(this.pictureBox1);
+            this.gunaPanel1.Controls.Add(this.pbLogo);
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 34);
             this.gunaPanel1.Name = "gunaPanel1";
@@ -276,17 +278,17 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "ver 2.0";
             // 
-            // pictureBox1
+            // pbLogo
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(274, 176);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pbLogo.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
+            this.pbLogo.Location = new System.Drawing.Point(0, 0);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(274, 176);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 3;
+            this.pbLogo.TabStop = false;
             // 
             // pnlChild
             // 
@@ -300,6 +302,18 @@
             // 
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
+            // 
+            // lblByPassUser
+            // 
+            this.lblByPassUser.AutoSize = true;
+            this.lblByPassUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
+            this.lblByPassUser.Location = new System.Drawing.Point(0, 0);
+            this.lblByPassUser.Name = "lblByPassUser";
+            this.lblByPassUser.Size = new System.Drawing.Size(0, 25);
+            this.lblByPassUser.TabIndex = 11;
+            this.lblByPassUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Main
             // 
@@ -316,10 +330,11 @@
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.gunaPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,7 +344,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblDateTime;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label label4;
@@ -343,5 +357,7 @@
         public Guna.UI2.WinForms.Guna2Button btnItemChecker;
         public System.Windows.Forms.Panel pnlChild;
         internal System.Windows.Forms.Timer tmrCurrentDateTime;
+        public System.Windows.Forms.PictureBox pbLogo;
+        public System.Windows.Forms.Label lblByPassUser;
     }
 }

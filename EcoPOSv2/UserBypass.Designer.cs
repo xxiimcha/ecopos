@@ -43,6 +43,7 @@
             this.btnConfirm.TabIndex = 9;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // txtKeycode
             // 
@@ -52,6 +53,7 @@
             this.txtKeycode.PasswordChar = '*';
             this.txtKeycode.Size = new System.Drawing.Size(304, 23);
             this.txtKeycode.TabIndex = 8;
+            this.txtKeycode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtKeycode_KeyDown);
             // 
             // Label2
             // 
@@ -70,6 +72,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(304, 23);
             this.txtUsername.TabIndex = 6;
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtUsername_KeyDown);
             // 
             // Label1
             // 

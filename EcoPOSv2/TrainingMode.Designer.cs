@@ -50,6 +50,7 @@
             this.btnStop.TabIndex = 6;
             this.btnStop.Text = "Stop training mode";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // btnStart
             // 
@@ -59,6 +60,7 @@
             this.btnStart.TabIndex = 5;
             this.btnStart.Text = "Start training mode";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
             // TrainingMode
             // 

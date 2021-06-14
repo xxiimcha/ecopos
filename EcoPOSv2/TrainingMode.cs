@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcoPOSv2.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,16 @@ namespace EcoPOSv2
         public TrainingMode()
         {
             InitializeComponent();
+        }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            Main.Instance.dynamicDB = "EcoPOS_Training";
+        }
+
+        private void BtnStop_Click(object sender, EventArgs e)
+        {
+            Main.Instance.dynamicDB = "EcoPOS";
         }
     }
 }

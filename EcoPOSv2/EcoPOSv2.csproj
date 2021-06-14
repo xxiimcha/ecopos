@@ -256,6 +256,12 @@
     <Compile Include="ManageProducts.Designer.cs">
       <DependentUpon>ManageProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="More.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="More.Designer.cs">
+      <DependentUpon>More.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -519,6 +525,8 @@
     <Compile Include="ZReadingRecords.Designer.cs">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>
     </Compile>
+    <Content Include="Resources\eco_pos2.png" />
+    <Content Include="Resources\eco_pos_training_mode.png" />
     <EmbeddedResource Include="AddEditWarehouse.resx">
       <DependentUpon>AddEditWarehouse.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +607,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageProducts.resx">
       <DependentUpon>ManageProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="More.resx">
+      <DependentUpon>More.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notification.resx">
       <DependentUpon>Notification.cs</DependentUpon>

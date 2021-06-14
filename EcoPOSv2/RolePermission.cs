@@ -138,95 +138,95 @@ public class RolePermission
         }
     }
 
-    //public void More(More frm)
-    //{
-    //    if (Main.Instance.by_pass_user)
-    //    {
-    //        if (Main.Instance.bp_more_ejournal == false)
-    //            frm.btnEJournal.Enabled = false;
-    //        if (Main.Instance.bp_more_customer_membership == false)
-    //            frm.btnCustomers.Enabled = false;
-    //        if (Main.Instance.bp_more_logs == false)
-    //            frm.btnLogs.Enabled = false;
-    //        if (Main.Instance.bp_more_redeem_settings == false)
-    //            frm.btnRedeemSettings.Enabled = false;
-    //        if (Main.Instance.bp_more_manage_discounts == false)
-    //            frm.btnManageDiscounts.Enabled = false;
-    //        if (Main.Instance.bp_more_manage_products == false)
-    //            frm.btnManageProducts.Enabled = false;
-    //        if (Main.Instance.bp_more_inventory == false)
-    //            frm.btnInventory.Enabled = false;
-    //        if (Main.Instance.bp_more_close_store == false)
-    //            frm.btnEnd.Enabled = false;
-    //        if (Main.Instance.bp_more_database == false)
-    //            frm.btnDatabase.Enabled = false;
-    //        if (Main.Instance.bp_more_settings == false)
-    //            frm.btnSettings.Enabled = false;
+    public void More(More frm)
+    {
+        if (Main.Instance.by_pass_user)
+        {
+            if (Main.Instance.bp_more_ejournal == false)
+                frm.btnEJournal.Enabled = false;
+            if (Main.Instance.bp_more_customer_membership == false)
+                frm.btnCustomers.Enabled = false;
+            if (Main.Instance.bp_more_logs == false)
+                frm.btnLogs.Enabled = false;
+            if (Main.Instance.bp_more_redeem_settings == false)
+                frm.btnRedeemSettings.Enabled = false;
+            if (Main.Instance.bp_more_manage_discounts == false)
+                frm.btnManageDiscounts.Enabled = false;
+            if (Main.Instance.bp_more_manage_products == false)
+                frm.btnManageProducts.Enabled = false;
+            if (Main.Instance.bp_more_inventory == false)
+                frm.btnInventory.Enabled = false;
+            if (Main.Instance.bp_more_close_store == false)
+                frm.btnEnd.Enabled = false;
+            if (Main.Instance.bp_more_database == false)
+                frm.btnDatabase.Enabled = false;
+            if (Main.Instance.bp_more_settings == false)
+                frm.btnSettings.Enabled = false;
 
-    //        if (Main.Instance.bp_more_ejournal == true)
-    //            frm.btnEJournal.Enabled = true;
-    //        if (Main.Instance.bp_more_customer_membership == true)
-    //            frm.btnCustomers.Enabled = true;
-    //        if (Main.Instance.bp_more_logs == true)
-    //            frm.btnLogs.Enabled = true;
-    //        if (Main.Instance.bp_more_redeem_settings == true)
-    //            frm.btnRedeemSettings.Enabled = true;
-    //        if (Main.Instance.bp_more_manage_discounts == true)
-    //            frm.btnManageDiscounts.Enabled = true;
-    //        if (Main.Instance.bp_more_manage_products == true)
-    //            frm.btnManageProducts.Enabled = true;
-    //        if (Main.Instance.bp_more_inventory == true)
-    //            frm.btnInventory.Enabled = true;
-    //        if (Main.Instance.bp_more_close_store == true)
-    //            frm.btnEnd.Enabled = true;
-    //        if (Main.Instance.bp_more_database == true)
-    //            frm.btnDatabase.Enabled = true;
-    //        if (Main.Instance.bp_more_settings == true)
-    //            frm.btnSettings.Enabled = true;
-    //    }
-    //    else
-    //    {
-    //        if (Main.Instance.rp_more_ejournal == false)
-    //            frm.btnEJournal.Enabled = false;
-    //        if (Main.Instance.rp_more_customer_membership == false)
-    //            frm.btnCustomers.Enabled = false;
-    //        if (Main.Instance.rp_more_logs == false)
-    //            frm.btnLogs.Enabled = false;
-    //        if (Main.Instance.rp_more_redeem_settings == false)
-    //            frm.btnRedeemSettings.Enabled = false;
-    //        if (Main.Instance.rp_more_manage_discounts == false)
-    //            frm.btnManageDiscounts.Enabled = false;
-    //        if (Main.Instance.rp_more_manage_products == false)
-    //            frm.btnManageProducts.Enabled = false;
-    //        if (Main.Instance.rp_more_inventory == false)
-    //            frm.btnInventory.Enabled = false;
-    //        if (Main.Instance.rp_more_close_store == false)
-    //            frm.btnEnd.Enabled = false;
-    //        if (Main.Instance.rp_more_database == false)
-    //            frm.btnDatabase.Enabled = false;
-    //        if (Main.Instance.rp_more_settings == false)
-    //            frm.btnSettings.Enabled = false;
+            if (Main.Instance.bp_more_ejournal == true)
+                frm.btnEJournal.Enabled = true;
+            if (Main.Instance.bp_more_customer_membership == true)
+                frm.btnCustomers.Enabled = true;
+            if (Main.Instance.bp_more_logs == true)
+                frm.btnLogs.Enabled = true;
+            if (Main.Instance.bp_more_redeem_settings == true)
+                frm.btnRedeemSettings.Enabled = true;
+            if (Main.Instance.bp_more_manage_discounts == true)
+                frm.btnManageDiscounts.Enabled = true;
+            if (Main.Instance.bp_more_manage_products == true)
+                frm.btnManageProducts.Enabled = true;
+            if (Main.Instance.bp_more_inventory == true)
+                frm.btnInventory.Enabled = true;
+            if (Main.Instance.bp_more_close_store == true)
+                frm.btnEnd.Enabled = true;
+            if (Main.Instance.bp_more_database == true)
+                frm.btnDatabase.Enabled = true;
+            if (Main.Instance.bp_more_settings == true)
+                frm.btnSettings.Enabled = true;
+        }
+        else
+        {
+            if (Main.Instance.rp_more_ejournal == false)
+                frm.btnEJournal.Enabled = false;
+            if (Main.Instance.rp_more_customer_membership == false)
+                frm.btnCustomers.Enabled = false;
+            if (Main.Instance.rp_more_logs == false)
+                frm.btnLogs.Enabled = false;
+            if (Main.Instance.rp_more_redeem_settings == false)
+                frm.btnRedeemSettings.Enabled = false;
+            if (Main.Instance.rp_more_manage_discounts == false)
+                frm.btnManageDiscounts.Enabled = false;
+            if (Main.Instance.rp_more_manage_products == false)
+                frm.btnManageProducts.Enabled = false;
+            if (Main.Instance.rp_more_inventory == false)
+                frm.btnInventory.Enabled = false;
+            if (Main.Instance.rp_more_close_store == false)
+                frm.btnEnd.Enabled = false;
+            if (Main.Instance.rp_more_database == false)
+                frm.btnDatabase.Enabled = false;
+            if (Main.Instance.rp_more_settings == false)
+                frm.btnSettings.Enabled = false;
 
-    //        if (Main.Instance.rp_more_ejournal == true)
-    //            frm.btnEJournal.Enabled = true;
-    //        if (Main.Instance.rp_more_customer_membership == true)
-    //            frm.btnCustomers.Enabled = true;
-    //        if (Main.Instance.rp_more_logs == true)
-    //            frm.btnLogs.Enabled = true;
-    //        if (Main.Instance.rp_more_redeem_settings == true)
-    //            frm.btnRedeemSettings.Enabled = true;
-    //        if (Main.Instance.rp_more_manage_discounts == true)
-    //            frm.btnManageDiscounts.Enabled = true;
-    //        if (Main.Instance.rp_more_manage_products == true)
-    //            frm.btnManageProducts.Enabled = true;
-    //        if (Main.Instance.rp_more_inventory == true)
-    //            frm.btnInventory.Enabled = true;
-    //        if (Main.Instance.rp_more_close_store == true)
-    //            frm.btnEnd.Enabled = true;
-    //        if (Main.Instance.rp_more_database == true)
-    //            frm.btnDatabase.Enabled = true;
-    //        if (Main.Instance.rp_more_settings == true)
-    //            frm.btnSettings.Enabled = true;
-    //    }
-    //}
+            if (Main.Instance.rp_more_ejournal == true)
+                frm.btnEJournal.Enabled = true;
+            if (Main.Instance.rp_more_customer_membership == true)
+                frm.btnCustomers.Enabled = true;
+            if (Main.Instance.rp_more_logs == true)
+                frm.btnLogs.Enabled = true;
+            if (Main.Instance.rp_more_redeem_settings == true)
+                frm.btnRedeemSettings.Enabled = true;
+            if (Main.Instance.rp_more_manage_discounts == true)
+                frm.btnManageDiscounts.Enabled = true;
+            if (Main.Instance.rp_more_manage_products == true)
+                frm.btnManageProducts.Enabled = true;
+            if (Main.Instance.rp_more_inventory == true)
+                frm.btnInventory.Enabled = true;
+            if (Main.Instance.rp_more_close_store == true)
+                frm.btnEnd.Enabled = true;
+            if (Main.Instance.rp_more_database == true)
+                frm.btnDatabase.Enabled = true;
+            if (Main.Instance.rp_more_settings == true)
+                frm.btnSettings.Enabled = true;
+        }
+    }
 }
