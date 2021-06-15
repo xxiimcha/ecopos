@@ -463,6 +463,12 @@
     <Compile Include="Store.Designer.cs">
       <DependentUpon>Store.cs</DependentUpon>
     </Compile>
+    <Compile Include="TerminalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TerminalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TextBoxValidation.cs" />
     <Compile Include="TrainingMode.cs">
       <SubType>Form</SubType>
@@ -733,6 +739,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store.resx">
       <DependentUpon>Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TerminalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TerminalReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TrainingMode.resx">
       <DependentUpon>TrainingMode.cs</DependentUpon>

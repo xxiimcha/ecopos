@@ -25,6 +25,18 @@ namespace EcoPOSv2
         string roleID = "";
         List<Control> allTxt = new List<Control>();
         //METHODS
+        public static StaffType _StaffType;
+        public static StaffType Instance
+        {
+            get
+            {
+                if (_StaffType == null)
+                {
+                    _StaffType = new StaffType();
+                }
+                return _StaffType;
+            }
+        }
         private void LoadStaffType()
         {
             SQL.Query("SELECT roleID, name FROM user_role ORDER BY name ASC");
@@ -53,6 +65,8 @@ namespace EcoPOSv2
         //METHODS
         private void StaffType_Load(object sender, EventArgs e)
         {
+            _StaffType = this;
+            
             LoadStaffType();
         }
 
@@ -75,7 +89,7 @@ namespace EcoPOSv2
                     return;
 
                 LoadStaffType();
-                Staff.LoadStaffType();
+                Staff.Instance.LoadStaffType();
 
                 ClearFields();
 
@@ -226,7 +240,7 @@ namespace EcoPOSv2
                 }
 
                 LoadStaffType();
-                Staff.LoadStaffType();
+                Staff.Instance.LoadStaffType();
             }
             else
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error" );
@@ -242,9 +256,9 @@ namespace EcoPOSv2
             if (e.RowIndex == -1)
                 return;
 
-            SQL.AddParam("@roleID", dgvStaffType.CurrentRow.Cells(0).Value.ToString());
+            SQL.AddParam("@roleID", dgvStaffType.CurrentRow.Cells[0].Value.ToString());
 
-            SQL.ExecQuery(@"SELECT *, role_permission.*, user_role.roleID as 'uroleID' FROM user_role INNER JOIN role_permission ON 
+            SQL.Query(@"SELECT *, role_permission.*, user_role.roleID as 'uroleID' FROM user_role INNER JOIN role_permission ON 
                        user_role.roleID = role_permission.roleID WHERE user_role.roleID = @roleID");
 
             if (SQL.HasException(true))
@@ -281,6 +295,11 @@ namespace EcoPOSv2
                 cbxPay_PaymentMethod.Checked = Convert.ToBoolean(r["pay_payment_method"].ToString());
                 cbxPay_GiftCertificate.Checked = Convert.ToBoolean(r["pay_gift_certificate"].ToString());
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

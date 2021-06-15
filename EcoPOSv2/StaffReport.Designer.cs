@@ -116,15 +116,16 @@
             this.btnSearch.Size = new System.Drawing.Size(31, 28);
             this.btnSearch.TabIndex = 114;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbStaff
             // 
-            this.cmbStaff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.cmbStaff.BackColor = System.Drawing.Color.White;
             this.cmbStaff.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbStaff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbStaff.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStaff.ForeColor = System.Drawing.Color.White;
+            this.cmbStaff.ForeColor = System.Drawing.Color.Black;
             this.cmbStaff.FormattingEnabled = true;
             this.cmbStaff.Items.AddRange(new object[] {
             "All",
@@ -476,6 +477,7 @@
             this.Name = "StaffReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffReport";
+            this.Load += new System.EventHandler(this.StaffReport_Load);
             this.TableLayoutPanel3.ResumeLayout(false);
             this.TableLayoutPanel3.PerformLayout();
             this.Panel2.ResumeLayout(false);
