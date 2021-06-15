@@ -266,6 +266,7 @@
             this.btnRedeem.Size = new System.Drawing.Size(188, 52);
             this.btnRedeem.TabIndex = 48;
             this.btnRedeem.Text = "REDEEM ITEM (F7)";
+            this.btnRedeem.Click += new System.EventHandler(this.btnRedeem_Click);
             // 
             // btnCancel
             // 

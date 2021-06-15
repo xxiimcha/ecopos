@@ -128,7 +128,7 @@ namespace EcoPOSv2
             TextBox numbers = sender as TextBox;
             if (((TextBox)sender).Text.Contains("."))
             {
-                string s = Conversions.ToString(sender);
+                string s = Conversions.ToString(numbers.Text);
                 int i = Strings.InStr(s, "."); // //Find Position of decimal place
                 if (i + 2 <= s.Length) // //If try to write more than 2 decimal places then truncate it.
                 {

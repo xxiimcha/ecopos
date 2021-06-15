@@ -517,6 +517,19 @@ namespace EcoPOSv2
             btnDiscount.PerformClick();
         }
 
+        private void btnRedeem_Click(object sender, EventArgs e)
+        {
+            if (dgvCart.RowCount > 0)
+            {
+                new Notification().PopUp("Clear cart first.", "Error", "error");
+                return;
+            }
+
+            Redeem frmRedeem = new Redeem();
+            frmRedeem.frmOrder = this;
+            frmRedeem.ShowDialog();
+        }
+
         private void OpenPayment(object sender, EventArgs e)
         {
             //btnPayment.PerformClick();
