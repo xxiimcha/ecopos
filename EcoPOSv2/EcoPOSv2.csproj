@@ -328,6 +328,12 @@
     <Compile Include="RDMQuantity.Designer.cs">
       <DependentUpon>RDMQuantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Redeem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Redeem.Designer.cs">
+      <DependentUpon>Redeem.cs</DependentUpon>
+    </Compile>
     <Compile Include="RedeemCart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -651,6 +657,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RDMQuantity.resx">
       <DependentUpon>RDMQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Redeem.resx">
+      <DependentUpon>Redeem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RedeemCart.resx">
       <DependentUpon>RedeemCart.cs</DependentUpon>
