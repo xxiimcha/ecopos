@@ -20,6 +20,7 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
 
         int close_count = 0;
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             SQL.Query("SELECT * FROM store_details");
