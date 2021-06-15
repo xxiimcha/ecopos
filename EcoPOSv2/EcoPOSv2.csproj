@@ -548,7 +548,6 @@
     <Compile Include="ZReadingRecords.Designer.cs">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>
     </Compile>
-    <None Include="Database\EcoPOS.bak" />
     <None Include="Resources\eco_pos.png" />
     <Content Include="Resources\eco_pos2.png" />
     <Content Include="Resources\eco_pos_training_mode.png" />
