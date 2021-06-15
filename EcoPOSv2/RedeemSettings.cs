@@ -202,6 +202,8 @@ namespace EcoPOSv2
         private void btnRT_Click(object sender, EventArgs e)
         {
             OL.changePanel(pnlRT, ref currentPanel, btnRT, ref currentBtn);
+
+            btnRT_Search.PerformClick();
         }
 
         private void btnRI_Click(object sender, EventArgs e)
@@ -212,6 +214,8 @@ namespace EcoPOSv2
         private void btnAPT_Click(object sender, EventArgs e)
         {
             OL.changePanel(pnlAPT, ref currentPanel, btnAPT, ref currentBtn);
+
+            btnAPT_Search.PerformClick();
         }
 
         private void btnGC_Click(object sender, EventArgs e)
@@ -612,12 +616,12 @@ namespace EcoPOSv2
             if (cmbRT_Customer.SelectedIndex != 0)
                 cus_query = "cus_ID_no = " + cmbRT_Customer.SelectedValue;
 
-            SQL.AddParam("@from", dtpRT_From.Value);
-            SQL.AddParam("@to", dtpRT_To.Value);
+            SQL.AddParam("@from", dtpRT_From.Value.ToShortDateString());
+            SQL.AddParam("@to", dtpRT_To.Value.ToShortDateString());
 
-            SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Date', c.name as 'Customer', cus_card_no 'Card No.',
+            SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Dates', c.name as 'Customer', cus_card_no 'Card No.',
                        total_pts as 'Total', card_balance_before as 'Previous Balance', card_balance_after as 'Remaining Points' FROM redeem_transaction as rt
-                       INNER JOIN customer c ON rt.cus_ID_no = c.customerID WHERE " + cus_query + " ORDER BY date_time DESC");
+                       INNER JOIN customer c ON rt.cus_ID_no = c.customerID WHERE date BETWEEN @from AND @to AND " + cus_query+" ORDER BY date_time DESC");
 
             if (SQL.HasException(true))
                 return;
