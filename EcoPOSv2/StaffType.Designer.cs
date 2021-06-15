@@ -33,9 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffType));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.txtStaffType = new System.Windows.Forms.TextBox();
+            this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dgvStaffType = new System.Windows.Forms.DataGridView();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAdd = new FontAwesome.Sharp.IconButton();
+            this.flpPermission = new System.Windows.Forms.FlowLayoutPanel();
             this.Label2 = new System.Windows.Forms.Label();
             this.cbxOrd_Payment = new System.Windows.Forms.CheckBox();
             this.cbxOrd_Customer = new System.Windows.Forms.CheckBox();
@@ -51,10 +54,10 @@
             this.cbxHome_More = new System.Windows.Forms.CheckBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.cbxPay_PaymentMethod = new System.Windows.Forms.CheckBox();
-            this.Label6 = new System.Windows.Forms.Label();
             this.cbxPay_GiftCertificate = new System.Windows.Forms.CheckBox();
             this.Label4 = new System.Windows.Forms.Label();
             this.cbxMore_EJournal = new System.Windows.Forms.CheckBox();
+            this.cbxMore_PayInOut = new System.Windows.Forms.CheckBox();
             this.cbxMore_Logs = new System.Windows.Forms.CheckBox();
             this.cbxMore_RedeemSettings = new System.Windows.Forms.CheckBox();
             this.cbxMore_ManageDiscounts = new System.Windows.Forms.CheckBox();
@@ -63,20 +66,17 @@
             this.cbxMore_CloseStore = new System.Windows.Forms.CheckBox();
             this.cbxMore_Database = new System.Windows.Forms.CheckBox();
             this.cbxMore_Settings = new System.Windows.Forms.CheckBox();
-            this.flpPermission = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbxMore_PayInOut = new System.Windows.Forms.CheckBox();
-            this.dgvStaffType = new System.Windows.Forms.DataGridView();
-            this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnProduct_Save = new Guna.UI2.WinForms.Guna2Button();
-            this.btnProduct_Delete = new Guna.UI2.WinForms.Guna2Button();
-            this.btnProduct_New = new FontAwesome.Sharp.IconButton();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.btnClose = new FontAwesome.Sharp.IconButton();
+            this.txtStaffType = new System.Windows.Forms.TextBox();
+            this.Label6 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
-            this.flpPermission.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaffType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
             this.SplitContainer1.Panel1.SuspendLayout();
             this.SplitContainer1.Panel2.SuspendLayout();
             this.SplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaffType)).BeginInit();
+            this.flpPermission.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -90,48 +90,180 @@
             this.guna2Panel1.Size = new System.Drawing.Size(948, 577);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // Label1
+            // SplitContainer1
             // 
-            this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(9, 86);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(202, 21);
-            this.Label1.TabIndex = 55;
-            this.Label1.Text = "Accessibility and Restriction";
+            this.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.SplitContainer1.Name = "SplitContainer1";
             // 
-            // btnClose
+            // SplitContainer1.Panel1
             // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            this.btnClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.IconSize = 25;
-            this.btnClose.Location = new System.Drawing.Point(593, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.btnClose.Size = new System.Drawing.Size(28, 30);
-            this.btnClose.TabIndex = 54;
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.SplitContainer1.Panel1.Controls.Add(this.dgvStaffType);
             // 
-            // txtStaffType
+            // SplitContainer1.Panel2
             // 
-            this.txtStaffType.BackColor = System.Drawing.Color.White;
-            this.txtStaffType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStaffType.Enabled = false;
-            this.txtStaffType.Font = new System.Drawing.Font("Segoe UI", 14.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStaffType.ForeColor = System.Drawing.Color.Black;
-            this.txtStaffType.Location = new System.Drawing.Point(105, 38);
-            this.txtStaffType.Multiline = true;
-            this.txtStaffType.Name = "txtStaffType";
-            this.txtStaffType.Size = new System.Drawing.Size(511, 29);
-            this.txtStaffType.TabIndex = 53;
+            this.SplitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SplitContainer1.Panel2.Controls.Add(this.btnSave);
+            this.SplitContainer1.Panel2.Controls.Add(this.btnDelete);
+            this.SplitContainer1.Panel2.Controls.Add(this.btnAdd);
+            this.SplitContainer1.Panel2.Controls.Add(this.flpPermission);
+            this.SplitContainer1.Panel2.Controls.Add(this.Label1);
+            this.SplitContainer1.Panel2.Controls.Add(this.btnClose);
+            this.SplitContainer1.Panel2.Controls.Add(this.txtStaffType);
+            this.SplitContainer1.Panel2.Controls.Add(this.Label6);
+            this.SplitContainer1.Size = new System.Drawing.Size(948, 577);
+            this.SplitContainer1.SplitterDistance = 315;
+            this.SplitContainer1.TabIndex = 1;
+            // 
+            // dgvStaffType
+            // 
+            this.dgvStaffType.AllowUserToAddRows = false;
+            this.dgvStaffType.AllowUserToDeleteRows = false;
+            this.dgvStaffType.AllowUserToResizeColumns = false;
+            this.dgvStaffType.AllowUserToResizeRows = false;
+            this.dgvStaffType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStaffType.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvStaffType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvStaffType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStaffType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvStaffType.ColumnHeadersHeight = 6;
+            this.dgvStaffType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStaffType.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvStaffType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStaffType.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvStaffType.Location = new System.Drawing.Point(0, 0);
+            this.dgvStaffType.Name = "dgvStaffType";
+            this.dgvStaffType.ReadOnly = true;
+            this.dgvStaffType.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStaffType.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvStaffType.Size = new System.Drawing.Size(315, 577);
+            this.dgvStaffType.TabIndex = 10;
+            this.dgvStaffType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaffType_CellClick);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BorderColor = System.Drawing.Color.Green;
+            this.btnSave.BorderThickness = 2;
+            this.btnSave.CheckedState.Parent = this.btnSave;
+            this.btnSave.CustomImages.Parent = this.btnSave;
+            this.btnSave.FillColor = System.Drawing.Color.White;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.Green;
+            this.btnSave.HoverState.Parent = this.btnSave;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSave.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnSave.Location = new System.Drawing.Point(108, 519);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.ShadowDecoration.Parent = this.btnSave;
+            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.TabIndex = 72;
+            this.btnSave.Text = "SAVE";
+            this.btnSave.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDelete.BorderThickness = 2;
+            this.btnDelete.CheckedState.Parent = this.btnDelete;
+            this.btnDelete.CustomImages.Parent = this.btnDelete;
+            this.btnDelete.FillColor = System.Drawing.Color.White;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDelete.HoverState.Parent = this.btnDelete;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDelete.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnDelete.Location = new System.Drawing.Point(243, 519);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
+            this.btnDelete.Size = new System.Drawing.Size(120, 40);
+            this.btnDelete.TabIndex = 73;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAdd.BackColor = System.Drawing.Color.White;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
+            this.btnAdd.FlatAppearance.BorderSize = 2;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.Orange;
+            this.btnAdd.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnAdd.IconColor = System.Drawing.Color.Orange;
+            this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAdd.IconSize = 30;
+            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdd.Location = new System.Drawing.Point(378, 519);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(142, 40);
+            this.btnAdd.TabIndex = 71;
+            this.btnAdd.Text = "ADD NEW";
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // flpPermission
+            // 
+            this.flpPermission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.flpPermission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpPermission.Controls.Add(this.Label2);
+            this.flpPermission.Controls.Add(this.cbxOrd_Payment);
+            this.flpPermission.Controls.Add(this.cbxOrd_Customer);
+            this.flpPermission.Controls.Add(this.cbxOrd_Discount);
+            this.flpPermission.Controls.Add(this.cbxOrd_VoidItem);
+            this.flpPermission.Controls.Add(this.cbxOrd_VoidTransaction);
+            this.flpPermission.Controls.Add(this.cbxOrd_CancelTransaction);
+            this.flpPermission.Controls.Add(this.cbxOrd_RefundTransaction);
+            this.flpPermission.Controls.Add(this.cbxOrd_ReturnExchange);
+            this.flpPermission.Controls.Add(this.cbxOrd_RedeemItem);
+            this.flpPermission.Controls.Add(this.Label3);
+            this.flpPermission.Controls.Add(this.cbxHome_SwitchCashier);
+            this.flpPermission.Controls.Add(this.cbxHome_More);
+            this.flpPermission.Controls.Add(this.Label5);
+            this.flpPermission.Controls.Add(this.cbxPay_PaymentMethod);
+            this.flpPermission.Controls.Add(this.cbxPay_GiftCertificate);
+            this.flpPermission.Controls.Add(this.Label4);
+            this.flpPermission.Controls.Add(this.cbxMore_EJournal);
+            this.flpPermission.Controls.Add(this.cbxMore_PayInOut);
+            this.flpPermission.Controls.Add(this.cbxMore_Logs);
+            this.flpPermission.Controls.Add(this.cbxMore_RedeemSettings);
+            this.flpPermission.Controls.Add(this.cbxMore_ManageDiscounts);
+            this.flpPermission.Controls.Add(this.cbxMore_ManageProducts);
+            this.flpPermission.Controls.Add(this.cbxMore_Inventory);
+            this.flpPermission.Controls.Add(this.cbxMore_CloseStore);
+            this.flpPermission.Controls.Add(this.cbxMore_Database);
+            this.flpPermission.Controls.Add(this.cbxMore_Settings);
+            this.flpPermission.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpPermission.Location = new System.Drawing.Point(13, 119);
+            this.flpPermission.Name = "flpPermission";
+            this.flpPermission.Size = new System.Drawing.Size(604, 386);
+            this.flpPermission.TabIndex = 56;
             // 
             // Label2
             // 
@@ -310,17 +442,6 @@
             this.cbxPay_PaymentMethod.Text = "Payment Method";
             this.cbxPay_PaymentMethod.UseVisualStyleBackColor = true;
             // 
-            // Label6
-            // 
-            this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label6.ForeColor = System.Drawing.Color.Black;
-            this.Label6.Location = new System.Drawing.Point(8, 42);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(90, 25);
-            this.Label6.TabIndex = 52;
-            this.Label6.Text = "Staff Type";
-            // 
             // cbxPay_GiftCertificate
             // 
             this.cbxPay_GiftCertificate.AutoSize = true;
@@ -355,6 +476,18 @@
             this.cbxMore_EJournal.TabIndex = 15;
             this.cbxMore_EJournal.Text = "E-Journal";
             this.cbxMore_EJournal.UseVisualStyleBackColor = true;
+            // 
+            // cbxMore_PayInOut
+            // 
+            this.cbxMore_PayInOut.AutoSize = true;
+            this.cbxMore_PayInOut.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxMore_PayInOut.ForeColor = System.Drawing.Color.Black;
+            this.cbxMore_PayInOut.Location = new System.Drawing.Point(163, 143);
+            this.cbxMore_PayInOut.Name = "cbxMore_PayInOut";
+            this.cbxMore_PayInOut.Size = new System.Drawing.Size(96, 24);
+            this.cbxMore_PayInOut.TabIndex = 56;
+            this.cbxMore_PayInOut.Text = "Pay In/Out";
+            this.cbxMore_PayInOut.UseVisualStyleBackColor = true;
             // 
             // cbxMore_Logs
             // 
@@ -452,188 +585,59 @@
             this.cbxMore_Settings.Text = "Settings";
             this.cbxMore_Settings.UseVisualStyleBackColor = true;
             // 
-            // flpPermission
+            // Label1
             // 
-            this.flpPermission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.flpPermission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpPermission.Controls.Add(this.Label2);
-            this.flpPermission.Controls.Add(this.cbxOrd_Payment);
-            this.flpPermission.Controls.Add(this.cbxOrd_Customer);
-            this.flpPermission.Controls.Add(this.cbxOrd_Discount);
-            this.flpPermission.Controls.Add(this.cbxOrd_VoidItem);
-            this.flpPermission.Controls.Add(this.cbxOrd_VoidTransaction);
-            this.flpPermission.Controls.Add(this.cbxOrd_CancelTransaction);
-            this.flpPermission.Controls.Add(this.cbxOrd_RefundTransaction);
-            this.flpPermission.Controls.Add(this.cbxOrd_ReturnExchange);
-            this.flpPermission.Controls.Add(this.cbxOrd_RedeemItem);
-            this.flpPermission.Controls.Add(this.Label3);
-            this.flpPermission.Controls.Add(this.cbxHome_SwitchCashier);
-            this.flpPermission.Controls.Add(this.cbxHome_More);
-            this.flpPermission.Controls.Add(this.Label5);
-            this.flpPermission.Controls.Add(this.cbxPay_PaymentMethod);
-            this.flpPermission.Controls.Add(this.cbxPay_GiftCertificate);
-            this.flpPermission.Controls.Add(this.Label4);
-            this.flpPermission.Controls.Add(this.cbxMore_EJournal);
-            this.flpPermission.Controls.Add(this.cbxMore_PayInOut);
-            this.flpPermission.Controls.Add(this.cbxMore_Logs);
-            this.flpPermission.Controls.Add(this.cbxMore_RedeemSettings);
-            this.flpPermission.Controls.Add(this.cbxMore_ManageDiscounts);
-            this.flpPermission.Controls.Add(this.cbxMore_ManageProducts);
-            this.flpPermission.Controls.Add(this.cbxMore_Inventory);
-            this.flpPermission.Controls.Add(this.cbxMore_CloseStore);
-            this.flpPermission.Controls.Add(this.cbxMore_Database);
-            this.flpPermission.Controls.Add(this.cbxMore_Settings);
-            this.flpPermission.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpPermission.Location = new System.Drawing.Point(13, 119);
-            this.flpPermission.Name = "flpPermission";
-            this.flpPermission.Size = new System.Drawing.Size(604, 386);
-            this.flpPermission.TabIndex = 56;
+            this.Label1.AutoSize = true;
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.ForeColor = System.Drawing.Color.Black;
+            this.Label1.Location = new System.Drawing.Point(9, 86);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(202, 21);
+            this.Label1.TabIndex = 55;
+            this.Label1.Text = "Accessibility and Restriction";
             // 
-            // cbxMore_PayInOut
+            // btnClose
             // 
-            this.cbxMore_PayInOut.AutoSize = true;
-            this.cbxMore_PayInOut.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxMore_PayInOut.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_PayInOut.Location = new System.Drawing.Point(163, 143);
-            this.cbxMore_PayInOut.Name = "cbxMore_PayInOut";
-            this.cbxMore_PayInOut.Size = new System.Drawing.Size(96, 24);
-            this.cbxMore_PayInOut.TabIndex = 56;
-            this.cbxMore_PayInOut.Text = "Pay In/Out";
-            this.cbxMore_PayInOut.UseVisualStyleBackColor = true;
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
+            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
+            this.btnClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
+            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClose.IconSize = 25;
+            this.btnClose.Location = new System.Drawing.Point(593, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.btnClose.Size = new System.Drawing.Size(28, 30);
+            this.btnClose.TabIndex = 54;
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // dgvStaffType
+            // txtStaffType
             // 
-            this.dgvStaffType.AllowUserToAddRows = false;
-            this.dgvStaffType.AllowUserToDeleteRows = false;
-            this.dgvStaffType.AllowUserToResizeColumns = false;
-            this.dgvStaffType.AllowUserToResizeRows = false;
-            this.dgvStaffType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStaffType.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvStaffType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvStaffType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvStaffType.ColumnHeadersHeight = 6;
-            this.dgvStaffType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvStaffType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStaffType.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvStaffType.Location = new System.Drawing.Point(0, 0);
-            this.dgvStaffType.Name = "dgvStaffType";
-            this.dgvStaffType.ReadOnly = true;
-            this.dgvStaffType.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvStaffType.Size = new System.Drawing.Size(315, 577);
-            this.dgvStaffType.TabIndex = 10;
+            this.txtStaffType.BackColor = System.Drawing.Color.White;
+            this.txtStaffType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStaffType.Enabled = false;
+            this.txtStaffType.Font = new System.Drawing.Font("Segoe UI", 14.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStaffType.ForeColor = System.Drawing.Color.Black;
+            this.txtStaffType.Location = new System.Drawing.Point(105, 38);
+            this.txtStaffType.Multiline = true;
+            this.txtStaffType.Name = "txtStaffType";
+            this.txtStaffType.Size = new System.Drawing.Size(511, 29);
+            this.txtStaffType.TabIndex = 53;
             // 
-            // SplitContainer1
+            // Label6
             // 
-            this.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.SplitContainer1.Name = "SplitContainer1";
-            // 
-            // SplitContainer1.Panel1
-            // 
-            this.SplitContainer1.Panel1.Controls.Add(this.dgvStaffType);
-            // 
-            // SplitContainer1.Panel2
-            // 
-            this.SplitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SplitContainer1.Panel2.Controls.Add(this.btnProduct_Save);
-            this.SplitContainer1.Panel2.Controls.Add(this.btnProduct_Delete);
-            this.SplitContainer1.Panel2.Controls.Add(this.btnProduct_New);
-            this.SplitContainer1.Panel2.Controls.Add(this.flpPermission);
-            this.SplitContainer1.Panel2.Controls.Add(this.Label1);
-            this.SplitContainer1.Panel2.Controls.Add(this.btnClose);
-            this.SplitContainer1.Panel2.Controls.Add(this.txtStaffType);
-            this.SplitContainer1.Panel2.Controls.Add(this.Label6);
-            this.SplitContainer1.Size = new System.Drawing.Size(948, 577);
-            this.SplitContainer1.SplitterDistance = 315;
-            this.SplitContainer1.TabIndex = 1;
-            // 
-            // btnProduct_Save
-            // 
-            this.btnProduct_Save.BorderColor = System.Drawing.Color.Green;
-            this.btnProduct_Save.BorderThickness = 2;
-            this.btnProduct_Save.CheckedState.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.CustomImages.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.FillColor = System.Drawing.Color.White;
-            this.btnProduct_Save.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnProduct_Save.ForeColor = System.Drawing.Color.Green;
-            this.btnProduct_Save.HoverState.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct_Save.Image")));
-            this.btnProduct_Save.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnProduct_Save.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnProduct_Save.Location = new System.Drawing.Point(108, 519);
-            this.btnProduct_Save.Name = "btnProduct_Save";
-            this.btnProduct_Save.ShadowDecoration.Parent = this.btnProduct_Save;
-            this.btnProduct_Save.Size = new System.Drawing.Size(120, 40);
-            this.btnProduct_Save.TabIndex = 72;
-            this.btnProduct_Save.Text = "SAVE";
-            this.btnProduct_Save.TextOffset = new System.Drawing.Point(10, 0);
-            // 
-            // btnProduct_Delete
-            // 
-            this.btnProduct_Delete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnProduct_Delete.BorderThickness = 2;
-            this.btnProduct_Delete.CheckedState.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.CustomImages.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.FillColor = System.Drawing.Color.White;
-            this.btnProduct_Delete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnProduct_Delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnProduct_Delete.HoverState.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct_Delete.Image")));
-            this.btnProduct_Delete.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnProduct_Delete.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnProduct_Delete.Location = new System.Drawing.Point(243, 519);
-            this.btnProduct_Delete.Name = "btnProduct_Delete";
-            this.btnProduct_Delete.ShadowDecoration.Parent = this.btnProduct_Delete;
-            this.btnProduct_Delete.Size = new System.Drawing.Size(120, 40);
-            this.btnProduct_Delete.TabIndex = 73;
-            this.btnProduct_Delete.Text = "DELETE";
-            this.btnProduct_Delete.TextOffset = new System.Drawing.Point(10, 0);
-            // 
-            // btnProduct_New
-            // 
-            this.btnProduct_New.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnProduct_New.BackColor = System.Drawing.Color.White;
-            this.btnProduct_New.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
-            this.btnProduct_New.FlatAppearance.BorderSize = 2;
-            this.btnProduct_New.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduct_New.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduct_New.ForeColor = System.Drawing.Color.Orange;
-            this.btnProduct_New.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnProduct_New.IconColor = System.Drawing.Color.Orange;
-            this.btnProduct_New.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnProduct_New.IconSize = 30;
-            this.btnProduct_New.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProduct_New.Location = new System.Drawing.Point(378, 519);
-            this.btnProduct_New.Name = "btnProduct_New";
-            this.btnProduct_New.Size = new System.Drawing.Size(142, 40);
-            this.btnProduct_New.TabIndex = 71;
-            this.btnProduct_New.Text = "ADD NEW";
-            this.btnProduct_New.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProduct_New.UseVisualStyleBackColor = false;
+            this.Label6.AutoSize = true;
+            this.Label6.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.ForeColor = System.Drawing.Color.Black;
+            this.Label6.Location = new System.Drawing.Point(8, 42);
+            this.Label6.Name = "Label6";
+            this.Label6.Size = new System.Drawing.Size(90, 25);
+            this.Label6.TabIndex = 52;
+            this.Label6.Text = "Staff Type";
             // 
             // StaffType
             // 
@@ -646,15 +650,16 @@
             this.Name = "StaffType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffType";
+            this.Load += new System.EventHandler(this.StaffType_Load);
             this.guna2Panel1.ResumeLayout(false);
-            this.flpPermission.ResumeLayout(false);
-            this.flpPermission.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaffType)).EndInit();
             this.SplitContainer1.Panel1.ResumeLayout(false);
             this.SplitContainer1.Panel2.ResumeLayout(false);
             this.SplitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).EndInit();
             this.SplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaffType)).EndInit();
+            this.flpPermission.ResumeLayout(false);
+            this.flpPermission.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -696,8 +701,8 @@
         internal FontAwesome.Sharp.IconButton btnClose;
         internal System.Windows.Forms.TextBox txtStaffType;
         internal System.Windows.Forms.Label Label6;
-        private Guna.UI2.WinForms.Guna2Button btnProduct_Save;
-        private Guna.UI2.WinForms.Guna2Button btnProduct_Delete;
-        internal FontAwesome.Sharp.IconButton btnProduct_New;
+        private Guna.UI2.WinForms.Guna2Button btnSave;
+        private Guna.UI2.WinForms.Guna2Button btnDelete;
+        internal FontAwesome.Sharp.IconButton btnAdd;
     }
 }
