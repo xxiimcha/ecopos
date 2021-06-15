@@ -8,8 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using EcoPOSv2TextValidation;
-using static EcoPOSv2TextValidation.TextBoxValidation;
+using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
@@ -27,11 +26,10 @@ namespace EcoPOSv2
 
         private List<TextBox> requiredFields = new List<TextBox>();
 
-        TextBoxValidation tbv = new TextBoxValidation();
 
         private void AdjustCost_Load(object sender, EventArgs e)
         {
-            tbv.AssignValidationTB(txtNewCost, ValidationType.NumbersOnly);
+            TextBoxValidation.AssignValidation(ref txtNewCost, ValidationType.Only_Numbers);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

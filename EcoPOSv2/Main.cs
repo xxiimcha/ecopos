@@ -340,8 +340,10 @@ namespace EcoPOSv2
 
         private void btnMore_Click(object sender, EventArgs e)
         {
-            Devices d = new Devices();
-            d.ShowDialog();
+            More m = new More();
+
+            RP.More(m);
+            OL.changeForm(m, currentChildForm, pnlChild);
         }
 
         private void btnSeeItem_Click(object sender, EventArgs e)

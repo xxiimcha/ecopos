@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblByPassUser = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
@@ -47,7 +48,6 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
-            this.lblByPassUser = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,6 +65,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1440, 34);
             this.panel1.TabIndex = 0;
+            // 
+            // lblByPassUser
+            // 
+            this.lblByPassUser.AutoSize = true;
+            this.lblByPassUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
+            this.lblByPassUser.Location = new System.Drawing.Point(0, 0);
+            this.lblByPassUser.Name = "lblByPassUser";
+            this.lblByPassUser.Size = new System.Drawing.Size(0, 25);
+            this.lblByPassUser.TabIndex = 11;
+            this.lblByPassUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblUser
             // 
@@ -302,18 +314,6 @@
             // 
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
-            // 
-            // lblByPassUser
-            // 
-            this.lblByPassUser.AutoSize = true;
-            this.lblByPassUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
-            this.lblByPassUser.Location = new System.Drawing.Point(0, 0);
-            this.lblByPassUser.Name = "lblByPassUser";
-            this.lblByPassUser.Size = new System.Drawing.Size(0, 25);
-            this.lblByPassUser.TabIndex = 11;
-            this.lblByPassUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Main
             // 

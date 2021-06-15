@@ -759,7 +759,7 @@ namespace EcoPOSv2
             try
             {
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
-                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, total_pts FROM redeem_transaction_items WHERE order_ref = " + dgvRT_Records.CurrentRow.Cells(0).Value.ToString(), SQL.DBCon);
+                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, total_pts FROM redeem_transaction_items WHERE order_ref = " + dgvRT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                 SQL.DBDA.Fill(ds, "redeem_transaction_items");
 
                 report.SetDataSource(ds);

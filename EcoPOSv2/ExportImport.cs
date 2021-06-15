@@ -57,7 +57,7 @@ namespace EcoPOSv2
                 //{
                 //    Directory.CreateDirectory(folderPath);
                 //}
-                using (FileStream stream = new FileStream(saveFilePath + "Transaction Reports-" + date + ".pdf", FileMode.Create))
+                using (FileStream stream = new FileStream(title+"-"+Path.GetFullPath(saveFilePath.FileName), FileMode.Create))
                 {
                     Document pdfDoc = new Document(PageSize.A4.Rotate(), 10, 10, 42, 35);
                     PdfWriter.GetInstance(pdfDoc, stream);
