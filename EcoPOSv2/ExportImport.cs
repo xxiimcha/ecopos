@@ -1,5 +1,7 @@
-﻿using iTextSharp.text;
+﻿using EcoPOSControl;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,77 +14,90 @@ namespace EcoPOSv2
 {
     class ExportImport
     {
-        public void ExportDgvToPDF(string title, DataGridView dvg)
+
+        public void ExportDgvToPDF(string title, DataGridView dgv)
         {
-            if (dvg.Rows.Count == 0)
+            if (dgv.Rows.Count == 0)
             {
-                new Notification().PopUp("No records show in grid.", "", "error");
+                new Notification().PopUp("No records show in grid.", "Error","error");
                 return;
             }
 
-            SaveFileDialog saveFilePath = new SaveFileDialog();
+            var saveFilePath = new SaveFileDialog();
             saveFilePath.Filter = "PDF Files (*.pdf*)|*.pdf";
-
             if (saveFilePath.ShowDialog() == DialogResult.OK)
             {
-                //Creating iTextSharp Table from the DataTable data
-                PdfPTable pdfTable = new PdfPTable(dvg.ColumnCount);
-                pdfTable.DefaultCell.Padding = 5;
-                pdfTable.WidthPercentage = 100;
-                pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-                pdfTable.DefaultCell.BorderWidth = 1;
-
-                //Adding Header row
-                foreach (DataGridViewColumn column in dvg.Columns)
+                try
                 {
-                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                    cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                    BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    iTextSharp.text.Font font = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
-                    pdfTable.AddCell(cell);
-                }
+                    var SQL = new SQLControl();
+                    var Paragraph = new Paragraph(); // declaration for new paragraph
+                    var PdfFile = new Document(PageSize.A4.Rotate(), 10, 10, 42, 35); // set pdf page size
+                                                                                      // PdfFile.AddTitle(title) ' set our pdf title
+                    PdfWriter Write = PdfWriter.GetInstance(PdfFile, new FileStream(saveFilePath.FileName, FileMode.Create));
+                    PdfFile.Open();
 
-                //Adding DataRow
-                foreach (DataGridViewRow row in dvg.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
+                    // declaration font type
+                    var pTitle = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD, BaseColor.BLACK);
+                    var pTable = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.BLACK);
+
+                    // insert title into pdf file
+                    Paragraph = new Paragraph(new Chunk(title + Constants.vbCrLf));
+                    Paragraph.Alignment = Element.ALIGN_CENTER;
+                    Paragraph.SpacingAfter = 5.0f;
+
+                    // set and add page with current settings
+                    PdfFile.Add(Paragraph);
+
+                    // create data into table
+                    var PdfTable = new PdfPTable(dgv.Columns.Count);
+                    // setting width of table
+                    PdfTable.TotalWidth = PdfFile.PageSize.Width - 25;
+                    PdfTable.LockedWidth = true;
+                    var widths = new float[dgv.Columns.Count];
+                    for (int i = 0, loopTo = dgv.Columns.Count - 1; i <= loopTo; i++)
+                        widths[i] = 1.0f;
+                    PdfTable.SetWidths(widths);
+                    PdfTable.HorizontalAlignment = 0;
+                    PdfTable.SpacingBefore = 5.0f;
+
+                    // declaration pdf cells
+                    var pdfcell = new PdfPCell();
+
+                    // create pdf header
+                    for (int i = 0, loopTo1 = dgv.Columns.Count - 1; i <= loopTo1; i++)
                     {
-                        pdfTable.AddCell(cell.Value.ToString());
+                        pdfcell = new PdfPCell(new Phrase(new Chunk(dgv.Columns[i].HeaderText, pTable)));
+                        // alignment header table
+                        pdfcell.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                        // add cells into pdf table
+                        PdfTable.AddCell(pdfcell);
                     }
-                }
-                string date = DateTime.Now.ToString("MM-dd-yyyy");
-                //Exporting to PDF
-                //string folderPath = "C:\\Users\\" + Environment.UserName + "\\Desktop\\";
-                //if (!Directory.Exists(folderPath))
-                //{
-                //    Directory.CreateDirectory(folderPath);
-                //}
-                using (FileStream stream = new FileStream(saveFilePath + "Transaction Reports-" + date + ".pdf", FileMode.Create))
-                {
-                    Document pdfDoc = new Document(PageSize.A4.Rotate(), 10, 10, 42, 35);
-                    PdfWriter.GetInstance(pdfDoc, stream);
-                    pdfDoc.Open();
-                    Paragraph Header = new Paragraph("Transaction Reports", FontFactory.GetFont(FontFactory.TIMES, 45, iTextSharp.text.Font.NORMAL));
-                    Header.Alignment = Element.ALIGN_CENTER;
-                    PdfPTable footerTbl = new PdfPTable(1);
-                    footerTbl.TotalWidth = 300;
-                    Paragraph paragraph = new Paragraph();
-                    pdfDoc.Add(Header);
-                    Paragraph Space = new Paragraph(" ");
-                    pdfDoc.Add(Space);
-                    paragraph.Add(title);
-                    paragraph.Alignment = Element.ALIGN_CENTER;
-                    paragraph.SpacingAfter = 5.0F;
-                    paragraph.Add(new Paragraph(" "));
-                    pdfDoc.Add(paragraph);
-                    pdfDoc.Add(pdfTable);
-                    pdfDoc.Close();
-                    stream.Close();
 
-                    new Notification().PopUp("Transaction Reports has been Created as PDF", "", "success");
+                    // add data into pdf table
+                    for (int i = 0, loopTo2 = dgv.Rows.Count - 1; i <= loopTo2; i++)
+                    {
+                        for (int j = 0, loopTo3 = dgv.Columns.Count - 1; j <= loopTo3; j++)
+                        {
+                            pdfcell = new PdfPCell(new Phrase(dgv[j, i].Value.ToString(), pTable));
+                            PdfTable.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
+                            PdfTable.AddCell(pdfcell);
+                        }
+                    }
+
+                    // add pdf table into pdf document
+                    PdfFile.Add(PdfTable);
+                    PdfFile.Close(); // close all sessions
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return;
+                }
+
+                new Notification().PopUp("File Exported", "","success");
             }
         }
+
 
         public void ExportDgvToExcel(DataGridView dgv)
         {
