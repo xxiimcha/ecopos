@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using EcoPOSControl;
 using System;
 using System.Collections.Generic;
@@ -64,7 +65,7 @@ namespace EcoPOSv2
                                                      AND action = 1 AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
                 SQL.DBDA.Fill(ds1, "transaction_details");
 
-                report.Subreports("Sales").SetDataSource(ds1);
+                report.Subreports["Sales"].SetDataSource(ds1);
 
 
 
@@ -75,7 +76,7 @@ namespace EcoPOSv2
                                                      AND td.action = 1 AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY (u.first_name + ' ' + u.last_name)", SQL.DBCon);
 
                 SQL.DBDA.Fill(ds2, "transaction_details");
-                report.Subreports("StaffSales").SetDataSource(ds2);
+                report.Subreports["StaffSales"].SetDataSource(ds2);
 
 
 
@@ -86,7 +87,7 @@ namespace EcoPOSv2
                                                      AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
                 SQL.DBDA.Fill(ds3, "transaction_details");
 
-                report.Subreports("RetailSales").SetDataSource(ds3);
+                report.Subreports["RetailSales"].SetDataSource(ds3);
 
 
 
@@ -97,7 +98,7 @@ namespace EcoPOSv2
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
                 SQL.DBDA.Fill(ds4, "transaction_details");
 
-                report.Subreports("WholesaleSales").SetDataSource(ds4);
+                report.Subreports["WholesaleSales"].SetDataSource(ds4);
 
 
 
@@ -109,7 +110,7 @@ namespace EcoPOSv2
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
                 SQL.DBDA.Fill(ds5, "transaction_details");
 
-                report.Subreports("Refund").SetDataSource(ds5);
+                report.Subreports["Refund"].SetDataSource(ds5);
 
 
 
@@ -121,7 +122,7 @@ namespace EcoPOSv2
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
                 SQL.DBDA.Fill(ds6, "transaction_details");
 
-                report.Subreports("Return").SetDataSource(ds6);
+                report.Subreports["Return"].SetDataSource(ds6);
 
 
 
@@ -131,7 +132,7 @@ namespace EcoPOSv2
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
                 SQL.DBDA.Fill(ds7, "void_item");
 
-                report.Subreports("VoidItem").SetDataSource(ds7);
+                report.Subreports["VoidItem"].SetDataSource(ds7);
 
 
 
@@ -141,7 +142,7 @@ namespace EcoPOSv2
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
                 SQL.DBDA.Fill(ds8, "transaction_details");
 
-                report.Subreports("VoidTransaction").SetDataSource(ds8);
+                report.Subreports["VoidTransaction"].SetDataSource(ds8);
 
 
 
@@ -152,7 +153,7 @@ namespace EcoPOSv2
                                                      AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, td.date_time)), d.disc_name ORDER BY 'date_time'", SQL.DBCon);
                 SQL.DBDA.Fill(ds9, "transaction_details");
 
-                report.Subreports("RegularDiscount").SetDataSource(ds9);
+                report.Subreports["RegularDiscount"].SetDataSource(ds9);
 
 
 
@@ -168,7 +169,7 @@ namespace EcoPOSv2
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time)),  cus_type ORDER BY 'date_time'", SQL.DBCon);
                 SQL.DBDA.Fill(ds10, "transaction_details");
 
-                report.Subreports("SpecialDiscount").SetDataSource(ds10);
+                report.Subreports["SpecialDiscount"].SetDataSource(ds10);
 
 
 
@@ -179,7 +180,7 @@ namespace EcoPOSv2
 
                 SQL.DBDA.Fill(ds11, "transaction_details");
 
-                report.Subreports("PaymentMethod").SetDataSource(ds11);
+                report.Subreports["PaymentMethod"].SetDataSource(ds11);
 
 
 
@@ -190,7 +191,7 @@ namespace EcoPOSv2
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, td.date_time)),  ti.description ORDER BY 'date_time' ASC", SQL.DBCon);
                 SQL.DBDA.Fill(ds12, "transaction_details");
 
-                report.Subreports("ItemSold").SetDataSource(ds12);
+                report.Subreports["ItemSold"].SetDataSource(ds12);
 
 
                 // main report
@@ -659,6 +660,34 @@ namespace EcoPOSv2
             {
                 new Notification().PopUp(ex.ToString(),"","error");
                 report.Dispose();
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFilePath = new SaveFileDialog();
+            saveFilePath.Filter = "PDF Files (*.pdf*)|*.pdf";
+
+            if (saveFilePath.ShowDialog() == DialogResult.OK)
+            {
+                cryRpt = report;
+
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = saveFilePath.FileName;
+                CrExportOptions = cryRpt.ExportOptions;
+                {
+                    var withBlock = CrExportOptions;
+                    withBlock.ExportDestinationType = ExportDestinationType.DiskFile;
+                    withBlock.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    withBlock.DestinationOptions = CrDiskFileDestinationOptions;
+                    withBlock.FormatOptions = CrFormatTypeOptions;
+                }
+                cryRpt.Export();
+
+                cryRpt.Close();
+                cryRpt.Dispose();
             }
         }
     }
