@@ -331,7 +331,7 @@ namespace EcoPOSv2
                 r["keycode"].ToString();
                 userID = r["adminID"].ToString();
                 txtUsername.Text = r["user_name"].ToString();
-                txtPassword.Text = HP.Decrypt(r["password"].ToString(););
+                txtPassword.Text = HP.Decrypt(r["password"].ToString());
                 txtFirstName.Text = r["first_name"].ToString();
                 txtLastName.Text = r["last_name"].ToString();
                 cmbStaffType.Text = "Administrator";

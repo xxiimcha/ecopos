@@ -95,6 +95,7 @@
             this.dgvRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecords.Size = new System.Drawing.Size(876, 860);
             this.dgvRecords.TabIndex = 38;
+            this.dgvRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecords_CellClick);
             // 
             // TableLayoutPanel1
             // 
@@ -217,6 +218,7 @@
             this.btnSave.Text = "Save Report";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Label13
             // 
@@ -251,6 +253,7 @@
             this.btnPrint.Text = "Print Receipt";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnSort
             // 
@@ -271,6 +274,7 @@
             this.btnSort.Size = new System.Drawing.Size(32, 29);
             this.btnSort.TabIndex = 106;
             this.btnSort.UseVisualStyleBackColor = false;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // btnSearchDates
             // 
@@ -290,6 +294,7 @@
             this.btnSearchDates.Size = new System.Drawing.Size(32, 28);
             this.btnSearchDates.TabIndex = 105;
             this.btnSearchDates.UseVisualStyleBackColor = false;
+            this.btnSearchDates.Click += new System.EventHandler(this.btnSearchDates_Click);
             // 
             // ZReadingRecords
             // 
@@ -302,6 +307,7 @@
             this.Name = "ZReadingRecords";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ZReadingRecords";
+            this.Load += new System.EventHandler(this.ZReadingRecords_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecords)).EndInit();
             this.TableLayoutPanel1.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);

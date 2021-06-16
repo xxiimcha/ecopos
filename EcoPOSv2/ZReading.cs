@@ -1,4 +1,5 @@
-﻿using EcoPOSControl;
+﻿using CrystalDecisions.Shared;
+using EcoPOSControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,30 +53,41 @@ namespace EcoPOSv2
                     report.SetParameterValue("zreading_ref_temp", r["dis_zreading_ref_temp"].ToString());
                     report.SetParameterValue("store_open_date_time", store_open_date_time);
                     report.SetParameterValue("store_open_user_name", store_open_user_name);
-                    report.SetParameterValue("store_close_date_time", r("close_date_time"));
-                    report.SetParameterValue("store_close_user_name", Form1.current_user_name);
-                    report.SetParameterValue("beginning_invoice", r("beginning_invoice"));
-                    report.SetParameterValue("ending_invoice", r("ending_invoice"));
-                    report.SetParameterValue("void_beginning_no", r("void_beginning_no"));
-                    report.SetParameterValue("void_ending_no", r("void_ending_no"));
-                    report.SetParameterValue("starting_cash", Format(r("starting_cash"), "#,##0.00"));
-                    report.SetParameterValue("no_of_transactions", r("no_of_transactions"));
-                    report.SetParameterValue("sales", Format(r("sales"), "#,##0.00"));
-                    report.SetParameterValue("discount_deductions", Format(r("discount_deductions"), "#,##0.00"));
-                    report.SetParameterValue("adjustments", Format(r("adjustments"), "#,##0.00"));
-                    report.SetParameterValue("net_sales", Format(r("net_sales"), "#,##0.00"));
-                    report.SetParameterValue("accumulated_adjustments", Format(r("accumulated_adjustments"), "#,##0.00"));
-                    report.SetParameterValue("accumulated_grand_total", Format(r("accumulated_grand_total"), "#,##0.00"));
-                    report.SetParameterValue("vatable_sales", Format(r("vatable_sales"), "#,##0.00"));
-                    report.SetParameterValue("vat_amount", Format(r("vat_amount"), "#,##0.00"));
-                    report.SetParameterValue("vat_exempt_sales", Format(r("vat_exempt_sales"), "#,##0.00"));
-                    report.SetParameterValue("zero_rated_sales", Format(r("zero_rated_sales"), "#,##0.00"));
+                    report.SetParameterValue("store_close_date_time", r["close_date_time"].ToString());
+                    report.SetParameterValue("store_close_user_name", Main.Instance.current_username);
+                    report.SetParameterValue("beginning_invoice", r["beginning_invoice"].ToString());
+                    report.SetParameterValue("ending_invoice", r["ending_invoice"].ToString());
+                    report.SetParameterValue("void_beginning_no", r["void_beginning_no"].ToString());
+                    report.SetParameterValue("void_ending_no", r["void_ending_no"].ToString());
+                    decimal starting_cash = decimal.Parse(r["starting_cash"].ToString());
+                    report.SetParameterValue("starting_cash", starting_cash.ToString("N2"));
+                    report.SetParameterValue("no_of_transactions", r["no_of_transactions"].ToString());
+                    decimal sales = decimal.Parse(r["sales"].ToString());
+                    report.SetParameterValue("sales", sales.ToString("N2"));
+                    decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
+                    report.SetParameterValue("discount_deductions", discount_deductions.ToString("N2"));
+                    decimal adjustments = decimal.Parse(r["adjustments"].ToString());
+                    report.SetParameterValue("adjustments", adjustments.ToString("N2"));
+                    decimal net_sales = decimal.Parse(r["net_sales"].ToString());
+                    report.SetParameterValue("net_sales", net_sales.ToString("N2"));
+                    decimal accumulated_adjustments = decimal.Parse(r["accumulated_adjustments"].ToString());
+                    decimal accumulated_grand_total = decimal.Parse(r["accumulated_grand_total"].ToString());
+                    report.SetParameterValue("accumulated_adjustments", accumulated_adjustments.ToString("N2"));
+                    report.SetParameterValue("accumulated_grand_total", accumulated_grand_total.ToString("N2"));
+                    decimal vatable_sales = decimal.Parse(r["vatable_sales"].ToString());
+                    report.SetParameterValue("vatable_sales", vatable_sales.ToString("N2"));
+                    decimal vat_amount = decimal.Parse(r["vat_amount"].ToString());
+                    report.SetParameterValue("vat_amount", vat_amount.ToString("N2"));
+                    decimal vat_exempt_sales = decimal.Parse(r["vat_exempt_sales"].ToString());
+                    report.SetParameterValue("vat_exempt_sales", vat_exempt_sales.ToString("N2"));
+                    decimal zero_rated_sales = decimal.Parse(r["zero_rated_sales"].ToString());
+                    report.SetParameterValue("zero_rated_sales", zero_rated_sales.ToString("N2"));
                     report.SetParameterValue("printed_on", datetime_now);
                 }
             }
             catch (Exception ex)
             {
-                Interaction.MsgBox(ex.Message);
+                new Notification().PopUp(ex.Message, "", "error");
                 report.Dispose();
             }
 
@@ -84,23 +96,23 @@ namespace EcoPOSv2
 
         public void PrintReceipt()
         {
-            if (Form1.pd_receipt_printer == "")
+            if (Main.Instance.pd_receipt_printer == "")
             {
-                Notification.PopUp("Error printing", "No receipt printer selected.");
+                new Notification().PopUp("No receipt printer selected.", "Error printing","error");
                 return;
             }
 
 
-            bool checkprinter = CheckPrinterStatus(Form1.pd_receipt_printer);
+            bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
 
             if (checkprinter == false)
             {
-                Notification.PopUp("Error", "Printer is offline");
+                new Notification().PopUp("Printer is offline","Error","error");
                 return;
             }
 
 
-            report.PrintOptions.PrinterName = Form1.pd_receipt_printer;
+            report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
             report.PrintOptions.PaperSource = PaperSource.Auto;
             report.PrintToPrinter(1, false, 0, 0);
         }
