@@ -415,6 +415,7 @@
             this.btnGenerateEJournal.Text = "Generate E-Journal";
             this.btnGenerateEJournal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerateEJournal.UseVisualStyleBackColor = true;
+            this.btnGenerateEJournal.Click += new System.EventHandler(this.btnGenerateEJournal_Click);
             // 
             // dtpTo
             // 
@@ -444,6 +445,7 @@
             this.btnSearch.Size = new System.Drawing.Size(31, 28);
             this.btnSearch.TabIndex = 114;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnExport
             // 
@@ -465,6 +467,7 @@
             this.btnExport.Text = "Export Report";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // Terminal
             // 

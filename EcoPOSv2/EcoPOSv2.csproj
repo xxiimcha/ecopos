@@ -210,6 +210,12 @@
     <Compile Include="EditSD.Designer.cs">
       <DependentUpon>EditSD.cs</DependentUpon>
     </Compile>
+    <Compile Include="EJournalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EJournalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExportImport.cs" />
     <Compile Include="FormLoad.cs" />
     <Compile Include="GroupAction.cs" />
@@ -610,6 +616,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditSD.resx">
       <DependentUpon>EditSD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EJournalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EJournalReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportDatabase.resx">
       <DependentUpon>ImportDatabase.cs</DependentUpon>
