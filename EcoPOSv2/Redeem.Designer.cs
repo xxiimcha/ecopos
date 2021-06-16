@@ -73,10 +73,10 @@
             // 
             // btnProceed
             // 
-            this.btnProceed.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnProceed.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.btnProceed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProceed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProceed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnProceed.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnProceed.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnProceed.IconColor = System.Drawing.Color.White;
             this.btnProceed.IconFont = FontAwesome.Sharp.IconFont.Auto;
