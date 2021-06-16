@@ -554,6 +554,16 @@
     <Compile Include="ZReadingRecords.Designer.cs">
       <DependentUpon>ZReadingRecords.cs</DependentUpon>
     </Compile>
+    <Compile Include="ZReadingReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZReadingReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="ZReadingReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ZReadingReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Resources\eco_pos.png" />
     <Content Include="Resources\eco_pos2.png" />
     <Content Include="Resources\eco_pos_training_mode.png" />
