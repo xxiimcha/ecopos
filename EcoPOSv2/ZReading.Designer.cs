@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnlParent = new System.Windows.Forms.Panel();
+            this.pnlPreview = new System.Windows.Forms.Panel();
             this.lblZeroRatedSales = new System.Windows.Forms.Label();
             this.Label12 = new System.Windows.Forms.Label();
             this.lblVATExemptSales = new System.Windows.Forms.Label();
@@ -69,13 +71,11 @@
             this.lblEndingInvoice = new System.Windows.Forms.Label();
             this.Label9 = new System.Windows.Forms.Label();
             this.lblStoreOpen = new System.Windows.Forms.Label();
-            this.pnlPreview = new System.Windows.Forms.Panel();
             this.Label2 = new System.Windows.Forms.Label();
-            this.pnlParent = new System.Windows.Forms.Panel();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentMethod)).BeginInit();
-            this.pnlPreview.SuspendLayout();
             this.pnlParent.SuspendLayout();
+            this.pnlPreview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentMethod)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -88,6 +88,64 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(1123, 567);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // pnlParent
+            // 
+            this.pnlParent.Controls.Add(this.pnlPreview);
+            this.pnlParent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlParent.Location = new System.Drawing.Point(0, 0);
+            this.pnlParent.Name = "pnlParent";
+            this.pnlParent.Size = new System.Drawing.Size(1123, 567);
+            this.pnlParent.TabIndex = 6;
+            // 
+            // pnlPreview
+            // 
+            this.pnlPreview.BackColor = System.Drawing.Color.White;
+            this.pnlPreview.Controls.Add(this.lblZeroRatedSales);
+            this.pnlPreview.Controls.Add(this.Label12);
+            this.pnlPreview.Controls.Add(this.lblVATExemptSales);
+            this.pnlPreview.Controls.Add(this.Label15);
+            this.pnlPreview.Controls.Add(this.lblVATAmount);
+            this.pnlPreview.Controls.Add(this.Label18);
+            this.pnlPreview.Controls.Add(this.lblVatableSales);
+            this.pnlPreview.Controls.Add(this.Label22);
+            this.pnlPreview.Controls.Add(this.lblVoidBeginningInvoice);
+            this.pnlPreview.Controls.Add(this.Label4);
+            this.pnlPreview.Controls.Add(this.lblVoidEndingInvoice);
+            this.pnlPreview.Controls.Add(this.Label8);
+            this.pnlPreview.Controls.Add(this.lblStartingCash);
+            this.pnlPreview.Controls.Add(this.Label13);
+            this.pnlPreview.Controls.Add(this.lblAAdjustment);
+            this.pnlPreview.Controls.Add(this.Label21);
+            this.pnlPreview.Controls.Add(this.lblNetSales);
+            this.pnlPreview.Controls.Add(this.Label7);
+            this.pnlPreview.Controls.Add(this.Label31);
+            this.pnlPreview.Controls.Add(this.dgvPaymentMethod);
+            this.pnlPreview.Controls.Add(this.btnBack);
+            this.pnlPreview.Controls.Add(this.btnPrintClose);
+            this.pnlPreview.Controls.Add(this.lblBeginningInvoice);
+            this.pnlPreview.Controls.Add(this.Label19);
+            this.pnlPreview.Controls.Add(this.Label1);
+            this.pnlPreview.Controls.Add(this.lblTransactions);
+            this.pnlPreview.Controls.Add(this.Label17);
+            this.pnlPreview.Controls.Add(this.lblAdjustment);
+            this.pnlPreview.Controls.Add(this.Label23);
+            this.pnlPreview.Controls.Add(this.lblDiscount);
+            this.pnlPreview.Controls.Add(this.Label27);
+            this.pnlPreview.Controls.Add(this.lblSales);
+            this.pnlPreview.Controls.Add(this.Label29);
+            this.pnlPreview.Controls.Add(this.lblAGTotal);
+            this.pnlPreview.Controls.Add(this.Label11);
+            this.pnlPreview.Controls.Add(this.lblEndingInvoice);
+            this.pnlPreview.Controls.Add(this.Label9);
+            this.pnlPreview.Controls.Add(this.lblStoreOpen);
+            this.pnlPreview.Controls.Add(this.Label2);
+            this.pnlPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPreview.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnlPreview.Location = new System.Drawing.Point(0, 0);
+            this.pnlPreview.Name = "pnlPreview";
+            this.pnlPreview.Size = new System.Drawing.Size(1123, 567);
+            this.pnlPreview.TabIndex = 3;
             // 
             // lblZeroRatedSales
             // 
@@ -310,28 +368,28 @@
             this.dgvPaymentMethod.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaymentMethod.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentMethod.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPaymentMethod.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaymentMethod.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.dgvPaymentMethod.Location = new System.Drawing.Point(817, 140);
             this.dgvPaymentMethod.Name = "dgvPaymentMethod";
             this.dgvPaymentMethod.ReadOnly = true;
             this.dgvPaymentMethod.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPaymentMethod.Size = new System.Drawing.Size(285, 409);
             this.dgvPaymentMethod.TabIndex = 33;
             // 
@@ -355,6 +413,7 @@
             this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnPrintClose
             // 
@@ -376,6 +435,7 @@
             this.btnPrintClose.Text = "Print and Close Store";
             this.btnPrintClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintClose.UseVisualStyleBackColor = false;
+            this.btnPrintClose.Click += new System.EventHandler(this.btnPrintClose_Click);
             // 
             // lblBeginningInvoice
             // 
@@ -554,55 +614,6 @@
             this.lblStoreOpen.Text = "DateTime, User";
             this.lblStoreOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pnlPreview
-            // 
-            this.pnlPreview.BackColor = System.Drawing.Color.White;
-            this.pnlPreview.Controls.Add(this.lblZeroRatedSales);
-            this.pnlPreview.Controls.Add(this.Label12);
-            this.pnlPreview.Controls.Add(this.lblVATExemptSales);
-            this.pnlPreview.Controls.Add(this.Label15);
-            this.pnlPreview.Controls.Add(this.lblVATAmount);
-            this.pnlPreview.Controls.Add(this.Label18);
-            this.pnlPreview.Controls.Add(this.lblVatableSales);
-            this.pnlPreview.Controls.Add(this.Label22);
-            this.pnlPreview.Controls.Add(this.lblVoidBeginningInvoice);
-            this.pnlPreview.Controls.Add(this.Label4);
-            this.pnlPreview.Controls.Add(this.lblVoidEndingInvoice);
-            this.pnlPreview.Controls.Add(this.Label8);
-            this.pnlPreview.Controls.Add(this.lblStartingCash);
-            this.pnlPreview.Controls.Add(this.Label13);
-            this.pnlPreview.Controls.Add(this.lblAAdjustment);
-            this.pnlPreview.Controls.Add(this.Label21);
-            this.pnlPreview.Controls.Add(this.lblNetSales);
-            this.pnlPreview.Controls.Add(this.Label7);
-            this.pnlPreview.Controls.Add(this.Label31);
-            this.pnlPreview.Controls.Add(this.dgvPaymentMethod);
-            this.pnlPreview.Controls.Add(this.btnBack);
-            this.pnlPreview.Controls.Add(this.btnPrintClose);
-            this.pnlPreview.Controls.Add(this.lblBeginningInvoice);
-            this.pnlPreview.Controls.Add(this.Label19);
-            this.pnlPreview.Controls.Add(this.Label1);
-            this.pnlPreview.Controls.Add(this.lblTransactions);
-            this.pnlPreview.Controls.Add(this.Label17);
-            this.pnlPreview.Controls.Add(this.lblAdjustment);
-            this.pnlPreview.Controls.Add(this.Label23);
-            this.pnlPreview.Controls.Add(this.lblDiscount);
-            this.pnlPreview.Controls.Add(this.Label27);
-            this.pnlPreview.Controls.Add(this.lblSales);
-            this.pnlPreview.Controls.Add(this.Label29);
-            this.pnlPreview.Controls.Add(this.lblAGTotal);
-            this.pnlPreview.Controls.Add(this.Label11);
-            this.pnlPreview.Controls.Add(this.lblEndingInvoice);
-            this.pnlPreview.Controls.Add(this.Label9);
-            this.pnlPreview.Controls.Add(this.lblStoreOpen);
-            this.pnlPreview.Controls.Add(this.Label2);
-            this.pnlPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPreview.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pnlPreview.Location = new System.Drawing.Point(0, 0);
-            this.pnlPreview.Name = "pnlPreview";
-            this.pnlPreview.Size = new System.Drawing.Size(1123, 567);
-            this.pnlPreview.TabIndex = 3;
-            // 
             // Label2
             // 
             this.Label2.AutoSize = true;
@@ -613,15 +624,6 @@
             this.Label2.Size = new System.Drawing.Size(102, 25);
             this.Label2.TabIndex = 2;
             this.Label2.Text = "Store Open";
-            // 
-            // pnlParent
-            // 
-            this.pnlParent.Controls.Add(this.pnlPreview);
-            this.pnlParent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlParent.Location = new System.Drawing.Point(0, 0);
-            this.pnlParent.Name = "pnlParent";
-            this.pnlParent.Size = new System.Drawing.Size(1123, 567);
-            this.pnlParent.TabIndex = 6;
             // 
             // ZReading
             // 
@@ -636,10 +638,10 @@
             this.Text = "ZReading";
             this.Load += new System.EventHandler(this.ZReading_Load);
             this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentMethod)).EndInit();
+            this.pnlParent.ResumeLayout(false);
             this.pnlPreview.ResumeLayout(false);
             this.pnlPreview.PerformLayout();
-            this.pnlParent.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentMethod)).EndInit();
             this.ResumeLayout(false);
 
         }
