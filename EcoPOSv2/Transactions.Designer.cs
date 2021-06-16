@@ -90,6 +90,7 @@
             this.btnReprint.Text = "Reprint Receipt";
             this.btnReprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReprint.UseVisualStyleBackColor = true;
+            this.btnReprint.Click += new System.EventHandler(this.btnReprint_Click);
             // 
             // Label13
             // 
@@ -186,6 +187,7 @@
             this.btnSearch.Size = new System.Drawing.Size(31, 28);
             this.btnSearch.TabIndex = 114;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnSort
             // 
@@ -206,6 +208,7 @@
             this.btnSort.Size = new System.Drawing.Size(31, 28);
             this.btnSort.TabIndex = 115;
             this.btnSort.UseVisualStyleBackColor = false;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // btnGenerateReport
             // 
@@ -227,6 +230,7 @@
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
             // cmbType
             // 
@@ -353,6 +357,7 @@
             this.dgvRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecords.Size = new System.Drawing.Size(876, 860);
             this.dgvRecords.TabIndex = 38;
+            this.dgvRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecords_CellClick);
             // 
             // Transactions
             // 
@@ -365,6 +370,7 @@
             this.Name = "Transactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transactions";
+            this.Load += new System.EventHandler(this.Transactions_Load);
             this.TableLayoutPanel3.ResumeLayout(false);
             this.TableLayoutPanel3.PerformLayout();
             this.TableLayoutPanel2.ResumeLayout(false);
