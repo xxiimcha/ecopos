@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvRecords = new System.Windows.Forms.DataGridView();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbCusType = new System.Windows.Forms.ComboBox();
             this.Label13 = new System.Windows.Forms.Label();
             this.Label14 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
@@ -44,7 +45,6 @@
             this.btnSearch = new FontAwesome.Sharp.IconButton();
             this.btnSort = new FontAwesome.Sharp.IconButton();
             this.btnGenerateReport = new FontAwesome.Sharp.IconButton();
-            this.cmbCusType = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecords)).BeginInit();
             this.TableLayoutPanel1.SuspendLayout();
@@ -64,23 +64,23 @@
             this.dgvRecords.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecords.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecords.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRecords.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecords.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvRecords.Location = new System.Drawing.Point(285, 3);
@@ -88,14 +88,14 @@
             this.dgvRecords.Name = "dgvRecords";
             this.dgvRecords.ReadOnly = true;
             this.dgvRecords.RowHeadersVisible = false;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecords.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecords.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecords.Size = new System.Drawing.Size(876, 860);
             this.dgvRecords.TabIndex = 38;
@@ -170,36 +170,56 @@
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.96651F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.96172F));
             this.TableLayoutPanel3.Size = new System.Drawing.Size(270, 209);
             this.TableLayoutPanel3.TabIndex = 0;
+            // 
+            // cmbCusType
+            // 
+            this.cmbCusType.BackColor = System.Drawing.Color.White;
+            this.cmbCusType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbCusType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCusType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbCusType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCusType.ForeColor = System.Drawing.Color.Black;
+            this.cmbCusType.FormattingEnabled = true;
+            this.cmbCusType.Items.AddRange(new object[] {
+            "All",
+            "Senior Citizen only",
+            "PWD only",
+            "Athlete only"});
+            this.cmbCusType.Location = new System.Drawing.Point(55, 105);
+            this.cmbCusType.MaxDropDownItems = 10;
+            this.cmbCusType.Name = "cmbCusType";
+            this.cmbCusType.Size = new System.Drawing.Size(175, 29);
+            this.cmbCusType.TabIndex = 119;
             // 
             // Label13
             // 
             this.Label13.AutoSize = true;
             this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
             this.Label13.Location = new System.Drawing.Point(3, 34);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(46, 34);
             this.Label13.TabIndex = 110;
             this.Label13.Text = "From";
-            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label14
             // 
             this.Label14.AutoSize = true;
             this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
             this.Label14.Location = new System.Drawing.Point(3, 68);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(46, 34);
             this.Label14.TabIndex = 112;
             this.Label14.Text = "To";
-            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtpFrom
             // 
@@ -278,32 +298,12 @@
             this.btnGenerateReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGenerateReport.Location = new System.Drawing.Point(55, 139);
             this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(175, 28);
+            this.btnGenerateReport.Size = new System.Drawing.Size(175, 41);
             this.btnGenerateReport.TabIndex = 116;
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerateReport.UseVisualStyleBackColor = true;
             this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
-            // 
-            // cmbCusType
-            // 
-            this.cmbCusType.BackColor = System.Drawing.Color.White;
-            this.cmbCusType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbCusType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCusType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbCusType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCusType.ForeColor = System.Drawing.Color.Black;
-            this.cmbCusType.FormattingEnabled = true;
-            this.cmbCusType.Items.AddRange(new object[] {
-            "All",
-            "Senior Citizen only",
-            "PWD only",
-            "Athlete only"});
-            this.cmbCusType.Location = new System.Drawing.Point(55, 105);
-            this.cmbCusType.MaxDropDownItems = 10;
-            this.cmbCusType.Name = "cmbCusType";
-            this.cmbCusType.Size = new System.Drawing.Size(175, 29);
-            this.cmbCusType.TabIndex = 119;
             // 
             // Label1
             // 
