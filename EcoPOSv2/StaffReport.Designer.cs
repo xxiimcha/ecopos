@@ -68,14 +68,14 @@
             // 
             this.Label14.AutoSize = true;
             this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
             this.Label14.Location = new System.Drawing.Point(3, 68);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(46, 34);
             this.Label14.TabIndex = 112;
             this.Label14.Text = "To";
-            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtpFrom
             // 
@@ -143,14 +143,14 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
             this.Label1.Location = new System.Drawing.Point(3, 102);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(46, 34);
             this.Label1.TabIndex = 123;
             this.Label1.Text = "Staff";
-            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cbxSales
             // 
@@ -247,14 +247,14 @@
             // 
             this.Label13.AutoSize = true;
             this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
             this.Label13.Location = new System.Drawing.Point(3, 34);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(46, 34);
             this.Label13.TabIndex = 110;
             this.Label13.Text = "From";
-            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TableLayoutPanel3
             // 

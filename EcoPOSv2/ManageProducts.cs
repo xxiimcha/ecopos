@@ -77,7 +77,8 @@ namespace EcoPOSv2
 
             dgvProducts.DataSource = SQL.DBDT;
             dgvProducts.Columns[0].Visible = false;
-            dgvProducts.Columns[1].Width = 400;
+            dgvProducts.Columns[1].Width = 300;
+            
         }
         private void ReloadProducts()
         {
@@ -93,7 +94,7 @@ namespace EcoPOSv2
 
                     dgvProducts.DataSource = SQL.DBDT;
                     dgvProducts.Columns[0].Visible = false;
-                    dgvProducts.Columns[1].Width = 400;
+                    dgvProducts.Columns[1].Width = 300;
 
                     return;
                 }
@@ -105,7 +106,7 @@ namespace EcoPOSv2
 
             dgvProducts.DataSource = SQL.DBDT;
             dgvProducts.Columns[0].Visible = false;
-            dgvProducts.Columns[1].Width = 400;
+            dgvProducts.Columns[1].Width = 300;
         }
         private void LoadCategory()
         {
@@ -182,7 +183,7 @@ namespace EcoPOSv2
                 txtBarcode1.Text = r["barcode1"].ToString();
                 txtBarcode2.Text = r["barcode2"].ToString();
                 cmbWarehouse.SelectedValue = r["warehouseID"].ToString();
-                cbxDiscRegular.Checked = Convert.ToBoolean(r["0s_discR"].ToString());
+                cbxDiscRegular.Checked = Convert.ToBoolean(r["s_discR"].ToString());
                 cbxDiscPWD.Checked = Convert.ToBoolean(r["s_discPWD_SC"].ToString());
                 cbxDiscAthlete.Checked = Convert.ToBoolean(r["s_discAth"].ToString());
                 cbxAskQuantity.Checked = Convert.ToBoolean(r["s_ask_qty"].ToString());

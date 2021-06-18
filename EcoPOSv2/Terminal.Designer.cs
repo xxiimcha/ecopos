@@ -369,7 +369,7 @@
             this.Label13.Size = new System.Drawing.Size(46, 34);
             this.Label13.TabIndex = 110;
             this.Label13.Text = "From";
-            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label14
             // 
@@ -382,7 +382,7 @@
             this.Label14.Size = new System.Drawing.Size(46, 34);
             this.Label14.TabIndex = 112;
             this.Label14.Text = "To";
-            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtpFrom
             // 
