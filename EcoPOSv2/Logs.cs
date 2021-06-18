@@ -41,7 +41,7 @@ namespace EcoPOSv2
 
         private void BtnAT_Click(object sender, EventArgs e)
         {
-            OL.changePanel(pnlAT, ref currentPanel, btnLH, ref currentBtn);
+            OL.changePanel(pnlAT, ref currentPanel, btnAT, ref currentBtn);
         }
 
         private void BtnLH_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace EcoPOSv2
 
         private void BtnUA_Click(object sender, EventArgs e)
         {
-            OL.changePanel(pnlUA, ref currentPanel, btnLH, ref currentBtn);
+            OL.changePanel(pnlUA, ref currentPanel, btnUA, ref currentBtn);
 
         }
 

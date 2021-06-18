@@ -225,6 +225,8 @@ namespace EcoPOSv2
 
             pnlCustomer.BringToFront();
             clickbtnCustomer = true;
+            currentBtn = btnCustomer;
+            currentPanel = pnlCustomer;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions,btnMC);
 
             LoadCustomer();

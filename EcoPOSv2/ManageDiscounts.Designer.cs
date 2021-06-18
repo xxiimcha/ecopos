@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Panel1 = new System.Windows.Forms.Panel();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.btnProduct_Delete = new Guna.UI2.WinForms.Guna2Button();
             this.btnProduct_Save = new Guna.UI2.WinForms.Guna2Button();
@@ -62,15 +61,6 @@
             this.SplitContainer1.Panel2.SuspendLayout();
             this.SplitContainer1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Panel1
-            // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1164, 39);
-            this.Panel1.TabIndex = 3;
             // 
             // Panel3
             // 
@@ -166,6 +156,7 @@
             // 
             // TableLayoutPanel1
             // 
+            this.TableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.TableLayoutPanel1.ColumnCount = 2;
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.64877F));
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.35123F));
@@ -193,7 +184,7 @@
             // txtAmount
             // 
             this.txtAmount.BackColor = System.Drawing.Color.White;
-            this.txtAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAmount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAmount.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.ForeColor = System.Drawing.Color.Black;
@@ -217,7 +208,7 @@
             // txtName
             // 
             this.txtName.BackColor = System.Drawing.Color.White;
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.Color.Black;
@@ -276,6 +267,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.BackColor = System.Drawing.Color.White;
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.Black;
@@ -310,12 +302,12 @@
             this.btnSort.IconColor = System.Drawing.Color.Black;
             this.btnSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSort.IconSize = 30;
-            this.btnSort.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSort.Location = new System.Drawing.Point(323, 0);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(47, 29);
             this.btnSort.TabIndex = 25;
             this.btnSort.UseVisualStyleBackColor = false;
+            this.btnSort.Click += new System.EventHandler(this.BtnSort_Click);
             // 
             // dgvDiscount
             // 
@@ -345,7 +337,6 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDiscount.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvDiscount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDiscount.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDiscount.Location = new System.Drawing.Point(3, 38);
             this.dgvDiscount.Name = "dgvDiscount";
@@ -359,7 +350,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDiscount.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDiscount.Size = new System.Drawing.Size(370, 825);
+            this.dgvDiscount.Size = new System.Drawing.Size(370, 692);
             this.dgvDiscount.TabIndex = 9;
             // 
             // TableLayoutPanel2
@@ -401,8 +392,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1164, 866);
-            this.Controls.Add(this.Panel1);
             this.Controls.Add(this.SplitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManageDiscounts";
@@ -425,8 +416,6 @@
         }
 
         #endregion
-
-        internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.Panel Panel3;
         internal System.Windows.Forms.RadioButton rbAmount;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;

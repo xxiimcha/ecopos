@@ -166,5 +166,10 @@ namespace EcoPOSv2
             else
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
         }
+
+        private void BtnSort_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

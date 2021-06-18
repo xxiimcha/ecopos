@@ -35,27 +35,27 @@ namespace EcoPOSv2
 
         private void BtnPurchase_Click(object sender, EventArgs e)
         {
-            OL.changeFormWithButton(new APurchase(), ref currentChildForm, btnInventory, ref currentButton, ref pnlChild);
+            OL.changeFormWithButton(new APurchase(), ref currentChildForm, btnPurchase, ref currentButton, ref pnlChild);
         }
 
         private void BtnReturn_Click(object sender, EventArgs e)
         {
-            OL.changeFormWithButton(new AReturn(), ref currentChildForm, btnInventory, ref currentButton, ref pnlChild);
+            OL.changeFormWithButton(new AReturn(), ref currentChildForm, btnReturn, ref currentButton, ref pnlChild);
         }
 
         private void BtnSupplier_Click(object sender, EventArgs e)
         {
-            OL.changeFormWithButton(new ASupplier(), ref currentChildForm, btnInventory, ref currentButton, ref pnlChild);
+            OL.changeFormWithButton(new ASupplier(), ref currentChildForm, btnSupplier, ref currentButton, ref pnlChild);
         }
 
         private void BtnWarehouse_Click(object sender, EventArgs e)
         {
-            OL.changeFormWithButton(new AWarehouse(), ref currentChildForm, btnInventory, ref currentButton, ref pnlChild);
+            OL.changeFormWithButton(new AWarehouse(), ref currentChildForm, btnWarehouse, ref currentButton, ref pnlChild);
         }
 
         private void BtnOR_Click(object sender, EventArgs e)
         {
-            OL.changeFormWithButton(new AOperation(), ref currentChildForm, btnInventory, ref currentButton, ref pnlChild);
+            OL.changeFormWithButton(new AOperation(), ref currentChildForm, btnOR, ref currentButton, ref pnlChild);
         }
     }
 }
