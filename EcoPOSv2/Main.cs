@@ -160,7 +160,15 @@ namespace EcoPOSv2
         //METHODS
         public static bool PrinterExists(string printerName)
         {
-            if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
+            try
+            {
+                if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
+            }
+            catch (Exception)
+            {
+                new Notification().PopUp("Please select printer in devices to proceed","","error");
+            }
+
             return PrinterSettings.InstalledPrinters.Cast<string>().Any(name => printerName.ToUpper().Trim() == name.ToUpper().Trim());
         }
         public void store_bypass_list()
@@ -246,7 +254,7 @@ namespace EcoPOSv2
 
             if (count_records == 1)
             {
-                sql.Query("SELECT * FROM printers_devices WHERE configuration_ID = 2");
+                sql.Query("SELECT * FROM printers_devices");
                 if (sql.HasException(true))
                     return;
 

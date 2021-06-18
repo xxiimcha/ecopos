@@ -44,88 +44,90 @@ namespace EcoPOSv2
 
             frmOrder.LoadOrderNo();
         }
-        public static bool PrinterExists(string printerName)
-        {
-            if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
-            return PrinterSettings.InstalledPrinters.Cast<string>().Any(name => printerName.ToUpper().Trim() == name.ToUpper().Trim());
-        }
         private void GenerateReceipt()
         {
-            bool checkprinter = PrinterExists(Main.Instance.pd_receipt_printer);
+            bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
 
             if (checkprinter == false)
             {
-                MessageBox.Show("Printer is offline", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new Notification().PopUp("Printer is offline", "", "error");
+                return;
             }
-
-
-            DataSet ds = new DataSet();
-
-            report = new PaymentR();
-
-            try
+            else if (checkprinter == true)
             {
-                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)", SQL.DBCon);
-                SQL.DBDA.Fill(ds, "transaction_items");
+                DataSet ds = new DataSet();
 
-                report.SetDataSource(ds);
+                report = new PaymentR();
 
-                SQL.Query("IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)");
-
-                if (SQL.HasException(true))
-                    return;
-
-                foreach (DataRow r in SQL.DBDT.Rows)
+                try
                 {
-                    report.SetParameterValue("date_time", r["date_time"].ToString());
-                    report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-                    report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                    report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
-                    report.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()),2).ToString());
-                    report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
-                    report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
-                    report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
-                    report.SetParameterValue("giftcard_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
-                    report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
-                    report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
-                    report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
-                    report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
-                    report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
-                    report.SetParameterValue("giftcard_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
-                    report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
-                    report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
-                    report.SetParameterValue("cus_name", r["cus_name"].ToString());
-                    report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)", SQL.DBCon);
+                    SQL.DBDA.Fill(ds, "transaction_items");
 
+                    report.SetDataSource(ds);
+
+                    SQL.Query("IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)");
+
+                    if (SQL.HasException(true))
+                        return;
+
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        report.SetParameterValue("date_time", r["date_time"].ToString());
+                        report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
+                        report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
+                        report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
+                        report.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()), 2).ToString());
+                        report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
+                        report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
+                        report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
+                        report.SetParameterValue("giftcard_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
+                        report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
+                        report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
+                        report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
+                        report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
+                        report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
+                        report.SetParameterValue("giftcard_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
+                        report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
+                        report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
+                        report.SetParameterValue("cus_name", r["cus_name"].ToString());
+                        report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+
+                    }
+
+                    report.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                    report.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                    report.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+                    report.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
+                    report.SetParameterValue("sn", Main.Instance.sd_sn);
+                    report.SetParameterValue("min", Main.Instance.sd_min);
+                    report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+
+                    int no_of_prints = 1;
+
+                    if (frmOrder.apply_regular_discount_fix_amt | frmOrder.apply_special_discount | frmOrder.apply_member)
+                        no_of_prints = 2;
+
+                    for (var i = 1; i <= no_of_prints; i++)
+                    {
+                        if (i == 1)
+                            report.SetParameterValue("note", note + "CUSTOMERS COPY");
+                        if (i == 2)
+                            report.SetParameterValue("note", note + "ACCOUNTING COPY");
+
+                        PrintReceipt();
+                    }
+
+                    PChange frmPChange = new PChange();
+                    frmPChange.frmPayment = this;
+                    frmPChange.lblChange.Text = lblChange.Text;
+                    frmPChange.ShowDialog();
                 }
-
-                report.SetParameterValue("business_name", Main.Instance.sd_business_name);
-                report.SetParameterValue("business_address", Main.Instance.sd_business_address);
-                report.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
-                report.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
-                report.SetParameterValue("sn", Main.Instance.sd_sn);
-                report.SetParameterValue("min", Main.Instance.sd_min);
-                report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
-
-                int no_of_prints = 1;
-
-                if (frmOrder.apply_regular_discount_fix_amt | frmOrder.apply_special_discount | frmOrder.apply_member)
-                    no_of_prints = 2;
-
-                for (var i = 1; i <= no_of_prints; i++)
+                catch (Exception ex)
                 {
-                    if (i == 1)
-                        report.SetParameterValue("note", note + "CUSTOMERS COPY");
-                    if (i == 2)
-                        report.SetParameterValue("note", note + "ACCOUNTING COPY");
-
-                    PrintReceipt();
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    report.Dispose();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                report.Dispose();
             }
         }
 
@@ -396,10 +398,8 @@ namespace EcoPOSv2
             #endregion
 
             GenerateReceipt();
-            PChange frmPChange = new PChange();
-            frmPChange.frmPayment = this;
-            frmPChange.lblChange.Text = lblChange.Text;
-            frmPChange.ShowDialog();
+
+            
 
             #region reset values
 
@@ -420,9 +420,9 @@ namespace EcoPOSv2
 
         private void btnRemoveGC_Click(object sender, EventArgs e)
         {
-            decimal deduct_gc = Math.Round(decimal.Parse(lblDeductGC.ToString()), 2);
+            decimal deduct_gc = decimal.Parse(lblDeductGC.Text);
             grand_total = grand_total + deduct_gc;
-            lblGrandTotal.Text = Math.Round(decimal.Parse(grand_total.ToString()), 2).ToString();
+            lblGrandTotal.Text = grand_total.ToString("N2");
             lblGCNo.Text = "0";
             lblDeductGC.Text = "0.00";
         }

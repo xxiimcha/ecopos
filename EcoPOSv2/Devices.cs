@@ -79,7 +79,7 @@ namespace EcoPOSv2
             if (count_records == 1)
             {
                 SQL.Query(@"UPDATE printers_devices SET receipt_printer_name = @receipt_printer_name, report_printer_name = @report_printer_name, 
-                           customer_display_enabled = @customer_display_enabled, customer_display_port = @customer_display_port WHERE configuration_ID = 1");
+                           customer_display_enabled = @customer_display_enabled, customer_display_port = @customer_display_port");
 
                 if (SQL.HasException(true))
                     return;
@@ -101,7 +101,8 @@ namespace EcoPOSv2
             Main.Instance.pd_customer_display_enabled = cbxEnable_CD.Checked;
             Main.Instance.pd_customer_display_port = cmbPort.Text;
 
-            new Notification().PopUp("Settings has been saved.","Success");
+            new Notification().PopUp("Settings has been saved.","Success","success");
+            this.Close();
             //MessageBox.Show("Settings has been saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
