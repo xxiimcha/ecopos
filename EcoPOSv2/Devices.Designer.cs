@@ -245,6 +245,7 @@ namespace EcoPOSv2
             this.Name = "Devices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devices";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Devices_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

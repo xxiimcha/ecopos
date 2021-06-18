@@ -173,10 +173,11 @@ namespace EcoPOSv2
 
             if (checkprinter == false)
             {
-                new Notification().PopUp("No printer device detected. Please connect to proceed.", "", "error");
+                new Notification().PopUp("No printer device selected.", "", "error");
 
                 Devices d = new Devices();
-                d.ShowDialog();
+                d.Show();
+                return;
             }
             else
             {

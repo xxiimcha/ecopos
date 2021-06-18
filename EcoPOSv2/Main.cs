@@ -164,10 +164,7 @@ namespace EcoPOSv2
             {
                 if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
             }
-            catch (Exception)
-            {
-                new Notification().PopUp("Please select printer in devices to proceed","","error");
-            }
+            catch (Exception) { }
 
             return PrinterSettings.InstalledPrinters.Cast<string>().Any(name => printerName.ToUpper().Trim() == name.ToUpper().Trim());
         }
