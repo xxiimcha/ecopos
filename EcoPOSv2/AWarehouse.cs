@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EcoPOSv2.ControlBehavior;
 
 namespace EcoPOSv2
 {
@@ -75,6 +76,14 @@ namespace EcoPOSv2
                 }
             }
         }
+        private void ControlBehavior()
+        {
+            Control sw = (Control)txtSearchWarehouse;
+            Control si = (Control)txtSearchItem;
+
+            SetBehavior(ref sw, Behavior.ClearSearch);
+            SetBehavior(ref si, Behavior.ClearSearch);
+        }
 
         //METHODS
         private void AWarehouse_Load(object sender, EventArgs e)
@@ -84,7 +93,7 @@ namespace EcoPOSv2
 
             LoadWarehouse();
             LoadWarehouseCMB();
-
+            ControlBehavior();
 
             OL.ComboValuesQuery(cmbCategory, @"SELECT categoryID, name FROM
                                          (

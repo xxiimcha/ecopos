@@ -1,4 +1,5 @@
 ﻿using EcoPOSControl;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EcoPOSv2.ControlBehavior;
 using static EcoPOSv2.GroupAction;
+using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
@@ -28,7 +31,15 @@ namespace EcoPOSv2
         private void ManageDiscounts_Load(object sender, EventArgs e)
         {
             LoadDiscounts();
+            ControlBehavior();
 
+            TextBoxValidation.AssignValidation(ref txtAmount, ValidationType.Price);
+            TextBoxValidation.AssignValidation(ref txtAmount, ValidationType.Int_Only);
+        }
+        private void ControlBehavior()
+        {
+            Control c = (Control)txtSearch;
+            SetBehavior(ref c, Behavior.ClearSearch);
         }
 
 
@@ -79,7 +90,7 @@ namespace EcoPOSv2
         private void BtnProduct_Save_Click(object sender, EventArgs e)
         {
             DiscountRF();
-            int requiredFieldsMet = ControlBehavior.RequireField(ref requiredFields);
+            int requiredFieldsMet = RequireField(ref requiredFields);
 
             if (requiredFieldsMet == 1)
             {
@@ -169,7 +180,66 @@ namespace EcoPOSv2
 
         private void BtnSort_Click(object sender, EventArgs e)
         {
+            if (dgvDiscount.RowCount == 0)
+                return;
 
+            if (btnSort.IconChar == IconChar.SortAlphaDown)
+            {
+                dgvDiscount.Sort(dgvDiscount.Columns[1], ListSortDirection.Ascending);
+                btnSort.IconChar = IconChar.SortAlphaUp;
+            }
+            else
+            {
+                dgvDiscount.Sort(dgvDiscount.Columns[1], ListSortDirection.Descending);
+                btnSort.IconChar = IconChar.SortAlphaDown;
+            }
+        }
+
+        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearch.Text == "")
+                LoadDiscounts();
+            else
+            {
+                SQL.AddParam("@find", txtSearch.Text + "%");
+
+                SQL.Query("SELECT discountID, disc_name FROM discount WHERE disc_name LIKE @find ORDER BY disc_name ASC");
+
+                if (SQL.HasException(true))
+                    return;
+
+                dgvDiscount.DataSource = SQL.DBDT;
+                dgvDiscount.Columns[0].Visible = false;
+            }
+        }
+
+        private void dgvDiscount_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+
+            SQL.AddParam("@discountID", dgvDiscount.CurrentRow.Cells[0].Value.ToString());
+
+            SQL.Query("SELECT * FROM discount WHERE discountID = @discountID");
+            if (SQL.HasException(true))
+                return;
+
+            foreach (DataRow r in SQL.DBDT.Rows)
+            {
+                discountID = r["discountID"].ToString();
+                txtName.Text = r["disc_name"].ToString();
+                txtAmount.Text = r["disc_amt"].ToString();
+
+                if (Convert.ToInt32(r["disc_type"].ToString()) == 1)
+                    rbAmount.Checked = true;
+                else
+                    rbPercentage.Checked = true;
+            }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }

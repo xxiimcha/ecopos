@@ -9,7 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EcoPOSv2.ControlBehavior;
 using static EcoPOSv2.GroupAction;
+using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
@@ -126,13 +128,32 @@ namespace EcoPOSv2
             dgvCategory.DataSource = SQL.DBDT;
             dgvCategory.Columns[0].Visible = false;
         }
+        private void TextValidation()
+        {
+            AssignValidation(ref txtRPInclusive, ValidationType.Price);
+            AssignValidation(ref txtRPInclusive, ValidationType.Only_Numbers);
+            AssignValidation(ref txtWPInclusive, ValidationType.Price);
+            AssignValidation(ref txtWPInclusive, ValidationType.Only_Numbers);
+        }
 
+        private void ControlBehavior()
+        {
+            Control sp = (Control)txtSearchProduct;
+            Control sc = (Control)txtSearchCategory;
+            Control csc = (Control)txtCat_SearchCategory;
+
+            SetBehavior(ref sp, Behavior.ClearSearch);
+            SetBehavior(ref sc, Behavior.ClearSearch);
+            SetBehavior(ref csc, Behavior.ClearSearch);
+        }
         //METHODS
         private void ManageProducts_Load(object sender, EventArgs e)
         {
             currentPanel = pnlProducts;
             currentButton = btnProduct;
 
+            TextValidation();
+            ControlBehavior();
             LoadCategory();
             loadCat_Category();
             OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
@@ -190,7 +211,7 @@ namespace EcoPOSv2
 
                 if (cbxDiscPWD.Checked == true)
                 {
-                    if (Convert.ToInt32(r["s_PWD_SC_perc"].ToString()) == 5)
+                    if (decimal.Parse(r["s_PWD_SC_perc"].ToString()) == 5)
                         rb5PWD.Checked = true;
                     else
                         rb20PWD.Checked = true;
@@ -201,14 +222,16 @@ namespace EcoPOSv2
         private void btnProduct_New_Click(object sender, EventArgs e)
         {
             ClearFields_Pr();
+
+            this.ActiveControl = txtDescription;
         }
 
         private void btnProduct_Save_Click(object sender, EventArgs e)
         {
             ProductsRF();
-            int requiredFieldsMet = ControlBehavior.RequireField(ref requiredFields);
+            int requiredFieldsMet = RequireField(ref requiredFields);
 
-            if (requiredFieldsMet == 1)
+            if (requiredFieldsMet == 1) 
             {
                 string action = "Update";
                 decimal pwd_perc = 0;
@@ -325,6 +348,10 @@ namespace EcoPOSv2
                 }
 
                 ReloadProducts();
+            }
+            else if(requiredFieldsMet == 1 && cmbWarehouse.Text == "")
+            {
+                new Notification().PopUp("Please add warehouse to proceed.", "Save failed", "error");
             }
             else
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
@@ -505,7 +532,7 @@ namespace EcoPOSv2
         {
             CategoryRF();
 
-            var requiredFieldsMet = ControlBehavior.RequireField(ref requiredFields);
+            var requiredFieldsMet = RequireField(ref requiredFields);
 
             if (requiredFieldsMet == 1)
             {

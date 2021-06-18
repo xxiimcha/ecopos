@@ -16,6 +16,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EcoPOSv2.ControlBehavior;
+using static EcoPOSv2.GroupAction;
+using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
@@ -26,17 +29,20 @@ namespace EcoPOSv2
             InitializeComponent();
         }
         private FormLoad OL = new FormLoad();
+        private GroupAction GA = new GroupAction();
         private SQLControl SQL = new SQLControl();
-        ExportImport EI = new ExportImport();
+        private ExportImport EI = new ExportImport();
 
-        Panel currentPanel;
-        Button currentBtn;
+        private Panel currentPanel;
+        private Button currentBtn;
 
         private TransactionsReport report = new TransactionsReport();
         private PaymentReceipt reprint_receipt = new PaymentReceipt();
 
-
         private bool dgvMT_ClickedOnce = false;
+
+        private List<Control> allTxt = new List<Control>();
+        private List<TextBox> requiredFields = new List<TextBox>();
 
         Boolean clickbtnCustomer, clickMembership, clickMemberTransactions, clickMC = false;
 
@@ -53,6 +59,17 @@ namespace EcoPOSv2
             }
         }
         //METHODS
+        private void CardRF()
+        {
+            requiredFields = new List<TextBox>();
+
+            requiredFields.Add(txtMC_CardNo);
+        }
+
+        private void ClearFields_Card()
+        {
+            GA.DoThis(ref allTxt, TableLayoutPanel6, ControlType.TextBox, GroupAction.Action.Clear);
+        }
         public static bool PrinterExists(string printerName)
         {
             if (String.IsNullOrEmpty(printerName)) { throw new ArgumentNullException("printerName"); }
@@ -99,18 +116,6 @@ namespace EcoPOSv2
             rbMem_TypePercentage.Checked = false;
 
             LoadMembership();
-        }
-        public void ClearFields_Card()
-        {
-            txtMC_Balance.Clear();
-            txtMC_CardNo.Clear();
-            txtMC_ID.Clear();
-            txtMC_Membership.Clear();
-            txtMC_Owner.Clear();
-            txtMC_Search.Clear();
-            txtMC_Status.Clear();
-
-            LoadCard();
         }
         public void LoadCard()
         {
@@ -217,6 +222,25 @@ namespace EcoPOSv2
 
             LoadCustomer();
         }
+        private void TextboxValidation()
+        {
+            AssignValidation(ref txtCus_CardNo, ValidationType.Int_Only);
+            AssignValidation(ref txtCus_Contact, ValidationType.Int_Only);
+            AssignValidation(ref txtMC_CardNo, ValidationType.Int_Only);
+            AssignValidation(ref txtMem_DiscAmount, ValidationType.Price);
+            AssignValidation(ref txtMem_AmtPerPoint, ValidationType.Price);
+            AssignValidation(ref txtMem_Expiration, ValidationType.Int_Only);
+        }
+        private void ControlBehavior()
+        {
+            Control ms = (Control)txtMem_Search;
+            Control cs = (Control)txtCus_Search;
+            Control mcs = (Control)txtMC_Search;
+
+            SetBehavior(ref ms, Behavior.ClearSearch);
+            SetBehavior(ref cs, Behavior.ClearSearch);
+            SetBehavior(ref mcs, Behavior.ClearSearch);
+        }
 
         //METHODS
         private void Customers_Load(object sender, EventArgs e)
@@ -229,6 +253,11 @@ namespace EcoPOSv2
             currentPanel = pnlCustomer;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions,btnMC);
 
+            currentBtn = btnCustomer;
+            currentPanel = pnlCustomer;
+
+            ControlBehavior();
+
             LoadCustomer();
             LoadMembership();
             LoadCard();
@@ -237,9 +266,11 @@ namespace EcoPOSv2
 
             // member transaction
             LoadMT_Customers();
-            dtpMT_From.Value = DateTime.Now;
-            dtpMT_From.Value = DateTime.Now;
+            dtpMT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpMT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
             cmbMT_Customer.SelectedIndex = 0;
+
+            TextboxValidation();
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
@@ -248,6 +279,7 @@ namespace EcoPOSv2
             clickbtnCustomer = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
 
+            LoadCustomer();
             OL.changePanel(pnlCustomer, ref currentPanel, btnCustomer, ref currentBtn);
         }
 
@@ -463,48 +495,36 @@ namespace EcoPOSv2
         private void dgvMembership_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
+                return;
+
+            SQL.AddParam("@member_type_ID", dgvMembership.CurrentRow.Cells[0].Value.ToString());
+
+            SQL.Query("SELECT * FROM membership WHERE member_type_ID = @member_type_ID");
+            if (SQL.HasException(true))
+                return;
+
+            foreach (DataRow r in SQL.DBDT.Rows)
             {
-                SQL.AddParam("@member_type_ID", dgvMembership.CurrentRow.Cells[0].Value.ToString());
-                SQL.Query("SELECT * FROM membership WHERE member_type_ID = @member_type_ID");
+                txtMem_ID.Text = r["member_type_ID"].ToString();
+                txtMem_Name.Text = r["name"].ToString();
+                txtMem_DiscAmount.Text = r["disc_amt"].ToString();
+                txtMem_Expiration.Text = r["expiration"].ToString();
+                txtMem_AmtPerPoint.Text = r["amt_per_pt"].ToString();
 
-                if (SQL.HasException(true)) return;
+                if (Convert.ToBoolean(r["discountable"]))
+                    rbMem_DiscYes.Checked = true;
+                else
+                    rbMem_DiscNo.Checked = true;
 
-                foreach (DataRow dr in SQL.DBDT.Rows)
-                {
-                    txtMem_ID.Text = dr["member_type_ID"].ToString();
-                    txtMem_Name.Text = dr["name"].ToString();
-                    txtMem_DiscAmount.Text = dr["disc_amt"].ToString();
-                    txtMem_Expiration.Text = dr["expiration"].ToString();
-                    txtMem_AmtPerPoint.Text = dr["amt_per_pt"].ToString();
+                if (Convert.ToInt32(r["disc_type"]) == 1)
+                    rbMem_TypeAmount.Checked = true;
+                else
+                    rbMem_TypePercentage.Checked = true;
 
-                    if (Convert.ToBoolean(dr["discountable"].ToString()))
-                    {
-                        rbMem_DiscYes.Checked = true;
-                    }
-                    else
-                    {
-                        rbMem_DiscYes.Checked = false;
-                    }
-
-                    if (Convert.ToInt32(dr["disc_type"].ToString()) == 1)
-                    {
-                        rbMem_TypeAmount.Checked = true;
-                    }
-                    else
-                    {
-                        rbMem_TypePercentage.Checked = false;
-                    }
-
-
-                    if (Convert.ToBoolean(dr["rewardable"].ToString()))
-                    {
-                        rbMem_RewardableYes.Checked = true;
-                    }
-                    else
-                    {
-                        rbMem_RewardableYes.Checked = false;
-                    }
-                }
+                if (Convert.ToBoolean(r["rewardable"]))
+                    rbMem_RewardableYes.Checked = true;
+                else
+                    rbMem_RewardableNo.Checked = true;
             }
         }
 
@@ -641,23 +661,6 @@ namespace EcoPOSv2
             }
         }
 
-        private void txtMem_Search_TextChanged(object sender, EventArgs e)
-        {
-            if (txtMem_Search.Text == "")
-                LoadMembership();
-            else
-            {
-                SQL.AddParam("@find", txtMem_Search.Text + "%");
-
-                SQL.Query("SELECT member_type_ID, name FROM membership WHERE name LIKE @find ORDER BY name ASC");
-                if (SQL.HasException(true))
-                    return;
-
-                dgvMembership.DataSource = SQL.DBDT;
-                dgvMembership.Columns[0].Visible = false;
-            }
-        }
-
         private void btnMem_Delete_Click(object sender, EventArgs e)
         {
             DialogResult approval = MessageBox.Show("Delete this member?", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
@@ -732,7 +735,11 @@ namespace EcoPOSv2
 
         private void btnMC_RegisterCard_Click(object sender, EventArgs e)
         {
-            if (txtMC_Balance.Text != "" || txtMC_CardNo.Text != "" || txtMC_Membership.Text != "" || txtMC_Status.Text != "")
+            CardRF();
+
+            int requiredFieldsMet = RequireField(ref requiredFields);
+
+            if (requiredFieldsMet == 1)
             {
 
                 // check for duplicate names
@@ -1089,10 +1096,29 @@ namespace EcoPOSv2
             }
         }
 
+        private void txtMem_Search_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtMem_Search.Text == "")
+                LoadMembership();
+            else
+            {
+                SQL.AddParam("@find", txtMem_Search.Text + "%");
+
+                SQL.Query("SELECT member_type_ID, name FROM membership WHERE name LIKE @find ORDER BY name ASC");
+                if (SQL.HasException(true))
+                    return;
+
+                dgvMembership.DataSource = SQL.DBDT;
+                dgvMembership.Columns[0].Visible = false;
+            }
+        }
+
         private void btnMembership_Click(object sender, EventArgs e)
         {
             clickMembership = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+
+            LoadMembership();
 
             OL.changePanel(pnlMembership, ref currentPanel, btnMembership, ref currentBtn);
         }
@@ -1103,6 +1129,7 @@ namespace EcoPOSv2
             clickMemberTransactions = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
 
+            LoadMT_Customers();
             OL.changePanel(pnlMT, ref currentPanel, btnMemberTransactions, ref currentBtn);
         }
 
@@ -1111,6 +1138,7 @@ namespace EcoPOSv2
             clickMC = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
 
+            LoadCard();
             OL.changePanel(pnlMC, ref currentPanel, btnMC, ref currentBtn);
         }
     }

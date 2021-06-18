@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
@@ -30,9 +31,37 @@ namespace EcoPOSv2
         private void XReading_Load(object sender, EventArgs e)
         {
             LoadXReadingRecords();
-            //TextboxValidation();
+            TextboxValidation();
         }
-        
+        private void TextboxValidation()
+        {
+            AssignValidation(ref txt1000, ValidationType.Int_Only);
+            AssignValidation(ref txt500, ValidationType.Int_Only);
+            AssignValidation(ref txt200, ValidationType.Int_Only);
+            AssignValidation(ref txt100, ValidationType.Int_Only);
+            AssignValidation(ref txt50, ValidationType.Int_Only);
+            AssignValidation(ref txt20, ValidationType.Int_Only);
+            AssignValidation(ref txt10, ValidationType.Int_Only);
+            AssignValidation(ref txt5, ValidationType.Int_Only);
+            AssignValidation(ref txt1, ValidationType.Int_Only);
+            AssignValidation(ref txt25c, ValidationType.Int_Only);
+            AssignValidation(ref txt10c, ValidationType.Int_Only);
+            AssignValidation(ref txt5c, ValidationType.Int_Only);
+            AssignValidation(ref txt1c, ValidationType.Int_Only);
+            AssignValidation(ref txtGC, ValidationType.Int_Only);
+            AssignValidation(ref txtCredit, ValidationType.Int_Only);
+            AssignValidation(ref txtDebit, ValidationType.Int_Only);
+            AssignValidation(ref txtCheque, ValidationType.Int_Only);
+            AssignValidation(ref txtGCash, ValidationType.Int_Only);
+            AssignValidation(ref txtPayMaya, ValidationType.Int_Only);
+            AssignValidation(ref txtGC, ValidationType.Price);
+            AssignValidation(ref txtCredit, ValidationType.Price);
+            AssignValidation(ref txtDebit, ValidationType.Price);
+            AssignValidation(ref txtCheque, ValidationType.Price);
+            AssignValidation(ref txtGCash, ValidationType.Price);
+            AssignValidation(ref txtPayMaya, ValidationType.Price);
+        }
+
         private void LoadXReadingRecords()
         {
             string datetime_now = DateTime.Now.ToString("yyyy - MM - dd HH: mm:ss");
