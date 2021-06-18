@@ -577,8 +577,8 @@
             // 
             // pnlParent
             // 
-            this.pnlParent.Controls.Add(this.pnlLH);
             this.pnlParent.Controls.Add(this.pnlAT);
+            this.pnlParent.Controls.Add(this.pnlLH);
             this.pnlParent.Controls.Add(this.pnlUA);
             this.pnlParent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlParent.Location = new System.Drawing.Point(0, 0);
