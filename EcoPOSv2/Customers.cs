@@ -245,6 +245,8 @@ namespace EcoPOSv2
             pnlCustomer.BringToFront();
             clickbtnCustomer = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+
+            OL.changePanel(pnlCustomer, ref currentPanel, btnCustomer, ref currentBtn);
         }
 
         private void txtCus_ID_TextChanged(object sender, EventArgs e)
@@ -1087,25 +1089,27 @@ namespace EcoPOSv2
 
         private void btnMembership_Click(object sender, EventArgs e)
         {
-            pnlMembership.BringToFront();
             clickMembership = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+
+            OL.changePanel(pnlMembership, ref currentPanel, btnMembership, ref currentBtn);
         }
+
 
         private void btnMemberTransactions_Click(object sender, EventArgs e)
         {
-            pnlMT.BringToFront();
             clickMemberTransactions = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+
+            OL.changePanel(pnlMT, ref currentPanel, btnMemberTransactions, ref currentBtn);
         }
 
         private void btnMC_Click(object sender, EventArgs e)
         {
-            pnlMC.BringToFront();
             clickMC = true;
             SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
 
-            //Comment
+            OL.changePanel(pnlMC, ref currentPanel, btnMC, ref currentBtn);
         }
     }
 }
