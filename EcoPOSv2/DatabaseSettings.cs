@@ -37,8 +37,9 @@ namespace EcoPOSv2
             Properties.Settings.Default.dbPass = tbPassword.Text;
             Properties.Settings.Default.Save();
 
-            new Notification().PopUp("Database setup applied.", "Application will be restart.");
-            //MessageBox.Show("Database setup applied. , "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //new Notification().PopUp("Database setup applied.", "Application will be restart.");
+            MessageBox.Show("Database setup applied.","Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Exit();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
