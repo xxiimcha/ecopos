@@ -292,6 +292,12 @@
     <Compile Include="OREditInfo.Designer.cs">
       <DependentUpon>OREditInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ORItems.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ORItems.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Payment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -560,6 +566,10 @@
       <DependentUpon>ZReadingReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="ORItems.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ORItems.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ZReadingReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ZReadingReport.cs</LastGenOutput>

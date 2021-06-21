@@ -96,7 +96,7 @@
             this.dgvOR.AllowUserToResizeRows = false;
             this.dgvOR.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOR.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvOR.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvOR.BackgroundColor = System.Drawing.Color.White;
             this.dgvOR.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -133,6 +133,7 @@
             this.dgvOR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOR.Size = new System.Drawing.Size(858, 858);
             this.dgvOR.TabIndex = 38;
+            this.dgvOR.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOR_CellClick);
             // 
             // TableLayoutPanel2
             // 
@@ -202,6 +203,7 @@
             this.btnAdjCost.Text = "Adjust Cost";
             this.btnAdjCost.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdjCost.UseVisualStyleBackColor = false;
+            this.btnAdjCost.Click += new System.EventHandler(this.btnAdjCost_Click);
             // 
             // btnEditInfo
             // 
@@ -224,6 +226,7 @@
             this.btnEditInfo.Text = "Edit Info";
             this.btnEditInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditInfo.UseVisualStyleBackColor = false;
+            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
             // 
             // btnAdjInventory
             // 
@@ -246,11 +249,12 @@
             this.btnAdjInventory.Text = "Adjust Inventory";
             this.btnAdjInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdjInventory.UseVisualStyleBackColor = false;
+            this.btnAdjInventory.Click += new System.EventHandler(this.btnAdjInventory_Click);
             // 
             // btnPrint
             // 
             this.btnPrint.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -263,11 +267,12 @@
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.Location = new System.Drawing.Point(22, 51);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(87, 43);
+            this.btnPrint.Size = new System.Drawing.Size(108, 43);
             this.btnPrint.TabIndex = 108;
             this.btnPrint.Text = "Print";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnSave
             // 
@@ -290,6 +295,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // TableLayoutPanel3
             // 
@@ -354,6 +360,7 @@
             this.btnSearch.Size = new System.Drawing.Size(36, 29);
             this.btnSearch.TabIndex = 105;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // Label14
             // 
