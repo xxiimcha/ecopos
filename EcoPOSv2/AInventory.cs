@@ -1,4 +1,5 @@
 ﻿using EcoPOSControl;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -92,14 +93,14 @@ namespace EcoPOSv2
 
             if (btnSort.IconChar == IconChar.SortAlphaDown)
             {
-                dgvInventory.Sort(dgvInventory.Columns(1), ListSortDirection.Ascending);
+                dgvInventory.Sort(dgvInventory.Columns[1], ListSortDirection.Ascending);
                 btnSort.IconChar = IconChar.SortAlphaUp;
                 btnSort.Text = "Sort alphabetically ASC";
                 return;
             }
             else
             {
-                dgvInventory.Sort(dgvInventory.Columns(1), ListSortDirection.Descending);
+                dgvInventory.Sort(dgvInventory.Columns[1], ListSortDirection.Descending);
                 btnSort.IconChar = IconChar.SortAlphaDown;
                 btnSort.Text = "Sort alphabetically DESC";
             }
