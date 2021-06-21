@@ -30,6 +30,12 @@ namespace EcoPOSv2
         private void StaffReport_Load(object sender, EventArgs e)
         {
             OL.ComboValues(cmbStaff, "userID", "user_name", "users");
+
+            cmbStaff.SelectedIndex = 0;
+
+            //PWEDE RIN MAY GANTO.
+
+            btnSearch.PerformClick();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

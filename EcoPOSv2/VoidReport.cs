@@ -25,6 +25,8 @@ namespace EcoPOSv2
         {
             dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
             dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+
+            btnSearchDates.PerformClick();
         }
 
         private void btnSearchDates_Click(object sender, EventArgs e)

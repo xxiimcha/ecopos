@@ -60,13 +60,13 @@ namespace EcoPOSv2
 
         private void RegularDiscountReport_Load(object sender, EventArgs e)
         {
+            dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+
+            cmbDiscType.SelectedIndex = 0;
+
             LoadDiscountCMB();
             LoadData();
-
-            dtpFrom.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
-            dtpTo.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
-
-            cmbDiscType.SelectedIndex = -1;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
