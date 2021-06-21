@@ -34,25 +34,28 @@ namespace EcoPOSv2
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string date_now = string.Format(DateTime.Now.ToString(), "MM-dd-yyyy hh:mm:ss tt");
-
-            report = new TerminalReport();
-
-            DataSet ds1 = new DataSet();
-            DataSet ds2 = new DataSet();
-            DataSet ds3 = new DataSet();
-            DataSet ds4 = new DataSet();
-            DataSet ds5 = new DataSet();
-            DataSet ds6 = new DataSet();
-            DataSet ds7 = new DataSet();
-            DataSet ds8 = new DataSet();
-            DataSet ds9 = new DataSet();
-            DataSet ds10 = new DataSet();
-            DataSet ds11 = new DataSet();
-            DataSet ds12 = new DataSet();
-
-            try
+            if (cmbStaff.Text != "")
             {
+
+                string date_now = string.Format(DateTime.Now.ToString(), "MM-dd-yyyy hh:mm:ss tt");
+
+                report = new TerminalReport();
+
+                DataSet ds1 = new DataSet();
+                DataSet ds2 = new DataSet();
+                DataSet ds3 = new DataSet();
+                DataSet ds4 = new DataSet();
+                DataSet ds5 = new DataSet();
+                DataSet ds6 = new DataSet();
+                DataSet ds7 = new DataSet();
+                DataSet ds8 = new DataSet();
+                DataSet ds9 = new DataSet();
+                DataSet ds10 = new DataSet();
+                DataSet ds11 = new DataSet();
+                DataSet ds12 = new DataSet();
+
+                //try
+                //{
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
 
 
@@ -411,7 +414,7 @@ namespace EcoPOSv2
                         report.SetParameterValue("no_of_items", r["no_of_items"].ToString(), "Refund");
                         decimal total = decimal.Parse(r["total"].ToString());
                         report.SetParameterValue("total", total.ToString("N2"), "Refund");
-                       
+
                     }
                 }
                 else
@@ -655,11 +658,16 @@ namespace EcoPOSv2
 
                 CrystalReportViewer1.ReportSource = report;
                 CrystalReportViewer1.Refresh();
+                //}
+                //catch (Exception ex)
+                //{
+                //    new Notification().PopUp(ex.ToString(),"","error");
+                //    report.Dispose();
+                //}
             }
-            catch (Exception ex)
+            else
             {
-                new Notification().PopUp(ex.ToString(),"","error");
-                report.Dispose();
+                new Notification().PopUp("Please select staff to proceed.", "", "error");
             }
         }
 

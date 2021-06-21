@@ -50,7 +50,9 @@ namespace EcoPOSv2
         {
             dtpFrom.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
             dtpTo.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
-            cmbCusType.SelectedIndex = -1;
+            cmbCusType.SelectedIndex = 0;
+
+            LoadSpecialDiscount();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
