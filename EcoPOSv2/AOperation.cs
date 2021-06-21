@@ -21,7 +21,7 @@ namespace EcoPOSv2
             InitializeComponent();
         }
         SQLControl SQL = new SQLControl();
-        //ORItems report = new ORItems();
+        ORItems report = new ORItems();
         ReportDocument cryRpt = new ReportDocument();
 
         bool clickedOnce = false;
