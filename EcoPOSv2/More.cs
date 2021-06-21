@@ -28,6 +28,8 @@ namespace EcoPOSv2
         private void BtnLogs_Click(object sender, EventArgs e)
         {
             Main.Instance.OpenChildForm(new Logs());
+
+            Logs.Instance.btnAT_SearchDates.PerformClick();
         }
 
         private void BtnCustomers_Click(object sender, EventArgs e)

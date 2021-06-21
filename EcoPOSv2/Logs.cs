@@ -24,19 +24,34 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
-
+        public static Logs _Logs;
+        public static Logs Instance
+        {
+            get
+            {
+                if (_Logs == null)
+                {
+                    _Logs = new Logs();
+                }
+                return _Logs;
+            }
+        }
         private void Logs_Load(object sender, EventArgs e)
         {
+            _Logs = this;
+
             currentPanel = pnlAT;
             currentBtn = btnAT;
 
             LoadUserLH();
 
-            dtpAT_From.Value = DateTime.Parse(String.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
-            dtpAT_To.Value = DateTime.Parse(String.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
+            dtpAT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpAT_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+            btnAT_SearchDates.PerformClick();
 
-            dtpLH_From.Value = DateTime.Parse(String.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
-            dtpLH_To.Value = DateTime.Parse(String.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
+
+            dtpLH_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpLH_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
         }
 
         private void BtnAT_Click(object sender, EventArgs e)
@@ -62,7 +77,7 @@ namespace EcoPOSv2
             SQL.AddParam("@to", dtpAT_To.Value);
             SQL.Query(@"SELECT Type, TableName as 'Table', PK as 'Key', FieldName as 'Field', 
                        OldValue as 'Old Value', NewValue as 'New Value', UpdateDate as 'Date'
-                       FROM Audit ORDER BY UpdateDate DESC");
+                       FROM Audit where UpdateDate between @from and @to ORDER BY UpdateDate DESC");
             if (SQL.HasException(true))
                 return;
             dgvAT.DataSource = SQL.DBDT;
