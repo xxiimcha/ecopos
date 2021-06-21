@@ -109,9 +109,9 @@ namespace EcoPOSv2
                         }
                 }
 
-                frmOrder.LoadOrder();
-                frmOrder.GetTotal();
-                frmOrder.lblCustomer.Text = txtName.Text;
+                Order.Instance.LoadOrder();
+                Order.Instance.GetTotal();
+                Order.Instance.lblCustomer.Text = txtName.Text;
                 new Notification().PopUp("Discount applied.", "", "success");
                 frmDiscountOption.Close();
                 Close();

@@ -65,6 +65,10 @@ namespace EcoPOSv2
         {
             this.Close();
 
+            Order.Instance.btnDiscount.Enabled = true;
+            Order.Instance.btnCustomer.Enabled = true;
+            Order.Instance.btnQuantity.Enabled = true;
+
             Advance_OrderNo();
             Order.Instance.LoadOrder();
             Order.Instance.GetTotal();

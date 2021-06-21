@@ -105,11 +105,10 @@
             // 
             // cmbDesc
             // 
-            this.cmbDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.cmbDesc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbDesc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDesc.ForeColor = System.Drawing.Color.White;
+            this.cmbDesc.ForeColor = System.Drawing.Color.Black;
             this.cmbDesc.FormattingEnabled = true;
             this.cmbDesc.Items.AddRange(new object[] {
             "Senior Citizen",

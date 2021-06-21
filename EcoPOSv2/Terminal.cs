@@ -99,8 +99,8 @@ namespace EcoPOSv2
             var ds10 = new DataSet();
             var ds11 = new DataSet();
             var ds12 = new DataSet();
-            try
-            {
+            //try
+            //{
                 this.CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
 
                 #region sales fill
@@ -376,7 +376,7 @@ namespace EcoPOSv2
                         return;
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = decimal.Parse(r["grand_total"].ToString());
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
 
                         terminal_report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "RetailSales");
@@ -670,12 +670,12 @@ namespace EcoPOSv2
 
                 this.CrystalReportViewer1.ReportSource = terminal_report;
                 this.CrystalReportViewer1.Refresh();
-            }
-            catch (Exception ex)
-            {
-                new Notification().PopUp(ex.Message, "", "error");
-                terminal_report.Dispose();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    new Notification().PopUp(ex.Message, "", "error");
+            //    terminal_report.Dispose();
+            //}
         }
 
         private void btnExport_Click(object sender, EventArgs e)

@@ -245,8 +245,8 @@ namespace EcoPOSv2
 
             DataSet ds = new DataSet();
 
-            try
-            {
+            //try
+            //{
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
                 SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                 SQL.DBDA.Fill(ds, "transaction_items");
@@ -289,7 +289,7 @@ namespace EcoPOSv2
                     decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
                     report.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
                     decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
-                    report.SetParameterValue("giftcard_deduct", giftcard_deducted.ToString("N2"));
+                    report.SetParameterValue("gift_card_deduct", giftcard_deducted.ToString("N2"));
                     decimal grand_total = decimal.Parse(r["grand_total"].ToString());
                     report.SetParameterValue("total", grand_total.ToString("N2"));
                     decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
@@ -300,7 +300,7 @@ namespace EcoPOSv2
                     report.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
                     decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
                     report.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-                    report.SetParameterValue("giftcard_no", r["giftcard_no"].ToString());
+                    report.SetParameterValue("gift_card_no", r["giftcard_no"].ToString());
                     decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                     report.SetParameterValue("cash", payment_amt.ToString("N2"));
                     decimal change = decimal.Parse(r["change"].ToString());
@@ -312,12 +312,12 @@ namespace EcoPOSv2
                     CrystalReportViewer1.ReportSource = report;
                     CrystalReportViewer1.Refresh();
                 }
-            }
-            catch (Exception ex)
-            {
-                new Notification().PopUp(ex.Message,"","error");
-                report.Dispose();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    new Notification().PopUp(ex.Message,"","error");
+            //    report.Dispose();
+            //}
         }
     }
 }
