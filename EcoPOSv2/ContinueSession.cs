@@ -68,7 +68,7 @@ namespace EcoPOSv2
             lblCS_Username.Text = SQL.ReturnResult("SELECT user_name FROM shift WHERE ended IS NULL AND shiftID = (SELECT MAX(shiftID) FROM shift)");
             if (SQL.HasException(true))return;
 
-
+            this.ActiveControl = tbCSPassword;
         }
 
         private void ContinueSession_FormClosing(object sender, FormClosingEventArgs e)

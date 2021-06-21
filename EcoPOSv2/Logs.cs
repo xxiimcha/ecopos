@@ -63,6 +63,7 @@ namespace EcoPOSv2
         {
             OL.changePanel(pnlLH, ref currentPanel, btnLH, ref currentBtn);
 
+            btnLH_Search.PerformClick();
         }
 
         private void BtnUA_Click(object sender, EventArgs e)
