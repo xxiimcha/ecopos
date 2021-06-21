@@ -32,6 +32,7 @@ namespace EcoPOSv2
         public Order()
         {
             InitializeComponent();
+            AddHotKeyRegisterer(ClickCustomer, HotKeyMods.Control, ConsoleKey.C);
             AddHotKeyRegisterer(OpenPayment, HotKeyMods.Control, ConsoleKey.P);
             AddHotKeyRegisterer(OpenDiscount, HotKeyMods.Control, ConsoleKey.D);
             AddHotKeyRegisterer(Openquantity, HotKeyMods.Control, ConsoleKey.Q);
@@ -448,7 +449,9 @@ namespace EcoPOSv2
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-
+            OCustomer frmOCustomer = new OCustomer();
+            frmOCustomer.frmOrder = this;
+            frmOCustomer.ShowDialog();
         }
 
         private void Order_Load(object sender, EventArgs e)
@@ -465,6 +468,9 @@ namespace EcoPOSv2
 
             //tbBarcode.Focus();
             //tbBarcode.Clear();
+
+            //TEMPORARY
+            btnVoid.Enabled = false;
         }
 
         private void btnVoidItem_Click(object sender, EventArgs e)
@@ -512,23 +518,28 @@ namespace EcoPOSv2
         //GLOBAL HOTKEYS
         private void ClickCancelTransaction(object sender, EventArgs e)
         {
-            btnCancel.PerformClick();
+            Order.Instance.btnCancel.PerformClick();
         }
 
         private void OpenVoidItem(object sender, EventArgs e)
         {
-            btnVoidItem.PerformClick();
+            Order.Instance.btnVoidItem.PerformClick();
         }
 
         private void Openquantity(object sender, EventArgs e)
         {
-            btnQuantity.PerformClick();
+            Order.Instance.btnQuantity.PerformClick();
         }
 
         private void OpenDiscount(object sender, EventArgs e)
         {
-            btnDiscount.PerformClick();
+            Order.Instance.btnDiscount.PerformClick();
         }
+        private void ClickCustomer(object sender, EventArgs e)
+        {
+            Order.Instance.btnCustomer.PerformClick();
+        }
+        //GLOBAL HOTKEYS
 
         private void btnRedeem_Click(object sender, EventArgs e)
         {
@@ -545,7 +556,7 @@ namespace EcoPOSv2
 
         private void OpenPayment(object sender, EventArgs e)
         {
-            btnPayment.PerformClick();
+            Order.Instance.btnPayment.PerformClick();
         }
     }
 }

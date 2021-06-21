@@ -7,15 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class DiscountOption : Form
+    public partial class DiscountOption : GlobalHotKeyForm
     {
         public DiscountOption()
         {
             InitializeComponent();
+            AddHotKeyRegisterer(Escape, HotKeyMods.None, ConsoleKey.Escape);
         }
+        //HOTKEYS
+        private void Escape(object sender, EventArgs e)
+        {
+            Close();
+        }
+        //HOTKEYS
+
         public Order frmOrder;
 
         private void btnContinueSession_Click(object sender, EventArgs e)

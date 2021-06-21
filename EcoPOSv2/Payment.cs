@@ -464,10 +464,20 @@ namespace EcoPOSv2
 
         private void txtAmount_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+
             if(e.KeyCode == Keys.Space)
             {
                 btnExact.PerformClick();
             }
+        }
+
+        private void Payment_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
         }
     }
 }

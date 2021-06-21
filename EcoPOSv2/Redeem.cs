@@ -8,15 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VeryHotKeys.WinForms;
 using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
-    public partial class Redeem : Form
+    public partial class Redeem : GlobalHotKeyForm
     {
         public Redeem()
         {
             InitializeComponent();
+            AddHotKeyRegisterer(Escape, HotKeyMods.None, ConsoleKey.Escape);
+        }
+
+        private void Escape(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         SQLControl SQL = new SQLControl();

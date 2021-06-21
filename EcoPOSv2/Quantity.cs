@@ -8,15 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Quantity : Form
+    public partial class Quantity : GlobalHotKeyForm
     {
         public Quantity()
         {
             InitializeComponent();
+            AddHotKeyRegisterer(Escape, HotKeyMods.None, ConsoleKey.Escape);
         }
+
+        private void Escape(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private SQLControl SQL = new SQLControl();
         public Order frmOrder;
         public string itemID;
