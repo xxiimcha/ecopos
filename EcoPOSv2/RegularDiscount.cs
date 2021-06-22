@@ -41,6 +41,12 @@ namespace EcoPOSv2
             if (dgvDiscount.SelectedRows.Count == 0)
                 return;
 
+            if(Order.Instance.dgvCart.Rows.Count == 0)
+            {
+                new Notification().PopUp("Cart is empty. Please try again", "Error", "error");
+                return;
+            }
+
             int discountID = Convert.ToInt32(dgvDiscount.CurrentRow.Cells[0].Value.ToString());
             int disc_type = Convert.ToInt32(dgvDiscount.CurrentRow.Cells[3].Value.ToString());
             decimal disc_amt = Convert.ToDecimal(dgvDiscount.CurrentRow.Cells[2].Value.ToString());

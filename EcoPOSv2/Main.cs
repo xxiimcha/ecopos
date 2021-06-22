@@ -46,7 +46,7 @@ namespace EcoPOSv2
             btnCalculator.PerformClick();
         }
 
-        private void ClickOrder(object sender, EventArgs e)
+        public void ClickOrder(object sender, EventArgs e)
         {
             btnOrder.PerformClick();
         }

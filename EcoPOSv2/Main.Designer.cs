@@ -348,7 +348,6 @@
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label label4;
         internal System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2Button btnOrder;
         private Guna.UI2.WinForms.Guna2Button btnclosetemp;
         public System.Windows.Forms.Label lblUser;
         public Guna.UI2.WinForms.Guna2Button btnXReading;
@@ -359,5 +358,6 @@
         internal System.Windows.Forms.Timer tmrCurrentDateTime;
         public System.Windows.Forms.PictureBox pbLogo;
         public System.Windows.Forms.Label lblByPassUser;
+        public Guna.UI2.WinForms.Guna2Button btnOrder;
     }
 }

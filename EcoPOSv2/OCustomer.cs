@@ -29,6 +29,8 @@ namespace EcoPOSv2
         private void Escape(object sender, EventArgs e)
         {
             this.Close();
+
+            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
         }
 
         private void LoadCustomer()

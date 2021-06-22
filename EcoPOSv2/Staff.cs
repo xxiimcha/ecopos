@@ -121,7 +121,7 @@ namespace EcoPOSv2
 
         private void btnStaffType_Click(object sender, EventArgs e)
         {
-            StaffType.Instance.Show(this);
+            StaffType.Instance.ShowDialog();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -208,24 +208,27 @@ namespace EcoPOSv2
                                     if (SQL.HasException(true))
                                         return;
                                 }
+                                else
+                                {
+                                    SQL.AddParam("@userID", userID);
+                                    SQL.AddParam("@user_name", txtUsername.Text);
+                                    SQL.AddParam("@password", encrypt_password);
+                                    SQL.AddParam("@first_name", txtFirstName.Text);
+                                    SQL.AddParam("@last_name", txtLastName.Text);
+                                    SQL.AddParam("@roleID", cmbStaffType.SelectedValue);
+                                    SQL.AddParam("@allow_keycode", cbxAllow.Checked);
+                                    SQL.AddParam("@keycode", txtKeyPass.Text);
 
-
-                                SQL.AddParam("@userID", userID);
-                                SQL.AddParam("@user_name", txtUsername.Text);
-                                SQL.AddParam("@password", encrypt_password);
-                                SQL.AddParam("@first_name", txtFirstName.Text);
-                                SQL.AddParam("@last_name", txtLastName.Text);
-                                SQL.AddParam("@roleID", cmbStaffType.SelectedValue);
-                                SQL.AddParam("@allow_keycode", cbxAllow.Checked);
-                                SQL.AddParam("@keycode", txtKeyPass.Text);
-
-                                SQL.Query(@"UPDATE users SET user_name = @user_name, password = @password, 
+                                    SQL.Query(@"UPDATE users SET user_name = @user_name, password = @password, 
                                       first_name = @first_name, last_name = @last_name, roleID = @roleID, allow_keycode = @allow_keycode, keycode = @keycode 
                                       WHERE userID = @userID");
 
-                                if (SQL.HasException(true))
-                                    return;
+                                    if (SQL.HasException(true))
+                                        return;
+                                }
 
+
+                                ClearFields();
                                 new Notification().PopUp("Data saved.", "", "information");
                             }
                             else
@@ -320,6 +323,7 @@ namespace EcoPOSv2
 
             SQL.AddParam("@adminID", dgvAdministrator.CurrentRow.Cells[0].Value.ToString());
 
+
             SQL.Query("SELECT * FROM admin_accts WHERE adminID = @adminID");
             if (SQL.HasException(true))
                 return;
@@ -328,7 +332,7 @@ namespace EcoPOSv2
 
             foreach (DataRow r in SQL.DBDT.Rows)
             {
-                r["keycode"].ToString();
+                //r["keycode"].ToString();
                 userID = r["adminID"].ToString();
                 txtUsername.Text = r["user_name"].ToString();
                 txtPassword.Text = HP.Decrypt(r["password"].ToString());
