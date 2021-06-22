@@ -185,7 +185,7 @@
             // btnAdjCost
             // 
             this.btnAdjCost.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdjCost.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAdjCost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAdjCost.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
             this.btnAdjCost.FlatAppearance.BorderSize = 0;
             this.btnAdjCost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -208,7 +208,7 @@
             // btnEditInfo
             // 
             this.btnEditInfo.BackColor = System.Drawing.Color.Transparent;
-            this.btnEditInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnEditInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEditInfo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
             this.btnEditInfo.FlatAppearance.BorderSize = 0;
             this.btnEditInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -231,7 +231,7 @@
             // btnAdjInventory
             // 
             this.btnAdjInventory.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdjInventory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAdjInventory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAdjInventory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
             this.btnAdjInventory.FlatAppearance.BorderSize = 0;
             this.btnAdjInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -277,7 +277,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -290,7 +290,7 @@
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(22, 100);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 44);
+            this.btnSave.Size = new System.Drawing.Size(108, 44);
             this.btnSave.TabIndex = 109;
             this.btnSave.Text = "Save";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

@@ -39,7 +39,7 @@ namespace EcoPOSv2
 
             //new Notification().PopUp("Database setup applied.", "Application will be restart.");
             MessageBox.Show("Database setup applied.","Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Application.Exit();
+            Application.Restart();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
