@@ -371,7 +371,7 @@ namespace EcoPOSv2
         }
         private void btnCalculator_Click(object sender, EventArgs e)
         {
-            Process.Start("calc.exe");
+            Calculator.Instance.ShowDialog();
         }
     }
 }

@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 220);
+            this.ClientSize = new System.Drawing.Size(290, 209);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.cmbSheet);
             this.Controls.Add(this.btnImport);
@@ -124,6 +124,7 @@
             this.Controls.Add(this.DataGridView1);
             this.Name = "TableImport";
             this.Text = "TableImport";
+            this.Load += new System.EventHandler(this.TableImport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -24,9 +24,17 @@ namespace EcoPOSv2
         //METHODS
         private void btnExportProducts_Click(object sender, EventArgs e)
         {
-            SQL.Query("SELECT * FROM products");
+            SQL.Query("SELECT name,description,categoryID,rp_inclusive,wp_inclusive,barcode1,barcode2,warehouseID,s_discR,s_discPWD_SC,s_PWD_SC_perc,s_discAth,s_ask_qty FROM products");
 
             if (SQL.HasException(true)) return;
+
+            dgv.DataSource = SQL.DBDT;
+
+            if(dgv.Rows.Count == 0)
+            {
+                new Notification().PopUp("There are no products in our database.", "", "error");
+                return;
+            }
 
             EI.ExportDgvToExcel(dgv);
         }

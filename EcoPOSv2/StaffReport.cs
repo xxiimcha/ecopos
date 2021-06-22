@@ -31,11 +31,15 @@ namespace EcoPOSv2
         {
             OL.ComboValues(cmbStaff, "userID", "user_name", "users");
 
-            cmbStaff.SelectedIndex = 0;
+            if (cmbStaff.Items.Count > 0)
+            {
+                cmbStaff.SelectedIndex = 0;
 
-            //PWEDE RIN MAY GANTO.
+                //PWEDE RIN MAY GANTO.
 
-            btnSearch.PerformClick();
+                btnSearch.PerformClick();
+            }
+            else return;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

@@ -87,8 +87,8 @@ namespace EcoPOSv2
                 }
             }
 
-            frmOrder.LoadOrder();
-            frmOrder.GetTotal();
+            Order.Instance.LoadOrder();
+            Order.Instance.GetTotal();
             new Notification().PopUp("Discount applied.", "", "success");
             frmDiscountOption.Close();
             Close();
@@ -97,6 +97,11 @@ namespace EcoPOSv2
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void RegularDiscount_Load(object sender, EventArgs e)
+        {
+            LoadDiscount();
         }
     }
 }

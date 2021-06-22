@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Database));
             this.btnImportGC = new FontAwesome.Sharp.IconButton();
             this.Label1 = new System.Windows.Forms.Label();
-            this.dgv = new System.Windows.Forms.DataGridView();
             this.btnImportMembership = new FontAwesome.Sharp.IconButton();
             this.btnExportGC = new FontAwesome.Sharp.IconButton();
             this.btnExportProducts = new FontAwesome.Sharp.IconButton();
@@ -44,8 +43,9 @@
             this.btnImportMC = new FontAwesome.Sharp.IconButton();
             this.btnExportMembership = new FontAwesome.Sharp.IconButton();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.TableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImportGC
@@ -82,16 +82,6 @@
             this.Label1.TabIndex = 11;
             this.Label1.Text = resources.GetString("Label1.Text");
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dgv
-            // 
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.Location = new System.Drawing.Point(3, 759);
-            this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(1158, 104);
-            this.dgv.TabIndex = 18;
-            this.dgv.Visible = false;
             // 
             // btnImportMembership
             // 
@@ -342,7 +332,6 @@
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanel1.Controls.Add(this.btnImportGC, 0, 11);
             this.TableLayoutPanel1.Controls.Add(this.Label1, 0, 12);
-            this.TableLayoutPanel1.Controls.Add(this.dgv, 0, 13);
             this.TableLayoutPanel1.Controls.Add(this.btnImportMembership, 0, 9);
             this.TableLayoutPanel1.Controls.Add(this.btnExportGC, 0, 10);
             this.TableLayoutPanel1.Controls.Add(this.btnExportProducts, 0, 0);
@@ -354,6 +343,7 @@
             this.TableLayoutPanel1.Controls.Add(this.btnExportMC, 0, 6);
             this.TableLayoutPanel1.Controls.Add(this.btnImportMC, 0, 7);
             this.TableLayoutPanel1.Controls.Add(this.btnExportMembership, 0, 8);
+            this.TableLayoutPanel1.Controls.Add(this.dgv, 0, 13);
             this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
@@ -375,6 +365,18 @@
             this.TableLayoutPanel1.Size = new System.Drawing.Size(1164, 866);
             this.TableLayoutPanel1.TabIndex = 20;
             // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Location = new System.Drawing.Point(3, 759);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersVisible = false;
+            this.dgv.Size = new System.Drawing.Size(1158, 104);
+            this.dgv.TabIndex = 18;
+            // 
             // Database
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,8 +388,8 @@
             this.Name = "Database";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Database";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.TableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,7 +398,6 @@
 
         internal FontAwesome.Sharp.IconButton btnImportGC;
         internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.DataGridView dgv;
         internal FontAwesome.Sharp.IconButton btnImportMembership;
         internal FontAwesome.Sharp.IconButton btnExportGC;
         internal FontAwesome.Sharp.IconButton btnExportProducts;
@@ -409,5 +410,6 @@
         internal FontAwesome.Sharp.IconButton btnImportMC;
         internal FontAwesome.Sharp.IconButton btnExportMembership;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
+        private System.Windows.Forms.DataGridView dgv;
     }
 }

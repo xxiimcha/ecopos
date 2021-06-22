@@ -133,7 +133,7 @@ namespace EcoPOSv2
                     Main.Instance.lblUser.Text = r["first_name"].ToString() + " " + r["last_name"].ToString();
                 }
 
-                new Notification().PopUp("Login Success!", "Success", "success");
+                //new Notification().PopUp("Login Success!", "Success", "success");
 
                 Main.Instance.Show();
                 Close();

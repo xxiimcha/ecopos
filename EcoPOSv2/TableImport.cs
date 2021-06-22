@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,22 +27,31 @@ namespace EcoPOSv2
 
         private DataTableCollection tables;
 
+        string file = ""; //variable for the Excel File Location
+
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                txtFile.Text = OpenFileDialog1.FileName;
-                using (var stream = File.Open(txtFile.Text, FileMode.Open, FileAccess.Read))
+                if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                    txtFile.Text = OpenFileDialog1.FileName;
+                    using (var stream = File.Open(txtFile.Text, FileMode.Open, FileAccess.Read))
                     {
-                        DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration { ConfigureDataTable = _ => new ExcelDataTableConfiguration { UseHeaderRow = true } });
-                        tables = result.Tables;
-                        cmbSheet.Items.Clear();
-                        foreach (DataTable table in tables)
-                            cmbSheet.Items.Add(table.TableName);
+                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                        {
+                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration { ConfigureDataTable = _ => new ExcelDataTableConfiguration { UseHeaderRow = true } });
+                            tables = result.Tables;
+                            cmbSheet.Items.Clear();
+                            foreach (DataTable table in tables)
+                                cmbSheet.Items.Add(table.TableName);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -62,19 +72,19 @@ namespace EcoPOSv2
 
                         for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
                         {
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@description", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@categoryID", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@rp_inclusive", DataGridView1.Rows[i].Cells[4].Value.ToString());
-                            SQL.AddParam("@wp_inclusive", DataGridView1.Rows[i].Cells[5].Value.ToString());
-                            SQL.AddParam("@barcode1", DataGridView1.Rows[i].Cells[6].Value.ToString());
-                            SQL.AddParam("@barcode2", DataGridView1.Rows[i].Cells[7].Value.ToString());
-                            SQL.AddParam("@warehouseID", DataGridView1.Rows[i].Cells[8].Value.ToString());
-                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[9].Value.ToString());
-                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[10].Value.ToString());
-                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[11].Value.ToString());
-                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[12].Value.ToString());
-                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[13].Value.ToString());
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@description", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@categoryID", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@rp_inclusive", DataGridView1.Rows[i].Cells[3].Value.ToString());
+                            SQL.AddParam("@wp_inclusive", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@barcode1", DataGridView1.Rows[i].Cells[5].Value.ToString());
+                            SQL.AddParam("@barcode2", DataGridView1.Rows[i].Cells[6].Value.ToString());
+                            SQL.AddParam("@warehouseID", DataGridView1.Rows[i].Cells[7].Value.ToString());
+                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[8].Value.ToString());
+                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[9].Value.ToString());
+                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[10].Value.ToString());
+                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[11].Value.ToString());
+                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[12].Value.ToString());
 
                             SQL.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
@@ -91,10 +101,15 @@ namespace EcoPOSv2
                             SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), 0)");
 
                             if (SQL.HasException(true))
+                            {
+                                MessageBox.Show("Error sa inventory");
                                 return;
+                            }
+                                
                         }
 
                         new Notification().PopUp("Import success.", "", "information");
+                        this.Close();
                         break;
                     }
 
@@ -107,12 +122,12 @@ namespace EcoPOSv2
 
                         for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
                         {
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[4].Value.ToString());
-                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[5].Value.ToString());
-                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[6].Value.ToString());
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[3].Value.ToString());
+                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[5].Value.ToString());
 
                             SQL.Query(@"INSERT INTO product_category
                                    (name, s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
@@ -138,14 +153,14 @@ namespace EcoPOSv2
 
                         for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
                         {
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@contact", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@birthday", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@add1", DataGridView1.Rows[i].Cells[4].Value.ToString());
-                            SQL.AddParam("@add2", DataGridView1.Rows[i].Cells[5].Value.ToString());
-                            SQL.AddParam("@email", DataGridView1.Rows[i].Cells[6].Value.ToString());
-                            SQL.AddParam("@member_type_ID", DataGridView1.Rows[i].Cells[7].Value.ToString());
-                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[8].Value.ToString());
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@contact", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@birthday", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@add1", DataGridView1.Rows[i].Cells[3].Value.ToString());
+                            SQL.AddParam("@add2", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@email", DataGridView1.Rows[i].Cells[5].Value.ToString());
+                            SQL.AddParam("@member_type_ID", DataGridView1.Rows[i].Cells[6].Value.ToString());
+                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[7].Value.ToString());
 
                             SQL.Query(@"INSERT INTO customer (name, contact, birthday, add1, add2, email, member_type_ID, card_no)
                                       VALUES (@name, @contact, @birthday, @add1, @add2, @email, @member_type_ID, @card_no)");
@@ -168,7 +183,7 @@ namespace EcoPOSv2
 
                         for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
                         {
-                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[0].Value.ToString());
 
                             SQL.Query(@"INSERT INTO member_card (card_no, member_type_ID, customerID, customer_name, card_balance, status)
                                       VALUES (@card_no, 0, 0, '', 0, 'Available')");
@@ -221,10 +236,10 @@ namespace EcoPOSv2
 
                         for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
                         {
-                            SQL.AddParam("@giftcard_no", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@amount", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@status", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@expiration", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@giftcard_no", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@amount", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@status", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@expiration", DataGridView1.Rows[i].Cells[3].Value.ToString());
 
                             SQL.Query(@"INSERT INTO giftcard (giftcard_no, amount, status, expiration)
                                        VALUES (@giftcard_no, @amount, @status, @expiration)");
@@ -243,6 +258,89 @@ namespace EcoPOSv2
         {
             DataTable dt = tables[cmbSheet.SelectedItem.ToString()];
             DataGridView1.DataSource = dt;
+            //DataTable dt = new DataTable(); //container for our excel data
+            //DataRow row;
+
+            //string sheetname = tables[cmbSheet.SelectedItem.ToString()].ToString();
+            //sheetname = sheetname.Replace("Sheet", "");
+
+
+            ////file = txtFile.Text; //get the filename with the location of the file
+            //try
+            //{
+            //    //Create Object for Microsoft.Office.Interop.Excel that will be use to read excel file
+
+            //    Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+
+            //    Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(file);
+
+            //    Microsoft.Office.Interop.Excel._Worksheet excelWorksheet = excelWorkbook.Sheets[Convert.ToInt32(sheetname)];
+
+            //    Microsoft.Office.Interop.Excel.Range excelRange = excelWorksheet.UsedRange;
+
+            //    int rowCount = excelRange.Rows.Count; //get row count of excel data
+
+            //    int colCount = excelRange.Columns.Count; // get column count of excel data
+
+            //    //Get the first Column of excel file which is the Column Name
+
+            //    for (int i = 1; i <= rowCount; i++)
+            //    {
+            //        for (int j = 1; j <= colCount; j++)
+            //        {
+            //            dt.Columns.Add(excelRange.Cells[i, j].Value2.ToString());
+            //        }
+            //        break;
+            //    }
+
+            //    //Get Row Data of Excel
+
+            //    int rowCounter; //This variable is used for row index number
+            //    for (int i = 2; i <= rowCount; i++) //Loop for available row of excel data
+            //    {
+            //        row = dt.NewRow(); //assign new row to DataTable
+            //        rowCounter = 0;
+            //        for (int j = 1; j <= colCount; j++) //Loop for available column of excel data
+            //        {
+            //            //check if cell is empty
+            //            if (excelRange.Cells[i, j] != null && excelRange.Cells[i, j].Value2 != null)
+            //            {
+            //                row[rowCounter] = excelRange.Cells[i, j].Value2.ToString();
+            //            }
+            //            else
+            //            {
+            //                row[i] = "";
+            //            }
+            //            rowCounter++;
+            //        }
+            //        dt.Rows.Add(row); //add row to DataTable
+            //    }
+
+            //    DataGridView1.DataSource = dt; //assign DataTable as Datasource for DataGridview
+
+            //    //close and clean excel process
+            //    GC.Collect();
+            //    GC.WaitForPendingFinalizers();
+            //    Marshal.ReleaseComObject(excelRange);
+            //    Marshal.ReleaseComObject(excelWorksheet);
+            //    //quit apps
+            //    excelWorkbook.Close();
+            //    Marshal.ReleaseComObject(excelWorkbook);
+            //    excelApp.Quit();
+            //    Marshal.ReleaseComObject(excelApp);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+
+            ////DataTable dt = tables[cmbSheet.SelectedItem.ToString()];
+            ////DataGridView1.DataSource = dt;
+        }
+
+        private void TableImport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

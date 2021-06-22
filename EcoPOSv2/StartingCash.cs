@@ -1,6 +1,7 @@
 ﻿using EcoPOSControl;
 using System;
 using System.Windows.Forms;
+using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
@@ -25,6 +26,13 @@ namespace EcoPOSv2
                 btnConfirm.PerformClick();
             }
         }
+
+        private void StartingCash_Load(object sender, EventArgs e)
+        {
+            AssignValidation(ref tbCash, ValidationType.Price);
+            AssignValidation(ref tbCash, ValidationType.Int_Only);
+        }
+
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             // generate zreading

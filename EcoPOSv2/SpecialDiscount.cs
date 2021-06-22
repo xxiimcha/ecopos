@@ -30,6 +30,12 @@ namespace EcoPOSv2
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            if (cmbDesc.SelectedIndex == -1 || txtName.Text == "" || txtIDNo.Text == "")
+            {
+                new Notification().PopUp("Please complete all the field(s) to proceed", "Error", "error");
+                return;
+            }
+
             frmOrder.apply_special_discount = true;
 
             int cus_type;
