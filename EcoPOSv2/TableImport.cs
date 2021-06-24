@@ -96,7 +96,6 @@ namespace EcoPOSv2
                                 warehouseID = Convert.ToInt32(dr["warehouseID"].ToString());
                             }
 
-
                             SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
                             SQL.AddParam("@description", DataGridView1.Rows[i].Cells[1].Value.ToString());
                             SQL.AddParam("@categoryID", categoryid);
