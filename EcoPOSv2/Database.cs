@@ -49,7 +49,7 @@ namespace EcoPOSv2
 
         private void btnExportCategory_Click(object sender, EventArgs e)
         {
-            SQL.Query("SELECT * FROM product_category");
+            SQL.Query("SELECT name,s_discR,s_discPWD_SC,s_PWD_SC_perc,s_discAth,s_ask_qty FROM product_category");
             if (SQL.HasException(true))
                 return;
 

@@ -70,16 +70,41 @@ namespace EcoPOSv2
                         if (SQL.HasException(true))
                             return;
 
+
+
+
                         for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
                         {
+                            int categoryid = 0;
+                            int warehouseID = 0;
+                            //QUERY
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.Query("Select categoryID from product_category where name=@name");
+                            if (SQL.HasException(true)) return;
+
+                            foreach (DataRow dr in SQL.DBDT.Rows)
+                            {
+                                categoryid = Convert.ToInt32(dr["categoryID"].ToString());
+                            }
+
+
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[7].Value.ToString());
+                            SQL.Query("Select warehouseID from warehouse where name=@name");
+                            if (SQL.HasException(true)) return;
+                            foreach (DataRow dr in SQL.DBDT.Rows)
+                            {
+                                warehouseID = Convert.ToInt32(dr["warehouseID"].ToString());
+                            }
+
+
                             SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
                             SQL.AddParam("@description", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@categoryID", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@categoryID", categoryid);
                             SQL.AddParam("@rp_inclusive", DataGridView1.Rows[i].Cells[3].Value.ToString());
                             SQL.AddParam("@wp_inclusive", DataGridView1.Rows[i].Cells[4].Value.ToString());
                             SQL.AddParam("@barcode1", DataGridView1.Rows[i].Cells[5].Value.ToString());
                             SQL.AddParam("@barcode2", DataGridView1.Rows[i].Cells[6].Value.ToString());
-                            SQL.AddParam("@warehouseID", DataGridView1.Rows[i].Cells[7].Value.ToString());
+                            SQL.AddParam("@warehouseID", warehouseID);
                             SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[8].Value.ToString());
                             SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[9].Value.ToString());
                             SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[10].Value.ToString());
