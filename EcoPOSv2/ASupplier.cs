@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EcoPOSv2.ControlBehavior;
+using static EcoPOSv2.GroupAction;
+using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
@@ -20,11 +23,11 @@ namespace EcoPOSv2
         }
 
         private SQLControl SQL = new SQLControl();
+        private GroupAction GA = new GroupAction();
 
         private string supplierID = "";
         private List<Control> allTxt = new List<Control>();
         private List<TextBox> requiredFields = new List<TextBox>();
-
 
         //METHODS
         private void LoadSupplier()
@@ -39,23 +42,35 @@ namespace EcoPOSv2
         }
         private void ClearFields()
         {
-            TableLayoutPanel1.Controls.Clear();
-
+            GA.DoThis(ref allTxt, TableLayoutPanel1, ControlType.TextBox, GroupAction.Action.Clear);
             supplierID = "";
+        }
+        private void TextValidation()
+        {
+            AssignValidation(ref txtContactNo, ValidationType.Only_Numbers);
+        }
+        private void ControlBehavior()
+        {
+            Control c = (Control)txtSearch;
+            SetBehavior(ref c, Behavior.ClearSearch);
+        }
+        private void SupplierRF()
+        {
+            requiredFields = new List<TextBox>();
+
+            requiredFields.Add(txtSupplierName);
+            requiredFields.Add(txtAddress);
+            requiredFields.Add(txtContactNo);
+            requiredFields.Add(txtContactPerson);
+            requiredFields.Add(txtContactPersonNo);
         }
 
         //METHODS
         private void ASupplier_Load(object sender, EventArgs e)
         {
-            txtSupplierName.Clear();
-            txtAddress.Clear();
-            txtContactNo.Clear();
-            txtContactPerson.Clear();
-            txtContactPersonNo.Clear();
-
-            TableLayoutPanel1.Controls.Clear();
-
             LoadSupplier();
+            TextValidation();
+            ControlBehavior();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -65,11 +80,11 @@ namespace EcoPOSv2
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(txtSupplierName.Text == "" || txtAddress.Text == "" || txtContactNo.Text == "" ||txtContactPerson.Text == "" ||txtContactPersonNo.Text == "")
-            {
-                new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
-            }
-            else
+            SupplierRF();
+            int requiredFieldsMet = RequireField(ref requiredFields);
+
+
+            if (requiredFieldsMet == 1)
             {
                 string action = "Update";
                 if (supplierID == "")
@@ -102,7 +117,7 @@ namespace EcoPOSv2
                                 if (SQL.HasException(true))
                                     return;
                                 ClearFields();
-                                new Notification().PopUp("Data saved.","","success");
+                                new Notification().PopUp("Data saved.", "", "information");
                             }
                             else
                                 new Notification().PopUp("Duplicate name found.", "Save failed", "error");
@@ -137,7 +152,7 @@ namespace EcoPOSv2
                                 if (SQL.HasException(true))
                                     return;
 
-                                new Notification().PopUp("Data saved.","","success");
+                                new Notification().PopUp("Data saved.", "", "information");
                             }
                             else
                                 new Notification().PopUp("Duplicate name found.", "Save failed", "error");
@@ -146,11 +161,13 @@ namespace EcoPOSv2
                 }
                 LoadSupplier();
             }
+            else
+                new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo);
+            DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
             if (approval == DialogResult.Yes)
             {
