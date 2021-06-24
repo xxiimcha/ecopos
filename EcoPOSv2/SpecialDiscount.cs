@@ -66,7 +66,8 @@ namespace EcoPOSv2
                     case 1:
                     case 2:
                         {
-                            SQL.Query("SELECT * FROM order_cart ORDER BY itemID ASC");
+                            SQL.AddParam("@productID", Order.Instance.cartid);
+                            SQL.Query("SELECT * FROM order_cart where productID=@productID ORDER BY itemID ASC");
 
                             if (SQL.HasException(true))
                                 return;
@@ -92,7 +93,8 @@ namespace EcoPOSv2
 
                     default:
                         {
-                            SQL.Query("SELECT * FROM order_cart");
+                            SQL.AddParam("@productID", Order.Instance.cartid);
+                            SQL.Query("SELECT * FROM order_cart where productID=@productID");
 
                             if (SQL.HasException(true))
                                 return;

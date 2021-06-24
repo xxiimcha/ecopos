@@ -71,7 +71,8 @@ namespace EcoPOSv2
             }
             else if (disc_type == 2)
             {
-                SQL.Query("SELECT * FROM order_cart ORDER BY itemID ASC");
+                SQL.AddParam("@productid", Order.Instance.cartid);
+                SQL.Query("SELECT * FROM order_cart where productID=@productid ORDER BY itemID ASC");
 
                 if (SQL.HasException(true))
                     return;

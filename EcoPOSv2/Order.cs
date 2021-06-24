@@ -127,7 +127,8 @@ namespace EcoPOSv2
 
 
                 lblItems.Text = r["Qty"].ToString();
-                lblSubtotal.Text = String.Format(r["Subtotal"].ToString(), "#,##0.00");
+                decimal subtotal = decimal.Parse(r["Subtotal"].ToString());
+                lblSubtotal.Text = subtotal.ToString("N2");
                 lblDiscount.Text = discount.ToString();
                 lblTotal.Text = Math.Round(decimal.Parse(r["Total"].ToString()),2).ToString();
                 //lblTotal.Text = r["Total"].ToString();
@@ -375,19 +376,22 @@ namespace EcoPOSv2
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
-            if(lblDiscount.Text == "0.00")
+            if(discount != "0.00")
             {
-                btnQuantity.Enabled = true;
-                btnCustomer.Enabled = true;
-                btnDiscount.Enabled = true;
-                tbBarcode.Enabled = true;
-            }
-            else
-            {
-                btnQuantity.Enabled = false;
-                btnCustomer.Enabled = false;
-                btnDiscount.Enabled = false;
-                tbBarcode.Enabled = false;
+                if(MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?","Error",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    SQL.AddParam("@productID", cartid);
+                    SQL.Query("UPDATE order_cart SET discount=0.00,is_less_vat='False',less_vat=0.00,is_vat_exempt='False',is_disc_percent='False',disc_percent=0.00,zero_vat=1 where productID=@productID");
+
+                    if (SQL.HasException(true)) return;
+
+                    LoadOrder();
+                    GetTotal();
+                }
+                else 
+                {
+                    return;
+                }
             }
 
             DiscountOption frmDiscountOption = new DiscountOption();
@@ -440,6 +444,10 @@ namespace EcoPOSv2
 
             LoadOrder();
             GetTotal();
+
+            btnDiscount.Enabled = true;
+            btnCustomer.Enabled = true;
+            btnQuantity.Enabled = true;
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
@@ -552,6 +560,13 @@ namespace EcoPOSv2
             Redeem frmRedeem = new Redeem();
             frmRedeem.frmOrder = this;
             frmRedeem.ShowDialog();
+        }
+        public string cartid,discount;
+
+        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cartid = dgvCart.CurrentRow.Cells[1].Value.ToString();
+            discount = dgvCart.CurrentRow.Cells[12].Value.ToString();
         }
 
         private void OpenPayment(object sender, EventArgs e)
