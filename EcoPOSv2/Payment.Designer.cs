@@ -121,8 +121,8 @@
             // TableLayoutPanel2
             // 
             this.TableLayoutPanel2.ColumnCount = 4;
-            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.35616F));
+            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.369863F));
             this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.TableLayoutPanel2.Controls.Add(this.btnExact, 3, 0);
@@ -147,11 +147,11 @@
             this.btnExact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExact.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExact.ForeColor = System.Drawing.Color.Black;
-            this.btnExact.Location = new System.Drawing.Point(351, 3);
+            this.btnExact.Location = new System.Drawing.Point(352, 3);
             this.btnExact.Name = "btnExact";
-            this.btnExact.Size = new System.Drawing.Size(230, 63);
+            this.btnExact.Size = new System.Drawing.Size(229, 63);
             this.btnExact.TabIndex = 15;
-            this.btnExact.Text = "Exact (F1)";
+            this.btnExact.Text = "Exact (Space)";
             this.btnExact.UseVisualStyleBackColor = false;
             this.btnExact.Click += new System.EventHandler(this.btnExact_Click);
             // 
@@ -163,9 +163,9 @@
             this.btnGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGC.ForeColor = System.Drawing.Color.Black;
-            this.btnGC.Location = new System.Drawing.Point(351, 72);
+            this.btnGC.Location = new System.Drawing.Point(352, 72);
             this.btnGC.Name = "btnGC";
-            this.btnGC.Size = new System.Drawing.Size(230, 63);
+            this.btnGC.Size = new System.Drawing.Size(229, 63);
             this.btnGC.TabIndex = 17;
             this.btnGC.Text = "Gift Card (F2)";
             this.btnGC.UseVisualStyleBackColor = false;
@@ -179,9 +179,9 @@
             this.btnRemoveGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveGC.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoveGC.Location = new System.Drawing.Point(351, 141);
+            this.btnRemoveGC.Location = new System.Drawing.Point(352, 141);
             this.btnRemoveGC.Name = "btnRemoveGC";
-            this.btnRemoveGC.Size = new System.Drawing.Size(230, 63);
+            this.btnRemoveGC.Size = new System.Drawing.Size(229, 63);
             this.btnRemoveGC.TabIndex = 18;
             this.btnRemoveGC.Text = "Remove GC (F3)";
             this.btnRemoveGC.UseVisualStyleBackColor = false;
@@ -195,9 +195,9 @@
             this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPay.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(351, 210);
+            this.btnPay.Location = new System.Drawing.Point(352, 210);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(230, 64);
+            this.btnPay.Size = new System.Drawing.Size(229, 64);
             this.btnPay.TabIndex = 19;
             this.btnPay.Text = "Pay (Enter)";
             this.btnPay.UseVisualStyleBackColor = false;
@@ -252,7 +252,7 @@
             this.cmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbMethod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbMethod.ForeColor = System.Drawing.Color.White;
+            this.cmbMethod.ForeColor = System.Drawing.Color.Black;
             this.cmbMethod.FormattingEnabled = true;
             this.cmbMethod.Items.AddRange(new object[] {
             "Cash",
