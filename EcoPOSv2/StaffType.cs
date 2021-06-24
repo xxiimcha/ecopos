@@ -164,7 +164,7 @@ namespace EcoPOSv2
                                 if (SQL.HasException(true))
                                     return;
 
-                                new Notification().PopUp("Data saved.", "", "error");
+                                new Notification().PopUp("Data saved.", "", "information");
                                 ClearFields();
                             }
                             else

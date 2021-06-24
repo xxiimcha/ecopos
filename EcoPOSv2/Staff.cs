@@ -108,7 +108,7 @@ namespace EcoPOSv2
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            ClearFields();
+            //ClearFields();
 
             ClearFields();
             cmbStaffType.Enabled = true;
@@ -130,7 +130,7 @@ namespace EcoPOSv2
 
             int requiredFieldsMet = RequireField(ref requiredFields);
 
-            if (requiredFieldsMet == 1)
+            if (requiredFieldsMet == 1 && cmbStaffType.Text != "")
             {
                 string action = "Update";
                 if (userID == "")
