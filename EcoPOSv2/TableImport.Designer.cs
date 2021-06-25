@@ -36,6 +36,8 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.OpenFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(100, 173);
+            this.btnImport.Location = new System.Drawing.Point(104, 156);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 23);
             this.btnImport.TabIndex = 10;
@@ -110,11 +112,27 @@
             this.DataGridView1.TabIndex = 13;
             this.DataGridView1.Visible = false;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(12, 197);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(266, 23);
+            this.progressBar1.TabIndex = 14;
+            // 
             // TableImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 209);
+            this.ClientSize = new System.Drawing.Size(290, 227);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.cmbSheet);
             this.Controls.Add(this.btnImport);
@@ -123,7 +141,9 @@
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.DataGridView1);
             this.Name = "TableImport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableImport";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TableImport_FormClosing);
             this.Load += new System.EventHandler(this.TableImport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -141,5 +161,7 @@
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.OpenFileDialog OpenFileDialog1;
         internal System.Windows.Forms.DataGridView DataGridView1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

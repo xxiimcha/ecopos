@@ -57,225 +57,9 @@ namespace EcoPOSv2
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            switch (table_import_type)
-            {
-                case 1 // products
-               :
-                    {
-                        SQL.Query("DELETE FROM products");
-                        if (SQL.HasException(true))
-                            return;
+            backgroundWorker1.RunWorkerAsync();
 
-                        SQL.Query("DELETE FROM inventory");
-                        if (SQL.HasException(true))
-                            return;
-
-
-
-
-                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
-                        {
-                            int categoryid = 0;
-                            int warehouseID = 0;
-                            //QUERY
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.Query("Select categoryID from product_category where name=@name");
-                            if (SQL.HasException(true)) return;
-
-                            foreach (DataRow dr in SQL.DBDT.Rows)
-                            {
-                                categoryid = Convert.ToInt32(dr["categoryID"].ToString());
-                            }
-
-
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[7].Value.ToString());
-                            SQL.Query("Select warehouseID from warehouse where name=@name");
-                            if (SQL.HasException(true)) return;
-                            foreach (DataRow dr in SQL.DBDT.Rows)
-                            {
-                                warehouseID = Convert.ToInt32(dr["warehouseID"].ToString());
-                            }
-
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
-                            SQL.AddParam("@description", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@categoryID", categoryid);
-                            SQL.AddParam("@rp_inclusive", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@wp_inclusive", DataGridView1.Rows[i].Cells[4].Value.ToString());
-                            SQL.AddParam("@barcode1", DataGridView1.Rows[i].Cells[5].Value.ToString());
-                            SQL.AddParam("@barcode2", DataGridView1.Rows[i].Cells[6].Value.ToString());
-                            SQL.AddParam("@warehouseID", warehouseID);
-                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[8].Value.ToString());
-                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[9].Value.ToString());
-                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[10].Value.ToString());
-                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[11].Value.ToString());
-                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[12].Value.ToString());
-
-                            SQL.Query(@"INSERT INTO products
-                                   (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
-                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
-                                   VALUES
-                                   (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
-                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)");
-
-                            if (SQL.HasException(true))
-                                return;
-
-                            // create inventory
-
-                            SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), 0)");
-
-                            if (SQL.HasException(true))
-                            {
-                                MessageBox.Show("Error sa inventory");
-                                return;
-                            }
-                                
-                        }
-
-                        new Notification().PopUp("Import success.", "", "information");
-                        this.Close();
-                        break;
-                    }
-
-                case 2 // category
-         :
-                    {
-                        SQL.Query("DELETE FROM product_category");
-                        if (SQL.HasException(true))
-                            return;
-
-                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
-                        {
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
-                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[4].Value.ToString());
-                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[5].Value.ToString());
-
-                            SQL.Query(@"INSERT INTO product_category
-                                   (name, s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
-                                   VALUES
-                                   (@name, @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)
-                                  ");
-
-                            if (SQL.HasException(true))
-                                return;
-
-                            new Notification().PopUp("Import success.", "", "information");
-                        }
-
-                        break;
-                    }
-
-                case 3 // customer
-         :
-                    {
-                        SQL.Query("DELETE FROM customer");
-                        if (SQL.HasException(true))
-                            return;
-
-                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
-                        {
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
-                            SQL.AddParam("@contact", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@birthday", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@add1", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@add2", DataGridView1.Rows[i].Cells[4].Value.ToString());
-                            SQL.AddParam("@email", DataGridView1.Rows[i].Cells[5].Value.ToString());
-                            SQL.AddParam("@member_type_ID", DataGridView1.Rows[i].Cells[6].Value.ToString());
-                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[7].Value.ToString());
-
-                            SQL.Query(@"INSERT INTO customer (name, contact, birthday, add1, add2, email, member_type_ID, card_no)
-                                      VALUES (@name, @contact, @birthday, @add1, @add2, @email, @member_type_ID, @card_no)");
-
-                            if (SQL.HasException(true))
-                                return;
-
-                            new Notification().PopUp("Import success.", "", "information");
-                        }
-
-                        break;
-                    }
-
-                case 4 // member card
-         :
-                    {
-                        SQL.Query("DELETE FROM member_card");
-                        if (SQL.HasException(true))
-                            return;
-
-                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
-                        {
-                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[0].Value.ToString());
-
-                            SQL.Query(@"INSERT INTO member_card (card_no, member_type_ID, customerID, customer_name, card_balance, status)
-                                      VALUES (@card_no, 0, 0, '', 0, 'Available')");
-                            if (SQL.HasException(true))
-                                return;
-                        }
-
-                        new Notification().PopUp("Import success.", "", "information");
-                        break;
-                    }
-
-                case 5 // membership
-         :
-                    {
-                        SQL.Query("DELETE FROM membership");
-                        if (SQL.HasException(true))
-                            return;
-
-                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
-                        {
-                            SQL.AddParam("@member_type_ID", DataGridView1.Rows[i].Cells[0].Value.ToString());
-                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@discountable", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@disc_amt", DataGridView1.Rows[i].Cells[3].Value.ToString());
-                            SQL.AddParam("@disc_type", DataGridView1.Rows[i].Cells[4].Value.ToString());
-                            SQL.AddParam("@expiration", DataGridView1.Rows[i].Cells[5].Value.ToString());
-                            SQL.AddParam("@rewardable", DataGridView1.Rows[i].Cells[6].Value.ToString());
-                            SQL.AddParam("@amt_per_pt", DataGridView1.Rows[i].Cells[7].Value.ToString());
-
-                            SQL.Query(@"SET IDENTITY_INSERT membership ON;
-                                   INSERT INTO membership (member_type_ID, name, discountable, disc_amt, disc_type, 
-                                        expiration, rewardable, amt_per_pt) VALUES (@member_type_ID, @name, @discountable, 
-                                        @disc_amt, @disc_type, @expiration, @rewardable, @amt_per_pt)
-                                   SET IDENTITY_INSERT membership OFF;");
-
-                            if (SQL.HasException(true))
-                                return;
-                        }
-
-                        new Notification().PopUp("Import success.", "", "information");
-                        break;
-                    }
-
-                case 6 // gift card
-         :
-                    {
-                        SQL.Query("DELETE FROM giftcard");
-                        if (SQL.HasException(true))
-                            return;
-
-                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
-                        {
-                            SQL.AddParam("@giftcard_no", DataGridView1.Rows[i].Cells[0].Value.ToString());
-                            SQL.AddParam("@amount", DataGridView1.Rows[i].Cells[1].Value.ToString());
-                            SQL.AddParam("@status", DataGridView1.Rows[i].Cells[2].Value.ToString());
-                            SQL.AddParam("@expiration", DataGridView1.Rows[i].Cells[3].Value.ToString());
-
-                            SQL.Query(@"INSERT INTO giftcard (giftcard_no, amount, status, expiration)
-                                       VALUES (@giftcard_no, @amount, @status, @expiration)");
-
-                            if (SQL.HasException(true))
-                                return;
-                        }
-
-                        new Notification().PopUp("Import success.", "", "information");
-                        break;
-                    }
-            }
+            
         }
 
         private void cmbSheet_SelectedIndexChanged(object sender, EventArgs e)
@@ -365,6 +149,281 @@ namespace EcoPOSv2
         private void TableImport_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            switch (table_import_type)
+            {
+                case 1 // products
+               :
+                    {
+                        SQL.Query("DELETE FROM products");
+                        if (SQL.HasException(true))
+                            return;
+
+                        SQL.Query("DELETE FROM inventory");
+                        if (SQL.HasException(true))
+                            return;
+
+
+                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
+                        {
+                            var worker = sender as BackgroundWorker;
+                            int percentage = (i + 1) * 100 / DataGridView1.Rows.Count;
+                            worker.ReportProgress(percentage);
+
+                            int categoryid = 0;
+                            int warehouseID = 0;
+                            //QUERY
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.Query("Select categoryID from product_category where name=@name");
+                            if (SQL.HasException(true)) return;
+
+                            foreach (DataRow dr in SQL.DBDT.Rows)
+                            {
+                                categoryid = Convert.ToInt32(dr["categoryID"].ToString());
+                            }
+
+
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[7].Value.ToString());
+                            SQL.Query("Select warehouseID from warehouse where name=@name");
+                            if (SQL.HasException(true)) return;
+                            foreach (DataRow dr in SQL.DBDT.Rows)
+                            {
+                                warehouseID = Convert.ToInt32(dr["warehouseID"].ToString());
+                            }
+
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@description", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@categoryID", categoryid);
+                            SQL.AddParam("@rp_inclusive", DataGridView1.Rows[i].Cells[3].Value.ToString());
+                            SQL.AddParam("@wp_inclusive", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@barcode1", DataGridView1.Rows[i].Cells[5].Value.ToString());
+                            SQL.AddParam("@barcode2", DataGridView1.Rows[i].Cells[6].Value.ToString());
+                            SQL.AddParam("@warehouseID", warehouseID);
+                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[8].Value.ToString());
+                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[9].Value.ToString());
+                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[10].Value.ToString());
+                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[11].Value.ToString());
+                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[12].Value.ToString());
+
+                            SQL.Query(@"INSERT INTO products
+                                   (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
+                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
+                                   VALUES
+                                   (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
+                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)");
+
+                            if (SQL.HasException(true))
+                                return;
+
+                            // create inventory
+
+                            SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), 0)");
+
+                            if (SQL.HasException(true))
+                            {
+                                MessageBox.Show("Error sa inventory");
+                                return;
+                            }
+
+                        }
+
+                        new Notification().PopUp("Import success.", "", "information");
+                        this.Close();
+                        break;
+                    }
+
+                case 2 // category
+         :
+                    {
+                        SQL.Query("DELETE FROM product_category");
+                        if (SQL.HasException(true))
+                            return;
+
+                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
+                        {
+                            var worker = sender as BackgroundWorker;
+                            int percentage = (i + 1) * 100 / DataGridView1.Rows.Count;
+                            worker.ReportProgress(percentage);
+
+
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@s_discR", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@s_discPWD_SC", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@s_PWD_SC_perc", DataGridView1.Rows[i].Cells[3].Value.ToString());
+                            SQL.AddParam("@s_discAth", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@s_ask_qty", DataGridView1.Rows[i].Cells[5].Value.ToString());
+
+                            SQL.Query(@"INSERT INTO product_category
+                                   (name, s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
+                                   VALUES
+                                   (@name, @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)
+                                  ");
+
+                            if (SQL.HasException(true))
+                                return;
+
+                            new Notification().PopUp("Import success.", "", "information");
+                        }
+
+                        break;
+                    }
+
+                case 3 // customer
+         :
+                    {
+                        SQL.Query("DELETE FROM customer");
+                        if (SQL.HasException(true))
+                            return;
+
+                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
+                        {
+                            int percentage = (i + 1) * 100 / DataGridView1.Rows.Count;
+                            backgroundWorker1.ReportProgress(percentage);
+
+
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@contact", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@birthday", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@add1", DataGridView1.Rows[i].Cells[3].Value.ToString());
+                            SQL.AddParam("@add2", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@email", DataGridView1.Rows[i].Cells[5].Value.ToString());
+                            SQL.AddParam("@member_type_ID", DataGridView1.Rows[i].Cells[6].Value.ToString());
+                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[7].Value.ToString());
+
+                            SQL.Query(@"INSERT INTO customer (name, contact, birthday, add1, add2, email, member_type_ID, card_no)
+                                      VALUES (@name, @contact, @birthday, @add1, @add2, @email, @member_type_ID, @card_no)");
+
+                            if (SQL.HasException(true))
+                                return;
+
+                            new Notification().PopUp("Import success.", "", "information");
+                        }
+
+                        break;
+                    }
+
+                case 4 // member card
+         :
+                    {
+                        SQL.Query("DELETE FROM member_card");
+                        if (SQL.HasException(true))
+                            return;
+
+                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
+                        {
+                            int percentage = (i + 1) * 100 / DataGridView1.Rows.Count;
+                            backgroundWorker1.ReportProgress(percentage);
+
+
+                            SQL.AddParam("@card_no", DataGridView1.Rows[i].Cells[0].Value.ToString());
+
+                            SQL.Query(@"INSERT INTO member_card (card_no, member_type_ID, customerID, customer_name, card_balance, status)
+                                      VALUES (@card_no, 0, 0, '', 0, 'Available')");
+                            if (SQL.HasException(true))
+                                return;
+                        }
+
+                        new Notification().PopUp("Import success.", "", "information");
+                        break;
+                    }
+
+                case 5 // membership
+         :
+                    {
+                        SQL.Query("DELETE FROM membership");
+                        if (SQL.HasException(true))
+                            return;
+
+                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
+                        {
+                            int percentage = (i + 1) * 100 / DataGridView1.Rows.Count;
+                            backgroundWorker1.ReportProgress(percentage);
+
+                            SQL.AddParam("@member_type_ID", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@name", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@discountable", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@disc_amt", DataGridView1.Rows[i].Cells[3].Value.ToString());
+                            SQL.AddParam("@disc_type", DataGridView1.Rows[i].Cells[4].Value.ToString());
+                            SQL.AddParam("@expiration", DataGridView1.Rows[i].Cells[5].Value.ToString());
+                            SQL.AddParam("@rewardable", DataGridView1.Rows[i].Cells[6].Value.ToString());
+                            SQL.AddParam("@amt_per_pt", DataGridView1.Rows[i].Cells[7].Value.ToString());
+
+                            SQL.Query(@"SET IDENTITY_INSERT membership ON;
+                                   INSERT INTO membership (member_type_ID, name, discountable, disc_amt, disc_type, 
+                                        expiration, rewardable, amt_per_pt) VALUES (@member_type_ID, @name, @discountable, 
+                                        @disc_amt, @disc_type, @expiration, @rewardable, @amt_per_pt)
+                                   SET IDENTITY_INSERT membership OFF;");
+
+                            if (SQL.HasException(true))
+                                return;
+                        }
+
+                        new Notification().PopUp("Import success.", "", "information");
+                        break;
+                    }
+
+                case 6 // gift card
+         :
+                    {
+                        SQL.Query("DELETE FROM giftcard");
+                        if (SQL.HasException(true))
+                            return;
+
+                        for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
+                        {
+                            int percentage = (i + 1) * 100 / DataGridView1.Rows.Count;
+                            backgroundWorker1.ReportProgress(percentage);
+
+
+                            SQL.AddParam("@giftcard_no", DataGridView1.Rows[i].Cells[0].Value.ToString());
+                            SQL.AddParam("@amount", DataGridView1.Rows[i].Cells[1].Value.ToString());
+                            SQL.AddParam("@status", DataGridView1.Rows[i].Cells[2].Value.ToString());
+                            SQL.AddParam("@expiration", DataGridView1.Rows[i].Cells[3].Value.ToString());
+
+                            SQL.Query(@"INSERT INTO giftcard (giftcard_no, amount, status, expiration)
+                                       VALUES (@giftcard_no, @amount, @status, @expiration)");
+
+                            if (SQL.HasException(true))
+                                return;
+                        }
+
+                        new Notification().PopUp("Import success.", "", "information");
+                        break;
+                    }
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Import Success!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void TableImport_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(progressBar1.Value != 0)
+            {
+                if(MessageBox.Show("If you close this form. Importing will be cancel. /n /n Are you sure do you want to close it ?", "FormClosing",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    backgroundWorker1.CancelAsync();
+                    Close();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }
