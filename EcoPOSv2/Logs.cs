@@ -65,6 +65,29 @@ namespace EcoPOSv2
 
             dtpLH_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
             dtpLH_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+
+
+
+
+            //BASTA
+
+            SQL.AddParam("@from", dtpAT_From.Value);
+            SQL.AddParam("@to", dtpAT_To.Value);
+            SQL.Query(@"SELECT Type, TableName as 'Table', PK as 'Key', FieldName as 'Field', 
+                       OldValue as 'Old Value', NewValue as 'New Value', UpdateDate as 'Date'
+                       FROM Audit where UpdateDate between @from and @to ORDER BY UpdateDate DESC");
+            if (SQL.HasException(true))
+                return;
+
+            dsCurrent = new DataSet();
+
+            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "AuditRecords");
+
+            dgvAT.DataSource = dsCurrent;
+            dgvAT.DataMember = "AuditRecords";
+
+            pagenumber = SQL.DBDT.Rows.Count / 50;
+            totalrows = SQL.DBDT.Rows.Count;
         }
 
         private void BtnAT_Click(object sender, EventArgs e)
@@ -95,12 +118,9 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            dsCurrent = new DataSet();
-
+            dsCurrent.Clear();
             SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "AuditRecords");
 
-            dgvAT.DataSource = dsCurrent;
-            dgvAT.DataMember = "AuditRecords";
 
             pagenumber = SQL.DBDT.Rows.Count / 50;
             totalrows = SQL.DBDT.Rows.Count;
@@ -205,11 +225,12 @@ namespace EcoPOSv2
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(dgvCountIndex >= totalrows)
-            {
-                dgvCountIndex -= 50;
-            }
             dgvCountIndex = dgvCountIndex + 50;
+
+            //if (dgvCountIndex >= totalrows)
+            //{
+            //    dgvCountIndex -= 50;
+            //}
 
             pagecount++;
 
@@ -227,7 +248,7 @@ namespace EcoPOSv2
                 return;
             }
 
-            dgvCountIndex = dgvCountIndex + 50;
+            
             dsCurrent.Clear();
             SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "AuditRecords");
         }
