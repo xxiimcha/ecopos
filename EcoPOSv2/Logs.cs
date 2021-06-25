@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +24,9 @@ namespace EcoPOSv2
         public Logs()
         {
             InitializeComponent();
+            dgvAT.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvAT, true, null);
+
+            this.dgvAT.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
         }
         public static Logs _Logs;
         public static Logs Instance
@@ -75,12 +79,15 @@ namespace EcoPOSv2
 
         private void BtnAT_SearchDates_Click(object sender, EventArgs e)
         {
-            while (LogsBGWAudit.IsBusy)
-            {
+            SQL.AddParam("@from", dtpAT_From.Value);
+            SQL.AddParam("@to", dtpAT_To.Value);
+            SQL.Query(@"SELECT Type, TableName as 'Table', PK as 'Key', FieldName as 'Field', 
+                       OldValue as 'Old Value', NewValue as 'New Value', UpdateDate as 'Date'
+                       FROM Audit where UpdateDate between @from and @to ORDER BY UpdateDate DESC");
+            if (SQL.HasException(true))
                 return;
-            }
 
-            LogsBGWAudit.RunWorkerAsync();
+            dgvAT.DataSource = SQL.DBDT;
         }
 
         private void BtnSortAT_Click(object sender, EventArgs e)
@@ -137,37 +144,6 @@ namespace EcoPOSv2
                                           UNION ALL
                                           SELECT userID, user_name, 2 as ord FROM users
                                          ) x ORDER BY ord, user_name ASC", "userID", "user_name");
-        }
-        private void LogsBGWAudit_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SQL.AddParam("@from", dtpAT_From.Value);
-            SQL.AddParam("@to", dtpAT_To.Value);
-            SQL.Query(@"SELECT Type, TableName as 'Table', PK as 'Key', FieldName as 'Field', 
-                       OldValue as 'Old Value', NewValue as 'New Value', UpdateDate as 'Date'
-                       FROM Audit where UpdateDate between @from and @to ORDER BY UpdateDate DESC");
-            if (SQL.HasException(true))
-                return;
-
-            e.Result = SQL.DBDT;
-
-            for(int i = 0; i < SQL.DBDT.Rows.Count; i++)
-            {
-                var worker = sender as BackgroundWorker;
-                int percentage = (i + 1) * 100 / SQL.DBDT.Rows.Count;
-                worker.ReportProgress(percentage);
-            }
-        }
-
-        private void LogsBGWAudit_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            progressBar1.Value = e.ProgressPercentage;
-        }
-
-        private void LogsBGWAudit_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            dgvAT.DataSource = e.Result;
-
-            LogsBGWAudit.CancelAsync();
         }
     }
 }
