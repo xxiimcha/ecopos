@@ -29,6 +29,14 @@ namespace EcoPOSv2
             this.dgvAT.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
         }
         public static Logs _Logs;
+
+        DataSet dsCurrent;
+        int dgvCountIndex;
+        int pagenumber;
+        int pagecount = 1;
+
+        int totalrows;
+        
         public static Logs Instance
         {
             get
@@ -87,7 +95,27 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            dgvAT.DataSource = SQL.DBDT;
+            dsCurrent = new DataSet();
+
+            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "AuditRecords");
+
+            dgvAT.DataSource = dsCurrent;
+            dgvAT.DataMember = "AuditRecords";
+
+            pagenumber = SQL.DBDT.Rows.Count / 50;
+            totalrows = SQL.DBDT.Rows.Count;
+
+            
+
+            //SQL.AddParam("@from", dtpAT_From.Value);
+            //SQL.AddParam("@to", dtpAT_To.Value);
+            //SQL.Query(@"SELECT Type, TableName as 'Table', PK as 'Key', FieldName as 'Field', 
+            //           OldValue as 'Old Value', NewValue as 'New Value', UpdateDate as 'Date'
+            //           FROM Audit where UpdateDate between @from and @to ORDER BY UpdateDate DESC");
+            //if (SQL.HasException(true))
+            //    return;
+
+            //dgvAT.DataSource = SQL.DBDT;
         }
 
         private void BtnSortAT_Click(object sender, EventArgs e)
@@ -144,6 +172,64 @@ namespace EcoPOSv2
                                           UNION ALL
                                           SELECT userID, user_name, 2 as ord FROM users
                                          ) x ORDER BY ord, user_name ASC", "userID", "user_name");
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            dgvCountIndex = dgvCountIndex - 50;
+
+            if(dgvCountIndex <= 0)
+            {
+                dgvCountIndex = 0;
+            }
+
+            pagecount--;
+
+            lblPageCount.Text = "Page: " + pagecount.ToString();
+
+            if (pagecount <= 1)
+            {
+                btnPrevious.Enabled = false;
+                return;
+            }
+
+            if(pagecount < pagenumber)
+            {
+                btnNext.Enabled = false;
+                return;
+            }
+
+            dsCurrent.Clear();
+            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "AuditRecords");
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if(dgvCountIndex >= totalrows)
+            {
+                dgvCountIndex -= 50;
+            }
+            dgvCountIndex = dgvCountIndex + 50;
+
+            pagecount++;
+
+            lblPageCount.Text = "Page: " + pagecount.ToString();
+
+            if (pagecount > 1)
+            {
+                btnPrevious.Enabled = true;
+                return;
+            }
+
+            if (pagecount >= pagenumber)
+            {
+                btnNext.Enabled = false;
+                return;
+            }
+
+            dgvCountIndex = dgvCountIndex + 50;
+            dsCurrent.Clear();
+            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "AuditRecords");
         }
     }
 }
