@@ -59,7 +59,15 @@ namespace EcoPOSv2
 
         private void BtnEnd_Click(object sender, EventArgs e)
         {
-            Main.Instance.OpenChildForm(new SecureZReading());
+            if(Order.Instance.CheckOpened("SecureZReading") == true)
+            {
+                return;
+            }
+
+            SecureZReading s = new SecureZReading();
+            s.ShowDialog();
+
+            //Main.Instance.OpenChildForm(new SecureZReading());
         }
 
         private void BtnDatabase_Click(object sender, EventArgs e)

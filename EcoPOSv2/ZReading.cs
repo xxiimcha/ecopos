@@ -370,6 +370,8 @@ namespace EcoPOSv2
         //METHODS
         private void ZReading_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             LoadZReadingRecords();
         }
 

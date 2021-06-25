@@ -54,5 +54,10 @@ namespace EcoPOSv2
                 txtPassword.Clear();
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

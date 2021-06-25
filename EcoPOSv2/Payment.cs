@@ -285,7 +285,7 @@ namespace EcoPOSv2
 
         private void Payment_Load(object sender, EventArgs e)
         {
-            cmbMethod.SelectedIndex = -1;
+            cmbMethod.SelectedIndex = 0;
         }
         private void btnExact_Click(object sender, EventArgs e)
         {
@@ -504,6 +504,39 @@ namespace EcoPOSv2
         private void Payment_FormClosing(object sender, FormClosingEventArgs e)
         {
             Order.Instance.ActiveControl = Order.Instance.tbBarcode;
+        }
+
+        private void cbxUsePoints_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxUsePoints.Checked)
+            {
+                lblDeductPoints.Text = cbxUsePoints.Text;
+
+                lblChange.Text = "Remaining points";
+                lblChange.ForeColor = Color.FromArgb(122, 185, 80);
+            }
+            else if (cbxUsePoints.Checked == false)
+            {
+                //decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
+
+                //grand_total = grand_total + deduct_points;
+                //lblGrandTotal.Text = grand_total.ToString("N2");
+                lblChange.Text = "Change";
+                lblChange.ForeColor = Color.FromArgb(204, 23, 46);
+                lblDeductPoints.Text = "0.00";
+            }
+        }
+
+        private void lblDeductPoints_TextChanged(object sender, EventArgs e)
+        {
+            decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
+
+            if (cbxUsePoints.Checked)
+            {
+                grand_total = deduct_points - grand_total;
+                
+                lblChange.Text = grand_total.ToString("N2");
+            }
         }
     }
 }

@@ -28,7 +28,19 @@ namespace EcoPOSv2
                 return _order;
             }
         }
+        public bool CheckOpened(string name)
+        {
+            FormCollection fc = Application.OpenForms;
 
+            foreach (Form frm in fc)
+            {
+                if (frm.Text == name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public Order()
         {
             InitializeComponent();
@@ -197,6 +209,11 @@ namespace EcoPOSv2
                 SQL.AddParam("@customerID", customerID);
                 decimal card_balance = Convert.ToDecimal(SQL.ReturnResult("SELECT IIF(@customerID <> 0, (SELECT card_balance FROM member_card WHERE customerID = @customerID), 0.00)"));
                 if (SQL.HasException(true)) return;
+
+                if(CheckOpened("Payment") == true)
+                {
+                    return;
+                }
 
                 Payment frmPayment = new Payment();
                 RP.Payment(frmPayment);
@@ -376,6 +393,13 @@ namespace EcoPOSv2
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
+            if(dgvCart.SelectedRows.Count == 0)
+            {
+                new Notification().PopUp("Please select rows in Cart to proceed", "Error", "error");
+                return;
+            }
+
+
             if(discount != "0.00")
             {
                 if(MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?","Error",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
@@ -394,6 +418,11 @@ namespace EcoPOSv2
                 }
             }
 
+            if(CheckOpened("DiscountOption") == true)
+            {
+                return;
+            }
+
             DiscountOption frmDiscountOption = new DiscountOption();
             frmDiscountOption.frmOrder = this;
             frmDiscountOption.ShowDialog();
@@ -401,6 +430,11 @@ namespace EcoPOSv2
 
         private void btnQuantity_Click(object sender, EventArgs e)
         {
+            if(CheckOpened("Quantity") == true)
+            {
+                return;
+            }
+
             if (dgvCart.SelectedRows.Count > 0)
             {
                 Quantity frmQuantity = new Quantity();
@@ -457,6 +491,10 @@ namespace EcoPOSv2
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
+            if(CheckOpened("OCustomer") == true)
+            {
+                return;
+            }
             OCustomer frmOCustomer = new OCustomer();
             frmOCustomer.frmOrder = this;
             frmOCustomer.ShowDialog();
@@ -551,6 +589,12 @@ namespace EcoPOSv2
 
         private void btnRedeem_Click(object sender, EventArgs e)
         {
+            if(CheckOpened("Redeem") == true)
+            {
+                return;
+            }
+
+
             if (dgvCart.RowCount > 0)
             {
                 new Notification().PopUp("Clear cart first.", "Error", "error");

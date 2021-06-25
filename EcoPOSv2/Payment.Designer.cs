@@ -214,6 +214,7 @@
             this.cbxUsePoints.TabIndex = 100;
             this.cbxUsePoints.Text = "0.00";
             this.cbxUsePoints.UseVisualStyleBackColor = true;
+            this.cbxUsePoints.CheckedChanged += new System.EventHandler(this.cbxUsePoints_CheckedChanged);
             // 
             // Label6
             // 
@@ -332,7 +333,7 @@
             // 
             this.lblChange.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(23)))), ((int)(((byte)(46)))));
-            this.lblChange.Location = new System.Drawing.Point(174, 233);
+            this.lblChange.Location = new System.Drawing.Point(175, 239);
             this.lblChange.Name = "lblChange";
             this.lblChange.Size = new System.Drawing.Size(429, 46);
             this.lblChange.TabIndex = 90;
@@ -371,6 +372,7 @@
             this.lblDeductPoints.TabIndex = 87;
             this.lblDeductPoints.Text = "0.00";
             this.lblDeductPoints.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblDeductPoints.TextChanged += new System.EventHandler(this.lblDeductPoints_TextChanged);
             // 
             // lblTotal
             // 

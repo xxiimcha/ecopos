@@ -371,7 +371,12 @@ namespace EcoPOSv2
         }
         private void btnCalculator_Click(object sender, EventArgs e)
         {
-            Calculator.Instance.ShowDialog();
+            if(Order.Instance.CheckOpened("Calculator") == true)
+            {
+                return;
+            }
+
+            new Calculator().Show();
         }
     }
 }

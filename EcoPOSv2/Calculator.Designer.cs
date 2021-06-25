@@ -425,6 +425,7 @@ namespace EcoPOSv2
             this.Name = "Calculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Calculator_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
