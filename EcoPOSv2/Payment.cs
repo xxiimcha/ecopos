@@ -372,7 +372,7 @@ namespace EcoPOSv2
 
             #region increase customer points
 
-            if (action == 1)
+            if (action == 1 && lblCustomerID.Text == "0")
             {
                 bool rewardable = Convert.ToBoolean(SQL.ReturnResult("SELECT cus_rewardable FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)".ToString()));
                 if (SQL.HasException(true))
@@ -399,6 +399,17 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
                 }
+            }
+
+            else if(action==1)
+            {
+                // update card balance
+
+                SQL.AddParam("@customerID", lblCustomerID.Text);
+                SQL.AddParam("@cash_paid", lblGrandTotal.Text);
+                SQL.Query("UPDATE member_card SET card_balance = card_balance - @cash_paid WHERE customerID = @customerID");
+                if (SQL.HasException(true))
+                    return;
             }
 
             #endregion
@@ -510,20 +521,53 @@ namespace EcoPOSv2
         {
             if (cbxUsePoints.Checked)
             {
+                cmbMethod.SelectedIndex = 1;
+
                 lblDeductPoints.Text = cbxUsePoints.Text;
 
-                lblChange.Text = "Remaining points";
-                lblChange.ForeColor = Color.FromArgb(122, 185, 80);
+                txtAmount.Text = "0.00";
+                txtAmount.Enabled = false;
+
+                decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
+
+                if (cbxUsePoints.Checked)
+                {
+                    if (deduct_points > grand_total)
+                    {
+                        try
+                        {
+                            decimal amount = decimal.Parse(lblDeductPoints.Text);
+                            change = amount - grand_total;
+
+                            lblRemainingPoints.Text = change.ToString();
+                            lblChange.Text = "0.00";
+                        }
+                        catch (Exception) { }
+                    }
+                    else
+                    {
+                        new Notification().PopUp("Not enough points /n /n Please try again.", "Error", "error");
+                        cbxUsePoints.Checked = false;
+                        lblDeductPoints.Text = "0.00";
+                    }
+
+                }
             }
             else if (cbxUsePoints.Checked == false)
             {
+                cmbMethod.SelectedIndex = 0;
+
                 //decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
 
                 //grand_total = grand_total + deduct_points;
                 //lblGrandTotal.Text = grand_total.ToString("N2");
-                lblChange.Text = "Change";
-                lblChange.ForeColor = Color.FromArgb(204, 23, 46);
+                lblChange.Text = "-" + lblGrandTotal.Text;
+
+                txtAmount.Text = "0.00";
+                txtAmount.Enabled = true;
+
                 lblDeductPoints.Text = "0.00";
+                lblRemainingPoints.Text = "0.00";
             }
         }
 
@@ -533,9 +577,27 @@ namespace EcoPOSv2
 
             if (cbxUsePoints.Checked)
             {
-                grand_total = deduct_points - grand_total;
+                if(deduct_points > grand_total)
+                {
+                    try
+                    {
+                        decimal amount = decimal.Parse(lblDeductPoints.Text);
+                        change = amount - grand_total;
+
+                        lblRemainingPoints.Text = change.ToString();
+                        lblChange.Text = "0.00";
+                    }
+                    catch (Exception) { }
+                }
+                else
+                {
+                    new Notification().PopUp("Not enough points /n /n Please try again.", "Error", "error");
+                    cbxUsePoints.Checked = false;
+                    lblDeductPoints.Text = "0.00";
+                }
+                //grand_total = deduct_points - grand_total;
                 
-                lblChange.Text = grand_total.ToString("N2");
+                //lblChange.Text = grand_total.ToString("N2");
             }
         }
     }
