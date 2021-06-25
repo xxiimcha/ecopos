@@ -59,7 +59,13 @@ namespace EcoPOSv2
         {
             backgroundWorker1.RunWorkerAsync();
 
-            
+            while (backgroundWorker1.IsBusy)
+            {
+                btnImport.Enabled = false;
+                return;
+            }
+
+            btnImport.Enabled = true;
         }
 
         private void cmbSheet_SelectedIndexChanged(object sender, EventArgs e)

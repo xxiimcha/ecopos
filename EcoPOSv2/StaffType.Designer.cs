@@ -70,6 +70,7 @@
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.txtStaffType = new System.Windows.Forms.TextBox();
             this.Label6 = new System.Windows.Forms.Label();
+            this.cbxMore_CustomerMembership = new System.Windows.Forms.CheckBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
             this.SplitContainer1.Panel1.SuspendLayout();
@@ -259,6 +260,7 @@
             this.flpPermission.Controls.Add(this.cbxMore_CloseStore);
             this.flpPermission.Controls.Add(this.cbxMore_Database);
             this.flpPermission.Controls.Add(this.cbxMore_Settings);
+            this.flpPermission.Controls.Add(this.cbxMore_CustomerMembership);
             this.flpPermission.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpPermission.Location = new System.Drawing.Point(13, 119);
             this.flpPermission.Name = "flpPermission";
@@ -640,6 +642,18 @@
             this.Label6.TabIndex = 52;
             this.Label6.Text = "Staff Type";
             // 
+            // cbxMore_CustomerMembership
+            // 
+            this.cbxMore_CustomerMembership.AutoSize = true;
+            this.cbxMore_CustomerMembership.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxMore_CustomerMembership.ForeColor = System.Drawing.Color.Black;
+            this.cbxMore_CustomerMembership.Location = new System.Drawing.Point(319, 33);
+            this.cbxMore_CustomerMembership.Name = "cbxMore_CustomerMembership";
+            this.cbxMore_CustomerMembership.Size = new System.Drawing.Size(178, 24);
+            this.cbxMore_CustomerMembership.TabIndex = 68;
+            this.cbxMore_CustomerMembership.Text = "Customer Membership";
+            this.cbxMore_CustomerMembership.UseVisualStyleBackColor = true;
+            // 
             // StaffType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -705,5 +719,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
         internal FontAwesome.Sharp.IconButton btnAdd;
+        internal System.Windows.Forms.CheckBox cbxMore_CustomerMembership;
     }
 }

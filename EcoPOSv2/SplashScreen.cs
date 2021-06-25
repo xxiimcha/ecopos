@@ -20,8 +20,9 @@ namespace EcoPOSv2
         }
         //DECLARING AREA
         public static SplashScreen _splashScreen;
-        SQLControl sql = new SQLControl();
+        SQLControl SQL = new SQLControl();
         int seconds = 0;
+
 
         public static SplashScreen Instance
         {
@@ -41,7 +42,7 @@ namespace EcoPOSv2
             seconds = 3;
 
             //DATABASE CONNECTION CHECKER
-            string connection = sql.CheckConnection();
+            string connection = SQL.CheckConnection();
 
             if(connection == "success")
             {

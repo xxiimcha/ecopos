@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,9 @@ namespace EcoPOSv2
         public ManageProducts()
         {
             InitializeComponent();
+            dgvCategory.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvCategory, true, null);
+            dgvProducts.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvCategory, true, null);
+            dgvCat_Category.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvCategory, true, null);
         }
 
         SQLControl SQL = new SQLControl();
