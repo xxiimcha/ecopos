@@ -199,6 +199,20 @@ namespace EcoPOSv2
                 {
                     new Notification().PopUp("Orders cart is empty.", "Error", "error");
                 }
+                int orderreftransac = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from transaction_details"));
+                int orderreforderno = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from order_no"));
+
+                if(orderreftransac == orderreforderno)
+                {
+                    SQL.AddParam("@orderref", orderreftransac);
+                    SQL.Query("DELETE FROM transaction_details WHERE order_ref=@orderref");
+
+                    if (SQL.HasException(true))
+                    {
+                        return;
+                    }
+                }
+
 
                 int action = Convert.ToInt32(SQL.ReturnResult("SELECT action FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)"));
 

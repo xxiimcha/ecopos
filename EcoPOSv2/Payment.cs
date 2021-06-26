@@ -301,6 +301,8 @@ namespace EcoPOSv2
                     return;
             }
 
+            btnPay.Enabled = false;
+
             SQL.AddParam("@no_of_items", Convert.ToDecimal(frmOrder.lblItems.Text));
             SQL.AddParam("@cus_pts_deducted", lblDeductPoints.Text);
             SQL.AddParam("@giftcard_deducted", lblDeductGC.Text);
@@ -329,6 +331,7 @@ namespace EcoPOSv2
                        @zero_rated_sale, @userID, @user_first_name FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
             if (SQL.HasException(true))
                 return;
+
 
             #endregion
 

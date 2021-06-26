@@ -14,7 +14,6 @@ namespace EcoPOSv2
 {
     class ExportImport
     {
-
         public void ExportDgvToPDF(string title, DataGridView dgv)
         {
             if (dgv.Rows.Count == 0)
