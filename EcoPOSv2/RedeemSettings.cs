@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,10 @@ namespace EcoPOSv2
 {
     public partial class RedeemSettings : Form
     {
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+        public const byte KEYEVENTF_KEYUP = 0x02;
+        public const int VK_CONTROL = 0x11;
         public RedeemSettings()
         {
             InitializeComponent();
@@ -396,41 +401,53 @@ namespace EcoPOSv2
             if (dgvRI_RedeemItems.SelectedRows.Count == 0)
                 return;
 
-            SQL.AddParam("@redeemID", dgvRI_RedeemItems.CurrentRow.Cells[0].Value.ToString());
-            SQL.Query("DELETE FROM redeem_items WHERE redeemID = @redeemID");
+            for(int i = 0; i<=dgvRI_RedeemItems.SelectedRows.Count-1; i++)
+            {
+                SQL.AddParam("@redeemID", dgvRI_RedeemItems.Rows[i].Cells[0].Value.ToString());
+                SQL.Query("DELETE FROM redeem_items WHERE redeemID = @redeemID");
 
-            if (SQL.HasException(true))
-                return;
+                if (SQL.HasException(true))
+                    return;
+            }
+
 
             LoadRedeemItems();
+
+            redeemID = "";
+            txtRI_RedeemItem.Clear();
+            txtRI_Points.Clear();
         }
 
         private void btnRI_AddItem_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(dgvRI_Items.SelectedRows.Count.ToString());
             if (dgvRI_Items.SelectedRows.Count == 0)
                 return;
-
-            SQL.AddParam("@productID", dgvRI_Items.CurrentRow.Cells[0].Value.ToString());
-            int check_item = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM redeem_items WHERE productID = @productID"));
-            if (SQL.HasException(true))
-                return;
-
-            if (check_item == 1)
+            for (int i = 0; i <= dgvRI_Items.SelectedRows.Count - 1; i++)
             {
-                new Notification().PopUp("Item already exists.", "Error", "error");
-                return;
+                SQL.AddParam("@productID", dgvRI_Items.Rows[i].Cells[0].Value.ToString());
+                int check_item = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM redeem_items WHERE productID = @productID"));
+                if (SQL.HasException(true))
+                    return;
+
+                if (check_item == 1)
+                {
+                    new Notification().PopUp("Item already exists.", "Error", "error");
+                    return;
+                }
+
+
+                SQL.AddParam("@productID", dgvRI_Items.Rows[i].Cells[0].Value.ToString());
+                SQL.AddParam("@description", dgvRI_Items.Rows[i].Cells[1].Value.ToString());
+                SQL.AddParam("@categoryID", dgvRI_Items.Rows[i].Cells[2].Value.ToString());
+                SQL.AddParam("@barcode1", dgvRI_Items.Rows[i].Cells[3].Value.ToString());
+                SQL.AddParam("@barcode2", dgvRI_Items.Rows[i].Cells[4].Value.ToString());
+
+                SQL.Query("INSERT INTO redeem_items (productID, description, pts, categoryID, barcode1, barcode2) VALUES (@productID, @description, 0, @categoryID, @barcode1, @barcode2)");
+
+                if (SQL.HasException(true))
+                    return;
             }
-
-            SQL.AddParam("@productID", dgvRI_Items.CurrentRow.Cells[0].Value.ToString());
-            SQL.AddParam("@description", dgvRI_Items.CurrentRow.Cells[1].Value.ToString());
-            SQL.AddParam("@categoryID", dgvRI_Items.CurrentRow.Cells[2].Value.ToString());
-            SQL.AddParam("@barcode1", dgvRI_Items.CurrentRow.Cells[3].Value.ToString());
-            SQL.AddParam("@barcode2", dgvRI_Items.CurrentRow.Cells[4].Value.ToString());
-
-            SQL.Query("INSERT INTO redeem_items (productID, description, pts, categoryID, barcode1, barcode2) VALUES (@productID, @description, 0, @categoryID, @barcode1, @barcode2)");
-
-            if (SQL.HasException(true))
-                return;
 
             new Notification().PopUp("Edit in the next table.", "Item saved", "information");
 
@@ -824,6 +841,45 @@ namespace EcoPOSv2
                 new Notification().PopUp(ex.Message, "Error", "error");
                 report.Dispose();
             }
+        }
+
+        private void btnSelectAll_Click(object sender, EventArgs e)
+        {
+            if (dgvRI_Items.RowCount > 0)
+            {
+                dgvRI_Items.SelectAll();
+                //// check if item is already chosen
+                //DataGridViewRow datarow = new DataGridViewRow();
+                //for (int rows = 0; rows <= dgvRI_Items.Rows.Count - 1; rows++)
+                //{
+                //    int counter = 0;
+                //    for (var i = 0; i <= dgvRI_Items.RowCount - 1; i++)
+                //    {
+                //        if (dgvRI_Items.Rows[rows].Cells[0].Value.ToString() == dgvRI_Items.Rows[i].Cells[0].Value.ToString())
+                //            counter = 1;
+                //    }
+
+                //    // if not chosen then add
+                //    if (counter == 0)
+                //        dgvRI_Items.Rows.Add(dgvRI_Items.Rows[rows].Cells[0].Value, dgvRI_Items.Rows[rows].Cells[1].Value, 0);
+                //}
+            }
+            else if (dgvRI_Items.RowCount == 0)
+            {
+                DataGridViewRow datarow = new DataGridViewRow();
+                for (int rows = 0; rows <= dgvRI_Items.Rows.Count - 1; rows++)
+                    dgvRI_Items.Rows.Add(dgvRI_Items.Rows[rows].Cells[0].Value, dgvRI_Items.Rows[rows].Cells[1].Value, 0);
+            }
+        }
+
+        private void dgvRI_Items_MouseEnter(object sender, EventArgs e)
+        {
+            keybd_event(VK_CONTROL, (byte)0, 0, 0);
+        }
+
+        private void dgvRI_Items_MouseLeave(object sender, EventArgs e)
+        {
+            keybd_event(VK_CONTROL, (byte)0, KEYEVENTF_KEYUP, 0);
         }
     }
 }

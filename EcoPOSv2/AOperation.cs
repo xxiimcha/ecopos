@@ -209,10 +209,11 @@ namespace EcoPOSv2
             ORItems report = new ORItems();
             DataSet ds = new DataSet();
 
-            try
-            {
+            //try
+            //{
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
-                SQL.DBDA.SelectCommand = new SqlCommand("Select product_name, qty FROM inventory_operation_items WHERE operationID = " + dgvOR.CurrentRow.Cells[0].Value.ToString() + "", SQL.DBCon);
+                SQL.Query("Select product_name, qty FROM inventory_operation_items WHERE operationID = " + dgvOR.CurrentRow.Cells[0].Value.ToString());
+                //SQL.DBDA.SelectCommand = new SqlCommand("Select product_name, qty FROM inventory_operation_items WHERE operationID = " + dgvOR.CurrentRow.Cells[0].Value.ToString() + "", SQL.DBCon);
                 SQL.DBDA.Fill(ds, "inventory_operation_items");
 
                 report.SetDataSource(ds);
@@ -251,12 +252,12 @@ namespace EcoPOSv2
                     CrystalReportViewer1.ReportSource = report;
                     CrystalReportViewer1.Refresh();
                 }
-            }
-            catch (Exception ex)
-            {
-                new Notification().PopUp(ex.Message,"","error");
-                report.Dispose();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    new Notification().PopUp(ex.Message,"","error");
+            //    report.Dispose();
+            //}
         }
     }
 }
