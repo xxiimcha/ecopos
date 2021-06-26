@@ -198,6 +198,7 @@ namespace EcoPOSv2
                 if (dgvCart.Rows.Count == 0)
                 {
                     new Notification().PopUp("Orders cart is empty.", "Error", "error");
+                    return;
                 }
                 int orderreftransac = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from transaction_details"));
                 int orderreforderno = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from order_no"));

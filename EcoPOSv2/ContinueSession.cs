@@ -24,7 +24,7 @@ namespace EcoPOSv2
         public Login frmLogin;
         public Order frmOrder;
 
-        int roleID;
+        
         //METHODS
         private void LoadPermissions(int roleID)
         {
@@ -75,16 +75,18 @@ namespace EcoPOSv2
         {
             //Application.Exit();
         }
-
+        int roleID;
         private void btnContinueSession_Click(object sender, EventArgs e)
         {
+            string encrypt_password = HP.Encrypt(tbCSPassword.Text);
+
             SQL.AddParam("@user_name", lblCS_Username.Text);
-            SQL.AddParam("@password", HP.Encrypt(tbCSPassword.Text));
+            SQL.AddParam("@password", encrypt_password);
             int check_admin = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM admin_accts WHERE user_name = @user_name AND password = @password"));
             if (SQL.HasException(true)) return;
 
             SQL.AddParam("@user_name", lblCS_Username.Text);
-            SQL.AddParam("@password", HP.Encrypt(tbCSPassword.Text));
+            SQL.AddParam("@password", encrypt_password);
             int check_user = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM users WHERE user_name = @user_name AND password = @password"));
             if (SQL.HasException(true))
                 return;
@@ -92,7 +94,7 @@ namespace EcoPOSv2
             if (check_user == 1 & check_admin == 0)
             {
                 SQL.AddParam("@user_name", lblCS_Username.Text);
-                SQL.AddParam("@password", HP.Encrypt(tbCSPassword.Text));
+                SQL.AddParam("@password", encrypt_password);
 
                 SQL.Query("SELECT * FROM users WHERE user_name = @user_name AND password = @password");
                 if (SQL.HasException(true))
@@ -119,7 +121,7 @@ namespace EcoPOSv2
             else if (check_admin == 1 & check_user == 0)
             {
                 SQL.AddParam("@user_name", lblCS_Username.Text);
-                SQL.AddParam("@password", HP.Encrypt(tbCSPassword.Text));
+                SQL.AddParam("@password", encrypt_password);
 
                 SQL.Query("SELECT * FROM admin_accts WHERE user_name = @user_name AND password = @password");
                 if (SQL.HasException(true))

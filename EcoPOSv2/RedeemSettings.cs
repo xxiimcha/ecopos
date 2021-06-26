@@ -197,6 +197,9 @@ namespace EcoPOSv2
             dtpRT_From.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
             dtpRT_To.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
             cmbRT_Customer.SelectedIndex = 0;
+
+            btnRI_SearchItems.PerformClick();
+            btnRI_SearchRedeem.PerformClick();
         }
 
         private void btnRT_Click(object sender, EventArgs e)
