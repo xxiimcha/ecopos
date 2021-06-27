@@ -620,7 +620,7 @@ namespace EcoPOSv2
             frmRedeem.frmOrder = this;
             frmRedeem.ShowDialog();
         }
-        public string cartid,discount;
+        public string cartid,discount = "0.00";
 
         private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
         {
