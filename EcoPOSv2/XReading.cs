@@ -391,18 +391,20 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            Order frmOrder = new Order();
-            Main.Instance.OpenChildForm(frmOrder);
-            frmOrder.tbBarcode.Focus();
+            //Order frmOrder = new Order();
+            //Main.Instance.OpenChildForm(frmOrder);
+            //frmOrder.tbBarcode.Focus();
 
-            Login l = new Login();
-            l.Show();
-            Main.Instance.Hide();
+            //Login l = new Login();
+            //l.Show();
+            //Main.Instance.Hide();
 
-            Main.Instance.UpdateMemberCards();
-            Main.Instance.UpdateGiftCards();
+            //Main.Instance.UpdateMemberCards();
+            //Main.Instance.UpdateGiftCards();
 
-            this.Close();
+            //this.Close();
+
+            Application.Restart();
         }
         private void GenerateReport()
         {

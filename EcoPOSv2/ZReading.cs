@@ -437,7 +437,7 @@ namespace EcoPOSv2
 
             Main.Instance.OpenChildForm(Order.Instance);
 
-            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
+            //Order.Instance.ActiveControl = Order.Instance.tbBarcode;
 
             Login frmLogin = new Login();
             frmLogin.Show(Main.Instance);
@@ -445,8 +445,6 @@ namespace EcoPOSv2
 
             Main.Instance.UpdateMemberCards();
             Main.Instance.UpdateGiftCards();
-
-            Close();
         }
     }
 }

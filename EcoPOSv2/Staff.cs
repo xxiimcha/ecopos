@@ -145,13 +145,15 @@ namespace EcoPOSv2
                             // check if username exists
 
                             SQL.AddParam("@user_name", txtUsername.Text);
-
                             int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM users WHERE user_name = @user_name) > 0,'1', '0') as result"));
+
+                            SQL.AddParam("@user_name", txtUsername.Text);
+                            int adminresult = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM admin_accts WHERE user_name = @user_name) > 0,'1', '0') as result"));
 
                             if (SQL.HasException(true))
                                 return;
 
-                            if (result == 0)
+                            if (result == 0 && adminresult==0)
                             {
                                 string encrypt_password = HP.Encrypt(txtPassword.Text);
 

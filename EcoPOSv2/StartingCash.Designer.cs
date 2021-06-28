@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2TileButton();
             this.label2 = new System.Windows.Forms.Label();
             this.tbCash = new System.Windows.Forms.TextBox();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +74,7 @@
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
             this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Location = new System.Drawing.Point(37, 129);
+            this.btnConfirm.Location = new System.Drawing.Point(35, 123);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(227, 50);
@@ -96,16 +94,14 @@
             // 
             // tbCash
             // 
+            this.tbCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbCash.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCash.Location = new System.Drawing.Point(12, 59);
             this.tbCash.Multiline = true;
             this.tbCash.Name = "tbCash";
             this.tbCash.Size = new System.Drawing.Size(271, 53);
             this.tbCash.TabIndex = 10;
-            // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.TargetControl = this.tbCash;
+            this.tbCash.TextChanged += new System.EventHandler(this.tbCash_TextChanged);
             // 
             // StartingCash
             // 
@@ -133,6 +129,5 @@
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2TileButton btnConfirm;
         private System.Windows.Forms.TextBox tbCash;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }
 }
