@@ -373,7 +373,7 @@ namespace EcoPOSv2
                 decimal amount = Math.Round(total, 2);
 
                 change = amount - grand_total;
-                lblChange.Text = Math.Round(change, 2).ToString();
+                lblChange.Text = change.ToString("N2");
             }
             else
             {
@@ -382,7 +382,7 @@ namespace EcoPOSv2
                     decimal amount = Math.Round(decimal.Parse(txtAmount.Text), 2);
 
                     change = amount - grand_total;
-                    lblChange.Text = Math.Round(change, 2).ToString();
+                    lblChange.Text = change.ToString("N2");
                 }
                 catch (Exception) { }
             }
@@ -418,6 +418,14 @@ namespace EcoPOSv2
                 decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
 
                 grand_total = grand_total + deduct_points;
+
+                if(grand_total <= 0M)
+                {
+                    lblGrandTotal.Text = "0.00";
+                    return;
+                }
+
+
                 lblGrandTotal.Text = grand_total.ToString("N2");
                 lblDeductPoints.Text = "0.00";
             }
