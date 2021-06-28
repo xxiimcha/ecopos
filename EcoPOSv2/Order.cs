@@ -498,10 +498,10 @@ namespace EcoPOSv2
             //    else return;
             //}
 
-            //if(CheckOpened("DiscountOption") == true)
-            //{
-            //    return;
-            //}
+            if (CheckOpened("DiscountOption") == true)
+            {
+                return;
+            }
 
             DiscountOption frmDiscountOption = new DiscountOption();
             frmDiscountOption.frmOrder = this;
@@ -631,8 +631,6 @@ namespace EcoPOSv2
             insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
             type = "R";
         }
-
-
 
         //GLOBAL HOTKEYS
         private void ClickCancelTransaction(object sender, EventArgs e)
