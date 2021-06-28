@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XReading));
@@ -138,6 +139,7 @@
             this.btnCancel = new FontAwesome.Sharp.IconButton();
             this.btnProceed = new FontAwesome.Sharp.IconButton();
             this.Label32 = new System.Windows.Forms.Label();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.pnlPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentMethod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
@@ -631,7 +633,7 @@
             // 
             // pnlCD
             // 
-            this.pnlCD.BackColor = System.Drawing.Color.White;
+            this.pnlCD.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlCD.Controls.Add(this.lblPayMaya);
             this.pnlCD.Controls.Add(this.lblGCash);
             this.pnlCD.Controls.Add(this.lblCheque);
@@ -1062,7 +1064,7 @@
             // 
             // txt1c
             // 
-            this.txt1c.BackColor = System.Drawing.Color.White;
+            this.txt1c.BackColor = System.Drawing.Color.Gainsboro;
             this.txt1c.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt1c.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt1c.ForeColor = System.Drawing.Color.Black;
@@ -1146,7 +1148,7 @@
             // 
             // txt5c
             // 
-            this.txt5c.BackColor = System.Drawing.Color.White;
+            this.txt5c.BackColor = System.Drawing.Color.Gainsboro;
             this.txt5c.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt5c.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt5c.ForeColor = System.Drawing.Color.Black;
@@ -1170,7 +1172,7 @@
             // 
             // txt10c
             // 
-            this.txt10c.BackColor = System.Drawing.Color.White;
+            this.txt10c.BackColor = System.Drawing.Color.Gainsboro;
             this.txt10c.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt10c.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt10c.ForeColor = System.Drawing.Color.Black;
@@ -1194,7 +1196,7 @@
             // 
             // txt25c
             // 
-            this.txt25c.BackColor = System.Drawing.Color.White;
+            this.txt25c.BackColor = System.Drawing.Color.Gainsboro;
             this.txt25c.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt25c.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt25c.ForeColor = System.Drawing.Color.Black;
@@ -1218,7 +1220,7 @@
             // 
             // txt1
             // 
-            this.txt1.BackColor = System.Drawing.Color.White;
+            this.txt1.BackColor = System.Drawing.Color.Gainsboro;
             this.txt1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt1.ForeColor = System.Drawing.Color.Black;
@@ -1242,7 +1244,7 @@
             // 
             // txt5
             // 
-            this.txt5.BackColor = System.Drawing.Color.White;
+            this.txt5.BackColor = System.Drawing.Color.Gainsboro;
             this.txt5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt5.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt5.ForeColor = System.Drawing.Color.Black;
@@ -1350,7 +1352,7 @@
             // 
             // txt10
             // 
-            this.txt10.BackColor = System.Drawing.Color.White;
+            this.txt10.BackColor = System.Drawing.Color.Gainsboro;
             this.txt10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt10.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt10.ForeColor = System.Drawing.Color.Black;
@@ -1374,7 +1376,7 @@
             // 
             // txt20
             // 
-            this.txt20.BackColor = System.Drawing.Color.White;
+            this.txt20.BackColor = System.Drawing.Color.Gainsboro;
             this.txt20.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt20.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt20.ForeColor = System.Drawing.Color.Black;
@@ -1398,7 +1400,7 @@
             // 
             // txt50
             // 
-            this.txt50.BackColor = System.Drawing.Color.White;
+            this.txt50.BackColor = System.Drawing.Color.Gainsboro;
             this.txt50.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt50.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt50.ForeColor = System.Drawing.Color.Black;
@@ -1422,7 +1424,7 @@
             // 
             // txt100
             // 
-            this.txt100.BackColor = System.Drawing.Color.White;
+            this.txt100.BackColor = System.Drawing.Color.Gainsboro;
             this.txt100.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt100.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt100.ForeColor = System.Drawing.Color.Black;
@@ -1446,7 +1448,7 @@
             // 
             // txt200
             // 
-            this.txt200.BackColor = System.Drawing.Color.White;
+            this.txt200.BackColor = System.Drawing.Color.Gainsboro;
             this.txt200.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt200.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt200.ForeColor = System.Drawing.Color.Black;
@@ -1470,7 +1472,7 @@
             // 
             // txt500
             // 
-            this.txt500.BackColor = System.Drawing.Color.White;
+            this.txt500.BackColor = System.Drawing.Color.Gainsboro;
             this.txt500.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt500.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt500.ForeColor = System.Drawing.Color.Black;
@@ -1494,7 +1496,7 @@
             // 
             // txt1000
             // 
-            this.txt1000.BackColor = System.Drawing.Color.White;
+            this.txt1000.BackColor = System.Drawing.Color.Gainsboro;
             this.txt1000.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt1000.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt1000.ForeColor = System.Drawing.Color.Black;
@@ -1704,5 +1706,6 @@
         internal FontAwesome.Sharp.IconButton btnCancel;
         internal FontAwesome.Sharp.IconButton btnProceed;
         internal System.Windows.Forms.Label Label32;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

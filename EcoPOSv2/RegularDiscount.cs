@@ -41,19 +41,12 @@ namespace EcoPOSv2
             if (dgvDiscount.SelectedRows.Count == 0)
                 return;
 
-            if(Order.Instance.dgvCart.Rows.Count == 0)
-            {
-                new Notification().PopUp("Cart is empty. Please try again", "Error", "error");
-                return;
-            }
-
             int discountID = Convert.ToInt32(dgvDiscount.CurrentRow.Cells[0].Value.ToString());
             int disc_type = Convert.ToInt32(dgvDiscount.CurrentRow.Cells[3].Value.ToString());
-            decimal disc_amt = Convert.ToDecimal(dgvDiscount.CurrentRow.Cells[2].Value.ToString());
+            decimal disc_amt = decimal.Parse(dgvDiscount.CurrentRow.Cells[2].Value.ToString());
 
             SQL.AddParam("@discountID", discountID);
-            SQL.AddParam("@regulardiscountamount", disc_amt);
-            SQL.Query("UPDATE order_no SET discountID = @discountID,regulardiscountamount = @regulardiscountamount WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            SQL.Query("UPDATE order_no SET discountID = @discountID WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
 
             if (SQL.HasException(true))
                 return;
@@ -72,15 +65,14 @@ namespace EcoPOSv2
             }
             else if (disc_type == 2)
             {
-                SQL.AddParam("@productid", Order.Instance.cartid);
-                SQL.Query("SELECT * FROM order_cart where productID=@productid ORDER BY itemID ASC");
+                SQL.Query("SELECT * FROM order_cart ORDER BY itemID ASC");
 
                 if (SQL.HasException(true))
                     return;
 
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
-                    SQL.AddParam("@itemID", r["itemID"].ToString());
+                    SQL.AddParam("@itemID", r["itemID"]);
                     SQL.AddParam("@disc_amt", disc_amt);
 
                     SQL.Query(@"UPDATE oc SET
@@ -88,16 +80,15 @@ namespace EcoPOSv2
                                oc.disc_percent = IIF(p.s_discR = 1, @disc_amt, 0)
                                FROM order_cart as oc
                                INNER JOIN products as p ON oc.productID = p.productID
-                               WHERE oc.itemID = @itemID");
+                               WHERE oc.itemID = @itemID AND oc.type='R'");
 
                     if (SQL.HasException(true))
                         return;
                 }
             }
 
-            Order.Instance.LoadOrder();
-            Order.Instance.GetTotal();
-            new Notification().PopUp("Discount applied.", "", "success");
+            Main.Instance.btnOrder.PerformClick();
+            new Notification().PopUp("Discount applied.","","success");
             frmDiscountOption.Close();
             Close();
         }

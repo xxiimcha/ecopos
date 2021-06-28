@@ -177,8 +177,8 @@ namespace EcoPOSv2
             }
             else
             {
-                new Notification().PopUp("Incorrect Username or password", "Error", "error");
-               //MessageBox.Show("Incorrect username or password.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                //new Notification().PopUp("Incorrect Username or password", "Error", "error");
+                //MessageBox.Show("Incorrect username or password.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

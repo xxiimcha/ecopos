@@ -140,7 +140,7 @@ namespace EcoPOSv2
             frmOrder.lblCustomer.Text = dgvCustomer.CurrentRow.Cells[1].Value.ToString();
             frmOrder.LoadOrder();
             frmOrder.GetTotal();
-            new Notification().PopUp("Discount applied.", "");
+            new Notification().PopUp("Discount applied.", "","information");
             frmOrder.apply_member = true;
             Close();
         }

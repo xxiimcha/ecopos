@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
 using VeryHotKeys.WinForms;
+using System.Runtime.InteropServices;
 
 namespace EcoPOSv2
 {
@@ -28,6 +29,10 @@ namespace EcoPOSv2
                 return _order;
             }
         }
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+        public const byte KEYEVENTF_KEYUP = 0x02;
+        public const int VK_CONTROL = 0x11;
         public bool CheckOpened(string name)
         {
             FormCollection fc = Application.OpenForms;
@@ -434,51 +439,69 @@ namespace EcoPOSv2
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
-            if(dgvCart.SelectedRows.Count == 0)
+            if(dgvCart.Rows.Count == 0)
             {
-                new Notification().PopUp("Please select rows in Cart to proceed", "Error", "error");
+                new Notification().PopUp("Please select an item first", "Error", "error");
                 return;
             }
 
-            int discountvalue = Convert.ToInt32(SQL.ReturnResult("select discountID from order_no where order_ref = (SELECT MAX(order_ref) FROM order_no)"));
-
-
-            if(discount != "0.00")
+            if(lblDiscount.Text != "0.00")
             {
-                if (MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Would you like to cancel applied discounts?", "Discount Exist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    SQL.AddParam("@productID", cartid);
-                    SQL.Query("UPDATE order_cart SET discount=0.00,is_less_vat='False',less_vat=0.00,is_vat_exempt='False',is_disc_percent='False',disc_percent=0.00,zero_vat=1 where productID=@productID");
+                    SQL.Query("UPDATE order_cart SET discount=0.00,is_less_vat='False',less_vat=0.00,is_vat_exempt='False',is_disc_percent='False',disc_percent=0.00,zero_vat=1");
                     if (SQL.HasException(true)) return;
-                    //SQL.Query("UPDATE order_no SET discountID=0 where order_ref = (SELECT MAX(order_ref) FROM order_no)");
-                    //if (SQL.HasException(true)) return;
 
-                    LoadOrder();
-                    GetTotal();
-                }
-                else return;
-            }
-            
-
-            if(discountvalue != 0)
-            {
-                if (MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?", "Error in regular discount", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
                     SQL.Query("UPDATE order_no SET discountID=0,disc_amt=0.00 where order_ref = (SELECT MAX(order_ref) FROM order_no)");
                     if (SQL.HasException(true)) return;
 
-                    apply_regular_discount_fix_amt = false;
-
+                    LoadOrderNo();
                     LoadOrder();
                     GetTotal();
+
+                    return;
                 }
                 else return;
             }
 
-            if(CheckOpened("DiscountOption") == true)
-            {
-                return;
-            }
+            //int discountvalue = Convert.ToInt32(SQL.ReturnResult("select discountID from order_no where order_ref = (SELECT MAX(order_ref) FROM order_no)"));
+
+            //if (discount != "0.00")
+            //{
+            //    if (MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        SQL.Query("UPDATE order_cart SET discount=0.00,is_less_vat='False',less_vat=0.00,is_vat_exempt='False',is_disc_percent='False',disc_percent=0.00,zero_vat=1");
+            //        if (SQL.HasException(true)) return;
+            //        LoadOrder();
+            //        GetTotal();
+
+            //        return;
+            //    }
+            //    else return;
+            //}
+
+
+            //if (discountvalue != 0)
+            //{
+            //    if (MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?", "Error in regular discount", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        SQL.Query("UPDATE order_no SET discountID=0,disc_amt=0.00 where order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            //        if (SQL.HasException(true)) return;
+
+            //        apply_regular_discount_fix_amt = false;
+
+            //        LoadOrder();
+            //        GetTotal();
+
+            //        return;
+            //    }
+            //    else return;
+            //}
+
+            //if(CheckOpened("DiscountOption") == true)
+            //{
+            //    return;
+            //}
 
             DiscountOption frmDiscountOption = new DiscountOption();
             frmDiscountOption.frmOrder = this;
@@ -603,13 +626,6 @@ namespace EcoPOSv2
             LoadOrder();
             GetTotal();
         }
-
-        private void dgvCart_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = tbBarcode;
-            tbBarcode.Clear();
-        }
-
         private void btnRetail_Click(object sender, EventArgs e)
         {
             insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
@@ -662,14 +678,6 @@ namespace EcoPOSv2
             frmRedeem.frmOrder = this;
             frmRedeem.ShowDialog();
         }
-        public string cartid,discount = "0.00";
-
-        private void dgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            cartid = dgvCart.CurrentRow.Cells[1].Value.ToString();
-            discount = dgvCart.CurrentRow.Cells[12].Value.ToString();
-        }
-
         private void OpenPayment(object sender, EventArgs e)
         {
             Order.Instance.btnPayment.PerformClick();

@@ -30,6 +30,8 @@ namespace EcoPOSv2
 
         private void XReading_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             LoadXReadingRecords();
             TextboxValidation();
         }

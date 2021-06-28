@@ -25,14 +25,14 @@ namespace EcoPOSv2
 
         private void SpecialDiscount_Load(object sender, EventArgs e)
         {
-            cmbDesc.SelectedIndex = -1;
+            cmbDesc.SelectedIndex = 0;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (cmbDesc.SelectedIndex == -1 || txtName.Text == "" || txtIDNo.Text == "")
+            if(txtIDNo.Text == "" || txtName.Text == "")
             {
-                new Notification().PopUp("Please complete all the field(s) to proceed", "Error", "error");
+                new Notification().PopUp("Please complete all the field(s)","Error","error");
                 return;
             }
 
@@ -59,22 +59,21 @@ namespace EcoPOSv2
 
 
             // update cart items if cart not empty
-            if (Order.Instance.dgvCart.RowCount > 0)
+            if (frmOrder.dgvCart.RowCount > 0)
             {
                 switch (cus_type)
                 {
                     case 1:
                     case 2:
                         {
-                            SQL.AddParam("@productID", Order.Instance.cartid);
-                            SQL.Query("SELECT * FROM order_cart where productID=@productID ORDER BY itemID ASC");
+                            SQL.Query("SELECT * FROM order_cart ORDER BY itemID ASC");
 
                             if (SQL.HasException(true))
                                 return;
 
                             foreach (DataRow r in SQL.DBDT.Rows)
                             {
-                                SQL.AddParam("@itemID", r["itemID"].ToString());
+                                SQL.AddParam("@itemID", r["itemID"]);
                                 SQL.Query(@"UPDATE oc SET
                                    oc.is_disc_percent = p.s_discPWD_SC,
                                    oc.is_less_vat = IIF(p.s_discPWD_SC = 1 AND p.s_PWD_SC_perc = 20, 1, 0),
@@ -82,7 +81,7 @@ namespace EcoPOSv2
                                    oc.is_vat_exempt = IIF(p.s_discPWD_SC = 1 AND p.s_PWD_SC_perc = 20, 1, 0)
                                    FROM order_cart as oc
                                    INNER JOIN products as p ON oc.productID = p.productID
-                                   WHERE oc.itemID = @itemID");
+                                   WHERE oc.itemID = @itemID AND oc.type='R'");
 
                                 if (SQL.HasException(true))
                                     return;
@@ -93,15 +92,14 @@ namespace EcoPOSv2
 
                     default:
                         {
-                            SQL.AddParam("@productID", Order.Instance.cartid);
-                            SQL.Query("SELECT * FROM order_cart where productID=@productID");
+                            SQL.Query("SELECT * FROM order_cart");
 
                             if (SQL.HasException(true))
                                 return;
 
                             foreach (DataRow r in SQL.DBDT.Rows)
                             {
-                                SQL.AddParam("@itemID", r["itemID"].ToString());
+                                SQL.AddParam("@itemID", r["itemID"]);
                                 SQL.Query(@"UPDATE oc SET
                                 oc.is_disc_percent = p.s_discAth,
                                 oc.disc_percent = IIF(p.s_discAth = 1, 20, 0)
@@ -117,10 +115,10 @@ namespace EcoPOSv2
                         }
                 }
 
-                Order.Instance.LoadOrder();
-                Order.Instance.GetTotal();
-                Order.Instance.lblCustomer.Text = txtName.Text;
-                new Notification().PopUp("Discount applied.", "", "success");
+                frmOrder.LoadOrder();
+                frmOrder.GetTotal();
+                frmOrder.lblCustomer.Text = txtName.Text;
+                new Notification().PopUp("Discount applied.","","success");
                 frmDiscountOption.Close();
                 Close();
             }
