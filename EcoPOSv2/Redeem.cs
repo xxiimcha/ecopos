@@ -75,5 +75,13 @@ namespace EcoPOSv2
         {
             Close();
         }
+
+        private void txtCardNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnProceed.PerformClick();
+            }
+        }
     }
 }

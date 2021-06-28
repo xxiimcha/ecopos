@@ -47,5 +47,10 @@ namespace EcoPOSv2
         {
             this.Close();
         }
+
+        private void DiscountOption_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

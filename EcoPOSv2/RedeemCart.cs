@@ -91,13 +91,13 @@ namespace EcoPOSv2
                     report.SetParameterValue("date_time", r["date_time"].ToString());
                     report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
                     report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                    decimal noofitems = Convert.ToInt32(r["no_of_items"].ToString());
+                    decimal noofitems = decimal.Parse(r["no_of_items"].ToString());
                     report.SetParameterValue("no_of_items", noofitems.ToString("N2"));
-                    decimal total = Convert.ToInt32(r["total"].ToString());
+                    decimal total = decimal.Parse(r["total"].ToString());
                     report.SetParameterValue("total", total.ToString("N2"));
-                    decimal balance = Convert.ToInt32(r["balance"].ToString());
+                    decimal balance = decimal.Parse(r["balance"].ToString());
                     report.SetParameterValue("balance", balance.ToString("N2"));
-                    decimal remaining_pts = Convert.ToInt32(r["remaining_pts"].ToString());
+                    decimal remaining_pts = decimal.Parse(r["remaining_pts"].ToString());
                     report.SetParameterValue("remaining_pts", remaining_pts.ToString("N2"));
                     report.SetParameterValue("cus_name", r["cus_name"].ToString());
                     report.SetParameterValue("cus_card_no", r["cus_card_no"].ToString());
@@ -119,9 +119,9 @@ namespace EcoPOSv2
             }
 
 
-            for (var i = 1; i <= 2; i++)
+            //for (var i = 1; i <= 2; i++)
 
-                PrintReceipt();
+            PrintReceipt();
         }
         public static bool PrinterExists(string printerName)
         {
@@ -144,9 +144,18 @@ namespace EcoPOSv2
                 new Notification().PopUp("Printer is offline", "Error", "error");
                 return;
             }
-            report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-            report.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
-            report.PrintToPrinter(1, false, 0, 0);
+
+
+            try
+            {
+                report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                report.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                report.PrintToPrinter(1, false, 0, 0);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error");
+            }
         }
         private void Advance_OrderNo()
         {
@@ -337,7 +346,7 @@ namespace EcoPOSv2
 
             SQL.AddParam("@order_ref", order_ref);
             SQL.AddParam("@order_no", order_no);
-            SQL.AddParam("@no_of_items", System.Convert.ToInt32(lblItems.Text));
+            SQL.AddParam("@no_of_items",decimal.Parse(lblItems.Text));
             SQL.AddParam("@total_pts", System.Convert.ToDecimal(lblTotal.Text));
             SQL.AddParam("@cus_ID_no", customerID);
             SQL.AddParam("@cus_card_no", card_no);
@@ -368,8 +377,8 @@ namespace EcoPOSv2
 
             foreach (DataRow r in SQL.DBDT.Rows)
             {
-                SQL.AddParam("@productID", r["productID"].ToString());
-                SQL.AddParam("@quantity", r["quantity"].ToString());
+                SQL.AddParam("@productID", r["productID"]);
+                SQL.AddParam("@quantity", r["quantity"]);
 
                 SQL.Query("UPDATE inventory SET stock_qty = stock_qty - @quantity WHERE productID = @productID");
                 if (SQL.HasException(true))
@@ -393,7 +402,7 @@ namespace EcoPOSv2
                 return;
 
 
-            new Notification().PopUp("Redeem success", "", "error");
+            new Notification().PopUp("Redeem success", "", "success");
             Advance_OrderNo();
             GenerateReceipt();
             Close();

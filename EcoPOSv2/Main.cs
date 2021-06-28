@@ -331,6 +331,12 @@ namespace EcoPOSv2
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            //if(Order.Instance.dgvCart.Rows.Count > 0)
+            //{
+            //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
+            //    return;
+            //}
+
             Order frmOrder = new Order();
             RP.Order(frmOrder);
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
@@ -345,6 +351,12 @@ namespace EcoPOSv2
 
         private void btnMore_Click(object sender, EventArgs e)
         {
+            //if (Order.Instance.dgvCart.Rows.Count > 0)
+            //{
+            //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
+            //    return;
+            //}
+
             More m = new More();
 
             RP.More(m);
@@ -360,6 +372,12 @@ namespace EcoPOSv2
 
         private void btnXReading_Click(object sender, EventArgs e)
         {
+            //if (Order.Instance.dgvCart.Rows.Count > 0)
+            //{
+            //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
+            //    return;
+            //}
+
             SecureXReading frmSecureXReading = new SecureXReading();
 
             frmSecureXReading.ShowDialog();

@@ -111,6 +111,7 @@
             this.Name = "DiscountOption";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiscountOption";
+            this.Load += new System.EventHandler(this.DiscountOption_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

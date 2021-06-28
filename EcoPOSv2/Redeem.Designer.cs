@@ -98,6 +98,7 @@
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(403, 32);
             this.txtCardNo.TabIndex = 20;
+            this.txtCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCardNo_KeyDown);
             // 
             // Label2
             // 

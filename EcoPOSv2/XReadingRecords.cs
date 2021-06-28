@@ -110,9 +110,16 @@ namespace EcoPOSv2
             }
 
 
-            report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-            report.PrintOptions.PaperSource = PaperSource.Auto;
-            report.PrintToPrinter(1, false, 0, 0);
+            try
+            {
+                report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                report.PrintOptions.PaperSource = PaperSource.Auto;
+                report.PrintToPrinter(1, false, 0, 0);
+            }
+            catch (Exception)
+            {
+                new Notification().PopUp("Please select report to proceed", "Error", "error");
+            }
         }
 
         private void dgvRecords_CellClick(object sender, DataGridViewCellEventArgs e)

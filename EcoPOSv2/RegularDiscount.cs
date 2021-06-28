@@ -52,7 +52,8 @@ namespace EcoPOSv2
             decimal disc_amt = Convert.ToDecimal(dgvDiscount.CurrentRow.Cells[2].Value.ToString());
 
             SQL.AddParam("@discountID", discountID);
-            SQL.Query("UPDATE order_no SET discountID = @discountID WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            SQL.AddParam("@regulardiscountamount", disc_amt);
+            SQL.Query("UPDATE order_no SET discountID = @discountID,regulardiscountamount = @regulardiscountamount WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
 
             if (SQL.HasException(true))
                 return;

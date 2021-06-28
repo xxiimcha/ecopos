@@ -101,8 +101,25 @@ namespace EcoPOSv2
         }
         public void LoadOrderNo()
         {
-            lblOrderNumber.Text = SQL.ReturnResult("SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
-            if (SQL.HasException(true))return;
+            //lblOrderNumber.Text = SQL.ReturnResult("SELECT order_no,regulardiscountamount FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            //if (SQL.HasException(true))return;
+
+
+            SQL.Query("SELECT order_no,disc_amt FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+
+            if (SQL.HasException(true)) return;
+
+            foreach(DataRow dr in SQL.DBDT.Rows)
+            {
+                lblOrderNumber.Text = dr["order_no"].ToString();
+                regular_disc_amt = decimal.Parse(dr["disc_amt"].ToString());
+            }
+
+            if (regular_disc_amt != 0M)
+            {
+                apply_regular_discount_fix_amt = true;
+            }
+            else return;
         }
         public void GetTotal()
         {
@@ -142,21 +159,24 @@ namespace EcoPOSv2
                 decimal subtotal = decimal.Parse(r["Subtotal"].ToString());
                 lblSubtotal.Text = subtotal.ToString("N2");
                 lblDiscount.Text = discount.ToString();
-                lblTotal.Text = Math.Round(decimal.Parse(r["Total"].ToString()),2).ToString();
+                decimal Total = decimal.Parse(r["Total"].ToString());
+                lblTotal.Text = Total.ToString("N2");
                 //lblTotal.Text = r["Total"].ToString();
-                lblVAT.Text = Math.Round(decimal.Parse(r["VAT"].ToString()), 2).ToString();
+                decimal VAT = decimal.Parse(r["VAT"].ToString());
+                lblVAT.Text = VAT.ToString("N2");
                 lblLessVAT.Text = r["LessVAT"].ToString();
             }
 
-            lblVATSale.Text = String.Format(Convert.ToDecimal(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE is_vat_exempt = 0) > 0,
-                                        (SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE is_vat_exempt = 0),
-                                        0)")).ToString(), "#,##0.00");
+            decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE is_vat_exempt = 0) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE is_vat_exempt = 0),0)".ToString()));
+
+            lblVATSale.Text = vatsale.ToString("N2");
             if (SQL.HasException(true))
                 return;
 
-            lblVATExempt.Text = String.Format(Convert.ToDecimal(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE is_vat_exempt = 1) > 0,
-                                        (SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE is_vat_exempt = 1),
-                                        0)")).ToString(), "#,##0.00");
+            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE is_vat_exempt = 1),0)".ToString()));
+
+            lblVATExempt.Text = vatexempt.ToString("N2");
+
             if (SQL.HasException(true))
                 return;
 
@@ -173,9 +193,15 @@ namespace EcoPOSv2
                 vat = decimal.Parse(lblVAT.Text);
 
                 lblDiscount.Text = regular_disc_amt.ToString();
-                lblTotal.Text = String.Format((total - regular_disc_amt).ToString(), "#,##0.00");
-                lblVAT.Text = String.Format((vat - regular_disc_amt - (regular_disc_amt / 1.12M)).ToString(), "#,##0.00");
-                lblVATSale.Text = String.Format((vat_sale - (regular_disc_amt / 1.12M)).ToString(), "#,##0.00");
+
+                decimal totaldisc = total - regular_disc_amt;
+                lblTotal.Text = totaldisc.ToString("N2");
+
+                decimal vatdisc = vat - regular_disc_amt - (regular_disc_amt / 1.12M);
+                lblVAT.Text = vatdisc.ToString("N2");
+
+                decimal vatsaledisc = vat_sale - (regular_disc_amt / 1.12M);
+                lblVATSale.Text = vatsaledisc.ToString("N2");
             }
         }
 
@@ -414,23 +440,39 @@ namespace EcoPOSv2
                 return;
             }
 
+            int discountvalue = Convert.ToInt32(SQL.ReturnResult("select discountID from order_no where order_ref = (SELECT MAX(order_ref) FROM order_no)"));
+
 
             if(discount != "0.00")
             {
-                if(MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?","Error",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SQL.AddParam("@productID", cartid);
                     SQL.Query("UPDATE order_cart SET discount=0.00,is_less_vat='False',less_vat=0.00,is_vat_exempt='False',is_disc_percent='False',disc_percent=0.00,zero_vat=1 where productID=@productID");
-
                     if (SQL.HasException(true)) return;
+                    //SQL.Query("UPDATE order_no SET discountID=0 where order_ref = (SELECT MAX(order_ref) FROM order_no)");
+                    //if (SQL.HasException(true)) return;
 
                     LoadOrder();
                     GetTotal();
                 }
-                else 
+                else return;
+            }
+            
+
+            if(discountvalue != 0)
+            {
+                if (MessageBox.Show("You've already added discount to this product. \n \n Do you want to cancel it ?", "Error in regular discount", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    return;
+                    SQL.Query("UPDATE order_no SET discountID=0,disc_amt=0.00 where order_ref = (SELECT MAX(order_ref) FROM order_no)");
+                    if (SQL.HasException(true)) return;
+
+                    apply_regular_discount_fix_amt = false;
+
+                    LoadOrder();
+                    GetTotal();
                 }
+                else return;
             }
 
             if(CheckOpened("DiscountOption") == true)
@@ -520,8 +562,8 @@ namespace EcoPOSv2
             _order = this;
 
             btnRetail.PerformClick();
-            LoadOrder();
             LoadOrderNo();
+            LoadOrder();
             GetTotal();
 
             tbBarcode.Clear();

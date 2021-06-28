@@ -445,6 +445,8 @@ namespace EcoPOSv2
 
             Main.Instance.UpdateMemberCards();
             Main.Instance.UpdateGiftCards();
+
+            Application.Restart();
         }
     }
 }
