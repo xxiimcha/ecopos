@@ -156,12 +156,12 @@ namespace EcoPOSv2
                 return;
             if (btnSortAT.IconChar == IconChar.SortAlphaDown)
             {
-                dgvAT.Sort(dgvAT.Columns[6], ListSortDirection.Ascending);
+                dgvAT.Sort(dgvAT.Columns[5], ListSortDirection.Ascending);
                 btnSortAT.IconChar = IconChar.SortAlphaUp;
             }
             else
             {
-                dgvAT.Sort(dgvAT.Columns[6], ListSortDirection.Descending);
+                dgvAT.Sort(dgvAT.Columns[5], ListSortDirection.Descending);
                 btnSortAT.IconChar = IconChar.SortAlphaDown;
             }
         }
@@ -263,6 +263,11 @@ namespace EcoPOSv2
 
             dsCurrent.Clear();
             SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "audit");
+        }
+
+        private void btnLH_SearchUser_Click(object sender, EventArgs e)
+        {
+            btnLH_Search.PerformClick();
         }
     }
 }

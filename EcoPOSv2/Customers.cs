@@ -1034,8 +1034,8 @@ namespace EcoPOSv2
 
             DataSet ds = new DataSet();
 
-            try
-            {
+            //try
+            //{
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
 
                 SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
@@ -1073,13 +1073,13 @@ namespace EcoPOSv2
                     report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
                     report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
                     report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
-                    report.SetParameterValue("giftcard_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
+                    report.SetParameterValue("gift_card_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
                     report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
                     report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
                     report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
                     report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
                     report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
-                    report.SetParameterValue("giftcard_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
+                    report.SetParameterValue("gift_card_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
                     report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
                     report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
                     report.SetParameterValue("cus_name", r["cus_name"].ToString());
@@ -1088,12 +1088,12 @@ namespace EcoPOSv2
                     CrystalReportViewer1.ReportSource = report;
                     CrystalReportViewer1.Refresh();
                 }
-            }
-            catch (Exception ex)
-            {
-                Interaction.MsgBox(ex.ToString());
-                report.Dispose();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Interaction.MsgBox(ex.ToString());
+            //    report.Dispose();
+            //}
         }
 
         private void txtMem_Search_KeyUp(object sender, KeyEventArgs e)

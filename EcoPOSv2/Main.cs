@@ -365,6 +365,11 @@ namespace EcoPOSv2
             frmSecureXReading.ShowDialog();
         }
 
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void tmrCurrentDateTime_Tick(object sender, EventArgs e)
         {
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt , MMM, dd, yyyy");
