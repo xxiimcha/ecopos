@@ -186,10 +186,6 @@ namespace EcoPOSv2
             dgvRedeemCart.DataSource = SQL.DBDT;
             dgvRedeemCart.Columns[0].Visible = false;
             dgvRedeemCart.Columns[1].Visible = false;
-
-            if (dgvRedeemCart.Rows.Count > 0)
-                dgvRedeemCart.ClearSelection();
-            //clickOnce_dgvRedeemCart = true;
         }
         public void GetTotal()
         {
@@ -225,7 +221,6 @@ namespace EcoPOSv2
             _RedeemCart = this;
 
             LoadItems();
-            LoadCart();
             Control c = (Control)txtSearchItem;
             ControlBehavior.SetBehavior(ref c, Behavior.ClearSearch);
         }
@@ -280,7 +275,6 @@ namespace EcoPOSv2
 
             LoadCart();
             GetTotal();
-
         }
 
         private void txtSearchItem_KeyUp(object sender, KeyEventArgs e)
@@ -430,8 +424,6 @@ namespace EcoPOSv2
         private void dgvRedeemCart_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             clickOnce_dgvRedeemCart = true;
-
-            //MessageBox.Show(dgvRedeemCart.CurrentRow.Cells[0].Value.ToString());
         }
 
         private void txtSearchItem_KeyDown(object sender, KeyEventArgs e)
