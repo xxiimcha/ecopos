@@ -264,7 +264,7 @@ namespace EcoPOSv2
 
             #region increase customer points
 
-            if (action == 1 && lblCustomerID.Text == "0")
+            if (action == 1 && lblCustomerID.Text != "0")
             {
                 bool rewardable = Convert.ToBoolean(SQL.ReturnResult("SELECT cus_rewardable FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)".ToString()));
                 if (SQL.HasException(true))
