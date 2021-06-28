@@ -293,7 +293,7 @@ namespace EcoPOSv2
                 }
             }
 
-            else if(action==1)
+            if (action == 1 && cbxUsePoints.Checked == true)
             {
                 // update card balance
 
@@ -419,13 +419,6 @@ namespace EcoPOSv2
 
                 grand_total = grand_total + deduct_points;
 
-                if(grand_total <= 0M)
-                {
-                    lblGrandTotal.Text = "0.00";
-                    return;
-                }
-
-
                 lblGrandTotal.Text = grand_total.ToString("N2");
                 lblDeductPoints.Text = "0.00";
             }
@@ -436,7 +429,20 @@ namespace EcoPOSv2
 
             if (cbxUsePoints.Checked)
             {
-                grand_total = grand_total - deduct_points;
+                if(grand_total > deduct_points)
+                {
+                    grand_total = grand_total - deduct_points;
+                }
+                else if(deduct_points > grand_total)
+                {
+                    grand_total = deduct_points - grand_total;
+                }
+
+                //if(grand_total <= 0)
+                //{
+                //    lblGrandTotal.Text = "0.00";
+                //    return;
+                //}
 
                 lblGrandTotal.Text = grand_total.ToString("N2");
             }
