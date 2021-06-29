@@ -370,16 +370,17 @@ namespace EcoPOSv2
                 txtAmount.SelectAll();
                 decimal total = 0M;
 
-                decimal amount = Math.Round(total, 2);
+                decimal amount = total;
 
                 change = amount - grand_total;
                 lblChange.Text = change.ToString("N2");
+
             }
             else
             {
                 try
                 {
-                    decimal amount = Math.Round(decimal.Parse(txtAmount.Text), 2);
+                    decimal amount = decimal.Parse(txtAmount.Text);
 
                     change = amount - grand_total;
                     lblChange.Text = change.ToString("N2");
@@ -411,40 +412,63 @@ namespace EcoPOSv2
 
         private void cbxUsePoints_CheckedChanged(object sender, EventArgs e)
         {
+            decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
+            decimal total = decimal.Parse(lblTotal.Text);
+
             if (cbxUsePoints.Checked)
                 lblDeductPoints.Text = cbxUsePoints.Text;
-            else if (cbxUsePoints.Checked == false)
+            else if (cbxUsePoints.Checked == false/* && total > deduct_points*/)
             {
-                decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
+                txtAmount.Enabled = true;
+                btnExact.Enabled = true;
 
-                grand_total = grand_total + deduct_points;
+                //grand_total = grand_total + deduct_points;
 
-                lblGrandTotal.Text = grand_total.ToString("N2");
+                lblRemainingPoints.Text = "0.00";
+                lblGrandTotal.Text = total.ToString("N2");
                 lblDeductPoints.Text = "0.00";
             }
+            //else
+            //{
+            //    txtAmount.Enabled = true;
+            //    btnExact.Enabled = true;
+
+            //    lblRemainingPoints.Text = "0.00";
+            //    lblGrandTotal.Text = lblTotal.Text;
+            //    lblDeductPoints.Text = "0.00";
+            //}
         }
         private void lblDeductPoints_TextChanged_1(object sender, EventArgs e)
         {
             decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
+            decimal total = decimal.Parse(lblTotal.Text);
 
             if (cbxUsePoints.Checked)
             {
-                if(grand_total > deduct_points)
+                //grand_total = grand_total - deduct_points;
+
+                if(deduct_points > total)
                 {
-                    grand_total = grand_total - deduct_points;
+                    deduct_points = deduct_points - total;
+                    lblGrandTotal.Text = "0.00";
+
+                    lblChange.Text = "0.00";
+
+                    lblRemainingPoints.Text = deduct_points.ToString("N2");
+
+                    txtAmount.Enabled = false;
+                    btnExact.Enabled = false;
                 }
-                else if(deduct_points > grand_total)
+                else
                 {
-                    grand_total = deduct_points - grand_total;
+                    btnExact.Enabled = true;
+                    txtAmount.Enabled = true;
+
+                    total = total - deduct_points;
+                    lblGrandTotal.Text = total.ToString("N2");
                 }
 
-                //if(grand_total <= 0)
-                //{
-                //    lblGrandTotal.Text = "0.00";
-                //    return;
-                //}
-
-                lblGrandTotal.Text = grand_total.ToString("N2");
+                //lblGrandTotal.Text = grand_total.ToString("N2");
             }
         }
     }

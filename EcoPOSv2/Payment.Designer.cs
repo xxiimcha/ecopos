@@ -35,26 +35,28 @@
             this.lblChange = new System.Windows.Forms.Label();
             this.cmbMethod = new System.Windows.Forms.ComboBox();
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnPay = new System.Windows.Forms.Button();
-            this.btnRemoveGC = new System.Windows.Forms.Button();
-            this.btnGC = new System.Windows.Forms.Button();
             this.btnExact = new System.Windows.Forms.Button();
+            this.btnGC = new System.Windows.Forms.Button();
+            this.btnRemoveGC = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.Label6 = new System.Windows.Forms.Label();
-            this.lblCustomerID = new System.Windows.Forms.Label();
-            this.lblGCNo = new System.Windows.Forms.Label();
-            this.Label3 = new System.Windows.Forms.Label();
-            this.Label2 = new System.Windows.Forms.Label();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.cbxUsePoints = new System.Windows.Forms.CheckBox();
             this.lblDeductGC = new System.Windows.Forms.Label();
             this.Label10 = new System.Windows.Forms.Label();
             this.lblDeductPoints = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.Label7 = new System.Windows.Forms.Label();
             this.Label8 = new System.Windows.Forms.Label();
+            this.cbxUsePoints = new System.Windows.Forms.CheckBox();
+            this.Label6 = new System.Windows.Forms.Label();
+            this.lblCustomerID = new System.Windows.Forms.Label();
+            this.lblGCNo = new System.Windows.Forms.Label();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.lblRemainingPoints = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.TableLayoutPanel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -165,37 +167,21 @@
             this.TableLayoutPanel2.Size = new System.Drawing.Size(584, 262);
             this.TableLayoutPanel2.TabIndex = 101;
             // 
-            // btnPay
+            // btnExact
             // 
-            this.btnPay.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnPay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPay.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.ForeColor = System.Drawing.Color.Black;
-            this.btnPay.Location = new System.Drawing.Point(352, 198);
-            this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(229, 61);
-            this.btnPay.TabIndex = 19;
-            this.btnPay.Text = "Pay (Enter)";
-            this.btnPay.UseVisualStyleBackColor = false;
-            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
-            // 
-            // btnRemoveGC
-            // 
-            this.btnRemoveGC.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRemoveGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveGC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnRemoveGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveGC.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoveGC.Location = new System.Drawing.Point(352, 133);
-            this.btnRemoveGC.Name = "btnRemoveGC";
-            this.btnRemoveGC.Size = new System.Drawing.Size(229, 59);
-            this.btnRemoveGC.TabIndex = 18;
-            this.btnRemoveGC.Text = "Remove GC (F3)";
-            this.btnRemoveGC.UseVisualStyleBackColor = false;
-            this.btnRemoveGC.Click += new System.EventHandler(this.btnRemoveGC_Click);
+            this.btnExact.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExact.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnExact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExact.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExact.ForeColor = System.Drawing.Color.Black;
+            this.btnExact.Location = new System.Drawing.Point(352, 3);
+            this.btnExact.Name = "btnExact";
+            this.btnExact.Size = new System.Drawing.Size(229, 59);
+            this.btnExact.TabIndex = 15;
+            this.btnExact.Text = "Exact (Space)";
+            this.btnExact.UseVisualStyleBackColor = false;
+            this.btnExact.Click += new System.EventHandler(this.btnExact_Click);
             // 
             // btnGC
             // 
@@ -213,21 +199,37 @@
             this.btnGC.UseVisualStyleBackColor = false;
             this.btnGC.Click += new System.EventHandler(this.btnGC_Click);
             // 
-            // btnExact
+            // btnRemoveGC
             // 
-            this.btnExact.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExact.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
-            this.btnExact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExact.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExact.ForeColor = System.Drawing.Color.Black;
-            this.btnExact.Location = new System.Drawing.Point(352, 3);
-            this.btnExact.Name = "btnExact";
-            this.btnExact.Size = new System.Drawing.Size(229, 59);
-            this.btnExact.TabIndex = 15;
-            this.btnExact.Text = "Exact (Space)";
-            this.btnExact.UseVisualStyleBackColor = false;
-            this.btnExact.Click += new System.EventHandler(this.btnExact_Click);
+            this.btnRemoveGC.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnRemoveGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRemoveGC.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnRemoveGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveGC.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveGC.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoveGC.Location = new System.Drawing.Point(352, 133);
+            this.btnRemoveGC.Name = "btnRemoveGC";
+            this.btnRemoveGC.Size = new System.Drawing.Size(229, 59);
+            this.btnRemoveGC.TabIndex = 18;
+            this.btnRemoveGC.Text = "Remove GC (F3)";
+            this.btnRemoveGC.UseVisualStyleBackColor = false;
+            this.btnRemoveGC.Click += new System.EventHandler(this.btnRemoveGC_Click);
+            // 
+            // btnPay
+            // 
+            this.btnPay.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnPay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPay.FlatAppearance.BorderColor = System.Drawing.Color.Gainsboro;
+            this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.ForeColor = System.Drawing.Color.Black;
+            this.btnPay.Location = new System.Drawing.Point(352, 198);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(229, 61);
+            this.btnPay.TabIndex = 19;
+            this.btnPay.Text = "Pay (Enter)";
+            this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // gunaControlBox1
             // 
@@ -260,6 +262,8 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.lblRemainingPoints);
+            this.guna2Panel1.Controls.Add(this.label12);
             this.guna2Panel1.Controls.Add(this.lblDeductGC);
             this.guna2Panel1.Controls.Add(this.Label10);
             this.guna2Panel1.Controls.Add(this.lblDeductPoints);
@@ -287,6 +291,86 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(613, 726);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // lblDeductGC
+            // 
+            this.lblDeductGC.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeductGC.ForeColor = System.Drawing.Color.Black;
+            this.lblDeductGC.Location = new System.Drawing.Point(177, 143);
+            this.lblDeductGC.Name = "lblDeductGC";
+            this.lblDeductGC.Size = new System.Drawing.Size(422, 25);
+            this.lblDeductGC.TabIndex = 116;
+            this.lblDeductGC.Text = "0.00";
+            this.lblDeductGC.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // Label10
+            // 
+            this.Label10.AutoSize = true;
+            this.Label10.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label10.ForeColor = System.Drawing.Color.Black;
+            this.Label10.Location = new System.Drawing.Point(11, 143);
+            this.Label10.Name = "Label10";
+            this.Label10.Size = new System.Drawing.Size(165, 25);
+            this.Label10.TabIndex = 115;
+            this.Label10.Text = "Deduct by gift card";
+            // 
+            // lblDeductPoints
+            // 
+            this.lblDeductPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeductPoints.ForeColor = System.Drawing.Color.Black;
+            this.lblDeductPoints.Location = new System.Drawing.Point(171, 174);
+            this.lblDeductPoints.Name = "lblDeductPoints";
+            this.lblDeductPoints.Size = new System.Drawing.Size(428, 25);
+            this.lblDeductPoints.TabIndex = 114;
+            this.lblDeductPoints.Text = "0.00";
+            this.lblDeductPoints.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblDeductPoints.TextChanged += new System.EventHandler(this.lblDeductPoints_TextChanged_1);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.Black;
+            this.lblTotal.Location = new System.Drawing.Point(181, 113);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(418, 25);
+            this.lblTotal.TabIndex = 113;
+            this.lblTotal.Text = "0.00";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // Label7
+            // 
+            this.Label7.AutoSize = true;
+            this.Label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label7.ForeColor = System.Drawing.Color.Black;
+            this.Label7.Location = new System.Drawing.Point(11, 174);
+            this.Label7.Name = "Label7";
+            this.Label7.Size = new System.Drawing.Size(149, 25);
+            this.Label7.TabIndex = 112;
+            this.Label7.Text = "Deduct by points";
+            // 
+            // Label8
+            // 
+            this.Label8.AutoSize = true;
+            this.Label8.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label8.ForeColor = System.Drawing.Color.Black;
+            this.Label8.Location = new System.Drawing.Point(11, 113);
+            this.Label8.Name = "Label8";
+            this.Label8.Size = new System.Drawing.Size(49, 25);
+            this.Label8.TabIndex = 111;
+            this.Label8.Text = "Total";
+            // 
+            // cbxUsePoints
+            // 
+            this.cbxUsePoints.AutoSize = true;
+            this.cbxUsePoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxUsePoints.ForeColor = System.Drawing.Color.Black;
+            this.cbxUsePoints.Location = new System.Drawing.Point(178, 343);
+            this.cbxUsePoints.Name = "cbxUsePoints";
+            this.cbxUsePoints.Size = new System.Drawing.Size(65, 29);
+            this.cbxUsePoints.TabIndex = 110;
+            this.cbxUsePoints.Text = "0.00";
+            this.cbxUsePoints.UseVisualStyleBackColor = true;
+            this.cbxUsePoints.CheckedChanged += new System.EventHandler(this.cbxUsePoints_CheckedChanged);
             // 
             // Label6
             // 
@@ -352,85 +436,27 @@
             this.Label1.TabIndex = 104;
             this.Label1.Text = "Method";
             // 
-            // cbxUsePoints
+            // lblRemainingPoints
             // 
-            this.cbxUsePoints.AutoSize = true;
-            this.cbxUsePoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxUsePoints.ForeColor = System.Drawing.Color.Black;
-            this.cbxUsePoints.Location = new System.Drawing.Point(178, 343);
-            this.cbxUsePoints.Name = "cbxUsePoints";
-            this.cbxUsePoints.Size = new System.Drawing.Size(65, 29);
-            this.cbxUsePoints.TabIndex = 110;
-            this.cbxUsePoints.Text = "0.00";
-            this.cbxUsePoints.UseVisualStyleBackColor = true;
-            this.cbxUsePoints.CheckedChanged += new System.EventHandler(this.cbxUsePoints_CheckedChanged);
+            this.lblRemainingPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemainingPoints.ForeColor = System.Drawing.Color.Black;
+            this.lblRemainingPoints.Location = new System.Drawing.Point(170, 205);
+            this.lblRemainingPoints.Name = "lblRemainingPoints";
+            this.lblRemainingPoints.Size = new System.Drawing.Size(428, 25);
+            this.lblRemainingPoints.TabIndex = 118;
+            this.lblRemainingPoints.Text = "0.00";
+            this.lblRemainingPoints.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // lblDeductGC
+            // label12
             // 
-            this.lblDeductGC.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeductGC.ForeColor = System.Drawing.Color.Black;
-            this.lblDeductGC.Location = new System.Drawing.Point(177, 158);
-            this.lblDeductGC.Name = "lblDeductGC";
-            this.lblDeductGC.Size = new System.Drawing.Size(422, 25);
-            this.lblDeductGC.TabIndex = 116;
-            this.lblDeductGC.Text = "0.00";
-            this.lblDeductGC.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // Label10
-            // 
-            this.Label10.AutoSize = true;
-            this.Label10.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label10.ForeColor = System.Drawing.Color.Black;
-            this.Label10.Location = new System.Drawing.Point(11, 158);
-            this.Label10.Name = "Label10";
-            this.Label10.Size = new System.Drawing.Size(165, 25);
-            this.Label10.TabIndex = 115;
-            this.Label10.Text = "Deduct by gift card";
-            // 
-            // lblDeductPoints
-            // 
-            this.lblDeductPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeductPoints.ForeColor = System.Drawing.Color.Black;
-            this.lblDeductPoints.Location = new System.Drawing.Point(171, 189);
-            this.lblDeductPoints.Name = "lblDeductPoints";
-            this.lblDeductPoints.Size = new System.Drawing.Size(428, 25);
-            this.lblDeductPoints.TabIndex = 114;
-            this.lblDeductPoints.Text = "0.00";
-            this.lblDeductPoints.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lblDeductPoints.TextChanged += new System.EventHandler(this.lblDeductPoints_TextChanged_1);
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblTotal.Location = new System.Drawing.Point(181, 128);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(418, 25);
-            this.lblTotal.TabIndex = 113;
-            this.lblTotal.Text = "0.00";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // Label7
-            // 
-            this.Label7.AutoSize = true;
-            this.Label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label7.ForeColor = System.Drawing.Color.Black;
-            this.Label7.Location = new System.Drawing.Point(11, 189);
-            this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(149, 25);
-            this.Label7.TabIndex = 112;
-            this.Label7.Text = "Deduct by points";
-            // 
-            // Label8
-            // 
-            this.Label8.AutoSize = true;
-            this.Label8.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label8.ForeColor = System.Drawing.Color.Black;
-            this.Label8.Location = new System.Drawing.Point(11, 128);
-            this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(49, 25);
-            this.Label8.TabIndex = 111;
-            this.Label8.Text = "Total";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(10, 205);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(148, 25);
+            this.label12.TabIndex = 117;
+            this.label12.Text = "Remaining Points";
             // 
             // Payment
             // 
@@ -481,5 +507,7 @@
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
+        internal System.Windows.Forms.Label lblRemainingPoints;
+        internal System.Windows.Forms.Label label12;
     }
 }

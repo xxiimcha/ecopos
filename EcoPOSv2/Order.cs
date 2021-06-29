@@ -265,12 +265,16 @@ namespace EcoPOSv2
                 RP.Payment(frmPayment);
                 frmPayment.frmOrder = this;
                 frmPayment.lblCustomerID.Text = customerID;
-                frmPayment.cbxUsePoints.Text = Math.Round(card_balance, 2).ToString();
+                frmPayment.cbxUsePoints.Text = card_balance.ToString("N2");
                 frmPayment.card_balance = card_balance;
-                frmPayment.lblTotal.Text = lblTotal.Text;
-                frmPayment.lblGrandTotal.Text = lblTotal.Text;
-                frmPayment.grand_total = Math.Round(decimal.Parse(lblTotal.Text), 2);
-                frmPayment.total = Math.Round(decimal.Parse(lblTotal.Text), 2);
+
+                decimal total = decimal.Parse(lblTotal.Text);
+                frmPayment.lblTotal.Text = total.ToString("N2");
+
+
+                frmPayment.lblGrandTotal.Text = total.ToString("N2");
+                frmPayment.grand_total = decimal.Parse(lblTotal.Text);
+                frmPayment.total = decimal.Parse(lblTotal.Text);
                 frmPayment.action = action;
 
 
