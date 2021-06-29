@@ -365,6 +365,7 @@ namespace EcoPOSv2
 
         private void txtAmount_TextChanged(object sender, EventArgs e)
         {
+            decimal deductpoints = decimal.Parse(lblDeductPoints.Text);
             if (txtAmount.Text == "")
             {
                 txtAmount.SelectAll();
@@ -382,7 +383,7 @@ namespace EcoPOSv2
                 {
                     decimal amount = decimal.Parse(txtAmount.Text);
 
-                    change = amount - grand_total;
+                    change = (amount + deductpoints) - grand_total;
                     lblChange.Text = change.ToString("N2");
                 }
                 catch (Exception) { }
@@ -427,6 +428,7 @@ namespace EcoPOSv2
                 lblRemainingPoints.Text = "0.00";
                 lblGrandTotal.Text = total.ToString("N2");
                 lblDeductPoints.Text = "0.00";
+                txtAmount.Text = "0";
             }
             //else
             //{
