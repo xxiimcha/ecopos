@@ -55,6 +55,7 @@
             this.btnChooseFile.TabIndex = 10;
             this.btnChooseFile.Text = "Choose file";
             this.btnChooseFile.UseVisualStyleBackColor = true;
+            this.btnChooseFile.Click += new System.EventHandler(this.btnChooseFile_Click);
             // 
             // txtDatabase
             // 

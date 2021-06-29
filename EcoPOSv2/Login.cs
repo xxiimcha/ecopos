@@ -9,15 +9,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
+using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Login : Form
+    public partial class Login : GlobalHotKeyForm
     {
         public Login()
         {
             InitializeComponent();
+            AddHotKeyRegisterer(prompt, HotKeyMods.None, ConsoleKey.F2);
         }
+        public static Login _Login;
+        public static Login Instance
+        {
+            get
+            {
+                if (_Login == null)
+                {
+                    _Login = new Login();
+                }
+                return _Login;
+            }
+        }
+        private void prompt(object sender, EventArgs e)
+        {
+            Prompt.Instance.Pop(1);
+        }
+
         //DECLARING VARIABLES
         SQLControl sql = new SQLControl();
 
@@ -277,6 +296,8 @@ namespace EcoPOSv2
 
         private void Login_Load(object sender, EventArgs e)
         {
+            _Login = this;
+
             CheckStoreSessionEnded();
 
             if (store_is_closed == false)

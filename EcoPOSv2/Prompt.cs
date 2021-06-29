@@ -22,6 +22,19 @@ namespace EcoPOSv2
         bool userfound = false;
         bool runOnlyOnce = false;
         int validation_type = 0;
+
+        public static Prompt _Prompt;
+        public static Prompt Instance
+        {
+            get
+            {
+                if (_Prompt == null)
+                {
+                    _Prompt = new Prompt();
+                }
+                return _Prompt;
+            }
+        }
         private void btnProceed_Click(object sender, EventArgs e)
         {
             string d_user = Helper.Encrypt(txtUser.Text);
@@ -82,8 +95,18 @@ namespace EcoPOSv2
 
         private void Prompt_Load(object sender, EventArgs e)
         {
+            _Prompt = this;
+
             string path = AppDomain.CurrentDomain.BaseDirectory;
             ds = Helper.LoadFromXMLfile(path+"\\SU.xml");
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnProceed.PerformClick();
+            }
         }
     }
 }

@@ -32,6 +32,9 @@ namespace EcoPOSv2
         private void btnShowMainForm_Click(object sender, EventArgs e)
         {
             Main.Instance.Show();
+
+            Prompt.Instance.Close();
+            Login.Instance.Close();
         }
     }
 }

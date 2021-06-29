@@ -25,12 +25,7 @@ namespace EcoPOSv2
 
         private void OpenFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            OpenFileDialog1.ShowDialog();
-
-            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtDatabase.Text = OpenFileDialog1.FileName;
-            }
+            
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -41,6 +36,16 @@ namespace EcoPOSv2
             tmrClose.Start();
 
             new Notification().PopUp("Store details saved. System will restart.", "Database", "information");
+        }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog1.ShowDialog();
+
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtDatabase.Text = OpenFileDialog1.FileName;
+            }
         }
     }
 }
