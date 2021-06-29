@@ -307,6 +307,15 @@ namespace EcoPOSv2
         //METHODS
         private void Main_Load(object sender, EventArgs e)
         {
+            if(Properties.Settings.Default.dbName == "EcoPOS")
+            {
+                lblTraningMode.Visible = false;
+            }
+            else
+            {
+                lblTraningMode.Visible = true;
+            }
+
             _main = this;
 
             btnOrder.PerformClick();

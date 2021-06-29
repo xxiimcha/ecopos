@@ -20,12 +20,22 @@ namespace EcoPOSv2
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            Main.Instance.dynamicDB = "EcoPOS_Training";
+            Properties.Settings.Default.dbName = "EcoPOS_Training";
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("Traning mode started.. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Restart();
+
+            //Main.Instance.dynamicDB = "EcoPOS_Training";
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            Main.Instance.dynamicDB = "EcoPOS";
+            Properties.Settings.Default.dbName = "EcoPOS";
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("Traning mode has been stopped. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Restart();
         }
     }
 }

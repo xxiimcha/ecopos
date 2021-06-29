@@ -48,6 +48,7 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
+            this.lblTraningMode = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -57,6 +58,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.lblTraningMode);
             this.panel1.Controls.Add(this.lblByPassUser);
             this.panel1.Controls.Add(this.lblUser);
             this.panel1.Controls.Add(this.lblDateTime);
@@ -315,6 +317,17 @@
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
             // 
+            // lblTraningMode
+            // 
+            this.lblTraningMode.AutoSize = true;
+            this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTraningMode.ForeColor = System.Drawing.Color.White;
+            this.lblTraningMode.Location = new System.Drawing.Point(1273, 2);
+            this.lblTraningMode.Name = "lblTraningMode";
+            this.lblTraningMode.Size = new System.Drawing.Size(155, 25);
+            this.lblTraningMode.TabIndex = 12;
+            this.lblTraningMode.Text = "TRAINING MODE";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,5 +373,6 @@
         public System.Windows.Forms.PictureBox pbLogo;
         public System.Windows.Forms.Label lblByPassUser;
         public Guna.UI2.WinForms.Guna2Button btnOrder;
+        private System.Windows.Forms.Label lblTraningMode;
     }
 }
