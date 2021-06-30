@@ -96,6 +96,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.Label1);
             this.Name = "UserBypass";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "USER BYPASS";
             this.ResumeLayout(false);
             this.PerformLayout();
