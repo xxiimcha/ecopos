@@ -29,6 +29,7 @@ namespace EcoPOSv2
                 return _order;
             }
         }
+
         [DllImport("user32.dll", SetLastError = true)]
         static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
         public const byte KEYEVENTF_KEYUP = 0x02;
@@ -572,7 +573,8 @@ namespace EcoPOSv2
 
         private void btnVoid_Click(object sender, EventArgs e)
         {
-            
+            VoidTransaction frmVT = new VoidTransaction();
+            frmVT.ShowDialog();
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
@@ -602,7 +604,7 @@ namespace EcoPOSv2
             //tbBarcode.Clear();
 
             //TEMPORARY
-            btnVoid.Enabled = false;
+          //  btnVoid.Enabled = false;
         }
 
         private void btnVoidItem_Click(object sender, EventArgs e)

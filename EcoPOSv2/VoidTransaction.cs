@@ -27,6 +27,8 @@ namespace EcoPOSv2
 
         private void VoidTransaction_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             AssignValidation(ref txtORNo, ValidationType.Int_Only);
         }
         //METHODS
@@ -165,13 +167,13 @@ namespace EcoPOSv2
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             // check if within shift
-            var current_shift_datetime = SQL.ReturnResult("SELECT MAX(start) FROM shift WHERE ended IS NOT NULL");
+            DateTime current_shift_datetime = DateTime.Parse(SQL.ReturnResult("SELECT MAX(start) FROM shift WHERE ended IS NOT NULL"));
             if (SQL.HasException(true))
                 return;
 
             SQL.AddParam("@order_ref_temp", txtORNo.Text);
             SQL.AddParam("@last_end_shift", current_shift_datetime);
-            int result = System.Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE order_ref_temp = @order_ref_temp AND action = 1 AND date_time > @last_end_shift"));
+            int result = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE order_ref_temp = @order_ref_temp AND action = 1 AND date_time > @last_end_shift"));
             if (SQL.HasException(true))
                 return;
 
