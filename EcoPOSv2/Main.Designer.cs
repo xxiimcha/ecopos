@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTraningMode = new System.Windows.Forms.Label();
             this.lblByPassUser = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
-            this.lblTraningMode = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,6 +67,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1440, 34);
             this.panel1.TabIndex = 0;
+            // 
+            // lblTraningMode
+            // 
+            this.lblTraningMode.AutoSize = true;
+            this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTraningMode.ForeColor = System.Drawing.Color.White;
+            this.lblTraningMode.Location = new System.Drawing.Point(1273, 2);
+            this.lblTraningMode.Name = "lblTraningMode";
+            this.lblTraningMode.Size = new System.Drawing.Size(155, 25);
+            this.lblTraningMode.TabIndex = 12;
+            this.lblTraningMode.Text = "TRAINING MODE";
             // 
             // lblByPassUser
             // 
@@ -316,17 +327,6 @@
             // 
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
-            // 
-            // lblTraningMode
-            // 
-            this.lblTraningMode.AutoSize = true;
-            this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTraningMode.ForeColor = System.Drawing.Color.White;
-            this.lblTraningMode.Location = new System.Drawing.Point(1273, 2);
-            this.lblTraningMode.Name = "lblTraningMode";
-            this.lblTraningMode.Size = new System.Drawing.Size(155, 25);
-            this.lblTraningMode.TabIndex = 12;
-            this.lblTraningMode.Text = "TRAINING MODE";
             // 
             // Main
             // 
