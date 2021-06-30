@@ -403,12 +403,13 @@ namespace EcoPOSv2
         }
         private void btnCalculator_Click(object sender, EventArgs e)
         {
-            if(Order.Instance.CheckOpened("Calculator") == true)
-            {
-                return;
-            }
+            Process.Start("calc.exe");
+            //if(Order.Instance.CheckOpened("Calculator") == true)
+            //{
+            //    return;
+            //}
 
-            new Calculator().Show();
+            //new Calculator().Show();
         }
     }
 }
