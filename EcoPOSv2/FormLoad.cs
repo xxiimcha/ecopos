@@ -132,7 +132,7 @@ public class FormLoad
 
     public void CusDisplay(string text1, string text2 = "")
     {
-        SerialPort sp = new SerialPort("COM"+Main.Instance.pd_customer_display_port, 9600, Parity.None, 8, StopBits.One);
+        SerialPort sp = new SerialPort(Main.Instance.pd_customer_display_port, 9600, Parity.None, 8, StopBits.One);
         sp.Open();
         // to clear the display
         sp.Write(Convert.ToString((char)12));
