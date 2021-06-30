@@ -89,7 +89,6 @@ namespace EcoPOSv2
                         Main.Instance.bp_pay_payment_method = Convert.ToBoolean(r["pay_payment_method"].ToString());
                         Main.Instance.bp_pay_gift_certificate = Convert.ToBoolean(r["pay_gift_certificate"].ToString());
                     }
-
                     RP.Home(Main.Instance);
                     if (fromOrder)
                         RP.Order(frmOrder);
