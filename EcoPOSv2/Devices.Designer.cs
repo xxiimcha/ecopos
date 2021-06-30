@@ -42,12 +42,14 @@ namespace EcoPOSv2
             this.Label8 = new System.Windows.Forms.Label();
             this.cbxEnable_CD = new System.Windows.Forms.CheckBox();
             this.cmbReceiptPrinter = new System.Windows.Forms.ComboBox();
+            this.btnTestDisplay = new Guna.UI2.WinForms.Guna2TileButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnTestDisplay);
             this.panel1.Controls.Add(this.btnSaveSettings);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.Label4);
@@ -234,6 +236,26 @@ namespace EcoPOSv2
             this.cmbReceiptPrinter.Size = new System.Drawing.Size(372, 31);
             this.cmbReceiptPrinter.TabIndex = 71;
             // 
+            // btnTestDisplay
+            // 
+            this.btnTestDisplay.BackColor = System.Drawing.Color.Transparent;
+            this.btnTestDisplay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnTestDisplay.BorderRadius = 5;
+            this.btnTestDisplay.BorderThickness = 1;
+            this.btnTestDisplay.CheckedState.Parent = this.btnTestDisplay;
+            this.btnTestDisplay.CustomImages.Parent = this.btnTestDisplay;
+            this.btnTestDisplay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnTestDisplay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTestDisplay.ForeColor = System.Drawing.Color.White;
+            this.btnTestDisplay.HoverState.Parent = this.btnTestDisplay;
+            this.btnTestDisplay.Location = new System.Drawing.Point(3, 410);
+            this.btnTestDisplay.Name = "btnTestDisplay";
+            this.btnTestDisplay.ShadowDecoration.Parent = this.btnTestDisplay;
+            this.btnTestDisplay.Size = new System.Drawing.Size(209, 45);
+            this.btnTestDisplay.TabIndex = 80;
+            this.btnTestDisplay.Text = "TEST DISPLAY";
+            this.btnTestDisplay.Click += new System.EventHandler(this.BtnTestDisplay_Click);
+            // 
             // Devices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,5 +289,6 @@ namespace EcoPOSv2
         internal System.Windows.Forms.Label Label8;
         internal System.Windows.Forms.CheckBox cbxEnable_CD;
         internal System.Windows.Forms.ComboBox cmbReceiptPrinter;
+        private Guna.UI2.WinForms.Guna2TileButton btnTestDisplay;
     }
 }

@@ -57,6 +57,7 @@ namespace EcoPOSv2
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            string query = "";
             string cat_query = "c.categoryID NOT IN (9999999999)";
             string warehouse_query = "w.warehouseID NOT IN (9999999999)";
             string showzero_query = "AND i.stock_qty NOT IN (0)";
@@ -69,7 +70,14 @@ namespace EcoPOSv2
 
             if (cbxShowZero.Checked)
                 showzero_query = "";
-
+            textBox1.Text  = (@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
+                       INNER JOIN warehouse as w ON
+                       p.warehouseID = w.warehouseID
+                       INNER JOIN product_category as c ON
+                       p.categoryID = c.categoryID 
+                       INNER JOIN inventory as i ON 
+                       p.productID = i.productID
+                       WHERE " + cat_query + " AND " + warehouse_query + showzero_query + " Order BY p.description ASC");
             SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID

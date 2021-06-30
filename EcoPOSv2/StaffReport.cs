@@ -29,6 +29,9 @@ namespace EcoPOSv2
 
         private void StaffReport_Load(object sender, EventArgs e)
         {
+            dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+
             OL.ComboValues(cmbStaff, "userID", "user_name", "users");
 
             if (cmbStaff.Items.Count > 0)

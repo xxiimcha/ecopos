@@ -162,7 +162,7 @@ namespace EcoPOSv2
 
                 case "Divide":
                     {
-                        valHolder1 = valHolder1 / (double)valHolder2;
+                        valHolder1 = valHolder1 / valHolder2;
                         break;
                     }
 
@@ -273,7 +273,7 @@ namespace EcoPOSv2
         {
             if (calcFunc == string.Empty)
             {
-                valHolder1 = System.Convert.ToDouble(txtInput.Text);
+                valHolder1 = Convert.ToDouble(txtInput.Text);
                 txtInput.Text = string.Empty;
             }
             else
@@ -285,12 +285,16 @@ namespace EcoPOSv2
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
+            
             if (txtInput.Text.Length != 0 && valHolder1 != 0)
             {
+                MessageBox.Show("equals");
                 CalculateTotals();
                 calcFunc = "";
                 hasDecimal = false;
             }
+            else
+                MessageBox.Show("wala");
         }
 
         private void btnDecimal_Click(object sender, EventArgs e)

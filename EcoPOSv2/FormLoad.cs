@@ -14,6 +14,8 @@ using System.Management;
 using System.Windows.Forms;
 using System.Drawing;
 using EcoPOSControl;
+using System.IO.Ports;
+using EcoPOSv2;
 
 public class FormLoad
 {
@@ -126,5 +128,24 @@ public class FormLoad
         }
 
         return sum;
+    }
+
+    public void CusDisplay(string text1, string text2 = "")
+    {
+        SerialPort sp = new SerialPort("COM"+Main.Instance.pd_customer_display_port, 9600, Parity.None, 8, StopBits.One);
+        sp.Open();
+        // to clear the display
+        sp.Write(Convert.ToString((char)12));
+
+        // first line goes here
+        sp.WriteLine(text1);
+
+        // 2nd line goes here
+
+        sp.WriteLine((char)13 + text2);
+
+        sp.Close();
+        sp.Dispose();
+        sp = null;
     }
 }

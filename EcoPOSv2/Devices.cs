@@ -20,6 +20,7 @@ namespace EcoPOSv2
         }
 
         SQLControl SQL = new SQLControl();
+   
 
         //METHODS
         private void InstalledPrinters()
@@ -109,6 +110,20 @@ namespace EcoPOSv2
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void BtnTestDisplay_Click(object sender, EventArgs e)
+        {
+            FormLoad FL = new FormLoad();
+            try
+            {
+                FL.CusDisplay("test", "test2");
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
     }
 }

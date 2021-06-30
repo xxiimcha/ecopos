@@ -480,6 +480,7 @@
             this.Name = "Terminal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Terminal";
+            this.Load += new System.EventHandler(this.Terminal_Load);
             this.TableLayoutPanel1.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
             this.TableLayoutPanel2.ResumeLayout(false);
