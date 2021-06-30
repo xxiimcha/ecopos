@@ -55,6 +55,8 @@ namespace EcoPOSv2
             AddHotKeyRegisterer(Openquantity, HotKeyMods.Control, ConsoleKey.Q);
             AddHotKeyRegisterer(OpenVoidItem, HotKeyMods.Control, ConsoleKey.V);
             AddHotKeyRegisterer(ClickCancelTransaction, HotKeyMods.None, ConsoleKey.F4);
+            AddHotKeyRegisterer(AccessUserByPass, HotKeyMods.Control, ConsoleKey.G);
+            AddHotKeyRegisterer(CancelUserByPass, HotKeyMods.Control, ConsoleKey.F);
         }
 
         SQLControl SQL = new SQLControl();
@@ -659,6 +661,29 @@ namespace EcoPOSv2
         private void ClickCustomer(object sender, EventArgs e)
         {
             Order.Instance.btnCustomer.PerformClick();
+        }
+        private void AccessUserByPass(object sender, EventArgs e)
+        {
+            UserBypass frmUserBypass = new UserBypass();
+            frmUserBypass.frmOrder = this;
+            frmUserBypass.fromOrder = true;
+            frmUserBypass.ShowDialog();
+        }
+        private void CancelUserByPass(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Main.Instance.bypass_list.Count; i++)
+            {
+                Main.Instance.bypass_list[i] = false;
+            }
+
+             Main.Instance.by_pass_user = false;
+             Main.Instance.by_pass_userID = 0;
+             Main.Instance.by_pass_user_name = "";
+             Main.Instance.lblByPassUser.Text = "";
+           
+             RP.Order(this);
+             RP.Home(Main.Instance);
+            Main.Instance.btnOrder.PerformClick();
         }
         //GLOBAL HOTKEYS
 
