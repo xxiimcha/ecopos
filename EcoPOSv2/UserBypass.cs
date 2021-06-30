@@ -143,6 +143,8 @@ namespace EcoPOSv2
                     RP.Home(Main.Instance);
                     Close();
                 }
+                Main.Instance.btnOrder.PerformClick();
+
             }
             else
             {

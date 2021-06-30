@@ -111,7 +111,7 @@ namespace EcoPOSv2
 
                 LoadPermissions(roleID);
 
-                RP.Order(Main.Instance.frmOrder);
+                RP.Order(Order.Instance);
                 RP.Home(Main.Instance);
 
                 Main.Instance.Show();
