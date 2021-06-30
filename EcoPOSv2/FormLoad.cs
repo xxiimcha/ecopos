@@ -16,6 +16,7 @@ using System.Drawing;
 using EcoPOSControl;
 using System.IO.Ports;
 using EcoPOSv2;
+using System.Threading;
 
 public class FormLoad
 {
@@ -132,20 +133,58 @@ public class FormLoad
 
     public void CusDisplay(string text1, string text2 = "")
     {
-        SerialPort sp = new SerialPort(Main.Instance.pd_customer_display_port, 9600, Parity.None, 8, StopBits.One);
-        sp.Open();
-        // to clear the display
-        sp.Write(Convert.ToString((char)12));
+        try
+        {
+            //SerialPort sp = new SerialPort(Main.Instance.pd_customer_display_port, 9600, Parity.None, 8, StopBits.One);
+            //sp.Open();
+            //// to clear the display
+            //sp.Write(Convert.ToString((char)12));
 
-        // first line goes here
-        sp.WriteLine(text1);
+            //// first line goes here
+            //sp.WriteLine(text1);
 
-        // 2nd line goes here
+            //// 2nd line goes here
 
-        sp.WriteLine((char)13 + text2);
+            //sp.WriteLine((char)13 + text2);
 
-        sp.Close();
-        sp.Dispose();
-        sp = null;
+            //sp.Close();
+            //sp.Dispose();
+            //sp = null;
+
+
+                SerialPort sp = new SerialPort(Main.Instance.pd_customer_display_port, 9600, Parity.None, 8, StopBits.One);
+                //in my case COM4  is the RJ11 connector port
+                //POS to Line display connector is RJ11 (Like modem connector)
+                sp.Open();
+
+                //Clear the Display
+                sp.Write(new byte[] { 0x0C }, 0, 1);
+                sp.Write(text1);
+
+                //Goto Bottem Line
+                sp.Write(new byte[] { 0x0A, 0x0D }, 0, 2);
+                sp.Write(text2);
+
+                Thread.Sleep(3000);
+            sp.Close();
+            sp.Dispose();
+
+                //Here it will sleep for 3 sec and then excecute again
+
+                ////Clear the Display
+                //sp.Write(new byte[] { 0x0C }, 0, 1);
+                //sp.Write("3rd line=");
+
+                ////Goto Bottem Line
+                //sp.Write(new byte[] { 0x0A, 0x0D }, 0, 2);
+                //sp.Write("4th line=");
+                //sp.Close();
+
+        }
+        catch (Exception)
+        {
+
+        }
+       
     }
 }

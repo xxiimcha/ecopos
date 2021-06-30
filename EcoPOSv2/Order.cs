@@ -331,7 +331,6 @@ namespace EcoPOSv2
                     //new Notification().PopUp("")
                 }
 
-
                 SQL.AddParam("@barcode", tbBarcode.Text);
                 int check_product = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode"));
                 if (SQL.HasException(true))
@@ -377,7 +376,26 @@ namespace EcoPOSv2
                     GetTotal();
                     tbBarcode.Clear();
                     tbBarcode.Focus();
+
+
+                    string prod_description = "";
+                    string prod_price = "";
+                    SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE itemID = (SELECT MAX(itemID) FROM order_cart)");
+                    if (SQL.HasException(true))
+                        return;
+
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        prod_description = r["name"].ToString();
+                        prod_price = r["static_price_inclusive"].ToString();
+
+                    }
+
+                    FormLoad Fl = new FormLoad();
+                    Fl.CusDisplay(prod_description, prod_price);
+
                 }
+
                 else
                 {
                     new Notification().PopUp("No item found!", "Barcode not registered.", "error");
