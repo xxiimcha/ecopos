@@ -243,7 +243,7 @@
             this.lblVoidBeginningInvoice.ForeColor = System.Drawing.Color.Black;
             this.lblVoidBeginningInvoice.Location = new System.Drawing.Point(302, 211);
             this.lblVoidBeginningInvoice.Name = "lblVoidBeginningInvoice";
-            this.lblVoidBeginningInvoice.Size = new System.Drawing.Size(252, 25);
+            this.lblVoidBeginningInvoice.Size = new System.Drawing.Size(216, 25);
             this.lblVoidBeginningInvoice.TabIndex = 46;
             this.lblVoidBeginningInvoice.Text = "0";
             this.lblVoidBeginningInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -589,7 +589,7 @@
             this.lblEndingInvoice.ForeColor = System.Drawing.Color.Black;
             this.lblEndingInvoice.Location = new System.Drawing.Point(25, 283);
             this.lblEndingInvoice.Name = "lblEndingInvoice";
-            this.lblEndingInvoice.Size = new System.Drawing.Size(216, 25);
+            this.lblEndingInvoice.Size = new System.Drawing.Size(252, 25);
             this.lblEndingInvoice.TabIndex = 9;
             this.lblEndingInvoice.Text = "0";
             this.lblEndingInvoice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
