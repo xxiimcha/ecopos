@@ -654,7 +654,6 @@ namespace EcoPOSv2
             tbBarcode.Clear();
             this.ActiveControl = tbBarcode;
 
-            TextBoxValidation.AssignValidation(ref tbBarcode, TextBoxValidation.ValidationType.Barcode2);
 
             //tbBarcode.Focus();
             //tbBarcode.Clear();
