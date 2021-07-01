@@ -49,7 +49,6 @@ namespace EcoPOSv2
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnTestDisplay);
             this.panel1.Controls.Add(this.btnSaveSettings);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.Label4);
@@ -169,19 +168,6 @@ namespace EcoPOSv2
             this.cmbPort.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPort.ForeColor = System.Drawing.Color.Black;
             this.cmbPort.FormattingEnabled = true;
-            this.cmbPort.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
             this.cmbPort.Location = new System.Drawing.Point(202, 288);
             this.cmbPort.MaxDropDownItems = 10;
             this.cmbPort.Name = "cmbPort";
@@ -241,6 +227,7 @@ namespace EcoPOSv2
             this.cbxEnable_CD.TabIndex = 70;
             this.cbxEnable_CD.Text = "Enable";
             this.cbxEnable_CD.UseVisualStyleBackColor = true;
+            this.cbxEnable_CD.CheckedChanged += new System.EventHandler(this.CbxEnable_CD_CheckedChanged);
             // 
             // cmbReceiptPrinter
             // 
@@ -290,6 +277,5 @@ namespace EcoPOSv2
         internal System.Windows.Forms.Label Label8;
         internal System.Windows.Forms.CheckBox cbxEnable_CD;
         internal System.Windows.Forms.ComboBox cmbReceiptPrinter;
-        private Guna.UI2.WinForms.Guna2TileButton btnTestDisplay;
     }
 }

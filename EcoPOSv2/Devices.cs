@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace EcoPOSv2
 {
@@ -124,6 +125,39 @@ namespace EcoPOSv2
 
             }
            
+        }
+
+        private void CbxEnable_CD_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbPort.Items.Clear();
+
+            if(cbxEnable_CD.Checked == true)
+            {
+                cmbPort.Enabled = true;
+
+                // Get a list of serial port names.
+                string[] ports = SerialPort.GetPortNames();
+
+                // Display each port name to the console.
+                foreach (string port in ports)
+                {
+                    cmbPort.Items.Add(port);
+                }
+
+                try
+                {
+                    FormLoad Fl = new FormLoad();
+                    Fl.CusDisplay("Customer Display", "Sample");
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                cmbPort.SelectedIndex = -1;
+                cmbPort.Enabled = false;
+            }
         }
     }
 }
