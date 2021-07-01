@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Store));
             this.Panel1 = new System.Windows.Forms.Panel();
             this.btnPrintersDevices = new FontAwesome.Sharp.IconButton();
             this.btnEditReceiptFooter = new FontAwesome.Sharp.IconButton();
@@ -124,6 +125,7 @@
             this.ClientSize = new System.Drawing.Size(1164, 866);
             this.Controls.Add(this.Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Store";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store";

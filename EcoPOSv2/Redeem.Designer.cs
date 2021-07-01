@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Redeem));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnCancel = new FontAwesome.Sharp.IconButton();
             this.btnProceed = new FontAwesome.Sharp.IconButton();
@@ -131,6 +132,7 @@
             this.ClientSize = new System.Drawing.Size(538, 151);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Redeem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Redeem";

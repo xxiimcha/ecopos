@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.Panel2 = new System.Windows.Forms.Panel();
@@ -153,6 +154,7 @@
             this.ClientSize = new System.Drawing.Size(1164, 866);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SecureXReading));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnProceed = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnCancel = new Guna.UI2.WinForms.Guna2TileButton();
@@ -118,6 +119,7 @@
             this.ClientSize = new System.Drawing.Size(396, 184);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SecureXReading";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SecureXReading";

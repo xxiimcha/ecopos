@@ -82,9 +82,10 @@
             // lblByPassUser
             // 
             this.lblByPassUser.AutoSize = true;
+            this.lblByPassUser.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
-            this.lblByPassUser.Location = new System.Drawing.Point(713, 3);
+            this.lblByPassUser.Location = new System.Drawing.Point(0, 0);
             this.lblByPassUser.Name = "lblByPassUser";
             this.lblByPassUser.Size = new System.Drawing.Size(0, 25);
             this.lblByPassUser.TabIndex = 11;
@@ -96,7 +97,7 @@
             this.lblUser.ForeColor = System.Drawing.Color.White;
             this.lblUser.Location = new System.Drawing.Point(413, 0);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(275, 32);
+            this.lblUser.Size = new System.Drawing.Size(359, 32);
             this.lblUser.TabIndex = 2;
             this.lblUser.Text = "010.";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,7 +106,7 @@
             // 
             this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(4, 2);
+            this.lblDateTime.Location = new System.Drawing.Point(11, 0);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(359, 32);
             this.lblDateTime.TabIndex = 1;
@@ -337,6 +338,7 @@
             this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";

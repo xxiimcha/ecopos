@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartingCash));
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.tbCash = new System.Windows.Forms.TextBox();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2TileButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbCash = new System.Windows.Forms.TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +67,17 @@
             this.guna2Panel1.Size = new System.Drawing.Size(296, 196);
             this.guna2Panel1.TabIndex = 8;
             // 
+            // tbCash
+            // 
+            this.tbCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCash.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCash.Location = new System.Drawing.Point(12, 59);
+            this.tbCash.Multiline = true;
+            this.tbCash.Name = "tbCash";
+            this.tbCash.Size = new System.Drawing.Size(271, 53);
+            this.tbCash.TabIndex = 10;
+            this.tbCash.TextChanged += new System.EventHandler(this.tbCash_TextChanged);
+            // 
             // btnConfirm
             // 
             this.btnConfirm.CheckedState.Parent = this.btnConfirm;
@@ -92,17 +104,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "STARTING CASH";
             // 
-            // tbCash
-            // 
-            this.tbCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbCash.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCash.Location = new System.Drawing.Point(12, 59);
-            this.tbCash.Multiline = true;
-            this.tbCash.Name = "tbCash";
-            this.tbCash.Size = new System.Drawing.Size(271, 53);
-            this.tbCash.TabIndex = 10;
-            this.tbCash.TextChanged += new System.EventHandler(this.tbCash_TextChanged);
-            // 
             // StartingCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +113,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.gunaControlBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StartingCash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StartingCash";

@@ -320,9 +320,9 @@ namespace EcoPOSv2
 
             btnOrder.PerformClick();
 
-            //Order frmOrder = new Order();
-            OL.changeForm(Order.Instance, currentChildForm, pnlChild);
-            Order.Instance.tbBarcode.Focus();
+            Order frmOrder = new Order();
+            OL.changeForm(frmOrder, currentChildForm, pnlChild);
+            frmOrder.tbBarcode.Focus();
 
             Order.Instance.GetTotal();
 

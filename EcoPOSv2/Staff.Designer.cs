@@ -591,6 +591,7 @@
             this.Controls.Add(this.TableLayoutPanel5);
             this.Controls.Add(this.TableLayoutPanel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff";

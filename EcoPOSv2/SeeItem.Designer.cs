@@ -31,15 +31,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeeItem));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.btnCLose = new Guna.UI.WinForms.GunaControlBox();
             this.rbWholesale = new System.Windows.Forms.RadioButton();
             this.rbRetail = new System.Windows.Forms.RadioButton();
-            this.Label2 = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.Label2 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +63,17 @@
             this.guna2Panel1.Size = new System.Drawing.Size(826, 676);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Click += new System.EventHandler(this.guna2Panel1_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(627, 43);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(189, 33);
+            this.btnClear.TabIndex = 58;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // dgvProducts
             // 
@@ -151,17 +163,6 @@
             this.rbRetail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rbRetail.UseVisualStyleBackColor = true;
             // 
-            // Label2
-            // 
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.ForeColor = System.Drawing.Color.Black;
-            this.Label2.Location = new System.Drawing.Point(4, 79);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(509, 37);
-            this.Label2.TabIndex = 53;
-            this.Label2.Text = "Price Mode:";
-            this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // txtBarcode
             // 
             this.txtBarcode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -186,16 +187,16 @@
             this.Label3.TabIndex = 51;
             this.Label3.Text = "Barcode # Or Name";
             // 
-            // btnClear
+            // Label2
             // 
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(627, 43);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(189, 33);
-            this.btnClear.TabIndex = 58;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.ForeColor = System.Drawing.Color.Black;
+            this.Label2.Location = new System.Drawing.Point(4, 79);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(509, 37);
+            this.Label2.TabIndex = 53;
+            this.Label2.Text = "Price Mode:";
+            this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SeeItem
             // 
@@ -205,6 +206,7 @@
             this.ClientSize = new System.Drawing.Size(830, 680);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeeItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SeeItem";

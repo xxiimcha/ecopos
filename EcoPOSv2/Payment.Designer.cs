@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment));
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
             this.lblGrandTotal = new System.Windows.Forms.Label();
@@ -42,6 +43,8 @@
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblRemainingPoints = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.lblDeductGC = new System.Windows.Forms.Label();
             this.Label10 = new System.Windows.Forms.Label();
             this.lblDeductPoints = new System.Windows.Forms.Label();
@@ -55,8 +58,6 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.lblRemainingPoints = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.TableLayoutPanel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -292,6 +293,28 @@
             this.guna2Panel1.Size = new System.Drawing.Size(613, 726);
             this.guna2Panel1.TabIndex = 0;
             // 
+            // lblRemainingPoints
+            // 
+            this.lblRemainingPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRemainingPoints.ForeColor = System.Drawing.Color.Black;
+            this.lblRemainingPoints.Location = new System.Drawing.Point(170, 205);
+            this.lblRemainingPoints.Name = "lblRemainingPoints";
+            this.lblRemainingPoints.Size = new System.Drawing.Size(428, 25);
+            this.lblRemainingPoints.TabIndex = 118;
+            this.lblRemainingPoints.Text = "0.00";
+            this.lblRemainingPoints.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(10, 205);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(148, 25);
+            this.label12.TabIndex = 117;
+            this.label12.Text = "Remaining Points";
+            // 
             // lblDeductGC
             // 
             this.lblDeductGC.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -436,28 +459,6 @@
             this.Label1.TabIndex = 104;
             this.Label1.Text = "Method";
             // 
-            // lblRemainingPoints
-            // 
-            this.lblRemainingPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRemainingPoints.ForeColor = System.Drawing.Color.Black;
-            this.lblRemainingPoints.Location = new System.Drawing.Point(170, 205);
-            this.lblRemainingPoints.Name = "lblRemainingPoints";
-            this.lblRemainingPoints.Size = new System.Drawing.Size(428, 25);
-            this.lblRemainingPoints.TabIndex = 118;
-            this.lblRemainingPoints.Text = "0.00";
-            this.lblRemainingPoints.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(10, 205);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(148, 25);
-            this.label12.TabIndex = 117;
-            this.label12.Text = "Remaining Points";
-            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,6 +467,7 @@
             this.ClientSize = new System.Drawing.Size(619, 730);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Payment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";

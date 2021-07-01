@@ -30,6 +30,7 @@ namespace EcoPOSv2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Notification));
             this.lblText = new System.Windows.Forms.Label();
             this.tmr_open = new System.Windows.Forms.Timer(this.components);
             this.tbllayout = new System.Windows.Forms.TableLayoutPanel();
@@ -40,7 +41,7 @@ namespace EcoPOSv2
             // lblText
             // 
             this.lblText.AutoSize = true;
-            this.lblText.BackColor = System.Drawing.Color.White;
+            this.lblText.BackColor = System.Drawing.Color.Black;
             this.lblText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblText.Font = new System.Drawing.Font("Segoe UI", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblText.ForeColor = System.Drawing.Color.White;
@@ -75,7 +76,7 @@ namespace EcoPOSv2
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.White;
+            this.lblTitle.BackColor = System.Drawing.Color.Black;
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
@@ -88,10 +89,12 @@ namespace EcoPOSv2
             // Notification
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(261, 95);
             this.Controls.Add(this.tbllayout);
             this.Font = new System.Drawing.Font("Segoe UI", 11.5F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Notification";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Notification";

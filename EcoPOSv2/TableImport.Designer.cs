@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableImport));
             this.Label2 = new System.Windows.Forms.Label();
             this.cmbSheet = new System.Windows.Forms.ComboBox();
             this.btnImport = new System.Windows.Forms.Button();
@@ -140,6 +141,7 @@
             this.Controls.Add(this.txtFile);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.DataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TableImport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableImport";

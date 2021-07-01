@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReplaceCard));
             this.Label1 = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.txtCardNo = new System.Windows.Forms.TextBox();
@@ -70,6 +71,7 @@
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtCardNo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReplaceCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReplaceCard";

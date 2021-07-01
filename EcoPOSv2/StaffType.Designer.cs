@@ -66,11 +66,11 @@
             this.cbxMore_CloseStore = new System.Windows.Forms.CheckBox();
             this.cbxMore_Database = new System.Windows.Forms.CheckBox();
             this.cbxMore_Settings = new System.Windows.Forms.CheckBox();
+            this.cbxMore_CustomerMembership = new System.Windows.Forms.CheckBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.txtStaffType = new System.Windows.Forms.TextBox();
             this.Label6 = new System.Windows.Forms.Label();
-            this.cbxMore_CustomerMembership = new System.Windows.Forms.CheckBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
             this.SplitContainer1.Panel1.SuspendLayout();
@@ -587,6 +587,18 @@
             this.cbxMore_Settings.Text = "Settings";
             this.cbxMore_Settings.UseVisualStyleBackColor = true;
             // 
+            // cbxMore_CustomerMembership
+            // 
+            this.cbxMore_CustomerMembership.AutoSize = true;
+            this.cbxMore_CustomerMembership.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxMore_CustomerMembership.ForeColor = System.Drawing.Color.Black;
+            this.cbxMore_CustomerMembership.Location = new System.Drawing.Point(319, 33);
+            this.cbxMore_CustomerMembership.Name = "cbxMore_CustomerMembership";
+            this.cbxMore_CustomerMembership.Size = new System.Drawing.Size(178, 24);
+            this.cbxMore_CustomerMembership.TabIndex = 68;
+            this.cbxMore_CustomerMembership.Text = "Customer Membership";
+            this.cbxMore_CustomerMembership.UseVisualStyleBackColor = true;
+            // 
             // Label1
             // 
             this.Label1.AutoSize = true;
@@ -642,18 +654,6 @@
             this.Label6.TabIndex = 52;
             this.Label6.Text = "Staff Type";
             // 
-            // cbxMore_CustomerMembership
-            // 
-            this.cbxMore_CustomerMembership.AutoSize = true;
-            this.cbxMore_CustomerMembership.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxMore_CustomerMembership.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_CustomerMembership.Location = new System.Drawing.Point(319, 33);
-            this.cbxMore_CustomerMembership.Name = "cbxMore_CustomerMembership";
-            this.cbxMore_CustomerMembership.Size = new System.Drawing.Size(178, 24);
-            this.cbxMore_CustomerMembership.TabIndex = 68;
-            this.cbxMore_CustomerMembership.Text = "Customer Membership";
-            this.cbxMore_CustomerMembership.UseVisualStyleBackColor = true;
-            // 
             // StaffType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -662,6 +662,7 @@
             this.ClientSize = new System.Drawing.Size(950, 579);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StaffType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffType";

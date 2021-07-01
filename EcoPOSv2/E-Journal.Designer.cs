@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(E_Journal));
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnVoid = new FontAwesome.Sharp.IconButton();
@@ -275,6 +276,7 @@
             this.ClientSize = new System.Drawing.Size(1164, 866);
             this.Controls.Add(this.TableLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "E_Journal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E_Journal";
