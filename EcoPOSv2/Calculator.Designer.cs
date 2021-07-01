@@ -52,6 +52,7 @@ namespace EcoPOSv2
             this.btnClear = new System.Windows.Forms.Button();
             this.btnCE = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.lblDisplay = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.TableLayoutPanel2.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
@@ -61,23 +62,25 @@ namespace EcoPOSv2
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtInput);
+            this.panel1.Controls.Add(this.lblDisplay);
             this.panel1.Controls.Add(this.TableLayoutPanel2);
             this.panel1.Controls.Add(this.TableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Location = new System.Drawing.Point(2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(370, 434);
+            this.panel1.Size = new System.Drawing.Size(370, 415);
             this.panel1.TabIndex = 0;
             // 
             // txtInput
             // 
             this.txtInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 34F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInput.ForeColor = System.Drawing.Color.Black;
-            this.txtInput.Location = new System.Drawing.Point(9, 13);
+            this.txtInput.Location = new System.Drawing.Point(9, 3);
             this.txtInput.MaxLength = 12;
             this.txtInput.Multiline = true;
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(350, 56);
+            this.txtInput.Size = new System.Drawing.Size(350, 60);
             this.txtInput.TabIndex = 5;
+            this.txtInput.Text = "0";
             this.txtInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // TableLayoutPanel2
@@ -104,7 +107,7 @@ namespace EcoPOSv2
             this.TableLayoutPanel2.Controls.Add(this.btn8, 1, 0);
             this.TableLayoutPanel2.Controls.Add(this.btn7, 0, 0);
             this.TableLayoutPanel2.ForeColor = System.Drawing.Color.Black;
-            this.TableLayoutPanel2.Location = new System.Drawing.Point(9, 143);
+            this.TableLayoutPanel2.Location = new System.Drawing.Point(9, 128);
             this.TableLayoutPanel2.Name = "TableLayoutPanel2";
             this.TableLayoutPanel2.RowCount = 4;
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -364,7 +367,7 @@ namespace EcoPOSv2
             this.TableLayoutPanel1.Controls.Add(this.btnCE, 1, 0);
             this.TableLayoutPanel1.Controls.Add(this.btnDelete, 0, 0);
             this.TableLayoutPanel1.ForeColor = System.Drawing.Color.Black;
-            this.TableLayoutPanel1.Location = new System.Drawing.Point(9, 84);
+            this.TableLayoutPanel1.Location = new System.Drawing.Point(9, 69);
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 1;
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -416,10 +419,19 @@ namespace EcoPOSv2
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // lblDisplay
+            // 
+            this.lblDisplay.AutoSize = true;
+            this.lblDisplay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisplay.Location = new System.Drawing.Point(11, 14);
+            this.lblDisplay.Name = "lblDisplay";
+            this.lblDisplay.Size = new System.Drawing.Size(0, 25);
+            this.lblDisplay.TabIndex = 6;
+            // 
             // Calculator
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(374, 438);
+            this.ClientSize = new System.Drawing.Size(374, 420);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Calculator";
@@ -460,5 +472,6 @@ namespace EcoPOSv2
         internal System.Windows.Forms.Button btnClear;
         internal System.Windows.Forms.Button btnCE;
         internal System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label lblDisplay;
     }
 }

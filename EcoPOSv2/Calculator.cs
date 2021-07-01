@@ -40,7 +40,6 @@ namespace EcoPOSv2
             AddHotKeyRegisterer(Button8, HotKeyMods.None, ConsoleKey.D8);
             AddHotKeyRegisterer(Button9, HotKeyMods.None, ConsoleKey.D9);
 
-
             //OPERANDS
             AddHotKeyRegisterer(Divide, HotKeyMods.None, ConsoleKey.Divide);
             AddHotKeyRegisterer(Multiply, HotKeyMods.None, ConsoleKey.Multiply);
@@ -151,24 +150,28 @@ namespace EcoPOSv2
                 case "Add":
                     {
                         valHolder1 = valHolder1 + valHolder2;
+                        lblDisplay.Text = "";
                         break;
                     }
 
                 case "Subtract":
                     {
                         valHolder1 = valHolder1 - valHolder2;
+                        lblDisplay.Text = "";
                         break;
                     }
 
                 case "Divide":
                     {
                         valHolder1 = valHolder1 / valHolder2;
+                        lblDisplay.Text = "";
                         break;
                     }
 
                 case "Multiply":
                     {
                         valHolder1 = valHolder1 * valHolder2;
+                        lblDisplay.Text = "";
                         break;
                     }
 
@@ -189,6 +192,8 @@ namespace EcoPOSv2
 
             AssignValidation(ref txtInput, ValidationType.Price);
             AssignValidation(ref txtInput, ValidationType.Int_Only);
+
+            btnClear.PerformClick();
         }
         private void btn0_Click(object sender, EventArgs e)
         {
@@ -196,11 +201,17 @@ namespace EcoPOSv2
                 return;
 
             if (inputStatus == false)
+            {
                 txtInput.Text += (sender as Button).Text;
+
+                lblDisplay.Text = lblDisplay.Text + (sender as Button).Text;
+            }
             else
             {
                 txtInput.Text = (sender as Button).Text;
                 inputStatus = false;
+
+                lblDisplay.Text = lblDisplay.Text + (sender as Button).Text;
             }
         }
 
@@ -220,6 +231,7 @@ namespace EcoPOSv2
 
         private void btnCE_Click(object sender, EventArgs e)
         {
+            lblDisplay.Text = valHolder1.ToString();
             txtInput.Text = string.Empty;
             hasDecimal = false;
         }
@@ -233,6 +245,8 @@ namespace EcoPOSv2
             hasDecimal = false;
 
             this.ActiveControl = txtInput;
+
+            lblDisplay.Text = "";
         }
 
         private void btnDivide_Click(object sender, EventArgs e)
@@ -249,6 +263,9 @@ namespace EcoPOSv2
 
                 calcFunc = "Divide";
                 hasDecimal = false;
+
+
+                lblDisplay.Text = lblDisplay.Text + (sender as Button).Text;
             }
         }
 
@@ -266,6 +283,9 @@ namespace EcoPOSv2
 
                 calcFunc = "Multiply";
                 hasDecimal = false;
+
+
+                lblDisplay.Text = lblDisplay.Text + (sender as Button).Text;
             }
         }
 
@@ -281,20 +301,22 @@ namespace EcoPOSv2
 
             calcFunc = "Subtract";
             hasDecimal = false;
+
+            lblDisplay.Text = lblDisplay.Text + (sender as Button).Text;
         }
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            
+
             if (txtInput.Text.Length != 0 && valHolder1 != 0)
             {
-                MessageBox.Show("equals");
+                //MessageBox.Show("equals");
                 CalculateTotals();
                 calcFunc = "";
                 hasDecimal = false;
             }
-            else
-                MessageBox.Show("wala");
+            else { }
+                //MessageBox.Show("wala");
         }
 
         private void btnDecimal_Click(object sender, EventArgs e)
@@ -333,7 +355,7 @@ namespace EcoPOSv2
             {
                 if (calcFunc == string.Empty)
                 {
-                    valHolder1 = System.Convert.ToDouble(txtInput.Text);
+                    valHolder1 = double.Parse(txtInput.Text);
                     txtInput.Text = string.Empty;
                 }
                 else
@@ -341,6 +363,8 @@ namespace EcoPOSv2
 
                 calcFunc = "Add";
                 hasDecimal = false;
+
+                lblDisplay.Text = lblDisplay.Text + (sender as Button).Text;
             }
         }
     }

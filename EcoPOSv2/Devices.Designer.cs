@@ -31,7 +31,6 @@ namespace EcoPOSv2
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devices));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTestDisplay = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnSaveSettings = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnCancel = new Guna.UI2.WinForms.Guna2TileButton();
             this.Label4 = new System.Windows.Forms.Label();
@@ -64,28 +63,6 @@ namespace EcoPOSv2
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(607, 637);
             this.panel1.TabIndex = 0;
-            // 
-            // btnTestDisplay
-            // 
-            this.btnTestDisplay.BackColor = System.Drawing.Color.Transparent;
-            this.btnTestDisplay.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnTestDisplay.BorderRadius = 5;
-            this.btnTestDisplay.BorderThickness = 1;
-            this.btnTestDisplay.CheckedState.Parent = this.btnTestDisplay;
-            this.btnTestDisplay.CustomImages.Parent = this.btnTestDisplay;
-            this.btnTestDisplay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
-            this.btnTestDisplay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTestDisplay.ForeColor = System.Drawing.Color.White;
-            this.btnTestDisplay.HoverState.Parent = this.btnTestDisplay;
-            this.btnTestDisplay.Location = new System.Drawing.Point(3, 410);
-            this.btnTestDisplay.Name = "btnTestDisplay";
-            this.btnTestDisplay.ShadowDecoration.Parent = this.btnTestDisplay;
-            this.btnTestDisplay.Size = new System.Drawing.Size(209, 45);
-            this.btnTestDisplay.TabIndex = 80;
-            this.btnTestDisplay.Text = "TEST DISPLAY";
-            this.btnTestDisplay.Click += new System.EventHandler(this.BtnTestDisplay_Click);
-            // 
-            // btnSaveSettings
             // 
             this.btnSaveSettings.BackColor = System.Drawing.Color.Transparent;
             this.btnSaveSettings.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
