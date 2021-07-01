@@ -318,6 +318,10 @@ namespace EcoPOSv2
                     frmPayment.cmbMethod.Enabled = false;
                 }
                 frmPayment.Show(this);
+
+                FormLoad Fl = new FormLoad();
+                Fl.CusDisplay("TOTAL:", frmPayment.lblGrandTotal.Text);
+
             }
         }
 

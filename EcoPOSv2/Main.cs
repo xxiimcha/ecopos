@@ -307,7 +307,10 @@ namespace EcoPOSv2
         //METHODS
         private void Main_Load(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.dbName == "EcoPOS")
+            FormLoad Fl = new FormLoad();
+            Fl.CusDisplay("Hello", "Welcome!");
+
+            if (Properties.Settings.Default.dbName == "EcoPOS")
             {
                 lblTraningMode.Visible = false;
             }
