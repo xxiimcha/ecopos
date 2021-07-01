@@ -328,8 +328,6 @@ namespace EcoPOSv2
 
             GenerateReceipt();
 
-            
-
             #region reset values
 
             frmOrder.apply_regular_discount_fix_amt = false;

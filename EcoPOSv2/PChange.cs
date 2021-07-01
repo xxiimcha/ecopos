@@ -36,6 +36,9 @@ namespace EcoPOSv2
         {
             //tmrClose.Start();
             btnConfirm.Focus();
+
+            FormLoad Fl = new FormLoad();
+            Fl.CusDisplay("CHANGE:", lblChange.Text);
         }
         private void btnReprint_Click(object sender, EventArgs e)
         {
@@ -63,6 +66,9 @@ namespace EcoPOSv2
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            FormLoad Fl = new FormLoad();
+            Fl.CusDisplay("Hello", "Welcome!");
+
             this.Close();
 
             Order.Instance.btnDiscount.Enabled = true;
