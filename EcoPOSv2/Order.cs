@@ -320,7 +320,8 @@ namespace EcoPOSv2
                 frmPayment.Show(this);
             }
         }
-        
+
+        String[] hybrid;
         private void tbBarcode_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -342,7 +343,6 @@ namespace EcoPOSv2
                 if (SQL.HasException(true))
                     return;
 
-
                 if (check_product == 1)
                 {
                     SQL.AddParam("@barcode", tbBarcode.Text);
@@ -350,16 +350,42 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
 
+                    string prod_description = "";
+                    string prod_price = "";
+                  
                     if (check_in_cart == 0)
                     {
+                      
+                        if (tbBarcode.Text.Contains("*"))
+                        {
+                            hybrid = tbBarcode.Text.Split('*');
+                        }
+
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        SQL.AddParam("@quantity", hybrid[0]);
 
                         SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount) 
                                    SELECT productID, description, name, @type," + insert_type_query + ", 1, 0 FROM products WHERE productID = @productID");
 
                         if (SQL.HasException(true))
                             return;
+
+                        //customer display
+                        SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE itemID = (SELECT MAX(itemID) FROM order_cart)");
+                        if (SQL.HasException(true))
+                            return;
+
+                        foreach (DataRow r in SQL.DBDT.Rows)
+                        {
+                            prod_description = r["name"].ToString();
+                            prod_price = r["static_price_inclusive"].ToString();
+
+                        }
+
+                        FormLoad Fl = new FormLoad();
+                        Fl.CusDisplay(prod_description, prod_price);
+
                     }
                     else
                     {
@@ -370,6 +396,22 @@ namespace EcoPOSv2
                         SQL.Query("UPDATE order_cart SET quantity = quantity + 1 WHERE productID = @productID AND type = @type AND is_return = 0");
                         if (SQL.HasException(true))
                             return;
+
+                        //customer display
+                        SQL.AddParam("@barcode", tbBarcode.Text);
+                        SQL.AddParam("@productID", productID);
+                        SQL.AddParam("@type", type);
+                        SQL.Query("SELECT name, static_price_inclusive from order_cart WHERE productID = @productID AND type = @type AND is_return = 0");
+                        if (SQL.HasException(true)) return;
+
+                        foreach (DataRow r in SQL.DBDT.Rows)
+                        {
+                            prod_description = r["name"].ToString();
+                            prod_price = r["static_price_inclusive"].ToString();
+
+                        }
+                        FormLoad Fl = new FormLoad();
+                        Fl.CusDisplay(prod_description, prod_price);
                     }
 
                     LoadOrder();
@@ -378,21 +420,6 @@ namespace EcoPOSv2
                     tbBarcode.Focus();
 
 
-                    string prod_description = "";
-                    string prod_price = "";
-                    SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE itemID = (SELECT MAX(itemID) FROM order_cart)");
-                    if (SQL.HasException(true))
-                        return;
-
-                    foreach (DataRow r in SQL.DBDT.Rows)
-                    {
-                        prod_description = r["name"].ToString();
-                        prod_price = r["static_price_inclusive"].ToString();
-
-                    }
-
-                    FormLoad Fl = new FormLoad();
-                    Fl.CusDisplay(prod_description, prod_price);
 
                 }
 
@@ -617,6 +644,8 @@ namespace EcoPOSv2
 
             tbBarcode.Clear();
             this.ActiveControl = tbBarcode;
+
+            TextBoxValidation.AssignValidation(ref tbBarcode, TextBoxValidation.ValidationType.Barcode2);
 
             //tbBarcode.Focus();
             //tbBarcode.Clear();

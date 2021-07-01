@@ -23,7 +23,8 @@ namespace EcoPOSv2
             Int_Only = 10, // 1234567890
             Username = 11, // deny input ?!@#$%^&*()_+=-<>.,/\{}:;'""
             NumberDash = 12, // 1234567890-
-            Price = 13
+            Price = 13,
+            Barcode2 = 14
         }
 
         public static void AssignValidation(ref TextBox CTRL, ValidationType Validation_Type)
@@ -108,6 +109,11 @@ namespace EcoPOSv2
                         txt.TextChanged += Price;
                         break;
                     }
+                case ValidationType.Barcode2:
+                    {
+                        txt.TextChanged += Barcode2;
+                        break;
+                    }
             }
         }
 
@@ -133,6 +139,21 @@ namespace EcoPOSv2
                 if (i + 2 <= s.Length) // //If try to write more than 2 decimal places then truncate it.
                 {
                     numbers.Text = s.Substring(0, i + 2);
+                    numbers.SelectionStart = numbers.Text.Length;
+                }
+            }
+        }
+
+        public static void Barcode2(object sender, EventArgs e)
+        {
+            TextBox numbers = sender as TextBox;
+            if (((TextBox)sender).Text.Contains("*"))
+            {
+                string s = Conversions.ToString(numbers.Text);
+                int i = Strings.InStr(s, "*"); // //Find Position of decimal place
+                if (i + 50 <= s.Length) // //If try to write more than 2 decimal places then truncate it.
+                {
+                    numbers.Text = s.Substring(0, i);
                     numbers.SelectionStart = numbers.Text.Length;
                 }
             }
