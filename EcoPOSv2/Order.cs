@@ -329,15 +329,28 @@ namespace EcoPOSv2
                 if (tbBarcode.Text == "")
                 {
                     return;
-                    //new Notification().PopUp("")
+                }
+                int check_product;
+                string barcode;
+                int quantity = 1;
+
+                if (tbBarcode.Text.Contains("*"))
+                {
+                    hybrid = tbBarcode.Text.Split('*');
+                    quantity = int.Parse(hybrid[0]);
+                    barcode = hybrid[1];
+                }
+                else
+                {
+                    barcode = tbBarcode.Text;
                 }
 
-                SQL.AddParam("@barcode", tbBarcode.Text);
-                int check_product = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode"));
+                SQL.AddParam("@barcode", barcode);
+                check_product = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode"));
                 if (SQL.HasException(true))
                     return;
 
-                SQL.AddParam("@barcode", tbBarcode.Text);
+                SQL.AddParam("@barcode", barcode);
                 SQL.AddParam("@type", type);
                 int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = (SELECT productID FROM products WHERE (barcode1 = @barcode OR barcode2 = @barcode) AND type = @type AND is_return = 0)"));
                 if (SQL.HasException(true))
@@ -345,7 +358,7 @@ namespace EcoPOSv2
 
                 if (check_product == 1)
                 {
-                    SQL.AddParam("@barcode", tbBarcode.Text);
+                    SQL.AddParam("@barcode", barcode);
                     string productID = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
                     if (SQL.HasException(true))
                         return;
@@ -356,17 +369,14 @@ namespace EcoPOSv2
                     if (check_in_cart == 0)
                     {
                       
-                        if (tbBarcode.Text.Contains("*"))
-                        {
-                            hybrid = tbBarcode.Text.Split('*');
-                        }
+
 
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        SQL.AddParam("@quantity", hybrid[0]);
+                        SQL.AddParam("@quantity", quantity);
 
                         SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount) 
-                                   SELECT productID, description, name, @type," + insert_type_query + ", 1, 0 FROM products WHERE productID = @productID");
+                                   SELECT productID, description, name, @type," + insert_type_query + ", @quantity, 0 FROM products WHERE productID = @productID");
 
                         if (SQL.HasException(true))
                             return;
@@ -392,8 +402,9 @@ namespace EcoPOSv2
                         SQL.AddParam("@barcode", tbBarcode.Text);
                         SQL.AddParam("@productID", productID);
                         SQL.AddParam("@type", type);
+                        SQL.AddParam("@quantity", quantity);
 
-                        SQL.Query("UPDATE order_cart SET quantity = quantity + 1 WHERE productID = @productID AND type = @type AND is_return = 0");
+                        SQL.Query("UPDATE order_cart SET quantity = quantity + @quantity WHERE productID = @productID AND type = @type AND is_return = 0");
                         if (SQL.HasException(true))
                             return;
 
@@ -418,8 +429,6 @@ namespace EcoPOSv2
                     GetTotal();
                     tbBarcode.Clear();
                     tbBarcode.Focus();
-
-
 
                 }
 
