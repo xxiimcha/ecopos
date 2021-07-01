@@ -165,7 +165,7 @@ public class FormLoad
                 sp.Write(new byte[] { 0x0A, 0x0D }, 0, 2);
                 sp.Write(text2);
 
-                Thread.Sleep(3000);
+                
             sp.Close();
             sp.Dispose();
 
