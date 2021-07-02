@@ -119,11 +119,22 @@ namespace EcoPOSv2
 
                 #region staff sales fill
 
-                SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT (u.first_name + ' ' + u.last_name) as 'user_first_name', SUM(subtotal) as 'subtotal',
-                                                     (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt',  
-                                                     SUM(grand_total) as 'grand_total' FROM transaction_details as td RIGHT JOIN users as u 
-                                                     ON td.userID = u.userID WHERE td.date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
-                                                     AND td.action = 1 GROUP BY (u.first_name + ' ' + u.last_name)", SQL.DBCon);
+                SQL.DBDA.SelectCommand = new SqlCommand(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                                                          SELECT * INTO #Temp_users
+                                                          FROM
+                                                          (
+                                                          SELECT ID, user_name, first_name, last_name FROM
+                                                          (
+                                                          SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name', last_name as 'last_name' FROM admin_accts
+                                                          UNION ALL
+                                                          SELECT userID, user_name, first_name, last_name FROM users
+                                                          ) x
+                                                          ) as a;
+                                                          SELECT (u.first_name + ' ' + u.last_name) as 'user_first_name', SUM(subtotal) as 'subtotal',
+                                                          (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt',  
+                                                          SUM(grand_total) as 'grand_total' FROM transaction_details as td INNER JOIN #Temp_users as u 
+                                                          ON td.userID = u.ID WHERE td.date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
+                                                          AND td.action = 1 GROUP BY (u.first_name + ' ' + u.last_name)", SQL.DBCon);
                 SQL.DBDA.Fill(ds2, "transaction_details");
                 terminal_report.Subreports["StaffSales"].SetDataSource(ds2);
 
