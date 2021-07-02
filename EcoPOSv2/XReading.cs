@@ -449,15 +449,15 @@ namespace EcoPOSv2
                     report.SetParameterValue("ending_invoice", r["ending_invoice"].ToString());
                     report.SetParameterValue("void_beginning_no", r["void_beginning_no"].ToString());
                     report.SetParameterValue("void_ending_no", r["void_ending_no"].ToString());
-                    report.SetParameterValue("starting_cash", Math.Round(decimal.Parse(r["starting_cash"].ToString()),2).ToString());
+                    report.SetParameterValue("starting_cash", Math.Round(decimal.Parse(r["starting_cash"].ToString()),2).ToString("N2"));
                     report.SetParameterValue("no_of_transactions", r["no_of_transactions"].ToString());
-                    report.SetParameterValue("sales", Math.Round(decimal.Parse(r["sales"].ToString()),2).ToString());
-                    report.SetParameterValue("discount_deductions", Math.Round(decimal.Parse(r["discount_deductions"].ToString()),2).ToString());
-                    report.SetParameterValue("adjustments", Math.Round(decimal.Parse(r["adjustments"].ToString()),2).ToString());
-                    report.SetParameterValue("net_sales", Math.Round(decimal.Parse(r["net_sales"].ToString()),2).ToString());
-                    report.SetParameterValue("expected_drawer", Math.Round(decimal.Parse(r["expected_drawer"].ToString()), 2).ToString());
-                    report.SetParameterValue("declared_drawer", Math.Round(decimal.Parse(r["declared_drawer"].ToString()), 2).ToString());
-                    report.SetParameterValue("short_over", Math.Round(decimal.Parse(r["short_over"].ToString()), 2).ToString());
+                    report.SetParameterValue("sales", Math.Round(decimal.Parse(r["sales"].ToString()),2).ToString("N2"));
+                    report.SetParameterValue("discount_deductions", Math.Round(decimal.Parse(r["discount_deductions"].ToString()),2).ToString("N2"));
+                    report.SetParameterValue("adjustments", Math.Round(decimal.Parse(r["adjustments"].ToString()),2).ToString("N2"));
+                    report.SetParameterValue("net_sales", Math.Round(decimal.Parse(r["net_sales"].ToString()),2).ToString("N2"));
+                    report.SetParameterValue("expected_drawer", Math.Round(decimal.Parse(r["expected_drawer"].ToString()), 2).ToString("N2"));
+                    report.SetParameterValue("declared_drawer", Math.Round(decimal.Parse(r["declared_drawer"].ToString()), 2).ToString("N2"));
+                    report.SetParameterValue("short_over", Math.Round(decimal.Parse(r["short_over"].ToString()), 2).ToString("N2"));
                     report.SetParameterValue("printed_on", datetime_now);
                 }
             }

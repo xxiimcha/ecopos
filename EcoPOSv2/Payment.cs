@@ -92,7 +92,7 @@ namespace EcoPOSv2
 
                     report.SetDataSource(ds);
 
-                    SQL.Query("IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)");
+                    SQL.Query("IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, payment_method FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)");
 
                     if (SQL.HasException(true))
                         return;
@@ -118,6 +118,7 @@ namespace EcoPOSv2
                         report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
                         report.SetParameterValue("cus_name", r["cus_name"].ToString());
                         report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                        report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
 
                     }
 

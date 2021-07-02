@@ -192,6 +192,7 @@ namespace EcoPOSv2
                     reprint_receipt.SetParameterValue("change", change.ToString("N2"));
                     reprint_receipt.SetParameterValue("cus_name", r["cus_name"].ToString());
                     reprint_receipt.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                    reprint_receipt.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
 
                     string note = "###REPRINT###";
 
@@ -310,9 +311,10 @@ namespace EcoPOSv2
                     report.SetParameterValue("change", change.ToString("N2"));
                     report.SetParameterValue("cus_name", r["cus_name"].ToString());
                     report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                    report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
 
 
-                    CrystalReportViewer1.ReportSource = report;
+                CrystalReportViewer1.ReportSource = report;
                     CrystalReportViewer1.Refresh();
                 }
             //}

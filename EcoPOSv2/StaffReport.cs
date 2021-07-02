@@ -236,8 +236,8 @@ namespace EcoPOSv2
                 report.SetParameterValue("check_staffsales", false);
                 report.SetParameterValue("check_retailsales", cbxRetailSales.Checked);
                 report.SetParameterValue("check_wholesalesales", cbxWholesaleSales.Checked);
-                report.SetParameterValue("check_refund", cbxRefund.Checked);
-                report.SetParameterValue("check_return", cbxReturnExchange.Checked);
+                report.SetParameterValue("check_refund", 0);
+                report.SetParameterValue("check_return", 0);
                 report.SetParameterValue("check_voiditem", cbxVoidItems.Checked);
                 report.SetParameterValue("check_voidtransaction", cbxVoidTransactions.Checked);
                 report.SetParameterValue("check_regulardiscount", cbxRegularDiscounts.Checked);

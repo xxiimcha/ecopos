@@ -41,9 +41,7 @@
             this.cbxVoidTransactions = new System.Windows.Forms.CheckBox();
             this.cbxRetailSales = new System.Windows.Forms.CheckBox();
             this.cbxWholesaleSales = new System.Windows.Forms.CheckBox();
-            this.cbxRefund = new System.Windows.Forms.CheckBox();
             this.cbxVoidItems = new System.Windows.Forms.CheckBox();
-            this.cbxReturnExchange = new System.Windows.Forms.CheckBox();
             this.cbxItemsSold = new System.Windows.Forms.CheckBox();
             this.cbxPaymentMethod = new System.Windows.Forms.CheckBox();
             this.cbxSpecialDiscounts = new System.Windows.Forms.CheckBox();
@@ -136,18 +134,16 @@
             this.TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.TableLayoutPanel4.Controls.Add(this.cbxRegularDiscounts, 1, 8);
             this.TableLayoutPanel4.Controls.Add(this.cbxSales, 1, 0);
             this.TableLayoutPanel4.Controls.Add(this.cbxStaffSales, 1, 1);
-            this.TableLayoutPanel4.Controls.Add(this.cbxVoidTransactions, 1, 7);
             this.TableLayoutPanel4.Controls.Add(this.cbxRetailSales, 1, 2);
             this.TableLayoutPanel4.Controls.Add(this.cbxWholesaleSales, 1, 3);
-            this.TableLayoutPanel4.Controls.Add(this.cbxRefund, 1, 4);
-            this.TableLayoutPanel4.Controls.Add(this.cbxVoidItems, 1, 6);
-            this.TableLayoutPanel4.Controls.Add(this.cbxReturnExchange, 1, 5);
-            this.TableLayoutPanel4.Controls.Add(this.cbxItemsSold, 1, 11);
-            this.TableLayoutPanel4.Controls.Add(this.cbxPaymentMethod, 1, 10);
-            this.TableLayoutPanel4.Controls.Add(this.cbxSpecialDiscounts, 1, 9);
+            this.TableLayoutPanel4.Controls.Add(this.cbxVoidItems, 1, 4);
+            this.TableLayoutPanel4.Controls.Add(this.cbxVoidTransactions, 1, 5);
+            this.TableLayoutPanel4.Controls.Add(this.cbxRegularDiscounts, 1, 6);
+            this.TableLayoutPanel4.Controls.Add(this.cbxSpecialDiscounts, 1, 7);
+            this.TableLayoutPanel4.Controls.Add(this.cbxPaymentMethod, 1, 8);
+            this.TableLayoutPanel4.Controls.Add(this.cbxItemsSold, 1, 9);
             this.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel4.Name = "TableLayoutPanel4";
@@ -174,7 +170,7 @@
             this.cbxRegularDiscounts.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxRegularDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxRegularDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxRegularDiscounts.Location = new System.Drawing.Point(30, 315);
+            this.cbxRegularDiscounts.Location = new System.Drawing.Point(30, 237);
             this.cbxRegularDiscounts.Name = "cbxRegularDiscounts";
             this.cbxRegularDiscounts.Size = new System.Drawing.Size(166, 33);
             this.cbxRegularDiscounts.TabIndex = 108;
@@ -213,7 +209,7 @@
             this.cbxVoidTransactions.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxVoidTransactions.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxVoidTransactions.ForeColor = System.Drawing.Color.Black;
-            this.cbxVoidTransactions.Location = new System.Drawing.Point(30, 276);
+            this.cbxVoidTransactions.Location = new System.Drawing.Point(30, 198);
             this.cbxVoidTransactions.Name = "cbxVoidTransactions";
             this.cbxVoidTransactions.Size = new System.Drawing.Size(162, 33);
             this.cbxVoidTransactions.TabIndex = 112;
@@ -246,44 +242,18 @@
             this.cbxWholesaleSales.Text = "Wholesale Sales";
             this.cbxWholesaleSales.UseVisualStyleBackColor = true;
             // 
-            // cbxRefund
-            // 
-            this.cbxRefund.AutoSize = true;
-            this.cbxRefund.Dock = System.Windows.Forms.DockStyle.Left;
-            this.cbxRefund.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxRefund.ForeColor = System.Drawing.Color.Black;
-            this.cbxRefund.Location = new System.Drawing.Point(30, 159);
-            this.cbxRefund.Name = "cbxRefund";
-            this.cbxRefund.Size = new System.Drawing.Size(83, 33);
-            this.cbxRefund.TabIndex = 111;
-            this.cbxRefund.Text = "Refund";
-            this.cbxRefund.UseVisualStyleBackColor = true;
-            // 
             // cbxVoidItems
             // 
             this.cbxVoidItems.AutoSize = true;
             this.cbxVoidItems.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxVoidItems.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxVoidItems.ForeColor = System.Drawing.Color.Black;
-            this.cbxVoidItems.Location = new System.Drawing.Point(30, 237);
+            this.cbxVoidItems.Location = new System.Drawing.Point(30, 159);
             this.cbxVoidItems.Name = "cbxVoidItems";
             this.cbxVoidItems.Size = new System.Drawing.Size(110, 33);
             this.cbxVoidItems.TabIndex = 113;
             this.cbxVoidItems.Text = "Void Items";
             this.cbxVoidItems.UseVisualStyleBackColor = true;
-            // 
-            // cbxReturnExchange
-            // 
-            this.cbxReturnExchange.AutoSize = true;
-            this.cbxReturnExchange.Dock = System.Windows.Forms.DockStyle.Left;
-            this.cbxReturnExchange.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxReturnExchange.ForeColor = System.Drawing.Color.Black;
-            this.cbxReturnExchange.Location = new System.Drawing.Point(30, 198);
-            this.cbxReturnExchange.Name = "cbxReturnExchange";
-            this.cbxReturnExchange.Size = new System.Drawing.Size(160, 33);
-            this.cbxReturnExchange.TabIndex = 116;
-            this.cbxReturnExchange.Text = "Return/Exchange";
-            this.cbxReturnExchange.UseVisualStyleBackColor = true;
             // 
             // cbxItemsSold
             // 
@@ -291,7 +261,7 @@
             this.cbxItemsSold.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxItemsSold.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxItemsSold.ForeColor = System.Drawing.Color.Black;
-            this.cbxItemsSold.Location = new System.Drawing.Point(30, 432);
+            this.cbxItemsSold.Location = new System.Drawing.Point(30, 354);
             this.cbxItemsSold.Name = "cbxItemsSold";
             this.cbxItemsSold.Size = new System.Drawing.Size(109, 33);
             this.cbxItemsSold.TabIndex = 115;
@@ -304,7 +274,7 @@
             this.cbxPaymentMethod.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPaymentMethod.ForeColor = System.Drawing.Color.Black;
-            this.cbxPaymentMethod.Location = new System.Drawing.Point(30, 393);
+            this.cbxPaymentMethod.Location = new System.Drawing.Point(30, 315);
             this.cbxPaymentMethod.Name = "cbxPaymentMethod";
             this.cbxPaymentMethod.Size = new System.Drawing.Size(160, 33);
             this.cbxPaymentMethod.TabIndex = 107;
@@ -317,7 +287,7 @@
             this.cbxSpecialDiscounts.Dock = System.Windows.Forms.DockStyle.Left;
             this.cbxSpecialDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSpecialDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxSpecialDiscounts.Location = new System.Drawing.Point(30, 354);
+            this.cbxSpecialDiscounts.Location = new System.Drawing.Point(30, 276);
             this.cbxSpecialDiscounts.Name = "cbxSpecialDiscounts";
             this.cbxSpecialDiscounts.Size = new System.Drawing.Size(161, 33);
             this.cbxSpecialDiscounts.TabIndex = 117;
@@ -509,9 +479,7 @@
         internal System.Windows.Forms.CheckBox cbxVoidTransactions;
         internal System.Windows.Forms.CheckBox cbxRetailSales;
         internal System.Windows.Forms.CheckBox cbxWholesaleSales;
-        internal System.Windows.Forms.CheckBox cbxRefund;
         internal System.Windows.Forms.CheckBox cbxVoidItems;
-        internal System.Windows.Forms.CheckBox cbxReturnExchange;
         internal System.Windows.Forms.CheckBox cbxItemsSold;
         internal System.Windows.Forms.CheckBox cbxPaymentMethod;
         internal System.Windows.Forms.CheckBox cbxSpecialDiscounts;

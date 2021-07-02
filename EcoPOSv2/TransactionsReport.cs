@@ -439,6 +439,14 @@ namespace EcoPOSv2 {
                 return this.DataDefinition.ParameterFields[18];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_payment_method {
+            get {
+                return this.DataDefinition.ParameterFields[19];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
