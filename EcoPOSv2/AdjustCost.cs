@@ -30,6 +30,7 @@ namespace EcoPOSv2
         private void AdjustCost_Load(object sender, EventArgs e)
         {
             TextBoxValidation.AssignValidation(ref txtNewCost, ValidationType.Only_Numbers);
+            guna2ShadowForm1.SetShadowForm(this);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

@@ -65,6 +65,7 @@ namespace EcoPOSv2
         //METHODS
         private void StaffType_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
             _StaffType = this;
             
             LoadStaffType();

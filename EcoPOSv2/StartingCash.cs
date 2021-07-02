@@ -29,6 +29,7 @@ namespace EcoPOSv2
 
         private void StartingCash_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
             AssignValidation(ref tbCash, ValidationType.Price);
             AssignValidation(ref tbCash, ValidationType.Int_Only);
         }

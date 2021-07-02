@@ -96,6 +96,7 @@ namespace EcoPOSv2
 
         private void SeeItem_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
             SQL.Query("SELECT productID, barcode1 as 'Barcode1', barcode2 as 'Barcode2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products");
 
             dgvProducts.DataSource = SQL.DBDT;

@@ -50,7 +50,7 @@ namespace EcoPOSv2
 
         private void DiscountOption_Load(object sender, EventArgs e)
         {
-
+            guna2ShadowForm1.SetShadowForm(this);
         }
     }
 }

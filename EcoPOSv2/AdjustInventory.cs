@@ -26,6 +26,8 @@ namespace EcoPOSv2
 
         private void AdjustInventory_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             SQL.AddParam("@operationID", operationID);
 
             SQL.Query(@"SELECT productID, product_name as 'Name', 0 as 'Adjust Qty' FROM inventory_operation_items

@@ -48,6 +48,7 @@ namespace EcoPOSv2
         private void OCustomer_Load(object sender, EventArgs e)
         {
             LoadCustomer();
+            guna2ShadowForm1.SetShadowForm(this);
         }
 
         private void BtnConfirm_Click(object sender, EventArgs e)
