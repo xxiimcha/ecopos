@@ -280,7 +280,7 @@ namespace EcoPOSv2
             lblExpectedDrawer.Text = double.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM transaction_details WHERE date_time BETWEEN @from AND @to) > 0,
                                                                             (SELECT (SUM(payment_amt - change) + @starting_cash - @adjustments) 
                                                                             FROM transaction_details WHERE date_time BETWEEN @from AND @to), 
-                                                                            (@starting_cash))")).ToString();
+                                                                            (@starting_cash))")).ToString("N2");
             if (SQL.HasException(true))
             {
                 //Interaction.MsgBox("5");
@@ -290,7 +290,7 @@ namespace EcoPOSv2
 
             SQL.AddParam("@from", shift_start_date_time);
             SQL.AddParam("@to", datetime_now);
-            SQL.Query("SELECT payment_method, CONVERT(DECIMAL(18,2), SUM(payment_amt - change)) FROM transaction_details WHERE date_time BETWEEN @from AND @to GROUP BY payment_method ORDER BY CASE WHEN payment_method = 'Cash' THEN 1 Else 2 END ASC");
+            SQL.Query("SELECT payment_method, CONVERT(DECIMAL(18,2), SUM(payment_amt - change)) FROM transaction_details WHERE date_time BETWEEN @from AND @to AND action = 1 GROUP BY payment_method ORDER BY CASE WHEN payment_method = 'Cash' THEN 1 Else 2 END ASC");
             if (SQL.HasException(true))
             {
                 //Interaction.MsgBox("6");

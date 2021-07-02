@@ -71,9 +71,9 @@
             this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
-            this.Label14.Location = new System.Drawing.Point(3, 68);
+            this.Label14.Location = new System.Drawing.Point(3, 70);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(46, 34);
+            this.Label14.Size = new System.Drawing.Size(46, 35);
             this.Label14.TabIndex = 112;
             this.Label14.Text = "To";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -84,7 +84,7 @@
             this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(55, 37);
+            this.dtpFrom.Location = new System.Drawing.Point(55, 38);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(175, 29);
             this.dtpFrom.TabIndex = 111;
@@ -95,7 +95,7 @@
             this.dtpTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(55, 71);
+            this.dtpTo.Location = new System.Drawing.Point(55, 73);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(175, 29);
             this.dtpTo.TabIndex = 113;
@@ -112,9 +112,9 @@
             this.btnSearch.IconColor = System.Drawing.Color.Black;
             this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSearch.IconSize = 31;
-            this.btnSearch.Location = new System.Drawing.Point(236, 37);
+            this.btnSearch.Location = new System.Drawing.Point(236, 38);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(31, 28);
+            this.btnSearch.Size = new System.Drawing.Size(31, 29);
             this.btnSearch.TabIndex = 114;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -134,7 +134,7 @@
             "Refund",
             "Return",
             "Void"});
-            this.cmbStaff.Location = new System.Drawing.Point(55, 105);
+            this.cmbStaff.Location = new System.Drawing.Point(55, 108);
             this.cmbStaff.MaxDropDownItems = 10;
             this.cmbStaff.Name = "cmbStaff";
             this.cmbStaff.Size = new System.Drawing.Size(175, 29);
@@ -146,9 +146,9 @@
             this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(3, 102);
+            this.Label1.Location = new System.Drawing.Point(3, 105);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(46, 34);
+            this.Label1.Size = new System.Drawing.Size(46, 32);
             this.Label1.TabIndex = 123;
             this.Label1.Text = "Staff";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -250,9 +250,9 @@
             this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 34);
+            this.Label13.Location = new System.Drawing.Point(3, 35);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(46, 34);
+            this.Label13.Size = new System.Drawing.Size(46, 35);
             this.Label13.TabIndex = 110;
             this.Label13.Text = "From";
             this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -276,11 +276,11 @@
             this.TableLayoutPanel3.Name = "TableLayoutPanel3";
             this.TableLayoutPanel3.RowCount = 6;
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.74641F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.74641F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.311F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.61723F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.35407F));
             this.TableLayoutPanel3.Size = new System.Drawing.Size(270, 209);
             this.TableLayoutPanel3.TabIndex = 0;
             // 
@@ -296,9 +296,9 @@
             this.btnExport.IconColor = System.Drawing.Color.Black;
             this.btnExport.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExport.IconSize = 31;
-            this.btnExport.Location = new System.Drawing.Point(55, 139);
+            this.btnExport.Location = new System.Drawing.Point(55, 140);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(175, 28);
+            this.btnExport.Size = new System.Drawing.Size(175, 35);
             this.btnExport.TabIndex = 121;
             this.btnExport.Text = " Save Report";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

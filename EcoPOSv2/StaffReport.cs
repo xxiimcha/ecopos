@@ -32,7 +32,21 @@ namespace EcoPOSv2
             dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
             dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
 
-            OL.ComboValues(cmbStaff, "userID", "user_name", "users");
+            //  OL.ComboValues(cmbStaff, "userID", "user_name", "users");
+
+            OL.ComboValuesQuery(cmbStaff, @"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                                            SELECT * INTO #Temp_users
+                                            FROM
+                                            (
+                                            SELECT ID, user_name, first_name, last_name FROM
+                                            (
+                                            SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name', last_name as 'last_name' FROM admin_accts
+                                            UNION ALL
+                                            SELECT userID, user_name, first_name, last_name FROM users
+                                            ) x
+                                            ) as a;
+                                            SELECT ID, (first_name + ' ' + last_name) as 'user_full_name' FROM #Temp_users",
+                                            "ID", "user_full_name");
 
             if (cmbStaff.Items.Count > 0)
             {
@@ -40,7 +54,7 @@ namespace EcoPOSv2
 
                 //PWEDE RIN MAY GANTO.
 
-                btnSearch.PerformClick();
+                //btnSearch.PerformClick();
             }
             else return;
         }
@@ -346,7 +360,7 @@ namespace EcoPOSv2
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = decimal.Parse(r["grand_total"].ToString());
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
 
                         report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "RetailSales");
@@ -384,7 +398,7 @@ namespace EcoPOSv2
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = decimal.Parse(r["grand_total"].ToString());
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
 
                         report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "WholesaleSales");
