@@ -45,7 +45,25 @@ namespace EcoPOSv2
             cbxCat_DiscPWD.Checked = false;
             GA.DoThis(ref allTxt, TableLayoutPanel4, ControlType.CheckBox, GroupAction.Action.Uncheck);
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
 
+        public void SetDoubleBuffered(Panel panel)
+        {
+            typeof(Panel).InvokeMember(
+               "DoubleBuffered",
+               BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+               null,
+               panel,
+               new object[] { true });
+        }
         private void loadCat_Category()
         {
             SQL.Query("Select categoryID, Name FROM product_category ORDER BY name ASC");
@@ -160,6 +178,9 @@ namespace EcoPOSv2
         {
             currentPanel = pnlProducts;
             currentButton = btnProduct;
+
+            new CreateParams();
+            SetDoubleBuffered(guna2Panel1);
 
             TextValidation();
             ControlBehavior();

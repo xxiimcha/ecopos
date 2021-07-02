@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using EcoPOSControl;
 using VeryHotKeys.WinForms;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace EcoPOSv2
 {
@@ -34,6 +35,28 @@ namespace EcoPOSv2
         static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
         public const byte KEYEVENTF_KEYUP = 0x02;
         public const int VK_CONTROL = 0x11;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
+        public void SetDoubleBuffered(Panel panel)
+        {
+            typeof(Panel).InvokeMember(
+               "DoubleBuffered",
+               BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+               null,
+               panel,
+               new object[] { true });
+        }
+
+
         public bool CheckOpened(string name)
         {
             FormCollection fc = Application.OpenForms;
@@ -649,6 +672,9 @@ namespace EcoPOSv2
         private void Order_Load(object sender, EventArgs e)
         {
             _order = this;
+
+            new CreateParams();
+            SetDoubleBuffered(OrderPanel);
 
             btnRetail.PerformClick();
             LoadOrderNo();

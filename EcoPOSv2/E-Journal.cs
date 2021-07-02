@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,10 +21,31 @@ namespace EcoPOSv2
         private FormLoad OL = new FormLoad();
         private Form currentChildForm;
         private Button currentButton;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
 
+        public void SetDoubleBuffered(Panel panel)
+        {
+            typeof(Panel).InvokeMember(
+               "DoubleBuffered",
+               BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+               null,
+               panel,
+               new object[] { true });
+        }
         private void E_Journal_Load(object sender, EventArgs e)
         {
             currentButton = btnTerminal;
+
+            new CreateParams();
+            SetDoubleBuffered(TableLayoutPanel2);
         }
 
         private void btnVoid_Click(object sender, EventArgs e)

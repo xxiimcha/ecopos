@@ -26,7 +26,12 @@ namespace EcoPOSControl
         public static string dbName = EcoPOSv2.Properties.Settings.Default.dbName; //GALING SA SETTINGS
         public static string dbuser = EcoPOSv2.Properties.Settings.Default.dbUser; //GALING SA SETTINGS
         public static string dbpass = EcoPOSv2.Properties.Settings.Default.dbPass; //GALING SA SETTINGS
-        public static string constring = @"Data Source=" + servername + ";Initial Catalog=" + dbName + "; user=" + dbuser + "; password=" + dbpass + ";";
+                                                                                   //public static string constring = @"Data Source=" + servername + ";Initial Catalog=" + dbName + "; user=" + dbuser + "; password=" + dbpass + ";";
+
+        public static string domain = (AppDomain.CurrentDomain.BaseDirectory).ToString();
+        public static string constring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + domain + dbName + ".mdf;" + "Integrated Security=True;";
+        //public static string constring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jeremy Villabeto\source\repos\EcoPOSv2\EcoPOSv2\EcoPOSdb-041721.mdf;Integrated Security=True;";
+
         public SqlConnection DBCon = new SqlConnection(constring);
         private SqlCommand DBCmd;
 

@@ -48,9 +48,33 @@ namespace EcoPOSv2
                 return _Logs;
             }
         }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
+        public void SetDoubleBuffered(Panel panel)
+        {
+            typeof(Panel).InvokeMember(
+               "DoubleBuffered",
+               BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+               null,
+               panel,
+               new object[] { true });
+        }
         private void Logs_Load(object sender, EventArgs e)
         {
             _Logs = this;
+
+            new CreateParams();
+            SetDoubleBuffered(pnlParent);
+
 
             currentPanel = pnlAT;
             currentBtn = btnAT;
