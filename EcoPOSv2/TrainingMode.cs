@@ -20,7 +20,7 @@ namespace EcoPOSv2
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.dbName = "EcoPOS_Trainingdb-041721";
+            Properties.Settings.Default.dbName = "EcoPOS_Training";
             Properties.Settings.Default.Save();
 
             MessageBox.Show("Traning mode started.. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -31,7 +31,7 @@ namespace EcoPOSv2
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.dbName = "EcoPOSdb-041721";
+            Properties.Settings.Default.dbName = "EcoPOS";
             Properties.Settings.Default.Save();
 
             MessageBox.Show("Traning mode has been stopped. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
