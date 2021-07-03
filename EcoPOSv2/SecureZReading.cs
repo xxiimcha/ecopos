@@ -59,5 +59,10 @@ namespace EcoPOSv2
         {
             this.Close();
         }
+
+        private void SecureZReading_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

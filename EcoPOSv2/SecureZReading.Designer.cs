@@ -122,6 +122,7 @@
             this.Name = "SecureZReading";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SecureZReading";
+            this.Load += new System.EventHandler(this.SecureZReading_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);

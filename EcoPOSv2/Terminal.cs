@@ -287,8 +287,8 @@ namespace EcoPOSv2
 
                 #region sales
 
-                SQL.AddParam("@from", (object)this.dtpFrom.Value);
-                SQL.AddParam("@to", (object)this.dtpTo.Value);
+                SQL.AddParam("@from", dtpFrom.Value);
+                SQL.AddParam("@to", dtpTo.Value);
                 int count_sales = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE date_time BETWEEN @from AND @to AND action = 1"));
                 if (SQL.HasException(true))
                     return;
@@ -721,6 +721,36 @@ namespace EcoPOSv2
         {
             dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
             dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+        }
+
+        private void cbSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbSelectAll.Checked == true)
+            {
+                cbxSales.Checked = true;
+                cbxStaffSales.Checked = true;
+                cbxRetailSales.Checked = true;
+                cbxWholesaleSales.Checked = true;
+                cbxVoidItems.Checked = true;
+                cbxVoidTransactions.Checked = true;
+                cbxRegularDiscounts.Checked = true;
+                cbxSpecialDiscounts.Checked = true;
+                cbxPaymentMethod.Checked = true;
+                cbxItemsSold.Checked = true;
+            }
+            else
+            {
+                cbxSales.Checked = false;
+                cbxStaffSales.Checked = false;
+                cbxRetailSales.Checked = false;
+                cbxWholesaleSales.Checked = false;
+                cbxVoidItems.Checked = false;
+                cbxVoidTransactions.Checked = false;
+                cbxRegularDiscounts.Checked = false;
+                cbxSpecialDiscounts.Checked = false;
+                cbxPaymentMethod.Checked = false;
+                cbxItemsSold.Checked = false;
+            }
         }
     }
 }
