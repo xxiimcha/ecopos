@@ -175,14 +175,14 @@ namespace EcoPOSv2
 
                     // if not chosen then add
                     if (counter == 0)
-                        dt_return.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0, dgvProducts.Rows[rows].Cells[3].Value, dgvProducts.Rows[rows].Cells[2].Value);
+                        dt_return.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0, dgvProducts.Rows[rows].Cells[3].Value);
                 }
             }
             else if (dgvReturn.RowCount == 0)
             {
                 DataGridViewRow datarow = new DataGridViewRow();
                 for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)
-                    dt_return.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0, dgvProducts.Rows[rows].Cells[3].Value, dgvProducts.Rows[rows].Cells[2].Value);
+                    dt_return.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0, dgvProducts.Rows[rows].Cells[3].Value);
             }
         }
 
@@ -200,11 +200,13 @@ namespace EcoPOSv2
 
             if (dgvReturn.RowCount > 0)
             {
+                //check if item is in dgvReturn
                 for (var i = 0; i <= dgvReturn.RowCount - 1; i++)
                 {
                     if (dgvReturn.Rows[i].Cells[0].Value.ToString() == dgvProducts.CurrentRow.Cells[0].Value.ToString())
                         return;
                 }
+
                 dt_return.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0, dgvProducts.CurrentRow.Cells[3].Value);
             }
             else if (dgvReturn.RowCount == 0)

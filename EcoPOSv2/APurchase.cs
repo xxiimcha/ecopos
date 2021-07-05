@@ -117,7 +117,6 @@ namespace EcoPOSv2
         {
             if (dgvPurchase.RowCount > 0)
             {
-
                 // check if item is already chosen
                 DataGridViewRow datarow = new DataGridViewRow();
                 for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)
@@ -140,6 +139,26 @@ namespace EcoPOSv2
                 for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)
                     dt_purchase.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0);
             }
+        }
+
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // transfer to dgvPurchase
+
+            if (e.RowIndex == -1)
+                return;
+
+            if (dgvPurchase.RowCount > 0)
+            {
+                for (var i = 0; i <= dgvPurchase.RowCount - 1; i++)
+                {
+                    if (dgvPurchase.Rows[i].Cells[0].Value.ToString() == dgvProducts.CurrentRow.Cells[0].Value.ToString())
+                        return;
+                }
+                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0);
+            }
+            else if (dgvPurchase.RowCount == 0)
+                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0);
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
@@ -275,24 +294,6 @@ namespace EcoPOSv2
                 new Notification().PopUp("Please fill all required fields.","Save failed", "error");
         }
 
-        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // transfer to dgvPurchase
-
-            if (e.RowIndex == -1)
-                return;
-
-            if (dgvPurchase.RowCount > 0)
-            {
-                for (var i = 0; i <= dgvPurchase.RowCount - 1; i++)
-                {
-                    if (dgvPurchase.Rows[i].Cells[0].Value.ToString() == dgvProducts.CurrentRow.Cells[0].Value.ToString())
-                        return;
-                }
-                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0);
-            }
-            else if (dgvPurchase.RowCount == 0)
-                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0);
-        }
+       
     }
 }

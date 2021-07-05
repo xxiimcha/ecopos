@@ -443,9 +443,9 @@
             // 
             this.TableLayoutPanel4.ColumnCount = 1;
             this.TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel4.Controls.Add(this.dgvPurchase, 0, 3);
             this.TableLayoutPanel4.Controls.Add(this.btnRemoveAll, 0, 1);
             this.TableLayoutPanel4.Controls.Add(this.btnRemoveItem, 0, 2);
+            this.TableLayoutPanel4.Controls.Add(this.dgvPurchase, 0, 3);
             this.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel4.Name = "TableLayoutPanel4";
@@ -484,7 +484,6 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvPurchase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPurchase.Location = new System.Drawing.Point(3, 136);
             this.dgvPurchase.MultiSelect = false;
             this.dgvPurchase.Name = "dgvPurchase";
@@ -497,6 +496,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvPurchase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPurchase.Size = new System.Drawing.Size(429, 719);
             this.dgvPurchase.TabIndex = 38;
