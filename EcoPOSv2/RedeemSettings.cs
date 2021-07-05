@@ -420,7 +420,7 @@ namespace EcoPOSv2
 
         private void btnRI_AddItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(dgvRI_Items.SelectedRows.Count.ToString());
+            
             if (dgvRI_Items.SelectedRows.Count == 0)
                 return;
             for (int i = 0; i <= dgvRI_Items.SelectedRows.Count - 1; i++)
