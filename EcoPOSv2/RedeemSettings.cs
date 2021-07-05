@@ -423,25 +423,26 @@ namespace EcoPOSv2
             //MessageBox.Show(dgvRI_Items.SelectedRows.Count.ToString());
             if (dgvRI_Items.SelectedRows.Count == 0)
                 return;
-            for (int i = 0; i <= dgvRI_Items.SelectedRows.Count - 1; i++)
+
+            foreach (DataGridViewRow r in dgvRI_Items.SelectedRows)
             {
-                SQL.AddParam("@productID", dgvRI_Items.Rows[i].Cells[0].Value.ToString());
+                SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                 int check_item = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM redeem_items WHERE productID = @productID"));
                 if (SQL.HasException(true))
                     return;
 
                 if (check_item == 1)
                 {
-                    new Notification().PopUp("Item already exists.", "Error", "error");
-                    return;
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    SQL.Query("DELETE FROM redeem_items where productID=@productID");
                 }
 
 
-                SQL.AddParam("@productID", dgvRI_Items.Rows[i].Cells[0].Value.ToString());
-                SQL.AddParam("@description", dgvRI_Items.Rows[i].Cells[1].Value.ToString());
-                SQL.AddParam("@categoryID", dgvRI_Items.Rows[i].Cells[2].Value.ToString());
-                SQL.AddParam("@barcode1", dgvRI_Items.Rows[i].Cells[3].Value.ToString());
-                SQL.AddParam("@barcode2", dgvRI_Items.Rows[i].Cells[4].Value.ToString());
+                SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                SQL.AddParam("@description", r.Cells[1].Value.ToString());
+                SQL.AddParam("@categoryID", r.Cells[2].Value.ToString());
+                SQL.AddParam("@barcode1", r.Cells[3].Value.ToString());
+                SQL.AddParam("@barcode2", r.Cells[4].Value.ToString());
 
                 SQL.Query("INSERT INTO redeem_items (productID, description, pts, categoryID, barcode1, barcode2) VALUES (@productID, @description, 0, @categoryID, @barcode1, @barcode2)");
 

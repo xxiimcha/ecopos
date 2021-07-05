@@ -1365,8 +1365,6 @@
             this.dgvRI_Items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRI_Items.Size = new System.Drawing.Size(376, 693);
             this.dgvRI_Items.TabIndex = 67;
-            this.dgvRI_Items.MouseEnter += new System.EventHandler(this.dgvRI_Items_MouseEnter);
-            this.dgvRI_Items.MouseLeave += new System.EventHandler(this.dgvRI_Items_MouseLeave);
             // 
             // cmbRI_CategoryItems
             // 
