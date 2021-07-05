@@ -195,5 +195,10 @@ namespace EcoPOSv2
             if (e.KeyCode == Keys.Enter)
                 btnLoginAdmin.PerformClick();
         }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

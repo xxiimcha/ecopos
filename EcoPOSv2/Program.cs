@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,11 +14,43 @@ namespace EcoPOSv2
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SplashScreen());
+            Mutex mutex = null;
+            const string appName = "EcoPOSv2";
+            bool createdNew;
+
+            mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                //MessageBox.Show(appName + " is already running!","Already running",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                //APPLICATION EXIT
+                Process[] runningProcesses = Process.GetProcesses();
+                foreach (Process process in runningProcesses)
+                {
+                    // now check the modules of the process
+                    foreach (ProcessModule module in process.Modules)
+                    {
+                        if (module.FileName.Equals("EcoPOSv2.exe"))
+                        {
+                            process.Kill();
+                        }
+                        else return;
+                    }
+                }
+                //APPLICATION EXIT
+
+                return;
+            }
+            else
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new SplashScreen());
+            }
         }
     }
 }

@@ -40,6 +40,8 @@ namespace EcoPOSv2
             dgvProducts.DataSource = SQL.DBDT;
             dgvProducts.Columns[0].Visible = false;
 
+            dgvProducts.Rows[0].Selected = true;
+
             //if (e.KeyCode == Keys.Enter)
             //    btnConfirm.PerformClick();
 
@@ -115,40 +117,43 @@ namespace EcoPOSv2
                 type_query = "wp_exclusive, wp_tax, wp_inclusive";
             }
 
-            SQL.AddParam("@productID", dgvProducts.CurrentRow.Cells[0].Value.ToString());
-            SQL.AddParam("@type", type);
-            int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = @productID AND type = @type"));
-
-            if (SQL.HasException(true))
-                return;
-
-            if (check_in_cart == 0)
+            foreach (DataGridViewRow r in dgvProducts.SelectedRows)
             {
-                SQL.AddParam("@productID", dgvProducts.CurrentRow.Cells[0].Value.ToString());
+                SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                 SQL.AddParam("@type", type);
+                int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = @productID AND type = @type"));
 
-                SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount) 
+                if (SQL.HasException(true))
+                    return;
+
+                if (check_in_cart == 0)
+                {
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    SQL.AddParam("@type", type);
+
+                    SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount) 
                        SELECT productID, description, name, @type," + type_query + ", 1, 0 FROM products WHERE productID = @productID");
 
-                if (SQL.HasException(true))
-                    return;
+                    if (SQL.HasException(true))
+                        return;
+                }
+                else
+                {
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    SQL.AddParam("@type", type);
+
+                    SQL.Query("UPDATE order_cart SET quantity = quantity + 1 WHERE productID = @productID AND type = @type");
+                    if (SQL.HasException(true))
+                        return;
+                }
+
+                Order.Instance.LoadOrder();
+                Order.Instance.GetTotal();
+
+                Order.Instance.ActiveControl = Order.Instance.tbBarcode;
+
+                Close();
             }
-            else
-            {
-                SQL.AddParam("@productID", dgvProducts.CurrentRow.Cells[0].Value.ToString());
-                SQL.AddParam("@type", type);
-
-                SQL.Query("UPDATE order_cart SET quantity = quantity + 1 WHERE productID = @productID AND type = @type");
-                if (SQL.HasException(true))
-                    return;
-            }
-
-            Order.Instance.LoadOrder();
-            Order.Instance.GetTotal();
-
-            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
-
-            Close();
         }
 
         private void txtBarcode_TextChanged(object sender, EventArgs e)

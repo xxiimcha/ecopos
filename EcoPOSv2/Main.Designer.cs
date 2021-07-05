@@ -49,6 +49,7 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
+            this.btnMinimize = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.btnMinimize);
             this.panel1.Controls.Add(this.lblTraningMode);
             this.panel1.Controls.Add(this.lblByPassUser);
             this.panel1.Controls.Add(this.lblUser);
@@ -73,7 +75,7 @@
             this.lblTraningMode.AutoSize = true;
             this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTraningMode.ForeColor = System.Drawing.Color.White;
-            this.lblTraningMode.Location = new System.Drawing.Point(1273, 2);
+            this.lblTraningMode.Location = new System.Drawing.Point(1131, 2);
             this.lblTraningMode.Name = "lblTraningMode";
             this.lblTraningMode.Size = new System.Drawing.Size(155, 25);
             this.lblTraningMode.TabIndex = 12;
@@ -328,6 +330,21 @@
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
             // 
+            // btnMinimize
+            // 
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimize.ForeColor = System.Drawing.Color.White;
+            this.btnMinimize.Location = new System.Drawing.Point(1292, 0);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(148, 34);
+            this.btnMinimize.TabIndex = 13;
+            this.btnMinimize.Text = "Minimize";
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.btnMinimize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMinimize_KeyDown);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,5 +392,6 @@
         public System.Windows.Forms.Label lblByPassUser;
         public Guna.UI2.WinForms.Guna2Button btnOrder;
         private System.Windows.Forms.Label lblTraningMode;
+        private System.Windows.Forms.Button btnMinimize;
     }
 }
