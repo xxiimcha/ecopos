@@ -35,16 +35,17 @@
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.cbxSales = new System.Windows.Forms.CheckBox();
-            this.cbxStaffSales = new System.Windows.Forms.CheckBox();
-            this.cbxRetailSales = new System.Windows.Forms.CheckBox();
-            this.cbxWholesaleSales = new System.Windows.Forms.CheckBox();
-            this.cbxVoidItems = new System.Windows.Forms.CheckBox();
-            this.cbxVoidTransactions = new System.Windows.Forms.CheckBox();
-            this.cbxRegularDiscounts = new System.Windows.Forms.CheckBox();
-            this.cbxSpecialDiscounts = new System.Windows.Forms.CheckBox();
-            this.cbxPaymentMethod = new System.Windows.Forms.CheckBox();
+            this.cbSelectAll = new System.Windows.Forms.CheckBox();
             this.cbxItemsSold = new System.Windows.Forms.CheckBox();
+            this.cbxPaymentMethod = new System.Windows.Forms.CheckBox();
+            this.cbxSpecialDiscounts = new System.Windows.Forms.CheckBox();
+            this.cbxRegularDiscounts = new System.Windows.Forms.CheckBox();
+            this.cbxVoidTransactions = new System.Windows.Forms.CheckBox();
+            this.cbxVoidItems = new System.Windows.Forms.CheckBox();
+            this.cbxWholesaleSales = new System.Windows.Forms.CheckBox();
+            this.cbxRetailSales = new System.Windows.Forms.CheckBox();
+            this.cbxStaffSales = new System.Windows.Forms.CheckBox();
+            this.cbxSales = new System.Windows.Forms.CheckBox();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.Label13 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.btnSearch = new FontAwesome.Sharp.IconButton();
             this.btnExport = new FontAwesome.Sharp.IconButton();
-            this.cbSelectAll = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel3.SuspendLayout();
             this.TableLayoutPanel2.SuspendLayout();
@@ -166,109 +166,31 @@
             this.TableLayoutPanel4.Size = new System.Drawing.Size(270, 639);
             this.TableLayoutPanel4.TabIndex = 0;
             // 
-            // cbxSales
+            // cbSelectAll
             // 
-            this.cbxSales.AutoSize = true;
-            this.cbxSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxSales.Location = new System.Drawing.Point(30, 42);
-            this.cbxSales.Name = "cbxSales";
-            this.cbxSales.Size = new System.Drawing.Size(210, 33);
-            this.cbxSales.TabIndex = 106;
-            this.cbxSales.Text = "Sales";
-            this.cbxSales.UseVisualStyleBackColor = true;
+            this.cbSelectAll.AutoSize = true;
+            this.cbSelectAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbSelectAll.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.cbSelectAll.Location = new System.Drawing.Point(30, 3);
+            this.cbSelectAll.Name = "cbSelectAll";
+            this.cbSelectAll.Size = new System.Drawing.Size(210, 33);
+            this.cbSelectAll.TabIndex = 118;
+            this.cbSelectAll.Text = "Select All";
+            this.cbSelectAll.UseVisualStyleBackColor = true;
+            this.cbSelectAll.CheckedChanged += new System.EventHandler(this.cbSelectAll_CheckedChanged);
             // 
-            // cbxStaffSales
+            // cbxItemsSold
             // 
-            this.cbxStaffSales.AutoSize = true;
-            this.cbxStaffSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxStaffSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxStaffSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxStaffSales.Location = new System.Drawing.Point(30, 81);
-            this.cbxStaffSales.Name = "cbxStaffSales";
-            this.cbxStaffSales.Size = new System.Drawing.Size(210, 33);
-            this.cbxStaffSales.TabIndex = 114;
-            this.cbxStaffSales.Text = "Staff Sales";
-            this.cbxStaffSales.UseVisualStyleBackColor = true;
-            // 
-            // cbxRetailSales
-            // 
-            this.cbxRetailSales.AutoSize = true;
-            this.cbxRetailSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxRetailSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxRetailSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxRetailSales.Location = new System.Drawing.Point(30, 120);
-            this.cbxRetailSales.Name = "cbxRetailSales";
-            this.cbxRetailSales.Size = new System.Drawing.Size(210, 33);
-            this.cbxRetailSales.TabIndex = 109;
-            this.cbxRetailSales.Text = "Retail Sales";
-            this.cbxRetailSales.UseVisualStyleBackColor = true;
-            // 
-            // cbxWholesaleSales
-            // 
-            this.cbxWholesaleSales.AutoSize = true;
-            this.cbxWholesaleSales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxWholesaleSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxWholesaleSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxWholesaleSales.Location = new System.Drawing.Point(30, 159);
-            this.cbxWholesaleSales.Name = "cbxWholesaleSales";
-            this.cbxWholesaleSales.Size = new System.Drawing.Size(210, 33);
-            this.cbxWholesaleSales.TabIndex = 110;
-            this.cbxWholesaleSales.Text = "Wholesale Sales";
-            this.cbxWholesaleSales.UseVisualStyleBackColor = true;
-            // 
-            // cbxVoidItems
-            // 
-            this.cbxVoidItems.AutoSize = true;
-            this.cbxVoidItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxVoidItems.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxVoidItems.ForeColor = System.Drawing.Color.Black;
-            this.cbxVoidItems.Location = new System.Drawing.Point(30, 198);
-            this.cbxVoidItems.Name = "cbxVoidItems";
-            this.cbxVoidItems.Size = new System.Drawing.Size(210, 33);
-            this.cbxVoidItems.TabIndex = 113;
-            this.cbxVoidItems.Text = "Void Items";
-            this.cbxVoidItems.UseVisualStyleBackColor = true;
-            // 
-            // cbxVoidTransactions
-            // 
-            this.cbxVoidTransactions.AutoSize = true;
-            this.cbxVoidTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxVoidTransactions.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxVoidTransactions.ForeColor = System.Drawing.Color.Black;
-            this.cbxVoidTransactions.Location = new System.Drawing.Point(30, 237);
-            this.cbxVoidTransactions.Name = "cbxVoidTransactions";
-            this.cbxVoidTransactions.Size = new System.Drawing.Size(210, 33);
-            this.cbxVoidTransactions.TabIndex = 112;
-            this.cbxVoidTransactions.Text = "Void Transactions";
-            this.cbxVoidTransactions.UseVisualStyleBackColor = true;
-            // 
-            // cbxRegularDiscounts
-            // 
-            this.cbxRegularDiscounts.AutoSize = true;
-            this.cbxRegularDiscounts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxRegularDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxRegularDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxRegularDiscounts.Location = new System.Drawing.Point(30, 276);
-            this.cbxRegularDiscounts.Name = "cbxRegularDiscounts";
-            this.cbxRegularDiscounts.Size = new System.Drawing.Size(210, 33);
-            this.cbxRegularDiscounts.TabIndex = 108;
-            this.cbxRegularDiscounts.Text = "Regular Discounts";
-            this.cbxRegularDiscounts.UseVisualStyleBackColor = true;
-            // 
-            // cbxSpecialDiscounts
-            // 
-            this.cbxSpecialDiscounts.AutoSize = true;
-            this.cbxSpecialDiscounts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxSpecialDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSpecialDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxSpecialDiscounts.Location = new System.Drawing.Point(30, 315);
-            this.cbxSpecialDiscounts.Name = "cbxSpecialDiscounts";
-            this.cbxSpecialDiscounts.Size = new System.Drawing.Size(210, 33);
-            this.cbxSpecialDiscounts.TabIndex = 117;
-            this.cbxSpecialDiscounts.Text = "Special Discounts";
-            this.cbxSpecialDiscounts.UseVisualStyleBackColor = true;
+            this.cbxItemsSold.AutoSize = true;
+            this.cbxItemsSold.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxItemsSold.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxItemsSold.ForeColor = System.Drawing.Color.Black;
+            this.cbxItemsSold.Location = new System.Drawing.Point(30, 393);
+            this.cbxItemsSold.Name = "cbxItemsSold";
+            this.cbxItemsSold.Size = new System.Drawing.Size(210, 33);
+            this.cbxItemsSold.TabIndex = 115;
+            this.cbxItemsSold.Text = "Items Sold";
+            this.cbxItemsSold.UseVisualStyleBackColor = true;
             // 
             // cbxPaymentMethod
             // 
@@ -283,18 +205,109 @@
             this.cbxPaymentMethod.Text = "Payment Method";
             this.cbxPaymentMethod.UseVisualStyleBackColor = true;
             // 
-            // cbxItemsSold
+            // cbxSpecialDiscounts
             // 
-            this.cbxItemsSold.AutoSize = true;
-            this.cbxItemsSold.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxItemsSold.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxItemsSold.ForeColor = System.Drawing.Color.Black;
-            this.cbxItemsSold.Location = new System.Drawing.Point(30, 393);
-            this.cbxItemsSold.Name = "cbxItemsSold";
-            this.cbxItemsSold.Size = new System.Drawing.Size(210, 33);
-            this.cbxItemsSold.TabIndex = 115;
-            this.cbxItemsSold.Text = "Items Sold";
-            this.cbxItemsSold.UseVisualStyleBackColor = true;
+            this.cbxSpecialDiscounts.AutoSize = true;
+            this.cbxSpecialDiscounts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxSpecialDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSpecialDiscounts.ForeColor = System.Drawing.Color.Black;
+            this.cbxSpecialDiscounts.Location = new System.Drawing.Point(30, 315);
+            this.cbxSpecialDiscounts.Name = "cbxSpecialDiscounts";
+            this.cbxSpecialDiscounts.Size = new System.Drawing.Size(210, 33);
+            this.cbxSpecialDiscounts.TabIndex = 117;
+            this.cbxSpecialDiscounts.Text = "Special Discounts";
+            this.cbxSpecialDiscounts.UseVisualStyleBackColor = true;
+            // 
+            // cbxRegularDiscounts
+            // 
+            this.cbxRegularDiscounts.AutoSize = true;
+            this.cbxRegularDiscounts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxRegularDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxRegularDiscounts.ForeColor = System.Drawing.Color.Black;
+            this.cbxRegularDiscounts.Location = new System.Drawing.Point(30, 276);
+            this.cbxRegularDiscounts.Name = "cbxRegularDiscounts";
+            this.cbxRegularDiscounts.Size = new System.Drawing.Size(210, 33);
+            this.cbxRegularDiscounts.TabIndex = 108;
+            this.cbxRegularDiscounts.Text = "Regular Discounts";
+            this.cbxRegularDiscounts.UseVisualStyleBackColor = true;
+            // 
+            // cbxVoidTransactions
+            // 
+            this.cbxVoidTransactions.AutoSize = true;
+            this.cbxVoidTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxVoidTransactions.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxVoidTransactions.ForeColor = System.Drawing.Color.Black;
+            this.cbxVoidTransactions.Location = new System.Drawing.Point(30, 237);
+            this.cbxVoidTransactions.Name = "cbxVoidTransactions";
+            this.cbxVoidTransactions.Size = new System.Drawing.Size(210, 33);
+            this.cbxVoidTransactions.TabIndex = 112;
+            this.cbxVoidTransactions.Text = "Void Transactions";
+            this.cbxVoidTransactions.UseVisualStyleBackColor = true;
+            // 
+            // cbxVoidItems
+            // 
+            this.cbxVoidItems.AutoSize = true;
+            this.cbxVoidItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxVoidItems.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxVoidItems.ForeColor = System.Drawing.Color.Black;
+            this.cbxVoidItems.Location = new System.Drawing.Point(30, 198);
+            this.cbxVoidItems.Name = "cbxVoidItems";
+            this.cbxVoidItems.Size = new System.Drawing.Size(210, 33);
+            this.cbxVoidItems.TabIndex = 113;
+            this.cbxVoidItems.Text = "Void Items";
+            this.cbxVoidItems.UseVisualStyleBackColor = true;
+            // 
+            // cbxWholesaleSales
+            // 
+            this.cbxWholesaleSales.AutoSize = true;
+            this.cbxWholesaleSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxWholesaleSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxWholesaleSales.ForeColor = System.Drawing.Color.Black;
+            this.cbxWholesaleSales.Location = new System.Drawing.Point(30, 159);
+            this.cbxWholesaleSales.Name = "cbxWholesaleSales";
+            this.cbxWholesaleSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxWholesaleSales.TabIndex = 110;
+            this.cbxWholesaleSales.Text = "Wholesale Sales";
+            this.cbxWholesaleSales.UseVisualStyleBackColor = true;
+            // 
+            // cbxRetailSales
+            // 
+            this.cbxRetailSales.AutoSize = true;
+            this.cbxRetailSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxRetailSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxRetailSales.ForeColor = System.Drawing.Color.Black;
+            this.cbxRetailSales.Location = new System.Drawing.Point(30, 120);
+            this.cbxRetailSales.Name = "cbxRetailSales";
+            this.cbxRetailSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxRetailSales.TabIndex = 109;
+            this.cbxRetailSales.Text = "Retail Sales";
+            this.cbxRetailSales.UseVisualStyleBackColor = true;
+            // 
+            // cbxStaffSales
+            // 
+            this.cbxStaffSales.AutoSize = true;
+            this.cbxStaffSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxStaffSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxStaffSales.ForeColor = System.Drawing.Color.Black;
+            this.cbxStaffSales.Location = new System.Drawing.Point(30, 81);
+            this.cbxStaffSales.Name = "cbxStaffSales";
+            this.cbxStaffSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxStaffSales.TabIndex = 114;
+            this.cbxStaffSales.Text = "Staff Sales";
+            this.cbxStaffSales.UseVisualStyleBackColor = true;
+            // 
+            // cbxSales
+            // 
+            this.cbxSales.AutoSize = true;
+            this.cbxSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSales.ForeColor = System.Drawing.Color.Black;
+            this.cbxSales.Location = new System.Drawing.Point(30, 42);
+            this.cbxSales.Name = "cbxSales";
+            this.cbxSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxSales.TabIndex = 106;
+            this.cbxSales.Text = "Sales";
+            this.cbxSales.UseVisualStyleBackColor = true;
             // 
             // Panel2
             // 
@@ -441,19 +454,6 @@
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // cbSelectAll
-            // 
-            this.cbSelectAll.AutoSize = true;
-            this.cbSelectAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbSelectAll.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.cbSelectAll.Location = new System.Drawing.Point(30, 3);
-            this.cbSelectAll.Name = "cbSelectAll";
-            this.cbSelectAll.Size = new System.Drawing.Size(210, 33);
-            this.cbSelectAll.TabIndex = 118;
-            this.cbSelectAll.Text = "Select All";
-            this.cbSelectAll.UseVisualStyleBackColor = true;
-            this.cbSelectAll.CheckedChanged += new System.EventHandler(this.cbSelectAll_CheckedChanged);
             // 
             // Terminal
             // 
