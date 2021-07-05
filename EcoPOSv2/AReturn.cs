@@ -162,7 +162,6 @@ namespace EcoPOSv2
         {
             if (dgvReturn.RowCount > 0)
             {
-
                 // check if item is already chosen
                 DataGridViewRow datarow = new DataGridViewRow();
                 for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)

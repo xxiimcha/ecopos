@@ -164,14 +164,13 @@ namespace EcoPOSv2
                 case 1 // products
                :
                     {
-                        SQL.Query("DELETE FROM products");
-                        if (SQL.HasException(true))
-                            return;
-
                         SQL.Query("DELETE FROM inventory");
                         if (SQL.HasException(true))
                             return;
 
+                        SQL.Query("DELETE FROM products");
+                        if (SQL.HasException(true))
+                            return;
 
                         for (int i = 0; i <= DataGridView1.Rows.Count - 2; i++)
                         {
@@ -414,22 +413,25 @@ namespace EcoPOSv2
 
         private void TableImport_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(progressBar1.Value != 0)
-            {
-                if(MessageBox.Show("If you close this form. Importing will be cancel. /n /n Are you sure do you want to close it ?", "FormClosing",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    backgroundWorker1.CancelAsync();
-                    Close();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
-            else
-            {
-                this.Close();
-            }
+            backgroundWorker1.CancelAsync();
+            Close();
+
+            //if (progressBar1.Value != 0)
+            //{
+            //    if(MessageBox.Show("If you close this form. Importing will be cancel. /n /n Are you sure do you want to close it ?", "FormClosing",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            //    {
+            //        backgroundWorker1.CancelAsync();
+            //        Close();
+            //    }
+            //    else
+            //    {
+            //        e.Cancel = true;
+            //    }
+            //}
+            //else
+            //{
+            //    this.Close();
+            //}
         }
     }
 }

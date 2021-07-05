@@ -202,7 +202,7 @@ namespace EcoPOSv2
 
             int requiredFieldsMet = RequireField(ref requiredFields);
 
-            if (requiredFieldsMet == 1)
+            if (requiredFieldsMet == 1 && cmbSupplier.Text != "")
             {
                 if (dgvPurchase.RowCount == 0)
                     return;
