@@ -43,6 +43,7 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.btnConfirm = new FontAwesome.Sharp.IconButton();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.btnClear);
             this.guna2Panel1.Controls.Add(this.dgvProducts);
             this.guna2Panel1.Controls.Add(this.btnCLose);
@@ -71,7 +73,7 @@
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Location = new System.Drawing.Point(627, 43);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(189, 33);
+            this.btnClear.Size = new System.Drawing.Size(93, 33);
             this.btnClear.TabIndex = 58;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -200,6 +202,25 @@
             this.Label2.Text = "Price Mode:";
             this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
+            this.btnConfirm.FlatAppearance.BorderSize = 0;
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnConfirm.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnConfirm.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnConfirm.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnConfirm.IconSize = 40;
+            this.btnConfirm.Location = new System.Drawing.Point(726, 41);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.btnConfirm.Size = new System.Drawing.Size(96, 37);
+            this.btnConfirm.TabIndex = 59;
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
             // SeeItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,5 +253,6 @@
         internal System.Windows.Forms.Label Label3;
         private System.Windows.Forms.Button btnClear;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        internal FontAwesome.Sharp.IconButton btnConfirm;
     }
 }
