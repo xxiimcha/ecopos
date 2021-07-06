@@ -82,7 +82,7 @@ namespace EcoPOSv2
             if (cmbRI_CategoryItems.SelectedIndex != 0)
                 cat_query = "categoryID = " + cmbRI_CategoryItems.SelectedValue;
 
-            SQL.Query("SELECT productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_query + "ORDER BY description ASC");
+            SQL.Query("SELECT TOP 70 productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_query + "ORDER BY description ASC");
 
             if (SQL.HasException(true))
                 return;
@@ -401,13 +401,24 @@ namespace EcoPOSv2
             if (dgvRI_RedeemItems.SelectedRows.Count == 0)
                 return;
 
-            for(int i = 0; i<=dgvRI_RedeemItems.SelectedRows.Count-1; i++)
+            if (selectallredeemitems == true)
             {
-                SQL.AddParam("@redeemID", dgvRI_RedeemItems.Rows[i].Cells[0].Value.ToString());
-                SQL.Query("DELETE FROM redeem_items WHERE redeemID = @redeemID");
+                SQL.Query("DELETE FROM redeem_items");
 
-                if (SQL.HasException(true))
-                    return;
+                if (SQL.HasException(true)) return;
+
+                new Notification().PopUp("All items has been deleted from redeemitems", "Success", "information");
+            }
+            else
+            {
+                for (int i = 0; i <= dgvRI_RedeemItems.SelectedRows.Count - 1; i++)
+                {
+                    SQL.AddParam("@redeemID", dgvRI_RedeemItems.Rows[i].Cells[0].Value.ToString());
+                    SQL.Query("DELETE FROM redeem_items WHERE redeemID = @redeemID");
+
+                    if (SQL.HasException(true))
+                        return;
+                }
             }
 
 
@@ -420,34 +431,42 @@ namespace EcoPOSv2
 
         private void btnRI_AddItem_Click(object sender, EventArgs e)
         {
-            
             if (dgvRI_Items.SelectedRows.Count == 0)
                 return;
 
-            foreach (DataGridViewRow r in dgvRI_Items.SelectedRows)
+            if(selectall == true)
             {
-                SQL.AddParam("@productID", r.Cells[0].Value.ToString());
-                int check_item = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM redeem_items WHERE productID = @productID"));
-                if (SQL.HasException(true))
-                    return;
+                SQL.Query("INSERT INTO redeem_items (productID, description, pts, categoryID, barcode1, barcode2)SELECT productID, description, '0', categoryID, barcode1, barcode2 FROM products");
 
-                if (check_item == 1)
+                if (SQL.HasException(true)) return;
+            }
+            else
+            {
+                foreach (DataGridViewRow r in dgvRI_Items.SelectedRows)
                 {
                     SQL.AddParam("@productID", r.Cells[0].Value.ToString());
-                    SQL.Query("DELETE FROM redeem_items where productID=@productID");
+                    int check_item = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM redeem_items WHERE productID = @productID"));
+                    if (SQL.HasException(true))
+                        return;
+
+                    if (check_item == 1)
+                    {
+                        SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                        SQL.Query("DELETE FROM redeem_items where productID=@productID");
+                    }
+
+
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    SQL.AddParam("@description", r.Cells[1].Value.ToString());
+                    SQL.AddParam("@categoryID", r.Cells[2].Value.ToString());
+                    SQL.AddParam("@barcode1", r.Cells[3].Value.ToString());
+                    SQL.AddParam("@barcode2", r.Cells[4].Value.ToString());
+
+                    SQL.Query("INSERT INTO redeem_items (productID, description, pts, categoryID, barcode1, barcode2) VALUES (@productID, @description, 0, @categoryID, @barcode1, @barcode2)");
+
+                    if (SQL.HasException(true))
+                        return;
                 }
-
-
-                SQL.AddParam("@productID", r.Cells[0].Value.ToString());
-                SQL.AddParam("@description", r.Cells[1].Value.ToString());
-                SQL.AddParam("@categoryID", r.Cells[2].Value.ToString());
-                SQL.AddParam("@barcode1", r.Cells[3].Value.ToString());
-                SQL.AddParam("@barcode2", r.Cells[4].Value.ToString());
-
-                SQL.Query("INSERT INTO redeem_items (productID, description, pts, categoryID, barcode1, barcode2) VALUES (@productID, @description, 0, @categoryID, @barcode1, @barcode2)");
-
-                if (SQL.HasException(true))
-                    return;
             }
 
             new Notification().PopUp("Edit in the next table.", "Item saved", "information");
@@ -457,6 +476,8 @@ namespace EcoPOSv2
 
         private void dgvRI_RedeemItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            selectallredeemitems = false;
+
             if (e.RowIndex == -1)
                 return;
 
@@ -843,12 +864,14 @@ namespace EcoPOSv2
                 report.Dispose();
             }
         }
-
+        public bool selectall = false, selectallredeemitems = false;
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
             if (dgvRI_Items.RowCount > 0)
             {
                 dgvRI_Items.SelectAll();
+
+                selectall = true;
                 //// check if item is already chosen
                 //DataGridViewRow datarow = new DataGridViewRow();
                 //for (int rows = 0; rows <= dgvRI_Items.Rows.Count - 1; rows++)
@@ -881,6 +904,23 @@ namespace EcoPOSv2
         private void dgvRI_Items_MouseLeave(object sender, EventArgs e)
         {
             keybd_event(VK_CONTROL, (byte)0, KEYEVENTF_KEYUP, 0);
+        }
+
+        private void dgvRI_Items_Click(object sender, EventArgs e)
+        {
+            selectall = false;
+        }
+
+        private void dgvRI_RedeemItems_Click(object sender, EventArgs e)
+        {
+            selectallredeemitems = false;
+        }
+
+        private void btnSelectAllRedeemItems_Click(object sender, EventArgs e)
+        {
+            selectallredeemitems = true;
+
+            dgvRI_RedeemItems.SelectAll();
         }
     }
 }

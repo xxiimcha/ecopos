@@ -132,6 +132,7 @@
             this.btnRT = new FontAwesome.Sharp.IconButton();
             this.btnRI = new FontAwesome.Sharp.IconButton();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.btnSelectAllRedeemItems = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAPT_Records)).BeginInit();
             this.TableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRT_Records)).BeginInit();
@@ -1078,6 +1079,7 @@
             this.dgvRI_RedeemItems.Size = new System.Drawing.Size(376, 692);
             this.dgvRI_RedeemItems.TabIndex = 68;
             this.dgvRI_RedeemItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRI_RedeemItems_CellClick);
+            this.dgvRI_RedeemItems.Click += new System.EventHandler(this.dgvRI_RedeemItems_Click);
             // 
             // TableLayoutPanel1
             // 
@@ -1147,6 +1149,7 @@
             // Panel15
             // 
             this.Panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Panel15.Controls.Add(this.btnSelectAllRedeemItems);
             this.Panel15.Controls.Add(this.btnRI_RemoveItem);
             this.Panel15.Controls.Add(this.btnRI_SearchRedeem);
             this.Panel15.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1365,6 +1368,7 @@
             this.dgvRI_Items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRI_Items.Size = new System.Drawing.Size(376, 693);
             this.dgvRI_Items.TabIndex = 67;
+            this.dgvRI_Items.Click += new System.EventHandler(this.dgvRI_Items_Click);
             // 
             // cmbRI_CategoryItems
             // 
@@ -1708,6 +1712,28 @@
             this.Panel1.Size = new System.Drawing.Size(1164, 39);
             this.Panel1.TabIndex = 6;
             // 
+            // btnSelectAllRedeemItems
+            // 
+            this.btnSelectAllRedeemItems.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSelectAllRedeemItems.FlatAppearance.BorderSize = 2;
+            this.btnSelectAllRedeemItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectAllRedeemItems.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectAllRedeemItems.ForeColor = System.Drawing.Color.Orange;
+            this.btnSelectAllRedeemItems.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnSelectAllRedeemItems.IconColor = System.Drawing.Color.Orange;
+            this.btnSelectAllRedeemItems.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSelectAllRedeemItems.IconSize = 27;
+            this.btnSelectAllRedeemItems.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSelectAllRedeemItems.Location = new System.Drawing.Point(232, 0);
+            this.btnSelectAllRedeemItems.Name = "btnSelectAllRedeemItems";
+            this.btnSelectAllRedeemItems.Size = new System.Drawing.Size(103, 47);
+            this.btnSelectAllRedeemItems.TabIndex = 71;
+            this.btnSelectAllRedeemItems.Text = "All";
+            this.btnSelectAllRedeemItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSelectAllRedeemItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSelectAllRedeemItems.UseVisualStyleBackColor = true;
+            this.btnSelectAllRedeemItems.Click += new System.EventHandler(this.btnSelectAllRedeemItems_Click);
+            // 
             // RedeemSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1860,5 +1886,6 @@
         internal FontAwesome.Sharp.IconButton btnGC_Add;
         private Guna.UI2.WinForms.Guna2Button btnRI_Save;
         internal FontAwesome.Sharp.IconButton btnSelectAll;
+        internal FontAwesome.Sharp.IconButton btnSelectAllRedeemItems;
     }
 }
