@@ -66,7 +66,7 @@ namespace EcoPOSv2
         }
         private void loadCat_Category()
         {
-            SQL.Query("Select categoryID, Name FROM product_category ORDER BY name ASC");
+            SQL.Query("Select TOP 70 categoryID, Name FROM product_category ORDER BY name ASC");
             if (SQL.HasException(true))
                 return;
 
@@ -100,7 +100,7 @@ namespace EcoPOSv2
 
         private void LoadProducts()
         {
-            SQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
+            SQL.Query("SELECT TOP 70 productID, description, name FROM products ORDER BY description ASC");
             if (SQL.HasException(true))
                 return;
 

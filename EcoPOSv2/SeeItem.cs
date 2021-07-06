@@ -20,77 +20,40 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
 
         public Order frmOrder;
-
-        private void txtBarcode_KeyUp(object sender, KeyEventArgs e)
-        {
-            if(txtBarcode.Text == "")
-            {
-                return;
-            }
-
-
-            SQL.AddParam("@find", txtBarcode.Text + "%");
-
-            SQL.Query(@"SELECT productID, barcode1 as 'Barcode 1', barcode2 as 'Barcode 2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products
-                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY description DESC");
-
-            if (SQL.HasException(true))
-                return;
-
-            dgvProducts.DataSource = SQL.DBDT;
-            dgvProducts.Columns[0].Visible = false;
-
-            dgvProducts.Rows[0].Selected = true;
-
-            //if (e.KeyCode == Keys.Enter)
-            //    btnConfirm.PerformClick();
-
-            //SQL.AddParam("@find", txtBarcode.Text + "%");
-
-            //SQL.Query(@"SELECT productID, barcode1 as 'Barcode 1', barcode2 as 'Barcode 2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products
-            //           WHERE barcode1 LIKE @find OR barcode2 OR description LIKE @find ORDER BY description DESC");
-
-            //if (SQL.HasException(true))
-            //    return;
-
-            //dgvProducts.DataSource = SQL.DBDT;
-            //dgvProducts.Columns[0].Visible = false;
-
-            //if (e.KeyCode == Keys.Enter)
-            //    btnConfirm.PerformClick();
-        }
-
-        private void dgvProducts_KeyUp(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Enter)
-            //    btnConfirm.PerformClick();
-        }
-
+ 
         private void SeeItem_Load(object sender, EventArgs e)
         {
             guna2ShadowForm1.SetShadowForm(this);
-            //SQL.Query("SELECT productID, barcode1 as 'Barcode1', barcode2 as 'Barcode2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products");
-
-            //dgvProducts.DataSource = SQL.DBDT;
-            //dgvProducts.Columns[0].Visible = false;
-
-            //rbRetail.Visible = false;
-            //rbWholesale.Visible = false;
-            //Label2.Visible = false;
+            this.ActiveControl = txtBarcode;
         }
         public static string seeitemsearch;
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            if(e.KeyCode == Keys.Enter)
+            {
+                SQL.AddParam("@find", txtBarcode.Text + "%");
+
+                SQL.Query(@"SELECT productID, barcode1 as 'Barcode 1', barcode2 as 'Barcode 2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products
+                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY description DESC");
+
+                if (SQL.HasException(true))
+                    return;
+
+                dgvProducts.DataSource = SQL.DBDT;
+                dgvProducts.Columns[0].Visible = false;
+
+                dgvProducts.Rows[0].Selected = true;
+            }
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
-            (dgvProducts.DataSource as DataTable).DefaultView.RowFilter =
-                        string.Format("Barcode1 LIKE '{0}%'", "");
-
-            txtBarcode.Clear();
             txtBarcode.Focus();
-            txtBarcode.Text = txtBarcode.Text.Replace(" ", "");
+            //(dgvProducts.DataSource as DataTable).DefaultView.RowFilter =
+            //            string.Format("Barcode1 LIKE '{0}%'", "");
+
+            //txtBarcode.Clear();
+            //txtBarcode.Focus();
+            //txtBarcode.Text = txtBarcode.Text.Replace(" ", "");
         }
 
         private void dgvProducts_Click(object sender, EventArgs e)
@@ -158,7 +121,7 @@ namespace EcoPOSv2
 
         private void txtBarcode_TextChanged(object sender, EventArgs e)
         {
-            if(txtBarcode.Text == "")
+            if (txtBarcode.Text == "")
             {
                 return;
             }

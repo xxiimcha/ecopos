@@ -64,7 +64,7 @@ namespace EcoPOSv2
             else
                 return;
 
-            new Notification().PopUp("Data saved.","error","information");
+            new Notification().PopUp("Data saved.","Success","information");
             Main.Instance.rl_footer_text = txtReceiptFooter.Text;
         }
 
