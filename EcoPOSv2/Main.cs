@@ -377,9 +377,17 @@ namespace EcoPOSv2
 
         private void btnSeeItem_Click(object sender, EventArgs e)
         {
-            SeeItem frmSeeItem = new SeeItem();
-            //frmSeeItem.frmOrder = this;
-            frmSeeItem.ShowDialog();
+            // Process.Start("calc.exe");
+            if (Order.Instance.CheckOpened("SeeItem") == true)
+            {
+                return;
+            }
+
+            new SeeItem().Show();
+
+            SeeItem.Instance.ActiveControl = SeeItem.Instance.txtBarcode;
+
+            //SeeItem.Instance.ShowDialog();
         }
 
         private void btnXReading_Click(object sender, EventArgs e)

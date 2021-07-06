@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMinimize = new System.Windows.Forms.Button();
             this.lblTraningMode = new System.Windows.Forms.Label();
             this.lblByPassUser = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
-            this.btnMinimize = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,6 +69,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1440, 34);
             this.panel1.TabIndex = 0;
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimize.ForeColor = System.Drawing.Color.White;
+            this.btnMinimize.Location = new System.Drawing.Point(1292, 0);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(148, 34);
+            this.btnMinimize.TabIndex = 13;
+            this.btnMinimize.Text = "Minimize";
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.btnMinimize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMinimize_KeyDown);
             // 
             // lblTraningMode
             // 
@@ -329,21 +344,6 @@
             // 
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimize.ForeColor = System.Drawing.Color.White;
-            this.btnMinimize.Location = new System.Drawing.Point(1292, 0);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(148, 34);
-            this.btnMinimize.TabIndex = 13;
-            this.btnMinimize.Text = "Minimize";
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            this.btnMinimize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMinimize_KeyDown);
             // 
             // Main
             // 

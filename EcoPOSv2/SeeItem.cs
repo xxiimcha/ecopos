@@ -17,14 +17,34 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        public static SeeItem _SeeItem;
+        public static SeeItem Instance
+        {
+            get
+            {
+                if (_SeeItem == null)
+                {
+                    _SeeItem = new SeeItem();
+                }
+                return _SeeItem;
+            }
+        }
+
+
+
+
         SQLControl SQL = new SQLControl();
 
         public Order frmOrder;
  
         private void SeeItem_Load(object sender, EventArgs e)
         {
-            guna2ShadowForm1.SetShadowForm(this);
             this.ActiveControl = txtBarcode;
+
+
+            _SeeItem = this;
+
+            guna2ShadowForm1.SetShadowForm(this);
         }
         public static string seeitemsearch;
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
@@ -42,7 +62,14 @@ namespace EcoPOSv2
                 dgvProducts.DataSource = SQL.DBDT;
                 dgvProducts.Columns[0].Visible = false;
 
-                dgvProducts.Rows[0].Selected = true;
+
+                if(dgvProducts.Rows.Count > 0)
+                {
+                    dgvProducts.Rows[0].Selected = true;
+                }
+
+
+                txtBarcode.Clear();
             }
         }
         private void btnClear_Click(object sender, EventArgs e)
@@ -60,12 +87,6 @@ namespace EcoPOSv2
         {
             txtBarcode.Focus();
         }
-
-        private void guna2Panel1_Click(object sender, EventArgs e)
-        {
-            txtBarcode.Focus();
-        }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (dgvProducts.SelectedRows.Count == 0)

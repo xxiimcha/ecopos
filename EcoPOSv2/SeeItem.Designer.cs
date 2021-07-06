@@ -66,7 +66,6 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(826, 676);
             this.guna2Panel1.TabIndex = 0;
-            this.guna2Panel1.Click += new System.EventHandler(this.guna2Panel1_Click);
             // 
             // btnConfirm
             // 
@@ -83,7 +82,7 @@
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.btnConfirm.Size = new System.Drawing.Size(96, 37);
-            this.btnConfirm.TabIndex = 59;
+            this.btnConfirm.TabIndex = 3;
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -93,7 +92,7 @@
             this.btnClear.Location = new System.Drawing.Point(627, 43);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(93, 33);
-            this.btnClear.TabIndex = 58;
+            this.btnClear.TabIndex = 2;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -141,7 +140,7 @@
             this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(819, 554);
-            this.dgvProducts.TabIndex = 57;
+            this.dgvProducts.TabIndex = 1;
             this.dgvProducts.Click += new System.EventHandler(this.dgvProducts_Click);
             // 
             // btnCLose
@@ -192,7 +191,7 @@
             this.txtBarcode.Location = new System.Drawing.Point(187, 43);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(433, 33);
-            this.txtBarcode.TabIndex = 52;
+            this.txtBarcode.TabIndex = 0;
             this.txtBarcode.Tag = "";
             this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
             // 
@@ -230,6 +229,7 @@
             this.Name = "SeeItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SeeItem";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SeeItem_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
