@@ -344,5 +344,10 @@ namespace EcoPOSv2
                 dgvToWarehouse_runOnlyOnce = false;
             }
         }
+
+        private void dgvWarehouse_DoubleClick(object sender, EventArgs e)
+        {
+            btnSearch.PerformClick();
+        }
     }
 }

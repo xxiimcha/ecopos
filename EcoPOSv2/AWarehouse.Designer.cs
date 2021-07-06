@@ -612,6 +612,7 @@
             this.dgvWarehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvWarehouse.Size = new System.Drawing.Size(447, 846);
             this.dgvWarehouse.TabIndex = 9;
+            this.dgvWarehouse.DoubleClick += new System.EventHandler(this.dgvWarehouse_DoubleClick);
             // 
             // Panel4
             // 
