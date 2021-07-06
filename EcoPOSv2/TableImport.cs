@@ -414,7 +414,7 @@ namespace EcoPOSv2
         private void TableImport_FormClosing(object sender, FormClosingEventArgs e)
         {
             backgroundWorker1.CancelAsync();
-            Close();
+            backgroundWorker1.Dispose();
 
             //if (progressBar1.Value != 0)
             //{
