@@ -57,15 +57,22 @@ namespace EcoPOSv2
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
-
-            while (backgroundWorker1.IsBusy)
+            if (cmbSheet.Text != "")
             {
-                btnImport.Enabled = false;
-                return;
-            }
+                backgroundWorker1.RunWorkerAsync();
 
-            btnImport.Enabled = true;
+                while (backgroundWorker1.IsBusy)
+                {
+                    btnImport.Enabled = false;
+                    return;
+                }
+
+                btnImport.Enabled = true;
+            }
+            else
+            {
+                new Notification().PopUp("Please choose a sheet to proceed.", "Error", "error");
+            }
         }
 
         private void cmbSheet_SelectedIndexChanged(object sender, EventArgs e)
@@ -409,6 +416,7 @@ namespace EcoPOSv2
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Import Success!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
 
         private void TableImport_FormClosing(object sender, FormClosingEventArgs e)
