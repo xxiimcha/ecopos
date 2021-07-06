@@ -48,8 +48,8 @@ namespace EcoPOSv2
         //METHODS
         private void SpecialDiscountReport_Load(object sender, EventArgs e)
         {
-            dtpFrom.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
-            dtpTo.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
+            dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
             cmbCusType.SelectedIndex = 0;
 
             LoadSpecialDiscount();
