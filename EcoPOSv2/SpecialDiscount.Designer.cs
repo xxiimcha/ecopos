@@ -130,6 +130,7 @@
             this.txtIDNo.Size = new System.Drawing.Size(363, 33);
             this.txtIDNo.TabIndex = 59;
             this.txtIDNo.Tag = "";
+            this.txtIDNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIDNo_KeyDown);
             // 
             // txtName
             // 

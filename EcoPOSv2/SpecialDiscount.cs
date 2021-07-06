@@ -128,5 +128,13 @@ namespace EcoPOSv2
         {
             this.Close();
         }
+
+        private void txtIDNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnConfirm.PerformClick();
+            }
+        }
     }
 }
