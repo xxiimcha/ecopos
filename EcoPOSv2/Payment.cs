@@ -157,6 +157,17 @@ namespace EcoPOSv2
                     report.SetParameterValue("min", Main.Instance.sd_min);
                     report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
 
+                    if(Properties.Settings.Default.dbName == "EcoPOS")
+                    {
+                        report.SetParameterValue("is_vatable", true);
+                        report.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                    }
+                    else
+                    {
+                        report.SetParameterValue("is_vatable", false);
+                        report.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                    }
+
                     int no_of_prints = 1;
 
                     if (frmOrder.apply_regular_discount_fix_amt | frmOrder.apply_special_discount | frmOrder.apply_member)
