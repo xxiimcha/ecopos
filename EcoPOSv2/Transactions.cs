@@ -174,7 +174,26 @@ namespace EcoPOSv2
                 reprint_receipt.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
                 reprint_receipt.SetParameterValue("sn", Main.Instance.sd_sn);
                 reprint_receipt.SetParameterValue("min", Main.Instance.sd_min);
-                reprint_receipt.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+                reprint_receipt.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
+                reprint_receipt.SetParameterValue("ptu_no", Main.Instance.sd_ptu_no);
+
+                DateTime dateissue = DateTime.Parse(Main.Instance.sd_pn_date_issued);
+                reprint_receipt.SetParameterValue("date_issued", dateissue.ToString("MM/dd/yyyy"));
+
+                DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
+                reprint_receipt.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
+
+                if (Properties.Settings.Default.dbName == "EcoPOS")
+                {
+                    reprint_receipt.SetParameterValue("is_vatable", true);
+                    reprint_receipt.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                }
+                else
+                {
+                    reprint_receipt.SetParameterValue("is_vatable", false);
+                    reprint_receipt.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                }
+
             }
             catch (Exception ex)
             {

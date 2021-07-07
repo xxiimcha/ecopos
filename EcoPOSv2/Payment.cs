@@ -155,9 +155,17 @@ namespace EcoPOSv2
                     report.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
                     report.SetParameterValue("sn", Main.Instance.sd_sn);
                     report.SetParameterValue("min", Main.Instance.sd_min);
-                    report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+                    report.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
+                    report.SetParameterValue("ptu_no", Main.Instance.sd_ptu_no);
 
-                    if(Properties.Settings.Default.dbName == "EcoPOS")
+                    DateTime dateissue = DateTime.Parse(Main.Instance.sd_pn_date_issued);
+                    report.SetParameterValue("date_issued", dateissue.ToString("MM/dd/yyyy"));
+
+                    DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
+                    report.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
+
+
+                    if (Properties.Settings.Default.dbName == "EcoPOS")
                     {
                         report.SetParameterValue("is_vatable", true);
                         report.SetParameterValue("txt_footer", "This serves as Official Receipt.");

@@ -90,8 +90,7 @@ namespace EcoPOSv2
         public string sd_ptu_no;
         public string sd_pn_date_issued;
         public string sd_pn_valid_until;
-
-        public string rl_footer_text = "";
+        public string sd_footer_text = "";
 
         public string pd_receipt_printer = "";
         public string pd_report_printer = "";
@@ -280,7 +279,7 @@ namespace EcoPOSv2
 
                 foreach (DataRow dr in SQL.DBDT.Rows)
                 {
-                    rl_footer_text = dr["receipt_footer_text"].ToString();
+                    sd_footer_text = dr["receipt_footer_text"].ToString();
                 }   
             }
         }

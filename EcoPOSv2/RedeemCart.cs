@@ -109,7 +109,7 @@ namespace EcoPOSv2
                 report.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
                 report.SetParameterValue("sn", Main.Instance.sd_sn);
                 report.SetParameterValue("min", Main.Instance.sd_min);
-                report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+                report.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
                 report.SetParameterValue("note", "");
             }
             catch (Exception ex)

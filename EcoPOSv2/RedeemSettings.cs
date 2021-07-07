@@ -761,7 +761,7 @@ namespace EcoPOSv2
                 reprint_receipt.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
                 reprint_receipt.SetParameterValue("sn", Main.Instance.sd_sn);
                 reprint_receipt.SetParameterValue("min", Main.Instance.sd_min);
-                reprint_receipt.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+                reprint_receipt.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
                 reprint_receipt.SetParameterValue("note", "###REPRINT###");
             }
             catch (Exception ex)

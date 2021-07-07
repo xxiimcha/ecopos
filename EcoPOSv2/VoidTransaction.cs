@@ -43,6 +43,11 @@ namespace EcoPOSv2
             report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
             report.PrintOptions.PaperSource = PaperSource.Auto;
             report.PrintToPrinter(1, false, 0, 0);
+
+
+            new Notification().PopUp("Transaction voided.", "", "information");
+
+            Close();
         }
         private void GenerateReceipt()
         {
@@ -92,7 +97,8 @@ namespace EcoPOSv2
                            vat_12,
                            vat_exempt_sale,
                            zero_rated_sale,
-                           payment_amt, 
+                           payment_amt,
+                           payment_method,
                            change,
                            giftcard_no, 
                            giftcard_deducted,
@@ -140,6 +146,7 @@ namespace EcoPOSv2
                     report.SetParameterValue("change", change.ToString("N2"));
                     report.SetParameterValue("cus_name", r["cus_name"].ToString());
                     report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                    report.SetParameterValue("payment_method", r["payment_method"].ToString());
 
 
 
@@ -152,7 +159,25 @@ namespace EcoPOSv2
                 report.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
                 report.SetParameterValue("sn", Main.Instance.sd_sn);
                 report.SetParameterValue("min", Main.Instance.sd_min);
-                report.SetParameterValue("footer_text", Main.Instance.rl_footer_text);
+                report.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
+                report.SetParameterValue("ptu_no", Main.Instance.sd_ptu_no);
+
+                DateTime dateissue = DateTime.Parse(Main.Instance.sd_pn_date_issued);
+                report.SetParameterValue("date_issued", dateissue.ToString("MM/dd/yyyy"));
+
+                DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
+                report.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
+
+                if (Properties.Settings.Default.dbName == "EcoPOS")
+                {
+                    report.SetParameterValue("is_vatable", true);
+                    report.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                }
+                else
+                {
+                    report.SetParameterValue("is_vatable", false);
+                    report.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                }
             }
             catch (Exception ex)
             {
@@ -195,12 +220,12 @@ namespace EcoPOSv2
                 if (SQL.HasException(true))
                     return;
 
-                new Notification().PopUp("Transaction voided.","","information");
+               
 
                 GenerateReceipt();
 
-                Close();
-                return;
+              // Close();
+               // return;
             }
             else
             {
