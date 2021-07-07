@@ -103,19 +103,46 @@ namespace EcoPOSv2
                         report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
                         report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
                         report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
-                        report.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()), 2).ToString());
-                        report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
-                        report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
-                        report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
-                        report.SetParameterValue("giftcard_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
-                        report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
-                        report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
-                        report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
-                        report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
-                        report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
-                        report.SetParameterValue("giftcard_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
-                        report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
-                        report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
+
+                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
+                        report.SetParameterValue("subtotal", subtotal.ToString("N2"));
+
+                        decimal less_vat = decimal.Parse(r["less_vat"].ToString());
+                        report.SetParameterValue("less_vat", less_vat.ToString("N2"));
+
+                        decimal disc_amt = decimal.Parse(r["disc_amt"].ToString());
+                        report.SetParameterValue("discount", disc_amt.ToString("N2"));
+
+                        decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
+                        report.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
+
+                        decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
+                        report.SetParameterValue("giftcard_deduct", giftcard_deducted.ToString("N2"));
+
+                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
+                        report.SetParameterValue("total", grand_total.ToString("N2"));
+
+                        decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
+                        report.SetParameterValue("vatable_sales", vatable_sale.ToString("N2"));
+
+                        decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
+                        report.SetParameterValue("vat_12", vat_12.ToString("N2"));
+
+                        decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
+                        report.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
+
+                        decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
+                        report.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
+
+                        decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
+                        report.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
+
+                        decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
+                        report.SetParameterValue("cash", payment_amt.ToString("N2"));
+
+                        decimal change = decimal.Parse(r["change"].ToString());
+                        report.SetParameterValue("change", change.ToString("N2"));
+
                         report.SetParameterValue("cus_name", r["cus_name"].ToString());
                         report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
                         report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
@@ -220,7 +247,11 @@ namespace EcoPOSv2
                        @giftcard_deducted, @grand_total, @payment_amt, @change, @payment_method, @giftcard_no, @less_vat, @vatable_sale, @vat_12, @vat_exempt_sale, 
                        @zero_rated_sale, @userID, @user_first_name FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
             if (SQL.HasException(true))
+            {
+                MessageBox.Show("1");
                 return;
+            }
+               
 
 
             #endregion
@@ -234,7 +265,11 @@ namespace EcoPOSv2
                            static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
                            quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return FROM order_cart");
             if (SQL.HasException(true))
+            {
+                MessageBox.Show("2");
                 return;
+            }
+                
 
             #endregion
 
@@ -242,7 +277,10 @@ namespace EcoPOSv2
 
             SQL.Query("SELECT productID, quantity, is_return, is_refund FROM order_cart");
             if (SQL.HasException(true))
+            {
+                MessageBox.Show("3");
                 return;
+            }
             foreach (DataRow r in SQL.DBDT.Rows)
             {
                 SQL.AddParam("@productID", r["productID"].ToString());
@@ -251,13 +289,19 @@ namespace EcoPOSv2
                 {
                     SQL.Query("UPDATE inventory SET stock_qty = stock_qty + @quantity WHERE productID = @productID");
                     if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("4");
                         return;
+                    }
                 }
                 else
                 {
                     SQL.Query("UPDATE inventory SET stock_qty = stock_qty - @quantity WHERE productID = @productID");
                     if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("5");
                         return;
+                    }
                 }
             }
 
@@ -276,21 +320,27 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
                     SQL.AddParam("@customerID", lblCustomerID.Text);
-                    SQL.AddParam("@cash_paid", txtAmount.Text);
+                    SQL.AddParam("@cash_paid", decimal.Parse(txtAmount.Text));
                     SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
                     SQL.Query(@"INSERT INTO points_award (order_ref, cus_ID_no, cash_paid, pts_earned)
                            SELECT MAX(order_ref), @customerID, @cash_paid, (@cash_paid / @cus_amt_per_pt) FROM transaction_details");
                     if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("6");
                         return;
+                    }
 
                     // update card balance
 
                     SQL.AddParam("@customerID", lblCustomerID.Text);
-                    SQL.AddParam("@cash_paid", txtAmount.Text);
+                    SQL.AddParam("@cash_paid", decimal.Parse(txtAmount.Text));
                     SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
                     SQL.Query("UPDATE member_card SET card_balance = card_balance + (@cash_paid / @cus_amt_per_pt) WHERE customerID = @customerID");
                     if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("7");
                         return;
+                    }
                 }
             }
 
@@ -302,7 +352,10 @@ namespace EcoPOSv2
                 SQL.AddParam("@cash_paid", lblGrandTotal.Text);
                 SQL.Query("UPDATE member_card SET card_balance = card_balance - @cash_paid WHERE customerID = @customerID");
                 if (SQL.HasException(true))
+                {
+                    MessageBox.Show("8");
                     return;
+                }
             }
 
             #endregion
@@ -314,7 +367,10 @@ namespace EcoPOSv2
                 SQL.AddParam("@giftcard_no", lblGCNo.Text);
                 SQL.Query("UPDATE giftcard SET status = 'Used' WHERE giftcard_no = @giftcard_no");
                 if (SQL.HasException(true))
+                {
+                    MessageBox.Show("9");
                     return;
+                }
             }
 
             #endregion
