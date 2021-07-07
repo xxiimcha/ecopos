@@ -46,8 +46,8 @@ namespace EcoPOSv2
             {
                 SQL.Query(@"INSERT INTO store_details (business_name, business_address, business_contact_no, tax_payer, vat_reg_tin, min, sn, accreditation_no, 
                            an_date_issued, an_valid_until, ptu_no, pn_date_issued, pn_valid_until) VALUES (@business_name, @business_address, 
-                           @business_contact_no, @tax_payer, @vat_reg_tin, @min, @sn, @accreditation_no, 
-                           @an_date_issued, @an_valid_until, @ptu_no, @pn_date_issued, @pn_valid_until)");
+                           @business_contact_no, @tax_payer, @vat_reg_tin, @min, @sn, @an, 
+                           @an_date_issued, @an_valid_until, @ptu_no, @ptu_date_issued, @ptu_valid_until)");
 
                 if (SQL.HasException(true))
                     return;
@@ -111,6 +111,11 @@ namespace EcoPOSv2
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

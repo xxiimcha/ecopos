@@ -39,6 +39,11 @@ namespace EcoPOSv2
             tbCash.Text = tbCash.Text.Replace(" ", "");
         }
 
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if(tbCash.Text != "") 
