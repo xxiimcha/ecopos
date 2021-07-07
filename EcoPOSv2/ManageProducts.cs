@@ -343,6 +343,13 @@ namespace EcoPOSv2
                             if (SQL.HasException(true))
                                 return;
 
+                            //SQL.AddParam("@barcode1", txtBarcode1.Text);
+                            //SQL.AddParam("@barcode2", txtBarcode2.Text)
+                            //int duplicatebarcode = SQL.ReturnResult(@"SELECT COUNT(*) FROM products WHERE barcode1 = ")
+                            
+
+
+
                             if (result == "0")
                             {
                                 SQL.AddParam("@productID", txtProductID.Text);

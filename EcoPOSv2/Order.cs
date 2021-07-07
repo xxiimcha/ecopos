@@ -462,6 +462,11 @@ namespace EcoPOSv2
                     tbBarcode.Focus();
 
                 }
+                else if(check_product > 1)
+                {
+                    new Notification().PopUp("There is duplicate barcode found in the products", "Please try again", "error");
+                    return;
+                }
 
                 else
                 {
@@ -796,6 +801,12 @@ namespace EcoPOSv2
             frmRedeem.frmOrder = this;
             frmRedeem.ShowDialog();
         }
+
+        private void tbBarcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+
         private void OpenPayment(object sender, EventArgs e)
         {
             Order.Instance.btnPayment.PerformClick();
