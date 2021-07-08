@@ -164,7 +164,6 @@ namespace EcoPOSv2
             report.PrintOptions.PaperSource = PaperSource.Auto;
             report.PrintToPrinter(1, false, 0, 0);
 
-
             this.Refresh();
         }
 
