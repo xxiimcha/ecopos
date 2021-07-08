@@ -99,6 +99,7 @@
             this.txtRI_SearchRedeem = new System.Windows.Forms.TextBox();
             this.btnRI_SortRedeem = new FontAwesome.Sharp.IconButton();
             this.Panel15 = new System.Windows.Forms.Panel();
+            this.btnSelectAllRedeemItems = new FontAwesome.Sharp.IconButton();
             this.btnRI_RemoveItem = new FontAwesome.Sharp.IconButton();
             this.btnRI_SearchRedeem = new FontAwesome.Sharp.IconButton();
             this.cmbRI_CategoryRedeem = new System.Windows.Forms.ComboBox();
@@ -132,7 +133,6 @@
             this.btnRT = new FontAwesome.Sharp.IconButton();
             this.btnRI = new FontAwesome.Sharp.IconButton();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.btnSelectAllRedeemItems = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAPT_Records)).BeginInit();
             this.TableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRT_Records)).BeginInit();
@@ -1158,6 +1158,28 @@
             this.Panel15.Size = new System.Drawing.Size(376, 47);
             this.Panel15.TabIndex = 69;
             // 
+            // btnSelectAllRedeemItems
+            // 
+            this.btnSelectAllRedeemItems.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSelectAllRedeemItems.FlatAppearance.BorderSize = 2;
+            this.btnSelectAllRedeemItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectAllRedeemItems.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectAllRedeemItems.ForeColor = System.Drawing.Color.Orange;
+            this.btnSelectAllRedeemItems.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnSelectAllRedeemItems.IconColor = System.Drawing.Color.Orange;
+            this.btnSelectAllRedeemItems.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSelectAllRedeemItems.IconSize = 27;
+            this.btnSelectAllRedeemItems.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSelectAllRedeemItems.Location = new System.Drawing.Point(232, 0);
+            this.btnSelectAllRedeemItems.Name = "btnSelectAllRedeemItems";
+            this.btnSelectAllRedeemItems.Size = new System.Drawing.Size(103, 47);
+            this.btnSelectAllRedeemItems.TabIndex = 71;
+            this.btnSelectAllRedeemItems.Text = "All";
+            this.btnSelectAllRedeemItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSelectAllRedeemItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSelectAllRedeemItems.UseVisualStyleBackColor = true;
+            this.btnSelectAllRedeemItems.Click += new System.EventHandler(this.btnSelectAllRedeemItems_Click);
+            // 
             // btnRI_RemoveItem
             // 
             this.btnRI_RemoveItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1711,28 +1733,6 @@
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(1164, 39);
             this.Panel1.TabIndex = 6;
-            // 
-            // btnSelectAllRedeemItems
-            // 
-            this.btnSelectAllRedeemItems.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSelectAllRedeemItems.FlatAppearance.BorderSize = 2;
-            this.btnSelectAllRedeemItems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelectAllRedeemItems.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectAllRedeemItems.ForeColor = System.Drawing.Color.Orange;
-            this.btnSelectAllRedeemItems.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.btnSelectAllRedeemItems.IconColor = System.Drawing.Color.Orange;
-            this.btnSelectAllRedeemItems.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSelectAllRedeemItems.IconSize = 27;
-            this.btnSelectAllRedeemItems.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSelectAllRedeemItems.Location = new System.Drawing.Point(232, 0);
-            this.btnSelectAllRedeemItems.Name = "btnSelectAllRedeemItems";
-            this.btnSelectAllRedeemItems.Size = new System.Drawing.Size(103, 47);
-            this.btnSelectAllRedeemItems.TabIndex = 71;
-            this.btnSelectAllRedeemItems.Text = "All";
-            this.btnSelectAllRedeemItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSelectAllRedeemItems.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSelectAllRedeemItems.UseVisualStyleBackColor = true;
-            this.btnSelectAllRedeemItems.Click += new System.EventHandler(this.btnSelectAllRedeemItems_Click);
             // 
             // RedeemSettings
             // 

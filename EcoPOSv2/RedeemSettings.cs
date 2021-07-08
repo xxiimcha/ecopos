@@ -74,34 +74,47 @@ namespace EcoPOSv2
 
             requiredFields.Add(txtRI_Points);
         }
-
+        string cat_queryLI = "categoryID <> 0 ";
         private void LoadItems()
         {
-            string cat_query = "categoryID <> 0 ";
-
             if (cmbRI_CategoryItems.SelectedIndex != 0)
-                cat_query = "categoryID = " + cmbRI_CategoryItems.SelectedValue;
+                cat_queryLI = "categoryID = " + cmbRI_CategoryItems.SelectedValue;
 
-            SQL.Query("SELECT TOP 70 productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_query + "ORDER BY description ASC");
-
-            if (SQL.HasException(true))
-                return;
-
-            dgvRI_Items.DataSource = SQL.DBDT;
-            dgvRI_Items.Columns[0].Visible = false;
-            dgvRI_Items.Columns[2].Visible = false;
-            dgvRI_Items.Columns[3].Visible = false;
-            dgvRI_Items.Columns[4].Visible = false;
+            BackgroundWorker workerLI = new BackgroundWorker();
+            workerLI.DoWork += WorkerLI_DoWork;
+            workerLI.RunWorkerAsync();
         }
 
+        private void WorkerLI_DoWork(object sender, DoWorkEventArgs e)
+        {
+            dgvRI_Items.Invoke(new System.Action(() => {
+                SQL.Query("SELECT TOP 55 productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_queryLI + "ORDER BY description ASC");
+
+                if (SQL.HasException(true))
+                    return;
+
+                dgvRI_Items.DataSource = SQL.DBDT;
+                dgvRI_Items.Columns[0].Visible = false;
+                dgvRI_Items.Columns[2].Visible = false;
+                dgvRI_Items.Columns[3].Visible = false;
+                dgvRI_Items.Columns[4].Visible = false;
+            }));
+        }
+        string cat_queryLRI = "categoryID <> 0 ";
         private void LoadRedeemItems()
         {
-            string cat_query = "categoryID <> 0 ";
-
             if (cmbRI_CategoryRedeem.SelectedIndex != 0)
-                cat_query = "categoryID = " + cmbRI_CategoryRedeem.SelectedValue;
+                cat_queryLRI = "categoryID = " + cmbRI_CategoryRedeem.SelectedValue;
 
-            SQL.Query("SELECT redeemID, productID, description as 'Description' FROM redeem_items WHERE " + cat_query + " ORDER BY description ASC");
+            BackgroundWorker workerLRI = new BackgroundWorker();
+            workerLRI.DoWork += WorkerLRI_DoWork;
+            workerLRI.RunWorkerAsync();
+        }
+
+        private void WorkerLRI_DoWork(object sender, DoWorkEventArgs e)
+        {
+            dgvRI_RedeemItems.Invoke(new System.Action(() => {
+                SQL.Query("SELECT TOP 55 redeemID, productID, description as 'Description' FROM redeem_items WHERE " + cat_queryLRI + " ORDER BY description ASC");
 
             if (SQL.HasException(true))
                 return;
@@ -109,6 +122,9 @@ namespace EcoPOSv2
             dgvRI_RedeemItems.DataSource = SQL.DBDT;
             dgvRI_RedeemItems.Columns[0].Visible = false;
             dgvRI_RedeemItems.Columns[1].Visible = false;
+            }));
+
+            
         }
 
         private void LoadRICategory()
