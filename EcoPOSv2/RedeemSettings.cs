@@ -113,18 +113,17 @@ namespace EcoPOSv2
 
         private void WorkerLRI_DoWork(object sender, DoWorkEventArgs e)
         {
-            dgvRI_RedeemItems.Invoke(new System.Action(() => {
+            dgvRI_RedeemItems.Invoke(new System.Action(() =>
+            {
                 SQL.Query("SELECT TOP 100 redeemID, productID, description as 'Description' FROM redeem_items WHERE " + cat_queryLRI + " ORDER BY description ASC");
 
-            if (SQL.HasException(true))
-                return;
+                if (SQL.HasException(true))
+                    return;
 
-            dgvRI_RedeemItems.DataSource = SQL.DBDT;
-            dgvRI_RedeemItems.Columns[0].Visible = false;
-            dgvRI_RedeemItems.Columns[1].Visible = false;
+                dgvRI_RedeemItems.DataSource = SQL.DBDT;
+                dgvRI_RedeemItems.Columns[0].Visible = false;
+                dgvRI_RedeemItems.Columns[1].Visible = false;
             }));
-
-            
         }
 
         private void LoadRICategory()
@@ -209,14 +208,14 @@ namespace EcoPOSv2
 
             // awarded points transaction
             LoadAPT_Customers();
-            dtpAPT_From.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
-            dtpAPT_To.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
+            dtpAPT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpAPT_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
             cmbAPT_Customer.SelectedIndex = 0;
 
             // redeem transaction
             LoadRT_Customers();
-            dtpRT_From.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 00:00:01"));
-            dtpRT_To.Value = DateTime.Parse(string.Format(DateTime.Now.ToString(), "MMMM dd, yyyy 23:59:59"));
+            dtpRT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpRT_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
             cmbRT_Customer.SelectedIndex = 0;
 
             btnRI_SearchItems.PerformClick();

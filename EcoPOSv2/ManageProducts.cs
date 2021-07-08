@@ -66,30 +66,14 @@ namespace EcoPOSv2
         }
         private void loadCat_Category()
         {
-            BackgroundWorker workerCatCategory = new BackgroundWorker();
-            workerCatCategory.DoWork += WorkerCatCategory_DoWork;
-            workerCatCategory.RunWorkerCompleted += WorkerCatCategory_RunWorkerCompleted;
-            workerCatCategory.RunWorkerAsync();
-        }
-
-        private void WorkerCatCategory_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            LoadProducts();
-        }
-
-        private void WorkerCatCategory_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SQL.Query("Select TOP 100 categoryID, Name FROM product_category ORDER BY name ASC");
+            SQL.Query("Select TOP 75 categoryID, Name FROM product_category ORDER BY name ASC");
             if (SQL.HasException(true))
                 return;
 
-            dgvCat_Category.Invoke(new System.Action(() => {
-                dgvCat_Category.DataSource = SQL.DBDT;
+            dgvCat_Category.DataSource = SQL.DBDT;
 
-                dgvCat_Category.Columns[0].Visible = false;
-            }));
+            dgvCat_Category.Columns[0].Visible = false;
         }
-
         private void CategoryRF()
         {
             requiredFields = new List<TextBox>();
@@ -115,18 +99,12 @@ namespace EcoPOSv2
 
         private void LoadProducts()
         {
-            BackgroundWorker workerProducts = new BackgroundWorker();
-            workerProducts.DoWork += WorkerProducts_DoWork;
-            workerProducts.RunWorkerAsync();
-        }
-
-        private void WorkerProducts_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SQL.Query("SELECT TOP 100 productID, description, name FROM products ORDER BY description ASC");
+            SQL.Query("SELECT TOP 75 productID, description, name FROM products ORDER BY description ASC");
             if (SQL.HasException(true))
                 return;
 
-            dgvProducts.Invoke(new System.Action(() => {
+            dgvProducts.Invoke(new System.Action(() =>
+            {
                 dgvProducts.DataSource = SQL.DBDT;
                 dgvProducts.Columns[0].Visible = false;
                 dgvProducts.Columns[1].Width = 300;
@@ -163,19 +141,6 @@ namespace EcoPOSv2
         }
         private void LoadCategory()
         {
-            BackgroundWorker workerCategory = new BackgroundWorker();
-            workerCategory.DoWork += WorkerCategory_DoWork;
-            workerCategory.RunWorkerCompleted += WorkerCategory_RunWorkerCompleted;
-            workerCategory.RunWorkerAsync();
-        }
-
-        private void WorkerCategory_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            loadCat_Category();
-        }
-
-        private void WorkerCategory_DoWork(object sender, DoWorkEventArgs e)
-        {
             SQL.Query(@"SELECT catID, catName FROM
                        (
                        SELECT 0 as catID, 'All Categories' as catName
@@ -189,11 +154,10 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            dgvCategory.Invoke(new System.Action(() => {
-                dgvCategory.DataSource = SQL.DBDT;
-                dgvCategory.Columns[0].Visible = false;
-            }));
+            dgvCategory.DataSource = SQL.DBDT;
+            dgvCategory.Columns[0].Visible = false;
         }
+
 
         private void TextValidation()
         {
@@ -222,12 +186,15 @@ namespace EcoPOSv2
             new CreateParams();
             SetDoubleBuffered(guna2Panel1);
 
-            OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
-            OL.ComboValues(cmbWarehouse, "warehouseID", "name", "warehouse");
-
             TextValidation();
             ControlBehavior();
+
             LoadCategory();
+            //LoadProducts();
+            loadCat_Category();
+
+            OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
+            OL.ComboValues(cmbWarehouse, "warehouseID", "name", "warehouse");
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
@@ -504,16 +471,6 @@ namespace EcoPOSv2
 
                 new Notification().PopUp("Item deleted.", "", "information");
             }
-        }
-
-        private void txtSearchCategory_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtSearchProduct_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void cbxDiscPWD_CheckedChanged(object sender, EventArgs e)
