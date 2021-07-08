@@ -24,7 +24,7 @@ namespace EcoPOSv2
         //METHODS
         private void btnExportProducts_Click(object sender, EventArgs e)
         {
-            SQL.Query("SELECT name,description,categoryID,rp_inclusive,wp_inclusive,barcode1,barcode2,warehouseID,s_discR,s_discPWD_SC,s_PWD_SC_perc,s_discAth,s_ask_qty FROM products");
+            SQL.Query("SELECT products.name,products.description,product_category.name as 'Category',products.rp_inclusive,products.wp_inclusive,products.barcode1,products.barcode2,warehouse.name as 'Warehouse',products.s_discR,products.s_discPWD_SC,products.s_PWD_SC_perc,products.s_discAth,products.s_ask_qty FROM products INNER JOIN product_category ON products.categoryID = product_category.categoryID INNER JOIN warehouse ON products.warehouseID = warehouse.warehouseID");
 
             if (SQL.HasException(true)) return;
 
