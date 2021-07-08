@@ -134,6 +134,16 @@ namespace EcoPOSv2
         {
             //lblOrderNumber.Text = SQL.ReturnResult("SELECT order_no,regulardiscountamount FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
             //if (SQL.HasException(true))return;
+            if(SQL.ReturnResult("select count(*) from order_no") == "0")
+            {
+                // start order no
+                SQL.Query("INSERT INTO order_no (order_no) VALUES (1)");
+
+                if (SQL.HasException(true))
+                {
+                    return;
+                }
+            }
 
 
             SQL.Query("SELECT order_no,disc_amt FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");

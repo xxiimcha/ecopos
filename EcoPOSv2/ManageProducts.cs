@@ -469,45 +469,12 @@ namespace EcoPOSv2
 
         private void txtSearchCategory_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchCategory.Text == "")
-            {
-                SQL.Query(@"SELECT catID, catName FROM
-                           (
-                           SELECT 0 as catID, 'All Categories' as catName
-                           UNION ALL 
-                           SELECT categoryID as catID, name as catName FROM product_category 
-                           ) x ORDER BY 
-                           CASE WHEN catName = 'All Categories' then 1
-                           ELSE 5
-                           END,
-                           catname ASC");
-                if (SQL.HasException(true))
-                    return;
-            }
-            else
-            {
-                SQL.AddParam("@find", txtSearchCategory.Text + "%");
-
-                SQL.Query("Select categoryID, Name FROM product_category WHERE name Like @find ORDER BY name ASC");
-                if (SQL.HasException(true))
-                    return;
-            }
-
-            dgvCategory.DataSource = SQL.DBDT;
-            dgvCategory.Columns[0].Visible = false;
+            
         }
 
         private void txtSearchProduct_TextChanged(object sender, EventArgs e)
         {
-            SQL.AddParam("@find", txtSearchProduct.Text + "%");
-
-            SQL.Query(@"SELECT productID, description, Name FROM products WHERE name LIKE @find OR description LIKE @find 
-                       OR barcode1 LIKE @find OR barcode2 LIKE @find ORDER BY description ASC");
-            if (SQL.HasException(true))
-                return;
-
-            dgvProducts.DataSource = SQL.DBDT;
-            dgvProducts.Columns[0].Visible = false;
+            
         }
 
         private void cbxDiscPWD_CheckedChanged(object sender, EventArgs e)
@@ -784,6 +751,49 @@ namespace EcoPOSv2
                 dgvCat_Category.Sort(dgvCat_Category.Columns[1], ListSortDirection.Descending);
                 btnCat_Sort.IconChar = IconChar.SortAlphaDown;
             }
+        }
+
+        private void txtSearchCategory_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearchCategory.Text == "")
+            {
+                SQL.Query(@"SELECT catID, catName FROM
+                           (
+                           SELECT 0 as catID, 'All Categories' as catName
+                           UNION ALL 
+                           SELECT categoryID as catID, name as catName FROM product_category 
+                           ) x ORDER BY 
+                           CASE WHEN catName = 'All Categories' then 1
+                           ELSE 5
+                           END,
+                           catname ASC");
+                if (SQL.HasException(true))
+                    return;
+            }
+            else
+            {
+                SQL.AddParam("@find", txtSearchCategory.Text + "%");
+
+                SQL.Query("Select categoryID, Name FROM product_category WHERE name Like @find ORDER BY name ASC");
+                if (SQL.HasException(true))
+                    return;
+            }
+
+            dgvCategory.DataSource = SQL.DBDT;
+            dgvCategory.Columns[0].Visible = false;
+        }
+
+        private void txtSearchProduct_KeyUp(object sender, KeyEventArgs e)
+        {
+            SQL.AddParam("@find", txtSearchProduct.Text + "%");
+
+            SQL.Query(@"SELECT productID, description, Name FROM products WHERE name LIKE @find OR description LIKE @find 
+                       OR barcode1 LIKE @find OR barcode2 LIKE @find ORDER BY description ASC");
+            if (SQL.HasException(true))
+                return;
+
+            dgvProducts.DataSource = SQL.DBDT;
+            dgvProducts.Columns[0].Visible = false;
         }
 
         private void txtCat_SearchCategory_KeyUp(object sender, KeyEventArgs e)
