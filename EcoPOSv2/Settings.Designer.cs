@@ -36,6 +36,7 @@
             this.btnDeveloper = new FontAwesome.Sharp.IconButton();
             this.btnStaff = new FontAwesome.Sharp.IconButton();
             this.btnStore = new FontAwesome.Sharp.IconButton();
+            this.btnDatabackup = new FontAwesome.Sharp.IconButton();
             this.guna2Panel1.SuspendLayout();
             this.pnlChild.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -73,6 +74,7 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Panel1.Controls.Add(this.btnDatabackup);
             this.Panel1.Controls.Add(this.btnDeveloper);
             this.Panel1.Controls.Add(this.btnStaff);
             this.Panel1.Controls.Add(this.btnStore);
@@ -146,6 +148,27 @@
             this.btnStore.UseVisualStyleBackColor = false;
             this.btnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
+            // btnDatabackup
+            // 
+            this.btnDatabackup.BackColor = System.Drawing.Color.White;
+            this.btnDatabackup.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDatabackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDatabackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDatabackup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatabackup.ForeColor = System.Drawing.Color.Black;
+            this.btnDatabackup.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnDatabackup.IconColor = System.Drawing.Color.White;
+            this.btnDatabackup.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDatabackup.IconSize = 30;
+            this.btnDatabackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDatabackup.Location = new System.Drawing.Point(513, 0);
+            this.btnDatabackup.Name = "btnDatabackup";
+            this.btnDatabackup.Size = new System.Drawing.Size(171, 39);
+            this.btnDatabackup.TabIndex = 14;
+            this.btnDatabackup.Text = "Database Backup";
+            this.btnDatabackup.UseVisualStyleBackColor = false;
+            this.btnDatabackup.Click += new System.EventHandler(this.btnDatabackup_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,5 +198,6 @@
         internal FontAwesome.Sharp.IconButton btnDeveloper;
         internal FontAwesome.Sharp.IconButton btnStaff;
         internal FontAwesome.Sharp.IconButton btnStore;
+        internal FontAwesome.Sharp.IconButton btnDatabackup;
     }
 }

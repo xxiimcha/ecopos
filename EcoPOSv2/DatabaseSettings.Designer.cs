@@ -41,6 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnReset = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnSaveSettings = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnImportDatabase = new Guna.UI2.WinForms.Guna2TileButton();
             this.SuspendLayout();
             // 
             // label1
@@ -179,12 +180,32 @@
             this.btnSaveSettings.Text = "SAVE SETTINGS";
             this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
+            // btnImportDatabase
+            // 
+            this.btnImportDatabase.BackColor = System.Drawing.Color.White;
+            this.btnImportDatabase.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnImportDatabase.BorderRadius = 5;
+            this.btnImportDatabase.CheckedState.Parent = this.btnImportDatabase;
+            this.btnImportDatabase.CustomImages.Parent = this.btnImportDatabase;
+            this.btnImportDatabase.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnImportDatabase.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportDatabase.ForeColor = System.Drawing.Color.White;
+            this.btnImportDatabase.HoverState.Parent = this.btnImportDatabase;
+            this.btnImportDatabase.Location = new System.Drawing.Point(223, 42);
+            this.btnImportDatabase.Name = "btnImportDatabase";
+            this.btnImportDatabase.ShadowDecoration.Parent = this.btnImportDatabase;
+            this.btnImportDatabase.Size = new System.Drawing.Size(123, 30);
+            this.btnImportDatabase.TabIndex = 9;
+            this.btnImportDatabase.Text = "Import";
+            this.btnImportDatabase.Click += new System.EventHandler(this.btnImportDatabase_Click);
+            // 
             // DatabaseSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(358, 295);
+            this.Controls.Add(this.btnImportDatabase);
             this.Controls.Add(this.btnSaveSettings);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.tbPassword);
@@ -222,5 +243,6 @@
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2TileButton btnReset;
         private Guna.UI2.WinForms.Guna2TileButton btnSaveSettings;
+        private Guna.UI2.WinForms.Guna2TileButton btnImportDatabase;
     }
 }

@@ -66,13 +66,28 @@ namespace EcoPOSv2
         }
         private void loadCat_Category()
         {
-            SQL.Query("Select TOP 70 categoryID, Name FROM product_category ORDER BY name ASC");
+            BackgroundWorker workerCatCategory = new BackgroundWorker();
+            workerCatCategory.DoWork += WorkerCatCategory_DoWork;
+            workerCatCategory.RunWorkerCompleted += WorkerCatCategory_RunWorkerCompleted;
+            workerCatCategory.RunWorkerAsync();
+        }
+
+        private void WorkerCatCategory_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            LoadProducts();
+        }
+
+        private void WorkerCatCategory_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQL.Query("Select TOP 100 categoryID, Name FROM product_category ORDER BY name ASC");
             if (SQL.HasException(true))
                 return;
 
-            dgvCat_Category.DataSource = SQL.DBDT;
+            dgvCat_Category.Invoke(new System.Action(() => {
+                dgvCat_Category.DataSource = SQL.DBDT;
 
-            dgvCat_Category.Columns[0].Visible = false;
+                dgvCat_Category.Columns[0].Visible = false;
+            }));
         }
 
         private void CategoryRF()
@@ -100,15 +115,24 @@ namespace EcoPOSv2
 
         private void LoadProducts()
         {
-            SQL.Query("SELECT TOP 70 productID, description, name FROM products ORDER BY description ASC");
+            BackgroundWorker workerProducts = new BackgroundWorker();
+            workerProducts.DoWork += WorkerProducts_DoWork;
+            workerProducts.RunWorkerAsync();
+        }
+
+        private void WorkerProducts_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQL.Query("SELECT TOP 100 productID, description, name FROM products ORDER BY description ASC");
             if (SQL.HasException(true))
                 return;
 
-            dgvProducts.DataSource = SQL.DBDT;
-            dgvProducts.Columns[0].Visible = false;
-            dgvProducts.Columns[1].Width = 300;
-            
+            dgvProducts.Invoke(new System.Action(() => {
+                dgvProducts.DataSource = SQL.DBDT;
+                dgvProducts.Columns[0].Visible = false;
+                dgvProducts.Columns[1].Width = 300;
+            }));
         }
+
         private void ReloadProducts()
         {
             if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
@@ -139,6 +163,19 @@ namespace EcoPOSv2
         }
         private void LoadCategory()
         {
+            BackgroundWorker workerCategory = new BackgroundWorker();
+            workerCategory.DoWork += WorkerCategory_DoWork;
+            workerCategory.RunWorkerCompleted += WorkerCategory_RunWorkerCompleted;
+            workerCategory.RunWorkerAsync();
+        }
+
+        private void WorkerCategory_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            loadCat_Category();
+        }
+
+        private void WorkerCategory_DoWork(object sender, DoWorkEventArgs e)
+        {
             SQL.Query(@"SELECT catID, catName FROM
                        (
                        SELECT 0 as catID, 'All Categories' as catName
@@ -152,9 +189,12 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            dgvCategory.DataSource = SQL.DBDT;
-            dgvCategory.Columns[0].Visible = false;
+            dgvCategory.Invoke(new System.Action(() => {
+                dgvCategory.DataSource = SQL.DBDT;
+                dgvCategory.Columns[0].Visible = false;
+            }));
         }
+
         private void TextValidation()
         {
             AssignValidation(ref txtRPInclusive, ValidationType.Price);
@@ -182,13 +222,12 @@ namespace EcoPOSv2
             new CreateParams();
             SetDoubleBuffered(guna2Panel1);
 
+            OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
+            OL.ComboValues(cmbWarehouse, "warehouseID", "name", "warehouse");
+
             TextValidation();
             ControlBehavior();
             LoadCategory();
-            loadCat_Category();
-            OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
-            OL.ComboValues(cmbWarehouse, "warehouseID", "name", "warehouse");
-            LoadProducts();
         }
 
         private void btnCategory_Click(object sender, EventArgs e)

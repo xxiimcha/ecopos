@@ -88,7 +88,7 @@ namespace EcoPOSv2
         private void WorkerLI_DoWork(object sender, DoWorkEventArgs e)
         {
             dgvRI_Items.Invoke(new System.Action(() => {
-                SQL.Query("SELECT TOP 55 productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_queryLI + "ORDER BY description ASC");
+                SQL.Query("SELECT TOP 100 productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_queryLI + "ORDER BY description ASC");
 
                 if (SQL.HasException(true))
                     return;
@@ -114,7 +114,7 @@ namespace EcoPOSv2
         private void WorkerLRI_DoWork(object sender, DoWorkEventArgs e)
         {
             dgvRI_RedeemItems.Invoke(new System.Action(() => {
-                SQL.Query("SELECT TOP 55 redeemID, productID, description as 'Description' FROM redeem_items WHERE " + cat_queryLRI + " ORDER BY description ASC");
+                SQL.Query("SELECT TOP 100 redeemID, productID, description as 'Description' FROM redeem_items WHERE " + cat_queryLRI + " ORDER BY description ASC");
 
             if (SQL.HasException(true))
                 return;

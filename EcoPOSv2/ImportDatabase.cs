@@ -36,6 +36,7 @@ namespace EcoPOSv2
             tmrClose.Start();
 
             new Notification().PopUp("Store details saved. System will restart.", "Database", "information");
+            Application.Restart();
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)

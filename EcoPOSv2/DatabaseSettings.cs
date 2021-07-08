@@ -46,5 +46,10 @@ namespace EcoPOSv2
         {
             clearallfields();
         }
+
+        private void btnImportDatabase_Click(object sender, EventArgs e)
+        {
+            new ImportDatabase().Show();
+        }
     }
 }
