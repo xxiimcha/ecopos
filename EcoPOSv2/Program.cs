@@ -50,7 +50,13 @@ namespace EcoPOSv2
             {
                 RegistryKey myKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Electronics\\EcoPOS", true);
 
-                if (myKey.GetValue("EcoPOS").ToString() != "1026181")
+                if(myKey == null)
+                {
+                    MessageBox.Show("Wag mo na icopy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (myKey.GetValue("EcoPOS").ToString() != "102618")
                 {
                     MessageBox.Show("Wag mo na icopy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

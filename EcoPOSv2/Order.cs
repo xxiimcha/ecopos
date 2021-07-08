@@ -268,8 +268,7 @@ namespace EcoPOSv2
                     return;
                 }
 
-
-                if(Convert.ToInt32(SQL.ReturnResult("select count(*) from transaction_details")) != 0 || Convert.ToInt32(SQL.ReturnResult("select count(*) from order_no")) != 0)
+                if(Convert.ToInt32(SQL.ReturnResult("select count(*) from transaction_details")) != 0)
                 {
                     int orderreftransac = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from transaction_details"));
                     int orderreforderno = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from order_no"));
