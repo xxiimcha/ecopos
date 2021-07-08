@@ -63,9 +63,8 @@
             this.txtNameCard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNameCard.ForeColor = System.Drawing.Color.Black;
             this.txtNameCard.Location = new System.Drawing.Point(118, 59);
-            this.txtNameCard.Multiline = true;
             this.txtNameCard.Name = "txtNameCard";
-            this.txtNameCard.Size = new System.Drawing.Size(394, 36);
+            this.txtNameCard.Size = new System.Drawing.Size(394, 33);
             this.txtNameCard.TabIndex = 44;
             this.txtNameCard.Tag = "";
             this.txtNameCard.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNameCard_KeyUp);

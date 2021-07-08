@@ -151,8 +151,6 @@ namespace EcoPOSv2
             if (clickedOnce == false)
                 return;
 
-            new Notification().PopUp("Printing...", "Job sent", "information");
-
 
             bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
 
@@ -161,11 +159,13 @@ namespace EcoPOSv2
                 new Notification().PopUp("Printer Is offline", "Error", "error");
                 return;
             }
-
-
-            report.PrintOptions.PrinterName = "";
+            
+            report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
             report.PrintOptions.PaperSource = PaperSource.Auto;
             report.PrintToPrinter(1, false, 0, 0);
+
+
+            this.Refresh();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -206,7 +206,6 @@ namespace EcoPOSv2
 
             clickedOnce = true;
 
-            ORItems report = new ORItems();
             DataSet ds = new DataSet();
 
             //try

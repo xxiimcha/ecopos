@@ -391,7 +391,6 @@
             this.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.CrystalReportViewer1.DisplayStatusBar = false;
-            this.CrystalReportViewer1.DisplayToolbar = false;
             this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CrystalReportViewer1.Location = new System.Drawing.Point(3, 259);
             this.CrystalReportViewer1.Name = "CrystalReportViewer1";

@@ -25,7 +25,7 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         private void CloseForm(object sender, EventArgs e)
         {
-            this.Close();
+            btnConfirm.PerformClick();
         }
 
         public Payment frmPayment;
@@ -34,7 +34,7 @@ namespace EcoPOSv2
 
         private void PChange_Load(object sender, EventArgs e)
         {
-            //tmrClose.Start();
+            tmrClose.Start();
             btnConfirm.Focus();
 
             FormLoad Fl = new FormLoad();
@@ -42,8 +42,13 @@ namespace EcoPOSv2
         }
         private void btnReprint_Click(object sender, EventArgs e)
         {
+            tmrClose.Stop();
+
             frmPayment.report.SetParameterValue("note", "###REPRINT###");
             frmPayment.PrintReceipt();
+
+
+            tmrClose.Start();
         }
 
         private void tmrClose_Tick(object sender, EventArgs e)

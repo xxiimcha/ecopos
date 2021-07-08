@@ -148,6 +148,11 @@ namespace EcoPOSv2
 
         private void TxtNameCard_KeyUp(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+            }
+
             LoadCustomer();
         }
 
