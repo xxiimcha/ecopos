@@ -112,14 +112,49 @@ namespace EcoPOSv2
 
             try
             {
-                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-                SQL.DBDA.Fill(ds, "transaction_items");
+                
+                if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
+                {
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                }
+                else
+                {
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                }
 
+                //SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                SQL.DBDA.Fill(ds, "transaction_items");
                 reprint_receipt.SetDataSource(ds);
 
-                SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
+                if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
+                {
+                    SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
+                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users 
+                            SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name 
+                            FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
+                            UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
+                            SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
+                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
+                            giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
+                            payment_method, action FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                            WHERE transaction_details.order_ref = @order_ref");
 
-                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, payment_method,action FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE order_ref = @order_ref");
+                }
+                else
+                {
+                    SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
+                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users 
+                            SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name 
+                            FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
+                            UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
+                            SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
+                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
+                            giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
+                            payment_method, action, vt.void_order_ref_temp FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                            INNER JOIN void_transaction as vt ON vt.order_ref = transaction_details.order_ref WHERE transaction_details.order_ref = @order_ref");
+
+                }
+
 
                 if (SQL.HasException(true))
                     return;
@@ -237,9 +272,15 @@ namespace EcoPOSv2
             //try
             //{
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
-                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
+                {
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                }
+                else
+                {
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                }
                 SQL.DBDA.Fill(ds, "transaction_items");
-
                 report.SetDataSource(ds);
 
                 SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());

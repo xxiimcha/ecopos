@@ -66,7 +66,10 @@ namespace EcoPOSv2
 
             try
             {
-                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = (SELECT MAX(order_ref) FROM transaction_details)", SQL.DBCon);
+                SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, 
+                                                         (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items
+                                                         INNER JOIN transaction_details ON transaction_details.order_ref = transaction_items.order_ref
+                                                         WHERE transaction_details.order_ref_temp = " + txtORNo.Text, SQL.DBCon);
                 SQL.DBDA.Fill(ds, "transaction_items");
 
                 report.SetDataSource(ds);
