@@ -415,8 +415,19 @@ namespace EcoPOSv2
                   
                     if (check_in_cart == 0)
                     {
-                      
+                        //check if still in stock
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        int check1 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
+                        if (SQL.HasException(true)) return;
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        int check2 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT stock_qty FROM INVENTORY WHERE productID = @productID) = 0, 1, 0)"));
+                        if (SQL.HasException(true)) return;
 
+                        if (check1 == 1 ||check2  == 1) 
+                        {
+                                new Notification().PopUp("Insufficient stock", "", "error");
+                                return;                 
+                        }
 
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
@@ -427,7 +438,7 @@ namespace EcoPOSv2
 
                         if (SQL.HasException(true))
                             return;
-
+                        #region "customer display"
                         //customer display
                         SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE itemID = (SELECT MAX(itemID) FROM order_cart)");
                         if (SQL.HasException(true))
@@ -442,10 +453,19 @@ namespace EcoPOSv2
 
                         FormLoad Fl = new FormLoad();
                         Fl.CusDisplay(prod_description, prod_price);
-
+                        #endregion
                     }
                     else
                     {
+
+                        //check if still in stock (retail and wholesale)
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        if (int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)")) == 1)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            return;
+                        }
+                        
                         SQL.AddParam("@barcode", tbBarcode.Text);
                         SQL.AddParam("@productID", productID);
                         SQL.AddParam("@type", type);
@@ -455,6 +475,7 @@ namespace EcoPOSv2
                         if (SQL.HasException(true))
                             return;
 
+                        #region "customer display"
                         //customer display
                         SQL.AddParam("@barcode", tbBarcode.Text);
                         SQL.AddParam("@productID", productID);
@@ -470,6 +491,7 @@ namespace EcoPOSv2
                         }
                         FormLoad Fl = new FormLoad();
                         Fl.CusDisplay(prod_description, prod_price);
+                        #endregion
                     }
 
                     LoadOrder();
@@ -633,9 +655,11 @@ namespace EcoPOSv2
                 Quantity frmQuantity = new Quantity();
                 frmQuantity.frmOrder = this;
                 frmQuantity.itemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
+                frmQuantity.productID = dgvCart.CurrentRow.Cells[1].Value.ToString();
                 frmQuantity.lblItem.Text = dgvCart.CurrentRow.Cells[2].Value.ToString();
                 frmQuantity.txtQuantity.Text = dgvCart.CurrentRow.Cells[11].Value.ToString();
-
+                decimal x = decimal.Parse(dgvCart.CurrentRow.Cells[11].Value.ToString());
+                frmQuantity.currentQty = x;
                 frmQuantity.ShowDialog();
             }
         }

@@ -28,6 +28,8 @@ namespace EcoPOSv2
         private SQLControl SQL = new SQLControl();
         public Order frmOrder;
         public string itemID;
+        public string productID;
+        public decimal currentQty;
 
         private void Quantity_Load(object sender, EventArgs e)
         {
@@ -38,6 +40,17 @@ namespace EcoPOSv2
         {
             if (txtQuantity.Text == "" | txtQuantity.Text == "0")
                 return;
+
+            SQL.AddParam("@productID", productID);
+            SQL.AddParam("@currentQty", currentQty);
+            SQL.AddParam("@newQty", decimal.Parse(txtQuantity.Text));
+            int checkqty = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT ((SUM(quantity) - @currentQty) + @newQty) FROM order_cart WHERE productID = @productID) > (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
+            if (SQL.HasException(true)) return;
+            if (checkqty == 1)
+            {
+                new Notification().PopUp("Insufficient stock", "", "error");
+                return;
+            }
 
             SQL.AddParam("@itemID", itemID);
             SQL.AddParam("@quantity", txtQuantity.Text);
