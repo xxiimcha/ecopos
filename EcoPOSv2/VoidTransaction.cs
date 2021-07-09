@@ -223,7 +223,24 @@ namespace EcoPOSv2
                 if (SQL.HasException(true))
                     return;
 
-               
+                //return items to inventory
+                SQL.AddParam("@order_ref", order_ref);
+                SQL.Query("SELECT productID, quantity FROM transaction_items WHERE order_ref = @order_ref");
+                if (SQL.HasException(true))
+                    return;
+
+                foreach (DataRow r in SQL.DBDT.Rows)
+                {
+                    SQL.AddParam("@productID", r["productID"].ToString());
+                    SQL.AddParam("@quantity", r["quantity"].ToString());
+
+                    SQL.Query("UPDATE inventory SET stock_qty = stock_qty + @quantity WHERE productID = @productID");
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("4");
+                        return;
+                    }
+                }
 
                 GenerateReceipt();
 
