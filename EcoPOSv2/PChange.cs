@@ -17,35 +17,46 @@ namespace EcoPOSv2
         public PChange()
         {
             InitializeComponent();
-            //GLOBAL HOTKEY
-            //AddHotKeyRegisterer(CloseForm, HotKeyMods.Control, ConsoleKey.Insert);
-            AddHotKeyRegisterer(CloseForm, HotKeyMods.None,ConsoleKey.Enter);
-            //GLOBAL HOTKEY
+            AddHotKeyRegisterer(CloseForm, HotKeyMods.None, ConsoleKey.Enter);
         }
         SQLControl SQL = new SQLControl();
         private void CloseForm(object sender, EventArgs e)
         {
-            btnConfirm.PerformClick();
+            PChange.Instance.btnConfirm.PerformClick();
         }
-
-        public Payment frmPayment;
-
         private int count = 0;
+        public static PChange _PChange;
+        public static PChange Instance
+        {
+            get
+            {
+                if (_PChange == null)
+                {
+                    _PChange = new PChange();
+                }
+                return _PChange;
+            }
+        }
 
         private void PChange_Load(object sender, EventArgs e)
         {
+            _PChange = this;
+
             tmrClose.Start();
-            btnConfirm.Focus();
+            this.ActiveControl = btnConfirm;
 
             FormLoad Fl = new FormLoad();
             Fl.CusDisplay("CHANGE:", lblChange.Text);
+
+
+            btnConfirm.Focus();
         }
         private void btnReprint_Click(object sender, EventArgs e)
         {
             tmrClose.Stop();
 
-            frmPayment.report.SetParameterValue("note", "###REPRINT###");
-            frmPayment.PrintReceipt();
+            Payment.Instance.report.SetParameterValue("note", "###REPRINT###");
+            Payment.Instance.PrintReceipt();
 
 
             tmrClose.Start();
@@ -54,9 +65,9 @@ namespace EcoPOSv2
         private void tmrClose_Tick(object sender, EventArgs e)
         {
             count++;
-            if (count == 5)
+            if (count == 2)
             {
-                Close();
+                //btnConfirm.PerformClick();
             }
         }
         public void Advance_OrderNo()
@@ -74,8 +85,6 @@ namespace EcoPOSv2
             FormLoad Fl = new FormLoad();
             Fl.CusDisplay("Hello", "Welcome!");
 
-            this.Close();
-
             Order.Instance.btnDiscount.Enabled = true;
             Order.Instance.btnCustomer.Enabled = true;
             Order.Instance.btnQuantity.Enabled = true;
@@ -86,9 +95,26 @@ namespace EcoPOSv2
             Order.Instance.LoadOrderNo();
             Order.Instance.tbBarcode.Focus();
 
+            Order.Instance.apply_regular_discount_fix_amt = false;
+            Order.Instance.apply_special_discount = false;
+            Order.Instance.apply_member = false;
+            Order.Instance.tbBarcode.Enabled = true;
+            Order.Instance.lblCustomer.Text = "";
+            Order.Instance.lblOperation.Text = "Order/Payment";
+            Order.Instance.regular_disc_amt = 0;
+            Order.Instance.is_refund = false;
+            Order.Instance.is_return = false;
 
-            //Order.Instance.LoadOrder();
-            //Order.Instance.GetTotal();
+
+            Dispose();
+        }
+
+        private void PChange_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                PChange.Instance.btnConfirm.PerformClick();
+            }
         }
     }
 }

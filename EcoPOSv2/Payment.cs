@@ -60,6 +60,19 @@ namespace EcoPOSv2
         //VARIABLES
 
         //METHODS
+        public static Payment _Payment;
+        public static Payment Instance
+        {
+            get
+            {
+                if (_Payment == null)
+                {
+                    _Payment = new Payment();
+                }
+                return _Payment;
+            }
+        }
+
         public void Advance_OrderNo()
         {
             SQL.Query(@"INSERT INTO order_no (order_no)
@@ -191,10 +204,14 @@ namespace EcoPOSv2
                         PrintReceipt();
                     }
 
-                    PChange frmPChange = new PChange();
-                    frmPChange.frmPayment = this;
-                    frmPChange.lblChange.Text = lblChange.Text;
-                    frmPChange.ShowDialog();
+                    PChange pchange = new PChange();
+
+                    pchange.lblChange.Text = lblChange.Text;
+                    pchange.Show();
+
+
+                    //temporary
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
@@ -221,6 +238,8 @@ namespace EcoPOSv2
 
         private void Payment_Load(object sender, EventArgs e)
         {
+            _Payment = this;
+
             cmbMethod.SelectedIndex = 0;
         }
         private void btnExact_Click(object sender, EventArgs e)
@@ -406,19 +425,19 @@ namespace EcoPOSv2
 
             #region reset values
 
-            frmOrder.apply_regular_discount_fix_amt = false;
-            frmOrder.apply_special_discount = false;
-            frmOrder.apply_member = false;
-            frmOrder.tbBarcode.Enabled = true;
-            frmOrder.lblCustomer.Text = "";
-            frmOrder.lblOperation.Text = "Order/Payment";
-            frmOrder.regular_disc_amt = 0;
-            frmOrder.is_refund = false;
-            frmOrder.is_return = false;
+            //frmOrder.apply_regular_discount_fix_amt = false;
+            //frmOrder.apply_special_discount = false;
+            //frmOrder.apply_member = false;
+            //frmOrder.tbBarcode.Enabled = true;
+            //frmOrder.lblCustomer.Text = "";
+            //frmOrder.lblOperation.Text = "Order/Payment";
+            //frmOrder.regular_disc_amt = 0;
+            //frmOrder.is_refund = false;
+            //frmOrder.is_return = false;
 
             #endregion
 
-            this.Close();
+            //this.Close();
         }
 
         private void btnRemoveGC_Click(object sender, EventArgs e)

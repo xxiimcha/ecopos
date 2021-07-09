@@ -376,6 +376,12 @@ namespace EcoPOSv2
 
         private void btnSeeItem_Click(object sender, EventArgs e)
         {
+            if (lblUser.Text == "Bypassed")
+            {
+                MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // Process.Start("calc.exe");
             if (Order.Instance.CheckOpened("SeeItem") == true)
             {
@@ -391,6 +397,12 @@ namespace EcoPOSv2
 
         private void btnXReading_Click(object sender, EventArgs e)
         {
+            if(lblUser.Text == "Bypassed")
+            {
+                MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             //if (Order.Instance.dgvCart.Rows.Count > 0)
             //{
             //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");

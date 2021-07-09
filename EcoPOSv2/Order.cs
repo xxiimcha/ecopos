@@ -250,6 +250,13 @@ namespace EcoPOSv2
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
+            if (Main.Instance.lblUser.Text == "Bypassed")
+            {
+                MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
 
             if (checkprinter == false)

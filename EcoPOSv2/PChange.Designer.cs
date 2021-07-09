@@ -139,7 +139,9 @@
             this.Name = "PChange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PChange";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.PChange_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PChange_KeyDown);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -149,10 +151,10 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Button btnConfirm;
         private Guna.UI2.WinForms.Guna2Button btnReprint;
         internal System.Windows.Forms.Label lblChange;
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.Timer tmrClose;
+        public Guna.UI2.WinForms.Guna2Button btnConfirm;
     }
 }

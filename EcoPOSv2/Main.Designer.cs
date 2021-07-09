@@ -98,15 +98,14 @@
             // 
             // lblByPassUser
             // 
-            this.lblByPassUser.AutoSize = true;
-            this.lblByPassUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
-            this.lblByPassUser.Location = new System.Drawing.Point(0, 0);
+            this.lblByPassUser.Location = new System.Drawing.Point(689, 0);
             this.lblByPassUser.Name = "lblByPassUser";
-            this.lblByPassUser.Size = new System.Drawing.Size(0, 25);
+            this.lblByPassUser.Size = new System.Drawing.Size(294, 34);
             this.lblByPassUser.TabIndex = 11;
-            this.lblByPassUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblByPassUser.Text = "                   ";
+            this.lblByPassUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUser
             // 
@@ -114,9 +113,9 @@
             this.lblUser.ForeColor = System.Drawing.Color.White;
             this.lblUser.Location = new System.Drawing.Point(413, 0);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(359, 32);
+            this.lblUser.Size = new System.Drawing.Size(270, 32);
             this.lblUser.TabIndex = 2;
-            this.lblUser.Text = "010.";
+            this.lblUser.Text = "Bypassed";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDateTime
