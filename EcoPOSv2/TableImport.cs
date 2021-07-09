@@ -243,7 +243,7 @@ namespace EcoPOSv2
                         }
 
                         new Notification().PopUp("Import success.", "", "information");
-                        this.Close();
+                        
                         break;
                     }
 
@@ -423,6 +423,7 @@ namespace EcoPOSv2
         {
             backgroundWorker1.CancelAsync();
             backgroundWorker1.Dispose();
+        
 
             //if (progressBar1.Value != 0)
             //{

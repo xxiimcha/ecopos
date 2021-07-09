@@ -247,13 +247,16 @@ namespace EcoPOSv2
                 SQL.AddParam("@to", datetime_now);
 
                 decimal adjustment1 = 0M;
-                if (SQL.ReturnResult(@"SELECT SUM(td.grand_total) FROM void_transaction as vt INNER JOIN transaction_details as td
-                                                    ON vt.order_ref = td.order_ref WHERE vt.void_date_time BETWEEN @from AND @to") != "")
-                {
-                    adjustment1 = decimal.Parse(SQL.ReturnResult(@"SELECT SUM(td.grand_total) FROM void_transaction as vt INNER JOIN transaction_details as td
+                adjustment1 = decimal.Parse(SQL.ReturnResult(@"SELECT SUM(td.grand_total) FROM void_transaction as vt INNER JOIN transaction_details as td
                                                     ON vt.order_ref = td.order_ref WHERE vt.void_date_time BETWEEN @from AND @to"));
-                }
-                else { return; }
+               
+                //if (SQL.ReturnResult(@"SELECT SUM(td.grand_total) FROM void_transaction as vt INNER JOIN transaction_details as td
+                //                                    ON vt.order_ref = td.order_ref WHERE vt.void_date_time BETWEEN @from AND @to") != "")
+                //{
+                //    adjustment1 = decimal.Parse(SQL.ReturnResult(@"SELECT SUM(td.grand_total) FROM void_transaction as vt INNER JOIN transaction_details as td
+                //                                    ON vt.order_ref = td.order_ref WHERE vt.void_date_time BETWEEN @from AND @to"));
+                //}
+                //else { return; }
 
                 lblAdjustment.Text = adjustment1.ToString("N2");
 

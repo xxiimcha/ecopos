@@ -1114,9 +1114,8 @@
             this.txtCategoryName.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCategoryName.ForeColor = System.Drawing.Color.Black;
             this.txtCategoryName.Location = new System.Drawing.Point(151, 44);
-            this.txtCategoryName.Multiline = true;
             this.txtCategoryName.Name = "txtCategoryName";
-            this.txtCategoryName.Size = new System.Drawing.Size(667, 35);
+            this.txtCategoryName.Size = new System.Drawing.Size(667, 30);
             this.txtCategoryName.TabIndex = 18;
             // 
             // Label9
