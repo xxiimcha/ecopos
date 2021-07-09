@@ -443,10 +443,12 @@ namespace EcoPOSv2
         private void btnRemoveGC_Click(object sender, EventArgs e)
         {
             decimal deduct_gc = decimal.Parse(lblDeductGC.Text);
-            grand_total = grand_total + deduct_gc;
+            //grand_total = grand_total + deduct_gc;
             lblGrandTotal.Text = grand_total.ToString("N2");
             lblGCNo.Text = "0";
             lblDeductGC.Text = "0.00";
+            btnExact.Enabled = true;
+            txtAmount.Enabled = true;
         }
 
         private void btnGC_Click(object sender, EventArgs e)
@@ -564,6 +566,37 @@ namespace EcoPOSv2
                     txtAmount.Enabled = true;
 
                     total = total - deduct_points;
+                    lblGrandTotal.Text = total.ToString("N2");
+                }
+
+                //lblGrandTotal.Text = grand_total.ToString("N2");
+            }
+        }
+
+        private void lblDeductGC_TextChanged(object sender, EventArgs e)
+        {
+            decimal deduct_gc = decimal.Parse(lblDeductGC.Text);
+            decimal total = decimal.Parse(lblTotal.Text);
+
+            if (deduct_gc != 0)
+            {
+                //grand_total = grand_total - deduct_gc;
+
+                if (deduct_gc > total)
+                {
+                    deduct_gc = deduct_gc - total;
+                    lblGrandTotal.Text = "0.00";
+
+                    lblChange.Text = "0.00";
+                    txtAmount.Enabled = false;
+                    btnExact.Enabled = false;
+                }
+                else
+                {
+                    btnExact.Enabled = true;
+                    txtAmount.Enabled = true;
+
+                    total = total - deduct_gc;
                     lblGrandTotal.Text = total.ToString("N2");
                 }
 

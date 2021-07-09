@@ -324,6 +324,7 @@
             this.lblDeductGC.TabIndex = 116;
             this.lblDeductGC.Text = "0.00";
             this.lblDeductGC.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblDeductGC.TextChanged += new System.EventHandler(this.lblDeductGC_TextChanged);
             // 
             // Label10
             // 
