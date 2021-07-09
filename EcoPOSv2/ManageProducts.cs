@@ -259,6 +259,8 @@ namespace EcoPOSv2
         {
             ClearFields_Pr();
 
+            cmbCategory.Text = dgvCategory.CurrentRow.Cells[1].Value.ToString();
+
             this.ActiveControl = txtDescription;
         }
         int checkerforduplicateB1 = 0, checkerforduplicateB2 = 0;
@@ -401,7 +403,7 @@ namespace EcoPOSv2
                                 checkerforduplicateB2 = 0;
                             }
 
-                            MessageBox.Show(checkerforduplicateB1 + " " + checkerforduplicateB2);
+                            //MessageBox.Show(checkerforduplicateB1 + " " + checkerforduplicateB2);
 
                             if (result == "0" && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
                             {

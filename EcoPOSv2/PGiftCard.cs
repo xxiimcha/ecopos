@@ -53,10 +53,5 @@ namespace EcoPOSv2
         {
             Close();
         }
-
-        private void PGiftCard_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

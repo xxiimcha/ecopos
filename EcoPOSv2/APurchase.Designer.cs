@@ -59,9 +59,9 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.Panel6 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvPurchase = new System.Windows.Forms.DataGridView();
             this.btnRemoveAll = new FontAwesome.Sharp.IconButton();
             this.btnRemoveItem = new FontAwesome.Sharp.IconButton();
+            this.dgvPurchase = new System.Windows.Forms.DataGridView();
             this.guna2Panel1.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -457,51 +457,6 @@
             this.TableLayoutPanel4.Size = new System.Drawing.Size(435, 858);
             this.TableLayoutPanel4.TabIndex = 0;
             // 
-            // dgvPurchase
-            // 
-            this.dgvPurchase.AllowUserToAddRows = false;
-            this.dgvPurchase.AllowUserToDeleteRows = false;
-            this.dgvPurchase.AllowUserToResizeColumns = false;
-            this.dgvPurchase.AllowUserToResizeRows = false;
-            this.dgvPurchase.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPurchase.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvPurchase.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPurchase.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvPurchase.Location = new System.Drawing.Point(3, 136);
-            this.dgvPurchase.MultiSelect = false;
-            this.dgvPurchase.Name = "dgvPurchase";
-            this.dgvPurchase.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvPurchase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPurchase.Size = new System.Drawing.Size(429, 719);
-            this.dgvPurchase.TabIndex = 38;
-            this.dgvPurchase.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchase_CellEndEdit);
-            // 
             // btnRemoveAll
             // 
             this.btnRemoveAll.Dock = System.Windows.Forms.DockStyle.Right;
@@ -542,6 +497,50 @@
             this.btnRemoveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveItem.UseVisualStyleBackColor = true;
             this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
+            // 
+            // dgvPurchase
+            // 
+            this.dgvPurchase.AllowUserToAddRows = false;
+            this.dgvPurchase.AllowUserToDeleteRows = false;
+            this.dgvPurchase.AllowUserToResizeColumns = false;
+            this.dgvPurchase.AllowUserToResizeRows = false;
+            this.dgvPurchase.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPurchase.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvPurchase.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPurchase.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPurchase.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPurchase.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvPurchase.Location = new System.Drawing.Point(3, 136);
+            this.dgvPurchase.Name = "dgvPurchase";
+            this.dgvPurchase.RowHeadersVisible = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPurchase.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvPurchase.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvPurchase.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPurchase.Size = new System.Drawing.Size(429, 719);
+            this.dgvPurchase.TabIndex = 38;
+            this.dgvPurchase.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchase_CellEndEdit);
             // 
             // APurchase
             // 

@@ -49,7 +49,6 @@
             this.btnExportExcel = new FontAwesome.Sharp.IconButton();
             this.btnExportPDF = new FontAwesome.Sharp.IconButton();
             this.dgvInventory = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.guna2Panel1.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -88,7 +87,6 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Panel1.Controls.Add(this.textBox1);
             this.Panel1.Controls.Add(this.TableLayoutPanel2);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(3, 3);
@@ -115,26 +113,26 @@
             this.TableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel2.Name = "TableLayoutPanel2";
             this.TableLayoutPanel2.RowCount = 9;
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.199021F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.158416F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.683168F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.653465F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.425743F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.14851F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.46512F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.83721F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.813953F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.069767F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.046512F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.86047F));
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.86139F));
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.80198F));
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.33707F));
-            this.TableLayoutPanel2.Size = new System.Drawing.Size(296, 404);
+            this.TableLayoutPanel2.Size = new System.Drawing.Size(296, 430);
             this.TableLayoutPanel2.TabIndex = 36;
             // 
             // txtSearch
             // 
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.DimGray;
             this.txtSearch.Location = new System.Drawing.Point(19, 3);
-            this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(256, 27);
+            this.txtSearch.Size = new System.Drawing.Size(256, 33);
             this.txtSearch.TabIndex = 27;
             this.txtSearch.Tag = "Search item";
             this.txtSearch.Text = "Search item";
@@ -152,10 +150,10 @@
             this.btnSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
             this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSearch.IconSize = 27;
-            this.btnSearch.Location = new System.Drawing.Point(83, 358);
+            this.btnSearch.Location = new System.Drawing.Point(65, 382);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnSearch.Size = new System.Drawing.Size(128, 43);
+            this.btnSearch.Size = new System.Drawing.Size(164, 45);
             this.btnSearch.TabIndex = 34;
             this.btnSearch.Text = "Search";
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -174,7 +172,7 @@
             this.btnSort.IconColor = System.Drawing.Color.Black;
             this.btnSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSort.IconSize = 30;
-            this.btnSort.Location = new System.Drawing.Point(19, 40);
+            this.btnSort.Location = new System.Drawing.Point(19, 48);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(215, 31);
             this.btnSort.TabIndex = 33;
@@ -188,7 +186,7 @@
             this.cbxShowZero.AutoSize = true;
             this.cbxShowZero.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxShowZero.ForeColor = System.Drawing.Color.Black;
-            this.cbxShowZero.Location = new System.Drawing.Point(19, 214);
+            this.cbxShowZero.Location = new System.Drawing.Point(19, 227);
             this.cbxShowZero.Name = "cbxShowZero";
             this.cbxShowZero.Size = new System.Drawing.Size(222, 27);
             this.cbxShowZero.TabIndex = 32;
@@ -202,9 +200,9 @@
             this.Label4.Dock = System.Windows.Forms.DockStyle.Left;
             this.Label4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.Color.Black;
-            this.Label4.Location = new System.Drawing.Point(19, 74);
+            this.Label4.Location = new System.Drawing.Point(19, 83);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(84, 27);
+            this.Label4.Size = new System.Drawing.Size(84, 25);
             this.Label4.TabIndex = 29;
             this.Label4.Text = "Category";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -217,7 +215,7 @@
             this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbWarehouse.ForeColor = System.Drawing.Color.Black;
             this.cmbWarehouse.FormattingEnabled = true;
-            this.cmbWarehouse.Location = new System.Drawing.Point(19, 173);
+            this.cmbWarehouse.Location = new System.Drawing.Point(19, 176);
             this.cmbWarehouse.MaxDropDownItems = 10;
             this.cmbWarehouse.Name = "cmbWarehouse";
             this.cmbWarehouse.Size = new System.Drawing.Size(256, 31);
@@ -227,11 +225,12 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.BackColor = System.Drawing.Color.Transparent;
+            this.Label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(19, 140);
+            this.Label1.Location = new System.Drawing.Point(19, 147);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(100, 25);
+            this.Label1.Size = new System.Drawing.Size(100, 26);
             this.Label1.TabIndex = 31;
             this.Label1.Text = "Warehouse";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -244,7 +243,7 @@
             this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.Black;
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(19, 104);
+            this.cmbCategory.Location = new System.Drawing.Point(19, 111);
             this.cmbCategory.MaxDropDownItems = 10;
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(256, 31);
@@ -254,9 +253,9 @@
             // 
             this.Panel2.Controls.Add(this.TableLayoutPanel3);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel2.Location = new System.Drawing.Point(19, 270);
+            this.Panel2.Location = new System.Drawing.Point(19, 287);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(256, 74);
+            this.Panel2.Size = new System.Drawing.Size(256, 79);
             this.Panel2.TabIndex = 35;
             // 
             // TableLayoutPanel3
@@ -271,7 +270,7 @@
             this.TableLayoutPanel3.Name = "TableLayoutPanel3";
             this.TableLayoutPanel3.RowCount = 1;
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel3.Size = new System.Drawing.Size(256, 74);
+            this.TableLayoutPanel3.Size = new System.Drawing.Size(256, 79);
             this.TableLayoutPanel3.TabIndex = 0;
             // 
             // btnExportExcel
@@ -290,7 +289,7 @@
             this.btnExportExcel.Location = new System.Drawing.Point(131, 3);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnExportExcel.Size = new System.Drawing.Size(122, 68);
+            this.btnExportExcel.Size = new System.Drawing.Size(122, 73);
             this.btnExportExcel.TabIndex = 37;
             this.btnExportExcel.Text = "Export to Excel";
             this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -313,7 +312,7 @@
             this.btnExportPDF.Location = new System.Drawing.Point(3, 3);
             this.btnExportPDF.Name = "btnExportPDF";
             this.btnExportPDF.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnExportPDF.Size = new System.Drawing.Size(122, 68);
+            this.btnExportPDF.Size = new System.Drawing.Size(122, 73);
             this.btnExportPDF.TabIndex = 36;
             this.btnExportPDF.Text = "Export to PDF";
             this.btnExportPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -366,13 +365,6 @@
             this.dgvInventory.Size = new System.Drawing.Size(854, 858);
             this.dgvInventory.TabIndex = 6;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(5, 410);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(285, 20);
-            this.textBox1.TabIndex = 37;
-            // 
             // AInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,7 +381,6 @@
             this.guna2Panel1.ResumeLayout(false);
             this.TableLayoutPanel1.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
-            this.Panel1.PerformLayout();
             this.TableLayoutPanel2.ResumeLayout(false);
             this.TableLayoutPanel2.PerformLayout();
             this.Panel2.ResumeLayout(false);
@@ -418,6 +409,5 @@
         internal FontAwesome.Sharp.IconButton btnExportExcel;
         internal FontAwesome.Sharp.IconButton btnExportPDF;
         internal System.Windows.Forms.DataGridView dgvInventory;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

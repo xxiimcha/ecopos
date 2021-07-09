@@ -50,6 +50,9 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -132,6 +135,9 @@
             // gunaPanel1
             // 
             this.gunaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gunaPanel1.Controls.Add(this.label6);
+            this.gunaPanel1.Controls.Add(this.label2);
+            this.gunaPanel1.Controls.Add(this.label1);
             this.gunaPanel1.Controls.Add(this.btnItemChecker);
             this.gunaPanel1.Controls.Add(this.btnclosetemp);
             this.gunaPanel1.Controls.Add(this.btnMore);
@@ -344,6 +350,39 @@
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(47, 557);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 25);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Hotkey Shortcut(s)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(53, 598);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(163, 20);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Ctrl + G = Userbypass";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label6.Location = new System.Drawing.Point(37, 621);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(204, 20);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Ctrl + F = Removing Bypass";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,6 +402,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.gunaPanel1.ResumeLayout(false);
+            this.gunaPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
@@ -392,5 +432,8 @@
         public Guna.UI2.WinForms.Guna2Button btnOrder;
         private System.Windows.Forms.Label lblTraningMode;
         private System.Windows.Forms.Button btnMinimize;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

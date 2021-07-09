@@ -509,8 +509,11 @@ namespace EcoPOSv2
             decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
             decimal total = decimal.Parse(lblTotal.Text);
 
-            if (cbxUsePoints.Checked)
+            if (cbxUsePoints.Checked == true)
+            {
                 lblDeductPoints.Text = cbxUsePoints.Text;
+                lblChange.Text = "-" + lblGrandTotal.Text;
+            }
             else if (cbxUsePoints.Checked == false/* && total > deduct_points*/)
             {
                 txtAmount.Enabled = true;
@@ -520,8 +523,9 @@ namespace EcoPOSv2
 
                 lblRemainingPoints.Text = "0.00";
                 lblGrandTotal.Text = total.ToString("N2");
+                lblChange.Text = "-" + lblGrandTotal.Text;
                 lblDeductPoints.Text = "0.00";
-                txtAmount.Text = "0";
+                txtAmount.Text = "";
             }
             //else
             //{

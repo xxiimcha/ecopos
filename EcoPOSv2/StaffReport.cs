@@ -725,5 +725,33 @@ namespace EcoPOSv2
                 cryRpt.Dispose();
             }
         }
+
+        private void cbxSelectall_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbxSelectall.Checked == true)
+            {
+                cbxSales.Checked = true;
+                cbxRetailSales.Checked = true;
+                cbxWholesaleSales.Checked = true;
+                cbxVoidItems.Checked = true;
+                cbxVoidTransactions.Checked = true;
+                cbxRegularDiscounts.Checked = true;
+                cbxSpecialDiscounts.Checked = true;
+                cbxPaymentMethod.Checked = true;
+                cbxItemsSold.Checked = true;
+            }
+            else
+            {
+                cbxSales.Checked = false;
+                cbxRetailSales.Checked = false;
+                cbxWholesaleSales.Checked = false;
+                cbxVoidItems.Checked = false;
+                cbxVoidTransactions.Checked = false;
+                cbxRegularDiscounts.Checked = false;
+                cbxSpecialDiscounts.Checked = false;
+                cbxPaymentMethod.Checked = false;
+                cbxItemsSold.Checked = false;
+            }
+        }
     }
 }

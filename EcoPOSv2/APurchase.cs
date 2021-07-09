@@ -166,7 +166,12 @@ namespace EcoPOSv2
             if (dgvPurchase.SelectedRows.Count == 0)
                 return;
             else
-                dgvPurchase.Rows.Remove(dgvPurchase.CurrentRow);
+            {
+                foreach(DataGridViewRow dr in dgvPurchase.SelectedRows)
+                {
+                    dgvPurchase.Rows.Remove(dr);
+                }
+            }
         }
 
         private void txtSearchProducts_KeyUp(object sender, KeyEventArgs e)
@@ -289,6 +294,9 @@ namespace EcoPOSv2
                 btnSearch.PerformClick();
                 dt_purchase.Rows.Clear();
                 new Notification().PopUp("Item saved.", "", "information");
+
+                txtRemarks.Clear();
+                txtTotalAmount.Clear();
             }
             else
                 new Notification().PopUp("Please fill all required fields.","Save failed", "error");

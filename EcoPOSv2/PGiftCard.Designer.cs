@@ -95,6 +95,7 @@
             this.btnConfirm.TabIndex = 53;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // txtGCNo
             // 
@@ -130,7 +131,6 @@
             this.Name = "PGiftCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PGiftCard";
-            this.Load += new System.EventHandler(this.PGiftCard_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
