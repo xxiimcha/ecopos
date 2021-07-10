@@ -74,6 +74,8 @@ namespace EcoPOSv2
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+
+            Order.Instance.tbBarcode.Focus();
         }
 
         private void txtCardNo_KeyDown(object sender, KeyEventArgs e)

@@ -611,6 +611,9 @@ namespace EcoPOSv2
         {
             if(dgvCart.Rows.Count == 0)
             {
+                tbBarcode.Clear();
+                this.ActiveControl = tbBarcode;
+                
                 new Notification().PopUp("Please select an item first", "Error", "error");
                 return;
             }
@@ -676,6 +679,10 @@ namespace EcoPOSv2
             DiscountOption frmDiscountOption = new DiscountOption();
             frmDiscountOption.frmOrder = this;
             frmDiscountOption.ShowDialog();
+
+
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
         }
 
         private void btnQuantity_Click(object sender, EventArgs e)
@@ -697,10 +704,16 @@ namespace EcoPOSv2
                 frmQuantity.currentQty = x;
                 frmQuantity.ShowDialog();
             }
+
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
+
             apply_regular_discount_fix_amt = false;
             apply_special_discount = false;
             apply_member = false;
@@ -738,8 +751,13 @@ namespace EcoPOSv2
 
         private void btnVoid_Click(object sender, EventArgs e)
         {
+            VoidTransaction.Instance.ActiveControl = VoidTransaction.Instance.txtORNo;
+
             VoidTransaction frmVT = new VoidTransaction();
             frmVT.ShowDialog();
+
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
@@ -751,6 +769,9 @@ namespace EcoPOSv2
             OCustomer frmOCustomer = new OCustomer();
             frmOCustomer.frmOrder = this;
             frmOCustomer.ShowDialog();
+
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
         }
 
         private void Order_Load(object sender, EventArgs e)
@@ -778,6 +799,9 @@ namespace EcoPOSv2
 
         private void btnVoidItem_Click(object sender, EventArgs e)
         {
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
+
             if (dgvCart.SelectedRows.Count == 0)
                 return;
 
@@ -831,7 +855,7 @@ namespace EcoPOSv2
         }
         private void ClickCustomer(object sender, EventArgs e)
         {
-            Order.Instance.btnCustomer.PerformClick();
+            //Order.Instance.btnCustomer.PerformClick();
         }
         private void AccessUserByPass(object sender, EventArgs e)
         {
@@ -875,11 +899,32 @@ namespace EcoPOSv2
             Redeem frmRedeem = new Redeem();
             frmRedeem.frmOrder = this;
             frmRedeem.ShowDialog();
+
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
         }
 
         private void tbBarcode_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+
+        private void dgvCart_Click(object sender, EventArgs e)
+        {
+            if(dgvCart.Rows.Count == 0)
+            {
+                tbBarcode.Clear();
+                this.ActiveControl = tbBarcode;
+            }
+        }
+
+        private void dgvCart_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgvCart.Rows.Count == 0)
+            {
+                tbBarcode.Clear();
+                this.ActiveControl = tbBarcode;
+            }
         }
 
         private void OpenPayment(object sender, EventArgs e)

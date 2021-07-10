@@ -115,10 +115,9 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(0, 0);
+            this.Label1.Location = new System.Drawing.Point(3, 4);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(102, 32);
             this.Label1.TabIndex = 18;

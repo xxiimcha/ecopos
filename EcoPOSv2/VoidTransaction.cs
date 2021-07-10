@@ -25,10 +25,27 @@ namespace EcoPOSv2
 
         PaymentReceipt report = new PaymentReceipt();
 
+        public static VoidTransaction _VoidTransaction;
+        public static VoidTransaction Instance
+        {
+            get
+            {
+                if (_VoidTransaction == null)
+                {
+                    _VoidTransaction = new VoidTransaction();
+                }
+                return _VoidTransaction;
+            }
+        }
+
         private void VoidTransaction_Load(object sender, EventArgs e)
         {
-            guna2ShadowForm1.SetShadowForm(this);
+            txtORNo.Clear();
+            txtORNo.Focus();
 
+            _VoidTransaction = this;
+
+            guna2ShadowForm1.SetShadowForm(this);
             AssignValidation(ref txtORNo, ValidationType.Int_Only);
         }
         //METHODS

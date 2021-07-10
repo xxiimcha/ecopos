@@ -67,7 +67,7 @@ namespace EcoPOSv2
         public string current_id, current_username, current_user_first_name;
 
         Helper Helper = new Helper();
-        FormLoad OL = new FormLoad();
+        public FormLoad OL = new FormLoad();
         RolePermission RP = new RolePermission();
 
         public string dynamicDB;
@@ -351,8 +351,6 @@ namespace EcoPOSv2
             Order frmOrder = new Order();
             RP.Order(frmOrder);
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
-
-            Order.Instance.GetTotal();
         }
 
         private void btnclosetemp_Click(object sender, EventArgs e)
@@ -367,11 +365,13 @@ namespace EcoPOSv2
             //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
             //    return;
             //}
-
             More m = new More();
 
             RP.More(m);
             OL.changeForm(m, currentChildForm, pnlChild);
+
+
+            Order.Instance.Close();
         }
 
         private void btnSeeItem_Click(object sender, EventArgs e)

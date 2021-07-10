@@ -69,7 +69,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(238, 57);
-            this.btnCancel.TabIndex = 60;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -92,7 +92,7 @@
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(238, 57);
-            this.btnConfirm.TabIndex = 59;
+            this.btnConfirm.TabIndex = 1;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -105,7 +105,7 @@
             this.txtORNo.Multiline = true;
             this.txtORNo.Name = "txtORNo";
             this.txtORNo.Size = new System.Drawing.Size(415, 33);
-            this.txtORNo.TabIndex = 58;
+            this.txtORNo.TabIndex = 0;
             this.txtORNo.Tag = "";
             this.txtORNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtORNo_KeyDown);
             // 

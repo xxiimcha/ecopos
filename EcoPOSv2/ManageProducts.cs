@@ -292,12 +292,20 @@ namespace EcoPOSv2
                     else
                         rb20PWD.Checked = true;
                 }
+
+
+                lblStock.Visible = false;
+                txtProductStock.Clear();
+                txtProductStock.Visible = false;
             }
         }
 
         private void btnProduct_New_Click(object sender, EventArgs e)
         {
             ClearFields_Pr();
+            //VISIBLE ON IN PRODUCT INVENTORY QUANTITY
+            lblStock.Visible = true;
+            txtProductStock.Visible = true;
 
             try
             {
@@ -394,13 +402,19 @@ namespace EcoPOSv2
 
                                 // create inventory
 
-                                SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), 0)");
+                                SQL.AddParam("@stock_qty", txtProductStock.Text);
+                                SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), @stock_qty)");
 
                                 if (SQL.HasException(true))
                                     return;
 
                                 ClearFields_Pr();
                                 new Notification().PopUp("Item saved.", "", "success");
+
+
+                                lblStock.Visible = false;
+                                txtProductStock.Clear();
+                                txtProductStock.Visible = false;
                             }
                             else
                             {
@@ -483,6 +497,9 @@ namespace EcoPOSv2
                                 if (SQL.HasException(true))
                                     return;
                                 new Notification().PopUp("Item saved.", "","success");
+
+
+                                btnProduct_New.PerformClick();
                             }
                             else
                             {

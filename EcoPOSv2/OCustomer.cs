@@ -47,6 +47,8 @@ namespace EcoPOSv2
 
         private void OCustomer_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = txtNameCard;
+
             LoadCustomer();
             guna2ShadowForm1.SetShadowForm(this);
         }
