@@ -488,6 +488,8 @@
             this.txtWPInclusive.Size = new System.Drawing.Size(367, 43);
             this.txtWPInclusive.TabIndex = 22;
             this.txtWPInclusive.Text = "0.00";
+            this.txtWPInclusive.Enter += new System.EventHandler(this.txtWPInclusive_Enter);
+            this.txtWPInclusive.Leave += new System.EventHandler(this.txtWPInclusive_Leave);
             // 
             // txtRPInclusive
             // 
@@ -502,6 +504,8 @@
             this.txtRPInclusive.Size = new System.Drawing.Size(367, 41);
             this.txtRPInclusive.TabIndex = 21;
             this.txtRPInclusive.Text = "0.00";
+            this.txtRPInclusive.Enter += new System.EventHandler(this.txtRPInclusive_Enter);
+            this.txtRPInclusive.Leave += new System.EventHandler(this.txtRPInclusive_Leave);
             // 
             // txtDescription
             // 

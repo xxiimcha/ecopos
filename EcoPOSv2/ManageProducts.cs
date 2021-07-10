@@ -99,13 +99,22 @@ namespace EcoPOSv2
 
         private void LoadProducts()
         {
-            SQL.Query("SELECT TOP 75 productID, description, name FROM products ORDER BY description ASC");
+            BackgroundWorker workerloadproducts = new BackgroundWorker();
+            workerloadproducts.DoWork += Workerloadproducts_DoWork;
+            workerloadproducts.RunWorkerAsync();
+        }
+
+        private void Workerloadproducts_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQLControl pSQL = new SQLControl();
+
+            pSQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
             if (SQL.HasException(true))
                 return;
 
             dgvProducts.Invoke(new System.Action(() =>
             {
-                dgvProducts.DataSource = SQL.DBDT;
+                dgvProducts.DataSource = pSQL.DBDT;
                 dgvProducts.Columns[0].Visible = false;
                 dgvProducts.Columns[1].Width = 300;
             }));
@@ -113,35 +122,64 @@ namespace EcoPOSv2
 
         private void ReloadProducts()
         {
-            if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
+            BackgroundWorker workerReloadProducts = new BackgroundWorker();
+            workerReloadProducts.DoWork += WorkerReloadProducts_DoWork;
+            workerReloadProducts.RunWorkerAsync();
+        }
+
+        private void WorkerReloadProducts_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQLControl PSQL = new SQLControl();
+
+            dgvCategory.Invoke(new System.Action(() =>
             {
-                if (Convert.ToInt32(dgvCategory.CurrentRow.Cells[0].Value.ToString()) != 0)
+                if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
                 {
-                    SQL.AddParam("@categoryID", (dgvCategory.CurrentRow.Cells[0].Value.ToString()));
+                    if (Convert.ToInt32(dgvCategory.CurrentRow.Cells[0].Value.ToString()) != 0)
+                    {
+                        PSQL.AddParam("@categoryID", (dgvCategory.CurrentRow.Cells[0].Value.ToString()));
 
-                    SQL.Query("SELECT productID, description, name FROM products WHERE categoryID = @categoryID ORDER BY description ASC");
-                    if (SQL.HasException(true))
+                        PSQL.Query("SELECT productID, description, name FROM products WHERE categoryID = @categoryID ORDER BY description ASC");
+                        if (PSQL.HasException(true))
+                            return;
+
+                        dgvProducts.Invoke(new System.Action(() =>
+                        {
+                            dgvProducts.DataSource = PSQL.DBDT;
+                            dgvProducts.Columns[0].Visible = false;
+                            dgvProducts.Columns[1].Width = 300;
+                        }));
                         return;
-
-                    dgvProducts.DataSource = SQL.DBDT;
-                    dgvProducts.Columns[0].Visible = false;
-                    dgvProducts.Columns[1].Width = 300;
-
-                    return;
+                    }
                 }
-            }
+            }));
 
-            SQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
-            if (SQL.HasException(true))
+
+
+            PSQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
+            if (PSQL.HasException(true))
                 return;
 
-            dgvProducts.DataSource = SQL.DBDT;
-            dgvProducts.Columns[0].Visible = false;
-            dgvProducts.Columns[1].Width = 300;
+            dgvProducts.Invoke(new System.Action(() =>
+            {
+                dgvProducts.DataSource = PSQL.DBDT;
+                dgvProducts.Columns[0].Visible = false;
+                dgvProducts.Columns[1].Width = 300;
+            }));
         }
+
         private void LoadCategory()
         {
-            SQL.Query(@"SELECT catID, catName FROM
+            BackgroundWorker workerLoadCategory = new BackgroundWorker();
+            workerLoadCategory.DoWork += WorkerLoadCategory_DoWork;
+            workerLoadCategory.RunWorkerAsync();
+        }
+
+        private void WorkerLoadCategory_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQLControl pSQL = new SQLControl();
+
+            pSQL.Query(@"SELECT catID, catName FROM
                        (
                        SELECT 0 as catID, 'All Categories' as catName
                        UNION ALL 
@@ -151,13 +189,15 @@ namespace EcoPOSv2
                        ELSE 5
                        END,
                        catname ASC");
-            if (SQL.HasException(true))
+            if (pSQL.HasException(true))
                 return;
 
-            dgvCategory.DataSource = SQL.DBDT;
-            dgvCategory.Columns[0].Visible = false;
+            dgvCategory.Invoke(new System.Action(() =>
+            {
+                dgvCategory.DataSource = pSQL.DBDT;
+                dgvCategory.Columns[0].Visible = false;
+            }));
         }
-
 
         private void TextValidation()
         {
@@ -190,7 +230,7 @@ namespace EcoPOSv2
             ControlBehavior();
 
             LoadCategory();
-            //LoadProducts();
+            LoadProducts();
             loadCat_Category();
 
             OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
@@ -259,7 +299,13 @@ namespace EcoPOSv2
         {
             ClearFields_Pr();
 
-            cmbCategory.Text = dgvCategory.CurrentRow.Cells[1].Value.ToString();
+            try
+            {
+                cmbCategory.Text = dgvCategory.CurrentRow.Cells[1].Value.ToString();
+            }
+            catch (Exception)
+            {
+            }
 
             this.ActiveControl = txtDescription;
         }
@@ -357,7 +403,12 @@ namespace EcoPOSv2
                                 new Notification().PopUp("Item saved.", "", "success");
                             }
                             else
+                            {
                                 new Notification().PopUp("Duplicate name/barcode found.", "Save failed", "error");
+                                return;
+                            }
+                                
+
                             break;
                         }
 
@@ -434,7 +485,11 @@ namespace EcoPOSv2
                                 new Notification().PopUp("Item saved.", "","success");
                             }
                             else
+                            {
                                 new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                return;
+                            }
+                                
                             break;
                         }
                 }
@@ -792,6 +847,41 @@ namespace EcoPOSv2
 
             dgvProducts.DataSource = SQL.DBDT;
             dgvProducts.Columns[0].Visible = false;
+        }
+
+        private void txtRPInclusive_Enter(object sender, EventArgs e)
+        {
+            if(txtRPInclusive.Text == "0.00")
+            {
+                txtRPInclusive.Clear();
+                txtRPInclusive.Focus();
+            }
+
+        }
+
+        private void txtWPInclusive_Enter(object sender, EventArgs e)
+        {
+            if (txtWPInclusive.Text == "0.00")
+            {
+                txtWPInclusive.Clear();
+                txtWPInclusive.Focus();
+            }
+        }
+
+        private void txtRPInclusive_Leave(object sender, EventArgs e)
+        {
+            if(txtRPInclusive.Text == "")
+            {
+                txtRPInclusive.Text = "0.00";
+            }
+        }
+
+        private void txtWPInclusive_Leave(object sender, EventArgs e)
+        {
+            if (txtWPInclusive.Text == "")
+            {
+                txtWPInclusive.Text = "0.00";
+            }
         }
 
         private void txtCat_SearchCategory_KeyUp(object sender, KeyEventArgs e)

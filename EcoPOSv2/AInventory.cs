@@ -53,14 +53,21 @@ namespace EcoPOSv2
             Control c = (Control)txtSearch;
 
             SetBehavior(ref c, Behavior.ClearSearch);
-        }
 
+            btnSearch.PerformClick();
+        }
+        string query = "";
+        string cat_query = "c.categoryID NOT IN (9999999999)";
+        string warehouse_query = "w.warehouseID NOT IN (9999999999)";
+        string showzero_query = "AND i.stock_qty = (0)";
+
+        BackgroundWorker workerSearchInventory;
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string query = "";
-            string cat_query = "c.categoryID NOT IN (9999999999)";
-            string warehouse_query = "w.warehouseID NOT IN (9999999999)";
-            string showzero_query = "AND i.stock_qty = (0)";
+            //string query = "";
+            //string cat_query = "c.categoryID NOT IN (9999999999)";
+            //string warehouse_query = "w.warehouseID NOT IN (9999999999)";
+            //string showzero_query = "AND i.stock_qty = (0)";
 
             if (cmbCategory.SelectedIndex != 0)
             {
@@ -87,7 +94,16 @@ namespace EcoPOSv2
             //           WHERE " + cat_query + " AND " + warehouse_query + showzero_query + " Order BY p.description ASC");
 
 
-            SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
+            workerSearchInventory = new BackgroundWorker();
+            workerSearchInventory.DoWork += WorkerSearchInventory_DoWork;
+            workerSearchInventory.RunWorkerAsync();
+        }
+
+        private void WorkerSearchInventory_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQLControl workerSQL = new SQLControl();
+
+            workerSQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID
                        INNER JOIN product_category as c ON
@@ -96,11 +112,14 @@ namespace EcoPOSv2
                        p.productID = i.productID
                        WHERE " + cat_query + " AND " + warehouse_query + showzero_query + " Order BY p.description ASC");
 
-            if (SQL.HasException(true))
+            if (workerSQL.HasException(true))
                 return;
 
-            dgvInventory.DataSource = SQL.DBDT;
-            dgvInventory.Columns[0].Visible = false;
+            dgvInventory.Invoke(new Action(() =>
+            {
+                dgvInventory.DataSource = workerSQL.DBDT;
+                dgvInventory.Columns[0].Visible = false;
+            }));
         }
 
         private void btnSort_Click(object sender, EventArgs e)

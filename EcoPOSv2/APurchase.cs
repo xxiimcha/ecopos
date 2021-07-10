@@ -87,18 +87,30 @@ namespace EcoPOSv2
                                           SELECT categoryID, name, 2 as ord FROM product_category
                                          ) x ORDER BY ord, name ASC", "categoryID", "name");
 
-            cmbCategory.SelectedIndex = 1;
+            cmbCategory.SelectedIndex = 0;
 
             btnSearch.PerformClick();
         }
+
+        string cat_query = "c.categoryID NOT IN (99999999999)";
+        BackgroundWorker workerProducts;
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string cat_query = "c.categoryID NOT IN (99999999999)";
+            //string cat_query = "c.categoryID NOT IN (99999999999)";
 
             if (cmbCategory.SelectedIndex != 0)
                 cat_query = "c.categoryID = " + cmbCategory.SelectedValue;
 
-            SQL.Query(@"SELECT p.productID, p.description as 'Name', c.name as 'Category', 
+            workerProducts = new BackgroundWorker();
+            workerProducts.DoWork += WorkerProducts_DoWork;
+            workerProducts.RunWorkerAsync();
+        }
+
+        private void WorkerProducts_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQLControl privateSQL = new SQLControl();
+
+            privateSQL.Query(@"SELECT p.productID, p.description as 'Name', c.name as 'Category', 
                        i.stock_qty as 'Stock'  FROM products as p
                        INNER JOIN inventory as i 
                        ON p.productID = i.productID
@@ -106,11 +118,14 @@ namespace EcoPOSv2
                        ON p.categoryID = c.categoryID 
                        WHERE " + cat_query + "ORDER BY p.description ASC");
 
-            if (SQL.HasException(true))
+            if (privateSQL.HasException(true))
                 return;
 
-            dgvProducts.DataSource = SQL.DBDT;
-            dgvProducts.Columns[0].Visible = false;
+            dgvProducts.Invoke(new Action(() =>
+            {
+                dgvProducts.DataSource = privateSQL.DBDT;
+                dgvProducts.Columns[0].Visible = false;
+            }));
         }
 
         private void btnSelectAll_Click(object sender, EventArgs e)

@@ -84,7 +84,7 @@ namespace EcoPOSv2
 
 
                                 ClearFields();
-                                //frmAWarehouse.LoadWarehouse(); /////TEMPORARY COMMENT
+                                frmAWarehouse.LoadWarehouse();
                                 new Notification().PopUp("Item saved", "Success!", "success");
                             }
                             else
