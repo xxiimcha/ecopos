@@ -142,6 +142,7 @@
             this.dgvProducts.Size = new System.Drawing.Size(819, 554);
             this.dgvProducts.TabIndex = 1;
             this.dgvProducts.Click += new System.EventHandler(this.dgvProducts_Click);
+            this.dgvProducts.DoubleClick += new System.EventHandler(this.dgvProducts_DoubleClick);
             // 
             // btnCLose
             // 

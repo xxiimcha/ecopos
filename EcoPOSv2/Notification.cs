@@ -72,7 +72,7 @@ namespace EcoPOSv2
 
             if (counter == 2)
             {
-                Dispose();
+                Close();
             }
         }
 

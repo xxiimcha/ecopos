@@ -423,10 +423,12 @@ namespace EcoPOSv2
                         int check2 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT stock_qty FROM INVENTORY WHERE productID = @productID) = 0, 1, 0)"));
                         if (SQL.HasException(true)) return;
 
-                        if (check1 == 1 ||check2  == 1) 
+                        if (check1 == 1 || check2 == 1)
                         {
-                                new Notification().PopUp("Insufficient stock", "", "error");
-                                return;                 
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
                         }
 
                         SQL.AddParam("@type", type);
@@ -463,6 +465,8 @@ namespace EcoPOSv2
                         if (int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)")) == 1)
                         {
                             new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
                             return;
                         }
                         

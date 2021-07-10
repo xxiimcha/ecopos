@@ -147,5 +147,12 @@ namespace EcoPOSv2
                 return;
             }
         }
+
+        private void dgvProducts_DoubleClick(object sender, EventArgs e)
+        {
+            btnConfirm.PerformClick();
+
+            Order.Instance.btnQuantity.PerformClick();
+        }
     }
 }
