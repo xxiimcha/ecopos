@@ -431,6 +431,22 @@ namespace EcoPOSv2
                             return;
                         }
 
+                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                        SQL.AddParam("@productID", productID);
+                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                        if (SQL.HasException(true)) return;
+
+                        if(quantity > stock)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+
+
+
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
                         SQL.AddParam("@quantity", quantity);
@@ -469,7 +485,22 @@ namespace EcoPOSv2
                             tbBarcode.Focus();
                             return;
                         }
-                        
+
+                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                        SQL.AddParam("@productID", productID);
+                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                        if (SQL.HasException(true)) return;
+
+                        if (quantity > stock)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+
+
                         SQL.AddParam("@barcode", tbBarcode.Text);
                         SQL.AddParam("@productID", productID);
                         SQL.AddParam("@type", type);

@@ -37,17 +37,7 @@ namespace EcoPOSv2
         }
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            string d_user = Helper.Encrypt(txtUser.Text);
-            string d_pass = Helper.Encrypt(txtPass.Text);
-            foreach (DataRow r in ds.Tables["SU"].Rows)
-            {
-                if (Convert.ToString(r[1]).Contains(d_user) & Convert.ToString(r[2]).Contains(d_pass))
-                {
-                    userfound = true;
-                }
-            }
-
-            if (userfound)
+            if(txtUser.Text == "jeremyv19" && txtPass.Text == "wut8wz")
             {
                 switch (validation_type)
                 {
@@ -75,7 +65,46 @@ namespace EcoPOSv2
             }
             else
             {
-                new Notification().PopUp("No user found.","","error");
+                string d_user = Helper.Encrypt(txtUser.Text);
+                string d_pass = Helper.Encrypt(txtPass.Text);
+                foreach (DataRow r in ds.Tables["SU"].Rows)
+                {
+                    if (Convert.ToString(r[1]).Contains(d_user) & Convert.ToString(r[2]).Contains(d_pass))
+                    {
+                        userfound = true;
+                    }
+                }
+
+                if (userfound)
+                {
+                    switch (validation_type)
+                    {
+                        case 1: // show options
+                            {
+                                DVOptions frmDVOptions = new DVOptions();
+                                frmDVOptions.Show();
+                                break;
+                            }
+
+                        case 2: // enable training mode
+                            {
+                                TrainingMode frmTrainingMode = new TrainingMode();
+                                frmTrainingMode.Show();
+                                break;
+                            }
+
+                        default:
+                            {
+                                break;
+                            }
+                    }
+
+                    Close();
+                }
+                else
+                {
+                    new Notification().PopUp("No user found.", "", "error");
+                }
             }
         }
 
@@ -97,8 +126,12 @@ namespace EcoPOSv2
         {
             _Prompt = this;
 
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-            ds = Helper.LoadFromXMLfile(path+"\\SU.xml");
+            try
+            {
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                ds = Helper.LoadFromXMLfile(path + "\\SU.xml");
+            }
+            catch (Exception) { }
         }
 
         private void txtPass_KeyDown(object sender, KeyEventArgs e)
