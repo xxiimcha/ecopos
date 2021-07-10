@@ -85,6 +85,11 @@ namespace EcoPOSv2
             GA.DoThis(ref allTxt, TableLayoutPanel1, ControlType.TextBox, GroupAction.Action.Clear);
             cbxDiscPWD.Checked = false;
             GA.DoThis(ref allTxt, TableLayoutPanel1, ControlType.CheckBox, GroupAction.Action.Uncheck);
+
+
+            txtRPInclusive.Text = "0.00";
+            txtWPInclusive.Text = "0.00";
+            txtProductStock.Text = "0";
         }
 
         private void ProductsRF()
@@ -135,6 +140,7 @@ namespace EcoPOSv2
             {
                 if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
                 {
+                    dgvCategory.Select();
                     if (Convert.ToInt32(dgvCategory.CurrentRow.Cells[0].Value.ToString()) != 0)
                     {
                         PSQL.AddParam("@categoryID", (dgvCategory.CurrentRow.Cells[0].Value.ToString()));
@@ -205,6 +211,9 @@ namespace EcoPOSv2
             AssignValidation(ref txtRPInclusive, ValidationType.Only_Numbers);
             AssignValidation(ref txtWPInclusive, ValidationType.Price);
             AssignValidation(ref txtWPInclusive, ValidationType.Only_Numbers);
+
+            AssignValidation(ref txtProductStock, ValidationType.Price);
+            AssignValidation(ref txtProductStock, ValidationType.Only_Numbers);
         }
 
         private void ControlBehavior()
@@ -306,6 +315,8 @@ namespace EcoPOSv2
             //VISIBLE ON IN PRODUCT INVENTORY QUANTITY
             lblStock.Visible = true;
             txtProductStock.Visible = true;
+
+            dgvCategory.Select();
 
             try
             {
@@ -898,6 +909,22 @@ namespace EcoPOSv2
             if (txtWPInclusive.Text == "")
             {
                 txtWPInclusive.Text = "0.00";
+            }
+        }
+
+        private void txtProductStock_Leave(object sender, EventArgs e)
+        {
+            if(txtProductStock.Text == "")
+            {
+                txtProductStock.Text = "0";
+            }
+        }
+
+        private void txtProductStock_Enter(object sender, EventArgs e)
+        {
+            if(txtProductStock.Text == "0")
+            {
+                txtProductStock.Text = "";
             }
         }
 
