@@ -118,6 +118,7 @@ namespace EcoPOSv2
                 return;
 
             dgvCart.DataSource = SQL.DBDT;
+            dgvCart.Columns[0].Visible = false;
             dgvCart.Columns[1].Visible = false;
             dgvCart.Columns[5].Visible = false;
             dgvCart.Columns[6].Visible = false;
@@ -125,7 +126,6 @@ namespace EcoPOSv2
             dgvCart.Columns[9].Visible = false;
             dgvCart.Columns[12].Visible = false;
 
-            dgvCart.Columns[0].Width = 120;
             dgvCart.Columns[2].Width = 200;
             dgvCart.Columns[3].Width = 200;
             dgvCart.Columns[4].Width = 60;
