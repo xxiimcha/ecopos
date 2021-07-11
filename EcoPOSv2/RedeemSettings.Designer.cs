@@ -1406,6 +1406,7 @@
             this.cmbRI_CategoryItems.Name = "cmbRI_CategoryItems";
             this.cmbRI_CategoryItems.Size = new System.Drawing.Size(376, 29);
             this.cmbRI_CategoryItems.TabIndex = 66;
+            this.cmbRI_CategoryItems.SelectedIndexChanged += new System.EventHandler(this.cmbRI_CategoryItems_SelectedIndexChanged);
             // 
             // Panel12
             // 

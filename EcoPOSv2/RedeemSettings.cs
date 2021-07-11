@@ -78,7 +78,13 @@ namespace EcoPOSv2
         private void LoadItems()
         {
             if (cmbRI_CategoryItems.SelectedIndex != 0)
+            {
                 cat_queryLI = "categoryID = " + cmbRI_CategoryItems.SelectedValue;
+            }
+            else
+            {
+                cat_queryLI = "categoryID = categoryID";
+            }   
 
             BackgroundWorker workerLI = new BackgroundWorker();
             workerLI.DoWork += WorkerLI_DoWork;
@@ -88,7 +94,7 @@ namespace EcoPOSv2
         private void WorkerLI_DoWork(object sender, DoWorkEventArgs e)
         {
             dgvRI_Items.Invoke(new System.Action(() => {
-                SQL.Query("SELECT TOP 100 productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_queryLI + "ORDER BY description ASC");
+                SQL.Query("SELECT TOP 100 productID, description as 'Description', categoryID, barcode1, barcode2 FROM products WHERE " + cat_queryLI + " ORDER BY description ASC");
 
                 if (SQL.HasException(true))
                     return;
@@ -929,6 +935,11 @@ namespace EcoPOSv2
         private void dgvRI_RedeemItems_Click(object sender, EventArgs e)
         {
             selectallredeemitems = false;
+        }
+
+        private void cmbRI_CategoryItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRI_SearchItems.PerformClick();
         }
 
         private void btnSelectAllRedeemItems_Click(object sender, EventArgs e)
