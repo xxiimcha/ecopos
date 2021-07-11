@@ -99,11 +99,21 @@ namespace EcoPOSv2
             //string cat_query = "c.categoryID NOT IN (99999999999)";
 
             if (cmbCategory.SelectedIndex != 0)
+            {
                 cat_query = "c.categoryID = " + cmbCategory.SelectedValue;
+            }
+            else
+            {
+                cat_query = "c.categoryID NOT IN (99999999999)";
+            }
+                
 
             workerProducts = new BackgroundWorker();
             workerProducts.DoWork += WorkerProducts_DoWork;
             workerProducts.RunWorkerAsync();
+
+            btnSearch.Text = "Wait.";
+            btnSearch.Enabled = false;
         }
 
         private void WorkerProducts_DoWork(object sender, DoWorkEventArgs e)
@@ -116,7 +126,7 @@ namespace EcoPOSv2
                        ON p.productID = i.productID
                        INNER JOIN product_category as c 
                        ON p.categoryID = c.categoryID 
-                       WHERE " + cat_query + "ORDER BY p.description ASC");
+                       WHERE " + cat_query + " ORDER BY p.description ASC");
 
             if (privateSQL.HasException(true))
                 return;
@@ -125,6 +135,12 @@ namespace EcoPOSv2
             {
                 dgvProducts.DataSource = privateSQL.DBDT;
                 dgvProducts.Columns[0].Visible = false;
+            }));
+
+            btnSearch.Invoke(new Action(() =>
+            {
+                btnSearch.Text = "Search";
+                btnSearch.Enabled = true;
             }));
         }
 
@@ -317,6 +333,9 @@ namespace EcoPOSv2
                 new Notification().PopUp("Please fill all required fields.","Save failed", "error");
         }
 
-       
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnSearch.PerformClick();
+        }
     }
 }

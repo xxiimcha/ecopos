@@ -444,16 +444,16 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            Main.Instance.OpenChildForm(Order.Instance);
 
+            //Main.Instance.OpenChildForm(Order.Instance);
             //Order.Instance.ActiveControl = Order.Instance.tbBarcode;
 
-            Login frmLogin = new Login();
-            frmLogin.Show(Main.Instance);
-            Main.Instance.Hide();
+            //Login frmLogin = new Login();
+            //frmLogin.Show(Main.Instance);
+            //Main.Instance.Hide();
 
-            Main.Instance.UpdateMemberCards();
-            Main.Instance.UpdateGiftCards();
+            //Main.Instance.UpdateMemberCards();
+            //Main.Instance.UpdateGiftCards();
 
             Application.Restart();
         }

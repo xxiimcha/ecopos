@@ -369,6 +369,7 @@ namespace EcoPOSv2
         }
 
         String[] hybrid;
+        decimal quantitytalaga;
         private void tbBarcode_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -384,13 +385,22 @@ namespace EcoPOSv2
                 if (tbBarcode.Text.Contains("*"))
                 {
                     hybrid = tbBarcode.Text.Split('*');
-                    quantity = int.Parse(hybrid[0]);
+                    try
+                    {
+                        quantity = int.Parse(hybrid[0]);
+                    }
+                    catch (Exception)
+                    {
+                        quantity = 1;
+                    }
+
                     barcode = hybrid[1];
                 }
                 else
                 {
                     barcode = tbBarcode.Text;
                 }
+
 
                 SQL.AddParam("@barcode", barcode);
                 check_product = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode"));
@@ -405,6 +415,39 @@ namespace EcoPOSv2
 
                 if (check_product == 1)
                 {
+                    //CHECKER KUNG TAMA BA YUNG QUANTITY AT STOCK
+                    SQL.AddParam("@barcode", barcode);
+                    string productID1 = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
+                    if (SQL.HasException(true))
+                        return;
+
+                    if (int.Parse(SQL.ReturnResult("select count(*)from order_cart")) != 0)
+                    {
+                        SQL.AddParam("@productID", productID1);
+                        quantitytalaga = decimal.Parse(SQL.ReturnResult("select quantity from order_cart where productID=@productID"));
+
+                        decimal totalquantity = quantitytalaga + quantity;
+
+                        //MessageBox.Show("No of quantity: "+ totalquantity.ToString());
+
+                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                        SQL.AddParam("@productID", productID1);
+                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                        if (SQL.HasException(true)) return;
+
+                        //MessageBox.Show("No of stock: "+stock.ToString());
+
+                        if (totalquantity > stock)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+                    }
+                    //END OF THE CHECKER
+
                     SQL.AddParam("@barcode", barcode);
                     string productID = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
                     if (SQL.HasException(true))
@@ -799,8 +842,12 @@ namespace EcoPOSv2
 
         private void btnVoidItem_Click(object sender, EventArgs e)
         {
-            tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
+            try
+            {
+                tbBarcode.Clear();
+                this.ActiveControl = tbBarcode;
+            }
+            catch (Exception) { }
 
             if (dgvCart.SelectedRows.Count == 0)
                 return;

@@ -83,20 +83,27 @@ namespace EcoPOSv2
             {
                 showzero_query = "AND i.stock_qty <> 0";
             }
+            else
+            {
+                showzero_query = "AND i.stock_qty = (0)";
+            }
 
-            //textBox1.Text = (@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
-            //           INNER JOIN warehouse as w ON
-            //           p.warehouseID = w.warehouseID
-            //           INNER JOIN product_category as c ON
-            //           p.categoryID = c.categoryID 
-            //           INNER JOIN inventory as i ON 
-            //           p.productID = i.productID
-            //           WHERE " + cat_query + " AND " + warehouse_query + showzero_query + " Order BY p.description ASC");
+            textBox1.Text = (@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
+                       INNER JOIN warehouse as w ON
+                       p.warehouseID = w.warehouseID
+                       INNER JOIN product_category as c ON
+                       p.categoryID = c.categoryID 
+                       INNER JOIN inventory as i ON 
+                       p.productID = i.productID
+                       WHERE " + cat_query + " AND " + warehouse_query + showzero_query + " Order BY p.description ASC");
 
 
             workerSearchInventory = new BackgroundWorker();
             workerSearchInventory.DoWork += WorkerSearchInventory_DoWork;
             workerSearchInventory.RunWorkerAsync();
+
+            btnSearch.Text = "Loading..";
+            btnSearch.Enabled = false;
         }
 
         private void WorkerSearchInventory_DoWork(object sender, DoWorkEventArgs e)
@@ -120,6 +127,13 @@ namespace EcoPOSv2
                 dgvInventory.DataSource = workerSQL.DBDT;
                 dgvInventory.Columns[0].Visible = false;
             }));
+
+            btnSearch.Invoke(new Action(() =>
+            {
+                btnSearch.Text = "Search";
+                btnSearch.Enabled = true;
+            }));
+            
         }
 
         private void btnSort_Click(object sender, EventArgs e)

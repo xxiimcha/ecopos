@@ -155,22 +155,21 @@ namespace EcoPOSv2
                             dgvProducts.Columns[0].Visible = false;
                             dgvProducts.Columns[1].Width = 300;
                         }));
+
                         return;
                     }
+
+                    PSQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
+                    if (PSQL.HasException(true))
+                        return;
+
+                    dgvProducts.Invoke(new System.Action(() =>
+                    {
+                        dgvProducts.DataSource = PSQL.DBDT;
+                        dgvProducts.Columns[0].Visible = false;
+                        dgvProducts.Columns[1].Width = 300;
+                    }));
                 }
-            }));
-
-
-
-            PSQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
-            if (PSQL.HasException(true))
-                return;
-
-            dgvProducts.Invoke(new System.Action(() =>
-            {
-                dgvProducts.DataSource = PSQL.DBDT;
-                dgvProducts.Columns[0].Visible = false;
-                dgvProducts.Columns[1].Width = 300;
             }));
         }
 

@@ -64,6 +64,7 @@ namespace EcoPOSv2
                 while (backgroundWorker1.IsBusy)
                 {
                     btnImport.Enabled = false;
+                    cmbSheet.Enabled = false;
                     return;
                 }
 
@@ -242,7 +243,7 @@ namespace EcoPOSv2
 
                         }
 
-                        new Notification().PopUp("Import success.", "", "information");
+                        //new Notification().PopUp("Import success.", "", "information");
                         
                         break;
                     }
@@ -277,7 +278,7 @@ namespace EcoPOSv2
                             if (SQL.HasException(true))
                                 return;
 
-                            new Notification().PopUp("Import success.", "", "information");
+                            //new Notification().PopUp("Import success.", "", "information");
                         }
 
                         break;
@@ -311,7 +312,7 @@ namespace EcoPOSv2
                             if (SQL.HasException(true))
                                 return;
 
-                            new Notification().PopUp("Import success.", "", "information");
+                            //new Notification().PopUp("Import success.", "", "information");
                         }
 
                         break;
@@ -338,7 +339,7 @@ namespace EcoPOSv2
                                 return;
                         }
 
-                        new Notification().PopUp("Import success.", "", "information");
+                        //new Notification().PopUp("Import success.", "", "information");
                         break;
                     }
 
@@ -373,7 +374,7 @@ namespace EcoPOSv2
                                 return;
                         }
 
-                        new Notification().PopUp("Import success.", "", "information");
+                        //new Notification().PopUp("Import success.", "", "information");
                         break;
                     }
 
@@ -402,7 +403,7 @@ namespace EcoPOSv2
                                 return;
                         }
 
-                        new Notification().PopUp("Import success.", "", "information");
+                        //new Notification().PopUp("Import success.", "", "information");
                         break;
                     }
             }

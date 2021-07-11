@@ -28,23 +28,34 @@ namespace EcoPOSv2
             {
                 //MessageBox.Show(appName + " is already running!","Already running",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
-                //APPLICATION EXIT
-                Process[] runningProcesses = Process.GetProcesses();
-                foreach (Process process in runningProcesses)
+                if (string.IsNullOrWhiteSpace(appName))
                 {
-                    // now check the modules of the process
-                    foreach (ProcessModule module in process.Modules)
-                    {
-                        if (module.FileName.Equals("EcoPOSv2.exe"))
-                        {
-                            process.Kill();
-                        }
-                        else return;
-                    }
+                    Environment.Exit(1);
                 }
-                //APPLICATION EXIT
+                Process[] mainAppProcessOrProcessesRunning = Process.GetProcessesByName(appName);
+                foreach (var p in mainAppProcessOrProcessesRunning)
+                {
+                    p.Kill();
+                    // or p.close(); 
+                    /*If you have permission issues then you have to capture each MainWindow using the proccess, focus that window, and do mainWindow.Exit(). 
+                    This may require using system32 automation to mimic the user. You may also have to pull each Modal attached to the main window and close those before hand.*/
 
-                return;
+                }
+                ////APPLICATION EXIT
+                //Process[] runningProcesses = Process.GetProcesses();
+                //foreach (Process process in runningProcesses)
+                //{
+                //    // now check the modules of the process
+                //    foreach (ProcessModule module in process.Modules)
+                //    {
+                //        if (module.FileName.Equals("EcoPOSv2.exe"))
+                //        {
+                //            process.Kill();
+                //        }
+                //        else return;
+                //    }
+                //}
+                ////APPLICATION EXIT
             }
             else
             {
@@ -52,21 +63,20 @@ namespace EcoPOSv2
 
                 if(myKey == null)
                 {
-                    MessageBox.Show("Wag mo na icopy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (myKey.GetValue("EcoPOS").ToString() != "102618")
                 {
-                    MessageBox.Show("Wag mo na icopy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new SplashScreen());
             }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new SplashScreen());
         }
     }
 }

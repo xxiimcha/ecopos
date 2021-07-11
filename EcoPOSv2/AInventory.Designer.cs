@@ -49,6 +49,7 @@
             this.btnExportExcel = new FontAwesome.Sharp.IconButton();
             this.btnExportPDF = new FontAwesome.Sharp.IconButton();
             this.dgvInventory = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.guna2Panel1.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -87,6 +88,7 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Panel1.Controls.Add(this.textBox1);
             this.Panel1.Controls.Add(this.TableLayoutPanel2);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(3, 3);
@@ -365,6 +367,14 @@
             this.dgvInventory.Size = new System.Drawing.Size(854, 858);
             this.dgvInventory.TabIndex = 6;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 433);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(293, 20);
+            this.textBox1.TabIndex = 37;
+            this.textBox1.Visible = false;
+            // 
             // AInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +391,7 @@
             this.guna2Panel1.ResumeLayout(false);
             this.TableLayoutPanel1.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
+            this.Panel1.PerformLayout();
             this.TableLayoutPanel2.ResumeLayout(false);
             this.TableLayoutPanel2.PerformLayout();
             this.Panel2.ResumeLayout(false);
@@ -409,5 +420,6 @@
         internal FontAwesome.Sharp.IconButton btnExportExcel;
         internal FontAwesome.Sharp.IconButton btnExportPDF;
         internal System.Windows.Forms.DataGridView dgvInventory;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
