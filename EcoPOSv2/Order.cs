@@ -79,9 +79,12 @@ namespace EcoPOSv2
             AddHotKeyRegisterer(Openquantity, HotKeyMods.Control, ConsoleKey.Q);
             AddHotKeyRegisterer(OpenVoidItem, HotKeyMods.Control, ConsoleKey.V);
             AddHotKeyRegisterer(ClickCancelTransaction, HotKeyMods.None, ConsoleKey.F4);
+            AddHotKeyRegisterer(ClickPriceEditor, HotKeyMods.None, ConsoleKey.F5);
             AddHotKeyRegisterer(AccessUserByPass, HotKeyMods.Control, ConsoleKey.G);
             AddHotKeyRegisterer(CancelUserByPass, HotKeyMods.Control, ConsoleKey.F);
         }
+
+        
 
         SQLControl SQL = new SQLControl();
 
@@ -819,6 +822,17 @@ namespace EcoPOSv2
 
         private void Order_Load(object sender, EventArgs e)
         {
+            if(Properties.Settings.Default.dbName == "EcoPOS_Training")
+            {
+                btnPriceEditor.Enabled = true;
+                btnPriceEditor.Visible = true;
+            }
+            else
+            {
+                btnPriceEditor.Enabled = false;
+                btnPriceEditor.Visible = false;
+            }
+
             _order = this;
 
             new CreateParams();
@@ -904,6 +918,10 @@ namespace EcoPOSv2
         {
             //Order.Instance.btnCustomer.PerformClick();
         }
+        private void ClickPriceEditor(object sender, EventArgs e)
+        {
+            Order.Instance.btnPriceEditor.PerformClick();
+        }
         private void AccessUserByPass(object sender, EventArgs e)
         {
             UserBypass frmUserBypass = new UserBypass();
@@ -971,6 +989,37 @@ namespace EcoPOSv2
             {
                 tbBarcode.Clear();
                 this.ActiveControl = tbBarcode;
+            }
+        }
+
+        private void btnPriceEditor_Click(object sender, EventArgs e)
+        {
+            if (CheckOpened("PriceEditor") == true)
+            {
+                return;
+            }
+
+            if (dgvCart.SelectedRows.Count > 0)
+            {
+                PriceEditor frmPrice = new PriceEditor();
+                //frmPrice.frmOrder = this;
+                frmPrice.itemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
+                frmPrice.productID = dgvCart.CurrentRow.Cells[1].Value.ToString();
+                frmPrice.lblItem.Text = dgvCart.CurrentRow.Cells[2].Value.ToString();
+                frmPrice.tbPrice.Text = dgvCart.CurrentRow.Cells[7].Value.ToString();
+                frmPrice.currentPrice = dgvCart.CurrentRow.Cells[7].Value.ToString();
+                frmPrice.ShowDialog();
+            }
+
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
+        }
+
+        private void tbBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F5)
+            {
+                btnPriceEditor.PerformClick();
             }
         }
 

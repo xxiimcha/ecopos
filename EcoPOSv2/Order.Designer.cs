@@ -38,6 +38,7 @@
             this.tbBarcode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnPriceEditor = new Guna.UI2.WinForms.Guna2Button();
             this.btnPayment = new Guna.UI2.WinForms.Guna2Button();
             this.btnRedeem = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
@@ -174,6 +175,7 @@
             this.tbBarcode.Name = "tbBarcode";
             this.tbBarcode.Size = new System.Drawing.Size(627, 39);
             this.tbBarcode.TabIndex = 18;
+            this.tbBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbBarcode_KeyDown);
             this.tbBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBarcode_KeyPress);
             this.tbBarcode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbBarcode_KeyUp);
             // 
@@ -194,6 +196,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnPriceEditor);
             this.panel4.Controls.Add(this.btnPayment);
             this.panel4.Controls.Add(this.btnRedeem);
             this.panel4.Controls.Add(this.btnCancel);
@@ -234,6 +237,25 @@
             this.panel4.Size = new System.Drawing.Size(391, 866);
             this.panel4.TabIndex = 0;
             // 
+            // btnPriceEditor
+            // 
+            this.btnPriceEditor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(154)))));
+            this.btnPriceEditor.BorderThickness = 2;
+            this.btnPriceEditor.CheckedState.Parent = this.btnPriceEditor;
+            this.btnPriceEditor.CustomImages.Parent = this.btnPriceEditor;
+            this.btnPriceEditor.FillColor = System.Drawing.Color.White;
+            this.btnPriceEditor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnPriceEditor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(154)))));
+            this.btnPriceEditor.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPriceEditor.HoverState.Parent = this.btnPriceEditor;
+            this.btnPriceEditor.Location = new System.Drawing.Point(99, 488);
+            this.btnPriceEditor.Name = "btnPriceEditor";
+            this.btnPriceEditor.ShadowDecoration.Parent = this.btnPriceEditor;
+            this.btnPriceEditor.Size = new System.Drawing.Size(188, 52);
+            this.btnPriceEditor.TabIndex = 50;
+            this.btnPriceEditor.Text = "PRICE EDITOR (F5)";
+            this.btnPriceEditor.Click += new System.EventHandler(this.btnPriceEditor_Click);
+            // 
             // btnPayment
             // 
             this.btnPayment.BackColor = System.Drawing.Color.White;
@@ -266,7 +288,7 @@
             this.btnRedeem.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnRedeem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRedeem.HoverState.Parent = this.btnRedeem;
-            this.btnRedeem.Location = new System.Drawing.Point(5, 546);
+            this.btnRedeem.Location = new System.Drawing.Point(3, 546);
             this.btnRedeem.Name = "btnRedeem";
             this.btnRedeem.ShadowDecoration.Parent = this.btnRedeem;
             this.btnRedeem.Size = new System.Drawing.Size(188, 52);
@@ -304,7 +326,7 @@
             this.btnVoid.ForeColor = System.Drawing.Color.Red;
             this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVoid.HoverState.Parent = this.btnVoid;
-            this.btnVoid.Location = new System.Drawing.Point(99, 604);
+            this.btnVoid.Location = new System.Drawing.Point(103, 604);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
             this.btnVoid.Size = new System.Drawing.Size(188, 52);
@@ -820,5 +842,6 @@
         public System.Windows.Forms.TextBox tbBarcode;
         public Guna.UI2.WinForms.Guna2DataGridView dgvCart;
         public Guna.UI2.WinForms.Guna2Button btnQuantity;
+        public Guna.UI2.WinForms.Guna2Button btnPriceEditor;
     }
 }
