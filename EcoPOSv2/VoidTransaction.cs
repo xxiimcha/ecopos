@@ -209,18 +209,26 @@ namespace EcoPOSv2
         }
 
         //METHODS
+        int result = 0;
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             // check if within shift
-            DateTime current_shift_datetime = DateTime.Parse(SQL.ReturnResult("SELECT MAX(start) FROM shift WHERE ended IS NOT NULL"));
-            if (SQL.HasException(true))
-                return;
+            if(int.Parse(SQL.ReturnResult("select count(*) from shift")) == 1)
+            {
+                result = 1;
+            }
+            else
+            {
+                DateTime current_shift_datetime = DateTime.Parse(SQL.ReturnResult("SELECT MAX(start) FROM shift WHERE ended IS NOT NULL"));
+                if (SQL.HasException(true))
+                    return;
 
-            SQL.AddParam("@order_ref_temp", txtORNo.Text);
-            SQL.AddParam("@last_end_shift", current_shift_datetime);
-            int result = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE order_ref_temp = @order_ref_temp AND action = 1 AND date_time > @last_end_shift"));
-            if (SQL.HasException(true))
-                return;
+                SQL.AddParam("@order_ref_temp", txtORNo.Text);
+                SQL.AddParam("@last_end_shift", current_shift_datetime);
+                result = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE order_ref_temp = @order_ref_temp AND action = 1 AND date_time > @last_end_shift"));
+                if (SQL.HasException(true))
+                    return;
+            }
 
             if (result == 1)
             {

@@ -1653,7 +1653,7 @@
             this.btnGC.Name = "btnGC";
             this.btnGC.Size = new System.Drawing.Size(137, 39);
             this.btnGC.TabIndex = 10;
-            this.btnGC.Text = "Gift Card";
+            this.btnGC.Text = "Gift Certificate";
             this.btnGC.UseVisualStyleBackColor = false;
             this.btnGC.Click += new System.EventHandler(this.btnGC_Click);
             // 

@@ -580,6 +580,7 @@ namespace EcoPOSv2
 
             if (deduct_gc != 0)
             {
+                cmbMethod.Text = "Gift Certificate";
                 //grand_total = grand_total - deduct_gc;
 
                 if (deduct_gc > total)
@@ -598,9 +599,16 @@ namespace EcoPOSv2
 
                     total = total - deduct_gc;
                     lblGrandTotal.Text = total.ToString("N2");
+
+                    lblChange.Text = "-" + lblGrandTotal.Text;
                 }
 
                 //lblGrandTotal.Text = grand_total.ToString("N2");
+            }
+
+            else
+            {
+                cmbMethod.Text = "Cash";
             }
         }
     }
