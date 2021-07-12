@@ -63,7 +63,7 @@ namespace EcoPOSv2
             {
                 cmbReceiptPrinter.SelectedIndex = 0;
                 cmbReportPrinter.SelectedIndex = 0;
-                cmbPort.SelectedIndex = 0;
+                cmbPort.SelectedIndex = -1;
             }
         }
 
