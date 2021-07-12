@@ -44,6 +44,13 @@ namespace EcoPOSv2
             this.Close();
         }
 
+        private void tbCash_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnConfirm.PerformClick();
+            }
+        }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if(tbCash.Text != "") 

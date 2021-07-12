@@ -35,6 +35,8 @@
             this.btnConfirm = new Guna.UI2.WinForms.Guna2TileButton();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,10 +49,10 @@
             this.guna2Panel1.Controls.Add(this.tbCash);
             this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.label2);
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 35);
+            this.guna2Panel1.Location = new System.Drawing.Point(12, 12);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(296, 196);
+            this.guna2Panel1.Size = new System.Drawing.Size(296, 173);
             this.guna2Panel1.TabIndex = 8;
             // 
             // tbCash
@@ -58,11 +60,11 @@
             this.tbCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbCash.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCash.Location = new System.Drawing.Point(12, 59);
-            this.tbCash.Multiline = true;
             this.tbCash.Name = "tbCash";
-            this.tbCash.Size = new System.Drawing.Size(271, 53);
+            this.tbCash.Size = new System.Drawing.Size(271, 33);
             this.tbCash.TabIndex = 10;
             this.tbCash.TextChanged += new System.EventHandler(this.tbCash_TextChanged);
+            this.tbCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCash_KeyDown_1);
             // 
             // btnConfirm
             // 
@@ -72,7 +74,7 @@
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
             this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Location = new System.Drawing.Point(35, 123);
+            this.btnConfirm.Location = new System.Drawing.Point(36, 104);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(227, 50);
@@ -90,12 +92,22 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "STARTING CASH";
             // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 9;
+            this.guna2Elipse1.TargetControl = this;
+            // 
+            // gunaElipse1
+            // 
+            this.gunaElipse1.Radius = 5;
+            this.gunaElipse1.TargetControl = this.btnConfirm;
+            // 
             // StartingCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(320, 248);
+            this.ClientSize = new System.Drawing.Size(320, 199);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -115,5 +127,7 @@
         private Guna.UI2.WinForms.Guna2TileButton btnConfirm;
         private System.Windows.Forms.TextBox tbCash;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI.WinForms.GunaElipse gunaElipse1;
     }
 }
