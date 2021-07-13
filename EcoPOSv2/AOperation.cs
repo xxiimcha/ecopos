@@ -99,7 +99,7 @@ namespace EcoPOSv2
                     AdjustCost frmAdjustCost = new AdjustCost();
 
                     frmAdjustCost.operationID = dgvOR.CurrentRow.Cells[0].Value.ToString();
-                    frmAdjustCost.txtNewCost.Text = dgvOR.CurrentRow.Cells[5].Value.ToString();
+                    frmAdjustCost.txtNewCost.Text = dgvOR.CurrentRow.Cells[4].Value.ToString();
                     frmAdjustCost.supplierID = dgvOR.CurrentRow.Cells[8].Value.ToString();
                     frmAdjustCost.frmAOperation = this;
 
