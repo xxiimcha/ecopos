@@ -240,6 +240,8 @@ namespace EcoPOSv2
                 }
 
                 LoadStaff();
+                LoadStaffType();
+                LoadAdministrator();
             }
             else
                 new Notification().PopUp("Please fill all required fields.","","error");
@@ -264,6 +266,8 @@ namespace EcoPOSv2
                     return;
 
                 LoadStaff();
+                LoadStaffType();
+                LoadAdministrator();
 
                 ClearFields();
 

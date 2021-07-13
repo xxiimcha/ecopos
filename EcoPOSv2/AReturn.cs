@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static EcoPOSv2.ControlBehavior;
 
 namespace EcoPOSv2
 {
@@ -25,17 +26,45 @@ namespace EcoPOSv2
         string purchase_order = "";
         string supplierID = "";
         //METHODS
+
+        BackgroundWorker workerLoadPO;
         private void LoadPurchaseOrder()
         {
-            SQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operation = 'Purchase Inventory' ORDER BY date_time DESC");
+            SQLControl pSQL = new SQLControl();
+            pSQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operation = 'Purchase Inventory' ORDER BY date_time DESC");
 
-            if (SQL.HasException(true))
+            if (pSQL.HasException(true))
                 return;
 
-            dgvPurchaseOrder.DataSource = SQL.DBDT;
-            dgvPurchaseOrder.Columns[0].Visible = false;
-            dgvPurchaseOrder.Columns[1].Visible = false;
+            dgvPurchaseOrder.Invoke(new System.Action(() =>
+            {
+                dgvPurchaseOrder.DataSource = pSQL.DBDT;
+                dgvPurchaseOrder.Columns[0].Visible = false;
+                dgvPurchaseOrder.Columns[1].Visible = false;
+            }));
+
+            //workerLoadPO = new BackgroundWorker();
+            //workerLoadPO.DoWork += WorkerLoadPO_DoWork;
+            //workerLoadPO.RunWorkerAsync();
         }
+
+        private void WorkerLoadPO_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SQLControl pSQL = new SQLControl();
+            pSQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operation = 'Purchase Inventory' ORDER BY date_time DESC");
+
+            if (pSQL.HasException(true))
+                return;
+
+            dgvPurchaseOrder.Invoke(new System.Action(() => {
+                dgvPurchaseOrder.DataSource = pSQL.DBDT;
+                dgvPurchaseOrder.Columns[0].Visible = false;
+                dgvPurchaseOrder.Columns[1].Visible = false;
+            }));
+
+            MessageBox.Show("WORKING.");
+        }
+
         private void LoadReturn()
         {
             DataColumn productID = new DataColumn();
@@ -69,13 +98,17 @@ namespace EcoPOSv2
         {
             LoadPurchaseOrder();
             LoadReturn();
+
+            Control c = (Control)txtSearchProducts;
+
+            SetBehavior(ref c, Behavior.ClearSearch);
         }
 
         private void txtSearchProducts_KeyUp(object sender, KeyEventArgs e)
         {
             SQL.AddParam("@find", txtSearchProducts.Text + "%");
 
-            SQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operationID LIKE @find ORDER BY purchase_order ASC");
+            SQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operationID LIKE @find ORDER BY OperationID ASC");
 
             if (SQL.HasException(true))
                 return;

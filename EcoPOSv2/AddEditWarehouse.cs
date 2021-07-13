@@ -138,6 +138,8 @@ namespace EcoPOSv2
                         }
                 }
             }
+
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

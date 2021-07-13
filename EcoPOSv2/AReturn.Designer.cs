@@ -326,7 +326,7 @@
             this.txtSearchProducts.Name = "txtSearchProducts";
             this.txtSearchProducts.Size = new System.Drawing.Size(220, 33);
             this.txtSearchProducts.TabIndex = 39;
-            this.txtSearchProducts.Tag = "Search purchase order";
+            this.txtSearchProducts.Tag = "";
             this.txtSearchProducts.Text = "Search purchase order";
             this.txtSearchProducts.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProducts_KeyUp);
             // 

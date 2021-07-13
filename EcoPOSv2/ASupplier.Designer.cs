@@ -134,12 +134,11 @@
             this.txtAddress.BackColor = System.Drawing.Color.White;
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.ForeColor = System.Drawing.Color.Black;
-            this.txtAddress.Location = new System.Drawing.Point(187, 42);
-            this.txtAddress.Multiline = true;
+            this.txtAddress.Location = new System.Drawing.Point(186, 45);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(858, 34);
+            this.txtAddress.Size = new System.Drawing.Size(859, 33);
             this.txtAddress.TabIndex = 25;
             // 
             // Label1
@@ -147,23 +146,23 @@
             this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(3, 39);
+            this.Label1.Location = new System.Drawing.Point(3, 42);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(178, 40);
+            this.Label1.Size = new System.Drawing.Size(177, 42);
             this.Label1.TabIndex = 24;
             this.Label1.Text = "Address";
+            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtSupplierName
             // 
             this.txtSupplierName.BackColor = System.Drawing.Color.White;
             this.txtSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSupplierName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSupplierName.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSupplierName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierName.ForeColor = System.Drawing.Color.Black;
-            this.txtSupplierName.Location = new System.Drawing.Point(187, 3);
-            this.txtSupplierName.Multiline = true;
+            this.txtSupplierName.Location = new System.Drawing.Point(186, 3);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(858, 33);
+            this.txtSupplierName.Size = new System.Drawing.Size(859, 33);
             this.txtSupplierName.TabIndex = 23;
             // 
             // Label4
@@ -173,9 +172,10 @@
             this.Label4.ForeColor = System.Drawing.Color.Black;
             this.Label4.Location = new System.Drawing.Point(3, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(178, 39);
+            this.Label4.Size = new System.Drawing.Size(177, 42);
             this.Label4.TabIndex = 22;
             this.Label4.Text = "Supplier Name";
+            this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtSearch
             // 
@@ -270,61 +270,60 @@
             // 
             // Label13
             // 
-            this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label13.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 156);
+            this.Label13.Location = new System.Drawing.Point(3, 166);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(178, 48);
+            this.Label13.Size = new System.Drawing.Size(177, 48);
             this.Label13.TabIndex = 26;
-            this.Label13.Text = "Contact Person\'s\r\nContact No.";
+            this.Label13.Text = "Contact Person\'s #:";
+            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label3
             // 
             this.Label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(3, 79);
+            this.Label3.Location = new System.Drawing.Point(3, 84);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(178, 38);
+            this.Label3.Size = new System.Drawing.Size(177, 40);
             this.Label3.TabIndex = 39;
             this.Label3.Text = "Contact No.";
+            this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label5
             // 
             this.Label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label5.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.Black;
-            this.Label5.Location = new System.Drawing.Point(3, 117);
+            this.Label5.Location = new System.Drawing.Point(3, 124);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(178, 39);
+            this.Label5.Size = new System.Drawing.Size(177, 42);
             this.Label5.TabIndex = 40;
             this.Label5.Text = "Contact Person";
+            this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtContactPerson
             // 
             this.txtContactPerson.BackColor = System.Drawing.Color.White;
             this.txtContactPerson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContactPerson.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContactPerson.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContactPerson.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactPerson.ForeColor = System.Drawing.Color.Black;
-            this.txtContactPerson.Location = new System.Drawing.Point(187, 120);
-            this.txtContactPerson.Multiline = true;
+            this.txtContactPerson.Location = new System.Drawing.Point(186, 127);
             this.txtContactPerson.Name = "txtContactPerson";
-            this.txtContactPerson.Size = new System.Drawing.Size(858, 33);
+            this.txtContactPerson.Size = new System.Drawing.Size(859, 33);
             this.txtContactPerson.TabIndex = 44;
             // 
             // txtContactPersonNo
             // 
             this.txtContactPersonNo.BackColor = System.Drawing.Color.White;
             this.txtContactPersonNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContactPersonNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContactPersonNo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContactPersonNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactPersonNo.ForeColor = System.Drawing.Color.Black;
-            this.txtContactPersonNo.Location = new System.Drawing.Point(187, 159);
-            this.txtContactPersonNo.Multiline = true;
+            this.txtContactPersonNo.Location = new System.Drawing.Point(186, 169);
             this.txtContactPersonNo.Name = "txtContactPersonNo";
-            this.txtContactPersonNo.Size = new System.Drawing.Size(858, 42);
+            this.txtContactPersonNo.Size = new System.Drawing.Size(858, 33);
             this.txtContactPersonNo.TabIndex = 45;
             // 
             // txtContactNo
@@ -332,12 +331,11 @@
             this.txtContactNo.BackColor = System.Drawing.Color.White;
             this.txtContactNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContactNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContactNo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContactNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactNo.ForeColor = System.Drawing.Color.Black;
-            this.txtContactNo.Location = new System.Drawing.Point(187, 82);
-            this.txtContactNo.Multiline = true;
+            this.txtContactNo.Location = new System.Drawing.Point(186, 87);
             this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.Size = new System.Drawing.Size(858, 32);
+            this.txtContactNo.Size = new System.Drawing.Size(859, 33);
             this.txtContactNo.TabIndex = 43;
             // 
             // TableLayoutPanel2
@@ -377,8 +375,8 @@
             // TableLayoutPanel1
             // 
             this.TableLayoutPanel1.ColumnCount = 2;
-            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.56181F));
-            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.43819F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.55725F));
+            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.44275F));
             this.TableLayoutPanel1.Controls.Add(this.txtAddress, 1, 1);
             this.TableLayoutPanel1.Controls.Add(this.Label1, 0, 1);
             this.TableLayoutPanel1.Controls.Add(this.txtSupplierName, 1, 0);
@@ -387,18 +385,18 @@
             this.TableLayoutPanel1.Controls.Add(this.Label3, 0, 2);
             this.TableLayoutPanel1.Controls.Add(this.Label5, 0, 3);
             this.TableLayoutPanel1.Controls.Add(this.txtContactPerson, 1, 3);
-            this.TableLayoutPanel1.Controls.Add(this.txtContactPersonNo, 1, 4);
             this.TableLayoutPanel1.Controls.Add(this.txtContactNo, 1, 2);
+            this.TableLayoutPanel1.Controls.Add(this.txtContactPersonNo, 1, 4);
             this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 6;
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.761905F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.880952F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.642857F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.761905F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.833333F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75.59524F));
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70.11905F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));

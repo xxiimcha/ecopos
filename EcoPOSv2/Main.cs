@@ -387,6 +387,7 @@ namespace EcoPOSv2
             {
                 return;
             }
+            Order.Instance.dgvCart.ClearSelection();
 
             new SeeItem().Show();
 

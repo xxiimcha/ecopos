@@ -35,6 +35,7 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new FontAwesome.Sharp.IconButton();
@@ -49,7 +50,6 @@
             this.btnExportExcel = new FontAwesome.Sharp.IconButton();
             this.btnExportPDF = new FontAwesome.Sharp.IconButton();
             this.dgvInventory = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.guna2Panel1.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -95,6 +95,14 @@
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(296, 858);
             this.Panel1.TabIndex = 7;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 433);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(293, 20);
+            this.textBox1.TabIndex = 37;
+            this.textBox1.Visible = false;
             // 
             // TableLayoutPanel2
             // 
@@ -366,14 +374,6 @@
             this.dgvInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventory.Size = new System.Drawing.Size(854, 858);
             this.dgvInventory.TabIndex = 6;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(3, 433);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(293, 20);
-            this.textBox1.TabIndex = 37;
-            this.textBox1.Visible = false;
             // 
             // AInventory
             // 

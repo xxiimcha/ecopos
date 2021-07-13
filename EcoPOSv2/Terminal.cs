@@ -58,7 +58,7 @@ namespace EcoPOSv2
             ReportDocument cryRpt = new ReportDocument();
 
             SaveFileDialog saveFilePath = new SaveFileDialog();
-            saveFilePath.Filter = "RTF Files (*.rtf*)|*.rtf";
+            saveFilePath.Filter = "PDF Files (*.pdf*)|*.pdf";
 
             if (saveFilePath.ShowDialog() == DialogResult.OK)
             {
@@ -66,7 +66,7 @@ namespace EcoPOSv2
 
                 ExportOptions CrExportOptions;
                 DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-                EditableRTFExportFormatOptions CrFormatTypeOptions = new EditableRTFExportFormatOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
                 CrDiskFileDestinationOptions.DiskFileName = saveFilePath.FileName;
                 CrExportOptions = cryRpt.ExportOptions;
                 {

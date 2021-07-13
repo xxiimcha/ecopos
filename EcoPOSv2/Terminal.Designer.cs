@@ -401,6 +401,7 @@
             this.btnGenerateEJournal.Text = "Generate E-Journal";
             this.btnGenerateEJournal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerateEJournal.UseVisualStyleBackColor = true;
+            this.btnGenerateEJournal.Visible = false;
             this.btnGenerateEJournal.Click += new System.EventHandler(this.btnGenerateEJournal_Click);
             // 
             // dtpTo

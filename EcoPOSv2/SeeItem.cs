@@ -137,6 +137,10 @@ namespace EcoPOSv2
                 Order.Instance.ActiveControl = Order.Instance.tbBarcode;
 
                 Close();
+
+                //Order.Instance.dgvCart.ClearSelection();
+                //Order.Instance.dgvCart.Rows[Order.Instance.dgvCart.Rows.Count - 1].Selected = true;
+                //Order.Instance.btnQuantity.PerformClick();
             }
         }
 
@@ -151,8 +155,6 @@ namespace EcoPOSv2
         private void dgvProducts_DoubleClick(object sender, EventArgs e)
         {
             btnConfirm.PerformClick();
-
-            Order.Instance.btnQuantity.PerformClick();
         }
     }
 }

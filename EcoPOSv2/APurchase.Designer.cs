@@ -284,9 +284,8 @@
             this.txtSearchProducts.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchProducts.ForeColor = System.Drawing.Color.DimGray;
             this.txtSearchProducts.Location = new System.Drawing.Point(3, 3);
-            this.txtSearchProducts.Multiline = true;
             this.txtSearchProducts.Name = "txtSearchProducts";
-            this.txtSearchProducts.Size = new System.Drawing.Size(429, 30);
+            this.txtSearchProducts.Size = new System.Drawing.Size(429, 33);
             this.txtSearchProducts.TabIndex = 38;
             this.txtSearchProducts.Tag = "Search item";
             this.txtSearchProducts.Text = "Search item/Barcode";

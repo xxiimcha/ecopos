@@ -110,6 +110,9 @@ namespace EcoPOSv2
             frmAddEditWarehouse.frmAWarehouse = this;
 
             frmAddEditWarehouse.ShowDialog();
+
+            LoadWarehouse();
+            LoadWarehouseCMB();
         }
 
         private void btnDeleteWarehouse_Click(object sender, EventArgs e)
@@ -157,6 +160,9 @@ namespace EcoPOSv2
 
                 frmAddEditWarehouse.ShowDialog();
             }
+
+            LoadWarehouse();
+            LoadWarehouseCMB();
         }
 
         private void btnSort_Click(object sender, EventArgs e)
@@ -313,6 +319,8 @@ namespace EcoPOSv2
                 }
 
                 LoadWarehouse();
+                LoadWarehouseCMB();
+
                 btnSearch.PerformClick();
                 dgvToWarehouse.Rows.Clear();
                 new Notification().PopUp("Item saved.","","information");
