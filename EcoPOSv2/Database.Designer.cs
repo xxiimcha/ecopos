@@ -51,6 +51,7 @@
             // btnImportGC
             // 
             this.btnImportGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImportGC.Enabled = false;
             this.btnImportGC.FlatAppearance.BorderSize = 0;
             this.btnImportGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportGC.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -86,6 +87,7 @@
             // btnImportMembership
             // 
             this.btnImportMembership.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImportMembership.Enabled = false;
             this.btnImportMembership.FlatAppearance.BorderSize = 0;
             this.btnImportMembership.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportMembership.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,6 +110,7 @@
             // btnExportGC
             // 
             this.btnExportGC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExportGC.Enabled = false;
             this.btnExportGC.FlatAppearance.BorderSize = 0;
             this.btnExportGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportGC.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -218,6 +221,7 @@
             // btnExportCustomer
             // 
             this.btnExportCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExportCustomer.Enabled = false;
             this.btnExportCustomer.FlatAppearance.BorderSize = 0;
             this.btnExportCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportCustomer.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,6 +244,7 @@
             // btnImportCustomer
             // 
             this.btnImportCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImportCustomer.Enabled = false;
             this.btnImportCustomer.FlatAppearance.BorderSize = 0;
             this.btnImportCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportCustomer.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,6 +267,7 @@
             // btnExportMC
             // 
             this.btnExportMC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExportMC.Enabled = false;
             this.btnExportMC.FlatAppearance.BorderSize = 0;
             this.btnExportMC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportMC.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,6 +290,7 @@
             // btnImportMC
             // 
             this.btnImportMC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImportMC.Enabled = false;
             this.btnImportMC.FlatAppearance.BorderSize = 0;
             this.btnImportMC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportMC.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -306,6 +313,7 @@
             // btnExportMembership
             // 
             this.btnExportMembership.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExportMembership.Enabled = false;
             this.btnExportMembership.FlatAppearance.BorderSize = 0;
             this.btnExportMembership.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportMembership.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -376,6 +384,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.Size = new System.Drawing.Size(1158, 104);
             this.dgv.TabIndex = 18;
+            this.dgv.Visible = false;
             // 
             // Database
             // 

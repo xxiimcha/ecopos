@@ -69,10 +69,10 @@
       <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI">
-      <HintPath>..\..\..\..\Desktop\dlls\Guna.UI.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>..\..\..\..\Desktop\dlls\Guna.UI2.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
@@ -560,12 +560,6 @@
     <Compile Include="VoidReport.Designer.cs">
       <DependentUpon>VoidReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="WaitForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WaitForm.Designer.cs">
-      <DependentUpon>WaitForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="XReading.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -614,9 +608,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TableImportCSV.resx">
       <DependentUpon>TableImportCSV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WaitForm.resx">
-      <DependentUpon>WaitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZReadingReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

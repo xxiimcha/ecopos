@@ -44,33 +44,6 @@ namespace EcoPOSv2
 
                     int numberofitems = dgItems.Rows.Count - 1;
                     lblTotalNumberOfItems.Text = numberofitems.ToString();
-
-                    SqlConnection con = new SqlConnection(SQLControl.constring);
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con))
-                    {
-                        bulkCopy.DestinationTableName = "dbo.LogData";
-                        try
-                        {
-                            SQL.Query("DELETE FROM inventory");
-                            if (SQL.HasException(true))
-                                return;
-
-                            SQL.Query("DELETE FROM products");
-                            if (SQL.HasException(true))
-                                return;
-
-                            // Write from the source to the destination.
-                            con.Open();
-                            bulkCopy.WriteToServer(GetDataTableFromCSVFile(ofd.FileName));
-                            con.Close();
-
-                            MessageBox.Show("Tapos na");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                        }
-                    }
                 }
             }
             catch (Exception ex)
@@ -138,13 +111,15 @@ namespace EcoPOSv2
                         workerProducts.WorkerReportsProgress = true;
                         workerProducts.DoWork += WorkerCSV_DoWork;
                         workerProducts.RunWorkerCompleted += WorkerCSV_RunWorkerCompleted;
-
                         workerProducts.RunWorkerAsync();
+
+                        btnBrowse.Enabled = false;
+                        btnImport.Enabled = false;
                         break;
                     }
 
                 case 2 // category
-         :
+                :
                     {
                         SQL.Query("DELETE FROM product_category");
                         if (SQL.HasException(true))
@@ -157,30 +132,32 @@ namespace EcoPOSv2
 
                         workerCategory.RunWorkerAsync();
 
+                        btnBrowse.Enabled = false;
+                        btnImport.Enabled = false;
                         break;
                     }
 
                 case 3 // customer
-         :
+                :
                     {
                         break;
                     }
 
                 case 4 // member card
-         :
+                :
                     {
                         break;
                     }
 
                 case 5 // membership
-         :
+                :
                     {
                         
                         break;
                     }
 
                 case 6 // gift card
-         :
+                :
                     {
                         
                         break;

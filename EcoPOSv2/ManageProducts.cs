@@ -113,7 +113,7 @@ namespace EcoPOSv2
         {
             SQLControl pSQL = new SQLControl();
 
-            pSQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
+            pSQL.Query("SELECT TOP 150 productID, description, name FROM products ORDER BY description ASC");
             if (SQL.HasException(true))
                 return;
 
@@ -159,7 +159,7 @@ namespace EcoPOSv2
                         return;
                     }
 
-                    PSQL.Query("SELECT productID, description, name FROM products ORDER BY description ASC");
+                    PSQL.Query("SELECT 150 productID, description, name FROM products ORDER BY description ASC");
                     if (PSQL.HasException(true))
                         return;
 
@@ -238,7 +238,7 @@ namespace EcoPOSv2
             ControlBehavior();
 
             LoadCategory();
-            LoadProducts();
+            //LoadProducts();
             loadCat_Category();
 
             OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
