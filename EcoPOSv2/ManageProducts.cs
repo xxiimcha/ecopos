@@ -522,6 +522,8 @@ namespace EcoPOSv2
                 }
 
                 ReloadProducts();
+
+                btnProduct_New.PerformClick();
             }
             else if(requiredFieldsMet == 1 && cmbWarehouse.Text == "")
             {
