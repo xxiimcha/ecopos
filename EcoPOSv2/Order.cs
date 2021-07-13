@@ -375,7 +375,8 @@ namespace EcoPOSv2
         }
 
         String[] hybrid;
-        decimal quantitytalaga;
+        string quantitytalaga;
+        decimal totalquantity;
         private void tbBarcode_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -430,9 +431,16 @@ namespace EcoPOSv2
                     if (int.Parse(SQL.ReturnResult("select count(*)from order_cart")) != 0)
                     {
                         SQL.AddParam("@productID", productID1);
-                        quantitytalaga = decimal.Parse(SQL.ReturnResult("select quantity from order_cart where productID=@productID"));
+                        quantitytalaga = SQL.ReturnResult("select quantity from order_cart where productID=@productID");
 
-                        decimal totalquantity = quantitytalaga + quantity;
+                        if(quantitytalaga != "")
+                        {
+                            totalquantity = decimal.Parse(quantitytalaga) + quantity;
+                        }
+                        else
+                        {
+                            totalquantity = 0 + quantity;
+                        }
 
                         //MessageBox.Show("No of quantity: "+ totalquantity.ToString());
 
