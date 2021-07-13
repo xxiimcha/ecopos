@@ -241,7 +241,10 @@ namespace EcoPOSv2
                 decimal totaldisc = total - regular_disc_amt;
                 lblTotal.Text = totaldisc.ToString("N2");
 
-                decimal vatdisc = vat - regular_disc_amt - (regular_disc_amt / 1.12M);
+                decimal totalprice = decimal.Parse(lblTotal.Text);
+                decimal totalvatdisc = decimal.Parse(lblTotal.Text) / 1.12M;
+
+                decimal vatdisc = totalprice - totalvatdisc;
                 lblVAT.Text = vatdisc.ToString("N2");
 
                 decimal vatsaledisc = vat_sale - (regular_disc_amt / 1.12M);
