@@ -66,7 +66,7 @@ namespace EcoPOSv2
         }
         private void loadCat_Category()
         {
-            SQL.Query("Select TOP 75 categoryID, Name FROM product_category ORDER BY name ASC");
+            SQL.Query("Select categoryID, Name FROM product_category ORDER BY name ASC");
             if (SQL.HasException(true))
                 return;
 
@@ -184,16 +184,19 @@ namespace EcoPOSv2
         {
             SQLControl pSQL = new SQLControl();
 
-            pSQL.Query(@"SELECT catID, catName FROM
-                       (
-                       SELECT 0 as catID, 'All Categories' as catName
-                       UNION ALL 
-                       SELECT categoryID as catID, name as catName FROM product_category 
-                       ) x ORDER BY 
-                       CASE WHEN catName = 'All Categories' then 1
-                       ELSE 5
-                       END,
-                       catname ASC");
+            //pSQL.Query(@"SELECT catID, catName FROM
+            //           (
+            //           SELECT 0 as catID, 'All Categories' as catName
+            //           UNION ALL 
+            //           SELECT categoryID as catID, name as catName FROM product_category 
+            //           ) x ORDER BY 
+            //           CASE WHEN catName = 'All Categories' then 1
+            //           ELSE 5
+            //           END,
+            //           catname ASC");
+
+            pSQL.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
+            
             if (pSQL.HasException(true))
                 return;
 
