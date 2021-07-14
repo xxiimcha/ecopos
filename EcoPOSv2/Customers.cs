@@ -267,7 +267,7 @@ namespace EcoPOSv2
             // member transaction
             LoadMT_Customers();
             dtpMT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
-            dtpMT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+            dtpMT_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
             cmbMT_Customer.SelectedIndex = 0;
 
             TextboxValidation();
@@ -1021,6 +1021,9 @@ namespace EcoPOSv2
 
             dgvMT_Records.DataSource = SQL.DBDT;
             dgvMT_Records.Columns[0].Visible = false;
+
+
+            MessageBox.Show(dtpMT_From.Value.ToString() + "\n" + dtpMT_To.Value.ToString());
         }
 
         private void dgvMT_Records_CellClick(object sender, DataGridViewCellEventArgs e)

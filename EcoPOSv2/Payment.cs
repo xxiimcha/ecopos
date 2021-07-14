@@ -587,10 +587,13 @@ namespace EcoPOSv2
                 {
                     deduct_gc = deduct_gc - total;
                     lblGrandTotal.Text = "0.00";
-
-                    lblChange.Text = "0.00";
+                    
+                    txtAmount.Text = "0";
                     txtAmount.Enabled = false;
                     btnExact.Enabled = false;
+
+                    change = 0;
+                    lblChange.Text = "0.00";
                 }
                 else
                 {
@@ -605,7 +608,6 @@ namespace EcoPOSv2
 
                 //lblGrandTotal.Text = grand_total.ToString("N2");
             }
-
             else
             {
                 cmbMethod.Text = "Cash";
