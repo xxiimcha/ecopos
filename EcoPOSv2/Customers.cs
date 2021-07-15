@@ -299,7 +299,7 @@ namespace EcoPOSv2
         private void btnCus_Save_Click(object sender, EventArgs e)
         {
 
-            if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || txtCus_Email.Text != "" || txtCus_CardNo.Text != "")
+            if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || txtCus_Email.Text != "" || txtCus_CardNo.Text != "" || cmbCus_Membership.Text != "")
             {
                 string action = "Update";
                 if (txtCus_ID.Text == "")
