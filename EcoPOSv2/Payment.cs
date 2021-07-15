@@ -461,6 +461,8 @@ namespace EcoPOSv2
         private void txtAmount_TextChanged(object sender, EventArgs e)
         {
             decimal deductpoints = decimal.Parse(lblDeductPoints.Text);
+            decimal deductGC = decimal.Parse(lblDeductGC.Text);
+
             if (txtAmount.Text == "")
             {
                 txtAmount.SelectAll();
@@ -468,7 +470,7 @@ namespace EcoPOSv2
 
                 decimal amount = total;
 
-                change = amount - grand_total;
+                change = (amount + deductGC) - grand_total;
                 lblChange.Text = change.ToString("N2");
 
             }
@@ -478,7 +480,8 @@ namespace EcoPOSv2
                 {
                     decimal amount = decimal.Parse(txtAmount.Text);
 
-                    change = (amount + deductpoints) - grand_total;
+                    change = (amount + deductpoints + deductGC) - grand_total;
+
                     lblChange.Text = change.ToString("N2");
                 }
                 catch (Exception) { }
@@ -595,12 +598,15 @@ namespace EcoPOSv2
                     change = 0;
                     lblChange.Text = "0.00";
                 }
-                else
+                else if(total > deduct_gc)
                 {
                     btnExact.Enabled = true;
                     txtAmount.Enabled = true;
 
                     total = total - deduct_gc;
+
+                    //change = total;
+
                     lblGrandTotal.Text = total.ToString("N2");
 
                     lblChange.Text = "-" + lblGrandTotal.Text;
@@ -610,6 +616,14 @@ namespace EcoPOSv2
             }
             else
             {
+                btnExact.Enabled = true;
+                txtAmount.Enabled = true;
+
+                total = total - deduct_gc;
+                lblGrandTotal.Text = total.ToString("N2");
+
+                lblChange.Text = "-" + lblGrandTotal.Text;
+
                 cmbMethod.Text = "Cash";
             }
         }

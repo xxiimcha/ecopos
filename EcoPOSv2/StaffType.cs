@@ -142,7 +142,7 @@ namespace EcoPOSv2
                                 SQL.AddParam("@home_more", cbxHome_More.Checked);
                                 SQL.AddParam("@more_customer_membership", cbxMore_CustomerMembership.Checked);
                                 SQL.AddParam("@more_ejournal", cbxMore_EJournal.Checked);
-                                SQL.AddParam("@more_pay_in_out", cbxMore_PayInOut.Checked);
+                                SQL.AddParam("@more_pay_in_out", false);
                                 SQL.AddParam("@more_logs", cbxMore_Logs.Checked);
                                 SQL.AddParam("@more_redeem_settings", cbxMore_RedeemSettings.Checked);
                                 SQL.AddParam("@more_manage_discounts", cbxMore_ManageDiscounts.Checked);
@@ -212,7 +212,7 @@ namespace EcoPOSv2
                                 SQL.AddParam("@home_switch_cashier", cbxHome_SwitchCashier.Checked);
                                 SQL.AddParam("@home_more", cbxHome_More.Checked);
                                 SQL.AddParam("@more_ejournal", cbxMore_EJournal.Checked);
-                                SQL.AddParam("@more_pay_in_out", cbxMore_PayInOut.Checked);
+                                SQL.AddParam("@more_pay_in_out", false);
                                 SQL.AddParam("@more_logs", cbxMore_Logs.Checked);
                                 SQL.AddParam("@more_redeem_settings", cbxMore_RedeemSettings.Checked);
                                 SQL.AddParam("@more_manage_discounts", cbxMore_ManageDiscounts.Checked);
@@ -230,9 +230,9 @@ namespace EcoPOSv2
                                         home_switch_cashier = @home_switch_cashier, home_more = @home_more, more_ejournal = @more_ejournal, more_pay_in_out = @more_pay_in_out, 
                                         more_logs = @more_logs, more_redeem_settings = @more_redeem_settings, more_manage_discounts = @more_manage_discounts, 
                                         more_manage_products = @more_manage_products, more_inventory = @more_inventory, more_close_store = @more_close_store, more_database = @more_database,
-                                        more_settings = @more_settings, pay_payment_method = @pay_payment_method, pay_gift_certificate = @pay_gift_certificate");
+                                        more_settings = @more_settings, pay_payment_method = @pay_payment_method, pay_gift_certificate = @pay_gift_certificate where roleID=@roleID");
 
-                                new Notification().PopUp("Data saved.", "", "error");
+                                new Notification().PopUp("Data saved.", "", "information");
                                 roleID = "";
                             }
                             else
