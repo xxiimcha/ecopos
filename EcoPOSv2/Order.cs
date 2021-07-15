@@ -407,16 +407,10 @@ namespace EcoPOSv2
                 {
                     barcode = tbBarcode.Text;
                 }
-
+                //int count = 
 
                 SQL.AddParam("@barcode", barcode);
                 check_product = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode"));
-                if (SQL.HasException(true))
-                    return;
-
-                SQL.AddParam("@barcode", barcode);
-                SQL.AddParam("@type", type);
-                int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = (SELECT productID FROM products WHERE (barcode1 = @barcode OR barcode2 = @barcode) AND type = @type AND is_return = 0)"));
                 if (SQL.HasException(true))
                     return;
 
@@ -469,7 +463,13 @@ namespace EcoPOSv2
 
                     string prod_description = "";
                     string prod_price = "";
-                  
+
+                    SQL.AddParam("@barcode", barcode);
+                    SQL.AddParam("@type", type);
+                    int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = (SELECT productID FROM products WHERE (barcode1 = @barcode OR barcode2 = @barcode) AND type = @type AND is_return = 0)"));
+                    if (SQL.HasException(true))
+                        return;
+
                     if (check_in_cart == 0)
                     {
                         //check if still in stock
@@ -592,14 +592,31 @@ namespace EcoPOSv2
                     tbBarcode.Focus();
 
                 }
+
                 else if(check_product > 1)
                 {
+                    SQL.AddParam("@barcode", barcode);
+                    SQL.Query("SELECT description FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
+                    if (SQL.HasException(true))
+                        return;
+
+                    string duplicatebarcode = "";
+
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        duplicatebarcode = duplicatebarcode + (r["description"].ToString()) + "\n";
+                    }
+
+                    MessageBox.Show("Duplicate barcodes:\n" + duplicatebarcode);
+
                     new Notification().PopUp("There is duplicate barcode found in the products", "Please try again", "error");
                     return;
                 }
 
                 else
                 {
+
+                 
                     new Notification().PopUp("No item found!", "Barcode not registered.", "error");
                     //MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
