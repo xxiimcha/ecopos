@@ -57,13 +57,14 @@ namespace EcoPOSv2
             btnSearch.PerformClick();
         }
         string query = "";
-        string cat_query = "c.categoryID NOT IN (9999999999)";
-        string warehouse_query = "w.warehouseID NOT IN (9999999999)";
-        string showzero_query = "AND i.stock_qty = (0)";
+        string cat_query, warehouse_query, showzero_query;
 
         BackgroundWorker workerSearchInventory;
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            cat_query = "c.categoryID NOT IN (0)";
+            warehouse_query = "w.warehouseID NOT IN (0)";
+            showzero_query = "AND i.stock_qty = (0)";
             //string query = "";
             //string cat_query = "c.categoryID NOT IN (9999999999)";
             //string warehouse_query = "w.warehouseID NOT IN (9999999999)";
@@ -81,11 +82,11 @@ namespace EcoPOSv2
 
             if (cbxShowZero.Checked == false)
             {
-                showzero_query = "AND i.stock_qty <> 0";
+                showzero_query = " AND i.stock_qty <> 0";
             }
             else
             {
-                showzero_query = "AND i.stock_qty = (0)";
+                showzero_query = "";
             }
 
             textBox1.Text = (@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
@@ -158,6 +159,13 @@ namespace EcoPOSv2
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
+            if(txtSearch.Text == "")
+            {
+                return;
+            }
+
+
+
             SQL.AddParam("@find", txtSearch.Text + "%");
 
             SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p

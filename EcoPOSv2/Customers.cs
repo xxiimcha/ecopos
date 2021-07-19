@@ -299,7 +299,7 @@ namespace EcoPOSv2
         private void btnCus_Save_Click(object sender, EventArgs e)
         {
 
-            if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || txtCus_Email.Text != "" || txtCus_CardNo.Text != "")
+            if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || txtCus_Email.Text != "" || txtCus_CardNo.Text != "" || cmbCus_Membership.Text != "")
             {
                 string action = "Update";
                 if (txtCus_ID.Text == "")
@@ -1037,8 +1037,8 @@ namespace EcoPOSv2
 
             DataSet ds = new DataSet();
 
-            //try
-            //{
+            try
+            {
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
 
                 SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
@@ -1066,37 +1066,39 @@ namespace EcoPOSv2
                 if (SQL.HasException(true))
                     return;
 
-                foreach (DataRow r in SQL.DBDT.Rows)
-                {
-                    report.SetParameterValue("date_time", r["date_time"].ToString());
-                    report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-                    report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                    report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
-                    report.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()), 2).ToString());
-                    report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
-                    report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
-                    report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
-                    report.SetParameterValue("gift_card_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
-                    report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
-                    report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
-                    report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
-                    report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
-                    report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
-                    report.SetParameterValue("gift_card_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
-                    report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
-                    report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
-                    report.SetParameterValue("cus_name", r["cus_name"].ToString());
-                    report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+            foreach (DataRow r in SQL.DBDT.Rows)
+            {
+                report.SetParameterValue("date_time", r["date_time"].ToString());
+                report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
+                report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
+                report.SetParameterValue("no_of_items", r["no_of_items"].ToString());
+                report.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()), 2).ToString());
+                report.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
+                report.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
+                report.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
+                report.SetParameterValue("gift_card_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
+                report.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
+                report.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
+                report.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
+                report.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
+                report.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
+                report.SetParameterValue("gift_card_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
+                report.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
+                report.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
+                report.SetParameterValue("cus_name", r["cus_name"].ToString());
+                report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
 
-                    CrystalReportViewer1.ReportSource = report;
-                    CrystalReportViewer1.Refresh();
-                }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Interaction.MsgBox(ex.ToString());
-            //    report.Dispose();
-            //}
+
+                CrystalReportViewer1.ReportSource = report;
+                CrystalReportViewer1.Refresh();
+            }
+            }
+            catch (Exception ex)
+            {
+                Interaction.MsgBox(ex.ToString());
+                report.Dispose();
+            }
         }
 
         private void txtMem_Search_KeyUp(object sender, KeyEventArgs e)

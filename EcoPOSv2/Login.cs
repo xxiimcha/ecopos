@@ -341,5 +341,10 @@ namespace EcoPOSv2
                 btnLogin.PerformClick();
             }
         }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

@@ -146,6 +146,7 @@
             this.txtSearch.TabIndex = 27;
             this.txtSearch.Tag = "Search item";
             this.txtSearch.Text = "Search item";
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
             // 
             // btnSearch
             // 

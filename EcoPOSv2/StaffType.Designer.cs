@@ -253,7 +253,6 @@
             this.flpPermission.Controls.Add(this.cbxPay_GiftCertificate);
             this.flpPermission.Controls.Add(this.Label4);
             this.flpPermission.Controls.Add(this.cbxMore_EJournal);
-            this.flpPermission.Controls.Add(this.cbxMore_PayInOut);
             this.flpPermission.Controls.Add(this.cbxMore_Logs);
             this.flpPermission.Controls.Add(this.cbxMore_RedeemSettings);
             this.flpPermission.Controls.Add(this.cbxMore_ManageDiscounts);
@@ -263,6 +262,7 @@
             this.flpPermission.Controls.Add(this.cbxMore_Database);
             this.flpPermission.Controls.Add(this.cbxMore_Settings);
             this.flpPermission.Controls.Add(this.cbxMore_CustomerMembership);
+            this.flpPermission.Controls.Add(this.cbxMore_PayInOut);
             this.flpPermission.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpPermission.Location = new System.Drawing.Point(13, 119);
             this.flpPermission.Name = "flpPermission";
@@ -486,19 +486,20 @@
             this.cbxMore_PayInOut.AutoSize = true;
             this.cbxMore_PayInOut.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_PayInOut.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_PayInOut.Location = new System.Drawing.Point(163, 143);
+            this.cbxMore_PayInOut.Location = new System.Drawing.Point(319, 33);
             this.cbxMore_PayInOut.Name = "cbxMore_PayInOut";
             this.cbxMore_PayInOut.Size = new System.Drawing.Size(96, 24);
             this.cbxMore_PayInOut.TabIndex = 56;
             this.cbxMore_PayInOut.Text = "Pay In/Out";
             this.cbxMore_PayInOut.UseVisualStyleBackColor = true;
+            this.cbxMore_PayInOut.Visible = false;
             // 
             // cbxMore_Logs
             // 
             this.cbxMore_Logs.AutoSize = true;
             this.cbxMore_Logs.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_Logs.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_Logs.Location = new System.Drawing.Point(163, 173);
+            this.cbxMore_Logs.Location = new System.Drawing.Point(163, 143);
             this.cbxMore_Logs.Name = "cbxMore_Logs";
             this.cbxMore_Logs.Size = new System.Drawing.Size(59, 24);
             this.cbxMore_Logs.TabIndex = 57;
@@ -510,7 +511,7 @@
             this.cbxMore_RedeemSettings.AutoSize = true;
             this.cbxMore_RedeemSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_RedeemSettings.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_RedeemSettings.Location = new System.Drawing.Point(163, 203);
+            this.cbxMore_RedeemSettings.Location = new System.Drawing.Point(163, 173);
             this.cbxMore_RedeemSettings.Name = "cbxMore_RedeemSettings";
             this.cbxMore_RedeemSettings.Size = new System.Drawing.Size(140, 24);
             this.cbxMore_RedeemSettings.TabIndex = 58;
@@ -522,7 +523,7 @@
             this.cbxMore_ManageDiscounts.AutoSize = true;
             this.cbxMore_ManageDiscounts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_ManageDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_ManageDiscounts.Location = new System.Drawing.Point(163, 233);
+            this.cbxMore_ManageDiscounts.Location = new System.Drawing.Point(163, 203);
             this.cbxMore_ManageDiscounts.Name = "cbxMore_ManageDiscounts";
             this.cbxMore_ManageDiscounts.Size = new System.Drawing.Size(150, 24);
             this.cbxMore_ManageDiscounts.TabIndex = 60;
@@ -534,7 +535,7 @@
             this.cbxMore_ManageProducts.AutoSize = true;
             this.cbxMore_ManageProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_ManageProducts.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_ManageProducts.Location = new System.Drawing.Point(163, 263);
+            this.cbxMore_ManageProducts.Location = new System.Drawing.Point(163, 233);
             this.cbxMore_ManageProducts.Name = "cbxMore_ManageProducts";
             this.cbxMore_ManageProducts.Size = new System.Drawing.Size(143, 24);
             this.cbxMore_ManageProducts.TabIndex = 59;
@@ -546,7 +547,7 @@
             this.cbxMore_Inventory.AutoSize = true;
             this.cbxMore_Inventory.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_Inventory.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_Inventory.Location = new System.Drawing.Point(163, 293);
+            this.cbxMore_Inventory.Location = new System.Drawing.Point(163, 263);
             this.cbxMore_Inventory.Name = "cbxMore_Inventory";
             this.cbxMore_Inventory.Size = new System.Drawing.Size(89, 24);
             this.cbxMore_Inventory.TabIndex = 61;
@@ -558,7 +559,7 @@
             this.cbxMore_CloseStore.AutoSize = true;
             this.cbxMore_CloseStore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_CloseStore.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_CloseStore.Location = new System.Drawing.Point(163, 323);
+            this.cbxMore_CloseStore.Location = new System.Drawing.Point(163, 293);
             this.cbxMore_CloseStore.Name = "cbxMore_CloseStore";
             this.cbxMore_CloseStore.Size = new System.Drawing.Size(103, 24);
             this.cbxMore_CloseStore.TabIndex = 62;
@@ -570,7 +571,7 @@
             this.cbxMore_Database.AutoSize = true;
             this.cbxMore_Database.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_Database.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_Database.Location = new System.Drawing.Point(163, 353);
+            this.cbxMore_Database.Location = new System.Drawing.Point(163, 323);
             this.cbxMore_Database.Name = "cbxMore_Database";
             this.cbxMore_Database.Size = new System.Drawing.Size(91, 24);
             this.cbxMore_Database.TabIndex = 63;
@@ -582,7 +583,7 @@
             this.cbxMore_Settings.AutoSize = true;
             this.cbxMore_Settings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_Settings.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_Settings.Location = new System.Drawing.Point(319, 3);
+            this.cbxMore_Settings.Location = new System.Drawing.Point(163, 353);
             this.cbxMore_Settings.Name = "cbxMore_Settings";
             this.cbxMore_Settings.Size = new System.Drawing.Size(81, 24);
             this.cbxMore_Settings.TabIndex = 64;
@@ -594,7 +595,7 @@
             this.cbxMore_CustomerMembership.AutoSize = true;
             this.cbxMore_CustomerMembership.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_CustomerMembership.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_CustomerMembership.Location = new System.Drawing.Point(319, 33);
+            this.cbxMore_CustomerMembership.Location = new System.Drawing.Point(319, 3);
             this.cbxMore_CustomerMembership.Name = "cbxMore_CustomerMembership";
             this.cbxMore_CustomerMembership.Size = new System.Drawing.Size(178, 24);
             this.cbxMore_CustomerMembership.TabIndex = 68;
