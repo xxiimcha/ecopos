@@ -33,6 +33,8 @@
             this.btnShowMainForm = new System.Windows.Forms.Button();
             this.btnImportDatabase = new System.Windows.Forms.Button();
             this.btnChangeStoreSettings = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Label1
@@ -74,11 +76,33 @@
             this.btnChangeStoreSettings.UseVisualStyleBackColor = true;
             this.btnChangeStoreSettings.Click += new System.EventHandler(this.btnChangeStoreSettings_Click);
             // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(3, 61);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(270, 23);
+            this.btnStart.TabIndex = 8;
+            this.btnStart.Text = "Start training mode";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Location = new System.Drawing.Point(3, 90);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(270, 23);
+            this.btnStop.TabIndex = 9;
+            this.btnStop.Text = "Stop training mode";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            // 
             // DVOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(276, 262);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.btnShowMainForm);
             this.Controls.Add(this.btnImportDatabase);
@@ -87,6 +111,7 @@
             this.Name = "DVOptions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DVOptions";
+            this.Load += new System.EventHandler(this.DVOptions_Load);
             this.ResumeLayout(false);
 
         }
@@ -97,5 +122,7 @@
         internal System.Windows.Forms.Button btnShowMainForm;
         internal System.Windows.Forms.Button btnImportDatabase;
         internal System.Windows.Forms.Button btnChangeStoreSettings;
+        internal System.Windows.Forms.Button btnStart;
+        internal System.Windows.Forms.Button btnStop;
     }
 }

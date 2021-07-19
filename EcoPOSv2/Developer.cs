@@ -19,7 +19,8 @@ namespace EcoPOSv2
 
         private void btnTrainingMode_Click(object sender, EventArgs e)
         {
-            new Prompt().Pop(2);
+            Prompt frmPrompt = new Prompt();
+            frmPrompt.Pop(2);
         }
     }
 }

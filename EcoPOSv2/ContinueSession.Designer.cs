@@ -144,6 +144,7 @@
             this.tbCSPassword.Size = new System.Drawing.Size(320, 32);
             this.tbCSPassword.TabIndex = 64;
             this.tbCSPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCSPassword_KeyDown);
+            this.tbCSPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbCSPassword_KeyUp);
             // 
             // lblCS_Username
             // 

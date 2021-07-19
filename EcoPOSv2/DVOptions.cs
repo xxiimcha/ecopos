@@ -16,6 +16,19 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        private void DVOptions_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.dbName == "EcoPOS")
+            {
+                btnStart.Enabled = true;
+                btnStop.Enabled = false;
+            }
+            else if (Properties.Settings.Default.dbName == "EcoPOS_Training")
+            {
+                btnStart.Enabled = false;
+                btnStop.Enabled = true;
+            }
+        }
 
         private void btnChangeStoreSettings_Click(object sender, EventArgs e)
         {
@@ -36,5 +49,23 @@ namespace EcoPOSv2
             Prompt.Instance.Close();
             Login.Instance.Close();
         }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.dbName = "EcoPOS_Training";
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("Traning mode started.. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Restart();
+        }
+
+        private void BtnStop_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.dbName = "EcoPOS";
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("Traning mode has been stopped. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Restart();
+        }     
     }
 }

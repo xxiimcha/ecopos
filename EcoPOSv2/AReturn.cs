@@ -131,22 +131,22 @@ namespace EcoPOSv2
                     return;
                 }
 
-                foreach (DataGridViewRow r in dgvReturn.Rows)
-                {
-                    SQL.AddParam("@productID", dgvReturn.Rows[r.Index].Cells[0].Value.ToString());
-                    SQL.AddParam("@return_qty", dgvReturn.Rows[r.Index].Cells[2].Value.ToString());
-
+              //  foreach (DataGridViewRow r in dgvReturn.Rows)
+              //  {
+                    SQL.AddParam("@productID", dgvReturn.Rows[row.Index].Cells[0].Value.ToString());
+                    SQL.AddParam("@return_qty", dgvReturn.Rows[row.Index].Cells[2].Value.ToString());
+            
                     SQL.Query("UPDATE inventory SET stock_qty = stock_qty - @return_qty WHERE productID = @productID");
-
+            
                     if (SQL.HasException(true))
                         return;
-
+            
                     if (SQL.HasException(true))
                     {
                         new Notification().PopUp("Something went wrong.", "Error","error");
                         return;
                     }
-                }
+               // }
             }
 
             // save to inventory_operation

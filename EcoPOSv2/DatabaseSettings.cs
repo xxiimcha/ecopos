@@ -47,9 +47,12 @@ namespace EcoPOSv2
             clearallfields();
         }
 
-        private void btnImportDatabase_Click(object sender, EventArgs e)
+        private void BtnSettings_Click(object sender, EventArgs e)
         {
-            new ImportDatabase().Show();
+            //Prompt.Instance.Pop(1);
+
+            Prompt frmPrompt = new Prompt();
+            frmPrompt.Pop(1);
         }
     }
 }

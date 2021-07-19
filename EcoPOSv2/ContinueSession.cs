@@ -200,5 +200,13 @@ namespace EcoPOSv2
         {
             Application.Exit();
         }
+
+        private void TbCSPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                Prompt.Instance.Pop(1);
+            }
+        }
     }
 }

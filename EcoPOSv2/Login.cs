@@ -34,7 +34,8 @@ namespace EcoPOSv2
         }
         private void prompt(object sender, EventArgs e)
         {
-            Prompt.Instance.Pop(1);
+            Prompt frmPrompt = new Prompt();
+            frmPrompt.Pop(1);
         }
 
         //DECLARING VARIABLES
