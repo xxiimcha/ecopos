@@ -8,17 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VeryHotKeys.WinForms;
 using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
-    public partial class Redeem : GlobalHotKeyForm
+    public partial class Redeem : Form
     {
         public Redeem()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(Escape, HotKeyMods.None, ConsoleKey.Escape);
         }
 
         private void Escape(object sender, EventArgs e)
@@ -84,6 +82,11 @@ namespace EcoPOSv2
             {
                 btnProceed.PerformClick();
             }
+        }
+
+        private void Redeem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
         }
     }
 }

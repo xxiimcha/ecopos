@@ -112,10 +112,12 @@
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "DiscountOption";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiscountOption";
             this.Load += new System.EventHandler(this.DiscountOption_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DiscountOption_KeyDown);
             this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

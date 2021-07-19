@@ -11,41 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Payment : GlobalHotKeyForm
+    public partial class Payment : Form
     {
         public Payment()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(Print, HotKeyMods.None, ConsoleKey.Enter);
-            AddHotKeyRegisterer(GiftCard, HotKeyMods.None, ConsoleKey.F2);
-            AddHotKeyRegisterer(Exact, HotKeyMods.None, ConsoleKey.Spacebar);
-            AddHotKeyRegisterer(Remove, HotKeyMods.None, ConsoleKey.F3);
         }
-
-        private void Remove(object sender, EventArgs e)
-        {
-            btnRemoveGC.PerformClick();
-        }
-
-        private void Exact(object sender, EventArgs e)
-        {
-            btnExact.PerformClick();
-        }
-
-        private void GiftCard(object sender, EventArgs e)
-        {
-            btnGC.PerformClick();
-        }
-
-        private void Print(object sender, EventArgs e)
-        {
-            btnPay.PerformClick();
-        }
-
         //VARIABLES
         private SQLControl SQL = new SQLControl();
         private FormLoad OL = new FormLoad();
@@ -625,6 +599,29 @@ namespace EcoPOSv2
                 lblChange.Text = "-" + lblGrandTotal.Text;
 
                 cmbMethod.Text = "Cash";
+            }
+        }
+
+        private void Payment_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Space)
+            {
+                btnExact.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.F2)
+            {
+                btnGC.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.F3)
+            {
+                btnRemoveGC.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPay.PerformClick();
             }
         }
     }

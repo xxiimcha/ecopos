@@ -31,6 +31,7 @@ namespace EcoPOSv2
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtInput = new System.Windows.Forms.TextBox();
+            this.lblDisplay = new System.Windows.Forms.Label();
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEqual = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@ namespace EcoPOSv2
             this.btnClear = new System.Windows.Forms.Button();
             this.btnCE = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lblDisplay = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.TableLayoutPanel2.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
@@ -82,6 +82,15 @@ namespace EcoPOSv2
             this.txtInput.TabIndex = 5;
             this.txtInput.Text = "0";
             this.txtInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblDisplay
+            // 
+            this.lblDisplay.AutoSize = true;
+            this.lblDisplay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisplay.Location = new System.Drawing.Point(11, 14);
+            this.lblDisplay.Name = "lblDisplay";
+            this.lblDisplay.Size = new System.Drawing.Size(0, 25);
+            this.lblDisplay.TabIndex = 6;
             // 
             // TableLayoutPanel2
             // 
@@ -419,26 +428,19 @@ namespace EcoPOSv2
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // lblDisplay
-            // 
-            this.lblDisplay.AutoSize = true;
-            this.lblDisplay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisplay.Location = new System.Drawing.Point(11, 14);
-            this.lblDisplay.Name = "lblDisplay";
-            this.lblDisplay.Size = new System.Drawing.Size(0, 25);
-            this.lblDisplay.TabIndex = 6;
-            // 
             // Calculator
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(374, 420);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "Calculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Calculator_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.TableLayoutPanel2.ResumeLayout(false);

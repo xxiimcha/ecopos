@@ -8,11 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class OCustomer : GlobalHotKeyForm
+    public partial class OCustomer : Form
     {
 
 
@@ -23,7 +22,7 @@ namespace EcoPOSv2
         public OCustomer()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(Escape, HotKeyMods.None, ConsoleKey.Escape);
+            
         }
 
         private void Escape(object sender, EventArgs e)
@@ -161,6 +160,11 @@ namespace EcoPOSv2
         private void DgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvClickedOnce = true;
+        }
+
+        private void OCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
         }
     }
 }

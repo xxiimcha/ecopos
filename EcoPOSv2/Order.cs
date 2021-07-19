@@ -10,13 +10,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
-using VeryHotKeys.WinForms;
 using System.Runtime.InteropServices;
 using System.Reflection;
 
 namespace EcoPOSv2
 {
-    public partial class Order : GlobalHotKeyForm
+    public partial class Order : Form
     {
         public static Order _order;
         public static Order Instance
@@ -965,59 +964,6 @@ namespace EcoPOSv2
             insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
             type = "R";
         }
-
-        //GLOBAL HOTKEYS
-        private void ClickCancelTransaction(object sender, EventArgs e)
-        {
-            Order.Instance.btnCancel.PerformClick();
-        }
-
-        private void OpenVoidItem(object sender, EventArgs e)
-        {
-            Order.Instance.btnVoidItem.PerformClick();
-        }
-
-        private void Openquantity(object sender, EventArgs e)
-        {
-            Order.Instance.btnQuantity.PerformClick();
-        }
-
-        private void OpenDiscount(object sender, EventArgs e)
-        {
-            Order.Instance.btnDiscount.PerformClick();
-        }
-        private void ClickCustomer(object sender, EventArgs e)
-        {
-            //Order.Instance.btnCustomer.PerformClick();
-        }
-        private void ClickPriceEditor(object sender, EventArgs e)
-        {
-            Order.Instance.btnPriceEditor.PerformClick();
-        }
-        private void AccessUserByPass(object sender, EventArgs e)
-        {
-            UserBypass frmUserBypass = new UserBypass();
-            frmUserBypass.frmOrder = this;
-            frmUserBypass.fromOrder = true;
-            frmUserBypass.ShowDialog();
-        }
-        private void CancelUserByPass(object sender, EventArgs e)
-        {
-            for (int i = 0; i < Main.Instance.bypass_list.Count; i++)
-            {
-                Main.Instance.bypass_list[i] = false;
-            }
-
-             Main.Instance.by_pass_user = false;
-             Main.Instance.by_pass_userID = 0;
-             Main.Instance.by_pass_user_name = "";
-             Main.Instance.lblByPassUser.Text = "";
-           
-             RP.Order(this);
-             RP.Home(Main.Instance);
-            Main.Instance.btnOrder.PerformClick();
-        }
-
         private void btnRedeem_Click(object sender, EventArgs e)
         {
             if(CheckOpened("Redeem") == true)

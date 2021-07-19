@@ -8,22 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class PChange : GlobalHotKeyForm
+    public partial class PChange : Form
     {
         public PChange()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(CloseForm, HotKeyMods.None, ConsoleKey.Enter);
         }
         SQLControl SQL = new SQLControl();
-        private void CloseForm(object sender, EventArgs e)
-        {
-            PChange.Instance.btnConfirm.PerformClick();
-        }
         private int count = 0;
         public static PChange _PChange;
         public static PChange Instance
@@ -112,6 +106,11 @@ namespace EcoPOSv2
         private void PChange_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
+            {
+                PChange.Instance.btnConfirm.PerformClick();
+            }
+
+            if(e.KeyCode == Keys.Escape)
             {
                 PChange.Instance.btnConfirm.PerformClick();
             }

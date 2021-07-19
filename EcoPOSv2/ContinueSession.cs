@@ -208,5 +208,13 @@ namespace EcoPOSv2
                 Prompt.Instance.Pop(1);
             }
         }
+
+        private void ContinueSession_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                Prompt.Instance.Pop(1);
+            }
+        }
     }
 }

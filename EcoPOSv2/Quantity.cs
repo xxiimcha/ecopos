@@ -8,21 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Quantity : GlobalHotKeyForm
+    public partial class Quantity : Form
     {
         public Quantity()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(Escape, HotKeyMods.None, ConsoleKey.Escape);
-        }
-
-        private void Escape(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private SQLControl SQL = new SQLControl();
@@ -75,6 +68,11 @@ namespace EcoPOSv2
         {
             if (e.KeyCode == Keys.Enter)
                 btnConfirm.PerformClick();
+        }
+
+        private void Quantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
         }
     }
 }

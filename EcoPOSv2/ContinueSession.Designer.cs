@@ -253,11 +253,13 @@
             this.Controls.Add(this.gunaControlBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "ContinueSession";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContinueSession";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContinueSession_FormClosing);
             this.Load += new System.EventHandler(this.ContinueSession_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContinueSession_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

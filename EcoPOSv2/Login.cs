@@ -9,16 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
-using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Login : GlobalHotKeyForm
+    public partial class Login : Form
     {
         public Login()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(prompt, HotKeyMods.None, ConsoleKey.F2);
         }
         public static Login _Login;
         public static Login Instance
@@ -32,12 +30,6 @@ namespace EcoPOSv2
                 return _Login;
             }
         }
-        private void prompt(object sender, EventArgs e)
-        {
-            Prompt frmPrompt = new Prompt();
-            frmPrompt.Pop(1);
-        }
-
         //DECLARING VARIABLES
         SQLControl sql = new SQLControl();
 
@@ -346,6 +338,15 @@ namespace EcoPOSv2
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F2)
+            {
+                Prompt frmPrompt = new Prompt();
+                frmPrompt.Pop(1);
+            }
         }
     }
 }

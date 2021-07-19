@@ -7,12 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VeryHotKeys.WinForms;
 using static EcoPOSv2.TextBoxValidation;
 
 namespace EcoPOSv2
 {
-    public partial class Calculator : GlobalHotKeyForm
+    public partial class Calculator : Form
     {
         public static Calculator _Calculator;
         public static Calculator Instance
@@ -29,27 +28,6 @@ namespace EcoPOSv2
         public Calculator()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(Button0, HotKeyMods.None, ConsoleKey.D0);
-            AddHotKeyRegisterer(Button1, HotKeyMods.None, ConsoleKey.D1);
-            AddHotKeyRegisterer(Button2, HotKeyMods.None, ConsoleKey.D2);
-            AddHotKeyRegisterer(Button3, HotKeyMods.None, ConsoleKey.D3);
-            AddHotKeyRegisterer(Button4, HotKeyMods.None, ConsoleKey.D4);
-            AddHotKeyRegisterer(Button5, HotKeyMods.None, ConsoleKey.D5);
-            AddHotKeyRegisterer(Button6, HotKeyMods.None, ConsoleKey.D6);
-            AddHotKeyRegisterer(Button7, HotKeyMods.None, ConsoleKey.D7);
-            AddHotKeyRegisterer(Button8, HotKeyMods.None, ConsoleKey.D8);
-            AddHotKeyRegisterer(Button9, HotKeyMods.None, ConsoleKey.D9);
-
-            //OPERANDS
-            AddHotKeyRegisterer(Divide, HotKeyMods.None, ConsoleKey.Divide);
-            AddHotKeyRegisterer(Multiply, HotKeyMods.None, ConsoleKey.Multiply);
-            AddHotKeyRegisterer(Add, HotKeyMods.None, ConsoleKey.Add);
-            AddHotKeyRegisterer(Subtract, HotKeyMods.None, ConsoleKey.Subtract);
-            AddHotKeyRegisterer(Enter, HotKeyMods.None, ConsoleKey.Enter);
-
-            //HOTKEYS
-            AddHotKeyRegisterer(Reset, HotKeyMods.None, ConsoleKey.C);
-            AddHotKeyRegisterer(Escape, HotKeyMods.None, ConsoleKey.Escape);
         }
 
         private void Escape(object sender, EventArgs e)
@@ -365,6 +343,96 @@ namespace EcoPOSv2
                 hasDecimal = false;
 
                 lblDisplay.Text = lblDisplay.Text + (sender as Button).Text;
+            }
+        }
+
+        private void Calculator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.D0)
+            {
+                btn0.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D1)
+            {
+                btn1.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D2)
+            {
+                btn2.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D3)
+            {
+                btn3.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D4)
+            {
+                btn4.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D5)
+            {
+                btn5.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D6)
+            {
+                btn6.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D7)
+            {
+                btn7.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D8)
+            {
+                btn8.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D9)
+            {
+                btn9.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.D0)
+            {
+                btn0.PerformClick();
+            }
+
+            //OPERANDS
+
+            if (e.KeyCode == Keys.Divide)
+            {
+                btnDivide.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.Multiply)
+            {
+                btnMultiply.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.Add)
+            {
+                btnAdd.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.Subtract)
+            {
+                btnSubtract.PerformClick();
+            }
+
+            if(e.KeyCode == Keys.C)
+            {
+                btnClear.PerformClick();
+            }
+
+            if(e.KeyCode == Keys.Escape)
+            {
+                Close();
             }
         }
     }
