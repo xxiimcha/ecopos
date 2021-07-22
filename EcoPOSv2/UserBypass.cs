@@ -139,7 +139,7 @@ namespace EcoPOSv2
                     if (fromMore)
                         RP.More(frmMore);
                     if (fromOrder)
-                        RP.Order(frmOrder);
+                        RP.Order(Order.Instance);
                     RP.Home(Main.Instance);
                     Close();
                 }

@@ -40,7 +40,7 @@ public class RolePermission
             if (Main.Instance.bp_ord_discount == true)
                 frm.btnDiscount.Enabled = true;
             if (Main.Instance.bp_ord_void_item == true)
-                frm.btnVoidItem.Enabled = true;
+                frm.Enabled = true;
             if (Main.Instance.bp_ord_void_transaction == true)
                 frm.btnVoid.Enabled = true;
             if (Main.Instance.bp_ord_cancel_transaction == true)

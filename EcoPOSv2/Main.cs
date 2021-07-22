@@ -290,11 +290,11 @@ namespace EcoPOSv2
 
             btnOrder.PerformClick();
 
-            Order frmOrder = new Order();
-            OL.changeForm(frmOrder, currentChildForm, pnlChild);
-            frmOrder.tbBarcode.Focus();
+            //Order frmOrder = new Order();
+            //OL.changeForm(frmOrder, currentChildForm, pnlChild);
+            //frmOrder.tbBarcode.Focus();
 
-            Order.Instance.GetTotal();
+            //Order.Instance.GetTotal();
 
             tmrCurrentDateTime.Start();
 
@@ -315,7 +315,6 @@ namespace EcoPOSv2
             //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
             //    return;
             //}
-
             Order frmOrder = new Order();
             RP.Order(frmOrder);
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
