@@ -1023,7 +1023,7 @@ namespace EcoPOSv2
             dgvMT_Records.Columns[0].Visible = false;
 
 
-            MessageBox.Show(dtpMT_From.Value.ToString() + "\n" + dtpMT_To.Value.ToString());
+           // MessageBox.Show(dtpMT_From.Value.ToString() + "\n" + dtpMT_To.Value.ToString());
         }
 
         private void dgvMT_Records_CellClick(object sender, DataGridViewCellEventArgs e)

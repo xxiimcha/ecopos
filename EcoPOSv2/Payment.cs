@@ -491,7 +491,7 @@ namespace EcoPOSv2
             if (cbxUsePoints.Checked == true)
             {
                 lblDeductPoints.Text = cbxUsePoints.Text;
-                lblChange.Text = "-" + lblGrandTotal.Text;
+                lblChange.Text = /*"-" +*/ lblGrandTotal.Text;
             }
             else if (cbxUsePoints.Checked == false/* && total > deduct_points*/)
             {
@@ -525,15 +525,15 @@ namespace EcoPOSv2
             {
                 //grand_total = grand_total - deduct_points;
 
-                if(deduct_points > total)
+                if(deduct_points >= total)
                 {
                     deduct_points = deduct_points - total;
                     lblGrandTotal.Text = "0.00";
 
                     lblChange.Text = "0.00";
-
+                    change = 0;
                     lblRemainingPoints.Text = deduct_points.ToString("N2");
-
+                    txtAmount.Text = "0";
                     txtAmount.Enabled = false;
                     btnExact.Enabled = false;
                 }
@@ -560,7 +560,7 @@ namespace EcoPOSv2
                 cmbMethod.Text = "Gift Certificate";
                 //grand_total = grand_total - deduct_gc;
 
-                if (deduct_gc > total)
+                if (deduct_gc >= total)
                 {
                     deduct_gc = deduct_gc - total;
                     lblGrandTotal.Text = "0.00";
@@ -584,8 +584,9 @@ namespace EcoPOSv2
                     lblGrandTotal.Text = total.ToString("N2");
 
                     lblChange.Text = "-" + lblGrandTotal.Text;
+              
                 }
-
+          
                 //lblGrandTotal.Text = grand_total.ToString("N2");
             }
             else

@@ -33,9 +33,14 @@ namespace EcoPOSv2
             SetServer(".");
         }
 
+        public static string servername = EcoPOSv2.Properties.Settings.Default.dbServerName;
+        public static string dbuser = EcoPOSv2.Properties.Settings.Default.dbUser; //GALING SA SETTINGS
+        public static string dbpass = EcoPOSv2.Properties.Settings.Default.dbPass; //GALING SA SETTINGS
+
         private void SetServer(string str)
         {
-            con = new SqlConnection(@"Data Source=.;Database=Master;integrated security=SSPI;");
+
+            con = new SqlConnection(@"Data Source=" + servername + "; user=" + dbuser + "; password=" + dbpass + ";");
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
