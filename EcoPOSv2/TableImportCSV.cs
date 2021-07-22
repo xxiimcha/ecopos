@@ -208,7 +208,7 @@ namespace EcoPOSv2
         }
         private void WorkerCSV_DoWork(object sender, DoWorkEventArgs e)
         {
-            SQLControl sql = new SQLControl();
+            SQLControl Psql = new SQLControl();
 
             for (int i = 0; i < dgItems.Rows.Count -1; i++)
             {
@@ -221,55 +221,56 @@ namespace EcoPOSv2
                 int categoryid = 0;
                 int warehouseID = 0;
                 //QUERY
-                SQL.AddParam("@name", dgItems.Rows[i].Cells[2].Value.ToString());
-                SQL.Query("Select categoryID from product_category where name=@name");
-                if (SQL.HasException(true)) return;
+                Psql.AddParam("@name", dgItems.Rows[i].Cells[2].Value.ToString());
+                Psql.Query("Select categoryID from product_category where name=@name");
+                if (Psql.HasException(true)) return;
 
-                foreach (DataRow dr in SQL.DBDT.Rows)
+                foreach (DataRow dr in Psql.DBDT.Rows)
                 {
                     categoryid = Convert.ToInt32(dr["categoryID"].ToString());
                 }
 
 
-                SQL.AddParam("@name", dgItems.Rows[i].Cells[7].Value.ToString());
-                SQL.Query("Select warehouseID from warehouse where name=@name");
+                Psql.AddParam("@name", dgItems.Rows[i].Cells[7].Value.ToString());
+                Psql.Query("Select warehouseID from warehouse where name=@name");
                 if (SQL.HasException(true)) return;
-                foreach (DataRow dr in SQL.DBDT.Rows)
+                foreach (DataRow dr in Psql.DBDT.Rows)
                 {
                     warehouseID = Convert.ToInt32(dr["warehouseID"].ToString());
                 }
 
-                SQL.AddParam("@name", dgItems.Rows[i].Cells[0].Value.ToString());
-                SQL.AddParam("@description", dgItems.Rows[i].Cells[1].Value.ToString());
-                SQL.AddParam("@categoryID", categoryid);
-                SQL.AddParam("@rp_inclusive", dgItems.Rows[i].Cells[3].Value.ToString());
-                SQL.AddParam("@wp_inclusive", dgItems.Rows[i].Cells[4].Value.ToString());
-                SQL.AddParam("@barcode1", dgItems.Rows[i].Cells[5].Value.ToString());
-                SQL.AddParam("@barcode2", dgItems.Rows[i].Cells[6].Value.ToString());
-                SQL.AddParam("@warehouseID", warehouseID);
-                SQL.AddParam("@s_discR", dgItems.Rows[i].Cells[8].Value.ToString());
-                SQL.AddParam("@s_discPWD_SC", dgItems.Rows[i].Cells[9].Value.ToString());
-                SQL.AddParam("@s_PWD_SC_perc", dgItems.Rows[i].Cells[10].Value.ToString());
-                SQL.AddParam("@s_discAth", dgItems.Rows[i].Cells[11].Value.ToString());
-                SQL.AddParam("@s_ask_qty", dgItems.Rows[i].Cells[12].Value.ToString());
+                Psql.AddParam("@name", dgItems.Rows[i].Cells[0].Value.ToString());
+                Psql.AddParam("@description", dgItems.Rows[i].Cells[1].Value.ToString());
+                Psql.AddParam("@categoryID", categoryid);
+                Psql.AddParam("@rp_inclusive", dgItems.Rows[i].Cells[3].Value.ToString());
+                Psql.AddParam("@wp_inclusive", dgItems.Rows[i].Cells[4].Value.ToString());
+                Psql.AddParam("@barcode1", dgItems.Rows[i].Cells[5].Value.ToString());
+                Psql.AddParam("@barcode2", dgItems.Rows[i].Cells[6].Value.ToString());
+                Psql.AddParam("@warehouseID", warehouseID);
+                Psql.AddParam("@s_discR", dgItems.Rows[i].Cells[8].Value.ToString());
+                Psql.AddParam("@s_discPWD_SC", dgItems.Rows[i].Cells[9].Value.ToString());
+                Psql.AddParam("@s_PWD_SC_perc", dgItems.Rows[i].Cells[10].Value.ToString());
+                Psql.AddParam("@s_discAth", dgItems.Rows[i].Cells[11].Value.ToString());
+                Psql.AddParam("@s_ask_qty", dgItems.Rows[i].Cells[12].Value.ToString());
 
                 //INSERT INTO DATABASE
 
-                SQL.Query(@"INSERT INTO products
+                Psql.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
                                     s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
                                    VALUES
                                    (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
                                     @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)");
 
-                if (SQL.HasException(true))
+                if (Psql.HasException(true))
                     return;
 
                 // create inventory
 
-                SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), 0)");
+                Psql.AddParam("@stock_qty", dgItems.Rows[i].Cells[13].Value.ToString());
+                Psql.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), @stock_qty)");
 
-                if (SQL.HasException(true))
+                if (Psql.HasException(true))
                 {
                     MessageBox.Show("Error sa inventory");
                     return;

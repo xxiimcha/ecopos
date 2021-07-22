@@ -102,7 +102,9 @@ namespace EcoPOSv2
         private void WorkerEProducts_DoWork(object sender, DoWorkEventArgs e)
         {
             SQLControl pSQL = new SQLControl();
-            pSQL.Query("SELECT products.name,products.description,product_category.name as 'Category',products.rp_inclusive,products.wp_inclusive,products.barcode1,products.barcode2,warehouse.name as 'Warehouse',products.s_discR,products.s_discPWD_SC,products.s_PWD_SC_perc,products.s_discAth,products.s_ask_qty FROM products INNER JOIN product_category ON products.categoryID = product_category.categoryID INNER JOIN warehouse ON products.warehouseID = warehouse.warehouseID");
+            //pSQL.Query("SELECT products.name,products.description,product_category.name as 'Category',products.rp_inclusive,products.wp_inclusive,products.barcode1,products.barcode2,warehouse.name as 'Warehouse',products.s_discR,products.s_discPWD_SC,products.s_PWD_SC_perc,products.s_discAth,products.s_ask_qty FROM products INNER JOIN product_category ON products.categoryID = product_category.categoryID INNER JOIN warehouse ON products.warehouseID = warehouse.warehouseID");
+
+            pSQL.Query("SELECT products.name,products.description,product_category.name as 'Category',products.rp_inclusive,products.wp_inclusive,products.barcode1,products.barcode2,warehouse.name as 'Warehouse',products.s_discR,products.s_discPWD_SC,products.s_PWD_SC_perc,products.s_discAth,products.s_ask_qty,inventory.stock_qty FROM products INNER JOIN product_category ON products.categoryID = product_category.categoryID INNER JOIN warehouse ON products.warehouseID = warehouse.warehouseID INNER JOIN inventory ON products.warehouseID = warehouse.warehouseID");
 
             if (pSQL.HasException(true)) return;
 
