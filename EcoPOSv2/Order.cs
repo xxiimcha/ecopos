@@ -73,15 +73,6 @@ namespace EcoPOSv2
         public Order()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(ClickCustomer, HotKeyMods.Control, ConsoleKey.C);
-            AddHotKeyRegisterer(OpenPayment, HotKeyMods.Control, ConsoleKey.P);
-            AddHotKeyRegisterer(OpenDiscount, HotKeyMods.Control, ConsoleKey.D);
-            AddHotKeyRegisterer(Openquantity, HotKeyMods.Control, ConsoleKey.Q);
-            AddHotKeyRegisterer(OpenVoidItem, HotKeyMods.Control, ConsoleKey.V);
-            AddHotKeyRegisterer(ClickCancelTransaction, HotKeyMods.None, ConsoleKey.F4);
-            AddHotKeyRegisterer(ClickPriceEditor, HotKeyMods.None, ConsoleKey.F5);
-            AddHotKeyRegisterer(AccessUserByPass, HotKeyMods.Control, ConsoleKey.G);
-            AddHotKeyRegisterer(CancelUserByPass, HotKeyMods.Control, ConsoleKey.F);
         }
 
         
@@ -634,6 +625,59 @@ namespace EcoPOSv2
 
         private void Order_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.Control && e.KeyCode == Keys.D)
+            {
+                btnDiscount.PerformClick();
+            }
+
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                btnCustomer.PerformClick();
+            }
+
+            if (e.Control && e.KeyCode == Keys.Q)
+            {
+                btnQuantity.PerformClick();
+            }
+
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                btnVoidItem.PerformClick();
+            }
+
+            if(e.KeyCode == Keys.F5)
+            {
+                if(btnPriceEditor.Visible == true)
+                {
+                    btnPriceEditor.PerformClick();
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if(e.KeyCode == Keys.F7)
+            {
+                btnRedeem.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.F4)
+            {
+                btnCancel.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.F3)
+            {
+                btnVoid.PerformClick();
+            }
+
+            if(e.Control && e.KeyCode == Keys.P)
+            {
+                btnPayment.PerformClick();
+            }
+
+
             //if (e.KeyCode != Keys.Modifiers == Keys.D && e.Modifiers == Keys.Control)
             //    btnDiscount.PerformClick();
             //else if ((e.KeyCode & !Keys.Modifiers) == Keys.C && e.Modifiers == Keys.Control)
@@ -973,7 +1017,6 @@ namespace EcoPOSv2
              RP.Home(Main.Instance);
             Main.Instance.btnOrder.PerformClick();
         }
-        //GLOBAL HOTKEYS
 
         private void btnRedeem_Click(object sender, EventArgs e)
         {

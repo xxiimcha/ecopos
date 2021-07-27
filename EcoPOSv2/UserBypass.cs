@@ -167,5 +167,13 @@ namespace EcoPOSv2
                 btnConfirm.PerformClick();
             }
         }
+
+        private void UserBypass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

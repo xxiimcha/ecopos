@@ -14,43 +14,12 @@ using VeryHotKeys.WinForms;
 
 namespace EcoPOSv2
 {
-    public partial class Main : GlobalHotKeyForm
+    public partial class Main : Form
     {
         public Main()
         {
             InitializeComponent();
-            AddHotKeyRegisterer(ClickOrder, HotKeyMods.None, ConsoleKey.F2);
-            AddHotKeyRegisterer(OpenCalculator, HotKeyMods.None, ConsoleKey.F9);
-            AddHotKeyRegisterer(ClickXReading, HotKeyMods.None, ConsoleKey.F8);
-            AddHotKeyRegisterer(ClickMore, HotKeyMods.None, ConsoleKey.F10);
-            AddHotKeyRegisterer(ClickSeeItem, HotKeyMods.Control, ConsoleKey.I);
         }
-
-        private void ClickXReading(object sender, EventArgs e)
-        {
-            btnXReading.PerformClick();
-        }
-
-        private void ClickSeeItem(object sender, EventArgs e)
-        {
-            btnItemChecker.PerformClick();
-        }
-
-        private void ClickMore(object sender, EventArgs e)
-        {
-            btnMore.PerformClick();
-        }
-
-        private void OpenCalculator(object sender, EventArgs e)
-        {
-            btnCalculator.PerformClick();
-        }
-
-        public void ClickOrder(object sender, EventArgs e)
-        {
-            btnOrder.PerformClick();
-        }
-
         public static Main _main;
         public static Main Instance
         {
@@ -430,6 +399,57 @@ namespace EcoPOSv2
             if (e.Alt && e.KeyCode == Keys.F4)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F2)
+            {
+                btnOrder.PerformClick();
+            }
+
+            if(e.KeyCode == Keys.F8)
+            {
+                btnXReading.PerformClick();
+            }
+
+            if(e.KeyCode == Keys.F9)
+            {
+                btnCalculator.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.F10)
+            {
+                btnMore.PerformClick();
+            }
+
+            if(e.Control && e.KeyCode == Keys.I)
+            {
+                btnItemChecker.PerformClick();
+            }
+
+            if(e.KeyCode == Keys.F11)
+            {
+                UserBypass frmUserBypass = new UserBypass();
+                frmUserBypass.fromOrder = true;
+                frmUserBypass.ShowDialog();
+            }
+
+            if(e.KeyCode == Keys.F12)
+            {
+                for (int i = 0; i < Main.Instance.bypass_list.Count; i++)
+                {
+                    Main.Instance.bypass_list[i] = false;
+                }
+
+                Main.Instance.by_pass_user = false;
+                Main.Instance.by_pass_userID = 0;
+                Main.Instance.by_pass_user_name = "";
+                Main.Instance.lblByPassUser.Text = "";
+
+                RP.Home(Main.Instance);
+                Main.Instance.btnOrder.PerformClick();
             }
         }
 

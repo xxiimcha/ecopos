@@ -97,9 +97,11 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.Label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "UserBypass";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "USER BYPASS";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserBypass_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

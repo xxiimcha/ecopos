@@ -212,6 +212,11 @@ namespace EcoPOSv2
         int result = 0;
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            if(txtORNo.Text == "")
+            {
+                return;
+            }
+
             // check if within shift
             if(int.Parse(SQL.ReturnResult("select count(*) from shift")) == 1)
             {

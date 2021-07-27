@@ -156,5 +156,13 @@ namespace EcoPOSv2
         {
             btnConfirm.PerformClick();
         }
+
+        private void SeeItem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }
