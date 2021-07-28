@@ -87,7 +87,7 @@ namespace EcoPOSv2
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.label2.Size = new System.Drawing.Size(479, 123);
             this.label2.TabIndex = 3;
-            this.label2.Text = "v2.0";
+            this.label2.Text = "v2.000";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CountDownTimer
