@@ -277,6 +277,8 @@ namespace EcoPOSv2
             FormLoad Fl = new FormLoad();
             Fl.CusDisplay("Hello", "Welcome!");
 
+            lblVersion.Text = SplashScreen.Instance.lblVersion.Text;
+
             if (Properties.Settings.Default.dbName == "EcoPOS")
             {
                 lblTraningMode.Visible = false;

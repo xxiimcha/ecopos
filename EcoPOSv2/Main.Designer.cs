@@ -49,7 +49,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.Label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
@@ -319,7 +319,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Label3);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblVersion);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 176);
             this.panel2.Name = "panel2";
@@ -347,16 +347,16 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "ECOPOS";
             // 
-            // label5
+            // lblVersion
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(3, 36);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "ver 2.0";
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.ForeColor = System.Drawing.Color.Black;
+            this.lblVersion.Location = new System.Drawing.Point(3, 36);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(47, 17);
+            this.lblVersion.TabIndex = 8;
+            this.lblVersion.Text = "ver 2.0";
             // 
             // pbLogo
             // 
@@ -420,7 +420,7 @@
         private System.Windows.Forms.Panel panel2;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label label4;
-        internal System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.Label lblVersion;
         private Guna.UI2.WinForms.Guna2Button btnclosetemp;
         public System.Windows.Forms.Label lblUser;
         public Guna.UI2.WinForms.Guna2Button btnXReading;
