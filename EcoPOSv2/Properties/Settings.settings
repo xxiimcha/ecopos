@@ -9,7 +9,7 @@
       <Value Profile="(Default)">123123</Value>
     </Setting>
     <Setting Name="dbName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">EcoPOS</Value>
+      <Value Profile="(Default)">EcoPOS_Training</Value>
     </Setting>
     <Setting Name="dbServerName" Type="System.String" Scope="User">
       <Value Profile="(Default)">.</Value>
