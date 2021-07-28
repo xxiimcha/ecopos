@@ -39,7 +39,7 @@ namespace EcoPOSv2
             dgvPurchaseOrder.Invoke(new System.Action(() =>
             {
                 dgvPurchaseOrder.DataSource = pSQL.DBDT;
-                dgvPurchaseOrder.Columns[0].Visible = false;
+                //dgvPurchaseOrder.Columns[0].Visible = false;
                 dgvPurchaseOrder.Columns[1].Visible = false;
             }));
 
@@ -58,7 +58,7 @@ namespace EcoPOSv2
 
             dgvPurchaseOrder.Invoke(new System.Action(() => {
                 dgvPurchaseOrder.DataSource = pSQL.DBDT;
-                dgvPurchaseOrder.Columns[0].Visible = false;
+                //dgvPurchaseOrder.Columns[0].Visible = false;
                 dgvPurchaseOrder.Columns[1].Visible = false;
             }));
 
@@ -108,13 +108,13 @@ namespace EcoPOSv2
         {
             SQL.AddParam("@find", txtSearchProducts.Text + "%");
 
-            SQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operationID LIKE @find ORDER BY OperationID ASC");
+            SQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operationID LIKE @find AND operation = 'Purchase Inventory' ORDER BY date_time DESC");
 
             if (SQL.HasException(true))
                 return;
 
             dgvPurchaseOrder.DataSource = SQL.DBDT;
-            dgvPurchaseOrder.Columns[0].Visible = false;
+            //dgvPurchaseOrder.Columns[0].Visible = false;
             dgvPurchaseOrder.Columns[1].Visible = false;
         }
 

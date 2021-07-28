@@ -36,26 +36,7 @@ namespace EcoPOSv2
                 foreach (var p in mainAppProcessOrProcessesRunning)
                 {
                     p.Kill();
-                    // or p.close(); 
-                    /*If you have permission issues then you have to capture each MainWindow using the proccess, focus that window, and do mainWindow.Exit(). 
-                    This may require using system32 automation to mimic the user. You may also have to pull each Modal attached to the main window and close those before hand.*/
-
                 }
-                ////APPLICATION EXIT
-                //Process[] runningProcesses = Process.GetProcesses();
-                //foreach (Process process in runningProcesses)
-                //{
-                //    // now check the modules of the process
-                //    foreach (ProcessModule module in process.Modules)
-                //    {
-                //        if (module.FileName.Equals("EcoPOSv2.exe"))
-                //        {
-                //            process.Kill();
-                //        }
-                //        else return;
-                //    }
-                //}
-                ////APPLICATION EXIT
             }
             else
             {

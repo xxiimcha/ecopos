@@ -175,7 +175,7 @@ namespace EcoPOSv2
                        p.categoryID = c.categoryID 
                        INNER JOIN inventory as i ON 
                        p.productID = i.productID
-                       WHERE p.description LIKE @find
+                       WHERE p.description LIKE @find or barcode1 LIKE @find or barcode2 LIKE @find
                        ORDER BY p.description ASC");
 
             if (SQL.HasException(true))

@@ -92,6 +92,15 @@ namespace EcoPOSv2
             return csvData;
         }
         BackgroundWorker workerProducts, workerCategory, workerCustomer, workerMember, workerMembership, workerGiftCard;
+
+        private void TableImportCSV_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (btnImport.Enabled == false)
+            {
+                e.Cancel = true;
+            }
+        }
+
         private void btnImport_Click(object sender, EventArgs e)
         {
             switch (table_import_type)
@@ -168,6 +177,7 @@ namespace EcoPOSv2
         private void WorkerCategory_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Import Categories successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnImport.Enabled = true;
             this.Close();
         }
 

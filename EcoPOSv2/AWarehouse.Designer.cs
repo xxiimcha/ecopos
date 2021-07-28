@@ -124,9 +124,8 @@
             this.txtSearchItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchItem.ForeColor = System.Drawing.Color.DimGray;
             this.txtSearchItem.Location = new System.Drawing.Point(3, 85);
-            this.txtSearchItem.Multiline = true;
             this.txtSearchItem.Name = "txtSearchItem";
-            this.txtSearchItem.Size = new System.Drawing.Size(481, 39);
+            this.txtSearchItem.Size = new System.Drawing.Size(481, 33);
             this.txtSearchItem.TabIndex = 29;
             this.txtSearchItem.Tag = "Search item";
             this.txtSearchItem.Text = "Search item";
@@ -266,6 +265,7 @@
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(371, 31);
             this.cmbCategory.TabIndex = 29;
+            this.cmbCategory.TextChanged += new System.EventHandler(this.CmbCategory_TextChanged);
             // 
             // Label3
             // 

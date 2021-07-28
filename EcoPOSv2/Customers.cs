@@ -14,6 +14,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
@@ -139,7 +140,7 @@ namespace EcoPOSv2
 
         void SelectedButtonContainer(Button getButtonCustomer, Button getButtonMembership, Button getButtonMemberTransactions, Button getButtonMC)
         {
-            Color col = ColorTranslator.FromHtml("#EB545C");
+            Color col = ColorTranslator.FromHtml("#383838");
             if (clickbtnCustomer)
             {
                 //back to normal color
@@ -298,107 +299,117 @@ namespace EcoPOSv2
 
         private void btnCus_Save_Click(object sender, EventArgs e)
         {
-
-            if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || txtCus_Email.Text != "" || txtCus_CardNo.Text != "" || cmbCus_Membership.Text != "")
+            new Thread(() =>
             {
-                string action = "Update";
-                if (txtCus_ID.Text == "")
-                    action = "New";
-
-
-                // check if card exists
-                if (txtCus_CardNo.Text != "")
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    SQL.AddParam("@card_no", txtCus_CardNo.Text);
-                    int searchCard = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM member_card WHERE card_no = @card_no AND status = 'Available') > 0,'1', '0') as result"));
-
-                    if (SQL.HasException(true))
-                        return;
-
-                    if (searchCard == 0 & action == "New")
+                    if (cmbCus_Membership.Text == "")
                     {
-                        new Notification().PopUp("Card does not exist or is already taken", "Save failed", "error");
+                        new Notification().PopUp("Please create membership first.", "Save failed", "error");
                         return;
                     }
-                    else
-                    {
-                        switch (action)
-                        {
-                            case "New":
-                                {
-                                    SQL.AddParam("@name", txtCus_Name.Text);
-                                    SQL.AddParam("@contact", txtCus_Contact.Text);
-                                    SQL.AddParam("@birthday", dtpCus_Bday.Value);
-                                    SQL.AddParam("@add1", txtCus_Add1.Text);
-                                    SQL.AddParam("@add2", txtCus_Add2.Text);
-                                    SQL.AddParam("@email", txtCus_Email.Text);
-                                    SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
-                                    SQL.AddParam("@card_no", txtCus_CardNo.Text);
 
-                                    SQL.Query(@"INSERT INTO customer (name, contact, birthday, add1, add2, email, member_type_ID, card_no)
+                    if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || txtCus_Email.Text != "" || txtCus_CardNo.Text != "" || cmbCus_Membership.Text != "")
+                    {
+                        string action = "Update";
+                        if (txtCus_ID.Text == "")
+                            action = "New";
+
+
+                        // check if card exists
+                        if (txtCus_CardNo.Text != "")
+                        {
+                            SQL.AddParam("@card_no", txtCus_CardNo.Text);
+                            int searchCard = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM member_card WHERE card_no = @card_no AND status = 'Available') > 0,'1', '0') as result"));
+
+                            if (SQL.HasException(true))
+                                return;
+
+                            if (searchCard == 0 & action == "New")
+                            {
+                                new Notification().PopUp("Card does not exist or is already taken", "Save failed", "error");
+                                return;
+                            }
+                            else
+                            {
+                                switch (action)
+                                {
+                                    case "New":
+                                        {
+                                            SQL.AddParam("@name", txtCus_Name.Text);
+                                            SQL.AddParam("@contact", txtCus_Contact.Text);
+                                            SQL.AddParam("@birthday", dtpCus_Bday.Value);
+                                            SQL.AddParam("@add1", txtCus_Add1.Text);
+                                            SQL.AddParam("@add2", txtCus_Add2.Text);
+                                            SQL.AddParam("@email", txtCus_Email.Text);
+                                            SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
+                                            SQL.AddParam("@card_no", txtCus_CardNo.Text);
+
+                                            SQL.Query(@"INSERT INTO customer (name, contact, birthday, add1, add2, email, member_type_ID, card_no)
                                        VALUES (@name, @contact, @birthday, @add1, @add2, @email, @member_type_ID, @card_no)");
 
-                                    if (SQL.HasException(true))
-                                        return;
+                                            if (SQL.HasException(true))
+                                                return;
 
-                                    // update card status
+                                            // update card status
 
-                                    SQL.AddParam("@card_no", txtCus_CardNo.Text);
-                                    int card_expiration_days = Convert.ToInt32(SQL.ReturnResult(@"SELECT m.expiration FROM membership as m INNER JOIN customer as c
+                                            SQL.AddParam("@card_no", txtCus_CardNo.Text);
+                                            int card_expiration_days = Convert.ToInt32(SQL.ReturnResult(@"SELECT m.expiration FROM membership as m INNER JOIN customer as c
                                                                                                     ON m.member_type_ID = c.member_type_ID WHERE c.card_no = @card_no"));
-                                    if (SQL.HasException(true))
-                                        return;
+                                            if (SQL.HasException(true))
+                                                return;
 
-                                    SQL.AddParam("@card_no", txtCus_CardNo.Text);
-                                    SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
-                                    SQL.AddParam("@customer_name", txtCus_Name.Text);
-                                    SQL.AddParam("@activation_span", card_expiration_days);
+                                            SQL.AddParam("@card_no", txtCus_CardNo.Text);
+                                            SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
+                                            SQL.AddParam("@customer_name", txtCus_Name.Text);
+                                            SQL.AddParam("@activation_span", card_expiration_days);
 
-                                    SQL.Query(@"UPDATE member_card SET member_type_ID = @member_type_ID, 
+                                            SQL.Query(@"UPDATE member_card SET member_type_ID = @member_type_ID, 
                                            customerID = (SELECT MAX(customerID) FROM customer), customer_name = @customer_name, status = 'Active',
                                            date_activated = (SELECT GETDATE()), activation_span = @activation_span WHERE card_no = @card_no");
 
-                                    if (SQL.HasException(true))
-                                        return;
+                                            if (SQL.HasException(true))
+                                                return;
 
-                                    ClearFields_Cus();
-                                    new Notification().PopUp("Data saved.","Saved","information");
-                                    break;
-                                }
+                                            ClearFields_Cus();
+                                            new Notification().PopUp("Data saved.", "Saved", "information");
+                                            break;
+                                        }
 
-                            default:
-                                {
-                                    SQL.AddParam("@customerID", txtCus_ID.Text);
-                                    SQL.AddParam("@name", txtCus_Name.Text);
-                                    SQL.AddParam("@contact", txtCus_Contact.Text);
-                                    SQL.AddParam("@birthday", dtpCus_Bday.Value);
-                                    SQL.AddParam("@add1", txtCus_Add1.Text);
-                                    SQL.AddParam("@add2", txtCus_Add2.Text);
-                                    SQL.AddParam("@email", txtCus_Email.Text);
-                                    SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
-                                    SQL.AddParam("@card_no", txtCus_CardNo.Text);
+                                    default:
+                                        {
+                                            SQL.AddParam("@customerID", txtCus_ID.Text);
+                                            SQL.AddParam("@name", txtCus_Name.Text);
+                                            SQL.AddParam("@contact", txtCus_Contact.Text);
+                                            SQL.AddParam("@birthday", dtpCus_Bday.Value);
+                                            SQL.AddParam("@add1", txtCus_Add1.Text);
+                                            SQL.AddParam("@add2", txtCus_Add2.Text);
+                                            SQL.AddParam("@email", txtCus_Email.Text);
+                                            SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
+                                            SQL.AddParam("@card_no", txtCus_CardNo.Text);
 
-                                    SQL.Query(@"UPDATE customer SET name = @name, contact = @contact, birthday = @birthday, add1 = @add1, 
+                                            SQL.Query(@"UPDATE customer SET name = @name, contact = @contact, birthday = @birthday, add1 = @add1, 
                                        add2 = @add2, email = @email, member_type_ID = @member_type_ID, card_no = @card_no
                                        WHERE customerID = @customerID");
 
-                                    if (SQL.HasException(true))
-                                        return;
+                                            if (SQL.HasException(true))
+                                                return;
 
-                                    new Notification().PopUp("Data saved.","","information");
-                                    break;
+                                            new Notification().PopUp("Data saved.", "", "information");
+                                            break;
+                                        }
                                 }
+                                LoadCustomer();
+                                LoadCard();
+                            }
                         }
-                        LoadCustomer();
-                        LoadCard();
                     }
-                }
-            }
-            else
-            {
-                new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
-            }
-                
+                    else
+                    {
+                        new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+                    }
+                }));
+            }).Start();
         }
 
         private void btnCus_Delete_Click(object sender, EventArgs e)
@@ -530,107 +541,113 @@ namespace EcoPOSv2
 
         private void btnMem_Save_Click(object sender, EventArgs e)
         {
-            if (txtMem_Name.Text != "" || txtMem_DiscAmount.Text != "" || txtMem_Expiration.Text == "" || txtMem_AmtPerPoint.Text == "")
+            new Thread(() =>
             {
-                string action = "Update";
-                bool discountable = false;
-                int disc_type = 2;
-                bool rewardable = false;
-
-                if (txtMem_ID.Text == "")
-                    action = "New";
-
-
-
-                if (rbMem_DiscYes.Checked)
-                    discountable = true;
-
-                if (rbMem_TypeAmount.Checked)
-                    disc_type = 1;
-
-                if (rbMem_RewardableYes.Checked)
-                    rewardable = true;
-
-
-
-                switch (action)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    case "New":
+                    if (txtMem_Name.Text != "" || txtMem_DiscAmount.Text != "" || txtMem_Expiration.Text == "" || txtMem_AmtPerPoint.Text == "")
+                    {
+                        string action = "Update";
+                        bool discountable = false;
+                        int disc_type = 2;
+                        bool rewardable = false;
+
+                        if (txtMem_ID.Text == "")
+                            action = "New";
+
+
+
+                        if (rbMem_DiscYes.Checked)
+                            discountable = true;
+
+                        if (rbMem_TypeAmount.Checked)
+                            disc_type = 1;
+
+                        if (rbMem_RewardableYes.Checked)
+                            rewardable = true;
+
+
+
+                        switch (action)
                         {
-                            // check for duplicate names
-                            SQL.AddParam("@name", txtMem_Name.Text);
-                            int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM membership WHERE name = @name) > 0,'1', '0') as result"));
+                            case "New":
+                                {
+                                    // check for duplicate names
+                                    SQL.AddParam("@name", txtMem_Name.Text);
+                                    int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM membership WHERE name = @name) > 0,'1', '0') as result"));
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
-                            if (result == 0)
-                            {
-                                SQL.AddParam("@name", txtMem_Name.Text);
-                                SQL.AddParam("@discountable", discountable);
-                                SQL.AddParam("@disc_amt", txtMem_DiscAmount.Text);
-                                SQL.AddParam("@disc_type", disc_type);
-                                SQL.AddParam("@expiration", txtMem_Expiration.Text);
-                                SQL.AddParam("@rewardable", rewardable);
-                                SQL.AddParam("@amt_per_pt", txtMem_AmtPerPoint.Text);
+                                    if (result == 0)
+                                    {
+                                        SQL.AddParam("@name", txtMem_Name.Text);
+                                        SQL.AddParam("@discountable", discountable);
+                                        SQL.AddParam("@disc_amt", txtMem_DiscAmount.Text);
+                                        SQL.AddParam("@disc_type", disc_type);
+                                        SQL.AddParam("@expiration", txtMem_Expiration.Text);
+                                        SQL.AddParam("@rewardable", rewardable);
+                                        SQL.AddParam("@amt_per_pt", txtMem_AmtPerPoint.Text);
 
-                                SQL.Query(@"INSERT INTO membership (name, discountable, disc_amt, disc_type, 
+                                        SQL.Query(@"INSERT INTO membership (name, discountable, disc_amt, disc_type, 
                                         expiration, rewardable, amt_per_pt) VALUES (@name, @discountable, 
                                         @disc_amt, @disc_type, @expiration, @rewardable, @amt_per_pt)");
 
-                                if (SQL.HasException(true))
-                                    return;
-                                ClearFields_Mem();
-                                new Notification().PopUp("Data saved.","","information");
-                            }
-                            else
-                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
-                            break;
-                        }
+                                        if (SQL.HasException(true))
+                                            return;
+                                        ClearFields_Mem();
+                                        new Notification().PopUp("Data saved.", "", "information");
+                                    }
+                                    else
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                    break;
+                                }
 
-                    default:
-                        {
-                            SQL.AddParam("@member_type_ID", txtMem_ID.Text);
-                            SQL.AddParam("@name", txtMem_Name.Text);
+                            default:
+                                {
+                                    SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                                    SQL.AddParam("@name", txtMem_Name.Text);
 
-                            string result = SQL.ReturnResult(@"SELECT IIF((
+                                    string result = SQL.ReturnResult(@"SELECT IIF((
                 SELECT COUNT(*) as duplicatecount FROM membership WHERE name = @name AND member_type_ID <> @member_type_ID) > 0,
                 1, 0) as result");
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
 
-                            if (result == "0")
-                            {
-                                SQL.AddParam("@member_type_ID", txtMem_ID.Text);
-                                SQL.AddParam("@name", txtMem_Name.Text);
-                                SQL.AddParam("@discountable", discountable);
-                                SQL.AddParam("@disc_amt", txtMem_DiscAmount.Text);
-                                SQL.AddParam("@disc_type", disc_type);
-                                SQL.AddParam("@expiration", txtMem_Expiration.Text);
-                                SQL.AddParam("@rewardable", rewardable);
-                                SQL.AddParam("@amt_per_pt", txtMem_AmtPerPoint.Text);
+                                    if (result == "0")
+                                    {
+                                        SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                                        SQL.AddParam("@name", txtMem_Name.Text);
+                                        SQL.AddParam("@discountable", discountable);
+                                        SQL.AddParam("@disc_amt", txtMem_DiscAmount.Text);
+                                        SQL.AddParam("@disc_type", disc_type);
+                                        SQL.AddParam("@expiration", txtMem_Expiration.Text);
+                                        SQL.AddParam("@rewardable", rewardable);
+                                        SQL.AddParam("@amt_per_pt", txtMem_AmtPerPoint.Text);
 
-                                SQL.Query(@"UPDATE membership SET name = @name, discountable = @discountable, 
+                                        SQL.Query(@"UPDATE membership SET name = @name, discountable = @discountable, 
                                         disc_amt = @disc_amt, disc_type = @disc_type, expiration = @expiration, 
                                         rewardable = @rewardable, amt_per_pt = @amt_per_pt WHERE member_type_ID = @member_type_ID");
 
-                                if (SQL.HasException(true))
-                                    return;
+                                        if (SQL.HasException(true))
+                                            return;
 
-                                new Notification().PopUp("Data saved.", "", "information");
-                            }
-                            else
-                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
-                            break;
+                                        new Notification().PopUp("Data saved.", "", "information");
+                                    }
+                                    else
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                    break;
+                                }
                         }
-                }
-                LoadMembership();
-                OL.ComboValues(cmbCus_Membership, "member_type_ID", "name", "membership");
-            }
-            else
-                new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+                        LoadMembership();
+                        OL.ComboValues(cmbCus_Membership, "member_type_ID", "name", "membership");
+                    }
+                    else
+                        new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+                }));
+            }).Start();
         }
 
         private void rbMem_DiscYes_CheckedChanged(object sender, EventArgs e)
@@ -663,30 +680,36 @@ namespace EcoPOSv2
 
         private void btnMem_Delete_Click(object sender, EventArgs e)
         {
-            DialogResult approval = MessageBox.Show("Delete this member?", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-
-            if (approval == DialogResult.Yes)
+            new Thread(() =>
             {
-                if (txtMem_ID.Text == "")
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    new Notification().PopUp("No item selected.", "", "error");
-                    return;
-                }
+                    DialogResult approval = MessageBox.Show("Delete this member?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                SQL.AddParam("@member_type_ID", txtMem_ID.Text);
-                SQL.Query("DELETE FROM membership WHERE member_type_ID = @member_type_ID");
+                    if (approval == DialogResult.Yes)
+                    {
+                        if (txtMem_ID.Text == "")
+                        {
+                            new Notification().PopUp("No item selected.", "", "error");
+                            return;
+                        }
 
-                if (SQL.HasException(true))
-                    return;
+                        SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                        SQL.Query("DELETE FROM membership WHERE member_type_ID = @member_type_ID");
 
-                LoadMembership();
+                        if (SQL.HasException(true))
+                            return;
 
-                ClearFields_Mem();
+                        LoadMembership();
 
-                new Notification().PopUp("Item deleted.", "", "information");
+                        ClearFields_Mem();
 
-                OL.ComboValues(cmbCus_Membership, "member_type_ID", "name", "membership");
-            }
+                        new Notification().PopUp("Item deleted.", "", "information");
+
+                        OL.ComboValues(cmbCus_Membership, "member_type_ID", "name", "membership");
+                    }
+                }));
+            }).Start();
         }
 
         private void btnMem_New_Click(object sender, EventArgs e)
@@ -735,36 +758,42 @@ namespace EcoPOSv2
 
         private void btnMC_RegisterCard_Click(object sender, EventArgs e)
         {
-            CardRF();
-
-            int requiredFieldsMet = RequireField(ref requiredFields);
-
-            if (requiredFieldsMet == 1)
+            new Thread(() =>
             {
-
-                // check for duplicate names
-                SQL.AddParam("@card_no", txtMC_CardNo.Text);
-                int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM member_card WHERE card_no = @card_no) > 0,'1', '0') as result"));
-
-                if (SQL.HasException(true))
-                    return;
-
-                if (result == 0)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    SQL.AddParam("@card_no", txtMC_CardNo.Text);
+                    CardRF();
 
-                    SQL.Query(@"INSERT INTO member_card (card_no, member_type_ID, customerID, customer_name, card_balance, status)
+                    int requiredFieldsMet = RequireField(ref requiredFields);
+
+                    if (requiredFieldsMet == 1)
+                    {
+
+                        // check for duplicate names
+                        SQL.AddParam("@card_no", txtMC_CardNo.Text);
+                        int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM member_card WHERE card_no = @card_no) > 0,'1', '0') as result"));
+
+                        if (SQL.HasException(true))
+                            return;
+
+                        if (result == 0)
+                        {
+                            SQL.AddParam("@card_no", txtMC_CardNo.Text);
+
+                            SQL.Query(@"INSERT INTO member_card (card_no, member_type_ID, customerID, customer_name, card_balance, status)
                                        VALUES (@card_no, 0, 0, '', 0, 'Available')");
-                    if (SQL.HasException(true))
-                        return;
+                            if (SQL.HasException(true))
+                                return;
 
-                    ClearFields_Card();
-                    LoadCard();
-                    new Notification().PopUp("Data saved.","","information");
-                }
-                else
-                    new Notification().PopUp("Duplicate name found.", "Save failed", "error");
-            }
+                            ClearFields_Card();
+                            LoadCard();
+                            new Notification().PopUp("Data saved.", "", "information");
+                        }
+                        else
+                            new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                    }
+                }));
+            }).Start();
         }
 
         private void btnMC_LostReplaceCard_Click(object sender, EventArgs e)

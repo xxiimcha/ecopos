@@ -164,6 +164,7 @@ namespace EcoPOSv2
             this.Name = "TableImportCSV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableImportCSV";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TableImportCSV_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

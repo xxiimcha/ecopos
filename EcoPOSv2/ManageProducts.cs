@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
@@ -127,85 +128,158 @@ namespace EcoPOSv2
 
         private void ReloadProducts()
         {
-            BackgroundWorker workerReloadProducts = new BackgroundWorker();
-            workerReloadProducts.DoWork += WorkerReloadProducts_DoWork;
-            workerReloadProducts.RunWorkerAsync();
-        }
-
-        private void WorkerReloadProducts_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SQLControl PSQL = new SQLControl();
-
-            dgvCategory.Invoke(new System.Action(() =>
+            new Thread(() =>
             {
-                if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    dgvCategory.Select();
-                    if (Convert.ToInt32(dgvCategory.CurrentRow.Cells[0].Value.ToString()) != 0)
+                    SQLControl PSQL = new SQLControl();
+
+                    dgvCategory.Invoke(new System.Action(() =>
                     {
-                        PSQL.AddParam("@categoryID", (dgvCategory.CurrentRow.Cells[0].Value.ToString()));
-
-                        PSQL.Query("SELECT productID, description, name FROM products WHERE categoryID = @categoryID ORDER BY description ASC");
-                        if (PSQL.HasException(true))
-                            return;
-
-                        dgvProducts.Invoke(new System.Action(() =>
+                        if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
                         {
-                            dgvProducts.DataSource = PSQL.DBDT;
-                            dgvProducts.Columns[0].Visible = false;
-                            dgvProducts.Columns[1].Width = 300;
-                        }));
+                            dgvCategory.Select();
+                            if (Convert.ToInt32(dgvCategory.CurrentRow.Cells[0].Value.ToString()) != 0)
+                            {
+                                PSQL.AddParam("@categoryID", (dgvCategory.CurrentRow.Cells[0].Value.ToString()));
 
-                        return;
-                    }
+                                PSQL.Query("SELECT productID, description, name FROM products WHERE categoryID = @categoryID ORDER BY description ASC");
+                                if (PSQL.HasException(true))
+                                    return;
 
-                    PSQL.Query("SELECT 150 productID, description, name FROM products ORDER BY description ASC");
-                    if (PSQL.HasException(true))
-                        return;
+                                dgvProducts.Invoke(new System.Action(() =>
+                                {
+                                    dgvProducts.DataSource = PSQL.DBDT;
+                                    dgvProducts.Columns[0].Visible = false;
+                                    dgvProducts.Columns[1].Width = 300;
+                                }));
 
-                    dgvProducts.Invoke(new System.Action(() =>
-                    {
-                        dgvProducts.DataSource = PSQL.DBDT;
-                        dgvProducts.Columns[0].Visible = false;
-                        dgvProducts.Columns[1].Width = 300;
+                                return;
+                            }
+
+                            PSQL.Query("SELECT 150 productID, description, name FROM products ORDER BY description ASC");
+                            if (PSQL.HasException(true))
+                                return;
+
+                            dgvProducts.Invoke(new System.Action(() =>
+                            {
+                                dgvProducts.DataSource = PSQL.DBDT;
+                                dgvProducts.Columns[0].Visible = false;
+                                dgvProducts.Columns[1].Width = 300;
+                            }));
+                        }
                     }));
-                }
-            }));
+                }));
+            }).Start();
+            //BackgroundWorker workerReloadProducts = new BackgroundWorker();
+            //workerReloadProducts.DoWork += WorkerReloadProducts_DoWork;
+            //workerReloadProducts.RunWorkerAsync();
         }
+
+        //private void WorkerReloadProducts_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    SQLControl PSQL = new SQLControl();
+
+        //    dgvCategory.Invoke(new System.Action(() =>
+        //    {
+        //        if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
+        //        {
+        //            dgvCategory.Select();
+        //            if (Convert.ToInt32(dgvCategory.CurrentRow.Cells[0].Value.ToString()) != 0)
+        //            {
+        //                PSQL.AddParam("@categoryID", (dgvCategory.CurrentRow.Cells[0].Value.ToString()));
+
+        //                PSQL.Query("SELECT productID, description, name FROM products WHERE categoryID = @categoryID ORDER BY description ASC");
+        //                if (PSQL.HasException(true))
+        //                    return;
+
+        //                dgvProducts.Invoke(new System.Action(() =>
+        //                {
+        //                    dgvProducts.DataSource = PSQL.DBDT;
+        //                    dgvProducts.Columns[0].Visible = false;
+        //                    dgvProducts.Columns[1].Width = 300;
+        //                }));
+
+        //                return;
+        //            }
+
+        //            PSQL.Query("SELECT 150 productID, description, name FROM products ORDER BY description ASC");
+        //            if (PSQL.HasException(true))
+        //                return;
+
+        //            dgvProducts.Invoke(new System.Action(() =>
+        //            {
+        //                dgvProducts.DataSource = PSQL.DBDT;
+        //                dgvProducts.Columns[0].Visible = false;
+        //                dgvProducts.Columns[1].Width = 300;
+        //            }));
+        //        }
+        //    }));
+        //}
 
         private void LoadCategory()
         {
-            BackgroundWorker workerLoadCategory = new BackgroundWorker();
-            workerLoadCategory.DoWork += WorkerLoadCategory_DoWork;
-            workerLoadCategory.RunWorkerAsync();
-        }
-
-        private void WorkerLoadCategory_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SQLControl pSQL = new SQLControl();
-
-            //pSQL.Query(@"SELECT catID, catName FROM
-            //           (
-            //           SELECT 0 as catID, 'All Categories' as catName
-            //           UNION ALL 
-            //           SELECT categoryID as catID, name as catName FROM product_category 
-            //           ) x ORDER BY 
-            //           CASE WHEN catName = 'All Categories' then 1
-            //           ELSE 5
-            //           END,
-            //           catname ASC");
-
-            pSQL.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
-            
-            if (pSQL.HasException(true))
-                return;
-
-            dgvCategory.Invoke(new System.Action(() =>
+            new Thread(()=>
             {
-                dgvCategory.DataSource = pSQL.DBDT;
-                dgvCategory.Columns[0].Visible = false;
-            }));
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    SQLControl pSQL = new SQLControl();
+
+                    //pSQL.Query(@"SELECT catID, catName FROM
+                    //       (
+                    //       SELECT 0 as catID, 'All Categories' as catName
+                    //       UNION ALL 
+                    //       SELECT categoryID as catID, name as catName FROM product_category 
+                    //       ) x ORDER BY 
+                    //       CASE WHEN catName = 'All Categories' then 1
+                    //       ELSE 5
+                    //       END,
+                    //       catname ASC");
+
+                    pSQL.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
+
+                    if (pSQL.HasException(true))
+                        return;
+
+                    dgvCategory.Invoke(new System.Action(() =>
+                    {
+                        dgvCategory.DataSource = pSQL.DBDT;
+                        dgvCategory.Columns[0].Visible = false;
+                    }));
+                }));
+            }).Start();
+
+            //BackgroundWorker workerLoadCategory = new BackgroundWorker();
+            //workerLoadCategory.DoWork += WorkerLoadCategory_DoWork;
+            //workerLoadCategory.RunWorkerAsync();
         }
+
+        //private void WorkerLoadCategory_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    SQLControl pSQL = new SQLControl();
+
+        //    //pSQL.Query(@"SELECT catID, catName FROM
+        //    //           (
+        //    //           SELECT 0 as catID, 'All Categories' as catName
+        //    //           UNION ALL 
+        //    //           SELECT categoryID as catID, name as catName FROM product_category 
+        //    //           ) x ORDER BY 
+        //    //           CASE WHEN catName = 'All Categories' then 1
+        //    //           ELSE 5
+        //    //           END,
+        //    //           catname ASC");
+
+        //    pSQL.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
+            
+        //    if (pSQL.HasException(true))
+        //        return;
+
+        //    dgvCategory.Invoke(new System.Action(() =>
+        //    {
+        //        dgvCategory.DataSource = pSQL.DBDT;
+        //        dgvCategory.Columns[0].Visible = false;
+        //    }));
+        //}
 
         private void TextValidation()
         {
@@ -271,44 +345,50 @@ namespace EcoPOSv2
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1)
-                return;
-
-            SQL.AddParam("@productID", dgvProducts.CurrentRow.Cells[0].Value.ToString());
-
-            SQL.Query("SELECT * FROM products WHERE productID = @productID");
-            if (SQL.HasException(true))
-                return;
-
-            foreach (DataRow r in SQL.DBDT.Rows)
+            new Thread(()=>
             {
-                txtProductID.Text = r["productID"].ToString();
-                txtDescription.Text = r["description"].ToString();
-                txtName.Text = r["name"].ToString();
-                cmbCategory.SelectedValue = r["categoryID"].ToString();
-                txtRPInclusive.Text = r["rp_inclusive"].ToString();
-                txtWPInclusive.Text = r["wp_inclusive"].ToString();
-                txtBarcode1.Text = r["barcode1"].ToString();
-                txtBarcode2.Text = r["barcode2"].ToString();
-                cmbWarehouse.SelectedValue = r["warehouseID"].ToString();
-                cbxDiscRegular.Checked = Convert.ToBoolean(r["s_discR"].ToString());
-                cbxDiscPWD.Checked = Convert.ToBoolean(r["s_discPWD_SC"].ToString());
-                cbxDiscAthlete.Checked = Convert.ToBoolean(r["s_discAth"].ToString());
-                cbxAskQuantity.Checked = Convert.ToBoolean(r["s_ask_qty"].ToString());
-
-                if (cbxDiscPWD.Checked == true)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    if (decimal.Parse(r["s_PWD_SC_perc"].ToString()) == 5)
-                        rb5PWD.Checked = true;
-                    else
-                        rb20PWD.Checked = true;
-                }
+                    if (e.RowIndex == -1)
+                        return;
+
+                    SQL.AddParam("@productID", dgvProducts.CurrentRow.Cells[0].Value.ToString());
+
+                    SQL.Query("SELECT * FROM products WHERE productID = @productID");
+                    if (SQL.HasException(true))
+                        return;
+
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        txtProductID.Text = r["productID"].ToString();
+                        txtDescription.Text = r["description"].ToString();
+                        txtName.Text = r["name"].ToString();
+                        cmbCategory.SelectedValue = r["categoryID"].ToString();
+                        txtRPInclusive.Text = r["rp_inclusive"].ToString();
+                        txtWPInclusive.Text = r["wp_inclusive"].ToString();
+                        txtBarcode1.Text = r["barcode1"].ToString();
+                        txtBarcode2.Text = r["barcode2"].ToString();
+                        cmbWarehouse.SelectedValue = r["warehouseID"].ToString();
+                        cbxDiscRegular.Checked = Convert.ToBoolean(r["s_discR"].ToString());
+                        cbxDiscPWD.Checked = Convert.ToBoolean(r["s_discPWD_SC"].ToString());
+                        cbxDiscAthlete.Checked = Convert.ToBoolean(r["s_discAth"].ToString());
+                        cbxAskQuantity.Checked = Convert.ToBoolean(r["s_ask_qty"].ToString());
+
+                        if (cbxDiscPWD.Checked == true)
+                        {
+                            if (decimal.Parse(r["s_PWD_SC_perc"].ToString()) == 5)
+                                rb5PWD.Checked = true;
+                            else
+                                rb20PWD.Checked = true;
+                        }
 
 
-                lblStock.Visible = false;
-                txtProductStock.Clear();
-                txtProductStock.Visible = false;
-            }
+                        lblStock.Visible = false;
+                        txtProductStock.Clear();
+                        txtProductStock.Visible = false;
+                    }
+                }));
+            }).Start();
         }
 
         private void btnProduct_New_Click(object sender, EventArgs e)
@@ -333,233 +413,245 @@ namespace EcoPOSv2
         int checkerforduplicateB1 = 0, checkerforduplicateB2 = 0;
         private void btnProduct_Save_Click(object sender, EventArgs e)
         {
-            ProductsRF();
-            int requiredFieldsMet = RequireField(ref requiredFields);
-
-            if (requiredFieldsMet == 1) 
+            new Thread(() =>
             {
-                string action = "Update";
-                decimal pwd_perc = 0;
-                decimal sc_perc = 0;
-
-                if (txtProductID.Text == "")
-                    action = "New";
-
-
-                if (rb5PWD.Checked)
-                    pwd_perc = 5;
-                else if (rb20PWD.Checked)
-                    pwd_perc = 20;
-
-
-                switch (action)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    case "New":
+                    ProductsRF();
+                    int requiredFieldsMet = RequireField(ref requiredFields);
+
+                    if (requiredFieldsMet == 1 || cmbCategory.Text != "" || cmbWarehouse.Text != "")
+                    {
+                        string action = "Update";
+                        decimal pwd_perc = 0;
+                        decimal sc_perc = 0;
+
+                        if (txtProductID.Text == "")
+                            action = "New";
+
+
+                        if (rb5PWD.Checked)
+                            pwd_perc = 5;
+                        else if (rb20PWD.Checked)
+                            pwd_perc = 20;
+
+
+                        switch (action)
                         {
-                            // check for duplicate names
-                            SQL.AddParam("@name", txtName.Text);
-                            int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM products WHERE name = @name) > 0,'1', '0') as result"));
+                            case "New":
+                                {
+                                    // check for duplicate names
+                                    SQL.AddParam("@name", txtName.Text);
+                                    int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM products WHERE name = @name) > 0,'1', '0') as result"));
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
-                            if(txtBarcode1.Text != "") 
-                            {
-                                SQL.AddParam("@barcode1", txtBarcode1.Text);
-                                checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1)"));
-                                if (SQL.HasException(true)) return;
-                            }
-                            else
-                            {
-                                checkerforduplicateB1 = 0;
-                            }
-                            
+                                    if (txtBarcode1.Text != "")
+                                    {
+                                        SQL.AddParam("@barcode1", txtBarcode1.Text);
+                                        checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1)"));
+                                        if (SQL.HasException(true)) return;
+                                    }
+                                    else
+                                    {
+                                        checkerforduplicateB1 = 0;
+                                    }
 
-                            if(txtBarcode2.Text != "")
-                            {
-                                SQL.AddParam("@barcode2", txtBarcode2.Text);
-                                checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2)"));
 
-                                if (SQL.HasException(true)) return;
-                            }
-                            else
-                            {
-                                checkerforduplicateB2 = 0;
-                            }
-                            
-                            if (result == 0 && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
-                            {
-                                SQL.AddParam("@name", txtName.Text);
-                                SQL.AddParam("@description", txtDescription.Text);
-                                SQL.AddParam("@categoryID", cmbCategory.SelectedValue);
-                                SQL.AddParam("@rp_inclusive", txtRPInclusive.Text);
-                                SQL.AddParam("@wp_inclusive", txtWPInclusive.Text);
-                                SQL.AddParam("@barcode1", txtBarcode1.Text);
-                                SQL.AddParam("@barcode2", txtBarcode2.Text);
-                                SQL.AddParam("@warehouseID", cmbWarehouse.SelectedValue);
-                                SQL.AddParam("@s_discR", cbxDiscRegular.CheckState);
-                                SQL.AddParam("@s_discPWD_SC", cbxDiscPWD.CheckState);
-                                SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
-                                SQL.AddParam("@s_discAth", cbxDiscAthlete.CheckState);
-                                SQL.AddParam("@s_ask_qty", cbxAskQuantity.CheckState);
+                                    if (txtBarcode2.Text != "")
+                                    {
+                                        SQL.AddParam("@barcode2", txtBarcode2.Text);
+                                        checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2)"));
 
-                                SQL.Query(@"INSERT INTO products
+                                        if (SQL.HasException(true)) return;
+                                    }
+                                    else
+                                    {
+                                        checkerforduplicateB2 = 0;
+                                    }
+
+                                    if (result == 0 && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
+                                    {
+                                        SQL.AddParam("@name", txtName.Text);
+                                        SQL.AddParam("@description", txtDescription.Text);
+                                        SQL.AddParam("@categoryID", cmbCategory.SelectedValue);
+                                        SQL.AddParam("@rp_inclusive", txtRPInclusive.Text);
+                                        SQL.AddParam("@wp_inclusive", txtWPInclusive.Text);
+                                        SQL.AddParam("@barcode1", txtBarcode1.Text);
+                                        SQL.AddParam("@barcode2", txtBarcode2.Text);
+                                        SQL.AddParam("@warehouseID", cmbWarehouse.SelectedValue);
+                                        SQL.AddParam("@s_discR", cbxDiscRegular.CheckState);
+                                        SQL.AddParam("@s_discPWD_SC", cbxDiscPWD.CheckState);
+                                        SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
+                                        SQL.AddParam("@s_discAth", cbxDiscAthlete.CheckState);
+                                        SQL.AddParam("@s_ask_qty", cbxAskQuantity.CheckState);
+
+                                        SQL.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
                                     s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
                                    VALUES
                                    (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
                                     @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)");
 
-                                if (SQL.HasException(true))
-                                    return;
+                                        if (SQL.HasException(true))
+                                            return;
 
-                                // create inventory
+                                        // create inventory
 
-                                SQL.AddParam("@stock_qty", txtProductStock.Text);
-                                SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), @stock_qty)");
+                                        SQL.AddParam("@stock_qty", txtProductStock.Text);
+                                        SQL.Query("INSERT INTO inventory (productID, stock_qty) VALUES ((SELECT MAX(productID) FROM products), @stock_qty)");
 
-                                if (SQL.HasException(true))
-                                    return;
+                                        if (SQL.HasException(true))
+                                            return;
 
-                                ClearFields_Pr();
-                                new Notification().PopUp("Item saved.", "", "success");
+                                        ClearFields_Pr();
+                                        new Notification().PopUp("Item saved.", "", "success");
 
 
-                                lblStock.Visible = false;
-                                txtProductStock.Clear();
-                                txtProductStock.Visible = false;
-                            }
-                            else
-                            {
-                                new Notification().PopUp("Duplicate name/barcode found.", "Save failed", "error");
-                                return;
-                            }
-                                
+                                        lblStock.Visible = false;
+                                        txtProductStock.Clear();
+                                        txtProductStock.Visible = false;
+                                    }
+                                    else
+                                    {
+                                        new Notification().PopUp("Duplicate name/barcode found.", "Save failed", "error");
+                                        return;
+                                    }
 
-                            break;
-                        }
 
-                    default:
-                        {
+                                    break;
+                                }
 
-                            // check for duplicate names other than itself
-                            SQL.AddParam("@productID", txtProductID.Text);
-                            SQL.AddParam("@name", txtName.Text);
+                            default:
+                                {
 
-                            string result = SQL.ReturnResult(@"SELECT IIF((
+                                    // check for duplicate names other than itself
+                                    SQL.AddParam("@productID", txtProductID.Text);
+                                    SQL.AddParam("@name", txtName.Text);
+
+                                    string result = SQL.ReturnResult(@"SELECT IIF((
                 SELECT COUNT(*) as duplicatecount FROM products WHERE name = @name AND productID <> @productID) > 0,
                 1, 0) as result");
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
 
 
-                            if (txtBarcode1.Text != "")
-                            {
-                                SQL.AddParam("@productid", txtProductID.Text);
-                                SQL.AddParam("@barcode1", txtBarcode1.Text);
-                                checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1) AND ProductID <>@productid"));
-                                if (SQL.HasException(true)) return;
-                            }
-                            else
-                            {
-                                checkerforduplicateB1 = 0;
-                            }
+                                    if (txtBarcode1.Text != "")
+                                    {
+                                        SQL.AddParam("@productid", txtProductID.Text);
+                                        SQL.AddParam("@barcode1", txtBarcode1.Text);
+                                        checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1) AND ProductID <>@productid"));
+                                        if (SQL.HasException(true)) return;
+                                    }
+                                    else
+                                    {
+                                        checkerforduplicateB1 = 0;
+                                    }
 
 
-                            if (txtBarcode2.Text != "")
-                            {
-                                SQL.AddParam("@productid", txtProductID.Text);
-                                SQL.AddParam("@barcode2", txtBarcode2.Text);
-                                checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2) AND ProductID <> @productid"));
+                                    if (txtBarcode2.Text != "")
+                                    {
+                                        SQL.AddParam("@productid", txtProductID.Text);
+                                        SQL.AddParam("@barcode2", txtBarcode2.Text);
+                                        checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2) AND ProductID <> @productid"));
 
-                                if (SQL.HasException(true)) return;
-                            }
-                            else
-                            {
-                                checkerforduplicateB2 = 0;
-                            }
+                                        if (SQL.HasException(true)) return;
+                                    }
+                                    else
+                                    {
+                                        checkerforduplicateB2 = 0;
+                                    }
 
-                            //MessageBox.Show(checkerforduplicateB1 + " " + checkerforduplicateB2);
+                                    //MessageBox.Show(checkerforduplicateB1 + " " + checkerforduplicateB2);
 
-                            if (result == "0" && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
-                            {
-                                SQL.AddParam("@productID", txtProductID.Text);
-                                SQL.AddParam("@name", txtName.Text);
-                                SQL.AddParam("@description", txtDescription.Text);
-                                SQL.AddParam("@categoryID", cmbCategory.SelectedValue);
-                                SQL.AddParam("@rp_inclusive", txtRPInclusive.Text);
-                                SQL.AddParam("@wp_inclusive", txtWPInclusive.Text);
-                                SQL.AddParam("@barcode1", txtBarcode1.Text);
-                                SQL.AddParam("@barcode2", txtBarcode2.Text);
-                                SQL.AddParam("@warehouseID", cmbWarehouse.SelectedValue);
-                                SQL.AddParam("@s_discR", cbxDiscRegular.CheckState);
-                                SQL.AddParam("@s_discPWD_SC", cbxDiscPWD.CheckState);
-                                SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
-                                SQL.AddParam("@s_discAth", cbxDiscAthlete.CheckState);
-                                SQL.AddParam("@s_ask_qty", cbxAskQuantity.CheckState);
+                                    if (result == "0" && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
+                                    {
+                                        SQL.AddParam("@productID", txtProductID.Text);
+                                        SQL.AddParam("@name", txtName.Text);
+                                        SQL.AddParam("@description", txtDescription.Text);
+                                        SQL.AddParam("@categoryID", cmbCategory.SelectedValue);
+                                        SQL.AddParam("@rp_inclusive", txtRPInclusive.Text);
+                                        SQL.AddParam("@wp_inclusive", txtWPInclusive.Text);
+                                        SQL.AddParam("@barcode1", txtBarcode1.Text);
+                                        SQL.AddParam("@barcode2", txtBarcode2.Text);
+                                        SQL.AddParam("@warehouseID", cmbWarehouse.SelectedValue);
+                                        SQL.AddParam("@s_discR", cbxDiscRegular.CheckState);
+                                        SQL.AddParam("@s_discPWD_SC", cbxDiscPWD.CheckState);
+                                        SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
+                                        SQL.AddParam("@s_discAth", cbxDiscAthlete.CheckState);
+                                        SQL.AddParam("@s_ask_qty", cbxAskQuantity.CheckState);
 
-                                SQL.Query(@"UPDATE products SET
+                                        SQL.Query(@"UPDATE products SET
                                    description = @description, name = @name, categoryID = @categoryID, rp_inclusive = @rp_inclusive,
                                    wp_inclusive = @wp_inclusive, barcode1 = @barcode1, barcode2 = @barcode2, warehouseID = @warehouseID, 
                                    s_discR = @s_discR, s_discPWD_SC = @s_discPWD_SC, s_PWD_SC_perc = @s_PWD_SC_perc,
                                    s_discAth = @s_discAth, s_ask_qty = @s_ask_qty
                                    WHERE productID = @productID");
 
-                                if (SQL.HasException(true))
-                                    return;
-                                new Notification().PopUp("Item saved.", "","success");
+                                        if (SQL.HasException(true))
+                                            return;
+                                        new Notification().PopUp("Item saved.", "", "success");
 
 
-                                btnProduct_New.PerformClick();
-                            }
-                            else
-                            {
-                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
-                                return;
-                            }
-                                
-                            break;
+                                        btnProduct_New.PerformClick();
+                                    }
+                                    else
+                                    {
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                        return;
+                                    }
+
+                                    break;
+                                }
                         }
-                }
 
-                ReloadProducts();
+                        ReloadProducts();
 
-                btnProduct_New.PerformClick();
-            }
-            else if(requiredFieldsMet == 1 && cmbWarehouse.Text == "")
-            {
-                new Notification().PopUp("Please add warehouse to proceed.", "Save failed", "error");
-            }
-            else
-                new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+                        btnProduct_New.PerformClick();
+                    }
+                    else if (requiredFieldsMet == 1 && cmbWarehouse.Text == "")
+                    {
+                        new Notification().PopUp("Please add warehouse to proceed.", "Save failed", "error");
+                    }
+                    else
+                        new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+                }));
+            }).Start();
         }
 
         private void btnProduct_Delete_Click(object sender, EventArgs e)
         {
-            DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo);
-
-            if (approval == DialogResult.Yes)
+            new Thread(() =>
             {
-                if (txtProductID.Text == "")
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    new Notification().PopUp("No item selected.", "", "error");
-                    return;
-                }
+                    DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
-                SQL.AddParam("@productID", txtProductID.Text);
-                SQL.Query("DELETE FROM products WHERE productID = @productID");
+                    if (approval == DialogResult.Yes)
+                    {
+                        if (txtProductID.Text == "")
+                        {
+                            new Notification().PopUp("No item selected.", "", "error");
+                            return;
+                        }
 
-                if (SQL.HasException(true))
-                    return;
+                        SQL.AddParam("@productID", txtProductID.Text);
+                        SQL.Query("DELETE FROM products WHERE productID = @productID");
 
-                ReloadProducts();
+                        if (SQL.HasException(true))
+                            return;
 
-                ClearFields_Pr();
+                        ReloadProducts();
 
-                new Notification().PopUp("Item deleted.", "", "information");
-            }
+                        ClearFields_Pr();
+
+                        new Notification().PopUp("Item deleted.", "", "information");
+                    }
+                }));
+            }).Start();
         }
 
         private void cbxDiscPWD_CheckedChanged(object sender, EventArgs e)
@@ -666,159 +758,171 @@ namespace EcoPOSv2
 
         private void btnCat_Save_Click(object sender, EventArgs e)
         {
-            CategoryRF();
-
-            var requiredFieldsMet = RequireField(ref requiredFields);
-
-            if (requiredFieldsMet == 1)
+            new Thread(() =>
             {
-                string action = "Update";
-                decimal pwd_perc = 0;
-                decimal sc_perc = 0;
-
-                if (txtCategoryID.Text == "")
-                    action = "New";
-
-
-                if (rbCat_5PWD.Checked)
-                    pwd_perc = 5;
-                else if (rbCat_20PWD.Checked)
-                    pwd_perc = 20;
-
-
-                switch (action)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    case "New":
+                    CategoryRF();
+
+                    var requiredFieldsMet = RequireField(ref requiredFields);
+
+                    if (requiredFieldsMet == 1)
+                    {
+                        string action = "Update";
+                        decimal pwd_perc = 0;
+                        decimal sc_perc = 0;
+
+                        if (txtCategoryID.Text == "")
+                            action = "New";
+
+
+                        if (rbCat_5PWD.Checked)
+                            pwd_perc = 5;
+                        else if (rbCat_20PWD.Checked)
+                            pwd_perc = 20;
+
+
+                        switch (action)
                         {
-                            // check for duplicate names
-                            SQL.AddParam("@name", txtCategoryName.Text);
-                            int result = Convert.ToInt32(SQL.ReturnResult("Select IIF((Select COUNT(*) FROM product_category WHERE name = @name) > 0,'1', '0') as result"));
+                            case "New":
+                                {
+                                    // check for duplicate names
+                                    SQL.AddParam("@name", txtCategoryName.Text);
+                                    int result = Convert.ToInt32(SQL.ReturnResult("Select IIF((Select COUNT(*) FROM product_category WHERE name = @name) > 0,'1', '0') as result"));
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
-                            if (result == 0)
-                            {
-                                SQL.AddParam("@name", txtCategoryName.Text);
-                                SQL.AddParam("@s_discR", cbxCat_DiscRegular.CheckState);
-                                SQL.AddParam("@s_discPWD_SC", cbxCat_DiscPWD.CheckState);
-                                SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
-                                SQL.AddParam("@s_discAth", cbxCat_DiscAthlete.CheckState);
-                                SQL.AddParam("@s_ask_qty", cbxCat_AskQuantity.CheckState);
+                                    if (result == 0)
+                                    {
+                                        SQL.AddParam("@name", txtCategoryName.Text);
+                                        SQL.AddParam("@s_discR", cbxCat_DiscRegular.CheckState);
+                                        SQL.AddParam("@s_discPWD_SC", cbxCat_DiscPWD.CheckState);
+                                        SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
+                                        SQL.AddParam("@s_discAth", cbxCat_DiscAthlete.CheckState);
+                                        SQL.AddParam("@s_ask_qty", cbxCat_AskQuantity.CheckState);
 
-                                SQL.Query(@"INSERT INTO product_category
+                                        SQL.Query(@"INSERT INTO product_category
                                    (name, s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
                                    VALUES
                                    (@name, @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)
                                   ");
 
-                                if (SQL.HasException(true))
-                                    return;
-                                ClearFields_Cat();
-                                new Notification().PopUp("Item saved.", "", "success");
-                            }
-                            else
-                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
-                            break;
-                        }
+                                        if (SQL.HasException(true))
+                                            return;
+                                        ClearFields_Cat();
+                                        new Notification().PopUp("Item saved.", "", "success");
+                                    }
+                                    else
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                    break;
+                                }
 
-                    default:
-                        {
+                            default:
+                                {
 
-                            // check for duplicate names other than itself
-                            SQL.AddParam("@categoryID", txtCategoryID.Text);
-                            SQL.AddParam("@name", txtCategoryName.Text);
+                                    // check for duplicate names other than itself
+                                    SQL.AddParam("@categoryID", txtCategoryID.Text);
+                                    SQL.AddParam("@name", txtCategoryName.Text);
 
-                            string result = SQL.ReturnResult(@"SELECT IIF((
+                                    string result = SQL.ReturnResult(@"SELECT IIF((
                 SELECT COUNT(*) as duplicatecount FROM product_category WHERE name = @name AND categoryID <> @categoryID) > 0,
                 1, 0) as result");
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
-                            if (result == "0")
-                            {
-                                SQL.AddParam("@categoryID", txtCategoryID.Text);
-                                SQL.AddParam("@name", txtCategoryName.Text);
-                                SQL.AddParam("@s_discR", cbxCat_DiscRegular.CheckState);
-                                SQL.AddParam("@s_discPWD_SC", cbxCat_DiscPWD.CheckState);
-                                SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
-                                SQL.AddParam("@s_discAth", cbxCat_DiscAthlete.CheckState);
-                                SQL.AddParam("@s_ask_qty", cbxCat_AskQuantity.CheckState);
+                                    if (result == "0")
+                                    {
+                                        SQL.AddParam("@categoryID", txtCategoryID.Text);
+                                        SQL.AddParam("@name", txtCategoryName.Text);
+                                        SQL.AddParam("@s_discR", cbxCat_DiscRegular.CheckState);
+                                        SQL.AddParam("@s_discPWD_SC", cbxCat_DiscPWD.CheckState);
+                                        SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
+                                        SQL.AddParam("@s_discAth", cbxCat_DiscAthlete.CheckState);
+                                        SQL.AddParam("@s_ask_qty", cbxCat_AskQuantity.CheckState);
 
-                                SQL.Query(@"UPDATE product_category SET
+                                        SQL.Query(@"UPDATE product_category SET
                                    name = @name, s_discR = @s_discR, s_discPWD_SC = @s_discPWD_SC, s_PWD_SC_perc = @s_PWD_SC_perc,
                                    s_discAth = @s_discAth, s_ask_qty = @s_ask_qty
                                    WHERE categoryID = @categoryID
                                   ");
 
-                                if (SQL.HasException(true))
-                                    return;
-                                new Notification().PopUp("Item saved.","","success");
-                            }
-                            else
-                                new Notification().PopUp("Duplicate name found.","","error");
+                                        if (SQL.HasException(true))
+                                            return;
+                                        new Notification().PopUp("Item saved.", "", "success");
+                                    }
+                                    else
+                                        new Notification().PopUp("Duplicate name found.", "", "error");
 
-                            if (Convert.ToInt32(lblCat_ItemCount.Text) > 0)
-                            {
+                                    if (Convert.ToInt32(lblCat_ItemCount.Text) > 0)
+                                    {
 
-                                // update items in this category
+                                        // update items in this category
 
-                                SQL.AddParam("@categoryID", txtCategoryID.Text);
-                                SQL.AddParam("@s_discR", cbxCat_DiscRegular.CheckState);
-                                SQL.AddParam("@s_discPWD_SC", cbxCat_DiscPWD.CheckState);
-                                SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
-                                SQL.AddParam("@s_discAth", cbxCat_DiscAthlete.CheckState);
-                                SQL.AddParam("@s_ask_qty", cbxCat_AskQuantity.CheckState);
+                                        SQL.AddParam("@categoryID", txtCategoryID.Text);
+                                        SQL.AddParam("@s_discR", cbxCat_DiscRegular.CheckState);
+                                        SQL.AddParam("@s_discPWD_SC", cbxCat_DiscPWD.CheckState);
+                                        SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
+                                        SQL.AddParam("@s_discAth", cbxCat_DiscAthlete.CheckState);
+                                        SQL.AddParam("@s_ask_qty", cbxCat_AskQuantity.CheckState);
 
-                                SQL.Query(@"UPDATE products SET 
+                                        SQL.Query(@"UPDATE products SET 
                            s_discR = @s_discR, s_discPWD_SC = @s_discPWD_SC, s_PWD_SC_perc = @s_PWD_SC_perc,
                            s_discAth = @s_discAth, s_ask_qty = @s_ask_qty
                            WHERE categoryID = @categoryID");
 
-                                if (SQL.HasException(true))
-                                    return;
-                                new Notification().PopUp("Item saved.","","success");
-                            }
+                                        if (SQL.HasException(true))
+                                            return;
+                                        new Notification().PopUp("Item saved.", "", "success");
+                                    }
 
-                            break;
+                                    break;
+                                }
                         }
-                }
-                loadCat_Category();
-                LoadCategory();
-                OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
-            }
-            else
-                new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+                        loadCat_Category();
+                        LoadCategory();
+                        OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
+                    }
+                    else
+                        new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
+                }));
+            }).Start();
         }
 
         private void btnCat_Delete_Click(object sender, EventArgs e)
         {
-            DialogResult approval = MessageBox.Show("Deleting this category will delete the " + lblCat_ItemCount.Text + " items in it. Continue?", "Delete category", MessageBoxButtons.YesNo);
-
-            if ((approval == DialogResult.Yes))
+            new Thread(() =>
             {
-                if (txtCategoryID.Text == "")
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    new Notification().PopUp("No item selected.","","error");
-                    return;
-                }
+                    DialogResult approval = MessageBox.Show("Deleting this category will delete the " + lblCat_ItemCount.Text + " items in it. Continue?", "Delete category", MessageBoxButtons.YesNo);
 
-                SQL.AddParam("@categoryID", txtCategoryID.Text);
-                SQL.Query("DELETE FROM product_category WHERE categoryID = @categoryID");
+                    if ((approval == DialogResult.Yes))
+                    {
+                        if (txtCategoryID.Text == "")
+                        {
+                            new Notification().PopUp("No item selected.", "", "error");
+                            return;
+                        }
 
-                if (SQL.HasException(true))
-                    return;
+                        SQL.AddParam("@categoryID", txtCategoryID.Text);
+                        SQL.Query("DELETE FROM product_category WHERE categoryID = @categoryID");
 
-                loadCat_Category();
-                LoadCategory();
-                ReloadProducts();
-                OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
+                        if (SQL.HasException(true))
+                            return;
 
-                ClearFields_Cat();
+                        loadCat_Category();
+                        LoadCategory();
+                        ReloadProducts();
+                        OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
 
-                new  Notification().PopUp("Item deleted.", "", "information");
-            }
+                        ClearFields_Cat();
+
+                        new Notification().PopUp("Item deleted.", "", "information");
+                    }
+                }));
+            }).Start();
         }
 
         private void btnCat_Sort_Click(object sender, EventArgs e)
@@ -840,45 +944,65 @@ namespace EcoPOSv2
 
         private void txtSearchCategory_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtSearchCategory.Text == "")
+            SQLControl psql = new SQLControl();
+            new Thread(() =>
             {
-                SQL.Query(@"SELECT catID, catName FROM
-                           (
-                           SELECT 0 as catID, 'All Categories' as catName
-                           UNION ALL 
-                           SELECT categoryID as catID, name as catName FROM product_category 
-                           ) x ORDER BY 
-                           CASE WHEN catName = 'All Categories' then 1
-                           ELSE 5
-                           END,
-                           catname ASC");
-                if (SQL.HasException(true))
-                    return;
-            }
-            else
-            {
-                SQL.AddParam("@find", txtSearchCategory.Text + "%");
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    if (txtSearchCategory.Text == "")
+                    {
+                        //SQL.Query(@"SELECT catID, catName FROM
+                        //   (
+                        //   SELECT 0 as catID, 'All Categories' as catName
+                        //   UNION ALL 
+                        //   SELECT categoryID as catID, name as catName FROM product_category 
+                        //   ) x ORDER BY 
+                        //   CASE WHEN catName = 'All Categories' then 1
+                        //   ELSE 5
+                        //   END,
+                        //   catname ASC");
 
-                SQL.Query("Select categoryID, Name FROM product_category WHERE name Like @find ORDER BY name ASC");
-                if (SQL.HasException(true))
-                    return;
-            }
+                        psql.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
 
-            dgvCategory.DataSource = SQL.DBDT;
-            dgvCategory.Columns[0].Visible = false;
+                        if (psql.HasException(true))
+                            return;
+                    }
+                    else
+                    {
+                        psql.AddParam("@find", txtSearchCategory.Text + "%");
+
+                        psql.Query("Select categoryID, Name FROM product_category WHERE name Like @find ORDER BY name ASC");
+                        if (psql.HasException(true))
+                            return;
+                    }
+
+                    dgvCategory.DataSource = psql.DBDT;
+                    dgvCategory.Columns[0].Visible = false;
+                }));
+            }).Start();
         }
 
         private void txtSearchProduct_KeyUp(object sender, KeyEventArgs e)
         {
-            SQL.AddParam("@find", txtSearchProduct.Text + "%");
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    if (txtSearchProduct.Text != "")
+                    {
+                        SQL.AddParam("@find", txtSearchProduct.Text + "%");
 
-            SQL.Query(@"SELECT productID, description, Name FROM products WHERE name LIKE @find OR description LIKE @find 
+                        SQL.Query(@"SELECT productID, description, Name FROM products WHERE name LIKE @find OR description LIKE @find 
                        OR barcode1 LIKE @find OR barcode2 LIKE @find ORDER BY description ASC");
-            if (SQL.HasException(true))
-                return;
+                        if (SQL.HasException(true))
+                            return;
 
-            dgvProducts.DataSource = SQL.DBDT;
-            dgvProducts.Columns[0].Visible = false;
+                        dgvProducts.DataSource = SQL.DBDT;
+                        dgvProducts.Columns[0].Visible = false;
+                    }
+                    else ReloadProducts();
+                }));
+            }).Start();
         }
 
         private void txtRPInclusive_Enter(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
@@ -90,7 +91,6 @@ namespace EcoPOSv2
         {
             _AWarehouse = this;
 
-
             LoadWarehouse();
             LoadWarehouseCMB();
             ControlBehavior();
@@ -105,6 +105,11 @@ namespace EcoPOSv2
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if(Order.Instance.CheckOpened("AddEditWarehouse") == true)
+            {
+                return;
+            }
+
             AddEditWarehouse frmAddEditWarehouse = new AddEditWarehouse();
             frmAddEditWarehouse.action = "New";
             frmAddEditWarehouse.frmAWarehouse = this;
@@ -300,31 +305,37 @@ namespace EcoPOSv2
 
         private void btnTransfer_Click(object sender, EventArgs e)
         {
-            if (dgvToWarehouse.RowCount == 0)
-                new Notification().PopUp("No selected items.","Error","error");
-            else if (dgvToWarehouse.RowCount > 0)
+            new Thread(() =>
             {
-                for (int i = 0; i <= dgvToWarehouse.RowCount - 1; i++)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    SQL.AddParam("@warehouseID", cmbWarehouseTo.SelectedValue);
-                    SQL.AddParam("@productID", dgvToWarehouse.Rows[i].Cells[0].Value.ToString());
-
-                    SQL.Query("UPDATE products SET warehouseID = @warehouseID WHERE productID = @productID");
-
-                    if (SQL.HasException(true))
+                    if (dgvToWarehouse.RowCount == 0)
+                        new Notification().PopUp("No selected items.", "Error", "error");
+                    else if (dgvToWarehouse.RowCount > 0)
                     {
-                        new Notification().PopUp("Something went wrong.", "Error", "error");
-                        return;
+                        for (int i = 0; i <= dgvToWarehouse.RowCount - 1; i++)
+                        {
+                            SQL.AddParam("@warehouseID", cmbWarehouseTo.SelectedValue);
+                            SQL.AddParam("@productID", dgvToWarehouse.Rows[i].Cells[0].Value.ToString());
+
+                            SQL.Query("UPDATE products SET warehouseID = @warehouseID WHERE productID = @productID");
+
+                            if (SQL.HasException(true))
+                            {
+                                new Notification().PopUp("Something went wrong.", "Error", "error");
+                                return;
+                            }
+                        }
+
+                        LoadWarehouse();
+                        LoadWarehouseCMB();
+
+                        btnSearch.PerformClick();
+                        dgvToWarehouse.Rows.Clear();
+                        new Notification().PopUp("Item saved.", "", "information");
                     }
-                }
-
-                LoadWarehouse();
-                LoadWarehouseCMB();
-
-                btnSearch.PerformClick();
-                dgvToWarehouse.Rows.Clear();
-                new Notification().PopUp("Item saved.","","information");
-            }
+                }));
+            }).Start();
         }
 
         private void txtSearchItem_KeyUp(object sender, KeyEventArgs e)
@@ -354,6 +365,11 @@ namespace EcoPOSv2
         }
 
         private void dgvWarehouse_DoubleClick(object sender, EventArgs e)
+        {
+            btnSearch.PerformClick();
+        }
+
+        private void CmbCategory_TextChanged(object sender, EventArgs e)
         {
             btnSearch.PerformClick();
         }

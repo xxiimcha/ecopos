@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSv2;
+using System.Threading;
 
 namespace EcoPOSv2
 {
@@ -57,89 +58,98 @@ namespace EcoPOSv2
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if(txtName.Text == "")
+            new Thread(() =>
             {
-                new Notification().PopUp("Please complete all the field(s)", "Error", "error");
-            }
-            else
-            {
-                switch (action)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    case "New":
+                    if (txtName.Text == "")
+                    {
+                        new Notification().PopUp("Please complete all the field(s)", "Error", "error");
+                        return;
+                    }
+                    else
+                    {
+                        switch (action)
                         {
-                            // check for duplicate names
-                            SQL.AddParam("@name", txtName.Text);
-                            int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM warehouse WHERE name = @name) > 0,'1', '0') as result"));
+                            case "New":
+                                {
+                                    // check for duplicate names
+                                    SQL.AddParam("@name", txtName.Text);
+                                    int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM warehouse WHERE name = @name) > 0,'1', '0') as result"));
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
-                            if (result == 0)
-                            {
-                                SQL.AddParam("@name", txtName.Text);
+                                    if (result == 0)
+                                    {
+                                        SQL.AddParam("@name", txtName.Text);
 
-                                SQL.Query("INSERT INTO warehouse (name) VALUES (@name)");
-                                if (SQL.HasException(true))
-                                    return;
+                                        SQL.Query("INSERT INTO warehouse (name) VALUES (@name)");
+                                        if (SQL.HasException(true))
+                                            return;
 
 
-                                ClearFields();
-                                frmAWarehouse.LoadWarehouse();
-                                new Notification().PopUp("Item saved", "Success!", "success");
-                            }
-                            else
-                            {
-                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
-                                return;
-                            }
+                                        ClearFields();
+                                        AWarehouse.Instance.LoadWarehouse();
+                                        frmAWarehouse.LoadWarehouse();
+                                        new Notification().PopUp("Item saved", "Success!", "success");
+                                    }
+                                    else
+                                    {
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                        return;
+                                    }
 
-                            break;
-                        }
+                                    break;
+                                }
 
-                    case "Update":
-                        {
+                            case "Update":
+                                {
 
-                            // check for duplicate names other than itself
-                            SQL.AddParam("@warehouseID", warehouseID);
-                            SQL.AddParam("@name", txtName.Text);
+                                    // check for duplicate names other than itself
+                                    SQL.AddParam("@warehouseID", warehouseID);
+                                    SQL.AddParam("@name", txtName.Text);
 
-                            string result = SQL.ReturnResult(@"SELECT IIF((
+                                    string result = SQL.ReturnResult(@"SELECT IIF((
                 SELECT COUNT(*) as duplicatecount FROM warehouse WHERE name = @name AND warehouseID <> @warehouseID) > 0,
                 1, 0) as result");
 
-                            if (SQL.HasException(true))
-                                return;
+                                    if (SQL.HasException(true))
+                                        return;
 
-                            if (result == "0")
-                            {
-                                SQL.AddParam("@warehouseID", warehouseID);
-                                SQL.AddParam("@name", txtName.Text);
+                                    if (result == "0")
+                                    {
+                                        SQL.AddParam("@warehouseID", warehouseID);
+                                        SQL.AddParam("@name", txtName.Text);
 
-                                SQL.Query("UPDATE warehouse SET name = @name WHERE warehouseID = @warehouseID");
-                                if (SQL.HasException(true))
+                                        SQL.Query("UPDATE warehouse SET name = @name WHERE warehouseID = @warehouseID");
+                                        if (SQL.HasException(true))
+                                            return;
+
+                                        AWarehouse.Instance.LoadWarehouse();
+                                        frmAWarehouse.LoadWarehouse();
+                                        new Notification().PopUp("Item saved.", "", "information");
+                                    }
+                                    else
+                                    {
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                        return;
+                                    }
+
+                                    break;
+                                }
+
+                            default:
+                                {
+                                    new Notification().PopUp("Something went wrong, please try again.", "Error", "error");
                                     return;
-
-                                frmAWarehouse.LoadWarehouse();
-                                new Notification().PopUp("Item saved.", "", "information");
-                            }
-                            else
-                            {
-                                new Notification().PopUp("Duplicate name found.", "Save failed", "error");
-                                return;
-                            }
-
-                            break;
+                                }
                         }
+                    }
 
-                    default:
-                        {
-                            new Notification().PopUp("Something went wrong, please try again.", "Error", "error");
-                            return;
-                        }
-                }
-            }
-
-            this.Close();
+                    this.Close();
+                }));
+            }).Start();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

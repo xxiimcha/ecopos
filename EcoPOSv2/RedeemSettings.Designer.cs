@@ -1117,9 +1117,8 @@
             this.txtRI_SearchRedeem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRI_SearchRedeem.ForeColor = System.Drawing.Color.DimGray;
             this.txtRI_SearchRedeem.Location = new System.Drawing.Point(0, 0);
-            this.txtRI_SearchRedeem.Multiline = true;
             this.txtRI_SearchRedeem.Name = "txtRI_SearchRedeem";
-            this.txtRI_SearchRedeem.Size = new System.Drawing.Size(335, 34);
+            this.txtRI_SearchRedeem.Size = new System.Drawing.Size(335, 33);
             this.txtRI_SearchRedeem.TabIndex = 25;
             this.txtRI_SearchRedeem.Tag = "Search item/barcode";
             this.txtRI_SearchRedeem.Text = "Search item/barcode";
@@ -1296,9 +1295,8 @@
             this.txtRI_SearchItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRI_SearchItem.ForeColor = System.Drawing.Color.DimGray;
             this.txtRI_SearchItem.Location = new System.Drawing.Point(0, 0);
-            this.txtRI_SearchItem.Multiline = true;
             this.txtRI_SearchItem.Name = "txtRI_SearchItem";
-            this.txtRI_SearchItem.Size = new System.Drawing.Size(335, 34);
+            this.txtRI_SearchItem.Size = new System.Drawing.Size(335, 33);
             this.txtRI_SearchItem.TabIndex = 25;
             this.txtRI_SearchItem.Tag = "Search item/barcode";
             this.txtRI_SearchItem.Text = "Search item/barcode";
