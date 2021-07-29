@@ -406,27 +406,37 @@ namespace EcoPOSv2
         {
             if(e.KeyCode == Keys.F2)
             {
-                btnOrder.PerformClick();
+                if (btnOrder.Enabled == true)
+                    btnOrder.PerformClick();
+                else return;
             }
 
             if(e.KeyCode == Keys.F8)
             {
-                btnXReading.PerformClick();
+                if (btnXReading.Enabled == true)
+                    btnXReading.PerformClick();
+                else return;
             }
 
             if(e.KeyCode == Keys.F9)
             {
-                btnCalculator.PerformClick();
+                if (btnCalculator.Enabled == true)
+                    btnCalculator.PerformClick();
+                else return;
             }
 
             if (e.KeyCode == Keys.F10)
             {
-                btnMore.PerformClick();
+                if (btnMore.Enabled == true)
+                    btnMore.PerformClick();
+                else return;
             }
 
             if(e.Control && e.KeyCode == Keys.I)
             {
-                btnItemChecker.PerformClick();
+                if (btnItemChecker.Enabled == true)
+                    btnItemChecker.PerformClick();
+                else return;
             }
 
             if(e.KeyCode == Keys.F11)
