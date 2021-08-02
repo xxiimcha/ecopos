@@ -301,8 +301,6 @@ namespace EcoPOSv2
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            // save xreading
-            SQL.AddParam("@xreading_ref", SQL.ReturnResult("select max(id + 1) from xreading"));
             SQL.AddParam("@store_open_date_time", store_open_date_time);
             SQL.AddParam("@store_open_userID", store_open_userID);
             SQL.AddParam("@shift_start_date_time", shift_start_date_time);
@@ -321,9 +319,9 @@ namespace EcoPOSv2
             SQL.AddParam("@declared_drawer", Convert.ToDecimal(lblDeclaredDrawer.Text));
             SQL.AddParam("@short_over", Convert.ToDecimal(lblShortOver.Text));
 
-            SQL.Query(@"INSERT INTO xreading (xreading_ref,store_open_date_time, store_open_userID, shift_start_date_time, shift_start_userID, shift_end_date_time, no_of_transactions, 
+            SQL.Query(@"INSERT INTO xreading (store_open_date_time, store_open_userID, shift_start_date_time, shift_start_userID, shift_end_date_time, no_of_transactions, 
                        beginning_invoice, ending_invoice, void_beginning_no, void_ending_no, starting_cash, sales, adjustments, discount_deductions, net_sales, 
-                       expected_drawer, declared_drawer, short_over) VALUES (@xreading_ref,@store_open_date_time, @store_open_userID, @shift_start_date_time, 
+                       expected_drawer, declared_drawer, short_over) VALUES (@store_open_date_time, @store_open_userID, @shift_start_date_time, 
                        @shift_start_userID, (SELECT GETDATE()), @no_of_transactions, @beginning_invoice, @ending_invoice, @void_beginning_no, @void_ending_no, 
                        @starting_cash, @sales, @adjustments, @discount_deductions, @net_sales, @expected_drawer, @declared_drawer, @short_over)");
 
