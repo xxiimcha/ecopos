@@ -302,7 +302,7 @@ namespace EcoPOSv2
         private void btnPrint_Click(object sender, EventArgs e)
         {
             // save xreading
-
+            SQL.AddParam("@xreading_ref", SQL.ReturnResult("select max(id + 1) from xreading"));
             SQL.AddParam("@store_open_date_time", store_open_date_time);
             SQL.AddParam("@store_open_userID", store_open_userID);
             SQL.AddParam("@shift_start_date_time", shift_start_date_time);
@@ -321,14 +321,37 @@ namespace EcoPOSv2
             SQL.AddParam("@declared_drawer", Convert.ToDecimal(lblDeclaredDrawer.Text));
             SQL.AddParam("@short_over", Convert.ToDecimal(lblShortOver.Text));
 
-            SQL.Query(@"INSERT INTO xreading (store_open_date_time, store_open_userID, shift_start_date_time, shift_start_userID, shift_end_date_time, no_of_transactions, 
+            SQL.Query(@"INSERT INTO xreading (xreading_ref,store_open_date_time, store_open_userID, shift_start_date_time, shift_start_userID, shift_end_date_time, no_of_transactions, 
                        beginning_invoice, ending_invoice, void_beginning_no, void_ending_no, starting_cash, sales, adjustments, discount_deductions, net_sales, 
-                       expected_drawer, declared_drawer, short_over) VALUES (@store_open_date_time, @store_open_userID, @shift_start_date_time, 
+                       expected_drawer, declared_drawer, short_over) VALUES (@xreading_ref,@store_open_date_time, @store_open_userID, @shift_start_date_time, 
                        @shift_start_userID, (SELECT GETDATE()), @no_of_transactions, @beginning_invoice, @ending_invoice, @void_beginning_no, @void_ending_no, 
                        @starting_cash, @sales, @adjustments, @discount_deductions, @net_sales, @expected_drawer, @declared_drawer, @short_over)");
 
+            //MessageBox.Show("1: " + store_open_date_time + "\n" +
+            //                "2: " + store_open_userID + "\n" +
+            //                "3: " + shift_start_date_time + "\n" +
+            //                "4: " + shift_start_userID + "\n" +
+            //                "5: " + lblTransactions.Text + "\n" +
+            //                "6: " + lblBeginningInvoice.Text + "\n" +
+            //                "7: " + lblEndingInvoice.Text + "\n" +
+            //                "8: " + lblVoidBeginningNo.Text + "\n" +
+            //                "9: " + lblVoidEndingNo.Text + "\n" +
+            //                "10: " + lblStartingCash.Text + "\n" +
+            //                "11: " + lblSales.Text + "\n" +
+            //                "12: " + lblDiscount.Text + "\n" +
+            //                "13: " + lblAdjustments.Text + "\n" +
+            //                "14: " + lblNetSales.Text + "\n" +
+            //                "15: " + lblExpectedDrawer.Text + "\n" +
+            //                "16: " + lblDeclaredDrawer.Text + "\n" +
+            //                "17: " + lblShortOver.Text);
+
+
             if (SQL.HasException(true))
+            {
+                MessageBox.Show("1");
                 return;
+            }
+                
 
 
             // save cashier declaration
@@ -382,7 +405,10 @@ namespace EcoPOSv2
                        @coin_1, @coin_25c, @coin_10c, @coin_5c, @coin_1c, @gift_card, @debit_card, @credit_card, @cheque, @gcash, @paymaya, @total)");
 
             if (SQL.HasException(true))
+            {
+                MessageBox.Show("2");
                 return;
+            }
 
 
             // generate report
@@ -391,7 +417,10 @@ namespace EcoPOSv2
             // log out
             SQL.Query("UPDATE shift SET ended = (SELECT GETDATE()) WHERE shiftID = (SELECT MAX(shiftID) FROM shift)");
             if (SQL.HasException(true))
+            {
+                MessageBox.Show("3");
                 return;
+            }
 
             //Order frmOrder = new Order();
             //Main.Instance.OpenChildForm(frmOrder);
