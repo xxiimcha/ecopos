@@ -214,6 +214,7 @@ namespace EcoPOSv2
         private void WorkerCSV_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Import Product(s) successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnImport.Enabled = true;
             this.Close();
         }
         private void WorkerCSV_DoWork(object sender, DoWorkEventArgs e)
