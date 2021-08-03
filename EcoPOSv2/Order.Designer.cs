@@ -139,6 +139,7 @@
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.ReadOnly = true;
             this.dgvCart.RowHeadersVisible = false;
+            this.dgvCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCart.Size = new System.Drawing.Size(757, 782);
             this.dgvCart.TabIndex = 19;
