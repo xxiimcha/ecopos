@@ -37,7 +37,10 @@ namespace EcoPOSv2
             SQL.AddParam("@productID", productID);
             SQL.AddParam("@currentQty", currentQty);
             SQL.AddParam("@newQty", decimal.Parse(txtQuantity.Text));
-            int checkqty = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT ((SUM(quantity) - @currentQty) + @newQty) FROM order_cart WHERE productID = @productID) > (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+            int checkqty = int.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT ((SUM(quantity) - @currentQty) + @newQty) FROM order_cart 
+                                WHERE productID = @productID AND terminal_id=@terminal_id) > (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
             if (SQL.HasException(true)) return;
             if (checkqty == 1)
             {
@@ -47,8 +50,9 @@ namespace EcoPOSv2
 
             SQL.AddParam("@itemID", itemID);
             SQL.AddParam("@quantity", txtQuantity.Text);
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-            SQL.Query("UPDATE order_cart SET quantity = @quantity WHERE itemID = @itemID");
+            SQL.Query("UPDATE order_cart SET quantity = @quantity WHERE itemID = @itemID AND terminal_id=@terminal_id");
 
             if (SQL.HasException(true))
                 return;

@@ -285,7 +285,6 @@ namespace EcoPOSv2
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-
             if (txtInput.Text.Length != 0 && valHolder1 != 0)
             {
                 //MessageBox.Show("equals");

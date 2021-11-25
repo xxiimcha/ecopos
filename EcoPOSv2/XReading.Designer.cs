@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XReading));
             this.pnlPreview = new Guna.UI2.WinForms.Guna2Panel();
             this.lblAdjustments = new System.Windows.Forms.Label();
@@ -353,28 +353,28 @@
             this.dgvPaymentMethod.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaymentMethod.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentMethod.ColumnHeadersVisible = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPaymentMethod.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaymentMethod.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.dgvPaymentMethod.Location = new System.Drawing.Point(617, 191);
             this.dgvPaymentMethod.Name = "dgvPaymentMethod";
             this.dgvPaymentMethod.ReadOnly = true;
             this.dgvPaymentMethod.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPaymentMethod.Size = new System.Drawing.Size(309, 350);
             this.dgvPaymentMethod.TabIndex = 69;
             // 
@@ -1072,7 +1072,10 @@
             this.txt1c.Name = "txt1c";
             this.txt1c.Size = new System.Drawing.Size(184, 24);
             this.txt1c.TabIndex = 115;
+            this.txt1c.Text = "0";
             this.txt1c.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt1c.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt1c.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_1c
             // 
@@ -1156,7 +1159,10 @@
             this.txt5c.Name = "txt5c";
             this.txt5c.Size = new System.Drawing.Size(184, 24);
             this.txt5c.TabIndex = 108;
+            this.txt5c.Text = "0";
             this.txt5c.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt5c.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt5c.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_5c
             // 
@@ -1180,7 +1186,10 @@
             this.txt10c.Name = "txt10c";
             this.txt10c.Size = new System.Drawing.Size(184, 24);
             this.txt10c.TabIndex = 106;
+            this.txt10c.Text = "0";
             this.txt10c.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt10c.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt10c.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_10c
             // 
@@ -1204,7 +1213,10 @@
             this.txt25c.Name = "txt25c";
             this.txt25c.Size = new System.Drawing.Size(184, 24);
             this.txt25c.TabIndex = 104;
+            this.txt25c.Text = "0";
             this.txt25c.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt25c.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt25c.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_25c
             // 
@@ -1228,7 +1240,10 @@
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(184, 24);
             this.txt1.TabIndex = 102;
+            this.txt1.Text = "0";
             this.txt1.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt1.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt1.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_1
             // 
@@ -1252,7 +1267,10 @@
             this.txt5.Name = "txt5";
             this.txt5.Size = new System.Drawing.Size(184, 24);
             this.txt5.TabIndex = 100;
+            this.txt5.Text = "0";
             this.txt5.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt5.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt5.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_5
             // 
@@ -1360,7 +1378,10 @@
             this.txt10.Name = "txt10";
             this.txt10.Size = new System.Drawing.Size(184, 24);
             this.txt10.TabIndex = 91;
+            this.txt10.Text = "0";
             this.txt10.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt10.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt10.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_10
             // 
@@ -1384,7 +1405,10 @@
             this.txt20.Name = "txt20";
             this.txt20.Size = new System.Drawing.Size(184, 24);
             this.txt20.TabIndex = 89;
+            this.txt20.Text = "0";
             this.txt20.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt20.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt20.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_20
             // 
@@ -1408,7 +1432,10 @@
             this.txt50.Name = "txt50";
             this.txt50.Size = new System.Drawing.Size(184, 24);
             this.txt50.TabIndex = 87;
+            this.txt50.Text = "0";
             this.txt50.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt50.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt50.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_50
             // 
@@ -1432,7 +1459,10 @@
             this.txt100.Name = "txt100";
             this.txt100.Size = new System.Drawing.Size(184, 24);
             this.txt100.TabIndex = 85;
+            this.txt100.Text = "0";
             this.txt100.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt100.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt100.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_100
             // 
@@ -1456,7 +1486,10 @@
             this.txt200.Name = "txt200";
             this.txt200.Size = new System.Drawing.Size(184, 24);
             this.txt200.TabIndex = 83;
+            this.txt200.Text = "0";
             this.txt200.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt200.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt200.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_200
             // 
@@ -1480,7 +1513,10 @@
             this.txt500.Name = "txt500";
             this.txt500.Size = new System.Drawing.Size(184, 24);
             this.txt500.TabIndex = 81;
+            this.txt500.Text = "0";
             this.txt500.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt500.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt500.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_500
             // 
@@ -1504,7 +1540,10 @@
             this.txt1000.Name = "txt1000";
             this.txt1000.Size = new System.Drawing.Size(184, 24);
             this.txt1000.TabIndex = 79;
+            this.txt1000.Text = "0";
             this.txt1000.TextChanged += new System.EventHandler(this.txt1000_TextChanged);
+            this.txt1000.Enter += new System.EventHandler(this.txt1000_Enter);
+            this.txt1000.Leave += new System.EventHandler(this.txt1000_Leave);
             // 
             // lbl_1000
             // 
@@ -1579,8 +1618,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(956, 562);
-            this.Controls.Add(this.pnlPreview);
             this.Controls.Add(this.pnlCD);
+            this.Controls.Add(this.pnlPreview);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

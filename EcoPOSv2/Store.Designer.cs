@@ -45,7 +45,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1164, 866);
+            this.Panel1.Size = new System.Drawing.Size(1090, 734);
             this.Panel1.TabIndex = 9;
             // 
             // btnPrintersDevices
@@ -64,7 +64,7 @@
             this.btnPrintersDevices.Location = new System.Drawing.Point(0, 106);
             this.btnPrintersDevices.Name = "btnPrintersDevices";
             this.btnPrintersDevices.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnPrintersDevices.Size = new System.Drawing.Size(1164, 53);
+            this.btnPrintersDevices.Size = new System.Drawing.Size(1090, 53);
             this.btnPrintersDevices.TabIndex = 5;
             this.btnPrintersDevices.Text = "Printers and Devices";
             this.btnPrintersDevices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -87,7 +87,7 @@
             this.btnEditReceiptFooter.Location = new System.Drawing.Point(0, 53);
             this.btnEditReceiptFooter.Name = "btnEditReceiptFooter";
             this.btnEditReceiptFooter.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnEditReceiptFooter.Size = new System.Drawing.Size(1164, 53);
+            this.btnEditReceiptFooter.Size = new System.Drawing.Size(1090, 53);
             this.btnEditReceiptFooter.TabIndex = 4;
             this.btnEditReceiptFooter.Text = "Edit Receipt Footer Text";
             this.btnEditReceiptFooter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -110,7 +110,7 @@
             this.btnSeeStoreDetails.Location = new System.Drawing.Point(0, 0);
             this.btnSeeStoreDetails.Name = "btnSeeStoreDetails";
             this.btnSeeStoreDetails.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnSeeStoreDetails.Size = new System.Drawing.Size(1164, 53);
+            this.btnSeeStoreDetails.Size = new System.Drawing.Size(1090, 53);
             this.btnSeeStoreDetails.TabIndex = 3;
             this.btnSeeStoreDetails.Text = "See Store Details";
             this.btnSeeStoreDetails.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -122,7 +122,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

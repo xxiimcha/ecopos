@@ -23,7 +23,8 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         ExportImport EI = new ExportImport();
 
-        XReadingReport report = new XReadingReport();
+        XReadingReport58 report = new XReadingReport58();
+        XReadingReport80 report80 = new XReadingReport80();
 
         //VARIABLES AND OTHERS
 
@@ -109,16 +110,31 @@ namespace EcoPOSv2
                 return;
             }
 
-
-            try
+            if (Properties.Settings.Default.papersize == "58MM")
             {
-                report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-                report.PrintOptions.PaperSource = PaperSource.Auto;
-                report.PrintToPrinter(1, false, 0, 0);
+                try
+                {
+                    report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    report.PrintOptions.PaperSource = PaperSource.Auto;
+                    report.PrintToPrinter(1, false, 0, 0);
+                }
+                catch (Exception)
+                {
+                    new Notification().PopUp("Please select report to proceed", "Error", "error");
+                }
             }
-            catch (Exception)
+            else
             {
-                new Notification().PopUp("Please select report to proceed", "Error", "error");
+                try
+                {
+                    report80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    report80.PrintOptions.PaperSource = PaperSource.Auto;
+                    report80.PrintToPrinter(1, false, 0, 0);
+                }
+                catch (Exception)
+                {
+                    new Notification().PopUp("Please select report to proceed", "Error", "error");
+                }
             }
         }
 
@@ -127,18 +143,20 @@ namespace EcoPOSv2
             if (e.RowIndex == -1)
                 return;
 
-            report = new XReadingReport();
-
-            DataSet ds = new DataSet();
-
-            try
+            if (Properties.Settings.Default.papersize == "58MM")
             {
-                CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
+                report = new XReadingReport58();
 
-                string datetime_now = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt");
+                DataSet ds = new DataSet();
 
-                SQL.AddParam("@xreading_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
-                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                try
+                {
+                    CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
+
+                    string datetime_now = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt");
+
+                    SQL.AddParam("@xreading_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
+                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
                            SELECT * INTO #Temp_users
                            FROM
                            (
@@ -155,47 +173,121 @@ namespace EcoPOSv2
                            #Temp_users as us ON xreading.shift_start_userID = us.ID WHERE 
                            xreading_ref = @xreading_ref");
 
-                if (SQL.HasException(true))
-                    return;
+                    if (SQL.HasException(true))
+                        return;
 
-                foreach (DataRow r in SQL.DBDT.Rows)
-                {
-                    report.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
-                    report.SetParameterValue("store_open_date_time", r["store_open_date_time"].ToString());
-                    report.SetParameterValue("store_open_userID", r["store_userID"].ToString());
-                    report.SetParameterValue("shift_start_date_time", r["shift_start_date_time"].ToString());
-                    report.SetParameterValue("shift_start_userID", r["shift_userID"].ToString());
-                    report.SetParameterValue("beginning_invoice", r["beginning_invoice"].ToString());
-                    report.SetParameterValue("ending_invoice", r["ending_invoice"].ToString());
-                    report.SetParameterValue("void_beginning_no", r["void_beginning_no"].ToString());
-                    report.SetParameterValue("void_ending_no", r["void_ending_no"].ToString());
-                    decimal starting_cash = decimal.Parse(r["starting_cash"].ToString());
-                    report.SetParameterValue("starting_cash", starting_cash.ToString("N2"));
-                    report.SetParameterValue("no_of_transactions", r["no_of_transactions"].ToString());
-                    decimal sales = decimal.Parse(r["sales"].ToString());
-                    report.SetParameterValue("sales", sales.ToString("N2"));
-                    decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
-                    report.SetParameterValue("discount_deductions", discount_deductions.ToString("N2"));
-                    decimal adjustments = decimal.Parse(r["adjustments"].ToString());
-                    report.SetParameterValue("adjustments", adjustments.ToString("N2"));
-                    decimal net_sales = decimal.Parse(r["net_sales"].ToString());
-                    report.SetParameterValue("net_sales", net_sales.ToString("N2"));
-                    decimal expected_drawer = decimal.Parse(r["expected_drawer"].ToString());
-                    report.SetParameterValue("expected_drawer", expected_drawer.ToString("N2"));
-                    decimal declared_drawer = decimal.Parse(r["declared_drawer"].ToString());
-                    report.SetParameterValue("declared_drawer", declared_drawer.ToString("N2"));
-                    decimal short_over = decimal.Parse(r["short_over"].ToString());
-                    report.SetParameterValue("short_over", short_over.ToString("N2"));
-                    report.SetParameterValue("printed_on", datetime_now);
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        report.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
+                        report.SetParameterValue("store_open_date_time", r["store_open_date_time"].ToString());
+                        report.SetParameterValue("store_open_userID", r["store_userID"].ToString());
+                        report.SetParameterValue("shift_start_date_time", r["shift_start_date_time"].ToString());
+                        report.SetParameterValue("shift_start_userID", r["shift_userID"].ToString());
+                        report.SetParameterValue("beginning_invoice", r["beginning_invoice"].ToString());
+                        report.SetParameterValue("ending_invoice", r["ending_invoice"].ToString());
+                        report.SetParameterValue("void_beginning_no", r["void_beginning_no"].ToString());
+                        report.SetParameterValue("void_ending_no", r["void_ending_no"].ToString());
+                        decimal starting_cash = decimal.Parse(r["starting_cash"].ToString());
+                        report.SetParameterValue("starting_cash", starting_cash.ToString("N2"));
+                        report.SetParameterValue("no_of_transactions", r["no_of_transactions"].ToString());
+                        decimal sales = decimal.Parse(r["sales"].ToString());
+                        report.SetParameterValue("sales", sales.ToString("N2"));
+                        decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
+                        report.SetParameterValue("discount_deductions", discount_deductions.ToString("N2"));
+                        decimal adjustments = decimal.Parse(r["adjustments"].ToString());
+                        report.SetParameterValue("adjustments", adjustments.ToString("N2"));
+                        decimal net_sales = decimal.Parse(r["net_sales"].ToString());
+                        report.SetParameterValue("net_sales", net_sales.ToString("N2"));
+                        decimal expected_drawer = decimal.Parse(r["expected_drawer"].ToString());
+                        report.SetParameterValue("expected_drawer", expected_drawer.ToString("N2"));
+                        decimal declared_drawer = decimal.Parse(r["declared_drawer"].ToString());
+                        report.SetParameterValue("declared_drawer", declared_drawer.ToString("N2"));
+                        decimal short_over = decimal.Parse(r["short_over"].ToString());
+                        report.SetParameterValue("short_over", short_over.ToString("N2"));
+                        report.SetParameterValue("printed_on", datetime_now);
+                    }
+
+                    CrystalReportViewer1.ReportSource = report;
+                    CrystalReportViewer1.Refresh();
                 }
-
-                CrystalReportViewer1.ReportSource = report;
-                CrystalReportViewer1.Refresh();
+                catch (Exception ex)
+                {
+                    new Notification().PopUp(ex.Message, "error", "error");
+                    report.Dispose();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                new Notification().PopUp(ex.Message, "error", "error");
-                report.Dispose();
+                report80 = new XReadingReport80();
+
+                DataSet ds = new DataSet();
+
+                try
+                {
+                    CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
+
+                    string datetime_now = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss tt");
+
+                    SQL.AddParam("@xreading_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
+                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                           SELECT * INTO #Temp_users
+                           FROM
+                           (
+                           SELECT ID, user_name, first_name FROM
+                           (
+                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
+                           UNION ALL
+                           SELECT userID, user_name, first_name FROM users
+                           ) x
+                           ) as a;
+                           SELECT xreading.*, u.user_name as 'store_userID', us.user_name as 'shift_userID' 
+                           FROM xreading INNER JOIN #Temp_users as u
+                           ON xreading.store_open_userID = u.ID INNER JOIN
+                           #Temp_users as us ON xreading.shift_start_userID = us.ID WHERE 
+                           xreading_ref = @xreading_ref");
+
+                    if (SQL.HasException(true))
+                        return;
+
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        report80.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
+                        report80.SetParameterValue("store_open_date_time", r["store_open_date_time"].ToString());
+                        report80.SetParameterValue("store_open_userID", r["store_userID"].ToString());
+                        report80.SetParameterValue("shift_start_date_time", r["shift_start_date_time"].ToString());
+                        report80.SetParameterValue("shift_start_userID", r["shift_userID"].ToString());
+                        report80.SetParameterValue("beginning_invoice", r["beginning_invoice"].ToString());
+                        report80.SetParameterValue("ending_invoice", r["ending_invoice"].ToString());
+                        report80.SetParameterValue("void_beginning_no", r["void_beginning_no"].ToString());
+                        report80.SetParameterValue("void_ending_no", r["void_ending_no"].ToString());
+                        decimal starting_cash = decimal.Parse(r["starting_cash"].ToString());
+                        report80.SetParameterValue("starting_cash", starting_cash.ToString("N2"));
+                        report80.SetParameterValue("no_of_transactions", r["no_of_transactions"].ToString());
+                        decimal sales = decimal.Parse(r["sales"].ToString());
+                        report80.SetParameterValue("sales", sales.ToString("N2"));
+                        decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
+                        report80.SetParameterValue("discount_deductions", discount_deductions.ToString("N2"));
+                        decimal adjustments = decimal.Parse(r["adjustments"].ToString());
+                        report80.SetParameterValue("adjustments", adjustments.ToString("N2"));
+                        decimal net_sales = decimal.Parse(r["net_sales"].ToString());
+                        report80.SetParameterValue("net_sales", net_sales.ToString("N2"));
+                        decimal expected_drawer = decimal.Parse(r["expected_drawer"].ToString());
+                        report80.SetParameterValue("expected_drawer", expected_drawer.ToString("N2"));
+                        decimal declared_drawer = decimal.Parse(r["declared_drawer"].ToString());
+                        report80.SetParameterValue("declared_drawer", declared_drawer.ToString("N2"));
+                        decimal short_over = decimal.Parse(r["short_over"].ToString());
+                        report80.SetParameterValue("short_over", short_over.ToString("N2"));
+                        report80.SetParameterValue("printed_on", datetime_now);
+                    }
+
+                    CrystalReportViewer1.ReportSource = report;
+                    CrystalReportViewer1.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    new Notification().PopUp(ex.Message, "error", "error");
+                    report80.Dispose();
+                }
             }
         }
     }

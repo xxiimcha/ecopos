@@ -33,10 +33,10 @@
             this.pnlChild = new System.Windows.Forms.Panel();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.btnDatabaseManagement = new FontAwesome.Sharp.IconButton();
             this.btnDeveloper = new FontAwesome.Sharp.IconButton();
             this.btnStaff = new FontAwesome.Sharp.IconButton();
             this.btnStore = new FontAwesome.Sharp.IconButton();
-            this.btnDatabackup = new FontAwesome.Sharp.IconButton();
             this.guna2Panel1.SuspendLayout();
             this.pnlChild.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -51,7 +51,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(1, 2);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(1162, 862);
+            this.guna2Panel1.Size = new System.Drawing.Size(1090, 734);
             this.guna2Panel1.TabIndex = 0;
             // 
             // pnlChild
@@ -61,7 +61,7 @@
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChild.Location = new System.Drawing.Point(0, 39);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(1162, 823);
+            this.pnlChild.Size = new System.Drawing.Size(1090, 695);
             this.pnlChild.TabIndex = 7;
             // 
             // Panel2
@@ -74,7 +74,7 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Panel1.Controls.Add(this.btnDatabackup);
+            this.Panel1.Controls.Add(this.btnDatabaseManagement);
             this.Panel1.Controls.Add(this.btnDeveloper);
             this.Panel1.Controls.Add(this.btnStaff);
             this.Panel1.Controls.Add(this.btnStore);
@@ -82,8 +82,30 @@
             this.Panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1162, 39);
+            this.Panel1.Size = new System.Drawing.Size(1090, 39);
             this.Panel1.TabIndex = 6;
+            // 
+            // btnDatabaseManagement
+            // 
+            this.btnDatabaseManagement.BackColor = System.Drawing.Color.White;
+            this.btnDatabaseManagement.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDatabaseManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDatabaseManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDatabaseManagement.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatabaseManagement.ForeColor = System.Drawing.Color.Black;
+            this.btnDatabaseManagement.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnDatabaseManagement.IconColor = System.Drawing.Color.White;
+            this.btnDatabaseManagement.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDatabaseManagement.IconSize = 30;
+            this.btnDatabaseManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDatabaseManagement.Location = new System.Drawing.Point(513, 0);
+            this.btnDatabaseManagement.Name = "btnDatabaseManagement";
+            this.btnDatabaseManagement.Size = new System.Drawing.Size(271, 39);
+            this.btnDatabaseManagement.TabIndex = 14;
+            this.btnDatabaseManagement.Text = "Database Management";
+            this.btnDatabaseManagement.UseVisualStyleBackColor = false;
+            this.btnDatabaseManagement.Visible = false;
+            this.btnDatabaseManagement.Click += new System.EventHandler(this.btnDatabackup_Click);
             // 
             // btnDeveloper
             // 
@@ -148,33 +170,12 @@
             this.btnStore.UseVisualStyleBackColor = false;
             this.btnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
-            // btnDatabackup
-            // 
-            this.btnDatabackup.BackColor = System.Drawing.Color.White;
-            this.btnDatabackup.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDatabackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnDatabackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDatabackup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDatabackup.ForeColor = System.Drawing.Color.Black;
-            this.btnDatabackup.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnDatabackup.IconColor = System.Drawing.Color.White;
-            this.btnDatabackup.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDatabackup.IconSize = 30;
-            this.btnDatabackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDatabackup.Location = new System.Drawing.Point(513, 0);
-            this.btnDatabackup.Name = "btnDatabackup";
-            this.btnDatabackup.Size = new System.Drawing.Size(171, 39);
-            this.btnDatabackup.TabIndex = 14;
-            this.btnDatabackup.Text = "Database Backup";
-            this.btnDatabackup.UseVisualStyleBackColor = false;
-            this.btnDatabackup.Click += new System.EventHandler(this.btnDatabackup_Click);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -198,6 +199,6 @@
         internal FontAwesome.Sharp.IconButton btnDeveloper;
         internal FontAwesome.Sharp.IconButton btnStaff;
         internal FontAwesome.Sharp.IconButton btnStore;
-        internal FontAwesome.Sharp.IconButton btnDatabackup;
+        internal FontAwesome.Sharp.IconButton btnDatabaseManagement;
     }
 }

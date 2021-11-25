@@ -14,5 +14,26 @@
     <Setting Name="dbServerName" Type="System.String" Scope="User">
       <Value Profile="(Default)">.</Value>
     </Setting>
+    <Setting Name="Terminal_id" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Terminal_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="Machine_no" Type="System.String" Scope="User">
+      <Value Profile="(Default)">001</Value>
+    </Setting>
+    <Setting Name="cardlogin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="servertype" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="papersize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">58MM</Value>
+    </Setting>
+    <Setting Name="priceeditor" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
@@ -44,9 +45,10 @@ namespace EcoPOSv2
         //METHODS
         void CheckStoreSessionEnded()
         {
-            int check = Convert.ToInt32(sql.ReturnResult("SELECT IIF((SELECT DATEDIFF(day, close_date_time_temp, (SELECT GETDATE())) FROM store_start WHERE store_status = 'Close' AND zreading_ref = (SELECT MAX(zreading_ref) FROM store_start)) = 0, 1,0)"));
+            sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id.ToString());
+            int check = Convert.ToInt32(sql.ReturnResult("SELECT IIF((SELECT DATEDIFF(day, close_date_time_temp, (SELECT GETDATE())) FROM store_start WHERE terminal_id = @terminal_id AND store_status = 'Close' AND zreading_ref = (SELECT MAX(zreading_ref) FROM store_start where terminal_id=@terminal_id)) = 0, 1, 0)"));
 
-            if(check == 1)
+            if (check == 1)
             {
                 lblStoreIsClosed.Visible = true;
                 btnLogin.Enabled = false;
@@ -58,14 +60,22 @@ namespace EcoPOSv2
 
         void CheckUnfinishedSession()
         {
-            int check = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM shift WHERE ended IS NULL AND shiftID = (SELECT MAX(shiftID) FROM shift)"));
+            sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            int check = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM shift WHERE terminal_id = @terminal_id AND EnDeD IS NULL AND shiftID = (SELECT MAX(shiftID) FROM shift WHERE terminal_id = @terminal_id)"));
 
-            if (sql.HasException(true)) return;
+            if (sql.HasException(true))
+            {
+                MessageBox.Show("Error in check"); 
+                return;
+            }
+
 
             if (check == 1)
             {
                 ContinueSession cs = new ContinueSession();
                 cs.Show();
+
+                close = true;
 
                 this.Close();
             }
@@ -75,9 +85,10 @@ namespace EcoPOSv2
             StartingCash frmStartCash = new StartingCash();
             frmStartCash.open_by_userID = userID;
             frmStartCash.open_by_user_name = user_name;
+            //frmStartCash.ActiveControl = frmStartCash.tbCash;
             frmStartCash.ShowDialog();
         }
-        private void LoadPermissions(int roleID)
+        public void LoadPermissions(int roleID)
         {
             sql.AddParam("@roleID", roleID);
 
@@ -113,6 +124,7 @@ namespace EcoPOSv2
                 Main.Instance.rp_pay_gift_certificate = Convert.ToBoolean(dr["pay_gift_certificate"].ToString());
             }
         }
+        public int roleID = 0;
         void login()
         {
             if(tbUsername.Text == "" || tbPassword.Text == "")
@@ -155,8 +167,9 @@ namespace EcoPOSv2
                         sql.AddParam("@userID", current_userID);
                         sql.AddParam("@user_name", tbUsername.Text);
                         sql.AddParam("@attempt_status", attempt_status);
+                        sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()))");
+                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time,terminal_id) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()),@terminal_id)");
 
                         if (sql.HasException(true)) return;
 
@@ -165,6 +178,7 @@ namespace EcoPOSv2
                         ShiftStart(current_userID, current_user_name);
 
                         //new Notification().PopUp("Admin login Success!", "Success!", "success");
+                        close = true;
 
                         Main.Instance.Show();
                         this.Close();
@@ -187,8 +201,9 @@ namespace EcoPOSv2
                         sql.AddParam("@userID", current_userID);
                         sql.AddParam("@user_name", tbUsername.Text);
                         sql.AddParam("@attempt_status", attempt_status);
+                        sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()))");
+                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time,terminal_id) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()),@terminal_id)");
 
                         if (sql.HasException(true)) return;
 
@@ -227,19 +242,23 @@ namespace EcoPOSv2
 
                         LoadPermissions(roleID);
 
+                        Main.Instance.roleid = roleID.ToString();
+
                         //record Login
 
                         sql.AddParam("@userID", current_userID);
                         sql.AddParam("@user_name", tbUsername.Text);
                         sql.AddParam("@attempt_status", attempt_status);
+                        sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()))");
+                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time,terminal_id) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()),@terminal_id)");
 
                         if (sql.HasException(true)) return;
 
                         ShiftStart(current_userID, current_user_name);
 
                         //new Notification().PopUp("User login Success!", "Success!", "success");
+                        close = true;
 
                         Main.Instance.Show();
                         this.Close();
@@ -262,8 +281,9 @@ namespace EcoPOSv2
                         sql.AddParam("@userID", current_userID);
                         sql.AddParam("@user_name", tbUsername.Text);
                         sql.AddParam("@attempt_status", attempt_status);
+                        sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()))");
+                        sql.Query("INSERT INTO user_logs (userID, user_name, attempt_status, date_time,terminal_id) VALUES (@userID, @user_name, @attempt_status, (SELECT GETDATE()),@terminal_id)");
 
                         if (sql.HasException(true)) return;
 
@@ -291,11 +311,34 @@ namespace EcoPOSv2
         {
             _Login = this;
 
+            //SERVER TYPE OR NOT
+            if (Properties.Settings.Default.servertype == true)
+            {
+                lblTerminal.Visible = true;
+            }
+            else
+            {
+                lblTerminal.Visible = false;
+            }
+
+
+            lblTerminal.Text = "Terminal " + Properties.Settings.Default.Terminal_id; 
+
             CheckStoreSessionEnded();
 
             if (store_is_closed == false)
             {
                 CheckUnfinishedSession();
+            }
+
+
+            if (Properties.Settings.Default.cardlogin == false)
+            {
+                lbLoginCard.Visible = false;
+            }
+            else
+            {
+                lbLoginCard.Visible = true;
             }
         }
         private void tClock_Tick(object sender, EventArgs e)
@@ -305,26 +348,60 @@ namespace EcoPOSv2
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string connection = sql.CheckConnection();
-
-            if (sql.HasException(true)) return;
-
-            if (connection == "success")
+            new Thread(() =>
             {
-                int check_records = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM store_details"));
-
-                if (sql.HasException(true)) return;
-
-                if (check_records == 1)
+                Invoke(new MethodInvoker(delegate ()
                 {
-                    login();
-                }
-                else
-                {
-                    new Notification().PopUp("No store details found.","Error","error");
-                    //MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+                    sql.AddParam("@username", tbUsername.Text);
+                    if (int.Parse(sql.ReturnResult("select COUNT(*) from Shift where user_name=@username AND ended IS NULL")) >= 1)
+                    {
+                        MessageBox.Show("User is already online", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    string connection = sql.CheckConnection();
+
+                    if (sql.HasException(true)) return;
+
+                    if (connection == "success")
+                    {
+                        int check_records = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM store_details"));
+
+                        if (sql.HasException(true)) return;
+
+                        if (check_records == 1)
+                        {
+                            login();
+                        }
+                        else
+                        {
+                            new Notification().PopUp("No store details found.", "Error", "error");
+                            //MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }));
+            }).Start();
+
+            //string connection = sql.CheckConnection();
+
+            //if (sql.HasException(true)) return;
+
+            //if (connection == "success")
+            //{
+            //    int check_records = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM store_details"));
+
+            //    if (sql.HasException(true)) return;
+
+            //    if (check_records == 1)
+            //    {
+            //        login();
+            //    }
+            //    else
+            //    {
+            //        new Notification().PopUp("No store details found.","Error","error");
+            //        //MessageBox.Show("No store details found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
         }
 
         private void tbPassword_KeyDown(object sender, KeyEventArgs e)
@@ -347,6 +424,28 @@ namespace EcoPOSv2
                 Prompt frmPrompt = new Prompt();
                 frmPrompt.Pop(1);
             }
+        }
+        public bool close = false;
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            close = true;
+            Application.Exit();
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(close == false)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void lbLoginCard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CardLogin cl = new CardLogin();
+
+            cl.type = "1";
+            cl.ShowDialog();
         }
     }
 }

@@ -300,7 +300,7 @@ namespace EcoPOSv2
 
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
-            dgvFromWarehouse.Rows.Clear();
+            dgvToWarehouse.Rows.Clear();
         }
 
         private void btnTransfer_Click(object sender, EventArgs e)

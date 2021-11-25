@@ -70,5 +70,89 @@ namespace EcoPOSv2.Properties {
                 this["dbServerName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Terminal_id {
+            get {
+                return ((string)(this["Terminal_id"]));
+            }
+            set {
+                this["Terminal_id"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Terminal_name {
+            get {
+                return ((string)(this["Terminal_name"]));
+            }
+            set {
+                this["Terminal_name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("001")]
+        public string Machine_no {
+            get {
+                return ((string)(this["Machine_no"]));
+            }
+            set {
+                this["Machine_no"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool cardlogin {
+            get {
+                return ((bool)(this["cardlogin"]));
+            }
+            set {
+                this["cardlogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool servertype {
+            get {
+                return ((bool)(this["servertype"]));
+            }
+            set {
+                this["servertype"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("58MM")]
+        public string papersize {
+            get {
+                return ((string)(this["papersize"]));
+            }
+            set {
+                this["papersize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool priceeditor {
+            get {
+                return ((bool)(this["priceeditor"]));
+            }
+            set {
+                this["priceeditor"] = value;
+            }
+        }
     }
 }

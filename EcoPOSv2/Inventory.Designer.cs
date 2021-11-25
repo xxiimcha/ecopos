@@ -48,10 +48,11 @@
             this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.pnlChild);
             this.guna2Panel1.Controls.Add(this.Panel1);
-            this.guna2Panel1.Location = new System.Drawing.Point(1, 1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(1162, 864);
+            this.guna2Panel1.Size = new System.Drawing.Size(1090, 734);
             this.guna2Panel1.TabIndex = 0;
             // 
             // pnlChild
@@ -60,7 +61,7 @@
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChild.Location = new System.Drawing.Point(0, 39);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(1162, 825);
+            this.pnlChild.Size = new System.Drawing.Size(1090, 695);
             this.pnlChild.TabIndex = 7;
             // 
             // Panel1
@@ -75,7 +76,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.Panel1.Location = new System.Drawing.Point(0, 0);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1162, 39);
+            this.Panel1.Size = new System.Drawing.Size(1090, 39);
             this.Panel1.TabIndex = 6;
             // 
             // btnOR
@@ -215,13 +216,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventory";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Inventory_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);

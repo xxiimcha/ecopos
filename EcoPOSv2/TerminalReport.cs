@@ -186,7 +186,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection13 {
             get {
                 return this.ReportDefinition.Sections[17];
             }
@@ -194,9 +194,17 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[18];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[19];
             }
         }
         
@@ -338,7 +346,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ItemSold_no_of_items {
+        public CrystalDecisions.Shared.IParameterField Parameter_check_profit {
             get {
                 return this.DataDefinition.ParameterFields[17];
             }
@@ -346,7 +354,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ItemSold_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_ItemSold_no_of_items {
             get {
                 return this.DataDefinition.ParameterFields[18];
             }
@@ -354,7 +362,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_PaymentMethod_no_of_orders {
+        public CrystalDecisions.Shared.IParameterField Parameter_ItemSold_total {
             get {
                 return this.DataDefinition.ParameterFields[19];
             }
@@ -362,7 +370,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_PaymentMethod_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_ItemSold_Deductions {
             get {
                 return this.DataDefinition.ParameterFields[20];
             }
@@ -370,7 +378,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Refund_no_of_orders {
+        public CrystalDecisions.Shared.IParameterField Parameter_PaymentMethod_no_of_orders {
             get {
                 return this.DataDefinition.ParameterFields[21];
             }
@@ -378,7 +386,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Refund_no_of_items {
+        public CrystalDecisions.Shared.IParameterField Parameter_PaymentMethod_total {
             get {
                 return this.DataDefinition.ParameterFields[22];
             }
@@ -386,7 +394,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Refund_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_Profit_Profit_Total_Cost {
             get {
                 return this.DataDefinition.ParameterFields[23];
             }
@@ -394,7 +402,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_RegularDiscount_no_of_orders {
+        public CrystalDecisions.Shared.IParameterField Parameter_Profit_Profit_Total_Gross {
             get {
                 return this.DataDefinition.ParameterFields[24];
             }
@@ -402,7 +410,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_RegularDiscount_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_Profit_Profit_Total_Sales {
             get {
                 return this.DataDefinition.ParameterFields[25];
             }
@@ -410,7 +418,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_RetailSales_no_of_items {
+        public CrystalDecisions.Shared.IParameterField Parameter_Refund_no_of_orders {
             get {
                 return this.DataDefinition.ParameterFields[26];
             }
@@ -418,7 +426,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_RetailSales_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_Refund_no_of_items {
             get {
                 return this.DataDefinition.ParameterFields[27];
             }
@@ -426,7 +434,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Return_no_of_orders {
+        public CrystalDecisions.Shared.IParameterField Parameter_Refund_total {
             get {
                 return this.DataDefinition.ParameterFields[28];
             }
@@ -434,7 +442,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Return_no_of_items {
+        public CrystalDecisions.Shared.IParameterField Parameter_RegularDiscount_no_of_orders {
             get {
                 return this.DataDefinition.ParameterFields[29];
             }
@@ -442,7 +450,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Return_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_RegularDiscount_total {
             get {
                 return this.DataDefinition.ParameterFields[30];
             }
@@ -450,7 +458,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_no_of_orders {
+        public CrystalDecisions.Shared.IParameterField Parameter_RetailSales_no_of_items {
             get {
                 return this.DataDefinition.ParameterFields[31];
             }
@@ -458,7 +466,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_subtotal {
+        public CrystalDecisions.Shared.IParameterField Parameter_RetailSales_total {
             get {
                 return this.DataDefinition.ParameterFields[32];
             }
@@ -466,7 +474,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_customer_type {
+        public CrystalDecisions.Shared.IParameterField Parameter_Return_no_of_orders {
             get {
                 return this.DataDefinition.ParameterFields[33];
             }
@@ -474,7 +482,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_discount_deductions {
+        public CrystalDecisions.Shared.IParameterField Parameter_Return_no_of_items {
             get {
                 return this.DataDefinition.ParameterFields[34];
             }
@@ -482,7 +490,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_grand_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_Return_total {
             get {
                 return this.DataDefinition.ParameterFields[35];
             }
@@ -490,7 +498,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_less_vat {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_no_of_orders {
             get {
                 return this.DataDefinition.ParameterFields[36];
             }
@@ -498,7 +506,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_vatable_sale {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_subtotal {
             get {
                 return this.DataDefinition.ParameterFields[37];
             }
@@ -506,7 +514,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_vat_12 {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_customer_type {
             get {
                 return this.DataDefinition.ParameterFields[38];
             }
@@ -514,7 +522,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Sales_vat_exempt_sale {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_discount_deductions {
             get {
                 return this.DataDefinition.ParameterFields[39];
             }
@@ -522,7 +530,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SpecialDiscount_no_of_orders {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_grand_total {
             get {
                 return this.DataDefinition.ParameterFields[40];
             }
@@ -530,7 +538,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_SpecialDiscount_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_less_vat {
             get {
                 return this.DataDefinition.ParameterFields[41];
             }
@@ -538,7 +546,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_StaffSales_ss_subtotal {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_vatable_sale {
             get {
                 return this.DataDefinition.ParameterFields[42];
             }
@@ -546,7 +554,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_StaffSales_ss_discount_deductions {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_vat_12 {
             get {
                 return this.DataDefinition.ParameterFields[43];
             }
@@ -554,7 +562,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_StaffSales_ss_grand_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_Sales_vat_exempt_sale {
             get {
                 return this.DataDefinition.ParameterFields[44];
             }
@@ -562,7 +570,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_VoidItem_no_of_items {
+        public CrystalDecisions.Shared.IParameterField Parameter_SpecialDiscount_no_of_orders {
             get {
                 return this.DataDefinition.ParameterFields[45];
             }
@@ -570,7 +578,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_VoidItem_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_SpecialDiscount_total {
             get {
                 return this.DataDefinition.ParameterFields[46];
             }
@@ -578,7 +586,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_VoidTransaction_no_of_orders {
+        public CrystalDecisions.Shared.IParameterField Parameter_StaffSales_ss_subtotal {
             get {
                 return this.DataDefinition.ParameterFields[47];
             }
@@ -586,7 +594,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_VoidTransaction_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_StaffSales_ss_discount_deductions {
             get {
                 return this.DataDefinition.ParameterFields[48];
             }
@@ -594,7 +602,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_WholesaleSales_no_of_items {
+        public CrystalDecisions.Shared.IParameterField Parameter_StaffSales_ss_grand_total {
             get {
                 return this.DataDefinition.ParameterFields[49];
             }
@@ -602,9 +610,49 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_WholesaleSales_total {
+        public CrystalDecisions.Shared.IParameterField Parameter_VoidItem_no_of_items {
             get {
                 return this.DataDefinition.ParameterFields[50];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_VoidItem_total {
+            get {
+                return this.DataDefinition.ParameterFields[51];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_VoidTransaction_no_of_orders {
+            get {
+                return this.DataDefinition.ParameterFields[52];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_VoidTransaction_total {
+            get {
+                return this.DataDefinition.ParameterFields[53];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_WholesaleSales_no_of_items {
+            get {
+                return this.DataDefinition.ParameterFields[54];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_WholesaleSales_total {
+            get {
+                return this.DataDefinition.ParameterFields[55];
             }
         }
     }

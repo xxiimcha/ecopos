@@ -241,14 +241,14 @@ namespace EcoPOSv2
                     categoryid = Convert.ToInt32(dr["categoryID"].ToString());
                 }
 
-
                 Psql.AddParam("@name", dgItems.Rows[i].Cells[7].Value.ToString());
                 Psql.Query("Select warehouseID from warehouse where name=@name");
-                if (SQL.HasException(true)) return;
+                if (Psql.HasException(true)) return;
                 foreach (DataRow dr in Psql.DBDT.Rows)
                 {
                     warehouseID = Convert.ToInt32(dr["warehouseID"].ToString());
                 }
+
 
                 Psql.AddParam("@name", dgItems.Rows[i].Cells[0].Value.ToString());
                 Psql.AddParam("@description", dgItems.Rows[i].Cells[1].Value.ToString());
@@ -263,15 +263,17 @@ namespace EcoPOSv2
                 Psql.AddParam("@s_PWD_SC_perc", dgItems.Rows[i].Cells[10].Value.ToString());
                 Psql.AddParam("@s_discAth", dgItems.Rows[i].Cells[11].Value.ToString());
                 Psql.AddParam("@s_ask_qty", dgItems.Rows[i].Cells[12].Value.ToString());
-
+                Psql.AddParam("@cost", dgItems.Rows[i].Cells[14].Value.ToString());
+                Psql.AddParam("@has_expiry", dgItems.Rows[i].Cells[15].Value.ToString());
+                Psql.AddParam("@expiration_date", DateTime.Parse(dgItems.Rows[i].Cells[16].Value.ToString()));
                 //INSERT INTO DATABASE
 
                 Psql.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
-                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
+                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty,cost,has_expiry,expiration_date)
                                    VALUES
                                    (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
-                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)");
+                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@cost,@has_expiry,@expiration_date)");
 
                 if (Psql.HasException(true))
                     return;

@@ -65,9 +65,9 @@
             this.CrystalReportViewer1.DisplayStatusBar = false;
             this.CrystalReportViewer1.DisplayToolbar = false;
             this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CrystalReportViewer1.Location = new System.Drawing.Point(3, 218);
+            this.CrystalReportViewer1.Location = new System.Drawing.Point(3, 233);
             this.CrystalReportViewer1.Name = "CrystalReportViewer1";
-            this.CrystalReportViewer1.Size = new System.Drawing.Size(270, 639);
+            this.CrystalReportViewer1.Size = new System.Drawing.Size(252, 492);
             this.CrystalReportViewer1.TabIndex = 1;
             this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -84,9 +84,9 @@
             this.btnReprint.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReprint.IconSize = 31;
             this.btnReprint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReprint.Location = new System.Drawing.Point(55, 173);
+            this.btnReprint.Location = new System.Drawing.Point(51, 188);
             this.btnReprint.Name = "btnReprint";
-            this.btnReprint.Size = new System.Drawing.Size(175, 33);
+            this.btnReprint.Size = new System.Drawing.Size(163, 33);
             this.btnReprint.TabIndex = 117;
             this.btnReprint.Text = "Reprint Receipt";
             this.btnReprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -99,9 +99,9 @@
             this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 34);
+            this.Label13.Location = new System.Drawing.Point(3, 37);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(46, 34);
+            this.Label13.Size = new System.Drawing.Size(42, 37);
             this.Label13.TabIndex = 110;
             this.Label13.Text = "From";
             this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,7 +132,7 @@
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.Size = new System.Drawing.Size(270, 209);
+            this.TableLayoutPanel3.Size = new System.Drawing.Size(252, 224);
             this.TableLayoutPanel3.TabIndex = 0;
             // 
             // Label14
@@ -141,9 +141,9 @@
             this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
-            this.Label14.Location = new System.Drawing.Point(3, 68);
+            this.Label14.Location = new System.Drawing.Point(3, 74);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(46, 34);
+            this.Label14.Size = new System.Drawing.Size(42, 37);
             this.Label14.TabIndex = 112;
             this.Label14.Text = "To";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -154,9 +154,9 @@
             this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(55, 37);
+            this.dtpFrom.Location = new System.Drawing.Point(51, 40);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(175, 29);
+            this.dtpFrom.Size = new System.Drawing.Size(163, 29);
             this.dtpFrom.TabIndex = 111;
             // 
             // dtpTo
@@ -165,9 +165,9 @@
             this.dtpTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(55, 71);
+            this.dtpTo.Location = new System.Drawing.Point(51, 77);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(175, 29);
+            this.dtpTo.Size = new System.Drawing.Size(163, 29);
             this.dtpTo.TabIndex = 113;
             // 
             // btnSearch
@@ -183,9 +183,9 @@
             this.btnSearch.IconColor = System.Drawing.Color.Black;
             this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSearch.IconSize = 31;
-            this.btnSearch.Location = new System.Drawing.Point(236, 37);
+            this.btnSearch.Location = new System.Drawing.Point(220, 40);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(31, 28);
+            this.btnSearch.Size = new System.Drawing.Size(29, 31);
             this.btnSearch.TabIndex = 114;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -203,10 +203,10 @@
             this.btnSort.IconColor = System.Drawing.Color.Black;
             this.btnSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSort.IconSize = 30;
-            this.btnSort.Location = new System.Drawing.Point(236, 71);
+            this.btnSort.Location = new System.Drawing.Point(220, 77);
             this.btnSort.Name = "btnSort";
             this.btnSort.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnSort.Size = new System.Drawing.Size(31, 28);
+            this.btnSort.Size = new System.Drawing.Size(29, 31);
             this.btnSort.TabIndex = 115;
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
@@ -224,9 +224,9 @@
             this.btnGenerateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerateReport.IconSize = 31;
             this.btnGenerateReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerateReport.Location = new System.Drawing.Point(55, 139);
+            this.btnGenerateReport.Location = new System.Drawing.Point(51, 151);
             this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(175, 28);
+            this.btnGenerateReport.Size = new System.Drawing.Size(163, 31);
             this.btnGenerateReport.TabIndex = 116;
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -246,10 +246,10 @@
             "All",
             "Order",
             "Void"});
-            this.cmbType.Location = new System.Drawing.Point(55, 105);
+            this.cmbType.Location = new System.Drawing.Point(51, 114);
             this.cmbType.MaxDropDownItems = 10;
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(175, 29);
+            this.cmbType.Size = new System.Drawing.Size(163, 29);
             this.cmbType.TabIndex = 119;
             // 
             // Label1
@@ -258,9 +258,9 @@
             this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(3, 102);
+            this.Label1.Location = new System.Drawing.Point(3, 111);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(46, 34);
+            this.Label1.Size = new System.Drawing.Size(42, 37);
             this.Label1.TabIndex = 120;
             this.Label1.Text = "Type";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -275,9 +275,9 @@
             this.TableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel2.Name = "TableLayoutPanel2";
             this.TableLayoutPanel2.RowCount = 2;
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.TableLayoutPanel2.Size = new System.Drawing.Size(276, 860);
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.59341F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.40659F));
+            this.TableLayoutPanel2.Size = new System.Drawing.Size(258, 728);
             this.TableLayoutPanel2.TabIndex = 3;
             // 
             // Panel2
@@ -286,7 +286,7 @@
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(3, 3);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(270, 209);
+            this.Panel2.Size = new System.Drawing.Size(252, 224);
             this.Panel2.TabIndex = 0;
             // 
             // Panel1
@@ -295,7 +295,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(3, 3);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(276, 860);
+            this.Panel1.Size = new System.Drawing.Size(258, 728);
             this.Panel1.TabIndex = 0;
             // 
             // TableLayoutPanel1
@@ -310,7 +310,7 @@
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 1;
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(1164, 866);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(1090, 734);
             this.TableLayoutPanel1.TabIndex = 2;
             // 
             // dgvRecords
@@ -342,7 +342,7 @@
             this.dgvRecords.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRecords.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecords.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvRecords.Location = new System.Drawing.Point(285, 3);
+            this.dgvRecords.Location = new System.Drawing.Point(267, 3);
             this.dgvRecords.MultiSelect = false;
             this.dgvRecords.Name = "dgvRecords";
             this.dgvRecords.ReadOnly = true;
@@ -356,7 +356,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRecords.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRecords.Size = new System.Drawing.Size(876, 860);
+            this.dgvRecords.Size = new System.Drawing.Size(820, 728);
             this.dgvRecords.TabIndex = 38;
             this.dgvRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecords_CellClick);
             // 
@@ -365,7 +365,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.TableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -65,7 +65,9 @@ namespace EcoPOSv2
 
             SQL.AddParam("@itemID", itemID);
             SQL.AddParam("@static_price_inclusive", tbPrice.Text);
-            SQL.Query("UPDATE order_cart SET static_price_inclusive = @static_price_inclusive WHERE itemID = @itemID");
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+            SQL.Query("UPDATE order_cart SET static_price_inclusive = @static_price_inclusive WHERE itemID = @itemID AND terminal_id=@terminal_id");
 
             if (SQL.HasException(true)) return;
 

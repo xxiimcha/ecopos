@@ -33,6 +33,8 @@ namespace EcoPOSv2
             LoadDiscounts();
             ControlBehavior();
 
+            rbPercentage.Checked = true;
+
             TextBoxValidation.AssignValidation(ref txtAmount, ValidationType.Price);
             TextBoxValidation.AssignValidation(ref txtAmount, ValidationType.Int_Only);
         }

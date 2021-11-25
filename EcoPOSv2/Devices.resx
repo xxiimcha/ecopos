@@ -117,16 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label4.Text" xml:space="preserve">
-    <value>To look for the customer display's port number:
-
-1. Click the windows logo in your computer
-2. Type "Device Manager"
-3. Look "Ports" tab.
-4. Find the device name and the port number should look like (ex. COM1, COM2)
-5. The number in the COM is the customer display's port number</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="guna2ImageButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        qFChwmJErfY2DEPBZBvNgysAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAC9MgAAZgAAAICAAAABACAAKAgBACMzAABAQAAAAQAgAChCAABLOwEAMDAAAAEA

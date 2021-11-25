@@ -46,6 +46,10 @@
             this.cbxRetailSales = new System.Windows.Forms.CheckBox();
             this.cbxStaffSales = new System.Windows.Forms.CheckBox();
             this.cbxSales = new System.Windows.Forms.CheckBox();
+            this.cbxProfit = new System.Windows.Forms.CheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnExportToExcel = new Guna.UI2.WinForms.Guna2Button();
+            this.dt = new System.Windows.Forms.DataGridView();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.Label13 = new System.Windows.Forms.Label();
@@ -55,11 +59,15 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.btnSearch = new FontAwesome.Sharp.IconButton();
             this.btnExport = new FontAwesome.Sharp.IconButton();
+            this.cmbTerminalNames = new System.Windows.Forms.ComboBox();
+            this.lblterminal = new System.Windows.Forms.Label();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel3.SuspendLayout();
             this.TableLayoutPanel2.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.TableLayoutPanel4.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dt)).BeginInit();
             this.Panel2.SuspendLayout();
             this.TableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +84,7 @@
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 1;
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(1164, 866);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(1090, 734);
             this.TableLayoutPanel1.TabIndex = 3;
             // 
             // CrystalReportViewer1
@@ -86,13 +94,13 @@
             this.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.CrystalReportViewer1.DisplayStatusBar = false;
             this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CrystalReportViewer1.Location = new System.Drawing.Point(285, 3);
+            this.CrystalReportViewer1.Location = new System.Drawing.Point(267, 3);
             this.CrystalReportViewer1.Name = "CrystalReportViewer1";
             this.CrystalReportViewer1.ShowCloseButton = false;
             this.CrystalReportViewer1.ShowCopyButton = false;
             this.CrystalReportViewer1.ShowGroupTreeButton = false;
             this.CrystalReportViewer1.ShowParameterPanelButton = false;
-            this.CrystalReportViewer1.Size = new System.Drawing.Size(876, 860);
+            this.CrystalReportViewer1.Size = new System.Drawing.Size(820, 728);
             this.CrystalReportViewer1.TabIndex = 2;
             this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -102,7 +110,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(3, 3);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(276, 860);
+            this.Panel3.Size = new System.Drawing.Size(258, 728);
             this.Panel3.TabIndex = 0;
             // 
             // TableLayoutPanel2
@@ -115,18 +123,18 @@
             this.TableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel2.Name = "TableLayoutPanel2";
             this.TableLayoutPanel2.RowCount = 2;
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.TableLayoutPanel2.Size = new System.Drawing.Size(276, 860);
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.67033F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70.32967F));
+            this.TableLayoutPanel2.Size = new System.Drawing.Size(258, 728);
             this.TableLayoutPanel2.TabIndex = 3;
             // 
             // Panel1
             // 
             this.Panel1.Controls.Add(this.TableLayoutPanel4);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel1.Location = new System.Drawing.Point(3, 218);
+            this.Panel1.Location = new System.Drawing.Point(3, 219);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(270, 639);
+            this.Panel1.Size = new System.Drawing.Size(252, 506);
             this.Panel1.TabIndex = 1;
             // 
             // TableLayoutPanel4
@@ -146,6 +154,8 @@
             this.TableLayoutPanel4.Controls.Add(this.cbxRetailSales, 1, 3);
             this.TableLayoutPanel4.Controls.Add(this.cbxStaffSales, 1, 2);
             this.TableLayoutPanel4.Controls.Add(this.cbxSales, 1, 1);
+            this.TableLayoutPanel4.Controls.Add(this.cbxProfit, 1, 11);
+            this.TableLayoutPanel4.Controls.Add(this.panel4, 1, 12);
             this.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel4.Name = "TableLayoutPanel4";
@@ -163,7 +173,7 @@
             this.TableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.109482F));
             this.TableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.109482F));
             this.TableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.68622F));
-            this.TableLayoutPanel4.Size = new System.Drawing.Size(270, 639);
+            this.TableLayoutPanel4.Size = new System.Drawing.Size(252, 506);
             this.TableLayoutPanel4.TabIndex = 0;
             // 
             // cbSelectAll
@@ -171,9 +181,9 @@
             this.cbSelectAll.AutoSize = true;
             this.cbSelectAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbSelectAll.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.cbSelectAll.Location = new System.Drawing.Point(30, 3);
+            this.cbSelectAll.Location = new System.Drawing.Point(28, 3);
             this.cbSelectAll.Name = "cbSelectAll";
-            this.cbSelectAll.Size = new System.Drawing.Size(210, 33);
+            this.cbSelectAll.Size = new System.Drawing.Size(195, 24);
             this.cbSelectAll.TabIndex = 118;
             this.cbSelectAll.Text = "Select All";
             this.cbSelectAll.UseVisualStyleBackColor = true;
@@ -185,9 +195,9 @@
             this.cbxItemsSold.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxItemsSold.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxItemsSold.ForeColor = System.Drawing.Color.Black;
-            this.cbxItemsSold.Location = new System.Drawing.Point(30, 393);
+            this.cbxItemsSold.Location = new System.Drawing.Point(28, 303);
             this.cbxItemsSold.Name = "cbxItemsSold";
-            this.cbxItemsSold.Size = new System.Drawing.Size(210, 33);
+            this.cbxItemsSold.Size = new System.Drawing.Size(195, 24);
             this.cbxItemsSold.TabIndex = 115;
             this.cbxItemsSold.Text = "Items Sold";
             this.cbxItemsSold.UseVisualStyleBackColor = true;
@@ -198,9 +208,9 @@
             this.cbxPaymentMethod.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPaymentMethod.ForeColor = System.Drawing.Color.Black;
-            this.cbxPaymentMethod.Location = new System.Drawing.Point(30, 354);
+            this.cbxPaymentMethod.Location = new System.Drawing.Point(28, 273);
             this.cbxPaymentMethod.Name = "cbxPaymentMethod";
-            this.cbxPaymentMethod.Size = new System.Drawing.Size(210, 33);
+            this.cbxPaymentMethod.Size = new System.Drawing.Size(195, 24);
             this.cbxPaymentMethod.TabIndex = 107;
             this.cbxPaymentMethod.Text = "Payment Method";
             this.cbxPaymentMethod.UseVisualStyleBackColor = true;
@@ -211,9 +221,9 @@
             this.cbxSpecialDiscounts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxSpecialDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSpecialDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxSpecialDiscounts.Location = new System.Drawing.Point(30, 315);
+            this.cbxSpecialDiscounts.Location = new System.Drawing.Point(28, 243);
             this.cbxSpecialDiscounts.Name = "cbxSpecialDiscounts";
-            this.cbxSpecialDiscounts.Size = new System.Drawing.Size(210, 33);
+            this.cbxSpecialDiscounts.Size = new System.Drawing.Size(195, 24);
             this.cbxSpecialDiscounts.TabIndex = 117;
             this.cbxSpecialDiscounts.Text = "Special Discounts";
             this.cbxSpecialDiscounts.UseVisualStyleBackColor = true;
@@ -224,9 +234,9 @@
             this.cbxRegularDiscounts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxRegularDiscounts.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxRegularDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxRegularDiscounts.Location = new System.Drawing.Point(30, 276);
+            this.cbxRegularDiscounts.Location = new System.Drawing.Point(28, 213);
             this.cbxRegularDiscounts.Name = "cbxRegularDiscounts";
-            this.cbxRegularDiscounts.Size = new System.Drawing.Size(210, 33);
+            this.cbxRegularDiscounts.Size = new System.Drawing.Size(195, 24);
             this.cbxRegularDiscounts.TabIndex = 108;
             this.cbxRegularDiscounts.Text = "Regular Discounts";
             this.cbxRegularDiscounts.UseVisualStyleBackColor = true;
@@ -237,9 +247,9 @@
             this.cbxVoidTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxVoidTransactions.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxVoidTransactions.ForeColor = System.Drawing.Color.Black;
-            this.cbxVoidTransactions.Location = new System.Drawing.Point(30, 237);
+            this.cbxVoidTransactions.Location = new System.Drawing.Point(28, 183);
             this.cbxVoidTransactions.Name = "cbxVoidTransactions";
-            this.cbxVoidTransactions.Size = new System.Drawing.Size(210, 33);
+            this.cbxVoidTransactions.Size = new System.Drawing.Size(195, 24);
             this.cbxVoidTransactions.TabIndex = 112;
             this.cbxVoidTransactions.Text = "Void Transactions";
             this.cbxVoidTransactions.UseVisualStyleBackColor = true;
@@ -250,9 +260,9 @@
             this.cbxVoidItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxVoidItems.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxVoidItems.ForeColor = System.Drawing.Color.Black;
-            this.cbxVoidItems.Location = new System.Drawing.Point(30, 198);
+            this.cbxVoidItems.Location = new System.Drawing.Point(28, 153);
             this.cbxVoidItems.Name = "cbxVoidItems";
-            this.cbxVoidItems.Size = new System.Drawing.Size(210, 33);
+            this.cbxVoidItems.Size = new System.Drawing.Size(195, 24);
             this.cbxVoidItems.TabIndex = 113;
             this.cbxVoidItems.Text = "Void Items";
             this.cbxVoidItems.UseVisualStyleBackColor = true;
@@ -263,9 +273,9 @@
             this.cbxWholesaleSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxWholesaleSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxWholesaleSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxWholesaleSales.Location = new System.Drawing.Point(30, 159);
+            this.cbxWholesaleSales.Location = new System.Drawing.Point(28, 123);
             this.cbxWholesaleSales.Name = "cbxWholesaleSales";
-            this.cbxWholesaleSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxWholesaleSales.Size = new System.Drawing.Size(195, 24);
             this.cbxWholesaleSales.TabIndex = 110;
             this.cbxWholesaleSales.Text = "Wholesale Sales";
             this.cbxWholesaleSales.UseVisualStyleBackColor = true;
@@ -276,9 +286,9 @@
             this.cbxRetailSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxRetailSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxRetailSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxRetailSales.Location = new System.Drawing.Point(30, 120);
+            this.cbxRetailSales.Location = new System.Drawing.Point(28, 93);
             this.cbxRetailSales.Name = "cbxRetailSales";
-            this.cbxRetailSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxRetailSales.Size = new System.Drawing.Size(195, 24);
             this.cbxRetailSales.TabIndex = 109;
             this.cbxRetailSales.Text = "Retail Sales";
             this.cbxRetailSales.UseVisualStyleBackColor = true;
@@ -289,9 +299,9 @@
             this.cbxStaffSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxStaffSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxStaffSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxStaffSales.Location = new System.Drawing.Point(30, 81);
+            this.cbxStaffSales.Location = new System.Drawing.Point(28, 63);
             this.cbxStaffSales.Name = "cbxStaffSales";
-            this.cbxStaffSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxStaffSales.Size = new System.Drawing.Size(195, 24);
             this.cbxStaffSales.TabIndex = 114;
             this.cbxStaffSales.Text = "Staff Sales";
             this.cbxStaffSales.UseVisualStyleBackColor = true;
@@ -302,12 +312,63 @@
             this.cbxSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxSales.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSales.ForeColor = System.Drawing.Color.Black;
-            this.cbxSales.Location = new System.Drawing.Point(30, 42);
+            this.cbxSales.Location = new System.Drawing.Point(28, 33);
             this.cbxSales.Name = "cbxSales";
-            this.cbxSales.Size = new System.Drawing.Size(210, 33);
+            this.cbxSales.Size = new System.Drawing.Size(195, 24);
             this.cbxSales.TabIndex = 106;
             this.cbxSales.Text = "Sales";
             this.cbxSales.UseVisualStyleBackColor = true;
+            // 
+            // cbxProfit
+            // 
+            this.cbxProfit.AutoSize = true;
+            this.cbxProfit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxProfit.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProfit.ForeColor = System.Drawing.Color.Black;
+            this.cbxProfit.Location = new System.Drawing.Point(28, 333);
+            this.cbxProfit.Name = "cbxProfit";
+            this.cbxProfit.Size = new System.Drawing.Size(195, 24);
+            this.cbxProfit.TabIndex = 115;
+            this.cbxProfit.Text = "Profit";
+            this.cbxProfit.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnExportToExcel);
+            this.panel4.Controls.Add(this.dt);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(28, 363);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(195, 140);
+            this.panel4.TabIndex = 119;
+            // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnExportToExcel.BorderRadius = 5;
+            this.btnExportToExcel.BorderThickness = 1;
+            this.btnExportToExcel.CheckedState.Parent = this.btnExportToExcel;
+            this.btnExportToExcel.CustomImages.Parent = this.btnExportToExcel;
+            this.btnExportToExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnExportToExcel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportToExcel.HoverState.Parent = this.btnExportToExcel;
+            this.btnExportToExcel.Location = new System.Drawing.Point(3, 53);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.ShadowDecoration.Parent = this.btnExportToExcel;
+            this.btnExportToExcel.Size = new System.Drawing.Size(189, 42);
+            this.btnExportToExcel.TabIndex = 74;
+            this.btnExportToExcel.Text = "EXPORT TO EXCEL";
+            this.btnExportToExcel.Click += new System.EventHandler(this.BtnExportToExcel_Click);
+            // 
+            // dt
+            // 
+            this.dt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dt.Location = new System.Drawing.Point(3, 3);
+            this.dt.Name = "dt";
+            this.dt.Size = new System.Drawing.Size(189, 44);
+            this.dt.TabIndex = 0;
+            this.dt.Visible = false;
             // 
             // Panel2
             // 
@@ -315,7 +376,7 @@
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(3, 3);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(270, 209);
+            this.Panel2.Size = new System.Drawing.Size(252, 210);
             this.Panel2.TabIndex = 0;
             // 
             // TableLayoutPanel3
@@ -331,6 +392,8 @@
             this.TableLayoutPanel3.Controls.Add(this.dtpTo, 1, 2);
             this.TableLayoutPanel3.Controls.Add(this.btnSearch, 2, 1);
             this.TableLayoutPanel3.Controls.Add(this.btnExport, 1, 5);
+            this.TableLayoutPanel3.Controls.Add(this.cmbTerminalNames, 1, 3);
+            this.TableLayoutPanel3.Controls.Add(this.lblterminal, 0, 3);
             this.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel3.Name = "TableLayoutPanel3";
@@ -339,9 +402,9 @@
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.TableLayoutPanel3.Size = new System.Drawing.Size(270, 209);
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.09524F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.14286F));
+            this.TableLayoutPanel3.Size = new System.Drawing.Size(252, 210);
             this.TableLayoutPanel3.TabIndex = 0;
             // 
             // Label13
@@ -352,7 +415,7 @@
             this.Label13.ForeColor = System.Drawing.Color.Black;
             this.Label13.Location = new System.Drawing.Point(3, 34);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(46, 34);
+            this.Label13.Size = new System.Drawing.Size(42, 34);
             this.Label13.TabIndex = 110;
             this.Label13.Text = "From";
             this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -365,7 +428,7 @@
             this.Label14.ForeColor = System.Drawing.Color.Black;
             this.Label14.Location = new System.Drawing.Point(3, 68);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(46, 34);
+            this.Label14.Size = new System.Drawing.Size(42, 34);
             this.Label14.TabIndex = 112;
             this.Label14.Text = "To";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -376,9 +439,9 @@
             this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(55, 37);
+            this.dtpFrom.Location = new System.Drawing.Point(51, 37);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(175, 29);
+            this.dtpFrom.Size = new System.Drawing.Size(163, 29);
             this.dtpFrom.TabIndex = 111;
             // 
             // btnGenerateEJournal
@@ -394,9 +457,9 @@
             this.btnGenerateEJournal.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerateEJournal.IconSize = 31;
             this.btnGenerateEJournal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerateEJournal.Location = new System.Drawing.Point(55, 139);
+            this.btnGenerateEJournal.Location = new System.Drawing.Point(51, 139);
             this.btnGenerateEJournal.Name = "btnGenerateEJournal";
-            this.btnGenerateEJournal.Size = new System.Drawing.Size(175, 28);
+            this.btnGenerateEJournal.Size = new System.Drawing.Size(163, 31);
             this.btnGenerateEJournal.TabIndex = 102;
             this.btnGenerateEJournal.Text = "Generate E-Journal";
             this.btnGenerateEJournal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -410,9 +473,9 @@
             this.dtpTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(55, 71);
+            this.dtpTo.Location = new System.Drawing.Point(51, 71);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(175, 29);
+            this.dtpTo.Size = new System.Drawing.Size(163, 29);
             this.dtpTo.TabIndex = 113;
             // 
             // btnSearch
@@ -427,9 +490,9 @@
             this.btnSearch.IconColor = System.Drawing.Color.Black;
             this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSearch.IconSize = 31;
-            this.btnSearch.Location = new System.Drawing.Point(236, 37);
+            this.btnSearch.Location = new System.Drawing.Point(220, 37);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(31, 28);
+            this.btnSearch.Size = new System.Drawing.Size(29, 28);
             this.btnSearch.TabIndex = 114;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -447,9 +510,9 @@
             this.btnExport.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExport.IconSize = 31;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(55, 173);
+            this.btnExport.Location = new System.Drawing.Point(51, 176);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(175, 33);
+            this.btnExport.Size = new System.Drawing.Size(163, 31);
             this.btnExport.TabIndex = 121;
             this.btnExport.Text = "Export Report";
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -457,18 +520,41 @@
             this.btnExport.Visible = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // cmbTerminalNames
+            // 
+            this.cmbTerminalNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTerminalNames.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cmbTerminalNames.FormattingEnabled = true;
+            this.cmbTerminalNames.Location = new System.Drawing.Point(51, 105);
+            this.cmbTerminalNames.Name = "cmbTerminalNames";
+            this.cmbTerminalNames.Size = new System.Drawing.Size(163, 29);
+            this.cmbTerminalNames.TabIndex = 124;
+            // 
+            // lblterminal
+            // 
+            this.lblterminal.AutoSize = true;
+            this.lblterminal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblterminal.ForeColor = System.Drawing.Color.Black;
+            this.lblterminal.Location = new System.Drawing.Point(3, 102);
+            this.lblterminal.Name = "lblterminal";
+            this.lblterminal.Size = new System.Drawing.Size(40, 32);
+            this.lblterminal.TabIndex = 125;
+            this.lblterminal.Text = "Terminal:";
+            this.lblterminal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Terminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.TableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Terminal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Terminal";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Terminal_Load);
             this.TableLayoutPanel1.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
@@ -476,6 +562,8 @@
             this.Panel1.ResumeLayout(false);
             this.TableLayoutPanel4.ResumeLayout(false);
             this.TableLayoutPanel4.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dt)).EndInit();
             this.Panel2.ResumeLayout(false);
             this.TableLayoutPanel3.ResumeLayout(false);
             this.TableLayoutPanel3.PerformLayout();
@@ -511,5 +599,11 @@
         internal FontAwesome.Sharp.IconButton btnExport;
         internal CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer1;
         private System.Windows.Forms.CheckBox cbSelectAll;
+        internal System.Windows.Forms.CheckBox cbxProfit;
+        private System.Windows.Forms.Panel panel4;
+        private Guna.UI2.WinForms.Guna2Button btnExportToExcel;
+        private System.Windows.Forms.DataGridView dt;
+        private System.Windows.Forms.ComboBox cmbTerminalNames;
+        internal System.Windows.Forms.Label lblterminal;
     }
 }

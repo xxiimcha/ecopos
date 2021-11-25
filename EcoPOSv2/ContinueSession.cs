@@ -24,8 +24,20 @@ namespace EcoPOSv2
         public Login frmLogin;
         public Order frmOrder;
 
-        
+
         //METHODS
+        public static ContinueSession _ContinueSession;
+        public static ContinueSession Instance
+        {
+            get
+            {
+                if (_ContinueSession == null)
+                {
+                    _ContinueSession = new ContinueSession();
+                }
+                return _ContinueSession;
+            }
+        }
         private void LoadPermissions(int roleID)
         {
             SQL.AddParam("@roleID", roleID);
@@ -65,15 +77,32 @@ namespace EcoPOSv2
         //METHODS
         private void ContinueSession_Load(object sender, EventArgs e)
         {
-            lblCS_Username.Text = SQL.ReturnResult("SELECT user_name FROM shift WHERE ended IS NULL AND shiftID = (SELECT MAX(shiftID) FROM shift)");
+            _ContinueSession = this;
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            lblCS_Username.Text = SQL.ReturnResult("SELECT user_name FROM shift WHERE terminal_id = @terminal_id AND ended IS NULL AND shiftID = (SELECT MAX(shiftID) FROM shift WHERE terminal_id = @terminal_id)");
             if (SQL.HasException(true))return;
 
             this.ActiveControl = tbCSPassword;
-        }
 
+            if (Properties.Settings.Default.cardlogin == false)
+            {
+                lbLoginCard.Visible = false;
+                lblLoginCardAdmin.Visible = false;
+            }
+            else
+            {
+                lbLoginCard.Visible = true;
+                lblLoginCardAdmin.Visible = true;
+            }
+        }
+        bool close = false;
         private void ContinueSession_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Application.Exit();
+            if(close == false)
+            {
+                e.Cancel = true;
+            }
         }
         int roleID;
         private void btnContinueSession_Click(object sender, EventArgs e)
@@ -111,8 +140,12 @@ namespace EcoPOSv2
 
                 LoadPermissions(roleID);
 
+                Main.Instance.roleid = roleID.ToString();
+
                 RP.Order(Order.Instance);
                 RP.Home(Main.Instance);
+
+                close = true;
 
                 Main.Instance.Show();
                 Close();
@@ -136,6 +169,7 @@ namespace EcoPOSv2
                 }
 
                 //new Notification().PopUp("Login Success!", "Success", "success");
+                close = true;
 
                 Main.Instance.Show();
                 Close();
@@ -172,6 +206,8 @@ namespace EcoPOSv2
 
                 new Notification().PopUp("Login Success!","Success","success");
 
+                close = true;
+
                 Main.Instance.Show();
                 Close();
             }
@@ -198,6 +234,8 @@ namespace EcoPOSv2
 
         private void gunaControlBox1_Click(object sender, EventArgs e)
         {
+            close = true;
+
             Application.Exit();
         }
 
@@ -215,6 +253,22 @@ namespace EcoPOSv2
             {
                 Prompt.Instance.Pop(1);
             }
+        }
+
+        private void lbLoginCard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CardLogin cl = new CardLogin();
+
+            cl.type = "2";
+            cl.ShowDialog();
+        }
+
+        private void lblLoginCardAdmin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CardLogin cl = new CardLogin();
+
+            cl.type = "3";
+            cl.ShowDialog();
         }
     }
 }

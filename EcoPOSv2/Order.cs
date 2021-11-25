@@ -92,6 +92,7 @@ namespace EcoPOSv2
         //METHODS
         public void LoadOrder()
         {
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             SQL.Query(@"SELECT [itemID] as 'ID'
                        ,[productID] 
                        ,[description] as 'Description'
@@ -105,7 +106,7 @@ namespace EcoPOSv2
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
                        ,[quantity] as 'Qty'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
-                        FROM order_cart");
+                        FROM order_cart where terminal_id=@terminal_id");
 
             if (SQL.HasException(true))
                 return;
@@ -127,10 +128,12 @@ namespace EcoPOSv2
         {
             //lblOrderNumber.Text = SQL.ReturnResult("SELECT order_no,regulardiscountamount FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
             //if (SQL.HasException(true))return;
-            if(SQL.ReturnResult("select count(*) from order_no") == "0")
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            if(SQL.ReturnResult("select count(*) from order_no where terminal_id=@terminal_id") == "0")
             {
                 // start order no
-                SQL.Query("INSERT INTO order_no (order_no) VALUES (1)");
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                SQL.Query("INSERT INTO order_no (order_no,terminal_id) VALUES (1,@terminal_id)");
 
                 if (SQL.HasException(true))
                 {
@@ -138,8 +141,8 @@ namespace EcoPOSv2
                 }
             }
 
-
-            SQL.Query("SELECT order_no,disc_amt FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            SQL.Query("SELECT order_no,disc_amt FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
 
             if (SQL.HasException(true)) return;
 
@@ -157,12 +160,15 @@ namespace EcoPOSv2
         }
         public void GetTotal()
         {
-            int count = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM order_cart) > 0, 1, 0)"));
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            int count = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM order_cart where terminal_id=@terminal_id) > 0, 1, 0)"));
 
             if (SQL.HasException(true))
                 return;
 
             SQL.AddParam("@count", count);
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
             SQL.Query(@"SELECT IIF(@count > 0, SUM(quantity), 0.00) as 'Qty',
                               IIF(@count > 0, SUM(static_price_inclusive * quantity), 0.00) as 'Subtotal',
 		                      IIF(@count > 0, SUM(discount), 0.00) as 'Discount', 
@@ -170,7 +176,7 @@ namespace EcoPOSv2
 	                          IIF(@count > 0, SUM(selling_price_exclusive), 0.00) as 'Vatable', 
 		                      IIF(@count > 0, SUM(selling_price_vat), 0.00) as 'VAT',
                               IIF(@count > 0, SUM(less_vat), 0.00) as 'LessVAT'
-		              FROM order_cart");
+		              FROM order_cart where terminal_id=@terminal_id");
 
             if (SQL.HasException(true))
                 return;
@@ -179,13 +185,23 @@ namespace EcoPOSv2
             {
                 // check if discount > 1300
 
-                decimal discount;
-                int check_if_PWDSC = Convert.ToInt32(SQL.ReturnResult("SELECT cus_type FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)"));
+                decimal discount, check_if_PWDSC;
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                string value = SQL.ReturnResult("SELECT cus_type FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no WHERE terminal_id=@terminal_id)");
                 if (SQL.HasException(true))
                     return;
 
+                if (value == "")
+                {
+                    check_if_PWDSC = 0;
+                }
+                else
+                {
+                    check_if_PWDSC = int.Parse(value);
+                }
+
                 discount = Convert.ToDecimal(r["Discount"].ToString());
-                if ( Convert.ToDecimal(r["Discount"].ToString()) > 1300M & (check_if_PWDSC == 1 | check_if_PWDSC == 2))
+                if (Convert.ToDecimal(r["Discount"].ToString()) > 1300M & (check_if_PWDSC == 1 | check_if_PWDSC == 2))
                     discount = 1300M;
 
 
@@ -201,13 +217,27 @@ namespace EcoPOSv2
                 lblLessVAT.Text = r["LessVAT"].ToString();
             }
 
-            decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE is_vat_exempt = 0) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE is_vat_exempt = 0),0)".ToString()));
+            if (lblDiscount.Text == "0.00")
+            {
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0),0)".ToString()));
 
-            lblVATSale.Text = vatsale.ToString("N2");
-            if (SQL.HasException(true))
-                return;
+                lblVATSale.Text = vatsale.ToString("N2");
+                if (SQL.HasException(true))
+                    return;
+            }
+            else
+            {
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0),0)".ToString()));
 
-            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE is_vat_exempt = 1),0)".ToString()));
+                lblVATSale.Text = vatsale.ToString("N2");
+                if (SQL.HasException(true))
+                    return;
+            }
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1),0)".ToString()));
 
             lblVATExempt.Text = vatexempt.ToString("N2");
 
@@ -271,15 +301,20 @@ namespace EcoPOSv2
                     return;
                 }
 
-                if(Convert.ToInt32(SQL.ReturnResult("select count(*) from transaction_details")) != 0)
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                if (Convert.ToInt32(SQL.ReturnResult("select count(*) from transaction_details Where terminal_id=@terminal_id")) != 0)
                 {
-                    int orderreftransac = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from transaction_details"));
-                    int orderreforderno = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from order_no"));
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    int orderreftransac = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from transaction_details Where terminal_id=@terminal_id"));
+
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    int orderreforderno = Convert.ToInt32(SQL.ReturnResult("select max(order_ref) from order_no Where terminal_id=@terminal_id"));
 
                     if (orderreftransac == orderreforderno)
                     {
                         SQL.AddParam("@orderref", orderreftransac);
-                        SQL.Query("DELETE FROM transaction_details WHERE order_ref=@orderref");
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        SQL.Query("DELETE FROM transaction_details WHERE order_ref=@orderref AND terminal_id=@terminal_id");
 
                         if (SQL.HasException(true))
                         {
@@ -288,11 +323,12 @@ namespace EcoPOSv2
                     }
                 }
 
-                int action = Convert.ToInt32(SQL.ReturnResult("SELECT action FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)"));
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                int action = Convert.ToInt32(SQL.ReturnResult("SELECT action FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no WHERE terminal_id=@terminal_id)"));
 
-                string customerID = SQL.ReturnResult("SELECT cus_ID_No FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                string customerID = SQL.ReturnResult("SELECT cus_ID_No FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no WHERE terminal_id=@terminal_id)");
                 if (SQL.HasException(true)) return;
-
 
                 SQL.AddParam("@customerID", customerID);
                 decimal card_balance = Convert.ToDecimal(SQL.ReturnResult("SELECT IIF(@customerID <> 0, (SELECT card_balance FROM member_card WHERE customerID = @customerID), 0.00)"));
@@ -412,12 +448,16 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
 
-                    if (int.Parse(SQL.ReturnResult("select count(*)from order_cart")) != 0)
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    SQL.AddParam("@productID", productID1);
+                    if (int.Parse(SQL.ReturnResult("select count(*) from order_cart where productID=@productID AND terminal_id=@terminal_id")) != 0)
                     {
                         SQL.AddParam("@productID", productID1);
-                        quantitytalaga = SQL.ReturnResult("select quantity from order_cart where productID=@productID");
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        if(quantitytalaga != "")
+                        quantitytalaga = SQL.ReturnResult("select quantity from order_cart where productID=@productID AND terminal_id=@terminal_id");
+
+                        if (quantitytalaga != "")
                         {
                             totalquantity = decimal.Parse(quantitytalaga) + quantity;
                         }
@@ -425,7 +465,6 @@ namespace EcoPOSv2
                         {
                             totalquantity = 0 + quantity;
                         }
-
                         //MessageBox.Show("No of quantity: "+ totalquantity.ToString());
 
                         //CHECKER KUNG MAS MATAAS ANG QUANTITY
@@ -451,12 +490,15 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
 
+                    
+
                     string prod_description = "";
                     string prod_price = "";
 
                     SQL.AddParam("@barcode", barcode);
                     SQL.AddParam("@type", type);
-                    int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = (SELECT productID FROM products WHERE (barcode1 = @barcode OR barcode2 = @barcode) AND type = @type AND is_return = 0)"));
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND productID = (SELECT productID FROM products WHERE (barcode1 = @barcode OR barcode2 = @barcode) AND type = @type AND is_return = 0)"));
                     if (SQL.HasException(true))
                         return;
 
@@ -464,8 +506,10 @@ namespace EcoPOSv2
                     {
                         //check if still in stock
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        int check1 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        int check1 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE terminal_id=@terminal_id AND productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
                         if (SQL.HasException(true)) return;
+
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
                         int check2 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT stock_qty FROM INVENTORY WHERE productID = @productID) = 0, 1, 0)"));
                         if (SQL.HasException(true)) return;
@@ -497,15 +541,17 @@ namespace EcoPOSv2
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
                         SQL.AddParam("@quantity", quantity);
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount) 
-                                   SELECT productID, description, name, @type," + insert_type_query + ", @quantity, 0 FROM products WHERE productID = @productID");
+                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id) 
+                                   SELECT productID, description, name, @type," + insert_type_query + ", @quantity, 0,cost,@terminal_id FROM products WHERE productID = @productID");
 
                         if (SQL.HasException(true))
                             return;
                         #region "customer display"
                         //customer display
-                        SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE itemID = (SELECT MAX(itemID) FROM order_cart)");
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE terminal_id=@terminal_id AND itemID = (SELECT MAX(itemID) FROM order_cart where terminal_id=@terminal_id)");
                         if (SQL.HasException(true))
                             return;
 
@@ -525,7 +571,9 @@ namespace EcoPOSv2
 
                         //check if still in stock (retail and wholesale)
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        if (int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)")) == 1)
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        if (int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE terminal_id=@terminal_id AND productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)")) == 1)
                         {
                             new Notification().PopUp("Insufficient stock", "", "error");
                             tbBarcode.Clear();
@@ -552,8 +600,9 @@ namespace EcoPOSv2
                         SQL.AddParam("@productID", productID);
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@quantity", quantity);
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        SQL.Query("UPDATE order_cart SET quantity = quantity + @quantity WHERE productID = @productID AND type = @type AND is_return = 0");
+                        SQL.Query("UPDATE order_cart SET quantity = quantity + @quantity WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
                         if (SQL.HasException(true))
                             return;
 
@@ -562,7 +611,9 @@ namespace EcoPOSv2
                         SQL.AddParam("@barcode", tbBarcode.Text);
                         SQL.AddParam("@productID", productID);
                         SQL.AddParam("@type", type);
-                        SQL.Query("SELECT name, static_price_inclusive from order_cart WHERE productID = @productID AND type = @type AND is_return = 0");
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        SQL.Query("SELECT name, static_price_inclusive from order_cart WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
                         if (SQL.HasException(true)) return;
 
                         foreach (DataRow r in SQL.DBDT.Rows)
@@ -646,6 +697,7 @@ namespace EcoPOSv2
 
             if(e.KeyCode == Keys.F5)
             {
+                //MessageBox.Show("f5 price editor");
                 if(btnPriceEditor.Visible == true)
                 {
                     btnPriceEditor.PerformClick();
@@ -739,11 +791,24 @@ namespace EcoPOSv2
             {
                 if (MessageBox.Show("Would you like to cancel applied discounts?", "Discount Exist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    SQL.Query("UPDATE order_cart SET discount=0.00,is_less_vat='False',less_vat=0.00,is_vat_exempt='False',is_disc_percent='False',disc_percent=0.00,zero_vat=1");
-                    if (SQL.HasException(true)) return;
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    SQL.Query("UPDATE order_cart SET discount=0.00,is_less_vat='False',less_vat=0.00,is_vat_exempt='False',is_disc_percent='False',disc_percent=0.00,zero_vat=1 where terminal_id=@terminal_id");
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("Discount 1");
+                        return;
+                    }
 
-                    SQL.Query("UPDATE order_no SET discountID=0,disc_amt=0.00 where order_ref = (SELECT MAX(order_ref) FROM order_no)");
-                    if (SQL.HasException(true)) return;
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    SQL.Query("UPDATE order_no SET discountID=0,cus_special_ID_no='0',cus_type=0,cus_name='',disc_amt=0.00 where terminal_id=@terminal_id and order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("Discount 2");
+                        return;
+                    }
+
+                    lblCustomer.Text = "";
+                    lblOperation.Text = "";
 
                     LoadOrderNo();
                     LoadOrder();
@@ -846,14 +911,16 @@ namespace EcoPOSv2
             if (dgvCart.Rows.Count == 0)
                 return;
 
-            SQL.Query("DELETE FROM order_cart");
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            SQL.Query("DELETE FROM order_cart where terminal_id=@terminal_id");
 
             if (SQL.HasException(true))
                 return;
 
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             SQL.Query(@"UPDATE order_no SET action = 1, discountID = 0, cus_type = 0, cus_name = '',
                        cus_ID_no = 0, cus_mem_ID = 0, disc_amt = 0, cus_rewardable = 0, cus_amt_per_pt = 0, 
-                       return_order_ref = 0, refund_order_ref = 0 WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+                       return_order_ref = 0, refund_order_ref = 0 WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
 
             if (SQL.HasException(true))
                 return;
@@ -904,6 +971,17 @@ namespace EcoPOSv2
                 btnPriceEditor.Visible = false;
             }
 
+            if(Properties.Settings.Default.priceeditor == true)
+            {
+                btnPriceEditor.Enabled = true;
+                btnPriceEditor.Visible = true;
+            }
+            else
+            {
+                btnPriceEditor.Enabled = false;
+                btnPriceEditor.Visible = false;
+            }
+
             _order = this;
 
             new CreateParams();
@@ -927,37 +1005,69 @@ namespace EcoPOSv2
 
         private void btnVoidItem_Click(object sender, EventArgs e)
         {
-            try
+            if(Properties.Settings.Default.cardlogin == true)
             {
-                tbBarcode.Clear();
-                this.ActiveControl = tbBarcode;
+                
+                try
+                {
+                    tbBarcode.Clear();
+                    this.ActiveControl = tbBarcode;
+                }
+                catch (Exception) { }
+
+                if (dgvCart.SelectedRows.Count == 0)
+                    return;
+
+                CardLogin cl = new CardLogin();
+
+
+                cl.ItemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
+                cl.ProductID = dgvCart.CurrentRow.Cells[1].Value.ToString();
+                cl.type = "Void";
+                cl.ShowDialog();
+
+                return;
             }
-            catch (Exception) { }
+            else
+            {
+                try
+                {
+                    tbBarcode.Clear();
+                    this.ActiveControl = tbBarcode;
+                }
+                catch (Exception) { }
 
-            if (dgvCart.SelectedRows.Count == 0)
-                return;
+                if (dgvCart.SelectedRows.Count == 0)
+                    return;
 
-            // save to void item
-            SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
-            SQL.AddParam("@userID", Main.Instance.current_id);
+                // save to void item
+                SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
+                SQL.AddParam("@userID", Main.Instance.current_id);
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-            SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
-                       static_price_vat, static_price_inclusive, quantity, userID) SELECT itemID, productID, 
+                SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
+                       static_price_vat, static_price_inclusive, quantity, userID, terminal_id) SELECT itemID, productID, 
                        (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
-                       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID
-                       FROM order_cart WHERE productID = @productID");
+                       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID, @terminal_id
+                       FROM order_cart WHERE terminal_id=@terminal_id and productID = @productID");
 
-            if (SQL.HasException(true))
-                return;
+                if (SQL.HasException(true))
+                {
+                    MessageBox.Show("Error In Inserting VoidItem");
+                    return;
+                }
 
-            SQL.AddParam("@itemID", dgvCart.CurrentRow.Cells[0].Value.ToString());
-            SQL.Query("DELETE FROM order_cart WHERE itemID = @itemID");
+                SQL.AddParam("@itemID", dgvCart.CurrentRow.Cells[0].Value.ToString());
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-            if (SQL.HasException(true))
-                return;
+                SQL.Query("DELETE FROM order_cart WHERE itemID = @itemID AND terminal_id=@terminal_id");
 
-            LoadOrder();
-            GetTotal();
+                if (SQL.HasException(true))
+                    return;
+
+                LoadOrder();
+                GetTotal();
+            }
         }
         private void btnRetail_Click(object sender, EventArgs e)
         {

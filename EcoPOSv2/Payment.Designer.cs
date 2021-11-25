@@ -72,6 +72,7 @@
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
             this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmount_KeyDown);
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAmount_KeyPress);
             // 
             // Label9
             // 
@@ -130,21 +131,24 @@
             "Cash",
             "Membership Points",
             "Gift Certificate",
-            "Cheque",
             "GCash",
             "PayMaya",
+            "Lyka Gem(s)",
             "PayPal",
             "American Express",
             "BancNet",
             "China UnionPay",
             "JCB",
             "Mastercard",
-            "Visa "});
+            "Visa ",
+            "Lyka Gems",
+            "Cheque"});
             this.cmbMethod.Location = new System.Drawing.Point(175, 308);
             this.cmbMethod.MaxDropDownItems = 10;
             this.cmbMethod.Name = "cmbMethod";
             this.cmbMethod.Size = new System.Drawing.Size(424, 29);
             this.cmbMethod.TabIndex = 96;
+            this.cmbMethod.SelectedIndexChanged += new System.EventHandler(this.CmbMethod_SelectedIndexChanged);
             // 
             // TableLayoutPanel2
             // 

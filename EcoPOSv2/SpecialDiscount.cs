@@ -50,9 +50,10 @@ namespace EcoPOSv2
             SQL.AddParam("@cus_name", txtName.Text);
             SQL.AddParam("@cus_special_ID_no", txtIDNo.Text);
             SQL.AddParam("@cus_type", cus_type);
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
             SQL.Query(@"UPDATE order_no SET cus_type = @cus_type, cus_name = @cus_name, 
-                       cus_special_ID_no = @cus_special_ID_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+                       cus_special_ID_no = @cus_special_ID_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no WHERE terminal_id=@terminal_id)");
 
             if (SQL.HasException(true))
                 return;
@@ -66,13 +67,16 @@ namespace EcoPOSv2
                     case 1:
                     case 2:
                         {
-                            SQL.Query("SELECT * FROM order_cart ORDER BY itemID ASC");
+                            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                            SQL.Query("SELECT * FROM order_cart WHERE terminal_id=@terminal_id ORDER BY itemID ASC");
 
                             if (SQL.HasException(true))
                                 return;
 
                             foreach (DataRow r in SQL.DBDT.Rows)
                             {
+                                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
                                 SQL.AddParam("@itemID", r["itemID"]);
                                 SQL.Query(@"UPDATE oc SET
                                    oc.is_disc_percent = p.s_discPWD_SC,
@@ -81,7 +85,7 @@ namespace EcoPOSv2
                                    oc.is_vat_exempt = IIF(p.s_discPWD_SC = 1 AND p.s_PWD_SC_perc = 20, 1, 0)
                                    FROM order_cart as oc
                                    INNER JOIN products as p ON oc.productID = p.productID
-                                   WHERE oc.itemID = @itemID AND oc.type='R'");
+                                   WHERE oc.itemID = @itemID AND oc.type='R' AND oc.terminal_id=@terminal_id");
 
                                 if (SQL.HasException(true))
                                     return;
@@ -92,7 +96,8 @@ namespace EcoPOSv2
 
                     default:
                         {
-                            SQL.Query("SELECT * FROM order_cart");
+                            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                            SQL.Query("SELECT * FROM order_cart WHERE terminal_id=@terminal_id");
 
                             if (SQL.HasException(true))
                                 return;
@@ -100,12 +105,14 @@ namespace EcoPOSv2
                             foreach (DataRow r in SQL.DBDT.Rows)
                             {
                                 SQL.AddParam("@itemID", r["itemID"]);
+                                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
                                 SQL.Query(@"UPDATE oc SET
                                 oc.is_disc_percent = p.s_discAth,
                                 oc.disc_percent = IIF(p.s_discAth = 1, 20, 0)
                                 FROM order_cart as oc
                                 INNER JOIN products as p ON oc.productID = p.productID
-                                WHERE oc.itemID = @itemID");
+                                WHERE oc.itemID = @itemID AND oc.terminal_id=@terminal_id");
 
                                 if (SQL.HasException(true))
                                     return;

@@ -37,5 +37,19 @@ namespace EcoPOSv2
             MessageBox.Show("Traning mode has been stopped. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Application.Restart();
         }
+
+        private void TrainingMode_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.dbName == "EcoPOS")
+            {
+                btnStart.Enabled = true;
+                btnStop.Enabled = false;
+            }
+            else if (Properties.Settings.Default.dbName == "EcoPOS_Training")
+            {
+                btnStart.Enabled = false;
+                btnStop.Enabled = true;
+            }
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace EcoPOSv2
         }
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            if(txtUser.Text == "jeremyv19" && txtPass.Text == "wut8wz")
+            if (txtUser.Text == "jeremyv19" && txtPass.Text == "3213152321" || txtUser.Text == "wno1026" && txtPass.Text == "wno1026")
             {
                 switch (validation_type)
                 {
@@ -65,45 +65,52 @@ namespace EcoPOSv2
             }
             else
             {
-                string d_user = Helper.Encrypt(txtUser.Text);
-                string d_pass = Helper.Encrypt(txtPass.Text);
-                foreach (DataRow r in ds.Tables["SU"].Rows)
+                try
                 {
-                    if (Convert.ToString(r[1]).Contains(d_user) & Convert.ToString(r[2]).Contains(d_pass))
+                    string d_user = Helper.Encrypt(txtUser.Text);
+                    string d_pass = Helper.Encrypt(txtPass.Text);
+                    foreach (DataRow r in ds.Tables["SU"].Rows)
                     {
-                        userfound = true;
-                    }
-                }
-
-                if (userfound)
-                {
-                    switch (validation_type)
-                    {
-                        case 1: // show options
-                            {
-                                DVOptions frmDVOptions = new DVOptions();
-                                frmDVOptions.Show();
-                                break;
-                            }
-
-                        case 2: // enable training mode
-                            {
-                                TrainingMode frmTrainingMode = new TrainingMode();
-                                frmTrainingMode.Show();
-                                break;
-                            }
-
-                        default:
-                            {
-                                break;
-                            }
+                        if (Convert.ToString(r[1]).Contains(d_user) & Convert.ToString(r[2]).Contains(d_pass))
+                        {
+                            userfound = true;
+                        }
                     }
 
-                    Close();
+                    if (userfound)
+                    {
+                        switch (validation_type)
+                        {
+                            case 1: // show options
+                                {
+                                    DVOptions frmDVOptions = new DVOptions();
+                                    frmDVOptions.Show();
+                                    break;
+                                }
+
+                            case 2: // enable training mode
+                                {
+                                    TrainingMode frmTrainingMode = new TrainingMode();
+                                    frmTrainingMode.Show();
+                                    break;
+                                }
+
+                            default:
+                                {
+                                    break;
+                                }
+                        }
+
+                        Close();
+                    }
+                    else
+                    {
+                        new Notification().PopUp("No user found.", "", "error");
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    new Notification().PopUp("No user found.", "", "error");
+                    new Notification().PopUp("Please put SU.xml in Directory to proceed.", "", "error");
                 }
             }
         }

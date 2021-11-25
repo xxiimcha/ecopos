@@ -39,7 +39,53 @@ namespace EcoPOSv2
         Button currentButton;
         List<Control> allTxt = new List<Control>();
         List<TextBox> requiredFields = new List<TextBox>();
+        string cat_query;
         //METHODS
+        private void LoadExpirationDate()
+        {
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate()
+                {
+                    cat_query = "products.categoryID NOT IN (0)";
+
+                    if (cmbECategory.SelectedIndex != 0)
+                    {
+                        cat_query = "products.categoryID = " + cmbECategory.SelectedValue;
+                    }
+
+
+                    SQLControl psql = new SQLControl();
+
+                    psql.Query("select products.barcode1 as 'Barcode1',products.barcode2 as 'Barcode2',products.description as 'Description',products.name as 'ProductName',product_category.name as 'CategoryName',products.expiration_date as 'Expiry Date' from products JOIN product_category ON products.categoryID = product_category.categoryID and products.has_expiry = 'true' AND " + cat_query + " ORDER BY products.expiration_date asc");
+                    if (psql.HasException(true)) return;
+
+                    dgvExpirationDate.DataSource = psql.DBDT;
+
+                    dgvExpirationDate.Columns[0].Visible = false;
+                    dgvExpirationDate.Columns[1].Visible = false;
+
+
+                    foreach (DataGridViewRow row in dgvExpirationDate.Rows)
+                    {
+                        var now = DateTime.Now;
+                        var expirationDate = DateTime.Parse(row.Cells[5].Value.ToString());
+                        var sevenDayBefore = expirationDate.AddDays(-7);
+
+                        if (now >= sevenDayBefore && now < expirationDate)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                        }
+                        else if (now >= expirationDate)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                    }
+
+                    dgvExpirationDate.ClearSelection();
+                }));
+            }).Start();
+        }
         private void ClearFields_Cat()
         {
             GA.DoThis(ref allTxt, TableLayoutPanel4, ControlType.TextBox, GroupAction.Action.Clear);
@@ -91,6 +137,9 @@ namespace EcoPOSv2
             txtRPInclusive.Text = "0.00";
             txtWPInclusive.Text = "0.00";
             txtProductStock.Text = "0";
+            tbProductCost.Text = "0";
+
+            dtpExpiry.Value = DateTime.Now;
         }
 
         private void ProductsRF()
@@ -171,52 +220,22 @@ namespace EcoPOSv2
                     }));
                 }));
             }).Start();
-            //BackgroundWorker workerReloadProducts = new BackgroundWorker();
-            //workerReloadProducts.DoWork += WorkerReloadProducts_DoWork;
-            //workerReloadProducts.RunWorkerAsync();
         }
-
-        //private void WorkerReloadProducts_DoWork(object sender, DoWorkEventArgs e)
-        //{
-        //    SQLControl PSQL = new SQLControl();
-
-        //    dgvCategory.Invoke(new System.Action(() =>
-        //    {
-        //        if ((dgvCategory.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0))
-        //        {
-        //            dgvCategory.Select();
-        //            if (Convert.ToInt32(dgvCategory.CurrentRow.Cells[0].Value.ToString()) != 0)
-        //            {
-        //                PSQL.AddParam("@categoryID", (dgvCategory.CurrentRow.Cells[0].Value.ToString()));
-
-        //                PSQL.Query("SELECT productID, description, name FROM products WHERE categoryID = @categoryID ORDER BY description ASC");
-        //                if (PSQL.HasException(true))
-        //                    return;
-
-        //                dgvProducts.Invoke(new System.Action(() =>
-        //                {
-        //                    dgvProducts.DataSource = PSQL.DBDT;
-        //                    dgvProducts.Columns[0].Visible = false;
-        //                    dgvProducts.Columns[1].Width = 300;
-        //                }));
-
-        //                return;
-        //            }
-
-        //            PSQL.Query("SELECT 150 productID, description, name FROM products ORDER BY description ASC");
-        //            if (PSQL.HasException(true))
-        //                return;
-
-        //            dgvProducts.Invoke(new System.Action(() =>
-        //            {
-        //                dgvProducts.DataSource = PSQL.DBDT;
-        //                dgvProducts.Columns[0].Visible = false;
-        //                dgvProducts.Columns[1].Width = 300;
-        //            }));
-        //        }
-        //    }));
-        //}
-
+        private void LoadExpirationCategory()
+        {
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    OL.ComboValuesQuery(cmbECategory, @"SELECT categoryID, name FROM
+                                         (
+                                          SELECT 0 as 'categoryID', 'All category' as 'name', 1 as ord
+                                          UNION ALL
+                                          SELECT categoryID, name, 2 as ord FROM product_category
+                                         ) x ORDER BY ord, name ASC", "categoryID", "name");
+                }));
+            }).Start();
+        }
         private void LoadCategory()
         {
             new Thread(()=>
@@ -248,38 +267,7 @@ namespace EcoPOSv2
                     }));
                 }));
             }).Start();
-
-            //BackgroundWorker workerLoadCategory = new BackgroundWorker();
-            //workerLoadCategory.DoWork += WorkerLoadCategory_DoWork;
-            //workerLoadCategory.RunWorkerAsync();
         }
-
-        //private void WorkerLoadCategory_DoWork(object sender, DoWorkEventArgs e)
-        //{
-        //    SQLControl pSQL = new SQLControl();
-
-        //    //pSQL.Query(@"SELECT catID, catName FROM
-        //    //           (
-        //    //           SELECT 0 as catID, 'All Categories' as catName
-        //    //           UNION ALL 
-        //    //           SELECT categoryID as catID, name as catName FROM product_category 
-        //    //           ) x ORDER BY 
-        //    //           CASE WHEN catName = 'All Categories' then 1
-        //    //           ELSE 5
-        //    //           END,
-        //    //           catname ASC");
-
-        //    pSQL.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
-            
-        //    if (pSQL.HasException(true))
-        //        return;
-
-        //    dgvCategory.Invoke(new System.Action(() =>
-        //    {
-        //        dgvCategory.DataSource = pSQL.DBDT;
-        //        dgvCategory.Columns[0].Visible = false;
-        //    }));
-        //}
 
         private void TextValidation()
         {
@@ -290,6 +278,9 @@ namespace EcoPOSv2
 
             AssignValidation(ref txtProductStock, ValidationType.Price);
             AssignValidation(ref txtProductStock, ValidationType.Only_Numbers);
+
+            AssignValidation(ref tbProductCost, ValidationType.Price);
+            AssignValidation(ref tbProductCost, ValidationType.Only_Numbers);
         }
 
         private void ControlBehavior()
@@ -373,6 +364,17 @@ namespace EcoPOSv2
                         cbxDiscPWD.Checked = Convert.ToBoolean(r["s_discPWD_SC"].ToString());
                         cbxDiscAthlete.Checked = Convert.ToBoolean(r["s_discAth"].ToString());
                         cbxAskQuantity.Checked = Convert.ToBoolean(r["s_ask_qty"].ToString());
+                        tbProductCost.Text = r["cost"].ToString();
+                        cbxHasExpiry.Checked = Convert.ToBoolean(r["has_expiry"].ToString());
+                        
+                        if(Convert.ToBoolean(r["has_expiry"].ToString()) == true)
+                        {
+                            dtpExpiry.Value = DateTime.Parse(r["expiration_date"].ToString());
+                        }
+                        else
+                        {
+                            dtpExpiry.Value = DateTime.Now;
+                        }
 
                         if (cbxDiscPWD.Checked == true)
                         {
@@ -386,6 +388,10 @@ namespace EcoPOSv2
                         lblStock.Visible = false;
                         txtProductStock.Clear();
                         txtProductStock.Visible = false;
+
+                        //lblCost.Visible = false;
+                        //tbProductCost.Clear();
+                        //tbProductCost.Visible = false;
                     }
                 }));
             }).Start();
@@ -397,6 +403,9 @@ namespace EcoPOSv2
             //VISIBLE ON IN PRODUCT INVENTORY QUANTITY
             lblStock.Visible = true;
             txtProductStock.Visible = true;
+
+            //lblCost.Visible = true;
+            //tbProductCost.Visible = true;
 
             dgvCategory.Select();
 
@@ -486,13 +495,16 @@ namespace EcoPOSv2
                                         SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
                                         SQL.AddParam("@s_discAth", cbxDiscAthlete.CheckState);
                                         SQL.AddParam("@s_ask_qty", cbxAskQuantity.CheckState);
+                                        SQL.AddParam("@cost", tbProductCost.Text);
+                                        SQL.AddParam("@has_expiry", cbxHasExpiry.Checked);
+                                        SQL.AddParam("@expiration_date", dtpExpiry.Value.ToShortDateString());
 
                                         SQL.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
-                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
+                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty,cost,has_expiry,expiration_date)
                                    VALUES
                                    (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
-                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty)");
+                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@cost,@has_expiry,@expiration_date)");
 
                                         if (SQL.HasException(true))
                                             return;
@@ -583,12 +595,15 @@ namespace EcoPOSv2
                                         SQL.AddParam("@s_PWD_SC_perc", pwd_perc);
                                         SQL.AddParam("@s_discAth", cbxDiscAthlete.CheckState);
                                         SQL.AddParam("@s_ask_qty", cbxAskQuantity.CheckState);
+                                        SQL.AddParam("@cost", tbProductCost.Text);
+                                        SQL.AddParam("@has_expiry", cbxHasExpiry.Checked);
+                                        SQL.AddParam("@expiration_date", dtpExpiry.Value.ToShortDateString());
 
                                         SQL.Query(@"UPDATE products SET
                                    description = @description, name = @name, categoryID = @categoryID, rp_inclusive = @rp_inclusive,
                                    wp_inclusive = @wp_inclusive, barcode1 = @barcode1, barcode2 = @barcode2, warehouseID = @warehouseID, 
                                    s_discR = @s_discR, s_discPWD_SC = @s_discPWD_SC, s_PWD_SC_perc = @s_PWD_SC_perc,
-                                   s_discAth = @s_discAth, s_ask_qty = @s_ask_qty
+                                   s_discAth = @s_discAth, s_ask_qty = @s_ask_qty, cost = @cost, has_expiry=@has_expiry,expiration_date=@expiration_date
                                    WHERE productID = @productID");
 
                                         if (SQL.HasException(true))
@@ -600,7 +615,7 @@ namespace EcoPOSv2
                                     }
                                     else
                                     {
-                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
+                                        new Notification().PopUp("Duplicate name/barcode found.", "Save failed", "error");
                                         return;
                                     }
 
@@ -1042,17 +1057,213 @@ namespace EcoPOSv2
 
         private void txtProductStock_Leave(object sender, EventArgs e)
         {
-            if(txtProductStock.Text == "")
+            if((sender as TextBox).Text == "")
             {
-                txtProductStock.Text = "0";
+                (sender as TextBox).Text = "0";
             }
         }
 
         private void txtProductStock_Enter(object sender, EventArgs e)
         {
-            if(txtProductStock.Text == "0")
+            if((sender as TextBox).Text == "0")
             {
-                txtProductStock.Text = "";
+                (sender as TextBox).Text = "";
+            }
+        }
+
+        private void CbxHasExpiry_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxHasExpiry.Checked == true)
+            {
+                dtpExpiry.Enabled = true;
+            }
+            else
+            {
+                dtpExpiry.Enabled = false;
+            }
+        }
+
+        private void BtnExpirationDate_Click(object sender, EventArgs e)
+        {
+            OL.changePanel(pnlExpiration, ref currentPanel, btnExpirationDate, ref currentButton);
+
+            LoadExpirationCategory();
+
+            LoadExpirationDate();
+            
+        }
+
+        private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            //new Thread(() =>
+            //{
+            //    Invoke(new MethodInvoker(delegate ()
+            //    {
+            //        if (txtSearch.Text != "")
+            //        {
+            //            SQL.AddParam("@find", txtSearch.Text + "%");
+            //            SQL.Query(@"select products.description as 'Description',products.name as 'Product Name',product_category.name as 'Category Name',
+            //                        products.expiration_date as 'Expiry Date' from products JOIN product_category ON products.categoryID = product_category.categoryID 
+            //                        AND products.has_expiry  = 'true' AND products.barcode1 LIKE @find OR products.barcode2 LIKE @find OR products.description LIKE @find OR products.name LIKE @find 
+            //                        ORDER BY products.expiration_date asc");
+
+            //            if (SQL.HasException(true))
+            //                return;
+
+            //            dgvExpirationDate.DataSource = SQL.DBDT;
+            //        }
+            //        else LoadExpirationDate();
+            //    }));
+            //}).Start();
+        }
+
+        private void CmbECategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    cat_query = "products.categoryID NOT IN (0)";
+
+                    if (cmbECategory.SelectedIndex != 0)
+                    {
+                        cat_query = "products.categoryID = " + cmbECategory.SelectedValue;
+                    }
+
+
+                    SQLControl psql = new SQLControl();
+
+                    psql.Query("select products.barcode1 as 'Barcode1',products.barcode2 as 'Barcode2',products.description as 'Description',products.name as 'ProductName',product_category.name as 'CategoryName',products.expiration_date as 'Expiry Date' from products JOIN product_category ON products.categoryID = product_category.categoryID and products.has_expiry = 'true' AND " + cat_query + " ORDER BY products.expiration_date asc");
+                    if (psql.HasException(true)) return;
+
+                    dgvExpirationDate.DataSource = psql.DBDT;
+
+                    dgvExpirationDate.Columns[0].Visible = false;
+                    dgvExpirationDate.Columns[1].Visible = false;
+
+
+                    foreach (DataGridViewRow row in dgvExpirationDate.Rows)
+                    {
+                        var now = DateTime.Now;
+                        var expirationDate = DateTime.Parse(row.Cells[5].Value.ToString());
+                        var sevenDayBefore = expirationDate.AddDays(-7);
+
+                        if (now >= sevenDayBefore && now < expirationDate)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                        }
+                        else if (now >= expirationDate)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                    }
+
+                    dgvExpirationDate.ClearSelection();
+                }));
+            }).Start();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtSearch.Text == "Search description, Name or Barcode")
+                {
+                    LoadExpirationDate();
+                    return;
+                }
+
+                (dgvExpirationDate.DataSource as DataTable).DefaultView.RowFilter =
+                    string.Format("Barcode1 LIKE '{0}%' OR Barcode2 LIKE '{0}%' OR Description LIKE '{0}%' OR ProductName LIKE '{0}%'", txtSearch.Text);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void TxtSearch_Enter(object sender, EventArgs e)
+        {
+            if(txtSearch.Text == "Search description, Name or Barcode")
+            {
+                txtSearch.Text = "";
+                txtSearch.ForeColor = Color.Black;
+            }
+        }
+
+        private void TxtSearch_Leave(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                txtSearch.Text = "Search description, Name or Barcode";
+                txtSearch.ForeColor = Color.Black;
+            }
+        }
+        ExportImport EI = new ExportImport();
+        private void BtnExportPDF_Click(object sender, EventArgs e)
+        {
+            if (dgvExpirationDate.RowCount == 0)
+                return;
+
+            EI.ExportDgvToPDF("Products with Expiry Dates", dgvExpirationDate);
+        }
+
+        private void BtnESearchByDate_Click(object sender, EventArgs e)
+        {
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    cat_query = "products.categoryID NOT IN (0)";
+
+                    if (cmbECategory.SelectedIndex != 0)
+                    {
+                        cat_query = "products.categoryID = " + cmbECategory.SelectedValue;
+                    }
+
+
+                    SQLControl psql = new SQLControl();
+
+                    psql.AddParam("@from", dtpFrom.Value);
+                    psql.AddParam("@to", dtpTo.Value);
+                    psql.Query("select products.barcode1 as 'Barcode1',products.barcode2 as 'Barcode2',products.description as 'Description',products.name as 'ProductName',product_category.name as 'CategoryName',products.expiration_date as 'Expiry Date' from products JOIN product_category ON products.categoryID = product_category.categoryID and products.has_expiry = 'true' AND " + cat_query + " AND products.expiration_date BETWEEN @from AND @to ORDER BY products.expiration_date asc");
+                    if (psql.HasException(true)) return;
+
+                    dgvExpirationDate.DataSource = psql.DBDT;
+
+                    dgvExpirationDate.Columns[0].Visible = false;
+                    dgvExpirationDate.Columns[1].Visible = false;
+
+
+                    foreach (DataGridViewRow row in dgvExpirationDate.Rows)
+                    {
+                        var now = DateTime.Now;
+                        var expirationDate = DateTime.Parse(row.Cells[5].Value.ToString());
+                        var sevenDayBefore = expirationDate.AddDays(-7);
+
+                        if (now >= sevenDayBefore && now < expirationDate)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Yellow;
+                        }
+                        else if (now >= expirationDate)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                    }
+
+                    dgvExpirationDate.ClearSelection();
+                }));
+            }).Start();
+        }
+
+        private void BtnEShowAll_Click(object sender, EventArgs e)
+        {
+            LoadExpirationCategory();
+            LoadExpirationDate();
+        }
+
+        private void txtProductStock_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnProduct_Save.PerformClick();
             }
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,7 +112,7 @@ namespace EcoPOSv2
         {
             SQLControl workerSQL = new SQLControl();
 
-            workerSQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
+            workerSQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID
                        INNER JOIN product_category as c ON
@@ -168,7 +169,7 @@ namespace EcoPOSv2
 
             SQL.AddParam("@find", txtSearch.Text + "%");
 
-            SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
+            SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID
                        INNER JOIN product_category as c ON
@@ -184,12 +185,67 @@ namespace EcoPOSv2
             dgvInventory.DataSource = SQL.DBDT;
             dgvInventory.Columns[0].Visible = false;
         }
+        //CSV WRITER
+        public void writeCSV(DataGridView gridIn, string outputFile)
+        {
+            //test to see if the DataGridView has any rows
+            if (gridIn.RowCount > 0)
+            {
+                string value = "";
+                DataGridViewRow dr = new DataGridViewRow();
+                StreamWriter swOut = new StreamWriter(@"C://Users//" + Environment.UserName + "//Desktop" + "//" + outputFile);
 
+                //write header rows to csv
+                for (int i = 0; i <= gridIn.Columns.Count - 1; i++)
+                {
+                    if (i > 0)
+                    {
+                        swOut.Write(",");
+                    }
+                    swOut.Write(gridIn.Columns[i].HeaderText);
+                }
+
+                swOut.WriteLine();
+
+                //write DataGridView rows to csv
+                for (int j = 0; j <= gridIn.Rows.Count - 1; j++)
+                {
+                    if (j > 0)
+                    {
+                        swOut.WriteLine();
+                    }
+
+                    dr = gridIn.Rows[j];
+
+                    for (int i = 0; i <= gridIn.Columns.Count - 1; i++)
+                    {
+                        if (i > 0)
+                        {
+                            swOut.Write(",");
+                        }
+
+                        value = dr.Cells[i].Value.ToString();
+                        //replace comma's with spaces
+                        value = value.Replace(',', ' ');
+                        //replace embedded newlines with spaces
+                        value = value.Replace(Environment.NewLine, " ");
+
+                        swOut.Write(value);
+                    }
+                }
+                swOut.Close();
+            }
+        }
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
             if (dgvInventory.RowCount == 0)
                 return;
-            EI.ExportDgvToExcel(dgvInventory);
+
+            //new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvInventory), "InventoryReport", "InventoryReport");
+            writeCSV(dgvInventory, "InventoryReport-"+ DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString() + "-" + DateTime.Now.Year.ToString() + "--" + DateTime.Now.Hour.ToString() + "-" + DateTime.Now.Minute.ToString() + ".csv");
+
+            MessageBox.Show("Inventory report export success. \n \n You can view your report on Desktop.");
+            //EI.ExportDgvToExcel(dgvInventory);
         }
 
         private void btnExportPDF_Click(object sender, EventArgs e)

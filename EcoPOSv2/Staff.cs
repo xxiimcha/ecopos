@@ -104,6 +104,17 @@ namespace EcoPOSv2
             LoadStaff();
             LoadStaffType();
             LoadAdministrator();
+
+            if(Properties.Settings.Default.cardlogin == true)
+            {
+                tbCardNo.Visible = true;
+                lblCardNo.Visible = true;
+            }
+            else
+            {
+                tbCardNo.Visible = false;
+                lblCardNo.Visible = false;
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -164,9 +175,10 @@ namespace EcoPOSv2
                                 SQL.AddParam("@roleID", cmbStaffType.SelectedValue);
                                 SQL.AddParam("@allow_keycode", cbxAllow.Checked);
                                 SQL.AddParam("@keycode", txtKeyPass.Text);
+                                SQL.AddParam("@card_no", tbCardNo.Text);
 
-                                SQL.Query(@"INSERT INTO users (user_name, password, first_name, last_name, roleID, allow_keycode, keycode) VALUES
-                              (@user_name, @password, @first_name, @last_name, @roleID, @allow_keycode, @keycode)");
+                                SQL.Query(@"INSERT INTO users (user_name, password, first_name, last_name, roleID, allow_keycode, keycode, card_no) VALUES
+                              (@user_name, @password, @first_name, @last_name, @roleID, @allow_keycode, @keycode, @card_no)");
 
                                 if (SQL.HasException(true))
                                     return;
@@ -203,9 +215,10 @@ namespace EcoPOSv2
                                     SQL.AddParam("@first_name", txtFirstName.Text);
                                     SQL.AddParam("@last_name", txtLastName.Text);
                                     SQL.AddParam("@keycode", txtKeyPass.Text);
+                                    SQL.AddParam("@card_no", tbCardNo.Text);
 
                                     SQL.Query(@"UPDATE admin_accts SET user_name = @user_name, password = @password, first_name = @first_name, 
-                                           last_name = @last_name, keycode = @keycode");
+                                           last_name = @last_name, keycode = @keycode , card_no=@card_no");
 
                                     if (SQL.HasException(true))
                                         return;
@@ -220,9 +233,10 @@ namespace EcoPOSv2
                                     SQL.AddParam("@roleID", cmbStaffType.SelectedValue);
                                     SQL.AddParam("@allow_keycode", cbxAllow.Checked);
                                     SQL.AddParam("@keycode", txtKeyPass.Text);
+                                    SQL.AddParam("@card_no", tbCardNo.Text);
 
                                     SQL.Query(@"UPDATE users SET user_name = @user_name, password = @password, 
-                                      first_name = @first_name, last_name = @last_name, roleID = @roleID, allow_keycode = @allow_keycode, keycode = @keycode 
+                                      first_name = @first_name, last_name = @last_name, roleID = @roleID, allow_keycode = @allow_keycode, keycode = @keycode, card_no=@card_no 
                                       WHERE userID = @userID");
 
                                     if (SQL.HasException(true))
@@ -300,6 +314,7 @@ namespace EcoPOSv2
                 cmbStaffType.SelectedValue = r["roleID"].ToString();
                 cbxAllow.Checked = Convert.ToBoolean(r["allow_keycode"].ToString());
                 txtKeyPass.Text = r["keycode"].ToString();
+                tbCardNo.Text = r["card_no"].ToString();
             }
 
             cmbStaffType.Enabled = true;
@@ -347,6 +362,7 @@ namespace EcoPOSv2
                 cmbStaffType.Text = "Administrator";
                 cbxAllow.Checked = true;
                 txtKeyPass.Text = r["keycode"].ToString();
+                tbCardNo.Text = r["card_no"].ToString();
             }
 
             cmbStaffType.Enabled = false;

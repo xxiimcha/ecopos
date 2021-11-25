@@ -64,10 +64,10 @@ namespace EcoPOSv2
                 return;
             }
 
-            //SecureZReading s = new SecureZReading();
-            //s.ShowDialog();
+            SecureZReading s = new SecureZReading();
+            s.ShowDialog();
 
-            Main.Instance.OpenChildForm(new SecureZReading());
+            //Main.Instance.OpenChildForm(new SecureZReading());
         }
 
         private void BtnDatabase_Click(object sender, EventArgs e)

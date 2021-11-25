@@ -66,8 +66,10 @@ namespace EcoPOSv2
         }
         public void Advance_OrderNo()
         {
-            SQL.Query(@"INSERT INTO order_no (order_no)
-                       SELECT (order_no + 1) FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            SQL.Query(@"INSERT INTO order_no (order_no, terminal_id)
+                       SELECT (order_no + 1), @terminal_id FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
 
             if (SQL.HasException(true))
                 return;
@@ -79,9 +81,9 @@ namespace EcoPOSv2
             FormLoad Fl = new FormLoad();
             Fl.CusDisplay("Hello", "Welcome!");
 
-            Order.Instance.btnDiscount.Enabled = true;
-            Order.Instance.btnCustomer.Enabled = true;
-            Order.Instance.btnQuantity.Enabled = true;
+            //Order.Instance.btnDiscount.Enabled = true;
+            //Order.Instance.btnCustomer.Enabled = true;
+            //Order.Instance.btnQuantity.Enabled = true;
 
             Advance_OrderNo();
             Order.Instance.LoadOrder();

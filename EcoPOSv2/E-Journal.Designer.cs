@@ -56,7 +56,7 @@
             this.TableLayoutPanel2.RowCount = 2;
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.598985F));
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.40102F));
-            this.TableLayoutPanel2.Size = new System.Drawing.Size(1164, 866);
+            this.TableLayoutPanel2.Size = new System.Drawing.Size(1090, 734);
             this.TableLayoutPanel2.TabIndex = 23;
             // 
             // TableLayoutPanel1
@@ -83,7 +83,7 @@
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 1;
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(1158, 51);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(1084, 42);
             this.TableLayoutPanel1.TabIndex = 21;
             // 
             // btnVoid
@@ -100,9 +100,9 @@
             this.btnVoid.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnVoid.IconSize = 30;
             this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoid.Location = new System.Drawing.Point(1011, 3);
+            this.btnVoid.Location = new System.Drawing.Point(948, 3);
             this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Size = new System.Drawing.Size(144, 45);
+            this.btnVoid.Size = new System.Drawing.Size(133, 36);
             this.btnVoid.TabIndex = 19;
             this.btnVoid.Text = "Void";
             this.btnVoid.UseVisualStyleBackColor = false;
@@ -124,7 +124,7 @@
             this.btnTerminal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTerminal.Location = new System.Drawing.Point(3, 3);
             this.btnTerminal.Name = "btnTerminal";
-            this.btnTerminal.Size = new System.Drawing.Size(138, 45);
+            this.btnTerminal.Size = new System.Drawing.Size(129, 36);
             this.btnTerminal.TabIndex = 12;
             this.btnTerminal.Text = "Terminal";
             this.btnTerminal.UseVisualStyleBackColor = false;
@@ -144,9 +144,9 @@
             this.btnTransactions.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTransactions.IconSize = 30;
             this.btnTransactions.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransactions.Location = new System.Drawing.Point(147, 3);
+            this.btnTransactions.Location = new System.Drawing.Point(138, 3);
             this.btnTransactions.Name = "btnTransactions";
-            this.btnTransactions.Size = new System.Drawing.Size(138, 45);
+            this.btnTransactions.Size = new System.Drawing.Size(129, 36);
             this.btnTransactions.TabIndex = 20;
             this.btnTransactions.Text = "Transactions";
             this.btnTransactions.UseVisualStyleBackColor = false;
@@ -166,9 +166,9 @@
             this.btnStaff.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnStaff.IconSize = 30;
             this.btnStaff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStaff.Location = new System.Drawing.Point(291, 3);
+            this.btnStaff.Location = new System.Drawing.Point(273, 3);
             this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(138, 45);
+            this.btnStaff.Size = new System.Drawing.Size(129, 36);
             this.btnStaff.TabIndex = 13;
             this.btnStaff.Text = "Staff";
             this.btnStaff.UseVisualStyleBackColor = false;
@@ -188,9 +188,9 @@
             this.btnXReading.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnXReading.IconSize = 30;
             this.btnXReading.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXReading.Location = new System.Drawing.Point(435, 3);
+            this.btnXReading.Location = new System.Drawing.Point(408, 3);
             this.btnXReading.Name = "btnXReading";
-            this.btnXReading.Size = new System.Drawing.Size(138, 45);
+            this.btnXReading.Size = new System.Drawing.Size(129, 36);
             this.btnXReading.TabIndex = 17;
             this.btnXReading.Text = "X-Reading";
             this.btnXReading.UseVisualStyleBackColor = false;
@@ -210,9 +210,9 @@
             this.btnZReading.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnZReading.IconSize = 30;
             this.btnZReading.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnZReading.Location = new System.Drawing.Point(579, 3);
+            this.btnZReading.Location = new System.Drawing.Point(543, 3);
             this.btnZReading.Name = "btnZReading";
-            this.btnZReading.Size = new System.Drawing.Size(138, 45);
+            this.btnZReading.Size = new System.Drawing.Size(129, 36);
             this.btnZReading.TabIndex = 16;
             this.btnZReading.Text = "Z-Reading";
             this.btnZReading.UseVisualStyleBackColor = false;
@@ -232,9 +232,9 @@
             this.btnSD.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSD.IconSize = 30;
             this.btnSD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSD.Location = new System.Drawing.Point(723, 3);
+            this.btnSD.Location = new System.Drawing.Point(678, 3);
             this.btnSD.Name = "btnSD";
-            this.btnSD.Size = new System.Drawing.Size(138, 45);
+            this.btnSD.Size = new System.Drawing.Size(129, 36);
             this.btnSD.TabIndex = 14;
             this.btnSD.Text = "Special Discounts";
             this.btnSD.UseVisualStyleBackColor = false;
@@ -247,16 +247,16 @@
             this.btnRD.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
             this.btnRD.FlatAppearance.BorderSize = 2;
             this.btnRD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRD.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRD.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRD.ForeColor = System.Drawing.Color.Black;
             this.btnRD.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnRD.IconColor = System.Drawing.Color.White;
             this.btnRD.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRD.IconSize = 30;
             this.btnRD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRD.Location = new System.Drawing.Point(867, 3);
+            this.btnRD.Location = new System.Drawing.Point(813, 3);
             this.btnRD.Name = "btnRD";
-            this.btnRD.Size = new System.Drawing.Size(138, 45);
+            this.btnRD.Size = new System.Drawing.Size(129, 36);
             this.btnRD.TabIndex = 15;
             this.btnRD.Text = "Regular Discounts";
             this.btnRD.UseVisualStyleBackColor = false;
@@ -264,16 +264,16 @@
             // 
             // pnlChild
             // 
-            this.pnlChild.Location = new System.Drawing.Point(3, 60);
+            this.pnlChild.Location = new System.Drawing.Point(3, 51);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(1158, 730);
+            this.pnlChild.Size = new System.Drawing.Size(1084, 680);
             this.pnlChild.TabIndex = 0;
             // 
             // E_Journal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.TableLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -640,6 +640,7 @@
             this.Name = "ZReading";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ZReading";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ZReading_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.pnlParent.ResumeLayout(false);

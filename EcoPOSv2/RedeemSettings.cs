@@ -41,8 +41,11 @@ namespace EcoPOSv2
 
         private bool dgvRT_ClickedOnce = false;
 
-        private RedeemTransactionReport report = new RedeemTransactionReport();
-        private RedeemReceipt reprint_receipt = new RedeemReceipt();
+        private RedeemTransactionReport58 report = new RedeemTransactionReport58();
+        private RedeemReceipt58 reprint_receipt = new RedeemReceipt58();
+
+        private RedeemTransactionReport80 report80 = new RedeemTransactionReport80();
+        private RedeemReceipt80 reprint_receipt80 = new RedeemReceipt80();
 
         private List<Control> allTxt = new List<Control>();
         private List<TextBox> requiredFields = new List<TextBox>();
@@ -571,7 +574,7 @@ namespace EcoPOSv2
                 if (SQL.HasException(true))
                     return;
 
-                new Notification().PopUp("Data saved.", "", "information");
+                //new Notification().PopUp("Data saved.", "", "information");
             }
             else
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
@@ -720,19 +723,21 @@ namespace EcoPOSv2
             if (dgvRT_ClickedOnce == false)
                 return;
 
-            reprint_receipt = new RedeemReceipt();
-
-            DataSet ds = new DataSet();
-
-            try
+            if (Properties.Settings.Default.papersize == "58MM")
             {
-                SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, total_pts FROM redeem_transaction_items WHERE order_ref = (SELECT MAX(order_ref) FROM redeem_transaction)", SQL.DBCon);
-                SQL.DBDA.Fill(ds, "redeem_transaction_items");
+                reprint_receipt = new RedeemReceipt58();
 
-                reprint_receipt.SetDataSource(ds);
+                DataSet ds = new DataSet();
 
-                SQL.AddParam("@order_ref", dgvRT_Records.CurrentRow.Cells[0].Value.ToString());
-                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                try
+                {
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, total_pts FROM redeem_transaction_items WHERE order_ref = (SELECT MAX(order_ref) FROM redeem_transaction)", SQL.DBCon);
+                    SQL.DBDA.Fill(ds, "redeem_transaction_items");
+
+                    reprint_receipt.SetDataSource(ds);
+
+                    SQL.AddParam("@order_ref", dgvRT_Records.CurrentRow.Cells[0].Value.ToString());
+                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
                            SELECT * INTO #Temp_users
                            FROM
                            (
@@ -756,60 +761,156 @@ namespace EcoPOSv2
                            INNER JOIN customer as c ON rt.cus_ID_no = c.customerID
                            WHERE order_ref = @order_ref");
 
-                if (SQL.HasException(true))
-                    return;
+                    if (SQL.HasException(true))
+                        return;
 
-                foreach (DataRow r in SQL.DBDT.Rows)
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        reprint_receipt.SetParameterValue("date_time", r["date_time"]);
+                        reprint_receipt.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
+                        reprint_receipt.SetParameterValue("user_first_name", r["user_first_name"].ToString());
+                        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                        reprint_receipt.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
+                        decimal total = decimal.Parse(r["total"].ToString());
+                        reprint_receipt.SetParameterValue("total", total.ToString("N2"));
+                        decimal balance = decimal.Parse(r["balance"].ToString());
+                        reprint_receipt.SetParameterValue("balance", balance.ToString("N2"));
+                        decimal remaining_pts = decimal.Parse(r["remaining_pts"].ToString());
+                        reprint_receipt.SetParameterValue("remaining_pts", remaining_pts.ToString("N2"));
+                        reprint_receipt.SetParameterValue("cus_name", r["cus_name"].ToString());
+                        reprint_receipt.SetParameterValue("cus_card_no", r["cus_card_no"].ToString());
+                    }
+
+                    reprint_receipt.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
+                    reprint_receipt.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                    reprint_receipt.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                    reprint_receipt.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+                    reprint_receipt.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
+                    reprint_receipt.SetParameterValue("sn", Main.Instance.sd_sn);
+                    reprint_receipt.SetParameterValue("min", Main.Instance.sd_min);
+                    reprint_receipt.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
+                    reprint_receipt.SetParameterValue("note", "###REPRINT###");
+                }
+                catch (Exception ex)
                 {
-                    reprint_receipt.SetParameterValue("date_time", r["date_time"]);
-                    reprint_receipt.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-                    reprint_receipt.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                    decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
-                    reprint_receipt.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
-                    decimal total = decimal.Parse(r["total"].ToString());
-                    reprint_receipt.SetParameterValue("total", total.ToString("N2"));
-                    decimal balance = decimal.Parse(r["balance"].ToString());
-                    reprint_receipt.SetParameterValue("balance", balance.ToString("N2"));
-                    decimal remaining_pts = decimal.Parse(r["remaining_pts"].ToString());
-                    reprint_receipt.SetParameterValue("remaining_pts", remaining_pts.ToString("N2"));
-                    reprint_receipt.SetParameterValue("cus_name", r["cus_name"].ToString());
-                    reprint_receipt.SetParameterValue("cus_card_no", r["cus_card_no"].ToString());
+                    new Notification().PopUp(ex.Message, "Error printing", "error");
+                    reprint_receipt.Dispose();
                 }
 
-                reprint_receipt.SetParameterValue("business_name", Main.Instance.sd_business_name);
-                reprint_receipt.SetParameterValue("business_address", Main.Instance.sd_business_address);
-                reprint_receipt.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
-                reprint_receipt.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
-                reprint_receipt.SetParameterValue("sn", Main.Instance.sd_sn);
-                reprint_receipt.SetParameterValue("min", Main.Instance.sd_min);
-                reprint_receipt.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
-                reprint_receipt.SetParameterValue("note", "###REPRINT###");
+                if (Main.Instance.pd_receipt_printer == "")
+                {
+                    new Notification().PopUp("No receipt printer selected.", "Error printing", "error");
+                    return;
+                }
+
+
+                bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
+
+                if (checkprinter == false)
+                {
+                    new Notification().PopUp("Printer is offline", "Error", "error");
+                    return;
+                }
+
+
+                reprint_receipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                reprint_receipt.PrintOptions.PaperSource = PaperSource.Auto;
+                reprint_receipt.PrintToPrinter(1, false, 0, 0);
             }
-            catch (Exception ex)
+            else
             {
-                new Notification().PopUp(ex.Message, "Error printing", "error");
-                reprint_receipt.Dispose();
+                reprint_receipt80 = new RedeemReceipt80();
+
+                DataSet ds = new DataSet();
+
+                try
+                {
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, total_pts FROM redeem_transaction_items WHERE order_ref = (SELECT MAX(order_ref) FROM redeem_transaction)", SQL.DBCon);
+                    SQL.DBDA.Fill(ds, "redeem_transaction_items");
+
+                    reprint_receipt80.SetDataSource(ds);
+
+                    SQL.AddParam("@order_ref", dgvRT_Records.CurrentRow.Cells[0].Value.ToString());
+                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                           SELECT * INTO #Temp_users
+                           FROM
+                           (
+                           SELECT ID, user_name, first_name FROM
+                           (
+                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
+                           UNION ALL
+                           SELECT userID, user_name, first_name FROM users
+                           ) x
+                           ) as a;
+                           SELECT date_time,
+                           order_ref_temp, 
+                           u.first_name as 'user_first_name', 
+                           no_of_items, 
+                           total_pts as 'total', 
+                           card_balance_before as 'balance', 
+                           card_balance_after as 'remaining_pts', 
+                           c.name as 'cus_name',
+                           cus_card_no FROM redeem_transaction as rt
+                           INNER JOIN #Temp_users as u ON rt.userID = u.ID
+                           INNER JOIN customer as c ON rt.cus_ID_no = c.customerID
+                           WHERE order_ref = @order_ref");
+
+                    if (SQL.HasException(true))
+                        return;
+
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        reprint_receipt80.SetParameterValue("date_time", r["date_time"]);
+                        reprint_receipt80.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
+                        reprint_receipt80.SetParameterValue("user_first_name", r["user_first_name"].ToString());
+                        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                        reprint_receipt80.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
+                        decimal total = decimal.Parse(r["total"].ToString());
+                        reprint_receipt80.SetParameterValue("total", total.ToString("N2"));
+                        decimal balance = decimal.Parse(r["balance"].ToString());
+                        reprint_receipt80.SetParameterValue("balance", balance.ToString("N2"));
+                        decimal remaining_pts = decimal.Parse(r["remaining_pts"].ToString());
+                        reprint_receipt80.SetParameterValue("remaining_pts", remaining_pts.ToString("N2"));
+                        reprint_receipt80.SetParameterValue("cus_name", r["cus_name"].ToString());
+                        reprint_receipt80.SetParameterValue("cus_card_no", r["cus_card_no"].ToString());
+                    }
+
+                    reprint_receipt80.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
+                    reprint_receipt80.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                    reprint_receipt80.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                    reprint_receipt80.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+                    reprint_receipt80.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
+                    reprint_receipt80.SetParameterValue("sn", Main.Instance.sd_sn);
+                    reprint_receipt80.SetParameterValue("min", Main.Instance.sd_min);
+                    reprint_receipt80.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
+                    reprint_receipt80.SetParameterValue("note", "###REPRINT###");
+                }
+                catch (Exception ex)
+                {
+                    new Notification().PopUp(ex.Message, "Error printing", "error");
+                    reprint_receipt80.Dispose();
+                }
+
+                if (Main.Instance.pd_receipt_printer == "")
+                {
+                    new Notification().PopUp("No receipt printer selected.", "Error printing", "error");
+                    return;
+                }
+
+
+                bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
+
+                if (checkprinter == false)
+                {
+                    new Notification().PopUp("Printer is offline", "Error", "error");
+                    return;
+                }
+
+
+                reprint_receipt80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                reprint_receipt80.PrintOptions.PaperSource = PaperSource.Auto;
+                reprint_receipt80.PrintToPrinter(1, false, 0, 0);
             }
-
-            if (Main.Instance.pd_receipt_printer == "")
-            {
-                new Notification().PopUp("No receipt printer selected.", "Error printing", "error");
-                return;
-            }
-
-
-            bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
-
-            if (checkprinter == false)
-            {
-                new Notification().PopUp("Printer is offline", "Error", "error");
-                return;
-            }
-
-
-            reprint_receipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-            reprint_receipt.PrintOptions.PaperSource = PaperSource.Auto;
-            reprint_receipt.PrintToPrinter(1, false, 0, 0);
         }
 
         private void dgvRT_Records_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -821,7 +922,7 @@ namespace EcoPOSv2
 
             DataSet ds = new DataSet();
 
-            report = new RedeemTransactionReport();
+            report = new RedeemTransactionReport58();
 
             try
             {
@@ -940,6 +1041,51 @@ namespace EcoPOSv2
         private void cmbRI_CategoryItems_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnRI_SearchItems.PerformClick();
+        }
+
+        private void txtRI_Points_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnRI.PerformClick();
+            }
+        }
+
+        private void txtRI_Points_Enter(object sender, EventArgs e)
+        {
+            if(txtRI_Points.Text == "0.00")
+            {
+                txtRI_Points.Text = "";
+            }
+        }
+
+        private void txtRI_Points_Leave(object sender, EventArgs e)
+        {
+            if(txtRI_Points.Text == "")
+            {
+                txtRI_Points.Text = "0.00";
+            }
+        }
+
+        private void txtRI_Points_TextChanged(object sender, EventArgs e)
+        {
+            decimal pts = 0;
+            if(txtRI_Points.Text == "")
+            {
+                pts = 0;
+            }
+            else
+            {
+                pts = decimal.Parse(txtRI_Points.Text);
+            }
+
+            SQL.AddParam("@redeemID", redeemID);
+            SQL.AddParam("@pts", pts);
+
+            SQL.Query("UPDATE redeem_items SET pts = @pts WHERE redeemID = @redeemID");
+
+            if (SQL.HasException(true))
+                return;
         }
 
         private void btnSelectAllRedeemItems_Click(object sender, EventArgs e)

@@ -53,7 +53,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(1, 1);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(1162, 864);
+            this.guna2Panel1.Size = new System.Drawing.Size(1089, 846);
             this.guna2Panel1.TabIndex = 0;
             // 
             // TableLayoutPanel1
@@ -85,7 +85,7 @@
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.545928F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.545928F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.54073F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(1162, 864);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(1089, 846);
             this.TableLayoutPanel1.TabIndex = 19;
             // 
             // btnManageDiscounts
@@ -100,10 +100,10 @@
             this.btnManageDiscounts.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnManageDiscounts.IconSize = 30;
             this.btnManageDiscounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageDiscounts.Location = new System.Drawing.Point(3, 263);
+            this.btnManageDiscounts.Location = new System.Drawing.Point(3, 255);
             this.btnManageDiscounts.Name = "btnManageDiscounts";
             this.btnManageDiscounts.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnManageDiscounts.Size = new System.Drawing.Size(1156, 59);
+            this.btnManageDiscounts.Size = new System.Drawing.Size(1083, 57);
             this.btnManageDiscounts.TabIndex = 8;
             this.btnManageDiscounts.Text = "Manage Discounts";
             this.btnManageDiscounts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -125,7 +125,7 @@
             this.btnEJournal.Location = new System.Drawing.Point(3, 3);
             this.btnEJournal.Name = "btnEJournal";
             this.btnEJournal.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnEJournal.Size = new System.Drawing.Size(1156, 59);
+            this.btnEJournal.Size = new System.Drawing.Size(1083, 57);
             this.btnEJournal.TabIndex = 4;
             this.btnEJournal.Text = "E-Journal and Records";
             this.btnEJournal.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -144,10 +144,10 @@
             this.btnLogs.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLogs.IconSize = 30;
             this.btnLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogs.Location = new System.Drawing.Point(3, 68);
+            this.btnLogs.Location = new System.Drawing.Point(3, 66);
             this.btnLogs.Name = "btnLogs";
             this.btnLogs.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnLogs.Size = new System.Drawing.Size(1156, 59);
+            this.btnLogs.Size = new System.Drawing.Size(1083, 57);
             this.btnLogs.TabIndex = 5;
             this.btnLogs.Text = "Logs (Audit Trail)";
             this.btnLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -166,10 +166,10 @@
             this.btnCustomers.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCustomers.IconSize = 30;
             this.btnCustomers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomers.Location = new System.Drawing.Point(3, 133);
+            this.btnCustomers.Location = new System.Drawing.Point(3, 129);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnCustomers.Size = new System.Drawing.Size(1156, 59);
+            this.btnCustomers.Size = new System.Drawing.Size(1083, 57);
             this.btnCustomers.TabIndex = 6;
             this.btnCustomers.Text = "Customers/Membership";
             this.btnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -188,10 +188,10 @@
             this.btnRedeemSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRedeemSettings.IconSize = 30;
             this.btnRedeemSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRedeemSettings.Location = new System.Drawing.Point(3, 198);
+            this.btnRedeemSettings.Location = new System.Drawing.Point(3, 192);
             this.btnRedeemSettings.Name = "btnRedeemSettings";
             this.btnRedeemSettings.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnRedeemSettings.Size = new System.Drawing.Size(1156, 59);
+            this.btnRedeemSettings.Size = new System.Drawing.Size(1083, 57);
             this.btnRedeemSettings.TabIndex = 7;
             this.btnRedeemSettings.Text = "Redeem Settings";
             this.btnRedeemSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -210,10 +210,10 @@
             this.btnManageProducts.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnManageProducts.IconSize = 30;
             this.btnManageProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageProducts.Location = new System.Drawing.Point(3, 328);
+            this.btnManageProducts.Location = new System.Drawing.Point(3, 318);
             this.btnManageProducts.Name = "btnManageProducts";
             this.btnManageProducts.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnManageProducts.Size = new System.Drawing.Size(1156, 59);
+            this.btnManageProducts.Size = new System.Drawing.Size(1083, 57);
             this.btnManageProducts.TabIndex = 13;
             this.btnManageProducts.Text = "Manage Products";
             this.btnManageProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -232,10 +232,10 @@
             this.btnInventory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnInventory.IconSize = 30;
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventory.Location = new System.Drawing.Point(3, 393);
+            this.btnInventory.Location = new System.Drawing.Point(3, 381);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnInventory.Size = new System.Drawing.Size(1156, 59);
+            this.btnInventory.Size = new System.Drawing.Size(1083, 57);
             this.btnInventory.TabIndex = 15;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -254,10 +254,10 @@
             this.btnEnd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEnd.IconSize = 30;
             this.btnEnd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnd.Location = new System.Drawing.Point(3, 458);
+            this.btnEnd.Location = new System.Drawing.Point(3, 444);
             this.btnEnd.Name = "btnEnd";
             this.btnEnd.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnEnd.Size = new System.Drawing.Size(1156, 59);
+            this.btnEnd.Size = new System.Drawing.Size(1083, 57);
             this.btnEnd.TabIndex = 10;
             this.btnEnd.Text = "Close Store (Z-Reading)";
             this.btnEnd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -276,10 +276,10 @@
             this.btnDatabase.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDatabase.IconSize = 30;
             this.btnDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDatabase.Location = new System.Drawing.Point(3, 523);
+            this.btnDatabase.Location = new System.Drawing.Point(3, 507);
             this.btnDatabase.Name = "btnDatabase";
             this.btnDatabase.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnDatabase.Size = new System.Drawing.Size(1156, 59);
+            this.btnDatabase.Size = new System.Drawing.Size(1083, 57);
             this.btnDatabase.TabIndex = 11;
             this.btnDatabase.Text = "Database";
             this.btnDatabase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -298,10 +298,10 @@
             this.btnSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSettings.IconSize = 30;
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(3, 588);
+            this.btnSettings.Location = new System.Drawing.Point(3, 570);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnSettings.Size = new System.Drawing.Size(1156, 59);
+            this.btnSettings.Size = new System.Drawing.Size(1083, 57);
             this.btnSettings.TabIndex = 12;
             this.btnSettings.Text = "Settings";
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -312,7 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
