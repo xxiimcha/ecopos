@@ -58,22 +58,47 @@ namespace EcoPOSv2
             }
         }
 
+        private void TbPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbPrice_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (lblItem.Text == "" || tbPrice.Text == "") return;
+            try
+            {
+                if (lblItem.Text == "" || tbPrice.Text == "") return;
 
+                SQL.AddParam("@itemID", itemID);
+                SQL.AddParam("@static_price_inclusive", tbPrice.Text);
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-            SQL.AddParam("@itemID", itemID);
-            SQL.AddParam("@static_price_inclusive", tbPrice.Text);
-            SQL.Query("UPDATE order_cart SET static_price_inclusive = @static_price_inclusive WHERE itemID = @itemID");
+                SQL.Query("UPDATE order_cart SET static_price_inclusive = @static_price_inclusive WHERE itemID = @itemID AND terminal_id=@terminal_id");
 
-            if (SQL.HasException(true)) return;
+                if (SQL.HasException(true)) return;
 
-            Order.Instance.LoadOrder();
-            Order.Instance.GetTotal();
-            Close();
-            Order.Instance.tbBarcode.Focus();
-            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
+                Order.Instance.LoadOrder();
+                Order.Instance.GetTotal();
+                Close();
+                Order.Instance.tbBarcode.Focus();
+                Order.Instance.ActiveControl = Order.Instance.tbBarcode;
+            }
+            catch (Exception) { }
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {

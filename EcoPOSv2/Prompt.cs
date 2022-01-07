@@ -35,15 +35,17 @@ namespace EcoPOSv2
                 return _Prompt;
             }
         }
+        Helper HP = new Helper();
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            if(txtUser.Text == "jeremyv19" && txtPass.Text == "wut8wz")
+            if(txtUser.Text == "jeremyv19" && txtPass.Text == HP.Decrypt("704eThHyGZG+wivBr3J+lA=="))
             {
                 switch (validation_type)
                 {
                     case 1: // show options
                         {
                             DVOptions frmDVOptions = new DVOptions();
+                            frmDVOptions.login = 2;
                             frmDVOptions.Show();
                             break;
                         }
@@ -63,48 +65,80 @@ namespace EcoPOSv2
 
                 Close();
             }
-            else
+            else if(txtUser.Text == "wno1026" && txtPass.Text == HP.Decrypt("1GiDoTTlYMugGyexU4HsCw=="))
             {
-                string d_user = Helper.Encrypt(txtUser.Text);
-                string d_pass = Helper.Encrypt(txtPass.Text);
-                foreach (DataRow r in ds.Tables["SU"].Rows)
+                switch (validation_type)
                 {
-                    if (Convert.ToString(r[1]).Contains(d_user) & Convert.ToString(r[2]).Contains(d_pass))
-                    {
-                        userfound = true;
-                    }
+                    case 1: // show options
+                        {
+                            DVOptions frmDVOptions = new DVOptions();
+                            frmDVOptions.login = 1;
+                            frmDVOptions.Show();
+                            break;
+                        }
+
+                    case 2: // enable training mode
+                        {
+                            TrainingMode frmTrainingMode = new TrainingMode();
+                            frmTrainingMode.Show();
+                            break;
+                        }
+
+                    default:
+                        {
+                            break;
+                        }
                 }
 
-                if (userfound)
-                {
-                    switch (validation_type)
-                    {
-                        case 1: // show options
-                            {
-                                DVOptions frmDVOptions = new DVOptions();
-                                frmDVOptions.Show();
-                                break;
-                            }
+                Close();
+                //try
+                //{
+                //    string d_user = Helper.Encrypt(txtUser.Text);
+                //    string d_pass = Helper.Encrypt(txtPass.Text);
+                //    foreach (DataRow r in ds.Tables["SU"].Rows)
+                //    {
+                //        if (Convert.ToString(r[1]).Contains(d_user) & Convert.ToString(r[2]).Contains(d_pass))
+                //        {
+                //            userfound = true;
+                //        }
+                //    }
 
-                        case 2: // enable training mode
-                            {
-                                TrainingMode frmTrainingMode = new TrainingMode();
-                                frmTrainingMode.Show();
-                                break;
-                            }
+                //    if (userfound)
+                //    {
+                //        switch (validation_type)
+                //        {
+                //            case 1: // show options
+                //                {
+                //                    DVOptions frmDVOptions = new DVOptions();
+                //                    frmDVOptions.login = 1;
+                //                    frmDVOptions.ShowDialog();
+                //                    break;
+                //                }
 
-                        default:
-                            {
-                                break;
-                            }
-                    }
+                //            case 2: // enable training mode
+                //                {
+                //                    TrainingMode frmTrainingMode = new TrainingMode();
+                //                    frmTrainingMode.Show();
+                //                    break;
+                //                }
 
-                    Close();
-                }
-                else
-                {
-                    new Notification().PopUp("No user found.", "", "error");
-                }
+                //            default:
+                //                {
+                //                    break;
+                //                }
+                //        }
+
+                //        Close();
+                //    }
+                //    else
+                //    {
+                //        new Notification().PopUp("No user found.", "", "error");
+                //    }
+                //}
+                //catch (Exception)
+                //{
+                //    new Notification().PopUp("Please put SU.xml in Directory to proceed.", "", "error");
+                //}
             }
         }
 
@@ -114,7 +148,6 @@ namespace EcoPOSv2
             btn.Click += btnProceed_Click;
             TopMost = true;
             ShowInTaskbar = false;
-            Show();
             validation_type = validation_sender;
         }
         public void ValidateConditions(ref bool conditionsMet)
@@ -124,22 +157,32 @@ namespace EcoPOSv2
 
         private void Prompt_Load(object sender, EventArgs e)
         {
+            txtUser.Clear();
+            txtPass.Clear();
+
             _Prompt = this;
 
-            try
-            {
-                string path = AppDomain.CurrentDomain.BaseDirectory;
-                ds = Helper.LoadFromXMLfile(path + "\\SU.xml");
-            }
-            catch (Exception) { }
+            txtUser.Focus();
+
+            //try
+            //{
+            //    string path = AppDomain.CurrentDomain.BaseDirectory;
+            //    ds = Helper.LoadFromXMLfile(path + "\\SU.xml");
+            //}
+            //catch (Exception) { }
         }
 
         private void txtPass_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnProceed.PerformClick();
             }
+        }
+
+        private void Prompt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) Close();
         }
     }
 }

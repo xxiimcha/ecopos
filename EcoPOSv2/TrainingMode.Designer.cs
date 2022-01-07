@@ -75,6 +75,7 @@
             this.Name = "TrainingMode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TrainingMode";
+            this.Load += new System.EventHandler(this.TrainingMode_Load);
             this.ResumeLayout(false);
 
         }

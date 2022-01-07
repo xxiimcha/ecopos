@@ -49,7 +49,7 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(392, 181);
-            this.guna2Panel1.TabIndex = 1;
+            this.guna2Panel1.TabIndex = 0;
             // 
             // btnProceed
             // 
@@ -66,7 +66,7 @@
             this.btnProceed.Name = "btnProceed";
             this.btnProceed.ShadowDecoration.Parent = this.btnProceed;
             this.btnProceed.Size = new System.Drawing.Size(205, 45);
-            this.btnProceed.TabIndex = 23;
+            this.btnProceed.TabIndex = 1;
             this.btnProceed.Text = "PROCEED";
             this.btnProceed.Click += new System.EventHandler(this.BtnProceed_Click);
             // 
@@ -85,7 +85,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(123, 45);
-            this.btnCancel.TabIndex = 24;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -96,7 +96,8 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(354, 32);
-            this.txtPassword.TabIndex = 22;
+            this.txtPassword.TabIndex = 0;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // Label1
             // 

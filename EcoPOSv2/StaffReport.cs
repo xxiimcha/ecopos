@@ -63,7 +63,6 @@ namespace EcoPOSv2
         {
             if (cmbStaff.Text != "")
             {
-
                 string date_now = string.Format(DateTime.Now.ToString(), "MM-dd-yyyy hh:mm:ss tt");
 
                 report = new TerminalReport();
@@ -80,57 +79,106 @@ namespace EcoPOSv2
                 DataSet ds10 = new DataSet();
                 DataSet ds11 = new DataSet();
                 DataSet ds12 = new DataSet();
-
+                DataSet ds13 = new DataSet();
                 //try
                 //{
                 CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
 
+                #region sales fill
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time', 
+                //                                     COUNT(*) as 'no_of_items', SUM(subtotal) as 'subtotal', 
+                //                                     (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt', 
+                //                                     SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
+                //                                     SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
+                //                                     FROM transaction_details WHERE date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
+                //                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time', 
-                                                     COUNT(*) as 'no_of_items', SUM(subtotal) as 'subtotal', 
+                                                     COUNT(*) as 'no_of_items', SUM(total) as 'subtotal', 
                                                      (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt', 
                                                      SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
                                                      SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
-                                                     FROM transaction_details WHERE date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
-                                                     AND action = 1 AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+                                                     FROM transaction_details WHERE (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
+                                                     AND userID = " + cmbStaff.SelectedValue + " AND grand_total > 0 GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+
                 SQL.DBDA.Fill(ds1, "transaction_details");
 
                 report.Subreports["Sales"].SetDataSource(ds1);
 
+                #endregion
 
+                #region Staff Sales Fill
 
-                SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT (u.first_name + ' ' + u.last_name) as 'user_first_name', SUM(subtotal) as 'subtotal',
-                                                     (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt',  
-                                                     SUM(grand_total) as 'grand_total' FROM transaction_details as td RIGHT JOIN users as u 
-                                                     ON td.userID = u.userID WHERE td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
-                                                     AND td.action = 1 AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY (u.first_name + ' ' + u.last_name)", SQL.DBCon);
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT (u.first_name + ' ' + u.last_name) as 'user_first_name', SUM(subtotal) as 'subtotal',
+                //                                     (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt',  
+                //                                     SUM(grand_total) as 'grand_total' FROM transaction_details as td RIGHT JOIN users as u 
+                //                                     ON td.userID = u.userID WHERE td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY (u.first_name + ' ' + u.last_name)", SQL.DBCon);
+
+                SQL.DBDA.SelectCommand = new SqlCommand(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                                                          SELECT * INTO #Temp_users
+                                                          FROM
+                                                          (
+                                                          SELECT ID, user_name, first_name, last_name FROM
+                                                          (
+                                                          SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name', last_name as 'last_name' FROM admin_accts
+                                                          UNION ALL
+                                                          SELECT userID, user_name, first_name, last_name FROM users
+                                                          ) x
+                                                          ) as a;
+                                                          SELECT (u.first_name + ' ' + u.last_name) as 'user_first_name', SUM(subtotal) as 'subtotal',
+                                                          (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt',  
+                                                          SUM(grand_total) as 'grand_total' FROM transaction_details as td INNER JOIN #Temp_users as u 
+                                                          ON td.userID = u.ID WHERE (td.action=1 or td.action=4) and td.date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
+                                                          AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY (u.first_name + ' ' + u.last_name)", SQL.DBCon);
 
                 SQL.DBDA.Fill(ds2, "transaction_details");
                 report.Subreports["StaffSales"].SetDataSource(ds2);
 
+                #endregion
 
+                #region Retail Sales Fill
+
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
+                //                                     SUM(ti.quantity) as 'no_of_items', SUM(ti.selling_price_inclusive) as 'total' 
+                //                                     FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
+                //                                     WHERE ti.type = 'R' AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
                                                      SUM(ti.quantity) as 'no_of_items', SUM(ti.selling_price_inclusive) as 'total' 
                                                      FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
-                                                     WHERE td.action = 1 AND ti.type = 'R' AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                                                     AND (td.action=1 or td.action=4) AND ti.type = 'R' AND td.date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+
+
                 SQL.DBDA.Fill(ds3, "transaction_details");
 
                 report.Subreports["RetailSales"].SetDataSource(ds3);
 
+                #endregion
 
+                #region Whole Sales Fill
+
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
+                //                                     SUM(ti.quantity) as 'no_of_items', SUM(ti.selling_price_inclusive) as 'total' 
+                //                                     FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
+                //                                     WHERE ti.type = 'W' AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
                                                      SUM(ti.quantity) as 'no_of_items', SUM(ti.selling_price_inclusive) as 'total' 
                                                      FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
-                                                     WHERE td.action = 1 AND ti.type = 'W' AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                                                     AND (td.action=1 OR td.action=4) AND ti.type = 'W' AND td.date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+
                 SQL.DBDA.Fill(ds4, "transaction_details");
 
                 report.Subreports["WholesaleSales"].SetDataSource(ds4);
 
+                #endregion
 
+                #region Refund Fill
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
                                                      COUNT(*) as 'cus_ID_no',
@@ -142,7 +190,9 @@ namespace EcoPOSv2
 
                 report.Subreports["Refund"].SetDataSource(ds5);
 
+                #endregion
 
+                #region Return fill
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
                                                      COUNT(*) as 'cus_ID_no',
@@ -154,38 +204,79 @@ namespace EcoPOSv2
 
                 report.Subreports["Return"].SetDataSource(ds6);
 
+                #endregion
 
+                #region Void Item Fill
+
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
+                //                                     CONVERT(DECIMAL(18,0), SUM(quantity)) as 'quantity', SUM(static_price_inclusive) as 'static_price_inclusive'
+                //                                     FROM void_item WHERE date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
                                                      CONVERT(DECIMAL(18,0), SUM(quantity)) as 'quantity', SUM(static_price_inclusive) as 'static_price_inclusive'
-                                                     FROM void_item WHERE date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                                                     FROM void_item WHERE date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+
+
                 SQL.DBDA.Fill(ds7, "void_item");
 
                 report.Subreports["VoidItem"].SetDataSource(ds7);
 
+                #endregion
 
+                #region Void Transaction Fill
+
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
+                //                                     COUNT(*) as 'no_of_items', SUM(grand_total) as 'total'
+                //                                     FROM transaction_details WHERE action = 4 AND date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
-                                                     COUNT(*) as 'no_of_items', SUM(grand_total) as 'total'
-                                                     FROM transaction_details WHERE action = 4 AND date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                                                     COUNT(*) as 'no_of_items', SUM(selling_price_inclusive)*-1 as 'total'
+                                                     FROM transaction_details as td JOIN transaction_items as ti ON td.action = 4 AND td.order_ref=ti.order_ref AND ti.selling_price_inclusive < 0 AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+
+
                 SQL.DBDA.Fill(ds8, "transaction_details");
 
                 report.Subreports["VoidTransaction"].SetDataSource(ds8);
 
+                #endregion
 
+                #region Regular Discount Fill
+
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
+                //                                     d.disc_name as 'cus_name', COUNT(*) as 'no_of_items', SUM(td.disc_amt) as 'disc_amt'
+                //                                     FROM transaction_details as td INNER JOIN discount as d ON td.discountID = d.discountID
+                //                                     WHERE td.discountID <> 0 AND td.action = 1 AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, td.date_time)), d.disc_name ORDER BY 'date_time'", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
                                                      d.disc_name as 'cus_name', COUNT(*) as 'no_of_items', SUM(td.disc_amt) as 'disc_amt'
                                                      FROM transaction_details as td INNER JOIN discount as d ON td.discountID = d.discountID
-                                                     WHERE td.discountID <> 0 AND td.action = 1 AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                                                     WHERE td.discountID <> 0 AND (td.action = 1 or td.action = 4) AND td.date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND td.userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, td.date_time)), d.disc_name ORDER BY 'date_time'", SQL.DBCon);
+
+
                 SQL.DBDA.Fill(ds9, "transaction_details");
 
                 report.Subreports["RegularDiscount"].SetDataSource(ds9);
 
+                #endregion
 
+                #region Special Discount Fill
+
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
+                //                                     (CASE
+                //                                     WHEN cus_type = 1 THEN 'Senior Citizen'
+                //                                     WHEN cus_type = 2 THEN 'PWD'
+                //                                     WHEN cus_type = 3 THEN 'Athlete'
+                //                                     END) as 'cus_name', 
+                //                                     COUNT(*) as 'no_of_items', SUM(grand_total) as 'total'
+                //                                     FROM transaction_details 
+                //                                     WHERE cus_type IN (1,2,3) AND action = 1 AND date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time)),  cus_type ORDER BY 'date_time'", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
                                                      (CASE
@@ -195,33 +286,61 @@ namespace EcoPOSv2
                                                      END) as 'cus_name', 
                                                      COUNT(*) as 'no_of_items', SUM(grand_total) as 'total'
                                                      FROM transaction_details 
-                                                     WHERE cus_type IN (1,2,3) AND action = 1 AND date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                                                     WHERE cus_type IN (1,2,3) AND (action = 1 or action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time)),  cus_type ORDER BY 'date_time'", SQL.DBCon);
+
+
                 SQL.DBDA.Fill(ds10, "transaction_details");
 
                 report.Subreports["SpecialDiscount"].SetDataSource(ds10);
 
+                #endregion
 
+                #region Payment Method
+
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
+                //                                     payment_method, COUNT(*) as 'no_of_items', SUM(grand_total) as 'grand_total' FROM transaction_details 
+                //                                     WHERE action = 1 AND date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time)),  payment_method ORDER BY 'date_time' ASC", SQL.DBCon);
 
                 SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time',
                                                      payment_method, COUNT(*) as 'no_of_items', SUM(grand_total) as 'grand_total' FROM transaction_details 
-                                                     WHERE action = 1 AND date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                                                     WHERE date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, date_time)),  payment_method ORDER BY 'date_time' ASC", SQL.DBCon);
+
+
 
                 SQL.DBDA.Fill(ds11, "transaction_details");
 
                 report.Subreports["PaymentMethod"].SetDataSource(ds11);
 
+                #endregion
 
+                #region ItemSold Fill
 
-                SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, td.date_time)), 110) as 'date_time',
-                                                     ti.description as 'cus_name', SUM(ti.quantity) as 'no_of_items', SUM(ti.static_price_inclusive) as 'grand_total'
+                //SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT DISTINCT ti.description as 'cus_name', SUM(ti.quantity) as 'no_of_items', SUM(selling_price_inclusive) as 'grand_total'
+                //                                     FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
+                //                                     WHERE td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
+                //                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, td.date_time)),  ti.description ORDER BY 'date_time' ASC", SQL.DBCon);
+                SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT DISTINCT ti.description as 'cus_name', SUM(ti.quantity) as 'no_of_items', SUM(ti.selling_price_inclusive) as 'grand_total'
                                                      FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
-                                                     WHERE td.action = 1 AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' 
-                                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY dateadd(DAY,0, datediff(day,0, td.date_time)),  ti.description ORDER BY 'date_time' ASC", SQL.DBCon);
+                                                     WHERE td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' AND selling_price_inclusive > 0
+                                                     AND userID = " + cmbStaff.SelectedValue + " GROUP BY ti.description ORDER BY 'no_of_items' DESC", SQL.DBCon);
+
+
                 SQL.DBDA.Fill(ds12, "transaction_details");
 
                 report.Subreports["ItemSold"].SetDataSource(ds12);
+
+                #endregion
+
+                #region profit fill
+
+                SQL.DBDA.SelectCommand = new SqlCommand(@"select * from profit where date between '" + dtpFrom.Value + "' and '" + dtpTo.Value + "' ORDER BY date ASC", SQL.DBCon);
+                SQL.DBDA.Fill(ds13, "Table1");
+                report.Subreports["Profit"].SetDataSource(ds13);
+
+                #endregion
 
 
                 // main report
@@ -244,42 +363,114 @@ namespace EcoPOSv2
                 report.SetParameterValue("check_specialdiscount", cbxSpecialDiscounts.Checked);
                 report.SetParameterValue("check_paymentmethod", cbxPaymentMethod.Checked);
                 report.SetParameterValue("check_itemsold", cbxItemsSold.Checked);
+                report.SetParameterValue("check_profit", false);
 
-
+                #region Sales
+                int count_sales = 0;
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
                 SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                int count_sales = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE date_time BETWEEN @from AND @to AND action = 1 AND userID = @userID"));
+                //count_sales = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE terminal_id=@terminal_id AND date_time BETWEEN @from AND @to AND (action = 1 or action=4)"));
+                count_sales = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE date_time BETWEEN @from AND @to AND (action = 1 or action=4)"));
                 if (SQL.HasException(true))
+                {
+                    MessageBox.Show("Sales");
                     return;
-
+                }
                 if (count_sales > 0)
                 {
+                    //SQL.AddParam("@terminal_id", cmbTerminalNames.Text);
                     SQL.AddParam("@from", dtpFrom.Value);
                     SQL.AddParam("@to", dtpTo.Value);
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                    SQL.Query(@"SELECT COUNT(*) as 'no_of_orders', CONVERT(DECIMAL(18,2), SUM(subtotal)) as 'subtotal',
+                    SQL.Query(@"SELECT COUNT(*) as 'no_of_orders', CONVERT(DECIMAL(18,2), SUM(total)) as 'subtotal',
                         CONVERT(DECIMAL(18,2), (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted))) as 'discount_deductions',
                         CONVERT(DECIMAL(18,2), SUM(grand_total)) as 'grand_total', CONVERT(DECIMAL(18,2), SUM(less_vat)) as 'less_vat',
                         CONVERT(DECIMAL(18,2), SUM(vatable_sale)) as 'vatable_sale', CONVERT(DECIMAL(18,2), SUM(vat_12)) as 'vat_12', 
                         CONVERT(DECIMAL(18,2), SUM(vat_exempt_sale)) as 'vat_exempt_sale'
-                        FROM transaction_details WHERE date_time BETWEEN @from AND @to AND userID = @userID AND action = 1");
-
+                        FROM transaction_details WHERE grand_total > 0 AND date_time BETWEEN @from AND @to AND userID=@userID AND (action = 1 OR action = 4)");
                     if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("Sales 1");
                         return;
-
+                    }
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal no_of_orders = decimal.Parse(r["no_of_orders"].ToString());
-                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-                        decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
-                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
-                        decimal less_vat = decimal.Parse(r["less_vat"].ToString());
-                        decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
-                        decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
-                        decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
+                        decimal no_of_orders, subtotal, discount_deductions, grand_total, less_vat, vatable_sale, vat_12, vat_exempt_sale;
+                        if (r["no_of_orders"].ToString() == "")
+                        {
+                            no_of_orders = 0;
+                        }
+                        else
+                        {
+                            no_of_orders = decimal.Parse(r["no_of_orders"].ToString());
+                        }
+
+                        if (r["subtotal"].ToString() == "")
+                        {
+                            subtotal = 0;
+                        }
+                        else
+                        {
+                            subtotal = decimal.Parse(r["subtotal"].ToString());
+                        }
+
+                        if (r["discount_deductions"].ToString() == "")
+                        {
+                            discount_deductions = 0;
+                        }
+                        else
+                        {
+                            discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
+                        }
+
+                        if (r["grand_total"].ToString() == "")
+                        {
+                            grand_total = 0;
+                        }
+                        else
+                        {
+                            grand_total = decimal.Parse(r["grand_total"].ToString());
+                        }
+
+                        if (r["less_vat"].ToString() == "")
+                        {
+                            less_vat = 0;
+                        }
+                        else
+                        {
+                            less_vat = decimal.Parse(r["less_vat"].ToString());
+                        }
+
+                        if (r["vatable_sale"].ToString() == "")
+                        {
+                            vatable_sale = 0;
+                        }
+                        else
+                        {
+                            vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
+                        }
+
+                        if (r["vat_12"].ToString() == "")
+                        {
+                            vat_12 = 0;
+                        }
+                        else
+                        {
+                            vat_12 = decimal.Parse(r["vat_12"].ToString());
+                        }
+
+                        if (r["vat_exempt_sale"].ToString() == "")
+                        {
+                            vat_exempt_sale = 0;
+                        }
+                        else
+                        {
+                            vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
+                        }
+
 
                         report.SetParameterValue("no_of_orders", no_of_orders.ToString("N2"), "Sales");
                         report.SetParameterValue("subtotal", subtotal.ToString("N2"), "Sales");
@@ -303,20 +494,28 @@ namespace EcoPOSv2
                     report.SetParameterValue("vat_exempt_sale", "0.00", "Sales");
                 }
 
+                #endregion
 
+                #region Staff Sales
                 if (count_sales > 0)
                 {
                     SQL.AddParam("@from", dtpFrom.Value);
                     SQL.AddParam("@to", dtpTo.Value);
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                    SQL.Query(@"SELECT CONVERT(DECIMAL(18,2), SUM(subtotal)) as 'subtotal',
+                    //SQL.Query(@"SELECT CONVERT(DECIMAL(18,2), SUM(subtotal)) as 'subtotal',
+                    //               CONVERT(DECIMAL(18,2),SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'discount_deductions',  
+                    //               CONVERT(DECIMAL(18,2),SUM(grand_total)) as 'grand_total' FROM transaction_details WHERE date_time BETWEEN @from AND @to AND userID = @userID AND (action = 1 OR action=4)");
+
+                    SQL.Query(@"SELECT CONVERT(DECIMAL(18,2), SUM(total)) as 'subtotal',
                                    CONVERT(DECIMAL(18,2),SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'discount_deductions',  
-                                   CONVERT(DECIMAL(18,2),SUM(grand_total)) as 'grand_total' FROM transaction_details WHERE date_time BETWEEN @from AND @to AND userID = @userID AND action = 1");
+                                   CONVERT(DECIMAL(18,2),SUM(grand_total)) as 'grand_total' FROM transaction_details WHERE date_time BETWEEN @from AND @to AND userID = @userID AND (action = 1 OR action=4)");
 
                     if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("Staff Sales");
                         return;
-
+                    }
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         decimal subtotal = decimal.Parse(r["subtotal"].ToString());
@@ -335,14 +534,18 @@ namespace EcoPOSv2
                     report.SetParameterValue("ss_grand_total", "0.00", "StaffSales");
                 }
 
+                #endregion
 
+                #region Retail Sales
+
+                int count_retailsales;
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
                 SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                int count_retailsales = Convert.ToInt32(SQL.ReturnResult(@"SELECT COUNT(*) FROM transaction_items as ti INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref 
-                                                                                 WHERE td.date_time BETWEEN @from AND @to AND td.action = 1 AND ti.type = 'R' AND td.userID = @userID"));
+                count_retailsales = Convert.ToInt32(SQL.ReturnResult(@"SELECT COUNT(*) FROM transaction_items as ti INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref 
+                                                                                 WHERE td.date_time BETWEEN @from AND @to AND (td.action = 1 or td.action=4) AND ti.type = 'R' AND td.userID = @userID"));
                 if (SQL.HasException(true))
                     return;
 
@@ -353,15 +556,35 @@ namespace EcoPOSv2
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
                     SQL.Query(@"SELECT  SUM(ti.quantity) as 'no_of_items', SUM(ti.selling_price_inclusive) as 'grand_total' FROM transaction_items as ti 
-                               INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref WHERE td.date_time BETWEEN @from AND @to AND td.action = 1 AND ti.type = 'R' AND td.userID = @userID");
+                               INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref WHERE td.date_time BETWEEN @from AND @to AND (td.action = 1 or td.action=4) AND ti.type = 'R' AND td.userID = @userID");
 
                     if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("Retail Sale 1");
                         return;
-
+                    }
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal total = decimal.Parse(r["grand_total"].ToString());
-                        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                        decimal total, no_of_items;
+
+                        if (r["grand_total"].ToString() == "")
+                        {
+                            total = 0;
+                        }
+                        else
+                        {
+                            total = decimal.Parse(r["grand_total"].ToString());
+                        }
+
+                        if (r["no_of_items"].ToString() == "")
+                        {
+                            no_of_items = 0;
+                        }
+                        else
+                        {
+                            no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                        }
+
 
                         report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "RetailSales");
                         report.SetParameterValue("total", total.ToString("N2"), "RetailSales");
@@ -373,14 +596,16 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "RetailSales");
                 }
 
+                #endregion
 
+                #region Whole Sales
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
                 SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
                 int count_wholesalesales = Convert.ToInt32(SQL.ReturnResult(@"SELECT COUNT(*) FROM transaction_items as ti INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref 
-                                                                                 WHERE td.date_time BETWEEN @from AND @to AND td.action = 1 AND ti.type = 'W' AND td.userID = @userID"));
+                                                                                 WHERE td.date_time BETWEEN @from AND @to AND (td.action = 1 or td.action=4) AND ti.type = 'W' AND td.userID = @userID"));
                 if (SQL.HasException(true))
                     return;
 
@@ -391,18 +616,18 @@ namespace EcoPOSv2
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
                     SQL.Query(@"SELECT  SUM(ti.quantity) as 'no_of_items', SUM(ti.selling_price_inclusive) as 'grand_total' FROM transaction_items as ti 
-                               INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref WHERE td.date_time BETWEEN @from AND @to AND td.action = 1 AND ti.type = 'W' AND td.userID = @userID");
+                               INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref WHERE td.date_time BETWEEN @from AND @to AND (td.action = 1 OR td.action=4) AND ti.type = 'W' AND td.userID = @userID");
 
                     if (SQL.HasException(true))
                         return;
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal total = decimal.Parse(r["grand_total"].ToString());
+                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
 
                         report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "WholesaleSales");
-                        report.SetParameterValue("total", total.ToString("N2"), "WholesaleSales");
+                        report.SetParameterValue("total", grand_total.ToString("N2"), "WholesaleSales");
                     }
                 }
                 else
@@ -411,7 +636,9 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "WholesaleSales");
                 }
 
+                #endregion
 
+                #region Refund
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
@@ -451,7 +678,9 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "Refund");
                 }
 
+                #endregion
 
+                #region Return
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
@@ -490,7 +719,9 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "Return");
                 }
 
+                #endregion
 
+                #region Void Item
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
@@ -525,7 +756,9 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "VoidItem");
                 }
 
+                #endregion
 
+                #region Void Transaction
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
@@ -541,9 +774,9 @@ namespace EcoPOSv2
                     SQL.AddParam("@to", dtpTo.Value);
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                    SQL.Query(@"SELECT COUNT(*) as 'no_of_orders', SUM(grand_total) as 'total'
-                               FROM transaction_details
-                               WHERE action = 4 AND date_time BETWEEN @from AND @to AND userID = @userID");
+                    SQL.Query(@"SELECT COUNT(*) as 'no_of_orders', SUM(selling_price_inclusive)*-1 as 'total'
+                               FROM transaction_details as td JOIN transaction_items as ti
+                               ON td.action = 4 AND td.order_ref=ti.order_ref AND selling_price_inclusive < 0 AND td.date_time BETWEEN @from AND @to AND userID = @userID");
 
                     if (SQL.HasException(true))
                         return;
@@ -561,12 +794,14 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "VoidTransaction");
                 }
 
+                #endregion
 
+                #region Regular Discount
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
                 SQL.AddParam("@userID", cmbStaff.SelectedValue);
-                int count_regulardiscount = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE date_time BETWEEN @from AND @to AND action = 1 AND discountID <> 0 AND userID = @userID"));
+                int count_regulardiscount = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM transaction_details WHERE date_time BETWEEN @from AND @to AND (action = 1 or action = 4) AND discountID <> 0 AND userID = @userID"));
                 if (SQL.HasException(true))
                     return;
 
@@ -577,7 +812,7 @@ namespace EcoPOSv2
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
                     SQL.Query(@"SELECT COUNT(*) as 'no_of_orders', SUM(disc_amt) as 'total'
-                               FROM transaction_details WHERE discountID <> 0 AND action = 1 AND date_time BETWEEN @from AND @to AND userID = @userID");
+                               FROM transaction_details WHERE discountID <> 0 AND (action = 1 OR action=4) AND date_time BETWEEN @from AND @to AND userID = @userID");
 
                     if (SQL.HasException(true))
                         return;
@@ -595,7 +830,9 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "RegularDiscount");
                 }
 
+                #endregion
 
+                #region Special Discounts
 
                 SQL.AddParam("@from", dtpFrom.Value);
                 SQL.AddParam("@to", dtpTo.Value);
@@ -611,7 +848,7 @@ namespace EcoPOSv2
                     SQL.AddParam("@to", dtpTo.Value);
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                    SQL.Query("SELECT COUNT(*) as 'no_of_orders', SUM(grand_total) as 'total' FROM transaction_details WHERE cus_type IN (1,2,3) AND date_time BETWEEN @from AND @to AND userID = @userID AND action = 1");
+                    SQL.Query("SELECT COUNT(*) as 'no_of_orders', SUM(grand_total) as 'total' FROM transaction_details WHERE cus_type IN (1,2,3) AND date_time BETWEEN @from AND @to AND action = 1 AND userID=@userID");
 
                     if (SQL.HasException(true))
                         return;
@@ -629,7 +866,9 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "SpecialDiscount");
                 }
 
+                #endregion
 
+                #region Payment Method
 
                 if (count_sales > 0)
                 {
@@ -637,7 +876,7 @@ namespace EcoPOSv2
                     SQL.AddParam("@to", dtpTo.Value);
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                    SQL.Query("SELECT COUNT(*) as 'no_of_orders', SUM(grand_total) as 'total' FROM transaction_details WHERE action = 1 AND date_time BETWEEN @from AND @to AND userID = @userID");
+                    SQL.Query("SELECT COUNT(*) as 'no_of_orders', SUM(grand_total) as 'total' FROM transaction_details WHERE (action = 1 or action = 4) AND date_time BETWEEN @from AND @to AND userID = @userID");
 
                     if (SQL.HasException(true))
                         return;
@@ -655,7 +894,9 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "PaymentMethod");
                 }
 
+                #endregion
 
+                #region Item Sold
 
                 if (count_sales > 0)
                 {
@@ -663,16 +904,44 @@ namespace EcoPOSv2
                     SQL.AddParam("@to", dtpTo.Value);
                     SQL.AddParam("@userID", cmbStaff.SelectedValue);
 
-                    SQL.Query(@"SELECT SUM(quantity) as 'no_of_items', SUM(static_price_inclusive) as 'total' FROM transaction_items as ti
-                               INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref WHERE td.date_time BETWEEN @from AND @to AND td.userID = @userID AND td.action = 1");
+                    SQL.Query(@"SELECT SUM(quantity) as 'no_of_items', SUM(selling_price_inclusive) as 'total',SUM(discount) as 'Deductions' FROM transaction_items as ti
+                               INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref WHERE selling_price_inclusive >= 0 AND td.date_time BETWEEN @from AND @to AND td.userID = @userID");
 
                     if (SQL.HasException(true))
                         return;
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        report.SetParameterValue("no_of_items", r["no_of_items"].ToString(), "ItemSold");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal no_of_items, total, deductions;
+                        if (r["no_of_items"].ToString() == "")
+                        {
+                            no_of_items = 0;
+                        }
+                        else
+                        {
+                            no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                        }
+
+                        if (r["total"].ToString() == "")
+                        {
+                            total = 0;
+                        }
+                        else
+                        {
+                            total = decimal.Parse(r["total"].ToString());
+                        }
+
+                        if (r["Deductions"].ToString() == "")
+                        {
+                            deductions = 0;
+                        }
+                        else
+                        {
+                            deductions = decimal.Parse(r["Deductions"].ToString());
+                        }
+
+                        report.SetParameterValue("Deductions", deductions.ToString("N2"));
+                        report.SetParameterValue("no_of_items", no_of_items, "ItemSold");
                         report.SetParameterValue("total", total.ToString("N2"), "ItemSold");
                     }
                 }
@@ -682,6 +951,36 @@ namespace EcoPOSv2
                     report.SetParameterValue("total", "0.00", "ItemSold");
                 }
 
+                #endregion
+
+                #region profit
+                SQL.AddParam("@from", dtpFrom.Value.ToShortDateString());
+                SQL.AddParam("@to", dtpTo.Value.ToShortDateString());
+                int count_profit = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM profit WHERE date BETWEEN @from AND @to"));
+                if (SQL.HasException(true))
+                    return;
+
+                if (count_profit > 0)
+                {
+                    SQL.AddParam("@from", dtpFrom.Value.ToShortDateString());
+                    SQL.AddParam("@to", dtpTo.Value.ToShortDateString());
+                    SQL.Query(@"select sum(Sales) as 'TotalSales',sum(Total_Cost) as 'TotalCost',sum(Gross) as 'TotalGross' from profit WHERE date BETWEEN @from AND @to");
+                    if (SQL.HasException(true))
+                        return;
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        report.SetParameterValue("Profit_Total_Sales", r["TotalSales"].ToString(), "Profit");
+                        report.SetParameterValue("Profit_Total_Cost", r["TotalCost"].ToString(), "Profit");
+                        report.SetParameterValue("Profit_Total_Gross", r["TotalGross"].ToString(), "Profit");
+                    }
+                }
+                else
+                {
+                    report.SetParameterValue("Profit_Total_Cost", "0.00", "Profit");
+                    report.SetParameterValue("Profit_Total_Gross", "0.00", "Profit");
+                }
+
+                #endregion
 
                 CrystalReportViewer1.ReportSource = report;
                 CrystalReportViewer1.Refresh();

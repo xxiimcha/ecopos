@@ -98,7 +98,7 @@ namespace EcoPOSv2
         }
 
 
-        public void ExportDgvToExcel(DataGridView dgv)
+        public void ExportDgvToExcel(DataGridView dgv,string FileName)
         {
             if (dgv.Rows.Count == 0)
             {
@@ -106,9 +106,9 @@ namespace EcoPOSv2
                 return;
             }
 
-
             SaveFileDialog savefilepath = new SaveFileDialog();
             savefilepath.Filter = "Excel File (*.xlsx*)|*.xlsx";
+            savefilepath.FileName = FileName;
 
             if (savefilepath.ShowDialog() == DialogResult.OK)
             {
@@ -127,7 +127,7 @@ namespace EcoPOSv2
                     {
                         worksheet.Cells[1, i] = dgv.Columns[i - 1].HeaderText;
                     }
-                    for (int i = 0; i < dgv.Rows.Count; i++)
+                    for (int i = 0; i < dgv.Rows.Count - 1; i++)
                     {
                         for (int j = 0; j < dgv.Columns.Count; j++)
                         {
@@ -135,11 +135,18 @@ namespace EcoPOSv2
                         }
                     }
 
-                    //worksheet.SaveAs(savefilepath.FileName);
-                    workbook.SaveAs(savefilepath.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                    apps.Quit();
+                    try
+                    {
+                        //worksheet.SaveAs(savefilepath.FileName);
+                        workbook.SaveAs(savefilepath.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                        apps.Quit();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Excel Report file for " + FileName + "is open. \n Please close the excel application & try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
-                    new Notification().PopUp("Export success", "", "information");
+                    //new Notification().PopUp("Export success", "", "information");
                 }
             }
         }

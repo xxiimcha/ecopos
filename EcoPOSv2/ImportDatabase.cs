@@ -63,7 +63,6 @@ namespace EcoPOSv2
             con.Close();
 
             new Notification().PopUp("Database restored. Please restart application.", "Database", "information");
-     
         }
 
         private void btnChooseFile_Click(object sender, EventArgs e)

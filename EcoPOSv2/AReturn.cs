@@ -25,13 +25,13 @@ namespace EcoPOSv2
         DataTable dt_return = new DataTable();
         string purchase_order = "";
         string supplierID = "";
+        string operationid = "";
         //METHODS
 
-        BackgroundWorker workerLoadPO;
         private void LoadPurchaseOrder()
         {
             SQLControl pSQL = new SQLControl();
-            pSQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operation = 'Purchase Inventory' ORDER BY date_time DESC");
+            pSQL.Query("SELECT operationID as 'ID', supplierID,operation_code as 'Code' FROM inventory_operation WHERE operation = 'Purchase Inventory' ORDER BY date_time DESC");
 
             if (pSQL.HasException(true))
                 return;
@@ -39,30 +39,13 @@ namespace EcoPOSv2
             dgvPurchaseOrder.Invoke(new System.Action(() =>
             {
                 dgvPurchaseOrder.DataSource = pSQL.DBDT;
-                //dgvPurchaseOrder.Columns[0].Visible = false;
+                dgvPurchaseOrder.Columns[0].Visible = false;
                 dgvPurchaseOrder.Columns[1].Visible = false;
             }));
 
             //workerLoadPO = new BackgroundWorker();
             //workerLoadPO.DoWork += WorkerLoadPO_DoWork;
             //workerLoadPO.RunWorkerAsync();
-        }
-
-        private void WorkerLoadPO_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SQLControl pSQL = new SQLControl();
-            pSQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operation = 'Purchase Inventory' ORDER BY date_time DESC");
-
-            if (pSQL.HasException(true))
-                return;
-
-            dgvPurchaseOrder.Invoke(new System.Action(() => {
-                dgvPurchaseOrder.DataSource = pSQL.DBDT;
-                //dgvPurchaseOrder.Columns[0].Visible = false;
-                dgvPurchaseOrder.Columns[1].Visible = false;
-            }));
-
-            MessageBox.Show("WORKING.");
         }
 
         private void LoadReturn()
@@ -108,10 +91,11 @@ namespace EcoPOSv2
         {
             SQL.AddParam("@find", txtSearchProducts.Text + "%");
 
-            SQL.Query("SELECT operationID as 'ID', supplierID FROM inventory_operation WHERE operationID LIKE @find AND operation = 'Purchase Inventory' ORDER BY date_time DESC");
+            SQL.Query("SELECT operation_code as 'Code',operationID as 'ID', supplierID FROM inventory_operation WHERE operation_code LIKE @find AND operation = 'Purchase Inventory' ORDER BY date_time DESC");
 
             if (SQL.HasException(true))
                 return;
+
 
             dgvPurchaseOrder.DataSource = SQL.DBDT;
             //dgvPurchaseOrder.Columns[0].Visible = false;
@@ -123,71 +107,98 @@ namespace EcoPOSv2
             if (dgvReturn.RowCount == 0)
                 return;
 
-            foreach (DataGridViewRow row in dgvReturn.Rows)
+            try
             {
-                if (dgvReturn.Rows[row.Index].Cells[2].Value.ToString() == "" | dgvReturn.Rows[row.Index].Cells[2].Value.ToString() == "0" | Convert.ToDecimal(dgvReturn.Rows[row.Index].Cells[2].Value.ToString()) > Convert.ToDecimal(dgvReturn.Rows[row.Index].Cells[3].Value.ToString()))
+                foreach (DataGridViewRow row in dgvReturn.Rows)
                 {
-                    new Notification().PopUp("Purchase quantity cannot be zero, blank or greater than stock/purchase.", "Error", "error");
-                    return;
-                }
-
-              //  foreach (DataGridViewRow r in dgvReturn.Rows)
-              //  {
-                    SQL.AddParam("@productID", dgvReturn.Rows[row.Index].Cells[0].Value.ToString());
-                    SQL.AddParam("@return_qty", dgvReturn.Rows[row.Index].Cells[2].Value.ToString());
-            
-                    SQL.Query("UPDATE inventory SET stock_qty = stock_qty - @return_qty WHERE productID = @productID");
-            
-                    if (SQL.HasException(true))
-                        return;
-            
-                    if (SQL.HasException(true))
+                    if (dgvReturn.Rows[row.Index].Cells[2].Value.ToString() == "" | dgvReturn.Rows[row.Index].Cells[2].Value.ToString() == "0" | Convert.ToDecimal(dgvReturn.Rows[row.Index].Cells[2].Value.ToString()) > Convert.ToDecimal(dgvReturn.Rows[row.Index].Cells[3].Value.ToString()))
                     {
-                        new Notification().PopUp("Something went wrong.", "Error","error");
+                        new Notification().PopUp("Purchase quantity cannot be zero, blank or greater than stock/purchase.", "Error", "error");
                         return;
                     }
-               // }
-            }
 
-            // save to inventory_operation
+                    SQL.AddParam("@productID", dgvReturn.Rows[row.Index].Cells[0].Value.ToString());
+                    SQL.AddParam("@return_qty", dgvReturn.Rows[row.Index].Cells[2].Value.ToString());
 
-            decimal return_qty = OL.GetSumColumn(dgvReturn, 2);
+                    SQL.Query("UPDATE inventory SET stock_qty = stock_qty - @return_qty WHERE productID = @productID");
 
-            SQL.AddParam("@return_qty", return_qty);
-            SQL.AddParam("@supplierID", supplierID);
-            SQL.AddParam("@remarks", txtRemarks.Text);
-            SQL.AddParam("@total", txtTotal.Text);
-            SQL.AddParam("@userID", Main.Instance.current_id);
+                    if (SQL.HasException(true))
+                        return;
 
-            SQL.Query(@"INSERT INTO inventory_operation (operation, qty, total, supplierID, remarks, 
-                              date_time, userID) VALUES ('Return Inventory', @return_qty, @total, @supplierID, 
+                    if (SQL.HasException(true))
+                    {
+                        new Notification().PopUp("Something went wrong.", "Error", "error");
+                        return;
+                    }
+                }
+
+                // save to inventory_operation
+
+                decimal return_qty = OL.GetSumColumn(dgvReturn, 2);
+
+                SQL.AddParam("@operation_code", tboperation_code.Text);
+                SQL.AddParam("@return_qty", return_qty);
+                SQL.AddParam("@supplierID", supplierID);
+                SQL.AddParam("@remarks", txtRemarks.Text);
+                SQL.AddParam("@total", txtTotal.Text);
+                SQL.AddParam("@userID", Main.Instance.current_id);
+
+                SQL.Query(@"INSERT INTO inventory_operation (operation_code,operation, qty, total, supplierID, remarks, 
+                              date_time, userID) VALUES (@operation_code,'Return Inventory', @return_qty, @total, @supplierID, 
                               @remarks, (SELECT GETDATE()), @userID)");
-
-            if (SQL.HasException(true))
-            {
-                new Notification().PopUp("Something went wrong.", "Error", "error");
-                return;
-            }
-
-            // save to inventory_operation_items
-
-            foreach (DataGridViewRow r in dgvReturn.Rows)
-            {
-                SQL.AddParam("@productID", dgvReturn.Rows[r.Index].Cells[0].Value.ToString());
-                SQL.AddParam("@product_name", dgvReturn.Rows[r.Index].Cells[1].Value.ToString());
-                SQL.AddParam("@return_qty", Convert.ToDecimal(dgvReturn.Rows[r.Index].Cells[2].Value.ToString()));
-
-                SQL.Query(@"INSERT INTO inventory_operation_items (operationID, productID, product_name, qty) 
-                          VALUES ((SELECT MAX(operationID) FROM inventory_operation), @productID, @product_name, @return_qty)");
 
                 if (SQL.HasException(true))
                 {
-                    new Notification().PopUp("Something went wrong.", "Error","error");
+                    new Notification().PopUp("Something went wrong.", "Error", "error");
                     return;
                 }
+
+                //save to inventory_operation_items
+
+                foreach (DataGridViewRow r in dgvReturn.Rows)
+                {
+                    SQL.AddParam("@productID", dgvReturn.Rows[r.Index].Cells[0].Value.ToString());
+                    SQL.AddParam("@product_name", dgvReturn.Rows[r.Index].Cells[1].Value.ToString());
+                    SQL.AddParam("@return_qty", Convert.ToDecimal(dgvReturn.Rows[r.Index].Cells[2].Value.ToString()));
+
+                    SQL.Query(@"INSERT INTO inventory_operation_items (operationID, productID, product_name, qty) 
+                          VALUES ((SELECT MAX(operationID) FROM inventory_operation), @productID, @product_name, @return_qty)");
+
+                    if (SQL.HasException(true))
+                    {
+                        new Notification().PopUp("Something went wrong.", "Error", "error");
+                        return;
+                    }
+                }
+
+                //UPDATE OPERATION ITEMS
+
+                foreach (DataGridViewRow r in dgvReturn.Rows)
+                {
+                    SQL.AddParam("@productID", dgvReturn.Rows[r.Index].Cells[0].Value.ToString());
+                    SQL.AddParam("@operationID", operationid);
+                    SQL.AddParam("@qty", Convert.ToDecimal(dgvReturn.Rows[r.Index].Cells[2].Value.ToString()));
+
+                    SQL.Query(@"Update inventory_operation_items set qty=(qty - @qty) where operationID=@operationID AND productID=@productID");
+
+                    if (SQL.HasException(true))
+                    {
+                        new Notification().PopUp("Something went wrong.", "Error", "error");
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                new Notification().PopUp(ex.Message, "", "error");
+                return;
             }
 
             dt_return.Rows.Clear();
+
+            dgvReturn.DataSource = null;
+            dgvProducts.DataSource = null;
+
             new Notification().PopUp("Item saved.","","information");
         }
 
@@ -245,7 +256,7 @@ namespace EcoPOSv2
             else if (dgvReturn.RowCount == 0)
                 dt_return.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0, dgvProducts.CurrentRow.Cells[3].Value);
         }
-
+       
         private void dgvPurchaseOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dt_return.Rows.Clear();
@@ -266,6 +277,8 @@ namespace EcoPOSv2
             dgvProducts.Columns[3].Visible = false;
 
             supplierID = dgvPurchaseOrder.CurrentRow.Cells[1].Value.ToString();
+            operationid = dgvPurchaseOrder.CurrentRow.Cells[0].Value.ToString();
+            tboperation_code.Text = dgvPurchaseOrder.CurrentRow.Cells[2].Value.ToString();
         }
 
         private void dgvReturn_CellEndEdit(object sender, DataGridViewCellEventArgs e)

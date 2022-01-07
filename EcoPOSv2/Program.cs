@@ -40,20 +40,35 @@ namespace EcoPOSv2
             }
             else
             {
+                //DISABLE DAPAT TO KAPAG TRIAL
+
                 RegistryKey myKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Electronics\\EcoPOS", true);
 
-                if(myKey == null)
+                if (myKey == null)
                 {
                     MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (myKey.GetValue("EcoPOS").ToString() != "102618")
+                if (myKey.GetValue("EcoPOS").ToString() != new Helper().Decrypt("CD7MY63RkDVQJfI8epabkw=="))
                 {
                     MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
+
+            //if(Properties.Settings.Default.Trial == "")
+            //{
+            //    Application.EnableVisualStyles();
+            //    Application.SetCompatibleTextRenderingDefault(false);
+            //    Application.Run(new TrialAuth());
+            //}
+            //else if(Properties.Settings.Default.Trial == "Active")
+            //{
+            //    Application.EnableVisualStyles();
+            //    Application.SetCompatibleTextRenderingDefault(false);
+            //    Application.Run(new SplashScreen());
+            //}
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

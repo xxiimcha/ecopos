@@ -31,6 +31,17 @@ namespace EcoPOSv2
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            if(Properties.Settings.Default.servertype == true)
+            {
+                btnDatabaseManagement.Enabled = true;
+                btnDatabaseManagement.Visible = true;
+            }
+            else
+            {
+                btnDatabaseManagement.Enabled = false;
+                btnDatabaseManagement.Visible = false;
+            }
+
             currentBtn = btnStore;
             OL.changeFormWithButton(new Store(), ref currentChildForm, btnStore, ref currentBtn, ref pnlChild);
         }
@@ -47,29 +58,30 @@ namespace EcoPOSv2
 
         private void btnDatabackup_Click(object sender, EventArgs e)
         {
-            SQLControl sql = new SQLControl();
-            string dbname = "EcoPOS";
+            OL.changeFormWithButton(new DatabaseManagement(), ref currentChildForm, btnDatabaseManagement, ref currentBtn, ref pnlChild);
+            //SQLControl sql = new SQLControl();
+            //string dbname = "EcoPOS";
 
-            if(Properties.Settings.Default.dbName == "EcoPOS")
-            {
-                dbname = "EcoPOS";
-            }
-            else
-            {
-                dbname = "EcoPOS_Training";
-            }
+            //if(Properties.Settings.Default.dbName == "EcoPOS")
+            //{
+            //    dbname = "EcoPOS";
+            //}
+            //else
+            //{
+            //    dbname = "EcoPOS_Training";
+            //}
 
-            string path = "";
+            //string path = "";
 
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                path = fbd.SelectedPath;
-                sql.Query("BACKUP DATABASE [" + dbname + "] TO DISK='" + path.ToString() + "\\" + "Database" + "-" + DateTime.Now.ToString("MM.dd.yyyy---h.mmTT") + ".bak'");
-                MessageBox.Show("Backup taken successfully", "Backup successs", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            //MessageBox.Show("Database BackUp has been created successfully.");
+            //if (fbd.ShowDialog() == DialogResult.OK)
+            //{
+            //    path = fbd.SelectedPath;
+            //    sql.Query("BACKUP DATABASE [" + dbname + "] TO DISK='" + path.ToString() + "\\" + "Database" + "-" + DateTime.Now.ToString("MM.dd.yyyy---h.mmTT") + ".bak'");
+            //    MessageBox.Show("Backup taken successfully", "Backup successs", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            ////MessageBox.Show("Database BackUp has been created successfully.");
         }
     }
 }

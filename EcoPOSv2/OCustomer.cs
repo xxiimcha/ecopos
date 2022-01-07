@@ -49,7 +49,7 @@ namespace EcoPOSv2
             this.ActiveControl = txtNameCard;
 
             LoadCustomer();
-            guna2ShadowForm1.SetShadowForm(this);
+            //guna2ShadowForm1.SetShadowForm(this);
         }
 
         private void BtnConfirm_Click(object sender, EventArgs e)
@@ -61,6 +61,8 @@ namespace EcoPOSv2
             SQL.AddParam("@customerID", dgvCustomer.CurrentRow.Cells[0].Value.ToString());
             SQL.AddParam("@cus_name", dgvCustomer.CurrentRow.Cells[1].Value.ToString());
             SQL.AddParam("@cus_mem_ID", dgvCustomer.CurrentRow.Cells[3].Value.ToString());
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
             SQL.Query(@"UPDATE order_no SET 
                           cus_type = 4, 
                           cus_name = @cus_name, 
@@ -78,7 +80,7 @@ namespace EcoPOSv2
                         FROM customer as c          
                         INNER JOIN membership as m ON c.member_type_ID = m.member_type_ID
                         WHERE c.customerID = @customerID) as t
-                        WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+                        WHERE order_ref = (SELECT MAX(order_ref) FROM order_no WHERE terminal_id=@terminal_id)");
             if (SQL.HasException(true))
                 return;
 
@@ -99,19 +101,33 @@ namespace EcoPOSv2
                                                              ON m.member_type_ID = c.member_type_ID WHERE c.customerID = @customerID"));
                 if (SQL.HasException(true))
                     return;
-                SQL.Query("SELECT * FROM order_cart ORDER BY itemID ASC");
+
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                SQL.Query("SELECT * FROM order_cart WHERE terminal_id = @terminal_id ORDER BY itemID ASC");
                 if (SQL.HasException(true))
                     return;
+
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
                     SQL.AddParam("@itemID", r["itemID"].ToString());
                     SQL.AddParam("@disc_amt", disc_amt);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
                     SQL.Query(@"UPDATE oc SET
                                oc.is_disc_percent = p.s_discR,
                                oc.disc_percent = IIF(p.s_discR = 1, @disc_amt, 0)
                                FROM order_cart as oc
                                INNER JOIN products as p ON oc.productID = p.productID
-                               WHERE oc.itemID = @itemID");
+                               WHERE oc.terminal_id = @terminal_id AND oc.itemID = @itemID");
+                    if (SQL.HasException(true))
+                        return;
+
+                    //UPDATE DISCOUNT
+                    SQL.AddParam("@itemID", r["itemID"].ToString());
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                    SQL.Query("UPDATE order_cart SET discount=(selling_price_inclusive*(disc_percent/100)) where itemID=@itemID AND terminal_id=@terminal_id");
+
                     if (SQL.HasException(true))
                         return;
                 }
@@ -165,6 +181,16 @@ namespace EcoPOSv2
         private void OCustomer_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) Close();
+        }
+
+        private void gunaControlBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnConfirm.PerformClick();
         }
     }
 }

@@ -88,11 +88,11 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
             this.Label1.Location = new System.Drawing.Point(0, 0);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(446, 37);
+            this.Label1.Size = new System.Drawing.Size(351, 30);
             this.Label1.TabIndex = 9;
             this.Label1.Text = "Transfer items to another warehouse";
             // 
@@ -100,7 +100,7 @@
             // 
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
             this.btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
             this.btnSearch.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
@@ -109,7 +109,7 @@
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearch.Location = new System.Drawing.Point(0, 0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(110, 41);
+            this.btnSearch.Size = new System.Drawing.Size(110, 39);
             this.btnSearch.TabIndex = 32;
             this.btnSearch.Text = "Search";
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -123,9 +123,9 @@
             this.txtSearchItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSearchItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchItem.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchItem.Location = new System.Drawing.Point(3, 85);
+            this.txtSearchItem.Location = new System.Drawing.Point(3, 80);
             this.txtSearchItem.Name = "txtSearchItem";
-            this.txtSearchItem.Size = new System.Drawing.Size(481, 33);
+            this.txtSearchItem.Size = new System.Drawing.Size(362, 33);
             this.txtSearchItem.TabIndex = 29;
             this.txtSearchItem.Tag = "Search item";
             this.txtSearchItem.Text = "Search item";
@@ -136,16 +136,16 @@
             this.btnTransfer.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnTransfer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
             this.btnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransfer.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransfer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransfer.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnTransfer.IconChar = FontAwesome.Sharp.IconChar.ExchangeAlt;
             this.btnTransfer.IconColor = System.Drawing.Color.ForestGreen;
             this.btnTransfer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTransfer.IconSize = 27;
-            this.btnTransfer.Location = new System.Drawing.Point(728, 130);
+            this.btnTransfer.Location = new System.Drawing.Point(490, 121);
             this.btnTransfer.Name = "btnTransfer";
             this.btnTransfer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnTransfer.Size = new System.Drawing.Size(244, 41);
+            this.btnTransfer.Size = new System.Drawing.Size(244, 39);
             this.btnTransfer.TabIndex = 35;
             this.btnTransfer.Text = "Transfer warehouse";
             this.btnTransfer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -183,7 +183,7 @@
             this.dgvFromWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFromWarehouse.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvFromWarehouse.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvFromWarehouse.Location = new System.Drawing.Point(3, 177);
+            this.dgvFromWarehouse.Location = new System.Drawing.Point(3, 166);
             this.dgvFromWarehouse.MultiSelect = false;
             this.dgvFromWarehouse.Name = "dgvFromWarehouse";
             this.dgvFromWarehouse.ReadOnly = true;
@@ -197,7 +197,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFromWarehouse.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFromWarehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFromWarehouse.Size = new System.Drawing.Size(481, 677);
+            this.dgvFromWarehouse.Size = new System.Drawing.Size(362, 490);
             this.dgvFromWarehouse.TabIndex = 36;
             this.dgvFromWarehouse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFromWarehouse_CellClick);
             // 
@@ -205,16 +205,16 @@
             // 
             this.btnRemoveItem.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveItem.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
             this.btnRemoveItem.IconChar = FontAwesome.Sharp.IconChar.Times;
             this.btnRemoveItem.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
             this.btnRemoveItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRemoveItem.IconSize = 27;
-            this.btnRemoveItem.Location = new System.Drawing.Point(728, 85);
+            this.btnRemoveItem.Location = new System.Drawing.Point(490, 80);
             this.btnRemoveItem.Name = "btnRemoveItem";
             this.btnRemoveItem.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.btnRemoveItem.Size = new System.Drawing.Size(244, 39);
+            this.btnRemoveItem.Size = new System.Drawing.Size(244, 35);
             this.btnRemoveItem.TabIndex = 33;
             this.btnRemoveItem.Text = "Remove item";
             this.btnRemoveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -226,25 +226,25 @@
             this.Panel7.Controls.Add(this.btnSearch);
             this.Panel7.Controls.Add(this.btnSelectAll);
             this.Panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel7.Location = new System.Drawing.Point(3, 130);
+            this.Panel7.Location = new System.Drawing.Point(3, 121);
             this.Panel7.Name = "Panel7";
-            this.Panel7.Size = new System.Drawing.Size(481, 41);
+            this.Panel7.Size = new System.Drawing.Size(362, 39);
             this.Panel7.TabIndex = 39;
             // 
             // btnSelectAll
             // 
             this.btnSelectAll.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelectAll.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectAll.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectAll.ForeColor = System.Drawing.Color.Orange;
             this.btnSelectAll.IconChar = FontAwesome.Sharp.IconChar.Check;
             this.btnSelectAll.IconColor = System.Drawing.Color.Orange;
             this.btnSelectAll.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSelectAll.IconSize = 27;
             this.btnSelectAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSelectAll.Location = new System.Drawing.Point(237, 0);
+            this.btnSelectAll.Location = new System.Drawing.Point(118, 0);
             this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(244, 41);
+            this.btnSelectAll.Size = new System.Drawing.Size(244, 39);
             this.btnSelectAll.TabIndex = 31;
             this.btnSelectAll.Text = "Select all in this table";
             this.btnSelectAll.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -257,24 +257,24 @@
             this.cmbCategory.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategory.ForeColor = System.Drawing.Color.White;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(108, 6);
             this.cmbCategory.MaxDropDownItems = 10;
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(371, 31);
+            this.cmbCategory.Size = new System.Drawing.Size(254, 28);
             this.cmbCategory.TabIndex = 29;
             this.cmbCategory.TextChanged += new System.EventHandler(this.CmbCategory_TextChanged);
             // 
             // Label3
             // 
             this.Label3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Label3.ForeColor = System.Drawing.Color.Black;
             this.Label3.Location = new System.Drawing.Point(0, 0);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(110, 40);
+            this.Label3.Size = new System.Drawing.Size(110, 30);
             this.Label3.TabIndex = 11;
             this.Label3.Text = "Category";
             // 
@@ -283,9 +283,9 @@
             this.Panel5.Controls.Add(this.cmbCategory);
             this.Panel5.Controls.Add(this.Label3);
             this.Panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel5.Location = new System.Drawing.Point(3, 39);
+            this.Panel5.Location = new System.Drawing.Point(3, 44);
             this.Panel5.Name = "Panel5";
-            this.Panel5.Size = new System.Drawing.Size(481, 40);
+            this.Panel5.Size = new System.Drawing.Size(362, 30);
             this.Panel5.TabIndex = 28;
             // 
             // cmbWarehouseFrom
@@ -293,24 +293,24 @@
             this.cmbWarehouseFrom.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.cmbWarehouseFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWarehouseFrom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbWarehouseFrom.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbWarehouseFrom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbWarehouseFrom.ForeColor = System.Drawing.Color.White;
             this.cmbWarehouseFrom.FormattingEnabled = true;
             this.cmbWarehouseFrom.Location = new System.Drawing.Point(109, -1);
             this.cmbWarehouseFrom.MaxDropDownItems = 10;
             this.cmbWarehouseFrom.Name = "cmbWarehouseFrom";
-            this.cmbWarehouseFrom.Size = new System.Drawing.Size(372, 31);
+            this.cmbWarehouseFrom.Size = new System.Drawing.Size(255, 28);
             this.cmbWarehouseFrom.TabIndex = 26;
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
             this.Label2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Label2.ForeColor = System.Drawing.Color.Black;
             this.Label2.Location = new System.Drawing.Point(0, 0);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(109, 28);
+            this.Label2.Size = new System.Drawing.Size(88, 21);
             this.Label2.TabIndex = 10;
             this.Label2.Text = "Warehouse";
             // 
@@ -318,15 +318,15 @@
             // 
             this.btnRemoveAll.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnRemoveAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveAll.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveAll.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
             this.btnRemoveAll.IconChar = FontAwesome.Sharp.IconChar.Times;
             this.btnRemoveAll.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
             this.btnRemoveAll.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRemoveAll.IconSize = 27;
-            this.btnRemoveAll.Location = new System.Drawing.Point(728, 39);
+            this.btnRemoveAll.Location = new System.Drawing.Point(490, 44);
             this.btnRemoveAll.Name = "btnRemoveAll";
-            this.btnRemoveAll.Size = new System.Drawing.Size(244, 40);
+            this.btnRemoveAll.Size = new System.Drawing.Size(244, 30);
             this.btnRemoveAll.TabIndex = 34;
             this.btnRemoveAll.Text = "Remove all in this table";
             this.btnRemoveAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -340,7 +340,7 @@
             this.Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel3.Location = new System.Drawing.Point(3, 3);
             this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(481, 30);
+            this.Panel3.Size = new System.Drawing.Size(362, 35);
             this.Panel3.TabIndex = 27;
             // 
             // cmbWarehouseTo
@@ -349,24 +349,24 @@
             this.cmbWarehouseTo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbWarehouseTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWarehouseTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbWarehouseTo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbWarehouseTo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbWarehouseTo.ForeColor = System.Drawing.Color.White;
             this.cmbWarehouseTo.FormattingEnabled = true;
-            this.cmbWarehouseTo.Location = new System.Drawing.Point(103, 0);
+            this.cmbWarehouseTo.Location = new System.Drawing.Point(84, 0);
             this.cmbWarehouseTo.MaxDropDownItems = 10;
             this.cmbWarehouseTo.Name = "cmbWarehouseTo";
-            this.cmbWarehouseTo.Size = new System.Drawing.Size(379, 31);
+            this.cmbWarehouseTo.Size = new System.Drawing.Size(279, 28);
             this.cmbWarehouseTo.TabIndex = 26;
             // 
             // Label4
             // 
             this.Label4.AutoSize = true;
             this.Label4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.Label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.Color.Black;
             this.Label4.Location = new System.Drawing.Point(0, 0);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(103, 28);
+            this.Label4.Size = new System.Drawing.Size(84, 21);
             this.Label4.TabIndex = 10;
             this.Label4.Text = "Transfer to";
             // 
@@ -375,9 +375,9 @@
             this.Panel6.Controls.Add(this.cmbWarehouseTo);
             this.Panel6.Controls.Add(this.Label4);
             this.Panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel6.Location = new System.Drawing.Point(490, 3);
+            this.Panel6.Location = new System.Drawing.Point(371, 3);
             this.Panel6.Name = "Panel6";
-            this.Panel6.Size = new System.Drawing.Size(482, 30);
+            this.Panel6.Size = new System.Drawing.Size(363, 35);
             this.Panel6.TabIndex = 38;
             // 
             // TableLayoutPanel3
@@ -396,16 +396,16 @@
             this.TableLayoutPanel3.Controls.Add(this.btnRemoveItem, 1, 2);
             this.TableLayoutPanel3.Controls.Add(this.Panel7, 0, 3);
             this.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanel3.Location = new System.Drawing.Point(0, 37);
+            this.TableLayoutPanel3.Location = new System.Drawing.Point(0, 30);
             this.TableLayoutPanel3.Name = "TableLayoutPanel3";
             this.TableLayoutPanel3.RowCount = 5;
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.261646F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.367561F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.250875F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.484247F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.46324F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.288343F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.521472F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.288343F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.901841F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.69325F));
             this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel3.Size = new System.Drawing.Size(975, 857);
+            this.TableLayoutPanel3.Size = new System.Drawing.Size(737, 659);
             this.TableLayoutPanel3.TabIndex = 10;
             // 
             // dgvToWarehouse
@@ -439,7 +439,7 @@
             this.dgvToWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvToWarehouse.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvToWarehouse.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvToWarehouse.Location = new System.Drawing.Point(490, 177);
+            this.dgvToWarehouse.Location = new System.Drawing.Point(371, 166);
             this.dgvToWarehouse.MultiSelect = false;
             this.dgvToWarehouse.Name = "dgvToWarehouse";
             this.dgvToWarehouse.ReadOnly = true;
@@ -453,7 +453,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvToWarehouse.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvToWarehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvToWarehouse.Size = new System.Drawing.Size(482, 677);
+            this.dgvToWarehouse.Size = new System.Drawing.Size(363, 490);
             this.dgvToWarehouse.TabIndex = 37;
             // 
             // Panel2
@@ -461,9 +461,9 @@
             this.Panel2.Controls.Add(this.TableLayoutPanel3);
             this.Panel2.Controls.Add(this.Label1);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel2.Location = new System.Drawing.Point(462, 3);
+            this.Panel2.Location = new System.Drawing.Point(350, 3);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(975, 894);
+            this.Panel2.Size = new System.Drawing.Size(737, 689);
             this.Panel2.TabIndex = 1;
             // 
             // txtSearchWarehouse
@@ -474,7 +474,7 @@
             this.txtSearchWarehouse.Location = new System.Drawing.Point(0, 0);
             this.txtSearchWarehouse.Multiline = true;
             this.txtSearchWarehouse.Name = "txtSearchWarehouse";
-            this.txtSearchWarehouse.Size = new System.Drawing.Size(277, 36);
+            this.txtSearchWarehouse.Size = new System.Drawing.Size(165, 26);
             this.txtSearchWarehouse.TabIndex = 25;
             this.txtSearchWarehouse.Tag = "Search warehouse";
             this.txtSearchWarehouse.Text = "Search warehouse";
@@ -493,9 +493,9 @@
             this.btnSort.IconColor = System.Drawing.Color.DimGray;
             this.btnSort.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSort.IconSize = 30;
-            this.btnSort.Location = new System.Drawing.Point(277, 0);
+            this.btnSort.Location = new System.Drawing.Point(165, 0);
             this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(47, 36);
+            this.btnSort.Size = new System.Drawing.Size(47, 26);
             this.btnSort.TabIndex = 27;
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
@@ -514,10 +514,10 @@
             this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAdd.IconSize = 30;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(324, 0);
+            this.btnAdd.Location = new System.Drawing.Point(212, 0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnAdd.Size = new System.Drawing.Size(41, 36);
+            this.btnAdd.Size = new System.Drawing.Size(41, 26);
             this.btnAdd.TabIndex = 26;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -536,10 +536,10 @@
             this.btnEdit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEdit.IconSize = 30;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(365, 0);
+            this.btnEdit.Location = new System.Drawing.Point(253, 0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.btnEdit.Size = new System.Drawing.Size(41, 36);
+            this.btnEdit.Size = new System.Drawing.Size(41, 26);
             this.btnEdit.TabIndex = 28;
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -558,10 +558,10 @@
             this.btnDeleteWarehouse.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDeleteWarehouse.IconSize = 30;
             this.btnDeleteWarehouse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteWarehouse.Location = new System.Drawing.Point(406, 0);
+            this.btnDeleteWarehouse.Location = new System.Drawing.Point(294, 0);
             this.btnDeleteWarehouse.Name = "btnDeleteWarehouse";
             this.btnDeleteWarehouse.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btnDeleteWarehouse.Size = new System.Drawing.Size(41, 36);
+            this.btnDeleteWarehouse.Size = new System.Drawing.Size(41, 26);
             this.btnDeleteWarehouse.TabIndex = 23;
             this.btnDeleteWarehouse.UseVisualStyleBackColor = false;
             this.btnDeleteWarehouse.Click += new System.EventHandler(this.btnDeleteWarehouse_Click);
@@ -596,7 +596,7 @@
             this.dgvWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvWarehouse.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvWarehouse.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvWarehouse.Location = new System.Drawing.Point(3, 45);
+            this.dgvWarehouse.Location = new System.Drawing.Point(3, 35);
             this.dgvWarehouse.MultiSelect = false;
             this.dgvWarehouse.Name = "dgvWarehouse";
             this.dgvWarehouse.ReadOnly = true;
@@ -610,7 +610,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvWarehouse.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvWarehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWarehouse.Size = new System.Drawing.Size(447, 846);
+            this.dgvWarehouse.Size = new System.Drawing.Size(335, 651);
             this.dgvWarehouse.TabIndex = 9;
             this.dgvWarehouse.DoubleClick += new System.EventHandler(this.dgvWarehouse_DoubleClick);
             // 
@@ -624,7 +624,7 @@
             this.Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel4.Location = new System.Drawing.Point(3, 3);
             this.Panel4.Name = "Panel4";
-            this.Panel4.Size = new System.Drawing.Size(447, 36);
+            this.Panel4.Size = new System.Drawing.Size(335, 26);
             this.Panel4.TabIndex = 8;
             // 
             // TableLayoutPanel2
@@ -639,7 +639,7 @@
             this.TableLayoutPanel2.RowCount = 2;
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.697987F));
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95.30202F));
-            this.TableLayoutPanel2.Size = new System.Drawing.Size(453, 894);
+            this.TableLayoutPanel2.Size = new System.Drawing.Size(341, 689);
             this.TableLayoutPanel2.TabIndex = 0;
             // 
             // Panel1
@@ -648,7 +648,7 @@
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(3, 3);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(453, 894);
+            this.Panel1.Size = new System.Drawing.Size(341, 689);
             this.Panel1.TabIndex = 0;
             // 
             // TableLayoutPanel1
@@ -663,7 +663,7 @@
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
             this.TableLayoutPanel1.RowCount = 1;
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(1440, 900);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(1090, 695);
             this.TableLayoutPanel1.TabIndex = 1;
             // 
             // AWarehouse
@@ -671,7 +671,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1440, 900);
+            this.ClientSize = new System.Drawing.Size(1090, 695);
             this.Controls.Add(this.TableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

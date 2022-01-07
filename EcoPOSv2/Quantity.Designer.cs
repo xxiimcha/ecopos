@@ -132,6 +132,7 @@
             this.txtQuantity.TabIndex = 54;
             this.txtQuantity.Tag = "";
             this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuantity_KeyPress);
             // 
             // Label3
             // 

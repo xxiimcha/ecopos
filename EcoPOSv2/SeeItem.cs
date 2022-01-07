@@ -40,11 +40,9 @@ namespace EcoPOSv2
         private void SeeItem_Load(object sender, EventArgs e)
         {
             this.ActiveControl = txtBarcode;
-
+            txtBarcode.Focus();
 
             _SeeItem = this;
-
-            guna2ShadowForm1.SetShadowForm(this);
         }
         public static string seeitemsearch;
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
@@ -87,6 +85,9 @@ namespace EcoPOSv2
         {
             txtBarcode.Focus();
         }
+        string quantitytalaga;
+        decimal totalquantity;
+        decimal quantity = 1;
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (dgvProducts.SelectedRows.Count == 0)
@@ -105,28 +106,85 @@ namespace EcoPOSv2
             {
                 SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                 SQL.AddParam("@type", type);
-                int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = @productID AND type = @type"));
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = @productID AND type = @type AND terminal_id=@terminal_id"));
 
                 if (SQL.HasException(true))
                     return;
 
                 if (check_in_cart == 0)
                 {
+                    //CHECKER KUNG TAMA BA YUNG QUANTITY AT STOCK
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                    quantitytalaga = SQL.ReturnResult("select quantity from order_cart where productID=@productID AND terminal_id=@terminal_id");
+
+                    if (quantitytalaga != "")
+                    {
+                        totalquantity = decimal.Parse(quantitytalaga) + quantity;
+                    }
+                    else
+                    {
+                        totalquantity = 0 + quantity;
+                    }
+                    //MessageBox.Show("No of quantity: "+ totalquantity.ToString());
+
+                    //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                    if (SQL.HasException(true)) return;
+
+                    //MessageBox.Show("No of stock: "+stock.ToString());
+
+                    if (totalquantity > stock)
+                    {
+                        new Notification().PopUp("Insufficient stock", "", "error");
+                        return;
+                    }
+                    //END OF THE CHECKER
+
                     SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                     SQL.AddParam("@type", type);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount) 
-                       SELECT productID, description, name, @type," + type_query + ", 1, 0 FROM products WHERE productID = @productID");
+                    SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id,is_vatable) 
+                       SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable FROM products WHERE productID = @productID");
 
                     if (SQL.HasException(true))
                         return;
                 }
                 else
                 {
+                    //check if still in stock (retail and wholesale)
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                    if (int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE terminal_id=@terminal_id AND productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)")) == 1)
+                    {
+                        new Notification().PopUp("Insufficient stock", "", "error");
+                        return;
+                    }
+
+                    //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
+                    decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                    if (SQL.HasException(true)) return;
+
+                    if (quantity > stock)
+                    {
+                        new Notification().PopUp("Insufficient stock", "", "error");
+                        return;
+                    }
+
                     SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                     SQL.AddParam("@type", type);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    SQL.Query("UPDATE order_cart SET quantity = quantity + 1 WHERE productID = @productID AND type = @type");
+                    SQL.Query("UPDATE order_cart SET quantity = quantity + 1 WHERE productID = @productID AND type = @type AND terminal_id=@terminal_id");
                     if (SQL.HasException(true))
                         return;
                 }

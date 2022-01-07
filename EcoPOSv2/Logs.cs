@@ -169,7 +169,7 @@ namespace EcoPOSv2
             pagenumber = SQL.DBDT.Rows.Count / 50;
             totalrows = SQL.DBDT.Rows.Count;
 
-            lblPageCount.Text = "Page: " + pagecount.ToString() + "-" + pagenumber;
+            //lblPageCount.Text = "Page: " + pagecount.ToString() + "-" + pagenumber;
 
             //MessageBox.Show(pagenumber.ToString() + " " + totalrows);
         }
@@ -232,16 +232,19 @@ namespace EcoPOSv2
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            if(dgvCountIndex == 0)
+            dgvCountIndex -= 50;
+
+            if (dgvCountIndex <= 0)
             {
                 dgvCountIndex = 0;
                 return;
             }
 
-            dgvCountIndex -= 50;
+            dsCurrent.Clear();
+            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "audit");
 
             pagecount--;
-            lblPageCount.Text = "Page: " + pagecount.ToString() + "-" + pagenumber;
+            //lblPageCount.Text = "Page: " + pagecount.ToString() + "-" + pagenumber;
 
             //if (pagecount <= 1)
             //{
@@ -255,22 +258,23 @@ namespace EcoPOSv2
             //    return;
             //}
 
-            dsCurrent.Clear();
-            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "audit");
+            
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-
+            dgvCountIndex += 50;
             if (dgvCountIndex >= totalrows)
             {
                 dgvCountIndex -= 50;
                 return;
             }
+            dsCurrent.Clear();
+            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "audit");
 
-            dgvCountIndex = dgvCountIndex + 50;
+            //dgvCountIndex = dgvCountIndex + 50;
             pagecount++;
-            lblPageCount.Text = "Page: " + pagecount.ToString() + "-" + pagenumber;
+            //lblPageCount.Text = "Page: " + pagecount.ToString() + "-" + pagenumber;
 
             //if (pagecount > 1)
             //{
@@ -283,10 +287,6 @@ namespace EcoPOSv2
             //    btnNext.Enabled = false;
             //    return;
             //}
-
-
-            dsCurrent.Clear();
-            SQL.DBDA.Fill(dsCurrent, dgvCountIndex, 50, "audit");
         }
 
         private void btnLH_SearchUser_Click(object sender, EventArgs e)

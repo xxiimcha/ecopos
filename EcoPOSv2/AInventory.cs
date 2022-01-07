@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
@@ -48,13 +49,20 @@ namespace EcoPOSv2
         //METHODS
         private void AInventory_Load(object sender, EventArgs e)
         {
-            LoadCmb();
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    LoadCmb();
 
-            Control c = (Control)txtSearch;
+                    Control c = (Control)txtSearch;
 
-            SetBehavior(ref c, Behavior.ClearSearch);
+                    SetBehavior(ref c, Behavior.ClearSearch);
 
-            btnSearch.PerformClick();
+                    btnSearch.PerformClick();
+                }));
+            })
+            { IsBackground = true }.Start();
         }
         string query = "";
         string cat_query, warehouse_query, showzero_query;
@@ -65,10 +73,7 @@ namespace EcoPOSv2
             cat_query = "c.categoryID NOT IN (0)";
             warehouse_query = "w.warehouseID NOT IN (0)";
             showzero_query = "AND i.stock_qty = (0)";
-            //string query = "";
-            //string cat_query = "c.categoryID NOT IN (9999999999)";
-            //string warehouse_query = "w.warehouseID NOT IN (9999999999)";
-            //string showzero_query = "AND i.stock_qty = (0)";
+
 
             if (cmbCategory.SelectedIndex != 0)
             {
@@ -89,16 +94,6 @@ namespace EcoPOSv2
                 showzero_query = "";
             }
 
-            textBox1.Text = (@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
-                       INNER JOIN warehouse as w ON
-                       p.warehouseID = w.warehouseID
-                       INNER JOIN product_category as c ON
-                       p.categoryID = c.categoryID 
-                       INNER JOIN inventory as i ON 
-                       p.productID = i.productID
-                       WHERE " + cat_query + " AND " + warehouse_query + showzero_query + " Order BY p.description ASC");
-
-
             workerSearchInventory = new BackgroundWorker();
             workerSearchInventory.DoWork += WorkerSearchInventory_DoWork;
             workerSearchInventory.RunWorkerAsync();
@@ -111,7 +106,7 @@ namespace EcoPOSv2
         {
             SQLControl workerSQL = new SQLControl();
 
-            workerSQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
+            workerSQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID
                        INNER JOIN product_category as c ON
@@ -127,6 +122,7 @@ namespace EcoPOSv2
             {
                 dgvInventory.DataSource = workerSQL.DBDT;
                 dgvInventory.Columns[0].Visible = false;
+                //dgvInventory.Columns[1].Width = 400;
             }));
 
             btnSearch.Invoke(new Action(() =>
@@ -164,11 +160,9 @@ namespace EcoPOSv2
                 return;
             }
 
-
-
             SQL.AddParam("@find", txtSearch.Text + "%");
 
-            SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock' FROM products as p
+            SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID
                        INNER JOIN product_category as c ON
@@ -183,13 +177,27 @@ namespace EcoPOSv2
 
             dgvInventory.DataSource = SQL.DBDT;
             dgvInventory.Columns[0].Visible = false;
+            //dgvInventory.Columns[1].Width = 400;
+        }
+
+        private void DgvInventory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(Properties.Settings.Default.inventoryproductview == true)
+            {
+                InventoryProduct_View.Instance.lblProductName.Text = dgvInventory.CurrentRow.Cells[1].Value.ToString() + "|" + dgvInventory.CurrentRow.Cells[2].Value.ToString();
+                InventoryProduct_View.Instance.productID = dgvInventory.CurrentRow.Cells[0].Value.ToString();
+
+                InventoryProduct_View.Instance.ShowDialog();
+            }
         }
 
         private void btnExportExcel_Click(object sender, EventArgs e)
         {
             if (dgvInventory.RowCount == 0)
                 return;
-            EI.ExportDgvToExcel(dgvInventory);
+            //new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvInventory), "InventoryReport", "InventoryReport");
+
+            EI.ExportDgvToExcel(dgvInventory,"Inventory");
         }
 
         private void btnExportPDF_Click(object sender, EventArgs e)

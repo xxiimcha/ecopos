@@ -70,5 +70,197 @@ namespace EcoPOSv2.Properties {
                 this["dbServerName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Terminal_id {
+            get {
+                return ((string)(this["Terminal_id"]));
+            }
+            set {
+                this["Terminal_id"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Terminal_name {
+            get {
+                return ((string)(this["Terminal_name"]));
+            }
+            set {
+                this["Terminal_name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("001")]
+        public string Machine_no {
+            get {
+                return ((string)(this["Machine_no"]));
+            }
+            set {
+                this["Machine_no"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool cardlogin {
+            get {
+                return ((bool)(this["cardlogin"]));
+            }
+            set {
+                this["cardlogin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool servertype {
+            get {
+                return ((bool)(this["servertype"]));
+            }
+            set {
+                this["servertype"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("58MM")]
+        public string papersize {
+            get {
+                return ((string)(this["papersize"]));
+            }
+            set {
+                this["papersize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool priceeditor {
+            get {
+                return ((bool)(this["priceeditor"]));
+            }
+            set {
+                this["priceeditor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool vatnonvat {
+            get {
+                return ((bool)(this["vatnonvat"]));
+            }
+            set {
+                this["vatnonvat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool inventoryproductview {
+            get {
+                return ((bool)(this["inventoryproductview"]));
+            }
+            set {
+                this["inventoryproductview"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool nonvat_registered {
+            get {
+                return ((bool)(this["nonvat_registered"]));
+            }
+            set {
+                this["nonvat_registered"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Trial {
+            get {
+                return ((string)(this["Trial"]));
+            }
+            set {
+                this["Trial"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TrialExpiryDate {
+            get {
+                return ((string)(this["TrialExpiryDate"]));
+            }
+            set {
+                this["TrialExpiryDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CloudServerName {
+            get {
+                return ((string)(this["CloudServerName"]));
+            }
+            set {
+                this["CloudServerName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CloudEcoPOS {
+            get {
+                return ((string)(this["CloudEcoPOS"]));
+            }
+            set {
+                this["CloudEcoPOS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CloudEcoPOS_Training {
+            get {
+                return ((string)(this["CloudEcoPOS_Training"]));
+            }
+            set {
+                this["CloudEcoPOS_Training"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CloudBase {
+            get {
+                return ((bool)(this["CloudBase"]));
+            }
+            set {
+                this["CloudBase"] = value;
+            }
+        }
     }
 }

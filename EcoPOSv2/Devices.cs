@@ -40,13 +40,15 @@ namespace EcoPOSv2
         {
             InstalledPrinters();
 
-            int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM printers_devices"));
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM printers_devices where terminal_id=@terminal_id"));
             if (SQL.HasException(true))
                 return;
 
             if (count_records == 1)
             {
-                SQL.Query("SELECT * FROM printers_devices");
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                SQL.Query("SELECT * FROM printers_devices where terminal_id=@terminal_id");
 
                 if (SQL.HasException(true))
                     return;
@@ -65,11 +67,14 @@ namespace EcoPOSv2
                 cmbReportPrinter.SelectedIndex = 0;
                 cmbPort.SelectedIndex = -1;
             }
+
+            cmbPaperSize.Text = Properties.Settings.Default.papersize;
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
-            int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM printers_devices"));
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM printers_devices where terminal_id=@terminal_id"));
             if (SQL.HasException(true))
                 return;
 
@@ -77,19 +82,20 @@ namespace EcoPOSv2
             SQL.AddParam("@report_printer_name", cmbReportPrinter.Text);
             SQL.AddParam("@customer_display_enabled", cbxEnable_CD.Checked);
             SQL.AddParam("@customer_display_port", cmbPort.Text);
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
             if (count_records == 1)
             {
                 SQL.Query(@"UPDATE printers_devices SET receipt_printer_name = @receipt_printer_name, report_printer_name = @report_printer_name, 
-                           customer_display_enabled = @customer_display_enabled, customer_display_port = @customer_display_port");
+                           customer_display_enabled = @customer_display_enabled, customer_display_port = @customer_display_port where terminal_id=@terminal_id");
 
                 if (SQL.HasException(true))
                     return;
             }
             else if (count_records == 0)
             {
-                SQL.Query(@"INSERT INTO printers_devices (receipt_printer_name, report_printer_name, customer_display_enabled, customer_display_port) VALUES 
-                           (@receipt_printer_name, @report_printer_name, @customer_display_enabled, @customer_display_port)");
+                SQL.Query(@"INSERT INTO printers_devices (receipt_printer_name, report_printer_name, customer_display_enabled, customer_display_port,terminal_id) VALUES 
+                           (@receipt_printer_name, @report_printer_name, @customer_display_enabled, @customer_display_port,@terminal_id)");
 
                 if (SQL.HasException(true))
                     return;
@@ -103,7 +109,7 @@ namespace EcoPOSv2
             Main.Instance.pd_customer_display_enabled = cbxEnable_CD.Checked;
             Main.Instance.pd_customer_display_port = cmbPort.Text;
 
-            new Notification().PopUp("Settings has been saved.","Success","success");
+            new Notification().PopUp("Settings has been saved.", "Success", "success");
             this.Close();
             //MessageBox.Show("Settings has been saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -157,6 +163,32 @@ namespace EcoPOSv2
             {
                 cmbPort.SelectedIndex = -1;
                 cmbPort.Enabled = false;
+            }
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            if (moreOptionContainer.Visible == false)
+            {
+                moreOptionContainer.Visible = true;
+            }
+            else
+            {
+                moreOptionContainer.Visible = false;
+            }
+        }
+
+        private void cmbPaperSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbPaperSize.Text == "58MM")
+            {
+                Properties.Settings.Default.papersize = "58MM";
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.papersize = "80MM";
+                Properties.Settings.Default.Save();
             }
         }
     }

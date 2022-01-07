@@ -67,14 +67,15 @@ namespace EcoPOSv2
                         ptu_no = @ptu_no,
                         pn_date_issued = @ptu_date_issued,
                         pn_valid_until = @ptu_valid_until
-                        WHERE configuration_ID = 1");
+                        WHERE configuration_ID = (select max(configuration_ID) from store_details)");
 
                 if (SQL.HasException(true))
                     return;
             }
 
             MessageBox.Show("Store details saved. System will restart after you clicked ok","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            Application.Restart();
+            //Application.Restart();
+            this.Close();
         }
 
         private void EditSD_Load(object sender, EventArgs e)
@@ -85,7 +86,7 @@ namespace EcoPOSv2
 
             if (count_records == 1)
             {
-                SQL.Query("SELECT * FROM store_details WHERE configuration_ID = 1");
+                SQL.Query("SELECT * FROM store_details WHERE configuration_ID = (select max(configuration_ID) from store_details)");
                 if (SQL.HasException(true))
                     return;
 

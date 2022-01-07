@@ -131,7 +131,9 @@ namespace EcoPOSv2
             this.tbPrice.Size = new System.Drawing.Size(432, 33);
             this.tbPrice.TabIndex = 54;
             this.tbPrice.Tag = "";
+            this.tbPrice.TextChanged += new System.EventHandler(this.TbPrice_TextChanged);
             this.tbPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPrice_KeyDown);
+            this.tbPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbPrice_KeyPress);
             // 
             // Label3
             // 

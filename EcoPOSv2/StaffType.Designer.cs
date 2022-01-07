@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffType));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -58,7 +58,6 @@
             this.cbxPay_GiftCertificate = new System.Windows.Forms.CheckBox();
             this.Label4 = new System.Windows.Forms.Label();
             this.cbxMore_EJournal = new System.Windows.Forms.CheckBox();
-            this.cbxMore_PayInOut = new System.Windows.Forms.CheckBox();
             this.cbxMore_Logs = new System.Windows.Forms.CheckBox();
             this.cbxMore_RedeemSettings = new System.Windows.Forms.CheckBox();
             this.cbxMore_ManageDiscounts = new System.Windows.Forms.CheckBox();
@@ -68,11 +67,14 @@
             this.cbxMore_Database = new System.Windows.Forms.CheckBox();
             this.cbxMore_Settings = new System.Windows.Forms.CheckBox();
             this.cbxMore_CustomerMembership = new System.Windows.Forms.CheckBox();
+            this.cbxMore_PayInOut = new System.Windows.Forms.CheckBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.btnClose = new FontAwesome.Sharp.IconButton();
             this.txtStaffType = new System.Windows.Forms.TextBox();
             this.Label6 = new System.Windows.Forms.Label();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
             this.SplitContainer1.Panel1.SuspendLayout();
@@ -106,6 +108,8 @@
             // SplitContainer1.Panel2
             // 
             this.SplitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SplitContainer1.Panel2.Controls.Add(this.lblID);
+            this.SplitContainer1.Panel2.Controls.Add(this.label7);
             this.SplitContainer1.Panel2.Controls.Add(this.btnSave);
             this.SplitContainer1.Panel2.Controls.Add(this.btnDelete);
             this.SplitContainer1.Panel2.Controls.Add(this.btnAdd);
@@ -128,38 +132,38 @@
             this.dgvStaffType.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvStaffType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvStaffType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStaffType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvStaffType.ColumnHeadersHeight = 6;
             this.dgvStaffType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStaffType.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvStaffType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvStaffType.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvStaffType.Location = new System.Drawing.Point(0, 0);
             this.dgvStaffType.Name = "dgvStaffType";
             this.dgvStaffType.ReadOnly = true;
             this.dgvStaffType.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStaffType.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvStaffType.Size = new System.Drawing.Size(315, 577);
             this.dgvStaffType.TabIndex = 10;
             this.dgvStaffType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaffType_CellClick);
@@ -481,19 +485,6 @@
             this.cbxMore_EJournal.Text = "E-Journal";
             this.cbxMore_EJournal.UseVisualStyleBackColor = true;
             // 
-            // cbxMore_PayInOut
-            // 
-            this.cbxMore_PayInOut.AutoSize = true;
-            this.cbxMore_PayInOut.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxMore_PayInOut.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_PayInOut.Location = new System.Drawing.Point(319, 33);
-            this.cbxMore_PayInOut.Name = "cbxMore_PayInOut";
-            this.cbxMore_PayInOut.Size = new System.Drawing.Size(96, 24);
-            this.cbxMore_PayInOut.TabIndex = 56;
-            this.cbxMore_PayInOut.Text = "Pay In/Out";
-            this.cbxMore_PayInOut.UseVisualStyleBackColor = true;
-            this.cbxMore_PayInOut.Visible = false;
-            // 
             // cbxMore_Logs
             // 
             this.cbxMore_Logs.AutoSize = true;
@@ -602,6 +593,19 @@
             this.cbxMore_CustomerMembership.Text = "Customer Membership";
             this.cbxMore_CustomerMembership.UseVisualStyleBackColor = true;
             // 
+            // cbxMore_PayInOut
+            // 
+            this.cbxMore_PayInOut.AutoSize = true;
+            this.cbxMore_PayInOut.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxMore_PayInOut.ForeColor = System.Drawing.Color.Black;
+            this.cbxMore_PayInOut.Location = new System.Drawing.Point(319, 33);
+            this.cbxMore_PayInOut.Name = "cbxMore_PayInOut";
+            this.cbxMore_PayInOut.Size = new System.Drawing.Size(96, 24);
+            this.cbxMore_PayInOut.TabIndex = 56;
+            this.cbxMore_PayInOut.Text = "Pay In/Out";
+            this.cbxMore_PayInOut.UseVisualStyleBackColor = true;
+            this.cbxMore_PayInOut.Visible = false;
+            // 
             // Label1
             // 
             this.Label1.AutoSize = true;
@@ -653,9 +657,31 @@
             this.Label6.ForeColor = System.Drawing.Color.Black;
             this.Label6.Location = new System.Drawing.Point(8, 42);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(90, 25);
+            this.Label6.Size = new System.Drawing.Size(94, 25);
             this.Label6.TabIndex = 52;
-            this.Label6.Text = "Staff Type";
+            this.Label6.Text = "Staff Type:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(27, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 25);
+            this.label7.TabIndex = 74;
+            this.label7.Text = "Staff ID:";
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.ForeColor = System.Drawing.Color.Black;
+            this.lblID.Location = new System.Drawing.Point(102, 4);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(32, 25);
+            this.lblID.TabIndex = 75;
+            this.lblID.Text = "    ";
             // 
             // StaffType
             // 
@@ -725,5 +751,7 @@
         internal FontAwesome.Sharp.IconButton btnAdd;
         internal System.Windows.Forms.CheckBox cbxMore_CustomerMembership;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        internal System.Windows.Forms.Label lblID;
+        internal System.Windows.Forms.Label label7;
     }
 }

@@ -89,17 +89,20 @@
             this.OrderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrderPanel.Location = new System.Drawing.Point(0, 0);
             this.OrderPanel.Name = "OrderPanel";
-            this.OrderPanel.Size = new System.Drawing.Size(1164, 866);
+            this.OrderPanel.Size = new System.Drawing.Size(1090, 734);
             this.OrderPanel.TabIndex = 4;
             // 
             // enteredOrdersPanel
             // 
+            this.enteredOrdersPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.enteredOrdersPanel.Controls.Add(this.dgvCart);
             this.enteredOrdersPanel.Controls.Add(this.tbBarcode);
             this.enteredOrdersPanel.Controls.Add(this.label6);
             this.enteredOrdersPanel.Location = new System.Drawing.Point(4, 6);
             this.enteredOrdersPanel.Name = "enteredOrdersPanel";
-            this.enteredOrdersPanel.Size = new System.Drawing.Size(763, 860);
+            this.enteredOrdersPanel.Size = new System.Drawing.Size(693, 724);
             this.enteredOrdersPanel.TabIndex = 3;
             // 
             // dgvCart
@@ -110,6 +113,9 @@
             this.dgvCart.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.White;
             this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -141,7 +147,7 @@
             this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(757, 782);
+            this.dgvCart.Size = new System.Drawing.Size(690, 646);
             this.dgvCart.TabIndex = 19;
             this.dgvCart.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvCart.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -174,7 +180,7 @@
             this.tbBarcode.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBarcode.Location = new System.Drawing.Point(136, 0);
             this.tbBarcode.Name = "tbBarcode";
-            this.tbBarcode.Size = new System.Drawing.Size(627, 39);
+            this.tbBarcode.Size = new System.Drawing.Size(557, 39);
             this.tbBarcode.TabIndex = 18;
             this.tbBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbBarcode_KeyDown);
             this.tbBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBarcode_KeyPress);
@@ -233,9 +239,9 @@
             this.panel4.Controls.Add(this.guna2Panel1);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(773, 0);
+            this.panel4.Location = new System.Drawing.Point(699, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(391, 866);
+            this.panel4.Size = new System.Drawing.Size(391, 734);
             this.panel4.TabIndex = 0;
             // 
             // btnPriceEditor
@@ -249,16 +255,18 @@
             this.btnPriceEditor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(154)))));
             this.btnPriceEditor.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPriceEditor.HoverState.Parent = this.btnPriceEditor;
-            this.btnPriceEditor.Location = new System.Drawing.Point(99, 488);
+            this.btnPriceEditor.Location = new System.Drawing.Point(99, 462);
             this.btnPriceEditor.Name = "btnPriceEditor";
             this.btnPriceEditor.ShadowDecoration.Parent = this.btnPriceEditor;
             this.btnPriceEditor.Size = new System.Drawing.Size(188, 52);
             this.btnPriceEditor.TabIndex = 50;
             this.btnPriceEditor.Text = "PRICE EDITOR (F5)";
+            this.btnPriceEditor.Visible = false;
             this.btnPriceEditor.Click += new System.EventHandler(this.btnPriceEditor_Click);
             // 
             // btnPayment
             // 
+            this.btnPayment.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPayment.BackColor = System.Drawing.Color.White;
             this.btnPayment.BorderColor = System.Drawing.Color.ForestGreen;
             this.btnPayment.BorderThickness = 2;
@@ -269,7 +277,7 @@
             this.btnPayment.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnPayment.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPayment.HoverState.Parent = this.btnPayment;
-            this.btnPayment.Location = new System.Drawing.Point(5, 777);
+            this.btnPayment.Location = new System.Drawing.Point(6, 653);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.ShadowDecoration.Parent = this.btnPayment;
             this.btnPayment.Size = new System.Drawing.Size(378, 76);
@@ -289,7 +297,7 @@
             this.btnRedeem.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnRedeem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRedeem.HoverState.Parent = this.btnRedeem;
-            this.btnRedeem.Location = new System.Drawing.Point(3, 546);
+            this.btnRedeem.Location = new System.Drawing.Point(3, 520);
             this.btnRedeem.Name = "btnRedeem";
             this.btnRedeem.ShadowDecoration.Parent = this.btnRedeem;
             this.btnRedeem.Size = new System.Drawing.Size(188, 52);
@@ -308,7 +316,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.Goldenrod;
             this.btnCancel.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Location = new System.Drawing.Point(196, 546);
+            this.btnCancel.Location = new System.Drawing.Point(196, 520);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(188, 52);
@@ -327,7 +335,7 @@
             this.btnVoid.ForeColor = System.Drawing.Color.Red;
             this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVoid.HoverState.Parent = this.btnVoid;
-            this.btnVoid.Location = new System.Drawing.Point(103, 604);
+            this.btnVoid.Location = new System.Drawing.Point(103, 578);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
             this.btnVoid.Size = new System.Drawing.Size(188, 52);
@@ -779,7 +787,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.OrderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

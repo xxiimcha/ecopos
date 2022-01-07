@@ -43,6 +43,8 @@
             this.btnContinueSession = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnLoginAdmin = new Guna.UI2.WinForms.Guna2TileButton();
             this.label6 = new System.Windows.Forms.Label();
+            this.lbLoginCard = new System.Windows.Forms.LinkLabel();
+            this.lblLoginCardAdmin = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // gunaControlBox1
@@ -52,12 +54,12 @@
             this.gunaControlBox1.AnimationSpeed = 0.03F;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(421, 2);
+            this.gunaControlBox1.Location = new System.Drawing.Point(405, 2);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
             this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.Size = new System.Drawing.Size(45, 29);
+            this.gunaControlBox1.Size = new System.Drawing.Size(61, 52);
             this.gunaControlBox1.TabIndex = 0;
             this.gunaControlBox1.Click += new System.EventHandler(this.gunaControlBox1_Click);
             // 
@@ -231,12 +233,38 @@
             this.label6.TabIndex = 73;
             this.label6.Text = "SESSION INTERRUPTION";
             // 
+            // lbLoginCard
+            // 
+            this.lbLoginCard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoginCard.Location = new System.Drawing.Point(45, 187);
+            this.lbLoginCard.Name = "lbLoginCard";
+            this.lbLoginCard.Size = new System.Drawing.Size(155, 29);
+            this.lbLoginCard.TabIndex = 75;
+            this.lbLoginCard.TabStop = true;
+            this.lbLoginCard.Text = "LOGIN VIA CARD";
+            this.lbLoginCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbLoginCard.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbLoginCard_LinkClicked);
+            // 
+            // lblLoginCardAdmin
+            // 
+            this.lblLoginCardAdmin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoginCardAdmin.Location = new System.Drawing.Point(45, 476);
+            this.lblLoginCardAdmin.Name = "lblLoginCardAdmin";
+            this.lblLoginCardAdmin.Size = new System.Drawing.Size(155, 29);
+            this.lblLoginCardAdmin.TabIndex = 76;
+            this.lblLoginCardAdmin.TabStop = true;
+            this.lblLoginCardAdmin.Text = "LOGIN VIA CARD";
+            this.lblLoginCardAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLoginCardAdmin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLoginCardAdmin_LinkClicked);
+            // 
             // ContinueSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(468, 535);
+            this.Controls.Add(this.lblLoginCardAdmin);
+            this.Controls.Add(this.lbLoginCard);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnLoginAdmin);
             this.Controls.Add(this.btnContinueSession);
@@ -268,18 +296,20 @@
         #endregion
 
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
-        internal System.Windows.Forms.TextBox tbUsername;
         internal System.Windows.Forms.Label Label5;
-        internal System.Windows.Forms.TextBox tbPassword;
         internal System.Windows.Forms.Label Label7;
         internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.Label Label3;
-        internal System.Windows.Forms.TextBox tbCSPassword;
         internal System.Windows.Forms.Label lblCS_Username;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
-        private Guna.UI2.WinForms.Guna2TileButton btnContinueSession;
-        private Guna.UI2.WinForms.Guna2TileButton btnLoginAdmin;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox tbUsername;
+        public System.Windows.Forms.TextBox tbPassword;
+        public System.Windows.Forms.TextBox tbCSPassword;
+        public Guna.UI2.WinForms.Guna2TileButton btnContinueSession;
+        public Guna.UI2.WinForms.Guna2TileButton btnLoginAdmin;
+        private System.Windows.Forms.LinkLabel lbLoginCard;
+        private System.Windows.Forms.LinkLabel lblLoginCardAdmin;
     }
 }

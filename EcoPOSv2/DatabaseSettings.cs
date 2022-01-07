@@ -21,10 +21,11 @@ namespace EcoPOSv2
         //CLEAR ALL FIELDS
         void clearallfields()
         {
-            tbDatabaseName.Clear();
-            tbPassword.Clear();
-            tbServerName.Clear();
-            tbUsername.Clear();
+            tbDatabaseName.SelectedIndex = 0;
+            tbServerName.Text = "";
+
+            //tbUsername.Clear();
+            //tbPassword.Clear();
 
             tbServerName.Focus();
         }
@@ -53,6 +54,11 @@ namespace EcoPOSv2
 
             Prompt frmPrompt = new Prompt();
             frmPrompt.Pop(1);
+        }
+
+        private void DatabaseSettings_Load(object sender, EventArgs e)
+        {
+            tbServerName.Focus();
         }
     }
 }

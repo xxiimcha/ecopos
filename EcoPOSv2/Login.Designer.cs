@@ -35,7 +35,7 @@
             this.tbUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.tClock = new System.Windows.Forms.Timer(this.components);
             this.lblStoreIsClosed = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,9 +46,13 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbLoginCard = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnMinimize = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMinimize = new Guna.UI.WinForms.GunaControlBox();
+            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
+            this.lblTerminal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -60,10 +64,12 @@
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLogin
             // 
+            this.btnLogin.BorderRadius = 9;
             this.btnLogin.CheckedState.Parent = this.btnLogin;
             this.btnLogin.CustomImages.Parent = this.btnLogin;
             this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -74,7 +80,7 @@
             this.btnLogin.Location = new System.Drawing.Point(3, 3);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
-            this.btnLogin.Size = new System.Drawing.Size(247, 69);
+            this.btnLogin.Size = new System.Drawing.Size(247, 62);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -157,17 +163,17 @@
             this.pictureBox2.TabIndex = 50;
             this.pictureBox2.TabStop = false;
             // 
-            // label1
+            // lblVersion
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(720, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.label1.Size = new System.Drawing.Size(711, 133);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "v2.0";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(720, 0);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.lblVersion.Size = new System.Drawing.Size(711, 133);
+            this.lblVersion.TabIndex = 51;
+            this.lblVersion.Text = "v2.0";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tClock
             // 
@@ -258,7 +264,7 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.label1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.lblVersion, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 764);
@@ -302,15 +308,29 @@
             // 
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.lbLoginCard, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.btnLogin, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(228, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(253, 95);
             this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // lbLoginCard
+            // 
+            this.lbLoginCard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbLoginCard.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoginCard.Location = new System.Drawing.Point(3, 68);
+            this.lbLoginCard.Name = "lbLoginCard";
+            this.lbLoginCard.Size = new System.Drawing.Size(247, 27);
+            this.lbLoginCard.TabIndex = 10;
+            this.lbLoginCard.TabStop = true;
+            this.lbLoginCard.Text = "LOGIN VIA CARD";
+            this.lbLoginCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbLoginCard.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbLoginCard_LinkClicked);
             // 
             // tableLayoutPanel5
             // 
@@ -334,7 +354,8 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel9.Controls.Add(this.lblDateTime, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.btnMinimize, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.panel1, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.lblTerminal, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -343,20 +364,59 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(1434, 63);
             this.tableLayoutPanel9.TabIndex = 57;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnMinimize);
+            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(1221, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(210, 57);
+            this.panel1.TabIndex = 50;
+            // 
             // btnMinimize
             // 
-            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnMinimize.Location = new System.Drawing.Point(1221, 3);
+            this.btnMinimize.AnimationHoverSpeed = 0.07F;
+            this.btnMinimize.AnimationSpeed = 0.03F;
+            this.btnMinimize.ControlBoxType = Guna.UI.WinForms.FormControlBoxType.MinimizeBox;
+            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMinimize.IconColor = System.Drawing.Color.Black;
+            this.btnMinimize.IconSize = 15F;
+            this.btnMinimize.Location = new System.Drawing.Point(62, 0);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(210, 57);
-            this.btnMinimize.TabIndex = 50;
-            this.btnMinimize.Text = "Minimize";
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.btnMinimize.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(213)))), ((int)(((byte)(254)))));
+            this.btnMinimize.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnMinimize.OnPressedColor = System.Drawing.Color.Black;
+            this.btnMinimize.Size = new System.Drawing.Size(74, 57);
+            this.btnMinimize.TabIndex = 1;
+            // 
+            // btnClose
+            // 
+            this.btnClose.AnimationHoverSpeed = 0.07F;
+            this.btnClose.AnimationSpeed = 0.03F;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.IconColor = System.Drawing.Color.Black;
+            this.btnClose.IconSize = 15F;
+            this.btnClose.Location = new System.Drawing.Point(136, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnClose.Size = new System.Drawing.Size(74, 57);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblTerminal
+            // 
+            this.lblTerminal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTerminal.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTerminal.ForeColor = System.Drawing.Color.Green;
+            this.lblTerminal.Location = new System.Drawing.Point(3, 0);
+            this.lblTerminal.Name = "lblTerminal";
+            this.lblTerminal.Size = new System.Drawing.Size(209, 63);
+            this.lblTerminal.TabIndex = 51;
+            this.lblTerminal.Text = "Terminal";
+            this.lblTerminal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Login
             // 
@@ -372,6 +432,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.Load += new System.EventHandler(this.Login_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -385,17 +446,15 @@
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2TextBox tbPassword;
-        private Guna.UI2.WinForms.Guna2TextBox tbUsername;
         internal System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TileButton btnLogin;
+        private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Timer tClock;
         internal System.Windows.Forms.Label lblStoreIsClosed;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -408,6 +467,13 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.Button btnMinimize;
+        private System.Windows.Forms.Panel panel1;
+        private Guna.UI.WinForms.GunaControlBox btnMinimize;
+        private Guna.UI.WinForms.GunaControlBox btnClose;
+        public System.Windows.Forms.Label lblTerminal;
+        private System.Windows.Forms.LinkLabel lbLoginCard;
+        public Guna.UI2.WinForms.Guna2TextBox tbPassword;
+        public Guna.UI2.WinForms.Guna2TextBox tbUsername;
+        public Guna.UI2.WinForms.Guna2TileButton btnLogin;
     }
 }

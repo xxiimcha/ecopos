@@ -58,8 +58,12 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
+            this.lblReferenceNo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tbReferenceNo = new System.Windows.Forms.TextBox();
             this.TableLayoutPanel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtAmount
@@ -72,6 +76,7 @@
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
             this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmount_KeyDown);
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAmount_KeyPress);
             // 
             // Label9
             // 
@@ -130,33 +135,37 @@
             "Cash",
             "Membership Points",
             "Gift Certificate",
-            "Cheque",
             "GCash",
             "PayMaya",
+            "Lyka Gem(s)",
             "PayPal",
             "American Express",
             "BancNet",
             "China UnionPay",
             "JCB",
             "Mastercard",
-            "Visa "});
+            "Visa ",
+            "Cheque"});
             this.cmbMethod.Location = new System.Drawing.Point(175, 308);
             this.cmbMethod.MaxDropDownItems = 10;
             this.cmbMethod.Name = "cmbMethod";
             this.cmbMethod.Size = new System.Drawing.Size(424, 29);
             this.cmbMethod.TabIndex = 96;
+            this.cmbMethod.SelectedIndexChanged += new System.EventHandler(this.CmbMethod_SelectedIndexChanged);
             // 
             // TableLayoutPanel2
             // 
             this.TableLayoutPanel2.ColumnCount = 4;
-            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.35616F));
+            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.94521F));
+            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.44521F));
             this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.369863F));
-            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.TableLayoutPanel2.Controls.Add(this.btnExact, 3, 0);
             this.TableLayoutPanel2.Controls.Add(this.btnGC, 3, 1);
             this.TableLayoutPanel2.Controls.Add(this.btnRemoveGC, 3, 2);
             this.TableLayoutPanel2.Controls.Add(this.btnPay, 3, 3);
+            this.TableLayoutPanel2.Controls.Add(this.lblReferenceNo, 0, 0);
+            this.TableLayoutPanel2.Controls.Add(this.panel1, 1, 0);
             this.TableLayoutPanel2.Location = new System.Drawing.Point(18, 455);
             this.TableLayoutPanel2.Name = "TableLayoutPanel2";
             this.TableLayoutPanel2.RowCount = 4;
@@ -459,6 +468,34 @@
             this.Label1.TabIndex = 104;
             this.Label1.Text = "Method";
             // 
+            // lblReferenceNo
+            // 
+            this.lblReferenceNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblReferenceNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReferenceNo.Location = new System.Drawing.Point(3, 0);
+            this.lblReferenceNo.Name = "lblReferenceNo";
+            this.lblReferenceNo.Size = new System.Drawing.Size(128, 65);
+            this.lblReferenceNo.TabIndex = 20;
+            this.lblReferenceNo.Text = "Reference No:";
+            this.lblReferenceNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tbReferenceNo);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(137, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(201, 59);
+            this.panel1.TabIndex = 21;
+            // 
+            // tbReferenceNo
+            // 
+            this.tbReferenceNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbReferenceNo.Location = new System.Drawing.Point(0, 16);
+            this.tbReferenceNo.Name = "tbReferenceNo";
+            this.tbReferenceNo.Size = new System.Drawing.Size(201, 29);
+            this.tbReferenceNo.TabIndex = 0;
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,6 +515,8 @@
             this.TableLayoutPanel2.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -513,5 +552,8 @@
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Label lblRemainingPoints;
         internal System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblReferenceNo;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox tbReferenceNo;
     }
 }

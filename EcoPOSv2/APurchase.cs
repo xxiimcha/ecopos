@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
@@ -51,125 +52,112 @@ namespace EcoPOSv2
 
         private void LoadPurchase()
         {
-            DataColumn productID = new DataColumn();
-            DataColumn name = new DataColumn();
-            DataColumn qty = new DataColumn();
+            Task.Run(() =>
+            {
+                DataColumn productID = new DataColumn();
+                DataColumn name = new DataColumn();
+                DataColumn qty = new DataColumn();
+                DataColumn cost = new DataColumn();
+                DataColumn total = new DataColumn();
 
-            name.ColumnName = "Name";
-            qty.ColumnName = "Purchase Qty";
+                name.ColumnName = "Name";
+                qty.ColumnName = "Purchase Qty";
+                cost.ColumnName = "Cost";
+                total.ColumnName = "Total";
 
-            dt_purchase.Columns.Add(productID);
-            dt_purchase.Columns.Add(name);
-            dt_purchase.Columns.Add(qty);
+                dt_purchase.Columns.Add(productID);
+                dt_purchase.Columns.Add(name);
+                dt_purchase.Columns.Add(qty);
+                dt_purchase.Columns.Add(cost);
+                dt_purchase.Columns.Add(total);
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    dgvPurchase.DataSource = dt_purchase;
 
-            dgvPurchase.DataSource = dt_purchase;
-            dgvPurchase.Columns[0].Visible = false;
+                    dgvPurchase.Columns[0].Visible = false;
+                    dgvPurchase.Columns[4].Visible = false;
 
-            dgvPurchase.Columns[1].ReadOnly = true;
-            dgvPurchase.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
-            dgvPurchase.Columns[1].DefaultCellStyle.ForeColor = Color.DarkGray;
-            dgvPurchase.Columns[1].DefaultCellStyle.SelectionBackColor = Color.LightGray;
-            dgvPurchase.Columns[1].DefaultCellStyle.SelectionForeColor = Color.DarkGray;
+                    dgvPurchase.Columns[1].ReadOnly = true;
+                    //dgvPurchase.Columns[1].Width = 350;
+                }));
+            });
         }
         //METHODS
         private void APurchase_Load(object sender, EventArgs e)
         {
-            TextValidation();
-            LoadPurchase();
-            ControlBehavior();
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    btnSearch.Text = "Wait";
 
-            OL.ComboValues(cmbSupplier, "supplierID", "name", "inventory_supplier");
+                    TextValidation();
+                    LoadPurchase();
+                    ControlBehavior();
 
-            OL.ComboValuesQuery(cmbCategory, @"SELECT categoryID, name FROM
+                    OL.ComboValues(cmbSupplier, "supplierID", "name", "inventory_supplier");
+
+                    OL.ComboValuesQuery(cmbCategory, @"SELECT categoryID, name FROM
                                          (
                                           SELECT 0 as 'categoryID', 'All category' as 'name', 1 as ord
                                           UNION ALL
                                           SELECT categoryID, name, 2 as ord FROM product_category
                                          ) x ORDER BY ord, name ASC", "categoryID", "name");
 
-            cmbCategory.SelectedIndex = 0;
+                    cmbCategory.SelectedIndex = 0;
 
-            btnSearch.PerformClick();
+                    dgvProducts.DataSource = GlobalVariables.dtPurchaseProducts;
+                    btnSearch.Text = "Search";
+                }));
+            })
+            { IsBackground = true }.Start();
         }
 
-        string cat_query = "c.categoryID NOT IN (99999999999)";
-        BackgroundWorker workerProducts;
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //string cat_query = "c.categoryID NOT IN (99999999999)";
-
             if (cmbCategory.SelectedIndex != 0)
             {
-                cat_query = "c.categoryID = " + cmbCategory.SelectedValue;
+                DataView dv = new DataView(GlobalVariables.dtPurchaseProducts);
+                dv.RowFilter = "Category = '" + cmbCategory.Text + "'";
+                dgvProducts.DataSource = dv;
+                dgvProducts.Columns[0].Visible = false;
             }
             else
             {
-                cat_query = "c.categoryID NOT IN (99999999999)";
-            }
-                
-
-            workerProducts = new BackgroundWorker();
-            workerProducts.DoWork += WorkerProducts_DoWork;
-            workerProducts.RunWorkerAsync();
-
-            btnSearch.Text = "Wait.";
-            btnSearch.Enabled = false;
-        }
-
-        private void WorkerProducts_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SQLControl privateSQL = new SQLControl();
-
-            privateSQL.Query(@"SELECT p.productID, p.description as 'Name', c.name as 'Category', 
-                       i.stock_qty as 'Stock'  FROM products as p
-                       INNER JOIN inventory as i 
-                       ON p.productID = i.productID
-                       INNER JOIN product_category as c 
-                       ON p.categoryID = c.categoryID 
-                       WHERE " + cat_query + " ORDER BY p.description ASC");
-
-            if (privateSQL.HasException(true))
-                return;
-
-            dgvProducts.Invoke(new Action(() =>
-            {
-                dgvProducts.DataSource = privateSQL.DBDT;
+                dgvProducts.DataSource = GlobalVariables.dtPurchaseProducts;
                 dgvProducts.Columns[0].Visible = false;
-            }));
-
-            btnSearch.Invoke(new Action(() =>
-            {
-                btnSearch.Text = "Search";
-                btnSearch.Enabled = true;
-            }));
+            }
         }
-
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
-            if (dgvPurchase.RowCount > 0)
+            try
             {
-                // check if item is already chosen
-                DataGridViewRow datarow = new DataGridViewRow();
-                for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)
+                if (dgvPurchase.RowCount > 0)
                 {
-                    int counter = 0;
-                    for (var i = 0; i <= dgvPurchase.RowCount - 1; i++)
+                    // check if item is already chosen
+                    DataGridViewRow datarow = new DataGridViewRow();
+                    for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)
                     {
-                        if (dgvProducts.Rows[rows].Cells[0].Value.ToString() == dgvPurchase.Rows[i].Cells[0].Value.ToString())
-                            counter = 1;
-                    }
+                        int counter = 0;
+                        for (var i = 0; i <= dgvPurchase.RowCount - 1; i++)
+                        {
+                            if (dgvProducts.Rows[rows].Cells[0].Value.ToString() == dgvPurchase.Rows[i].Cells[0].Value.ToString())
+                                counter = 1;
+                        }
 
-                    // if not chosen then add
-                    if (counter == 0)
-                        dt_purchase.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0);
+                        // if not chosen then add
+                        if (counter == 0)
+                            dt_purchase.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0, dgvProducts.CurrentRow.Cells[4].Value);
+                    }
+                }
+                else if (dgvPurchase.RowCount == 0)
+                {
+                    DataGridViewRow datarow = new DataGridViewRow();
+                    for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)
+                        dt_purchase.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0, dgvProducts.CurrentRow.Cells[4].Value);
                 }
             }
-            else if (dgvPurchase.RowCount == 0)
-            {
-                DataGridViewRow datarow = new DataGridViewRow();
-                for (int rows = 0; rows <= dgvProducts.Rows.Count - 1; rows++)
-                    dt_purchase.Rows.Add(dgvProducts.Rows[rows].Cells[0].Value, dgvProducts.Rows[rows].Cells[1].Value, 0);
-            }
+            catch (Exception) { }
         }
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -186,10 +174,10 @@ namespace EcoPOSv2
                     if (dgvPurchase.Rows[i].Cells[0].Value.ToString() == dgvProducts.CurrentRow.Cells[0].Value.ToString())
                         return;
                 }
-                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0);
+                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0, dgvProducts.CurrentRow.Cells[4].Value,0);
             }
             else if (dgvPurchase.RowCount == 0)
-                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0);
+                dt_purchase.Rows.Add(dgvProducts.CurrentRow.Cells[0].Value, dgvProducts.CurrentRow.Cells[1].Value, 0, dgvProducts.CurrentRow.Cells[4].Value,0);
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
@@ -207,10 +195,12 @@ namespace EcoPOSv2
 
         private void txtSearchProducts_KeyUp(object sender, KeyEventArgs e)
         {
-            SQL.AddParam("@find", txtSearchProducts.Text + "%");
+            if(txtSearchProducts.Text != "")
+            {
+                SQL.AddParam("@find", txtSearchProducts.Text + "%");
 
-            SQL.Query(@"SELECT p.productID, p.description as 'Name', c.name as 'Category', 
-                       i.stock_qty as 'Stock'  FROM products as p
+                SQL.Query(@"SELECT p.productID, p.description as 'Name', c.name as 'Category', 
+                       i.stock_qty as 'Stock',p.cost FROM products as p
                        INNER JOIN inventory as i 
                        ON p.productID = i.productID
                        INNER JOIN product_category as c 
@@ -218,16 +208,26 @@ namespace EcoPOSv2
                        WHERE p.description LIKE @find OR p.barcode1 LIKE @find OR p.barcode2 LIKE @find
                        ORDER BY p.description ASC");
 
-            if (SQL.HasException(true))
-                return;
+                if (SQL.HasException(true))
+                    return;
 
-            dgvProducts.DataSource = SQL.DBDT;
-            dgvProducts.Columns[0].Visible = false;
+                dgvProducts.DataSource = SQL.DBDT;
+                dgvProducts.Columns[0].Visible = false;
+            }
+            else
+            {
+                dgvProducts.DataSource = GlobalVariables.dtPurchaseProducts;
+                dgvProducts.Columns[0].Visible = false;
+            }
+
+            //MessageBox.Show(dgvProducts.Columns.Count.ToString());
         }
 
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
             dt_purchase.Rows.Clear();
+
+            txtTotalAmount.Text = "0";
         }
 
         private void dgvPurchase_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -247,6 +247,41 @@ namespace EcoPOSv2
                     }
                 }
             }
+
+            if ((e.ColumnIndex == 3))
+            {
+                string value = dgvPurchase.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                foreach (char c in value)
+                {
+                    if (!Information.IsNumeric(value))
+                    {
+                        new Notification().PopUp("Please enter numeric value.", "", "error");
+
+                        dgvPurchase.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = string.Empty;
+                        return;
+                    }
+                }
+            }
+
+            foreach (DataGridViewRow r in dgvPurchase.Rows)
+            {
+                decimal cost = Convert.ToDecimal(r.Cells[3].Value);
+                decimal quantity = Convert.ToDecimal(r.Cells[2].Value);
+
+                decimal total = cost * quantity;
+
+                r.Cells[4].Value = total;
+            }
+
+
+            decimal Total = 0;
+
+            for (int i = 0; i < dgvPurchase.Rows.Count; i++)
+            {
+                Total += Convert.ToDecimal(dgvPurchase.Rows[i].Cells["Total"].Value);
+            }
+
+            txtTotalAmount.Text = Total.ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -257,10 +292,21 @@ namespace EcoPOSv2
 
             int requiredFieldsMet = RequireField(ref requiredFields);
 
-            if (requiredFieldsMet == 1 && cmbSupplier.Text != "")
+            if (requiredFieldsMet == 1 && cmbSupplier.Text != "" && tbOperationCode.Text != "Operation Code")
             {
                 if (dgvPurchase.RowCount == 0)
                     return;
+
+                //DISABLING PURCHASE BUTTON
+                btnSave.Enabled = false;
+
+                SQL.AddParam("@operation_code", tbOperationCode.Text);
+                if (int.Parse(SQL.ReturnResult("select count(operation) from inventory_operation where operation_code = @operation_code and operation = 'Purchase Inventory'")) > 0)
+                {
+                    new Notification().PopUp("Duplicate operation code found in our system.", "", "error");
+                    return;
+                }
+
 
                 foreach (DataGridViewRow row in dgvPurchase.Rows)
                 {
@@ -287,16 +333,16 @@ namespace EcoPOSv2
                 }
 
                 // save to inventory_operation
-
                 decimal qty = OL.GetSumColumn(dgvPurchase, 2);
 
+                SQL.AddParam("@operation_code", tbOperationCode.Text);
                 SQL.AddParam("@qty", qty);
                 SQL.AddParam("@total", txtTotalAmount.Text);
                 SQL.AddParam("@supplierID", cmbSupplier.SelectedValue);
                 SQL.AddParam("@remarks", txtRemarks.Text);
                 SQL.AddParam("@userID", Main.Instance.current_id);
 
-                SQL.Query("INSERT INTO inventory_operation (operation, qty, total, supplierID, remarks, date_time, userID) VALUES ('Purchase Inventory', @qty, @total, @supplierID, @remarks, (SELECT GETDATE()), @userID)");
+                SQL.Query("INSERT INTO inventory_operation (operation_code,operation, qty, total, supplierID, remarks, date_time, userID) VALUES (@operation_code,'Purchase Inventory', @qty, @total, @supplierID, @remarks, (SELECT GETDATE()), @userID)");
 
                 if (SQL.HasException(true))
                 {
@@ -305,7 +351,6 @@ namespace EcoPOSv2
                 }
 
                 // save to inventory_operation_items
-
                 foreach (DataGridViewRow row in dgvPurchase.Rows)
                 {
                     SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
@@ -315,6 +360,16 @@ namespace EcoPOSv2
                     SQL.Query(@"INSERT INTO inventory_operation_items (operationID, productID, product_name, qty) 
                            VALUES ((SELECT MAX(operationID) FROM inventory_operation), @productID, @product_name, @qty)");
 
+                    if (SQL.HasException(true)) return;
+
+                    //UPDATE COST
+                    SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
+                    SQL.AddParam("@cost", dgvPurchase.Rows[row.Index].Cells[3].Value.ToString());
+                    SQL.Query("update products set cost = @cost where productID=@productID");
+
+                    if (SQL.HasException(true)) return;
+
+
                     if (SQL.HasException(true))
                     {
                         new Notification().PopUp("Something went wrong.", "Error", "error" );
@@ -322,10 +377,16 @@ namespace EcoPOSv2
                     }
                 }
 
+                GlobalVariables.LoadPurchaseProducts();
+
                 btnSearch.PerformClick();
                 dt_purchase.Rows.Clear();
                 new Notification().PopUp("Item saved.", "", "information");
 
+                //ENABLING PURCHASE BUTTON
+                btnSave.Enabled = true;
+
+                tbOperationCode.Clear();
                 txtRemarks.Clear();
                 txtTotalAmount.Clear();
             }
@@ -336,6 +397,53 @@ namespace EcoPOSv2
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnSearch.PerformClick();
+        }
+
+        private void TxtTotalAmount_Enter(object sender, EventArgs e)
+        {
+            if((sender as TextBox).Text == "0")
+            {
+                (sender as TextBox).Text = "";
+            }
+        }
+
+        private void TxtTotalAmount_Leave(object sender, EventArgs e)
+        {
+            if((sender as TextBox).Text == "")
+            {
+                (sender as TextBox).Text = "0";
+            }
+        }
+
+        private void TbOperationCode_Enter(object sender, EventArgs e)
+        {
+            if (tbOperationCode.Text == "Operation Code")
+            {
+                tbOperationCode.Text = "";
+                tbOperationCode.ForeColor = Color.Black;
+            }
+        }
+
+        private void TbOperationCode_Leave(object sender, EventArgs e)
+        {
+            if (tbOperationCode.Text == "")
+            {
+                tbOperationCode.Text = "Operation Code";
+                tbOperationCode.ForeColor = Color.Gray;
+            }
+        }
+
+        private void BtnGenerateOCCode_Click(object sender, EventArgs e)
+        {
+            string month = DateTime.Now.Month.ToString();
+            string day = DateTime.Now.Day.ToString();
+            string year = DateTime.Now.Year.ToString();
+            string hour = DateTime.Now.Hour.ToString();
+            string minutes = DateTime.Now.Minute.ToString();
+            string seconds = DateTime.Now.Second.ToString();
+
+            tbOperationCode.Text = month + day + year + hour + minutes + seconds;
+            tbOperationCode.ForeColor = Color.Black;
         }
     }
 }

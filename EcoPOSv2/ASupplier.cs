@@ -76,6 +76,7 @@ namespace EcoPOSv2
         private void btnNew_Click(object sender, EventArgs e)
         {
             ClearFields();
+            btnDelete.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -160,6 +161,8 @@ namespace EcoPOSv2
                         }
                 }
                 LoadSupplier();
+
+                btnDelete.Enabled = true;
             }
             else
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
@@ -210,6 +213,20 @@ namespace EcoPOSv2
                 txtContactNo.Text = r["contact_no"].ToString();
                 txtContactPerson.Text = r["contact_person"].ToString();
                 txtContactPersonNo.Text = r["contact_person_no"].ToString();
+            }
+
+
+            SQL.AddParam("@SupplierID", supplierID);
+            int count = Convert.ToInt32(SQL.ReturnResult("SELECT count(*) from inventory_operation where supplierID=@SupplierID"));
+            if (SQL.HasException(true)) return;
+
+            if(count > 0)
+            {
+                btnDelete.Enabled = false;
+            }
+            else
+            {
+                btnDelete.Enabled = true;
             }
         }
 

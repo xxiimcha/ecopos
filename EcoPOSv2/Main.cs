@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EcoPOSControl;
@@ -32,7 +33,7 @@ namespace EcoPOSv2
             }
         }
         //VARIABLES
-        public string current_id, current_username, current_user_first_name;
+        public string current_id, current_username, current_user_first_name,roleid;
 
         Helper Helper = new Helper();
         public FormLoad OL = new FormLoad();
@@ -64,6 +65,9 @@ namespace EcoPOSv2
         public string pd_report_printer = "";
         public bool pd_customer_display_enabled = false;
         public string pd_customer_display_port = "";
+
+        //AUTOBACKUP
+        public bool endOfShift, endOfDay, bytime;
 
         public bool rp_ord_payment = true;
         public bool rp_ord_customer = true;
@@ -189,7 +193,7 @@ namespace EcoPOSv2
         {
             SQLControl SQL = new SQLControl();
 
-            SQL.Query("SELECT * FROM store_details WHERE configuration_ID = 1");
+            SQL.Query("SELECT * FROM store_details WHERE configuration_ID = (select max(configuration_ID) from store_details)");
             if (SQL.HasException(true))
                 return;
 
@@ -212,13 +216,15 @@ namespace EcoPOSv2
         }
         private void BindPD()
         {
-            int count_records = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM printers_devices"));
+            sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            int count_records = Convert.ToInt32(sql.ReturnResult("SELECT COUNT(*) FROM printers_devices where terminal_id=@terminal_id"));
             if (sql.HasException(true))
                 return;
 
             if (count_records == 1)
             {
-                sql.Query("SELECT * FROM printers_devices");
+                sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                sql.Query("SELECT * FROM printers_devices where terminal_id=@terminal_id");
                 if (sql.HasException(true))
                     return;
 
@@ -241,7 +247,7 @@ namespace EcoPOSv2
 
             if (count_records == 1)
             {
-                SQL.Query("SELECT * FROM receipt_layout WHERE configuration_ID = 1");
+                SQL.Query("SELECT * FROM receipt_layout WHERE configuration_ID = (select max(configuration_ID) from receipt_layout)");
                 if (SQL.HasException(true))
                     return;
 
@@ -271,11 +277,63 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
         }
+        void CreateProfit()
+        {
+            Thread td = new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    //string userfirstname = Main.Instance.current_user_first_name.ToString();
+                    SQLControl SQL = new SQLControl();
+                    SQL.AddParam("@date", DateTime.Now.ToString("yyy-MM-dd"));
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    //SQL.AddParam("@user_first_name", userfirstname);
+                    int check = int.Parse(SQL.ReturnResult("select count(*) from profit where date=@date AND terminal_id=@terminal_id"));
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("Main profit error 1");
+                        return;
+                    }
+
+                    if (check == 0)
+                    {
+                        SQL.AddParam("@date", DateTime.Now.ToString("yyy-MM-dd"));
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        //SQL.AddParam("@user_first_name", userfirstname);
+                        SQL.Query("Insert into profit (Sales,Total_Cost,Gross,date,terminal_id) VALUES (0,0,0,@date,@terminal_id)");
+                        if (SQL.HasException(true))
+                        {
+                            MessageBox.Show("Main Profit error 2");
+                            return;
+                        }
+                    }
+                }));
+            });
+
+            td.IsBackground = true;
+            td.Start();
+        }
         //METHODS
         private void Main_Load(object sender, EventArgs e)
         {
+            lblTerminalName.Text = "Terminal Name: " + Properties.Settings.Default.Terminal_id;
+
+            //SERVER TYPE OR NOT
+            if (Properties.Settings.Default.servertype == true)
+            {
+                lblTerminalName.Visible = true;
+                lblType.Text = "ECOPOS SERVER-TYPE";
+            }
+            else
+            {
+                lblTerminalName.Visible = false;
+                lblType.Text = "ECOPOS STAND-ALONE";
+            }
+
             FormLoad Fl = new FormLoad();
             Fl.CusDisplay("Hello", "Welcome!");
+
+            CreateProfit();
 
             lblVersion.Text = SplashScreen.Instance.lblVersion.Text;
 
@@ -312,11 +370,8 @@ namespace EcoPOSv2
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            //if(Order.Instance.dgvCart.Rows.Count > 0)
-            //{
-            //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
-            //    return;
-            //}
+            btnItemChecker.Enabled = true;
+            
             Order frmOrder = new Order();
             RP.Order(frmOrder);
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
@@ -324,21 +379,26 @@ namespace EcoPOSv2
 
         private void btnclosetemp_Click(object sender, EventArgs e)
         {
+            if(lblUser.Text == "Bypassed")
+            {
+                this.close = true;
+                Close();
+                return;
+            }
+
+
+            close = true;
             Application.Exit();
         }
 
         private void btnMore_Click(object sender, EventArgs e)
         {
-            //if (Order.Instance.dgvCart.Rows.Count > 0)
-            //{
-            //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
-            //    return;
-            //}
+            btnItemChecker.Enabled = false;
+            
             More m = new More();
 
             RP.More(m);
             OL.changeForm(m, currentChildForm, pnlChild);
-
 
             Order.Instance.Close();
         }
@@ -351,18 +411,15 @@ namespace EcoPOSv2
                 return;
             }
 
-            // Process.Start("calc.exe");
             if (Order.Instance.CheckOpened("SeeItem") == true)
             {
                 return;
             }
             Order.Instance.dgvCart.ClearSelection();
 
-            new SeeItem().Show();
+            new SeeItem().ShowDialog();
 
             SeeItem.Instance.ActiveControl = SeeItem.Instance.txtBarcode;
-
-            //SeeItem.Instance.ShowDialog();
         }
 
         private void btnXReading_Click(object sender, EventArgs e)
@@ -373,20 +430,23 @@ namespace EcoPOSv2
                 return;
             }
 
-            //if (Order.Instance.dgvCart.Rows.Count > 0)
-            //{
-            //    new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
-            //    return;
-            //}
+            if (Order.Instance.dgvCart.Rows.Count > 0)
+            {
+                new Notification().PopUp("Please clear the cart first to proceed", "Error", "error");
+                return;
+            }
 
             SecureXReading frmSecureXReading = new SecureXReading();
 
             frmSecureXReading.ShowDialog();
         }
-
+        public bool close = false;
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if(close == false)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -404,7 +464,18 @@ namespace EcoPOSv2
 
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F5)
+            {
+                try
+                {
+                    Login.Instance.LoadPermissions(int.Parse(roleid));
+                    RP.Home(Main.Instance);
+                    btnOrder.PerformClick();
+                }
+                catch (Exception) { }
+            }
+
+            if (e.KeyCode == Keys.F2)
             {
                 if (btnOrder.Enabled == true)
                     btnOrder.PerformClick();
@@ -458,24 +529,43 @@ namespace EcoPOSv2
                 Main.Instance.by_pass_user_name = "";
                 Main.Instance.lblByPassUser.Text = "";
 
-                RP.Home(Main.Instance);
-                Main.Instance.btnOrder.PerformClick();
+
+                if(roleid != "")
+                {
+                    Login.Instance.LoadPermissions(int.Parse(roleid));
+                    RP.Home(Main.Instance);
+
+                    Main.Instance.btnOrder.PerformClick();
+                }
             }
         }
 
         private void tmrCurrentDateTime_Tick(object sender, EventArgs e)
         {
             lblDateTime.Text = DateTime.Now.ToString("hh:mm:ss tt , MMM, dd, yyyy");
+
+            if (lblDateTime.Text.Contains(sql.ReturnResult("SELECT backup_time FROM backup_setting")))
+            {
+                try
+                {
+                    Boolean EnableSaveByTime = Boolean.Parse(sql.ReturnResult("SELECT backup_by_time FROM backup_setting"));
+                    if (EnableSaveByTime)
+                    {
+                        DatabaseManagement.Instance.BackupDatabaseInFolder();
+                    }
+                }
+                catch (Exception) { }
+            }
         }
         private void btnCalculator_Click(object sender, EventArgs e)
         {
-            // Process.Start("calc.exe");
-            if (Order.Instance.CheckOpened("Calculator") == true)
-            {
-                return;
-            }
+            Process.Start("calc.exe");
+            //if (Order.Instance.CheckOpened("Calculator") == true)
+            //{
+            //    return;
+            //}
 
-            new Calculator().Show();
+            //new Calculator().Show();
         }
     }
 }

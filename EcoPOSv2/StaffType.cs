@@ -59,6 +59,8 @@ namespace EcoPOSv2
             txtStaffType.Clear();
             roleID = "";
 
+            lblID.Text = "";
+
             // uncheck all permission
             GA.DoThis(ref allTxt, flpPermission, ControlType.CheckBox, GroupAction.Action.Uncheck);
         }
@@ -243,6 +245,8 @@ namespace EcoPOSv2
 
                 LoadStaffType();
                 Staff.Instance.LoadStaffType();
+
+                lblID.Text = "";
             }
             else
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error" );
@@ -270,6 +274,7 @@ namespace EcoPOSv2
             {
                 roleID = r["uroleID"].ToString();
                 txtStaffType.Text = r["name"].ToString();
+                lblID.Text = r["uroleID"].ToString();
 
                 // load permission
                 cbxOrd_Payment.Checked = Convert.ToBoolean(r["ord_payment"].ToString());

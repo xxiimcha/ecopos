@@ -46,7 +46,9 @@ namespace EcoPOSv2
             decimal disc_amt = decimal.Parse(dgvDiscount.CurrentRow.Cells[2].Value.ToString());
 
             SQL.AddParam("@discountID", discountID);
-            SQL.Query("UPDATE order_no SET discountID = @discountID WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            SQL.Query("UPDATE order_no SET discountID = @discountID WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no WHERE terminal_id=@terminal_id)");
+            
 
             if (SQL.HasException(true))
                 return;
@@ -56,7 +58,10 @@ namespace EcoPOSv2
                 frmOrder.apply_regular_discount_fix_amt = true;
 
                 SQL.AddParam("@disc_amt", disc_amt);
-                SQL.Query("UPDATE order_no SET disc_amt = @disc_amt WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)");
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                SQL.Query("UPDATE order_no SET disc_amt = @disc_amt WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no WHERE terminal_id=@terminal_id)");
+
 
                 if (SQL.HasException(true))
                     return;
@@ -65,7 +70,8 @@ namespace EcoPOSv2
             }
             else if (disc_type == 2)
             {
-                SQL.Query("SELECT * FROM order_cart ORDER BY itemID ASC");
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                SQL.Query("SELECT * FROM order_cart WHERE terminal_id=@terminal_id ORDER BY itemID ASC");
 
                 if (SQL.HasException(true))
                     return;
@@ -74,13 +80,24 @@ namespace EcoPOSv2
                 {
                     SQL.AddParam("@itemID", r["itemID"]);
                     SQL.AddParam("@disc_amt", disc_amt);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
                     SQL.Query(@"UPDATE oc SET
                                oc.is_disc_percent = p.s_discR,
                                oc.disc_percent = IIF(p.s_discR = 1, @disc_amt, 0)
                                FROM order_cart as oc
                                INNER JOIN products as p ON oc.productID = p.productID
-                               WHERE oc.itemID = @itemID AND oc.type='R'");
+                               WHERE oc.itemID = @itemID AND oc.type='R' AND oc.terminal_id=@terminal_id");
+
+                    if (SQL.HasException(true))
+                        return;
+
+
+                    //UPDATE DISCOUNT
+                    SQL.AddParam("@itemID", r["itemID"]);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                    SQL.Query("UPDATE order_cart SET discount=(selling_price_inclusive*(disc_percent/100)) where itemID=@itemID and type='R' AND terminal_id=@terminal_id");
 
                     if (SQL.HasException(true))
                         return;

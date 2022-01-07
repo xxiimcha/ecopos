@@ -66,6 +66,7 @@ namespace EcoPOSv2
 
             new Notification().PopUp("Data saved.","Success","information");
             Main.Instance.sd_footer_text = txtReceiptFooter.Text;
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
