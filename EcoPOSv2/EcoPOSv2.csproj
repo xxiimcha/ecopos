@@ -93,10 +93,10 @@
       <HintPath>..\packages\FontAwesome.Sharp.5.15.4\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI">
-      <HintPath>..\..\..\Desktop\Guna.UI.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\ImportFiles and Others\Dlls\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>..\..\..\Desktop\Guna.UI2.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\ImportFiles and Others\Dlls\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
@@ -400,6 +400,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ORItems80.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Paylater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paylater.Designer.cs">
+      <DependentUpon>Paylater.cs</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs">
       <SubType>Form</SubType>
@@ -794,6 +800,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ORItems80.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Paylater.resx">
+      <DependentUpon>Paylater.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PaymentR58.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PaymentR58.cs</LastGenOutput>
@@ -871,6 +880,10 @@
     </Content>
     <Content Include="EcoPOS_Training.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EcoPOS_Training_log.ldf">
+      <DependentUpon>EcoPOS_Training.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
