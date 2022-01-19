@@ -1156,6 +1156,32 @@ namespace EcoPOSv2
             }
         }
 
+        private void btnKeep_Click(object sender, EventArgs e)
+        {
+            
+            List<KeepItem> itemOnKeep = new List<KeepItem>();
+            SQL.Query("SELECT * FROM order_cart where terminal_id = " + Properties.Settings.Default.Terminal_id);
+            if (SQL.HasException(true)) return;
+            if (SQL.DBDT.Rows.Count != 0)
+            {
+                foreach (DataRow dr in SQL.DBDT.Rows)
+                {
+                    KeepItem keepItem = new KeepItem(int.Parse(dr["terminal_id"].ToString()), int.Parse(dr["productID"].ToString()), Convert.ToInt32(Convert.ToDouble(dr["quantity"].ToString())));
+                    itemOnKeep.Add(keepItem);
+                }
+
+                if (itemOnKeep.Count > 0)
+                {
+                    foreach (KeepItem item in itemOnKeep)
+                    {
+                        SQL.Query("INSERT INTO keep (terminalID, productID, quantity, note) VALUES (" + item.TerminalID + "," + item.ProductID +","+ item.Quantity + ",'"+ "test" +"')");
+                        if (SQL.HasException(true)) return;
+                    }
+                }
+            }
+            
+        }
+
         private void OpenPayment(object sender, EventArgs e)
         {
             Order.Instance.btnPayment.PerformClick();

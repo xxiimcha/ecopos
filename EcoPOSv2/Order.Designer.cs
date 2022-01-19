@@ -75,6 +75,7 @@
             this.btnWholeSale = new Guna.UI2.WinForms.Guna2Button();
             this.btnRetail = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnKeep = new Guna.UI2.WinForms.Guna2Button();
             this.OrderPanel.SuspendLayout();
             this.enteredOrdersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
@@ -89,7 +90,7 @@
             this.OrderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrderPanel.Location = new System.Drawing.Point(0, 0);
             this.OrderPanel.Name = "OrderPanel";
-            this.OrderPanel.Size = new System.Drawing.Size(1090, 734);
+            this.OrderPanel.Size = new System.Drawing.Size(1242, 807);
             this.OrderPanel.TabIndex = 4;
             // 
             // enteredOrdersPanel
@@ -102,7 +103,7 @@
             this.enteredOrdersPanel.Controls.Add(this.label6);
             this.enteredOrdersPanel.Location = new System.Drawing.Point(4, 6);
             this.enteredOrdersPanel.Name = "enteredOrdersPanel";
-            this.enteredOrdersPanel.Size = new System.Drawing.Size(693, 724);
+            this.enteredOrdersPanel.Size = new System.Drawing.Size(845, 797);
             this.enteredOrdersPanel.TabIndex = 3;
             // 
             // dgvCart
@@ -147,7 +148,7 @@
             this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(690, 646);
+            this.dgvCart.Size = new System.Drawing.Size(842, 719);
             this.dgvCart.TabIndex = 19;
             this.dgvCart.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvCart.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -180,7 +181,7 @@
             this.tbBarcode.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbBarcode.Location = new System.Drawing.Point(136, 0);
             this.tbBarcode.Name = "tbBarcode";
-            this.tbBarcode.Size = new System.Drawing.Size(557, 39);
+            this.tbBarcode.Size = new System.Drawing.Size(709, 39);
             this.tbBarcode.TabIndex = 18;
             this.tbBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbBarcode_KeyDown);
             this.tbBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBarcode_KeyPress);
@@ -203,6 +204,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnKeep);
             this.panel4.Controls.Add(this.btnPriceEditor);
             this.panel4.Controls.Add(this.btnPayment);
             this.panel4.Controls.Add(this.btnRedeem);
@@ -239,13 +241,14 @@
             this.panel4.Controls.Add(this.guna2Panel1);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(699, 0);
+            this.panel4.Location = new System.Drawing.Point(851, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(391, 734);
+            this.panel4.Size = new System.Drawing.Size(391, 807);
             this.panel4.TabIndex = 0;
             // 
             // btnPriceEditor
             // 
+            this.btnPriceEditor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPriceEditor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(154)))));
             this.btnPriceEditor.BorderThickness = 2;
             this.btnPriceEditor.CheckedState.Parent = this.btnPriceEditor;
@@ -255,10 +258,10 @@
             this.btnPriceEditor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(154)))));
             this.btnPriceEditor.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPriceEditor.HoverState.Parent = this.btnPriceEditor;
-            this.btnPriceEditor.Location = new System.Drawing.Point(99, 462);
+            this.btnPriceEditor.Location = new System.Drawing.Point(85, 486);
             this.btnPriceEditor.Name = "btnPriceEditor";
             this.btnPriceEditor.ShadowDecoration.Parent = this.btnPriceEditor;
-            this.btnPriceEditor.Size = new System.Drawing.Size(188, 52);
+            this.btnPriceEditor.Size = new System.Drawing.Size(220, 42);
             this.btnPriceEditor.TabIndex = 50;
             this.btnPriceEditor.Text = "PRICE EDITOR (F5)";
             this.btnPriceEditor.Visible = false;
@@ -277,7 +280,7 @@
             this.btnPayment.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnPayment.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPayment.HoverState.Parent = this.btnPayment;
-            this.btnPayment.Location = new System.Drawing.Point(6, 653);
+            this.btnPayment.Location = new System.Drawing.Point(6, 726);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.ShadowDecoration.Parent = this.btnPayment;
             this.btnPayment.Size = new System.Drawing.Size(378, 76);
@@ -287,6 +290,7 @@
             // 
             // btnRedeem
             // 
+            this.btnRedeem.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnRedeem.BackColor = System.Drawing.Color.White;
             this.btnRedeem.BorderColor = System.Drawing.Color.DarkBlue;
             this.btnRedeem.BorderThickness = 2;
@@ -297,35 +301,37 @@
             this.btnRedeem.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnRedeem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRedeem.HoverState.Parent = this.btnRedeem;
-            this.btnRedeem.Location = new System.Drawing.Point(3, 520);
+            this.btnRedeem.Location = new System.Drawing.Point(85, 534);
             this.btnRedeem.Name = "btnRedeem";
             this.btnRedeem.ShadowDecoration.Parent = this.btnRedeem;
-            this.btnRedeem.Size = new System.Drawing.Size(188, 52);
+            this.btnRedeem.Size = new System.Drawing.Size(220, 42);
             this.btnRedeem.TabIndex = 48;
             this.btnRedeem.Text = "REDEEM ITEM (F7)";
             this.btnRedeem.Click += new System.EventHandler(this.btnRedeem_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.BorderColor = System.Drawing.Color.Goldenrod;
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancel.BorderThickness = 2;
             this.btnCancel.CheckedState.Parent = this.btnCancel;
             this.btnCancel.CustomImages.Parent = this.btnCancel;
             this.btnCancel.FillColor = System.Drawing.Color.White;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancel.ForeColor = System.Drawing.Color.Goldenrod;
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancel.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Location = new System.Drawing.Point(196, 520);
+            this.btnCancel.Location = new System.Drawing.Point(85, 630);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
-            this.btnCancel.Size = new System.Drawing.Size(188, 52);
+            this.btnCancel.Size = new System.Drawing.Size(220, 42);
             this.btnCancel.TabIndex = 47;
             this.btnCancel.Text = "CANCEL TRANSACTION (F4)";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnVoid
             // 
+            this.btnVoid.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnVoid.BorderColor = System.Drawing.Color.Red;
             this.btnVoid.BorderThickness = 2;
             this.btnVoid.CheckedState.Parent = this.btnVoid;
@@ -335,10 +341,10 @@
             this.btnVoid.ForeColor = System.Drawing.Color.Red;
             this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVoid.HoverState.Parent = this.btnVoid;
-            this.btnVoid.Location = new System.Drawing.Point(103, 578);
+            this.btnVoid.Location = new System.Drawing.Point(85, 678);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
-            this.btnVoid.Size = new System.Drawing.Size(188, 52);
+            this.btnVoid.Size = new System.Drawing.Size(220, 42);
             this.btnVoid.TabIndex = 46;
             this.btnVoid.Text = "VOID TRANSACTION (F3)";
             this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
@@ -782,12 +788,32 @@
             this.label7.Text = "PRICE MODE:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnKeep
+            // 
+            this.btnKeep.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnKeep.BorderColor = System.Drawing.Color.Olive;
+            this.btnKeep.BorderThickness = 2;
+            this.btnKeep.CheckedState.Parent = this.btnKeep;
+            this.btnKeep.CustomImages.Parent = this.btnKeep;
+            this.btnKeep.FillColor = System.Drawing.Color.White;
+            this.btnKeep.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnKeep.ForeColor = System.Drawing.Color.Olive;
+            this.btnKeep.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnKeep.HoverState.Parent = this.btnKeep;
+            this.btnKeep.Location = new System.Drawing.Point(85, 582);
+            this.btnKeep.Name = "btnKeep";
+            this.btnKeep.ShadowDecoration.Parent = this.btnKeep;
+            this.btnKeep.Size = new System.Drawing.Size(220, 42);
+            this.btnKeep.TabIndex = 51;
+            this.btnKeep.Text = "KEEP TRANSACTION";
+            this.btnKeep.Click += new System.EventHandler(this.btnKeep_Click);
+            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1090, 734);
+            this.ClientSize = new System.Drawing.Size(1242, 807);
             this.Controls.Add(this.OrderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -853,5 +879,6 @@
         public Guna.UI2.WinForms.Guna2DataGridView dgvCart;
         public Guna.UI2.WinForms.Guna2Button btnQuantity;
         public Guna.UI2.WinForms.Guna2Button btnPriceEditor;
+        public Guna.UI2.WinForms.Guna2Button btnKeep;
     }
 }
