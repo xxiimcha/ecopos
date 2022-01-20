@@ -329,6 +329,18 @@
     <Compile Include="InvoiceEditor.Designer.cs">
       <DependentUpon>InvoiceEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="OptionConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionConfirmation.Designer.cs">
+      <DependentUpon>OptionConfirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemsOnKeepView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemsOnKeepView.Designer.cs">
+      <DependentUpon>ItemsOnKeepView.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeepItem.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -365,6 +377,12 @@
     </Compile>
     <Compile Include="More.Designer.cs">
       <DependentUpon>More.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoteInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoteInputForm.Designer.cs">
+      <DependentUpon>NoteInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification.cs">
       <SubType>Form</SubType>
@@ -792,6 +810,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceEditor.resx">
       <DependentUpon>InvoiceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionConfirmation.resx">
+      <DependentUpon>OptionConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemsOnKeepView.resx">
+      <DependentUpon>ItemsOnKeepView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoteInputForm.resx">
+      <DependentUpon>NoteInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ORItems58.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

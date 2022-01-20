@@ -49,7 +49,7 @@ namespace EcoPOSv2
         {
             if(e.KeyCode == Keys.Enter)
             {
-                SQL.AddParam("@find", txtBarcode.Text + "%");
+                SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
 
                 SQL.Query(@"SELECT productID, barcode1 as 'Barcode 1', barcode2 as 'Barcode 2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products
                        WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY description DESC");

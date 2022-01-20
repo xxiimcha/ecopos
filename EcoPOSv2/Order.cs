@@ -104,7 +104,7 @@ namespace EcoPOSv2
                        ,[selling_price_exclusive]
                        ,[selling_price_vat]
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
-                       ,[quantity] as 'Qty'
+                       ,[quantity] as 'Quantity'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
                         FROM order_cart where terminal_id=@terminal_id order by ID desc");
 
@@ -1158,28 +1158,19 @@ namespace EcoPOSv2
 
         private void btnKeep_Click(object sender, EventArgs e)
         {
-            
-            List<KeepItem> itemOnKeep = new List<KeepItem>();
-            SQL.Query("SELECT * FROM order_cart where terminal_id = " + Properties.Settings.Default.Terminal_id);
-            if (SQL.HasException(true)) return;
-            if (SQL.DBDT.Rows.Count != 0)
+            if (dgvCart.RowCount>0)
             {
-                foreach (DataRow dr in SQL.DBDT.Rows)
-                {
-                    KeepItem keepItem = new KeepItem(int.Parse(dr["terminal_id"].ToString()), int.Parse(dr["productID"].ToString()), Convert.ToInt32(Convert.ToDouble(dr["quantity"].ToString())));
-                    itemOnKeep.Add(keepItem);
-                }
-
-                if (itemOnKeep.Count > 0)
-                {
-                    foreach (KeepItem item in itemOnKeep)
-                    {
-                        SQL.Query("INSERT INTO keep (terminalID, productID, quantity, note) VALUES (" + item.TerminalID + "," + item.ProductID +","+ item.Quantity + ",'"+ "test" +"')");
-                        if (SQL.HasException(true)) return;
-                    }
-                }
+                new NoteInputForm().ShowDialog();
             }
-            
+            else
+            {
+                MessageBox.Show("There are no items in the cart.");
+            }
+        }
+
+        private void btnViewKeep(object sender, EventArgs e)
+        {
+            new ItemsOnKeepView().ShowDialog();
         }
 
         private void OpenPayment(object sender, EventArgs e)
