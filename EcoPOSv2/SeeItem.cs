@@ -52,7 +52,7 @@ namespace EcoPOSv2
                 SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
 
                 SQL.Query(@"SELECT productID, barcode1 as 'Barcode 1', barcode2 as 'Barcode 2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products
-                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY description DESC");
+                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY description ASC");
 
                 if (SQL.HasException(true))
                     return;
@@ -102,6 +102,7 @@ namespace EcoPOSv2
                 type_query = "wp_exclusive, wp_tax, wp_inclusive";
             }
 
+
             foreach (DataGridViewRow r in dgvProducts.SelectedRows)
             {
                 SQL.AddParam("@productID", r.Cells[0].Value.ToString());
@@ -109,50 +110,30 @@ namespace EcoPOSv2
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
                 int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE productID = @productID AND type = @type AND terminal_id=@terminal_id"));
-
                 if (SQL.HasException(true))
                     return;
 
                 if (check_in_cart == 0)
                 {
-                    //CHECKER KUNG TAMA BA YUNG QUANTITY AT STOCK
-                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
-                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    totalquantity = 0 + quantity;
 
-                    quantitytalaga = SQL.ReturnResult("select quantity from order_cart where productID=@productID AND terminal_id=@terminal_id");
-
-                    if (quantitytalaga != "")
-                    {
-                        totalquantity = decimal.Parse(quantitytalaga) + quantity;
-                    }
-                    else
-                    {
-                        totalquantity = 0 + quantity;
-                    }
-                    //MessageBox.Show("No of quantity: "+ totalquantity.ToString());
-
-                    //CHECKER KUNG MAS MATAAS ANG QUANTITY
-                    SQL.AddParam("@productID", r.Cells[0].Value.ToString());
-                    decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
-
+                    decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID="+ r.Cells[0].Value.ToString()));
                     if (SQL.HasException(true)) return;
 
-                    //MessageBox.Show("No of stock: "+stock.ToString());
-
+                    //Check if stock is sufficient
                     if (totalquantity > stock)
                     {
                         new Notification().PopUp("Insufficient stock", "", "error");
                         return;
                     }
-                    //END OF THE CHECKER
 
+                    //Adds item to cart
                     SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                     SQL.AddParam("@type", type);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
                     SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id,is_vatable) 
                        SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable FROM products WHERE productID = @productID");
-
                     if (SQL.HasException(true))
                         return;
                 }
@@ -168,7 +149,7 @@ namespace EcoPOSv2
                         return;
                     }
 
-                    //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                    //Checks if quantity is greater than stock
                     SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                     decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
 
@@ -195,10 +176,6 @@ namespace EcoPOSv2
                 Order.Instance.ActiveControl = Order.Instance.tbBarcode;
 
                 Close();
-
-                //Order.Instance.dgvCart.ClearSelection();
-                //Order.Instance.dgvCart.Rows[Order.Instance.dgvCart.Rows.Count - 1].Selected = true;
-                //Order.Instance.btnQuantity.PerformClick();
             }
         }
 

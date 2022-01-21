@@ -74,8 +74,6 @@ namespace EcoPOSv2
             InitializeComponent();
         }
 
-        
-
         SQLControl SQL = new SQLControl();
 
         private RolePermission RP = new RolePermission();
@@ -93,6 +91,11 @@ namespace EcoPOSv2
         public void LoadOrder()
         {
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            lblCustomer.Text = SQL.ReturnResult("SELECT cus_name FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
+            if (SQL.HasException(true))
+                return;
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             SQL.Query(@"SELECT [itemID] as 'ID'
                        ,[productID] 
                        ,[description] as 'Description'
@@ -104,7 +107,7 @@ namespace EcoPOSv2
                        ,[selling_price_exclusive]
                        ,[selling_price_vat]
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
-                       ,[quantity] as 'Quantity'
+                       ,CAST([quantity] AS INT) as 'Quantity'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
                         FROM order_cart where terminal_id=@terminal_id order by ID desc");
 
