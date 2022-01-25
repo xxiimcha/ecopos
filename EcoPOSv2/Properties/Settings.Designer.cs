@@ -49,7 +49,7 @@ namespace EcoPOSv2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("EcoPOS_Training")]
+        [global::System.Configuration.DefaultSettingValueAttribute("EcoPOS")]
         public string dbName {
             get {
                 return ((string)(this["dbName"]));
@@ -260,6 +260,36 @@ namespace EcoPOSv2.Properties {
             }
             set {
                 this["CloudBase"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowAccountingReceipt
+        {
+            get
+            {
+                return ((bool)(this["ShowAccountingReceipt"]));
+            }
+            set
+            {
+                this["ShowAccountingReceipt"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBirAccredited
+        {
+            get
+            {
+                return ((bool)(this["isBirAccredited"]));
+            }
+            set
+            {
+                this["isBirAccredited"] = value;
             }
         }
     }

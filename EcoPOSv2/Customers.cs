@@ -1009,7 +1009,7 @@ namespace EcoPOSv2
                     DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
                     reprint_receipt.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
 
-                    if (Properties.Settings.Default.dbName == "EcoPOS")
+                    if (Properties.Settings.Default.isBirAccredited)
                     {
                         reprint_receipt.SetParameterValue("is_vatable", true);
                         reprint_receipt.SetParameterValue("txt_footer", "This serves as Official Receipt.");
@@ -1166,7 +1166,7 @@ namespace EcoPOSv2
                     DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
                     reprint_receipt80.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
 
-                    if (Properties.Settings.Default.dbName == "EcoPOS")
+                    if (Properties.Settings.Default.isBirAccredited)
                     {
                         reprint_receipt80.SetParameterValue("is_vatable", true);
                         reprint_receipt80.SetParameterValue("txt_footer", "This serves as Official Receipt.");

@@ -969,7 +969,7 @@ namespace EcoPOSv2
 
         private void Order_Load(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.dbName == "EcoPOS_Training")
+            if(!Properties.Settings.Default.isBirAccredited)
             {
                 btnPriceEditor.Enabled = true;
                 btnPriceEditor.Visible = true;

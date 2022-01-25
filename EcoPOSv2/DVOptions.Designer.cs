@@ -33,8 +33,8 @@
             this.btnShowMainForm = new System.Windows.Forms.Button();
             this.btnImportDatabase = new System.Windows.Forms.Button();
             this.btnChangeStoreSettings = new System.Windows.Forms.Button();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
+            this.btnBirAccredited = new System.Windows.Forms.Button();
+            this.btnNonBirAccredited = new System.Windows.Forms.Button();
             this.btnResetDatabase = new System.Windows.Forms.Button();
             this.btnInvoiceEditor = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
@@ -86,23 +86,23 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(12, 65);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(298, 47);
-            this.btnStart.TabIndex = 8;
-            this.btnStart.Text = "Start training mode";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            this.btnBirAccredited.Location = new System.Drawing.Point(12, 65);
+            this.btnBirAccredited.Name = "btnBirAccredited";
+            this.btnBirAccredited.Size = new System.Drawing.Size(298, 47);
+            this.btnBirAccredited.TabIndex = 8;
+            this.btnBirAccredited.Text = "BIR ACCREDITED";
+            this.btnBirAccredited.UseVisualStyleBackColor = true;
+            this.btnBirAccredited.Click += new System.EventHandler(this.BtnStart_Click);
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(314, 65);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(295, 47);
-            this.btnStop.TabIndex = 9;
-            this.btnStop.Text = "Stop training mode";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            this.btnNonBirAccredited.Location = new System.Drawing.Point(314, 65);
+            this.btnNonBirAccredited.Name = "btnNonBirAccredited";
+            this.btnNonBirAccredited.Size = new System.Drawing.Size(295, 47);
+            this.btnNonBirAccredited.TabIndex = 9;
+            this.btnNonBirAccredited.Text = "NON-BIR ACCREDITED";
+            this.btnNonBirAccredited.UseVisualStyleBackColor = true;
+            this.btnNonBirAccredited.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // btnResetDatabase
             // 
@@ -186,8 +186,8 @@
             this.Controls.Add(this.btnTerminal);
             this.Controls.Add(this.btnInvoiceEditor);
             this.Controls.Add(this.btnResetDatabase);
-            this.Controls.Add(this.btnStop);
-            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.btnNonBirAccredited);
+            this.Controls.Add(this.btnBirAccredited);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.btnShowMainForm);
             this.Controls.Add(this.btnImportDatabase);
@@ -211,8 +211,8 @@
         internal System.Windows.Forms.Button btnShowMainForm;
         internal System.Windows.Forms.Button btnImportDatabase;
         internal System.Windows.Forms.Button btnChangeStoreSettings;
-        internal System.Windows.Forms.Button btnStart;
-        internal System.Windows.Forms.Button btnStop;
+        internal System.Windows.Forms.Button btnBirAccredited;
+        internal System.Windows.Forms.Button btnNonBirAccredited;
         internal System.Windows.Forms.Button btnResetDatabase;
         internal System.Windows.Forms.Button btnInvoiceEditor;
         internal System.Windows.Forms.Button btnTerminal;

@@ -337,7 +337,7 @@ namespace EcoPOSv2
 
             lblVersion.Text = SplashScreen.Instance.lblVersion.Text;
 
-            if (Properties.Settings.Default.dbName == "EcoPOS")
+            if (Properties.Settings.Default.isBirAccredited)
             {
                 lblTraningMode.Visible = false;
             }

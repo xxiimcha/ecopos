@@ -201,7 +201,6 @@
             this.tbDatabaseName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.tbDatabaseName.FormattingEnabled = true;
             this.tbDatabaseName.Items.AddRange(new object[] {
-            "EcoPOS_Training",
             "EcoPOS"});
             this.tbDatabaseName.Location = new System.Drawing.Point(123, 127);
             this.tbDatabaseName.Name = "tbDatabaseName";

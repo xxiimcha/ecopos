@@ -46,7 +46,7 @@
             // btnStop
             // 
             this.btnStop.Location = new System.Drawing.Point(9, 47);
-            this.btnStop.Name = "btnStop";
+            this.btnStop.Name = "btnNonBirAccredited";
             this.btnStop.Size = new System.Drawing.Size(270, 23);
             this.btnStop.TabIndex = 6;
             this.btnStop.Text = "Stop training mode";
@@ -56,7 +56,7 @@
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(9, 18);
-            this.btnStart.Name = "btnStart";
+            this.btnStart.Name = "btnBirAccredited";
             this.btnStart.Size = new System.Drawing.Size(270, 23);
             this.btnStart.TabIndex = 5;
             this.btnStart.Text = "Start training mode";

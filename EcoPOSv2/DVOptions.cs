@@ -38,24 +38,24 @@ namespace EcoPOSv2
         {
             _DVOptions = this;
 
-            if (Properties.Settings.Default.dbName == "EcoPOS")
+            if (!Properties.Settings.Default.isBirAccredited)
             {
-                btnStart.Enabled = true;
-                btnStop.Enabled = false;
+                btnBirAccredited.Enabled = true;
+                btnNonBirAccredited.Enabled = false;
             }
-            else if (Properties.Settings.Default.dbName == "EcoPOS_Training")
+            else if (Properties.Settings.Default.isBirAccredited)
             {
-                btnStart.Enabled = false;
-                btnStop.Enabled = true;
+                btnBirAccredited.Enabled = false;
+                btnNonBirAccredited.Enabled = true;
             }
-            btnResetDatabase.Text = "Reset Database " + Properties.Settings.Default.dbName;
+            btnResetDatabase.Text = "Reset Database";
 
 
             if (login == 0)
             {
                 btnChangeStoreSettings.Enabled = false;
-                btnStart.Enabled = false;
-                btnStop.Enabled = false;
+                btnBirAccredited.Enabled = false;
+                btnNonBirAccredited.Enabled = false;
                 btnResetDatabase.Enabled = false;
                 btnInvoiceEditor.Enabled = false;
                 btnResetSales.Enabled = false;
@@ -68,8 +68,8 @@ namespace EcoPOSv2
             else if(login == 1)
             {
                 btnChangeStoreSettings.Enabled = true;
-                btnStart.Enabled = true;
-                btnStop.Enabled = true;
+                btnBirAccredited.Enabled = true;
+                btnNonBirAccredited.Enabled = true;
                 btnResetDatabase.Enabled = true;
                 btnInvoiceEditor.Enabled = true;
                 btnResetSales.Enabled = true;
@@ -110,20 +110,26 @@ namespace EcoPOSv2
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.dbName = "EcoPOS_Training";
+            Properties.Settings.Default.isBirAccredited = true;
             Properties.Settings.Default.Save();
 
             MessageBox.Show("Traning mode started.. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //Application.Restart();
+
+            btnBirAccredited.Enabled = false;
+            btnNonBirAccredited.Enabled = true;
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.dbName = "EcoPOS";
+            Properties.Settings.Default.isBirAccredited = false;
             Properties.Settings.Default.Save();
 
             MessageBox.Show("Traning mode has been stopped. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //Application.Restart();
+
+            btnBirAccredited.Enabled = true;
+            btnNonBirAccredited.Enabled = false;
         }
         private void btnResetDatabase_Click(object sender, EventArgs e)
         {
@@ -156,6 +162,7 @@ namespace EcoPOSv2
                 SQL.Query("delete from inventory_operation");
                 SQL.Query("delete from inventory_operation_items");
                 //SQL.Query("delete from inventory_supplier");
+                SQL.Query("delete from keep");
                 SQL.Query("delete from member_card");
                 SQL.Query("delete from membership");
                 SQL.Query("delete from order_cart");
@@ -201,6 +208,7 @@ namespace EcoPOSv2
                 SQL.Query("delete from inventory_operation");
                 SQL.Query("delete from inventory_operation_items");
                 //SQL.Query("delete from inventory_supplier");
+                SQL.Query("delete from keep");
                 SQL.Query("delete from member_card");
                 SQL.Query("delete from membership");
                 SQL.Query("delete from order_cart");
@@ -267,6 +275,7 @@ namespace EcoPOSv2
             SQL.Query("delete from profit");
             SQL.Query("delete from inventory_operation");
             SQL.Query("delete from inventory_operation_items");
+            SQL.Query("delete from keep");
             SQL.Query("delete from redeem_transaction");
             SQL.Query("delete from redeem_transaction_items");
             SQL.Query("delete from transaction_details");
@@ -317,7 +326,6 @@ namespace EcoPOSv2
         private void BtnDatabaseSettings_Click(object sender, EventArgs e)
         {
             this.TopMost = false;
-
             new DatabaseSettings().ShowDialog();
         }
     }

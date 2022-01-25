@@ -20,7 +20,7 @@ namespace EcoPOSv2
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.dbName = "EcoPOS_Training";
+            Properties.Settings.Default.isBirAccredited = false;
             Properties.Settings.Default.Save();
 
             MessageBox.Show("Traning mode started.. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -31,7 +31,7 @@ namespace EcoPOSv2
 
         private void BtnStop_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.dbName = "EcoPOS";
+            Properties.Settings.Default.isBirAccredited = true;
             Properties.Settings.Default.Save();
 
             MessageBox.Show("Traning mode has been stopped. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -40,12 +40,12 @@ namespace EcoPOSv2
 
         private void TrainingMode_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.dbName == "EcoPOS")
+            if (Properties.Settings.Default.isBirAccredited)
             {
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
             }
-            else if (Properties.Settings.Default.dbName == "EcoPOS_Training")
+            else if (!Properties.Settings.Default.isBirAccredited)
             {
                 btnStart.Enabled = false;
                 btnStop.Enabled = true;

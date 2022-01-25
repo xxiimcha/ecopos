@@ -232,7 +232,7 @@ namespace EcoPOSv2
                     DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
                     report.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
 
-                    if (Properties.Settings.Default.dbName == "EcoPOS")
+                    if (Properties.Settings.Default.isBirAccredited)
                     {
                         report.SetParameterValue("is_vatable", true);
                         report.SetParameterValue("txt_footer", "This serves as Official Receipt.");
@@ -384,7 +384,7 @@ namespace EcoPOSv2
                     DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
                     report80.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
 
-                    if (Properties.Settings.Default.dbName == "EcoPOS")
+                    if (Properties.Settings.Default.isBirAccredited)
                     {
                         report80.SetParameterValue("is_vatable", true);
                         report80.SetParameterValue("txt_footer", "This serves as Official Receipt.");

@@ -182,7 +182,7 @@ namespace EcoPOSv2
                         report.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
 
 
-                        if (Properties.Settings.Default.dbName == "EcoPOS")
+                        if (Properties.Settings.Default.isBirAccredited)
                         {
                             report.SetParameterValue("is_vatable", true);
                             report.SetParameterValue("txt_footer", "This serves as Official Receipt.");
@@ -195,13 +195,13 @@ namespace EcoPOSv2
 
                         int no_of_prints = 1;
 
-                        if (frmOrder.apply_regular_discount_fix_amt | frmOrder.apply_special_discount | frmOrder.apply_member)
+                        if (Properties.Settings.Default.ShowAccountingReceipt)
                             no_of_prints = 2;
 
                         for (var i = 1; i <= no_of_prints; i++)
                         {
                             if (i == 1)
-                                report.SetParameterValue("note", note + "CUSTOMERS COPY");
+                                report.SetParameterValue("note", note + "OFFICIAL RECEIPT");
                             if (i == 2)
                                 report.SetParameterValue("note", note + "ACCOUNTING COPY");
 
@@ -337,7 +337,7 @@ namespace EcoPOSv2
                         report80.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
 
 
-                        if (Properties.Settings.Default.dbName == "EcoPOS")
+                        if (Properties.Settings.Default.isBirAccredited)
                         {
                             report80.SetParameterValue("is_vatable", true);
                             report80.SetParameterValue("txt_footer", "This serves as Official Receipt.");
