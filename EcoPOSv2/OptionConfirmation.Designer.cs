@@ -32,6 +32,7 @@ namespace EcoPOSv2
             this.btn2 = new Guna.UI2.WinForms.Guna2Button();
             this.btn1 = new Guna.UI2.WinForms.Guna2Button();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.btnCLose = new Guna.UI.WinForms.GunaControlBox();
             this.SuspendLayout();
             // 
             // btn2
@@ -46,10 +47,10 @@ namespace EcoPOSv2
             this.btn2.ForeColor = System.Drawing.Color.Red;
             this.btn2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn2.HoverState.Parent = this.btn2;
-            this.btn2.Location = new System.Drawing.Point(216, 57);
+            this.btn2.Location = new System.Drawing.Point(188, 56);
             this.btn2.Name = "btn2";
             this.btn2.ShadowDecoration.Parent = this.btn2;
-            this.btn2.Size = new System.Drawing.Size(154, 50);
+            this.btn2.Size = new System.Drawing.Size(161, 50);
             this.btn2.TabIndex = 47;
             this.btn2.Text = "DELETE";
             this.btn2.Click += new System.EventHandler(this.btn2_Click);
@@ -66,10 +67,10 @@ namespace EcoPOSv2
             this.btn1.ForeColor = System.Drawing.Color.DarkGreen;
             this.btn1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn1.HoverState.Parent = this.btn1;
-            this.btn1.Location = new System.Drawing.Point(14, 57);
+            this.btn1.Location = new System.Drawing.Point(12, 56);
             this.btn1.Name = "btn1";
             this.btn1.ShadowDecoration.Parent = this.btn1;
-            this.btn1.Size = new System.Drawing.Size(154, 50);
+            this.btn1.Size = new System.Drawing.Size(161, 50);
             this.btn1.TabIndex = 48;
             this.btn1.Text = "Button1";
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
@@ -85,14 +86,32 @@ namespace EcoPOSv2
             this.lblMessage.Text = ".";
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnCLose
+            // 
+            this.btnCLose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCLose.AnimationHoverSpeed = 0.07F;
+            this.btnCLose.AnimationSpeed = 0.03F;
+            this.btnCLose.IconColor = System.Drawing.Color.Black;
+            this.btnCLose.IconSize = 15F;
+            this.btnCLose.Location = new System.Drawing.Point(328, 1);
+            this.btnCLose.Name = "btnCLose";
+            this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnCLose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnCLose.Size = new System.Drawing.Size(33, 33);
+            this.btnCLose.TabIndex = 57;
+            this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            // 
             // OptionConfirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 148);
+            this.ClientSize = new System.Drawing.Size(361, 139);
+            this.Controls.Add(this.btnCLose);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btn1);
             this.Controls.Add(this.btn2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OptionConfirmation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Options";
@@ -107,5 +126,6 @@ namespace EcoPOSv2
         public Guna.UI2.WinForms.Guna2Button btn2;
         public Guna.UI2.WinForms.Guna2Button btn1;
         private System.Windows.Forms.Label lblMessage;
+        private Guna.UI.WinForms.GunaControlBox btnCLose;
     }
 }

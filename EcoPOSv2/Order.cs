@@ -672,6 +672,7 @@ namespace EcoPOSv2
         {
             type = "W";
             insert_type_query = "wp_exclusive, wp_tax, wp_inclusive";
+            tbBarcode.Focus();
         }
 
         private void Order_KeyDown(object sender, KeyEventArgs e)
@@ -1082,6 +1083,7 @@ namespace EcoPOSv2
         {
             insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
             type = "R";
+            tbBarcode.Focus();
         }
         private void btnRedeem_Click(object sender, EventArgs e)
         {

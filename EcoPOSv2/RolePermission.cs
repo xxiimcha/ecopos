@@ -45,6 +45,16 @@ public class RolePermission
                 frm.btnVoid.Enabled = true;
             if (Main.Instance.bp_ord_cancel_transaction == true)
                 frm.btnCancel.Enabled = true;
+            if (Main.Instance.bp_ord_keep_transaction == true)
+            {
+                frm.btnKeep.Enabled = true;
+                frm.btnViewKeeps.Enabled = true;
+            }
+            else
+            {
+                frm.btnKeep.Enabled = false;
+                frm.btnViewKeeps.Enabled = false;
+            }
             if (Main.Instance.bp_ord_redeem_item == true)
                 frm.btnRedeem.Enabled = true;
         }
@@ -77,6 +87,16 @@ public class RolePermission
                 frm.btnVoid.Enabled = true;
             if (Main.Instance.rp_ord_cancel_transaction == true)
                 frm.btnCancel.Enabled = true;
+            if (Main.Instance.rp_ord_keep_transaction == true)
+            {
+                frm.btnKeep.Enabled = true;
+                frm.btnViewKeeps.Enabled = true;
+            }
+            else
+            {
+                frm.btnKeep.Enabled = false;
+                frm.btnViewKeeps.Enabled = false;
+            }
             if (Main.Instance.rp_ord_redeem_item == true)
                 frm.btnRedeem.Enabled = true;
         }

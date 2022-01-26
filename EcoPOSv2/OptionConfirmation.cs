@@ -19,8 +19,29 @@ namespace EcoPOSv2
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            
+            SQL.Query("SELECT * FROM order_cart WHERE terminal_id = " + Properties.Settings.Default.Terminal_id);
+            if (SQL.HasException(true)) return;
 
+            if (SQL.DBDT.Rows.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("This will overwrite the current items on the cart, Do you want to continue?", "Cart Overwrite", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    AddItemsToCart();
+                }
+                else
+                {
+                    Close();
+                }
+            }
+            else
+            {
+                AddItemsToCart();
+            }
+        }
+
+        private void AddItemsToCart()
+        {
             SQL.Query("Delete FROM order_cart WHERE terminal_id = " + Properties.Settings.Default.Terminal_id);
             if (SQL.HasException(true)) return;
 
@@ -49,7 +70,7 @@ namespace EcoPOSv2
 
                     foreach (DataRow dr2 in SQL.DBDT.Rows)
                     {
-                        
+
                         SQL.AddParam("@cus_name", dr2["name"]);
                         SQL.AddParam("@cus_mem_ID", dr2["member_type_ID"]);
                         Order.Instance.lblCustomer.Text = dr2["name"].ToString();
@@ -88,8 +109,8 @@ namespace EcoPOSv2
             }
 
             //Deletes the items from keep table
-                SQL.Query("DELETE FROM keep WHERE note = '" + message + "'");
-                if (SQL.HasException(true)) return;
+            SQL.Query("DELETE FROM keep WHERE note = '" + message + "'");
+            if (SQL.HasException(true)) return;
 
             #region discountable and percent disc
 
@@ -155,6 +176,11 @@ namespace EcoPOSv2
             Close();
         }
 
+        private void btnCLose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void OptionConfirmation_Load(object sender, EventArgs e)
         {
             btn1.Text = buttonText1;
@@ -168,8 +194,5 @@ namespace EcoPOSv2
             this.buttonText1 = buttonText1;
             this.buttonText2 = buttonText2;
         }
-
-       
-
     }
 }

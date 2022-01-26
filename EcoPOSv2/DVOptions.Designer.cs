@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DVOptions));
             this.Label1 = new System.Windows.Forms.Label();
             this.btnShowMainForm = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@
             this.btnResetSales = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.btnDatabaseSettings = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // Label1
@@ -84,7 +86,7 @@
             this.btnChangeStoreSettings.UseVisualStyleBackColor = true;
             this.btnChangeStoreSettings.Click += new System.EventHandler(this.btnChangeStoreSettings_Click);
             // 
-            // btnStart
+            // btnBirAccredited
             // 
             this.btnBirAccredited.Location = new System.Drawing.Point(12, 65);
             this.btnBirAccredited.Name = "btnBirAccredited";
@@ -94,7 +96,7 @@
             this.btnBirAccredited.UseVisualStyleBackColor = true;
             this.btnBirAccredited.Click += new System.EventHandler(this.BtnStart_Click);
             // 
-            // btnStop
+            // btnNonBirAccredited
             // 
             this.btnNonBirAccredited.Location = new System.Drawing.Point(314, 65);
             this.btnNonBirAccredited.Name = "btnNonBirAccredited";
@@ -174,6 +176,12 @@
             this.btnDatabaseSettings.UseVisualStyleBackColor = true;
             this.btnDatabaseSettings.Click += new System.EventHandler(this.BtnDatabaseSettings_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // DVOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +228,6 @@
         internal System.Windows.Forms.Button btnResetSales;
         internal System.Windows.Forms.Button btnQuery;
         internal System.Windows.Forms.Button btnDatabaseSettings;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

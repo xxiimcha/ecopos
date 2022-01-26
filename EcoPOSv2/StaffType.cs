@@ -138,6 +138,7 @@ namespace EcoPOSv2
                                 SQL.AddParam("@ord_void_transaction", cbxOrd_VoidTransaction.Checked);
                                 SQL.AddParam("@ord_cancel_transaction", cbxOrd_CancelTransaction.Checked);
                                 SQL.AddParam("@ord_refund_transaction", cbxOrd_RefundTransaction.Checked);
+                                SQL.AddParam("@ord_keep_transaction", cbxOrd_KeepTransaction.Checked);
                                 SQL.AddParam("@ord_return_exchange", cbxOrd_ReturnExchange.Checked);
                                 SQL.AddParam("@ord_redeem_item", cbxOrd_RedeemItem.Checked);
                                 SQL.AddParam("@home_switch_cashier", cbxHome_SwitchCashier.Checked);
@@ -157,11 +158,11 @@ namespace EcoPOSv2
                                 SQL.AddParam("@pay_gift_certificate", cbxPay_GiftCertificate.Checked);
 
                                 SQL.Query(@"INSERT INTO role_permission (roleID, ord_payment, ord_customer, ord_discount, ord_void_item, ord_void_transaction, 
-                                        ord_cancel_transaction, ord_refund_transaction, ord_return_exchange, ord_redeem_item, home_switch_cashier, home_more,
+                                        ord_cancel_transaction, ord_refund_transaction, ord_keep_transaction, ord_return_exchange, ord_redeem_item, home_switch_cashier, home_more,
                                         more_ejournal,more_customer_membership, more_pay_in_out, more_logs, more_redeem_settings, more_manage_discounts, more_manage_products, more_inventory,
                                         more_close_store, more_database, more_settings, pay_payment_method, pay_gift_certificate) VALUES ((SELECT MAX(roleID) FROM user_role), 
                                         @ord_payment, @ord_customer, @ord_discount, @ord_void_item, @ord_void_transaction,
-                                        @ord_cancel_transaction, @ord_refund_transaction, @ord_return_exchange, @ord_redeem_item, @home_switch_cashier, @home_more,
+                                        @ord_cancel_transaction, @ord_refund_transaction, @ord_keep_transaction, @ord_return_exchange, @ord_redeem_item, @home_switch_cashier, @home_more,
                                         @more_ejournal,@more_customer_membership, @more_pay_in_out, @more_logs, @more_redeem_settings, @more_manage_discounts, @more_manage_products, @more_inventory,
                                         @more_close_store, @more_database, @more_settings, @pay_payment_method, @pay_gift_certificate)");
 
@@ -209,6 +210,7 @@ namespace EcoPOSv2
                                 SQL.AddParam("@ord_void_transaction", cbxOrd_VoidTransaction.Checked);
                                 SQL.AddParam("@ord_cancel_transaction", cbxOrd_CancelTransaction.Checked);
                                 SQL.AddParam("@ord_refund_transaction", cbxOrd_RefundTransaction.Checked);
+                                SQL.AddParam("@ord_keep_transaction", cbxOrd_KeepTransaction.Checked);
                                 SQL.AddParam("@ord_return_exchange", cbxOrd_ReturnExchange.Checked);
                                 SQL.AddParam("@ord_redeem_item", cbxOrd_RedeemItem.Checked);
                                 SQL.AddParam("@home_switch_cashier", cbxHome_SwitchCashier.Checked);
@@ -228,7 +230,7 @@ namespace EcoPOSv2
 
                                 SQL.Query(@"UPDATE role_permission SET ord_payment = @ord_payment, ord_customer = @ord_customer, ord_discount = @ord_discount, 
                                         ord_void_item = @ord_void_item, ord_void_transaction = @ord_void_transaction, ord_cancel_transaction = @ord_cancel_transaction, 
-                                        ord_refund_transaction = @ord_refund_transaction, ord_return_exchange = @ord_return_exchange, ord_redeem_item = @ord_redeem_item, 
+                                        ord_refund_transaction = @ord_refund_transaction, ord_keep_transaction = @ord_keep_transaction, ord_return_exchange = @ord_return_exchange, ord_redeem_item = @ord_redeem_item, 
                                         home_switch_cashier = @home_switch_cashier, home_more = @home_more, more_ejournal = @more_ejournal, more_pay_in_out = @more_pay_in_out, 
                                         more_logs = @more_logs, more_redeem_settings = @more_redeem_settings, more_manage_discounts = @more_manage_discounts, 
                                         more_manage_products = @more_manage_products, more_inventory = @more_inventory, more_close_store = @more_close_store, more_database = @more_database,
@@ -284,6 +286,7 @@ namespace EcoPOSv2
                 cbxOrd_VoidTransaction.Checked = Convert.ToBoolean(r["ord_void_transaction"].ToString());
                 cbxOrd_CancelTransaction.Checked = Convert.ToBoolean(r["ord_cancel_transaction"].ToString());
                 cbxOrd_RefundTransaction.Checked = Convert.ToBoolean(r["ord_refund_transaction"].ToString());
+                cbxOrd_KeepTransaction.Checked = Convert.ToBoolean(r["ord_keep_transaction"].ToString());
                 cbxOrd_ReturnExchange.Checked = Convert.ToBoolean(r["ord_return_exchange"].ToString());
                 cbxOrd_RedeemItem.Checked = Convert.ToBoolean(r["ord_redeem_item"].ToString());
                 cbxHome_SwitchCashier.Checked = Convert.ToBoolean(r["home_switch_cashier"].ToString());

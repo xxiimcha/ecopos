@@ -71,6 +71,7 @@ namespace EcoPOSv2
                         Main.Instance.bp_ord_void_transaction = Convert.ToBoolean(r["ord_void_transaction"].ToString());
                         Main.Instance.bp_ord_cancel_transaction = Convert.ToBoolean(r["ord_cancel_transaction"].ToString());
                         Main.Instance.bp_ord_refund_transaction = Convert.ToBoolean(r["ord_refund_transaction"].ToString());
+                        Main.Instance.bp_ord_keep_transaction = Convert.ToBoolean(r["ord_keep_transaction"].ToString());
                         Main.Instance.bp_ord_return_exchange = Convert.ToBoolean(r["ord_return_exchange"].ToString());
                         Main.Instance.bp_ord_redeem_item = Convert.ToBoolean(r["ord_redeem_item"].ToString());
                         Main.Instance.bp_home_switch_cashier = Convert.ToBoolean(r["home_switch_cashier"].ToString());
@@ -119,6 +120,7 @@ namespace EcoPOSv2
                     Main.Instance.bp_ord_void_transaction = true;
                     Main.Instance.bp_ord_cancel_transaction = true;
                     Main.Instance.bp_ord_refund_transaction = true;
+                    Main.Instance.bp_ord_keep_transaction = true;
                     Main.Instance.bp_ord_return_exchange = true;
                     Main.Instance.bp_ord_redeem_item = true;
                     Main.Instance.bp_home_switch_cashier = true;

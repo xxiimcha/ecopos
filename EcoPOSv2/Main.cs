@@ -76,6 +76,7 @@ namespace EcoPOSv2
         public bool rp_ord_void_transaction = true;
         public bool rp_ord_cancel_transaction = true;
         public bool rp_ord_refund_transaction = true;
+        public bool rp_ord_keep_transaction = true;
         public bool rp_ord_return_exchange = true;
         public bool rp_ord_redeem_item = true;
         public bool rp_home_switch_cashier = true;
@@ -105,6 +106,7 @@ namespace EcoPOSv2
         public bool bp_ord_void_transaction = true;
         public bool bp_ord_cancel_transaction = true;
         public bool bp_ord_refund_transaction = true;
+        public bool bp_ord_keep_transaction = true;
         public bool bp_ord_return_exchange = true;
         public bool bp_ord_redeem_item = true;
         public bool bp_home_switch_cashier = true;
@@ -148,6 +150,7 @@ namespace EcoPOSv2
             bypass_list.Add(bp_ord_void_transaction);
             bypass_list.Add(bp_ord_cancel_transaction);
             bypass_list.Add(bp_ord_refund_transaction);
+            bypass_list.Add(bp_ord_keep_transaction);
             bypass_list.Add(bp_ord_return_exchange);
             bypass_list.Add(bp_ord_redeem_item);
             bypass_list.Add(bp_home_switch_cashier);
@@ -231,7 +234,7 @@ namespace EcoPOSv2
                 foreach (DataRow dr in sql.DBDT.Rows)
                 {
                     pd_receipt_printer = dr["receipt_printer_name"].ToString();
-                    pd_report_printer = dr["receipt_printer_name"].ToString();
+                    pd_report_printer = dr["report_printer_name"].ToString();
                     pd_customer_display_enabled = Convert.ToBoolean(dr["customer_display_enabled"].ToString());
                     pd_customer_display_port = dr["customer_display_port"].ToString();
                 }

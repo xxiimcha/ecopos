@@ -1,12 +1,7 @@
 ﻿using EcoPOSControl;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EcoPOSv2
@@ -21,6 +16,12 @@ namespace EcoPOSv2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+           }
+
+        private void btnKeep_Click(object sender, EventArgs e)
+        {
+
             if (!txtInputNote.Text.Equals(""))
             {
                 List<KeepItem> itemToKeep = new List<KeepItem>();
@@ -72,11 +73,30 @@ namespace EcoPOSv2
                         Order.Instance.GetTotal();
                         Close();
                     }
-                    else {
+                    else
+                    {
                         MessageBox.Show("Name already listed on keep.");
-                    }
                     }
                 }
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnKeep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void btnKeep_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnKeep.PerformClick();
+            }
+        }
+    }
 }
