@@ -72,14 +72,14 @@ namespace EcoPOSv2
             this.btn1.ShadowDecoration.Parent = this.btn1;
             this.btn1.Size = new System.Drawing.Size(161, 50);
             this.btn1.TabIndex = 48;
-            this.btn1.Text = "Button1";
+            this.btn1.Text = "PAY";
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMessage.Location = new System.Drawing.Point(190, 9);
+            this.lblMessage.Location = new System.Drawing.Point(172, 28);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(18, 25);
             this.lblMessage.TabIndex = 49;
@@ -116,6 +116,7 @@ namespace EcoPOSv2
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Options";
             this.Load += new System.EventHandler(this.OptionConfirmation_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OptionConfirmation_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

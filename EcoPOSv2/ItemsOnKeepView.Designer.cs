@@ -69,7 +69,7 @@ namespace EcoPOSv2
             this.datetime});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 16.25F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -78,13 +78,13 @@ namespace EcoPOSv2
             this.dgvKeep.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKeep.EnableHeadersVisualStyles = false;
             this.dgvKeep.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvKeep.Location = new System.Drawing.Point(0, 0);
+            this.dgvKeep.Location = new System.Drawing.Point(1, 1);
             this.dgvKeep.Name = "dgvKeep";
             this.dgvKeep.ReadOnly = true;
             this.dgvKeep.RowHeadersVisible = false;
             this.dgvKeep.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvKeep.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKeep.Size = new System.Drawing.Size(850, 500);
+            this.dgvKeep.Size = new System.Drawing.Size(848, 498);
             this.dgvKeep.TabIndex = 20;
             this.dgvKeep.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvKeep.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -136,24 +136,26 @@ namespace EcoPOSv2
             this.btnCLose.BackColor = System.Drawing.Color.Gainsboro;
             this.btnCLose.IconColor = System.Drawing.Color.Black;
             this.btnCLose.IconSize = 15F;
-            this.btnCLose.Location = new System.Drawing.Point(818, 0);
+            this.btnCLose.Location = new System.Drawing.Point(817, 1);
             this.btnCLose.Name = "btnCLose";
             this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;
             this.btnCLose.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCLose.Size = new System.Drawing.Size(32, 29);
+            this.btnCLose.Size = new System.Drawing.Size(32, 27);
             this.btnCLose.TabIndex = 57;
             // 
             // ItemsOnKeepView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(850, 500);
+            this.ControlBox = false;
             this.Controls.Add(this.btnCLose);
             this.Controls.Add(this.dgvKeep);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ItemsOnKeepView";
+            this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ItemsOnKeepView";
             this.Load += new System.EventHandler(this.ItemsOnKeepView_Load);

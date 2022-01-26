@@ -181,10 +181,19 @@ namespace EcoPOSv2
             Close();
         }
 
+        private void OptionConfirmation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn1.PerformClick();
+            }
+        }
+
         private void OptionConfirmation_Load(object sender, EventArgs e)
         {
             btn1.Text = buttonText1;
             btn2.Text = buttonText2;
+            lblMessage.Text = "";
         }
 
         public OptionConfirmation(string message, string buttonText1, string buttonText2)
