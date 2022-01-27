@@ -170,7 +170,7 @@
             this.TableLayout1.Controls.Add(this.txtPTUNo, 1, 10);
             this.TableLayout1.Controls.Add(this.dtpAN_DateIssued, 1, 8);
             this.TableLayout1.Controls.Add(this.Label8, 0, 1);
-            this.TableLayout1.Location = new System.Drawing.Point(0, 64);
+            this.TableLayout1.Location = new System.Drawing.Point(3, 64);
             this.TableLayout1.Name = "TableLayout1";
             this.TableLayout1.RowCount = 15;
             this.TableLayout1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
@@ -188,16 +188,16 @@
             this.TableLayout1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
             this.TableLayout1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayout1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayout1.Size = new System.Drawing.Size(744, 507);
+            this.TableLayout1.Size = new System.Drawing.Size(740, 507);
             this.TableLayout1.TabIndex = 14;
             // 
             // txtContactNo
             // 
             this.txtContactNo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContactNo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNo.Location = new System.Drawing.Point(320, 108);
+            this.txtContactNo.Location = new System.Drawing.Point(319, 108);
             this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.Size = new System.Drawing.Size(421, 30);
+            this.txtContactNo.Size = new System.Drawing.Size(418, 30);
             this.txtContactNo.TabIndex = 51;
             // 
             // Label1
@@ -208,7 +208,7 @@
             this.Label1.ForeColor = System.Drawing.Color.Black;
             this.Label1.Location = new System.Drawing.Point(3, 105);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(311, 35);
+            this.Label1.Size = new System.Drawing.Size(310, 35);
             this.Label1.TabIndex = 61;
             this.Label1.Text = "Business contact no.";
             // 
@@ -218,9 +218,9 @@
             this.dtpPTU_ValidUntil.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpPTU_ValidUntil.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpPTU_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPTU_ValidUntil.Location = new System.Drawing.Point(320, 458);
+            this.dtpPTU_ValidUntil.Location = new System.Drawing.Point(319, 458);
             this.dtpPTU_ValidUntil.Name = "dtpPTU_ValidUntil";
-            this.dtpPTU_ValidUntil.Size = new System.Drawing.Size(421, 30);
+            this.dtpPTU_ValidUntil.Size = new System.Drawing.Size(418, 30);
             this.dtpPTU_ValidUntil.TabIndex = 60;
             this.dtpPTU_ValidUntil.Value = new System.DateTime(2021, 1, 10, 12, 39, 5, 0);
             // 
@@ -230,9 +230,9 @@
             this.dtpPTU_DateIssued.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpPTU_DateIssued.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpPTU_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPTU_DateIssued.Location = new System.Drawing.Point(320, 423);
+            this.dtpPTU_DateIssued.Location = new System.Drawing.Point(319, 423);
             this.dtpPTU_DateIssued.Name = "dtpPTU_DateIssued";
-            this.dtpPTU_DateIssued.Size = new System.Drawing.Size(421, 30);
+            this.dtpPTU_DateIssued.Size = new System.Drawing.Size(418, 30);
             this.dtpPTU_DateIssued.TabIndex = 59;
             this.dtpPTU_DateIssued.Value = new System.DateTime(2021, 1, 10, 12, 39, 5, 0);
             // 
@@ -242,9 +242,9 @@
             this.dtpAN_ValidUntil.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpAN_ValidUntil.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpAN_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAN_ValidUntil.Location = new System.Drawing.Point(320, 353);
+            this.dtpAN_ValidUntil.Location = new System.Drawing.Point(319, 353);
             this.dtpAN_ValidUntil.Name = "dtpAN_ValidUntil";
-            this.dtpAN_ValidUntil.Size = new System.Drawing.Size(421, 30);
+            this.dtpAN_ValidUntil.Size = new System.Drawing.Size(418, 30);
             this.dtpAN_ValidUntil.TabIndex = 58;
             this.dtpAN_ValidUntil.Value = new System.DateTime(2021, 1, 10, 12, 39, 11, 0);
             // 
@@ -252,54 +252,54 @@
             // 
             this.txtAN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAN.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAN.Location = new System.Drawing.Point(320, 283);
+            this.txtAN.Location = new System.Drawing.Point(319, 283);
             this.txtAN.Name = "txtAN";
-            this.txtAN.Size = new System.Drawing.Size(421, 30);
+            this.txtAN.Size = new System.Drawing.Size(418, 30);
             this.txtAN.TabIndex = 55;
             // 
             // txtSN
             // 
             this.txtSN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSN.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSN.Location = new System.Drawing.Point(320, 248);
+            this.txtSN.Location = new System.Drawing.Point(319, 248);
             this.txtSN.Name = "txtSN";
-            this.txtSN.Size = new System.Drawing.Size(421, 30);
+            this.txtSN.Size = new System.Drawing.Size(418, 30);
             this.txtSN.TabIndex = 54;
             // 
             // txtMIN
             // 
             this.txtMIN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtMIN.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMIN.Location = new System.Drawing.Point(320, 213);
+            this.txtMIN.Location = new System.Drawing.Point(319, 213);
             this.txtMIN.Name = "txtMIN";
-            this.txtMIN.Size = new System.Drawing.Size(421, 30);
+            this.txtMIN.Size = new System.Drawing.Size(418, 30);
             this.txtMIN.TabIndex = 53;
             // 
             // txtVATRegTin
             // 
             this.txtVATRegTin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtVATRegTin.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVATRegTin.Location = new System.Drawing.Point(320, 178);
+            this.txtVATRegTin.Location = new System.Drawing.Point(319, 178);
             this.txtVATRegTin.Name = "txtVATRegTin";
-            this.txtVATRegTin.Size = new System.Drawing.Size(421, 30);
+            this.txtVATRegTin.Size = new System.Drawing.Size(418, 30);
             this.txtVATRegTin.TabIndex = 52;
             // 
             // txtTaxPayer
             // 
             this.txtTaxPayer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTaxPayer.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaxPayer.Location = new System.Drawing.Point(320, 143);
+            this.txtTaxPayer.Location = new System.Drawing.Point(319, 143);
             this.txtTaxPayer.Name = "txtTaxPayer";
-            this.txtTaxPayer.Size = new System.Drawing.Size(421, 30);
+            this.txtTaxPayer.Size = new System.Drawing.Size(418, 30);
             this.txtTaxPayer.TabIndex = 51;
             // 
             // txtAddress
             // 
             this.txtAddress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(320, 73);
+            this.txtAddress.Location = new System.Drawing.Point(319, 73);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(421, 30);
+            this.txtAddress.Size = new System.Drawing.Size(418, 30);
             this.txtAddress.TabIndex = 50;
             // 
             // Label23
@@ -310,7 +310,7 @@
             this.Label23.ForeColor = System.Drawing.Color.Black;
             this.Label23.Location = new System.Drawing.Point(3, 455);
             this.Label23.Name = "Label23";
-            this.Label23.Size = new System.Drawing.Size(311, 20);
+            this.Label23.Size = new System.Drawing.Size(310, 20);
             this.Label23.TabIndex = 48;
             this.Label23.Text = "PTU Valid Until";
             // 
@@ -323,7 +323,7 @@
             this.Label4.Location = new System.Drawing.Point(3, 0);
             this.Label4.Name = "Label4";
             this.TableLayout1.SetRowSpan(this.Label4, 2);
-            this.Label4.Size = new System.Drawing.Size(311, 70);
+            this.Label4.Size = new System.Drawing.Size(310, 70);
             this.Label4.TabIndex = 23;
             this.Label4.Text = "Business Name";
             // 
@@ -335,7 +335,7 @@
             this.Label5.ForeColor = System.Drawing.Color.Black;
             this.Label5.Location = new System.Drawing.Point(3, 140);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(311, 35);
+            this.Label5.Size = new System.Drawing.Size(310, 35);
             this.Label5.TabIndex = 27;
             this.Label5.Text = "Name of the tax payer";
             // 
@@ -347,7 +347,7 @@
             this.Label3.ForeColor = System.Drawing.Color.Black;
             this.Label3.Location = new System.Drawing.Point(3, 175);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(311, 35);
+            this.Label3.Size = new System.Drawing.Size(310, 35);
             this.Label3.TabIndex = 26;
             this.Label3.Text = "VAT/Non-VAT REG TIN";
             // 
@@ -359,7 +359,7 @@
             this.Label11.ForeColor = System.Drawing.Color.Black;
             this.Label11.Location = new System.Drawing.Point(3, 245);
             this.Label11.Name = "Label11";
-            this.Label11.Size = new System.Drawing.Size(311, 35);
+            this.Label11.Size = new System.Drawing.Size(310, 35);
             this.Label11.TabIndex = 33;
             this.Label11.Text = "Serial Number (SN)";
             // 
@@ -371,7 +371,7 @@
             this.Label10.ForeColor = System.Drawing.Color.Black;
             this.Label10.Location = new System.Drawing.Point(3, 210);
             this.Label10.Name = "Label10";
-            this.Label10.Size = new System.Drawing.Size(311, 35);
+            this.Label10.Size = new System.Drawing.Size(310, 35);
             this.Label10.TabIndex = 32;
             this.Label10.Text = "Machine Identification Number (MIN)\r\n";
             // 
@@ -383,7 +383,7 @@
             this.Label14.ForeColor = System.Drawing.Color.Black;
             this.Label14.Location = new System.Drawing.Point(3, 280);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(311, 35);
+            this.Label14.Size = new System.Drawing.Size(310, 35);
             this.Label14.TabIndex = 41;
             this.Label14.Text = "Accreditation No.";
             // 
@@ -395,7 +395,7 @@
             this.Label16.ForeColor = System.Drawing.Color.Black;
             this.Label16.Location = new System.Drawing.Point(3, 385);
             this.Label16.Name = "Label16";
-            this.Label16.Size = new System.Drawing.Size(311, 35);
+            this.Label16.Size = new System.Drawing.Size(310, 35);
             this.Label16.TabIndex = 42;
             this.Label16.Text = "Permit To Use (PTU) No.";
             // 
@@ -407,7 +407,7 @@
             this.Label21.ForeColor = System.Drawing.Color.Black;
             this.Label21.Location = new System.Drawing.Point(3, 420);
             this.Label21.Name = "Label21";
-            this.Label21.Size = new System.Drawing.Size(311, 35);
+            this.Label21.Size = new System.Drawing.Size(310, 35);
             this.Label21.TabIndex = 46;
             this.Label21.Text = "PTU Date Issued";
             // 
@@ -419,7 +419,7 @@
             this.Label13.ForeColor = System.Drawing.Color.Black;
             this.Label13.Location = new System.Drawing.Point(3, 350);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(311, 35);
+            this.Label13.Size = new System.Drawing.Size(310, 35);
             this.Label13.TabIndex = 35;
             this.Label13.Text = "AN Valid Until";
             // 
@@ -431,7 +431,7 @@
             this.Label18.ForeColor = System.Drawing.Color.Black;
             this.Label18.Location = new System.Drawing.Point(3, 315);
             this.Label18.Name = "Label18";
-            this.Label18.Size = new System.Drawing.Size(311, 35);
+            this.Label18.Size = new System.Drawing.Size(310, 35);
             this.Label18.TabIndex = 43;
             this.Label18.Text = "AN Date Issued";
             // 
@@ -439,20 +439,20 @@
             // 
             this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(320, 3);
+            this.txtName.Location = new System.Drawing.Point(319, 3);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.TableLayout1.SetRowSpan(this.txtName, 2);
-            this.txtName.Size = new System.Drawing.Size(421, 64);
+            this.txtName.Size = new System.Drawing.Size(418, 64);
             this.txtName.TabIndex = 49;
             // 
             // txtPTUNo
             // 
             this.txtPTUNo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPTUNo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPTUNo.Location = new System.Drawing.Point(320, 388);
+            this.txtPTUNo.Location = new System.Drawing.Point(319, 388);
             this.txtPTUNo.Name = "txtPTUNo";
-            this.txtPTUNo.Size = new System.Drawing.Size(421, 30);
+            this.txtPTUNo.Size = new System.Drawing.Size(418, 30);
             this.txtPTUNo.TabIndex = 56;
             // 
             // dtpAN_DateIssued
@@ -461,9 +461,9 @@
             this.dtpAN_DateIssued.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpAN_DateIssued.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpAN_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAN_DateIssued.Location = new System.Drawing.Point(320, 318);
+            this.dtpAN_DateIssued.Location = new System.Drawing.Point(319, 318);
             this.dtpAN_DateIssued.Name = "dtpAN_DateIssued";
-            this.dtpAN_DateIssued.Size = new System.Drawing.Size(421, 30);
+            this.dtpAN_DateIssued.Size = new System.Drawing.Size(418, 30);
             this.dtpAN_DateIssued.TabIndex = 57;
             this.dtpAN_DateIssued.Value = new System.DateTime(2021, 1, 10, 12, 39, 11, 0);
             // 
@@ -475,7 +475,7 @@
             this.Label8.ForeColor = System.Drawing.Color.Black;
             this.Label8.Location = new System.Drawing.Point(3, 70);
             this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(311, 35);
+            this.Label8.Size = new System.Drawing.Size(310, 35);
             this.Label8.TabIndex = 30;
             this.Label8.Text = "Business address";
             // 

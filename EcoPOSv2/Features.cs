@@ -20,16 +20,7 @@ namespace EcoPOSv2
 
         private void checkBoxCardLogin_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxCardLogin.Checked)
-            {
-                Properties.Settings.Default.cardlogin = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.cardlogin = false;
-                Properties.Settings.Default.Save();
-            }
+            
         }
 
         private void Features_Load(object sender, EventArgs e)
@@ -52,16 +43,6 @@ namespace EcoPOSv2
             else
             {
                 checkBoxPriceEditor.Checked = false;
-            }
-
-            //SERVER TYPE/NON-SERVER TYPE
-            if (Properties.Settings.Default.servertype == true)
-            {
-                checkBoxServerType.Checked = true;
-            }
-            else
-            {
-                checkBoxServerType.Checked = false;
             }
 
             //VAT NON-VAT
@@ -108,7 +89,6 @@ namespace EcoPOSv2
             if(DVOptions.Instance.login == 1)
             {
                 checkBoxCardLogin.Enabled = false;
-                checkBoxServerType.Enabled = true;
                 checkBoxPriceEditor.Enabled = false;
                 checkBox_InventoryView.Enabled = false;
                 checkBoxVatNonVat.Enabled = true;
@@ -119,62 +99,78 @@ namespace EcoPOSv2
 
         private void checkBoxServerType_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxServerType.Checked)
-            {
-                Properties.Settings.Default.servertype = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.servertype = false;
-                Properties.Settings.Default.Save();
-            }
+            
         }
 
         private void CheckBoxPriceEditor_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxPriceEditor.Checked)
-            {
-                Properties.Settings.Default.priceeditor = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.priceeditor = false;
-                Properties.Settings.Default.Save();
-            }
+            
         }
 
         private void CheckBoxVatNonVat_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxVatNonVat.Checked)
-            {
-                Properties.Settings.Default.vatnonvat = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.vatnonvat = false;
-                Properties.Settings.Default.Save();
-            }
+            
         }
 
         private void CheckBox_InventoryView_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_InventoryView.Checked)
-            {
-                Properties.Settings.Default.inventoryproductview = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.inventoryproductview = false;
-                Properties.Settings.Default.Save();
-            }
+            
         }
 
         private void CheckBox_Non_Vat_Registered_CheckedChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        private void Features_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void CheckBox_CloudBase_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void BtnCloudConfig_Click(object sender, EventArgs e)
+        {
+            new CloudConfiguration().ShowDialog();
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            //if card login is checked
+            if (checkBoxCardLogin.Checked)
+            {
+                Properties.Settings.Default.cardlogin = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.cardlogin = false;
+                Properties.Settings.Default.Save();
+            }
+
+            //if cloudbase is checked
+            if (CheckBox_CloudBase.Checked)
+            {
+                Properties.Settings.Default.CloudBase = true;
+                Properties.Settings.Default.Save();
+
+                btnCloudConfig.Visible = true;
+            }
+            else
+            {
+                Properties.Settings.Default.CloudBase = false;
+                Properties.Settings.Default.Save();
+
+                btnCloudConfig.Visible = false;
+            }
+
+            //if non-vat registered is checked
             if (CheckBox_Non_Vat_Registered.Checked)
             {
                 Properties.Settings.Default.vatnonvat = true;
@@ -200,37 +196,42 @@ namespace EcoPOSv2
                 SQL.Query(@"UPDATE product_category set s_discPWD_SC='True',s_PWD_SC_perc=20,s_discAth='True'");
                 if (SQL.HasException(true)) return;
             }
-        }
 
-        private void Features_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Escape)
+            //if inventory view is checked
+            if (checkBox_InventoryView.Checked)
             {
-                this.Close();
-            }
-        }
-
-        private void CheckBox_CloudBase_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CheckBox_CloudBase.Checked)
-            {
-                Properties.Settings.Default.CloudBase = true;
+                Properties.Settings.Default.inventoryproductview = true;
                 Properties.Settings.Default.Save();
-
-                btnCloudConfig.Visible = true;
             }
             else
             {
-                Properties.Settings.Default.CloudBase = false;
+                Properties.Settings.Default.inventoryproductview = false;
                 Properties.Settings.Default.Save();
-
-                btnCloudConfig.Visible = false;
             }
-        }
 
-        private void BtnCloudConfig_Click(object sender, EventArgs e)
-        {
-            new CloudConfiguration().ShowDialog();
+            //if VatNonVat is checked
+            if (checkBoxVatNonVat.Checked)
+            {
+                Properties.Settings.Default.vatnonvat = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.vatnonvat = false;
+                Properties.Settings.Default.Save();
+            }
+
+            //if price editor is checked
+            if (checkBoxPriceEditor.Checked)
+            {
+                Properties.Settings.Default.priceeditor = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.priceeditor = false;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

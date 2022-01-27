@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Features));
             this.checkBoxCardLogin = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
-            this.checkBoxServerType = new Guna.UI2.WinForms.Guna2CustomCheckBox();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.checkBoxPriceEditor = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.checkBoxVatNonVat = new Guna.UI2.WinForms.Guna2CustomCheckBox();
@@ -44,6 +42,7 @@
             this.CheckBox_CloudBase = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
             this.btnCloudConfig = new Guna.UI2.WinForms.Guna2TileButton();
+            this.btnSaveSettings = new Guna.UI2.WinForms.Guna2TileButton();
             this.SuspendLayout();
             // 
             // checkBoxCardLogin
@@ -54,7 +53,7 @@
             this.checkBoxCardLogin.CheckedState.BorderThickness = 0;
             this.checkBoxCardLogin.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
             this.checkBoxCardLogin.CheckedState.Parent = this.checkBoxCardLogin;
-            this.checkBoxCardLogin.Location = new System.Drawing.Point(133, 69);
+            this.checkBoxCardLogin.Location = new System.Drawing.Point(132, 74);
             this.checkBoxCardLogin.Name = "checkBoxCardLogin";
             this.checkBoxCardLogin.ShadowDecoration.Parent = this.checkBoxCardLogin;
             this.checkBoxCardLogin.Size = new System.Drawing.Size(30, 30);
@@ -70,41 +69,11 @@
             // 
             this.gunaLabel3.AutoSize = true;
             this.gunaLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel3.Location = new System.Drawing.Point(168, 72);
+            this.gunaLabel3.Location = new System.Drawing.Point(168, 78);
             this.gunaLabel3.Name = "gunaLabel3";
             this.gunaLabel3.Size = new System.Drawing.Size(86, 21);
             this.gunaLabel3.TabIndex = 21;
             this.gunaLabel3.Text = "Card Login";
-            // 
-            // checkBoxServerType
-            // 
-            this.checkBoxServerType.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxServerType.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.checkBoxServerType.CheckedState.BorderRadius = 2;
-            this.checkBoxServerType.CheckedState.BorderThickness = 0;
-            this.checkBoxServerType.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.checkBoxServerType.CheckedState.Parent = this.checkBoxServerType;
-            this.checkBoxServerType.Location = new System.Drawing.Point(133, 112);
-            this.checkBoxServerType.Name = "checkBoxServerType";
-            this.checkBoxServerType.ShadowDecoration.Parent = this.checkBoxServerType;
-            this.checkBoxServerType.Size = new System.Drawing.Size(30, 30);
-            this.checkBoxServerType.TabIndex = 24;
-            this.checkBoxServerType.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.checkBoxServerType.UncheckedState.BorderRadius = 2;
-            this.checkBoxServerType.UncheckedState.BorderThickness = 0;
-            this.checkBoxServerType.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.checkBoxServerType.UncheckedState.Parent = this.checkBoxServerType;
-            this.checkBoxServerType.CheckedChanged += new System.EventHandler(this.checkBoxServerType_CheckedChanged);
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.Location = new System.Drawing.Point(168, 115);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(87, 21);
-            this.gunaLabel1.TabIndex = 23;
-            this.gunaLabel1.Text = "ServerType";
             // 
             // checkBoxPriceEditor
             // 
@@ -114,7 +83,7 @@
             this.checkBoxPriceEditor.CheckedState.BorderThickness = 0;
             this.checkBoxPriceEditor.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
             this.checkBoxPriceEditor.CheckedState.Parent = this.checkBoxPriceEditor;
-            this.checkBoxPriceEditor.Location = new System.Drawing.Point(133, 152);
+            this.checkBoxPriceEditor.Location = new System.Drawing.Point(132, 115);
             this.checkBoxPriceEditor.Name = "checkBoxPriceEditor";
             this.checkBoxPriceEditor.ShadowDecoration.Parent = this.checkBoxPriceEditor;
             this.checkBoxPriceEditor.Size = new System.Drawing.Size(30, 30);
@@ -130,11 +99,11 @@
             // 
             this.gunaLabel2.AutoSize = true;
             this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel2.Location = new System.Drawing.Point(168, 155);
+            this.gunaLabel2.Location = new System.Drawing.Point(168, 119);
             this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(85, 21);
+            this.gunaLabel2.Size = new System.Drawing.Size(89, 21);
             this.gunaLabel2.TabIndex = 25;
-            this.gunaLabel2.Text = "PriceEditor";
+            this.gunaLabel2.Text = "Price Editor";
             // 
             // checkBoxVatNonVat
             // 
@@ -164,7 +133,7 @@
             this.gunaLabel4.Name = "gunaLabel4";
             this.gunaLabel4.Size = new System.Drawing.Size(219, 21);
             this.gunaLabel4.TabIndex = 27;
-            this.gunaLabel4.Text = "Vatable_Non-vatable Products";
+            this.gunaLabel4.Text = "Vatable/Non-Vatable Products";
             // 
             // checkBox_InventoryView
             // 
@@ -174,7 +143,7 @@
             this.checkBox_InventoryView.CheckedState.BorderThickness = 0;
             this.checkBox_InventoryView.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
             this.checkBox_InventoryView.CheckedState.Parent = this.checkBox_InventoryView;
-            this.checkBox_InventoryView.Location = new System.Drawing.Point(133, 194);
+            this.checkBox_InventoryView.Location = new System.Drawing.Point(133, 158);
             this.checkBox_InventoryView.Name = "checkBox_InventoryView";
             this.checkBox_InventoryView.ShadowDecoration.Parent = this.checkBox_InventoryView;
             this.checkBox_InventoryView.Size = new System.Drawing.Size(30, 30);
@@ -190,7 +159,7 @@
             // 
             this.gunaLabel5.AutoSize = true;
             this.gunaLabel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel5.Location = new System.Drawing.Point(168, 198);
+            this.gunaLabel5.Location = new System.Drawing.Point(168, 162);
             this.gunaLabel5.Name = "gunaLabel5";
             this.gunaLabel5.Size = new System.Drawing.Size(172, 21);
             this.gunaLabel5.TabIndex = 29;
@@ -204,7 +173,7 @@
             this.CheckBox_Non_Vat_Registered.CheckedState.BorderThickness = 0;
             this.CheckBox_Non_Vat_Registered.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
             this.CheckBox_Non_Vat_Registered.CheckedState.Parent = this.CheckBox_Non_Vat_Registered;
-            this.CheckBox_Non_Vat_Registered.Location = new System.Drawing.Point(423, 117);
+            this.CheckBox_Non_Vat_Registered.Location = new System.Drawing.Point(423, 115);
             this.CheckBox_Non_Vat_Registered.Name = "CheckBox_Non_Vat_Registered";
             this.CheckBox_Non_Vat_Registered.ShadowDecoration.Parent = this.CheckBox_Non_Vat_Registered;
             this.CheckBox_Non_Vat_Registered.Size = new System.Drawing.Size(30, 30);
@@ -220,7 +189,7 @@
             // 
             this.gunaLabel6.AutoSize = true;
             this.gunaLabel6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel6.Location = new System.Drawing.Point(458, 121);
+            this.gunaLabel6.Location = new System.Drawing.Point(458, 119);
             this.gunaLabel6.Name = "gunaLabel6";
             this.gunaLabel6.Size = new System.Drawing.Size(146, 21);
             this.gunaLabel6.TabIndex = 31;
@@ -234,7 +203,7 @@
             this.CheckBox_CloudBase.CheckedState.BorderThickness = 0;
             this.CheckBox_CloudBase.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
             this.CheckBox_CloudBase.CheckedState.Parent = this.CheckBox_CloudBase;
-            this.CheckBox_CloudBase.Location = new System.Drawing.Point(423, 157);
+            this.CheckBox_CloudBase.Location = new System.Drawing.Point(423, 155);
             this.CheckBox_CloudBase.Name = "CheckBox_CloudBase";
             this.CheckBox_CloudBase.ShadowDecoration.Parent = this.CheckBox_CloudBase;
             this.CheckBox_CloudBase.Size = new System.Drawing.Size(30, 30);
@@ -250,7 +219,7 @@
             // 
             this.gunaLabel7.AutoSize = true;
             this.gunaLabel7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel7.Location = new System.Drawing.Point(458, 161);
+            this.gunaLabel7.Location = new System.Drawing.Point(458, 159);
             this.gunaLabel7.Name = "gunaLabel7";
             this.gunaLabel7.Size = new System.Drawing.Size(87, 21);
             this.gunaLabel7.TabIndex = 33;
@@ -265,7 +234,7 @@
             this.btnCloudConfig.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCloudConfig.ForeColor = System.Drawing.Color.White;
             this.btnCloudConfig.HoverState.Parent = this.btnCloudConfig;
-            this.btnCloudConfig.Location = new System.Drawing.Point(551, 157);
+            this.btnCloudConfig.Location = new System.Drawing.Point(551, 155);
             this.btnCloudConfig.Name = "btnCloudConfig";
             this.btnCloudConfig.ShadowDecoration.Parent = this.btnCloudConfig;
             this.btnCloudConfig.Size = new System.Drawing.Size(64, 32);
@@ -274,10 +243,30 @@
             this.btnCloudConfig.Visible = false;
             this.btnCloudConfig.Click += new System.EventHandler(this.BtnCloudConfig_Click);
             // 
+            // btnSaveSettings
+            // 
+            this.btnSaveSettings.BackColor = System.Drawing.Color.White;
+            this.btnSaveSettings.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnSaveSettings.BorderRadius = 5;
+            this.btnSaveSettings.CheckedState.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.CustomImages.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnSaveSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSaveSettings.HoverState.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.Location = new System.Drawing.Point(277, 227);
+            this.btnSaveSettings.Name = "btnSaveSettings";
+            this.btnSaveSettings.ShadowDecoration.Parent = this.btnSaveSettings;
+            this.btnSaveSettings.Size = new System.Drawing.Size(205, 45);
+            this.btnSaveSettings.TabIndex = 36;
+            this.btnSaveSettings.Text = "SAVE SETTINGS";
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
+            // 
             // Features
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 298);
+            this.Controls.Add(this.btnSaveSettings);
             this.Controls.Add(this.btnCloudConfig);
             this.Controls.Add(this.CheckBox_CloudBase);
             this.Controls.Add(this.gunaLabel7);
@@ -289,11 +278,10 @@
             this.Controls.Add(this.gunaLabel4);
             this.Controls.Add(this.checkBoxPriceEditor);
             this.Controls.Add(this.gunaLabel2);
-            this.Controls.Add(this.checkBoxServerType);
-            this.Controls.Add(this.gunaLabel1);
             this.Controls.Add(this.checkBoxCardLogin);
             this.Controls.Add(this.gunaLabel3);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Features";
@@ -310,8 +298,6 @@
 
         private Guna.UI2.WinForms.Guna2CustomCheckBox checkBoxCardLogin;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox checkBoxServerType;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Guna.UI2.WinForms.Guna2CustomCheckBox checkBoxPriceEditor;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         private Guna.UI2.WinForms.Guna2CustomCheckBox checkBoxVatNonVat;
@@ -323,5 +309,6 @@
         private Guna.UI2.WinForms.Guna2CustomCheckBox CheckBox_CloudBase;
         private Guna.UI.WinForms.GunaLabel gunaLabel7;
         public Guna.UI2.WinForms.Guna2TileButton btnCloudConfig;
+        private Guna.UI2.WinForms.Guna2TileButton btnSaveSettings;
     }
 }

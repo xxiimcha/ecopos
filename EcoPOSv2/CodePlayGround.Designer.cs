@@ -233,7 +233,7 @@
             // CodePlayGround
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(899, 525);
+            this.ClientSize = new System.Drawing.Size(899, 245);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.p1);

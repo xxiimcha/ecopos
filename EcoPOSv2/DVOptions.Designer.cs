@@ -34,21 +34,19 @@
             this.btnShowMainForm = new System.Windows.Forms.Button();
             this.btnImportDatabase = new System.Windows.Forms.Button();
             this.btnChangeStoreSettings = new System.Windows.Forms.Button();
-            this.btnBirAccredited = new System.Windows.Forms.Button();
-            this.btnNonBirAccredited = new System.Windows.Forms.Button();
             this.btnResetDatabase = new System.Windows.Forms.Button();
             this.btnInvoiceEditor = new System.Windows.Forms.Button();
             this.btnTerminal = new System.Windows.Forms.Button();
             this.btnFeatures = new System.Windows.Forms.Button();
             this.btnResetSales = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
-            this.btnDatabaseSettings = new System.Windows.Forms.Button();
+            this.btnClientSetup = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // Label1
             // 
-            this.Label1.Location = new System.Drawing.Point(190, 301);
+            this.Label1.Location = new System.Drawing.Point(190, 248);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(267, 34);
             this.Label1.TabIndex = 7;
@@ -58,7 +56,8 @@
             // 
             // btnShowMainForm
             // 
-            this.btnShowMainForm.Location = new System.Drawing.Point(11, 338);
+            this.btnShowMainForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowMainForm.Location = new System.Drawing.Point(11, 285);
             this.btnShowMainForm.Name = "btnShowMainForm";
             this.btnShowMainForm.Size = new System.Drawing.Size(596, 46);
             this.btnShowMainForm.TabIndex = 6;
@@ -78,37 +77,19 @@
             // 
             // btnChangeStoreSettings
             // 
+            this.btnChangeStoreSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangeStoreSettings.Location = new System.Drawing.Point(12, 12);
             this.btnChangeStoreSettings.Name = "btnChangeStoreSettings";
             this.btnChangeStoreSettings.Size = new System.Drawing.Size(298, 47);
             this.btnChangeStoreSettings.TabIndex = 4;
-            this.btnChangeStoreSettings.Text = "Change store details";
+            this.btnChangeStoreSettings.Text = "Change Store Details";
             this.btnChangeStoreSettings.UseVisualStyleBackColor = true;
             this.btnChangeStoreSettings.Click += new System.EventHandler(this.btnChangeStoreSettings_Click);
             // 
-            // btnBirAccredited
-            // 
-            this.btnBirAccredited.Location = new System.Drawing.Point(12, 65);
-            this.btnBirAccredited.Name = "btnBirAccredited";
-            this.btnBirAccredited.Size = new System.Drawing.Size(298, 47);
-            this.btnBirAccredited.TabIndex = 8;
-            this.btnBirAccredited.Text = "BIR ACCREDITED";
-            this.btnBirAccredited.UseVisualStyleBackColor = true;
-            this.btnBirAccredited.Click += new System.EventHandler(this.BtnStart_Click);
-            // 
-            // btnNonBirAccredited
-            // 
-            this.btnNonBirAccredited.Location = new System.Drawing.Point(314, 65);
-            this.btnNonBirAccredited.Name = "btnNonBirAccredited";
-            this.btnNonBirAccredited.Size = new System.Drawing.Size(295, 47);
-            this.btnNonBirAccredited.TabIndex = 9;
-            this.btnNonBirAccredited.Text = "NON-BIR ACCREDITED";
-            this.btnNonBirAccredited.UseVisualStyleBackColor = true;
-            this.btnNonBirAccredited.Click += new System.EventHandler(this.BtnStop_Click);
-            // 
             // btnResetDatabase
             // 
-            this.btnResetDatabase.Location = new System.Drawing.Point(12, 118);
+            this.btnResetDatabase.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetDatabase.Location = new System.Drawing.Point(12, 65);
             this.btnResetDatabase.Name = "btnResetDatabase";
             this.btnResetDatabase.Size = new System.Drawing.Size(298, 47);
             this.btnResetDatabase.TabIndex = 10;
@@ -118,7 +99,8 @@
             // 
             // btnInvoiceEditor
             // 
-            this.btnInvoiceEditor.Location = new System.Drawing.Point(314, 118);
+            this.btnInvoiceEditor.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInvoiceEditor.Location = new System.Drawing.Point(314, 65);
             this.btnInvoiceEditor.Name = "btnInvoiceEditor";
             this.btnInvoiceEditor.Size = new System.Drawing.Size(295, 47);
             this.btnInvoiceEditor.TabIndex = 11;
@@ -128,7 +110,8 @@
             // 
             // btnTerminal
             // 
-            this.btnTerminal.Location = new System.Drawing.Point(12, 224);
+            this.btnTerminal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTerminal.Location = new System.Drawing.Point(12, 171);
             this.btnTerminal.Name = "btnTerminal";
             this.btnTerminal.Size = new System.Drawing.Size(298, 47);
             this.btnTerminal.TabIndex = 12;
@@ -138,7 +121,8 @@
             // 
             // btnFeatures
             // 
-            this.btnFeatures.Location = new System.Drawing.Point(314, 171);
+            this.btnFeatures.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeatures.Location = new System.Drawing.Point(314, 118);
             this.btnFeatures.Name = "btnFeatures";
             this.btnFeatures.Size = new System.Drawing.Size(295, 47);
             this.btnFeatures.TabIndex = 13;
@@ -148,7 +132,8 @@
             // 
             // btnResetSales
             // 
-            this.btnResetSales.Location = new System.Drawing.Point(12, 171);
+            this.btnResetSales.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetSales.Location = new System.Drawing.Point(12, 118);
             this.btnResetSales.Name = "btnResetSales";
             this.btnResetSales.Size = new System.Drawing.Size(298, 47);
             this.btnResetSales.TabIndex = 14;
@@ -158,7 +143,8 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(314, 224);
+            this.btnQuery.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuery.Location = new System.Drawing.Point(314, 171);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(295, 47);
             this.btnQuery.TabIndex = 15;
@@ -166,15 +152,16 @@
             this.btnQuery.UseVisualStyleBackColor = true;
             this.btnQuery.Click += new System.EventHandler(this.BtnQuery_Click);
             // 
-            // btnDatabaseSettings
+            // btnClientSetup
             // 
-            this.btnDatabaseSettings.Location = new System.Drawing.Point(314, 12);
-            this.btnDatabaseSettings.Name = "btnDatabaseSettings";
-            this.btnDatabaseSettings.Size = new System.Drawing.Size(293, 47);
-            this.btnDatabaseSettings.TabIndex = 16;
-            this.btnDatabaseSettings.Text = "Database Settings";
-            this.btnDatabaseSettings.UseVisualStyleBackColor = true;
-            this.btnDatabaseSettings.Click += new System.EventHandler(this.BtnDatabaseSettings_Click);
+            this.btnClientSetup.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientSetup.Location = new System.Drawing.Point(314, 12);
+            this.btnClientSetup.Name = "btnClientSetup";
+            this.btnClientSetup.Size = new System.Drawing.Size(293, 47);
+            this.btnClientSetup.TabIndex = 16;
+            this.btnClientSetup.Text = "Client Setup";
+            this.btnClientSetup.UseVisualStyleBackColor = true;
+            this.btnClientSetup.Click += new System.EventHandler(this.BtnClientSetup_Click);
             // 
             // imageList1
             // 
@@ -186,20 +173,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 398);
-            this.Controls.Add(this.btnDatabaseSettings);
+            this.ClientSize = new System.Drawing.Size(621, 348);
+            this.Controls.Add(this.btnClientSetup);
             this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.btnResetSales);
             this.Controls.Add(this.btnFeatures);
             this.Controls.Add(this.btnTerminal);
             this.Controls.Add(this.btnInvoiceEditor);
             this.Controls.Add(this.btnResetDatabase);
-            this.Controls.Add(this.btnNonBirAccredited);
-            this.Controls.Add(this.btnBirAccredited);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.btnShowMainForm);
             this.Controls.Add(this.btnImportDatabase);
             this.Controls.Add(this.btnChangeStoreSettings);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "DVOptions";
@@ -219,15 +205,13 @@
         internal System.Windows.Forms.Button btnShowMainForm;
         internal System.Windows.Forms.Button btnImportDatabase;
         internal System.Windows.Forms.Button btnChangeStoreSettings;
-        internal System.Windows.Forms.Button btnBirAccredited;
-        internal System.Windows.Forms.Button btnNonBirAccredited;
         internal System.Windows.Forms.Button btnResetDatabase;
         internal System.Windows.Forms.Button btnInvoiceEditor;
         internal System.Windows.Forms.Button btnTerminal;
         internal System.Windows.Forms.Button btnFeatures;
         internal System.Windows.Forms.Button btnResetSales;
         internal System.Windows.Forms.Button btnQuery;
-        internal System.Windows.Forms.Button btnDatabaseSettings;
+        internal System.Windows.Forms.Button btnClientSetup;
         private System.Windows.Forms.ImageList imageList1;
     }
 }

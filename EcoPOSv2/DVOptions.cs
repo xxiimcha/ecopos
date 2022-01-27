@@ -38,24 +38,9 @@ namespace EcoPOSv2
         {
             _DVOptions = this;
 
-            if (!Properties.Settings.Default.isBirAccredited)
-            {
-                btnBirAccredited.Enabled = true;
-                btnNonBirAccredited.Enabled = false;
-            }
-            else if (Properties.Settings.Default.isBirAccredited)
-            {
-                btnBirAccredited.Enabled = false;
-                btnNonBirAccredited.Enabled = true;
-            }
-            btnResetDatabase.Text = "Reset Database";
-
-
             if (login == 0)
             {
                 btnChangeStoreSettings.Enabled = false;
-                btnBirAccredited.Enabled = false;
-                btnNonBirAccredited.Enabled = false;
                 btnResetDatabase.Enabled = false;
                 btnInvoiceEditor.Enabled = false;
                 btnResetSales.Enabled = false;
@@ -68,8 +53,6 @@ namespace EcoPOSv2
             else if(login == 1)
             {
                 btnChangeStoreSettings.Enabled = true;
-                btnBirAccredited.Enabled = true;
-                btnNonBirAccredited.Enabled = true;
                 btnResetDatabase.Enabled = true;
                 btnInvoiceEditor.Enabled = true;
                 btnResetSales.Enabled = true;
@@ -108,29 +91,6 @@ namespace EcoPOSv2
             Login.Instance.Close();
         }
 
-        private void BtnStart_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.isBirAccredited = true;
-            Properties.Settings.Default.Save();
-
-            MessageBox.Show("Traning mode started.. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Application.Restart();
-
-            btnBirAccredited.Enabled = false;
-            btnNonBirAccredited.Enabled = true;
-        }
-
-        private void BtnStop_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.isBirAccredited = false;
-            Properties.Settings.Default.Save();
-
-            MessageBox.Show("Traning mode has been stopped. Application will restart.", "Restarting", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Application.Restart();
-
-            btnBirAccredited.Enabled = true;
-            btnNonBirAccredited.Enabled = false;
-        }
         private void btnResetDatabase_Click(object sender, EventArgs e)
         {
             this.TopMost = false;
@@ -147,7 +107,7 @@ namespace EcoPOSv2
 
         private void ResetDatabase()
         {
-            if(MessageBox.Show(this,"Do you want to Reset product & Category ?","Reset Product",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            if(MessageBox.Show(this,"Do you want to Reset Product & Category ?","Reset Database",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 SQLControl SQL = new SQLControl();
 
@@ -161,7 +121,7 @@ namespace EcoPOSv2
                 SQL.Query("delete from inventory");
                 SQL.Query("delete from inventory_operation");
                 SQL.Query("delete from inventory_operation_items");
-                //SQL.Query("delete from inventory_supplier");
+                SQL.Query("delete from inventory_supplier");
                 SQL.Query("delete from keep");
                 SQL.Query("delete from member_card");
                 SQL.Query("delete from membership");
@@ -176,68 +136,19 @@ namespace EcoPOSv2
                 SQL.Query("delete from redeem_items");
                 SQL.Query("delete from redeem_transaction");
                 SQL.Query("delete from redeem_transaction_items");
-                //SQL.Query("delete from role_permission");
+                SQL.Query("delete from role_permission");
                 SQL.Query("delete from shift");
                 SQL.Query("delete from store_start");
                 SQL.Query("delete from transaction_details");
-                //SQL.Query("delete from user_logs");
-                //SQL.Query("delete from user_role");
-                //SQL.Query("delete from users");
+                SQL.Query("delete from user_logs");
+                SQL.Query("delete from user_role");
+                SQL.Query("delete from users");
                 SQL.Query("delete from void_item");
                 SQL.Query("delete from void_transaction");
                 SQL.Query("delete from xreading");
                 SQL.Query("delete from zreading");
 
                 btnResetDatabase.Text = "Database tables has been cleaned.";
-
-                //Environment.Exit(0);
-                //System.Diagnostics.Process.Start(Application.ExecutablePath);
-            }
-            else
-            {
-                SQLControl SQL = new SQLControl();
-
-                btnResetDatabase.Enabled = false;
-                btnResetDatabase.Text = "Cleaning the database Tables..";
-                SQL.Query("delete from Audit");
-                SQL.Query("delete from cashier_declaration");
-                SQL.Query("delete from customer");
-                SQL.Query("delete from discount");
-                SQL.Query("delete from giftcard");
-                //SQL.Query("delete from inventory");
-                SQL.Query("delete from inventory_operation");
-                SQL.Query("delete from inventory_operation_items");
-                //SQL.Query("delete from inventory_supplier");
-                SQL.Query("delete from keep");
-                SQL.Query("delete from member_card");
-                SQL.Query("delete from membership");
-                SQL.Query("delete from order_cart");
-                SQL.Query("delete from order_no");
-                SQL.Query("delete from pay_in_out");
-                SQL.Query("delete from points_award");
-                //SQL.Query("delete from product_category");
-                //SQL.Query("delete from products");
-                SQL.Query("delete from profit");
-                SQL.Query("delete from redeem_cart");
-                SQL.Query("delete from redeem_items");
-                SQL.Query("delete from redeem_transaction");
-                SQL.Query("delete from redeem_transaction_items");
-                //SQL.Query("delete from role_permission");
-                SQL.Query("delete from shift");
-                SQL.Query("delete from store_start");
-                SQL.Query("delete from transaction_details");
-                //SQL.Query("delete from user_logs");
-                //SQL.Query("delete from user_role");
-                //SQL.Query("delete from users");
-                SQL.Query("delete from void_item");
-                SQL.Query("delete from void_transaction");
-                SQL.Query("delete from xreading");
-                SQL.Query("delete from zreading");
-
-                btnResetDatabase.Text = "Database tables has been cleaned.";
-
-                //Environment.Exit(0);
-                //System.Diagnostics.Process.Start(Application.ExecutablePath);
             }
         }
 
@@ -265,27 +176,30 @@ namespace EcoPOSv2
         }
         void ResetSales()
         {
-            SQLControl SQL = new SQLControl();
+            if (MessageBox.Show(this, "Do you want to Reset Sales?", "Reset Sales", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                SQLControl SQL = new SQLControl();
 
-            btnResetSales.Enabled = false;
-            btnResetSales.Text = "Resetting Sales..";
-            SQL.Query("delete from order_cart");
-            SQL.Query("delete from order_no");
-            SQL.Query("delete from points_award");
-            SQL.Query("delete from profit");
-            SQL.Query("delete from inventory_operation");
-            SQL.Query("delete from inventory_operation_items");
-            SQL.Query("delete from keep");
-            SQL.Query("delete from redeem_transaction");
-            SQL.Query("delete from redeem_transaction_items");
-            SQL.Query("delete from transaction_details");
-            SQL.Query("delete from transaction_items");
-            SQL.Query("delete from void_item");
-            SQL.Query("delete from void_transaction");
-            SQL.Query("delete from xreading");
-            SQL.Query("delete from zreading");
+                btnResetSales.Enabled = false;
+                btnResetSales.Text = "Resetting Sales..";
+                SQL.Query("delete from order_cart");
+                SQL.Query("delete from order_no");
+                SQL.Query("delete from points_award");
+                SQL.Query("delete from profit");
+                SQL.Query("delete from inventory_operation");
+                SQL.Query("delete from inventory_operation_items");
+                SQL.Query("delete from keep");
+                SQL.Query("delete from redeem_transaction");
+                SQL.Query("delete from redeem_transaction_items");
+                SQL.Query("delete from transaction_details");
+                SQL.Query("delete from transaction_items");
+                SQL.Query("delete from void_item");
+                SQL.Query("delete from void_transaction");
+                SQL.Query("delete from xreading");
+                SQL.Query("delete from zreading");
 
-            btnResetSales.Text = "Sales has been reset.";
+                btnResetSales.Text = "Sales has been reset.";
+            }
         }
         private void BtnResetSales_Click(object sender, EventArgs e)
         {
@@ -323,10 +237,10 @@ namespace EcoPOSv2
             new SQLManualQuery().ShowDialog();
         }
 
-        private void BtnDatabaseSettings_Click(object sender, EventArgs e)
+        private void BtnClientSetup_Click(object sender, EventArgs e)
         {
             this.TopMost = false;
-            new DatabaseSettings().ShowDialog();
+            new ClientSetup().ShowDialog();
         }
     }
 }

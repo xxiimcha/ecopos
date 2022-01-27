@@ -292,5 +292,20 @@ namespace EcoPOSv2.Properties {
                 this["isBirAccredited"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isServerPC
+        {
+            get
+            {
+                return ((bool)(this["isServerPC"]));
+            }
+            set
+            {
+                this["isServerPC"] = value;
+            }
+        }
     }
 }

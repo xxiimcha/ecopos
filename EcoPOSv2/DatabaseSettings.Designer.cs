@@ -41,7 +41,8 @@
             this.btnReset = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnSaveSettings = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnSettings = new Guna.UI2.WinForms.Guna2TileButton();
-            this.tbDatabaseName = new System.Windows.Forms.ComboBox();
+            this.tbDatabaseName = new System.Windows.Forms.TextBox();
+            this.btnGetIP = new Guna.UI2.WinForms.Guna2TileButton();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +60,7 @@
             this.tbServerName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbServerName.Location = new System.Drawing.Point(123, 96);
             this.tbServerName.Name = "tbServerName";
-            this.tbServerName.Size = new System.Drawing.Size(223, 25);
+            this.tbServerName.Size = new System.Drawing.Size(164, 25);
             this.tbServerName.TabIndex = 0;
             // 
             // label2
@@ -102,7 +103,6 @@
             this.tbUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUsername.Location = new System.Drawing.Point(123, 158);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.ReadOnly = true;
             this.tbUsername.Size = new System.Drawing.Size(223, 25);
             this.tbUsername.TabIndex = 2;
             this.tbUsername.Text = "sa";
@@ -122,7 +122,6 @@
             this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.Location = new System.Drawing.Point(123, 188);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.ReadOnly = true;
             this.tbPassword.Size = new System.Drawing.Size(223, 25);
             this.tbPassword.TabIndex = 3;
             this.tbPassword.Text = "123123";
@@ -197,15 +196,31 @@
             // 
             // tbDatabaseName
             // 
-            this.tbDatabaseName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tbDatabaseName.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tbDatabaseName.FormattingEnabled = true;
-            this.tbDatabaseName.Items.AddRange(new object[] {
-            "EcoPOS"});
+            this.tbDatabaseName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDatabaseName.Location = new System.Drawing.Point(123, 127);
             this.tbDatabaseName.Name = "tbDatabaseName";
             this.tbDatabaseName.Size = new System.Drawing.Size(223, 25);
-            this.tbDatabaseName.TabIndex = 11;
+            this.tbDatabaseName.TabIndex = 12;
+            this.tbDatabaseName.Text = "EcoPOS";
+            // 
+            // btnGetIP
+            // 
+            this.btnGetIP.BackColor = System.Drawing.Color.White;
+            this.btnGetIP.BorderColor = System.Drawing.Color.IndianRed;
+            this.btnGetIP.BorderRadius = 5;
+            this.btnGetIP.CheckedState.Parent = this.btnGetIP;
+            this.btnGetIP.CustomImages.Parent = this.btnGetIP;
+            this.btnGetIP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(96)))), ((int)(((byte)(25)))));
+            this.btnGetIP.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnGetIP.ForeColor = System.Drawing.Color.White;
+            this.btnGetIP.HoverState.Parent = this.btnGetIP;
+            this.btnGetIP.Location = new System.Drawing.Point(293, 96);
+            this.btnGetIP.Name = "btnGetIP";
+            this.btnGetIP.ShadowDecoration.Parent = this.btnGetIP;
+            this.btnGetIP.Size = new System.Drawing.Size(53, 26);
+            this.btnGetIP.TabIndex = 13;
+            this.btnGetIP.Text = "PC IP";
+            this.btnGetIP.Click += new System.EventHandler(this.btnGetIP_Click);
             // 
             // DatabaseSettings
             // 
@@ -213,6 +228,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(358, 295);
+            this.Controls.Add(this.btnGetIP);
             this.Controls.Add(this.tbDatabaseName);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnSaveSettings);
@@ -252,6 +268,7 @@
         private Guna.UI2.WinForms.Guna2TileButton btnReset;
         private Guna.UI2.WinForms.Guna2TileButton btnSaveSettings;
         private Guna.UI2.WinForms.Guna2TileButton btnSettings;
-        private System.Windows.Forms.ComboBox tbDatabaseName;
+        private System.Windows.Forms.TextBox tbDatabaseName;
+        private Guna.UI2.WinForms.Guna2TileButton btnGetIP;
     }
 }

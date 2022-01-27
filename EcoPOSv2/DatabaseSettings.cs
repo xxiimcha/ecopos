@@ -6,6 +6,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,13 +19,18 @@ namespace EcoPOSv2
         public DatabaseSettings()
         {
             InitializeComponent();
+            tbServerName.Text = Properties.Settings.Default.dbServerName;
+            tbDatabaseName.Text = Properties.Settings.Default.dbName;
+            tbUsername.Text = Properties.Settings.Default.dbUser;
+            tbPassword.Text = Properties.Settings.Default.dbPass;
         }
         //CLEAR ALL FIELDS
         void clearallfields()
         {
-            tbDatabaseName.SelectedIndex = 0;
             tbServerName.Text = "";
-
+            tbDatabaseName.Text = "EcoPOS";
+            tbUsername.Text = "sa";
+            tbPassword.Text = "123123";
             //tbUsername.Clear();
             //tbPassword.Clear();
 
@@ -59,6 +66,29 @@ namespace EcoPOSv2
         private void DatabaseSettings_Load(object sender, EventArgs e)
         {
             tbServerName.Focus();
+            if (Properties.Settings.Default.isServerPC == true)
+            {
+                btnGetIP.Enabled = true;
+            }
+        }
+
+        private void btnGetIP_Click(object sender, EventArgs e)
+        {
+            tbServerName.Text = GetLocalIPAddress();
+        }
+
+        public string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            return "unknown";
         }
     }
 }
