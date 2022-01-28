@@ -166,8 +166,8 @@ public class FormLoad
                 sp.Write(text2);
 
                 
-            sp.Close();
-            sp.Dispose();
+                sp.Close();
+                sp.Dispose();
 
                 //Here it will sleep for 3 sec and then excecute again
 

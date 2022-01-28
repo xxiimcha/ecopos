@@ -45,6 +45,10 @@ namespace EcoPOSv2
             {
                 Properties.Settings.Default.isServerPC = false;
                 Properties.Settings.Default.servertype = false;
+                Properties.Settings.Default.dbServerName = ".";
+                Properties.Settings.Default.dbName = "EcoPOS";
+                Properties.Settings.Default.dbUser = "sa";
+                Properties.Settings.Default.dbPass = "123123";
                 Properties.Settings.Default.Save();
             }
 

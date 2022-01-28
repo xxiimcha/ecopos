@@ -46,19 +46,19 @@
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnVoid = new Guna.UI2.WinForms.Guna2Button();
             this.lblOperation = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
+            this.lblOperationt = new System.Windows.Forms.Label();
             this.lblCustomer = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
+            this.lblCustomert = new System.Windows.Forms.Label();
             this.lblZeroRated = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.lblZeroRatedt = new System.Windows.Forms.Label();
             this.lblVATExempt = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.lblVATExemptt = new System.Windows.Forms.Label();
             this.lblVAT = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lblVATt = new System.Windows.Forms.Label();
             this.lblVATSale = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lblVATSalet = new System.Windows.Forms.Label();
             this.lblLessVAT = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lblLessVATt = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
@@ -213,19 +213,19 @@
             this.panel4.Controls.Add(this.btnCancel);
             this.panel4.Controls.Add(this.btnVoid);
             this.panel4.Controls.Add(this.lblOperation);
-            this.panel4.Controls.Add(this.label31);
+            this.panel4.Controls.Add(this.lblOperationt);
             this.panel4.Controls.Add(this.lblCustomer);
-            this.panel4.Controls.Add(this.label29);
+            this.panel4.Controls.Add(this.lblCustomert);
             this.panel4.Controls.Add(this.lblZeroRated);
-            this.panel4.Controls.Add(this.label27);
+            this.panel4.Controls.Add(this.lblZeroRatedt);
             this.panel4.Controls.Add(this.lblVATExempt);
-            this.panel4.Controls.Add(this.label25);
+            this.panel4.Controls.Add(this.lblVATExemptt);
             this.panel4.Controls.Add(this.lblVAT);
-            this.panel4.Controls.Add(this.label23);
+            this.panel4.Controls.Add(this.lblVATt);
             this.panel4.Controls.Add(this.lblVATSale);
-            this.panel4.Controls.Add(this.label21);
+            this.panel4.Controls.Add(this.lblVATSalet);
             this.panel4.Controls.Add(this.lblLessVAT);
-            this.panel4.Controls.Add(this.label19);
+            this.panel4.Controls.Add(this.lblLessVATt);
             this.panel4.Controls.Add(this.lblTotal);
             this.panel4.Controls.Add(this.label17);
             this.panel4.Controls.Add(this.lblDiscount);
@@ -403,18 +403,18 @@
             this.lblOperation.Text = "Name";
             this.lblOperation.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label31
+            // lblOperationt
             // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.White;
-            this.label31.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.Black;
-            this.label31.Location = new System.Drawing.Point(2, 420);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(80, 21);
-            this.label31.TabIndex = 44;
-            this.label31.Text = "Operation";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblOperationt.AutoSize = true;
+            this.lblOperationt.BackColor = System.Drawing.Color.White;
+            this.lblOperationt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOperationt.ForeColor = System.Drawing.Color.Black;
+            this.lblOperationt.Location = new System.Drawing.Point(2, 420);
+            this.lblOperationt.Name = "lblOperationt";
+            this.lblOperationt.Size = new System.Drawing.Size(80, 21);
+            this.lblOperationt.TabIndex = 44;
+            this.lblOperationt.Text = "Operation";
+            this.lblOperationt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCustomer
             // 
@@ -428,18 +428,18 @@
             this.lblCustomer.Text = "Name";
             this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label29
+            // lblCustomert
             // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.White;
-            this.label29.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(2, 399);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(78, 21);
-            this.label29.TabIndex = 42;
-            this.label29.Text = "Customer";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCustomert.AutoSize = true;
+            this.lblCustomert.BackColor = System.Drawing.Color.White;
+            this.lblCustomert.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomert.ForeColor = System.Drawing.Color.Black;
+            this.lblCustomert.Location = new System.Drawing.Point(2, 399);
+            this.lblCustomert.Name = "lblCustomert";
+            this.lblCustomert.Size = new System.Drawing.Size(78, 21);
+            this.lblCustomert.TabIndex = 42;
+            this.lblCustomert.Text = "Customer";
+            this.lblCustomert.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblZeroRated
             // 
@@ -453,18 +453,18 @@
             this.lblZeroRated.Text = "0.00";
             this.lblZeroRated.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label27
+            // lblZeroRatedt
             // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.White;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(2, 378);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(86, 21);
-            this.label27.TabIndex = 40;
-            this.label27.Text = "Zero Rated";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblZeroRatedt.AutoSize = true;
+            this.lblZeroRatedt.BackColor = System.Drawing.Color.White;
+            this.lblZeroRatedt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblZeroRatedt.ForeColor = System.Drawing.Color.Black;
+            this.lblZeroRatedt.Location = new System.Drawing.Point(2, 378);
+            this.lblZeroRatedt.Name = "lblZeroRatedt";
+            this.lblZeroRatedt.Size = new System.Drawing.Size(86, 21);
+            this.lblZeroRatedt.TabIndex = 40;
+            this.lblZeroRatedt.Text = "Zero Rated";
+            this.lblZeroRatedt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVATExempt
             // 
@@ -478,18 +478,18 @@
             this.lblVATExempt.Text = "0.00";
             this.lblVATExempt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label25
+            // lblVATExemptt
             // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.White;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(2, 357);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(87, 21);
-            this.label25.TabIndex = 38;
-            this.label25.Text = "Vat Exempt";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVATExemptt.AutoSize = true;
+            this.lblVATExemptt.BackColor = System.Drawing.Color.White;
+            this.lblVATExemptt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVATExemptt.ForeColor = System.Drawing.Color.Black;
+            this.lblVATExemptt.Location = new System.Drawing.Point(2, 357);
+            this.lblVATExemptt.Name = "lblVATExemptt";
+            this.lblVATExemptt.Size = new System.Drawing.Size(87, 21);
+            this.lblVATExemptt.TabIndex = 38;
+            this.lblVATExemptt.Text = "Vat Exempt";
+            this.lblVATExemptt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVAT
             // 
@@ -503,18 +503,18 @@
             this.lblVAT.Text = "0.00";
             this.lblVAT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label23
+            // lblVATt
             // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.White;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(2, 336);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(77, 21);
-            this.label23.TabIndex = 36;
-            this.label23.Text = "Vat (12%)";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVATt.AutoSize = true;
+            this.lblVATt.BackColor = System.Drawing.Color.White;
+            this.lblVATt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVATt.ForeColor = System.Drawing.Color.Black;
+            this.lblVATt.Location = new System.Drawing.Point(2, 336);
+            this.lblVATt.Name = "lblVATt";
+            this.lblVATt.Size = new System.Drawing.Size(77, 21);
+            this.lblVATt.TabIndex = 36;
+            this.lblVATt.Text = "Vat (12%)";
+            this.lblVATt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVATSale
             // 
@@ -528,18 +528,18 @@
             this.lblVATSale.Text = "0.00";
             this.lblVATSale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label21
+            // lblVATSalet
             // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.White;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(2, 315);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(94, 21);
-            this.label21.TabIndex = 34;
-            this.label21.Text = "Vatable Sale";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVATSalet.AutoSize = true;
+            this.lblVATSalet.BackColor = System.Drawing.Color.White;
+            this.lblVATSalet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVATSalet.ForeColor = System.Drawing.Color.Black;
+            this.lblVATSalet.Location = new System.Drawing.Point(2, 315);
+            this.lblVATSalet.Name = "lblVATSalet";
+            this.lblVATSalet.Size = new System.Drawing.Size(94, 21);
+            this.lblVATSalet.TabIndex = 34;
+            this.lblVATSalet.Text = "Vatable Sale";
+            this.lblVATSalet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblLessVAT
             // 
@@ -553,18 +553,18 @@
             this.lblLessVAT.Text = "0.00";
             this.lblLessVAT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label19
+            // lblLessVATt
             // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.White;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(2, 294);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(66, 21);
-            this.label19.TabIndex = 32;
-            this.label19.Text = "Less Vat";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLessVATt.AutoSize = true;
+            this.lblLessVATt.BackColor = System.Drawing.Color.White;
+            this.lblLessVATt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLessVATt.ForeColor = System.Drawing.Color.Black;
+            this.lblLessVATt.Location = new System.Drawing.Point(2, 294);
+            this.lblLessVATt.Name = "lblLessVATt";
+            this.lblLessVATt.Size = new System.Drawing.Size(66, 21);
+            this.lblLessVATt.TabIndex = 32;
+            this.lblLessVATt.Text = "Less Vat";
+            this.lblLessVATt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTotal
             // 
@@ -863,18 +863,18 @@
         internal System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel4;
         internal System.Windows.Forms.Label lblOperation;
-        internal System.Windows.Forms.Label label31;
+        internal System.Windows.Forms.Label lblOperationt;
         internal System.Windows.Forms.Label lblCustomer;
-        internal System.Windows.Forms.Label label29;
-        internal System.Windows.Forms.Label label27;
+        internal System.Windows.Forms.Label lblCustomert;
+        internal System.Windows.Forms.Label lblZeroRatedt;
         internal System.Windows.Forms.Label lblVATExempt;
-        internal System.Windows.Forms.Label label25;
+        internal System.Windows.Forms.Label lblVATExemptt;
         internal System.Windows.Forms.Label lblVAT;
-        internal System.Windows.Forms.Label label23;
+        internal System.Windows.Forms.Label lblVATt;
         internal System.Windows.Forms.Label lblVATSale;
-        internal System.Windows.Forms.Label label21;
+        internal System.Windows.Forms.Label lblVATSalet;
         internal System.Windows.Forms.Label lblLessVAT;
-        internal System.Windows.Forms.Label label19;
+        internal System.Windows.Forms.Label lblLessVATt;
         internal System.Windows.Forms.Label lblTotal;
         internal System.Windows.Forms.Label label17;
         internal System.Windows.Forms.Label lblDiscount;

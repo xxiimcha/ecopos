@@ -105,6 +105,7 @@ namespace EcoPOSv2
                 Main.Instance.rp_ord_void_transaction = Convert.ToBoolean(dr["ord_void_transaction"].ToString());
                 Main.Instance.rp_ord_cancel_transaction = Convert.ToBoolean(dr["ord_cancel_transaction"].ToString());
                 Main.Instance.rp_ord_refund_transaction = Convert.ToBoolean(dr["ord_refund_transaction"].ToString());
+                Main.Instance.rp_ord_keep_transaction = Convert.ToBoolean(dr["ord_keep_transaction"].ToString());
                 Main.Instance.rp_ord_return_exchange = Convert.ToBoolean(dr["ord_return_exchange"].ToString());
                 Main.Instance.rp_ord_redeem_item = Convert.ToBoolean(dr["ord_redeem_item"].ToString());
                 Main.Instance.rp_home_switch_cashier = Convert.ToBoolean(dr["home_switch_cashier"].ToString());

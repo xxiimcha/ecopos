@@ -207,7 +207,6 @@ namespace EcoPOSv2
                 SQLMasterControl SQLMaster = new SQLMasterControl();
 
                 SQLMaster.Query("Backup database EcoPOS to disk= '" + directory + "\\" + folderName + "\\EcoPOS.bak' ");
-                SQLMaster.Query("Backup database EcoPOS_Training to disk= '" + directory + "\\" + folderName + "\\EcoPOS_Training.bak' ");
 
                 //string ApplicationPath = AppDomain.CurrentDomain.BaseDirectory;
 

@@ -193,6 +193,7 @@
             this.Text = "DVOptions";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DVOptions_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DVOptions_FormClosed);
             this.Load += new System.EventHandler(this.DVOptions_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DVOptions_KeyDown);
             this.ResumeLayout(false);

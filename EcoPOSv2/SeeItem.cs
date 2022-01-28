@@ -51,13 +51,15 @@ namespace EcoPOSv2
             {
                 SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
 
-                SQL.Query(@"SELECT productID, barcode1 as 'Barcode 1', barcode2 as 'Barcode 2', description as 'Name', rp_inclusive as 'SRP', wp_inclusive as 'Wholesale' FROM products
-                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY description ASC");
+                SQL.Query(@"SELECT p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', CAST(i.stock_qty AS INT) as 'Stock' FROM products as p 
+                       INNER JOIN inventory as i ON p.productID = i.productID
+                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY name ASC");
 
                 if (SQL.HasException(true))
                     return;
 
                 dgvProducts.DataSource = SQL.DBDT;
+
                 dgvProducts.Columns[0].Visible = false;
 
 

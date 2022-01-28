@@ -549,6 +549,7 @@ namespace EcoPOSv2
 
                         if (SQL.HasException(true))
                             return;
+
                         #region "customer display"
                         //customer display
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -560,7 +561,6 @@ namespace EcoPOSv2
                         {
                             prod_description = r["name"].ToString();
                             prod_price = r["static_price_inclusive"].ToString();
-
                         }
 
                         FormLoad Fl = new FormLoad();
@@ -991,6 +991,29 @@ namespace EcoPOSv2
                 btnPriceEditor.Enabled = false;
                 btnPriceEditor.Visible = false;
             }
+
+            /*
+            if (!Properties.Settings.Default.isBirAccredited)
+            {
+                //hide vat value
+                lblLessVAT.Visible = false;
+                lblZeroRated.Visible = false;
+                lblVATExempt.Visible = false;
+                lblVAT.Visible = false;
+                lblVATSale.Visible = false;
+
+                //hide vat title
+                lblLessVATt.Visible = false;
+                lblZeroRatedt.Visible = false;
+                lblVATExemptt.Visible = false;
+                lblVATt.Visible = false;
+                lblVATSalet.Visible = false;
+
+                lblCustomert.Location = new Point(2,1);
+                lblCustomer.Location = new Point(195, 294);
+                lblOperationt.Location = new Point(2, 315);
+                lblOperation.Location = new Point(195, 315);
+            }*/
 
             _order = this;
 

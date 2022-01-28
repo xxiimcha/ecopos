@@ -242,5 +242,10 @@ namespace EcoPOSv2
             this.TopMost = false;
             new ClientSetup().ShowDialog();
         }
+
+        private void DVOptions_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

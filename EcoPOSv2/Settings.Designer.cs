@@ -56,9 +56,11 @@
             // 
             // pnlChild
             // 
-            this.pnlChild.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pnlChild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlChild.BackColor = System.Drawing.Color.White;
             this.pnlChild.Controls.Add(this.Panel2);
-            this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChild.Location = new System.Drawing.Point(0, 39);
             this.pnlChild.Name = "pnlChild";
             this.pnlChild.Size = new System.Drawing.Size(1090, 695);
@@ -73,7 +75,7 @@
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Panel1.BackColor = System.Drawing.Color.White;
             this.Panel1.Controls.Add(this.btnDatabaseManagement);
             this.Panel1.Controls.Add(this.btnDeveloper);
             this.Panel1.Controls.Add(this.btnStaff);
@@ -87,7 +89,7 @@
             // 
             // btnDatabaseManagement
             // 
-            this.btnDatabaseManagement.BackColor = System.Drawing.Color.White;
+            this.btnDatabaseManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDatabaseManagement.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnDatabaseManagement.Enabled = false;
             this.btnDatabaseManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -110,7 +112,7 @@
             // 
             // btnDeveloper
             // 
-            this.btnDeveloper.BackColor = System.Drawing.Color.White;
+            this.btnDeveloper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDeveloper.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnDeveloper.Enabled = false;
             this.btnDeveloper.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -133,7 +135,7 @@
             // 
             // btnStaff
             // 
-            this.btnStaff.BackColor = System.Drawing.Color.White;
+            this.btnStaff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStaff.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnStaff.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -154,7 +156,7 @@
             // 
             // btnStore
             // 
-            this.btnStore.BackColor = System.Drawing.Color.White;
+            this.btnStore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnStore.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnStore.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnStore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -177,6 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1090, 734);
             this.Controls.Add(this.guna2Panel1);
@@ -185,6 +188,7 @@
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Settings_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.pnlChild.ResumeLayout(false);
