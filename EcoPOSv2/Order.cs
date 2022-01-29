@@ -992,7 +992,7 @@ namespace EcoPOSv2
                 btnPriceEditor.Visible = false;
             }
 
-            /*
+            
             if (!Properties.Settings.Default.isBirAccredited)
             {
                 //hide vat value
@@ -1008,12 +1008,7 @@ namespace EcoPOSv2
                 lblVATExemptt.Visible = false;
                 lblVATt.Visible = false;
                 lblVATSalet.Visible = false;
-
-                lblCustomert.Location = new Point(2,1);
-                lblCustomer.Location = new Point(195, 294);
-                lblOperationt.Location = new Point(2, 315);
-                lblOperation.Location = new Point(195, 315);
-            }*/
+            }
 
             _order = this;
 

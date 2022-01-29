@@ -21,7 +21,7 @@ namespace EcoPOSv2
             InitializeComponent();
         }
 
-        private void btnSaveSettings_Click(object sender, EventArgs e)
+        private void btnSaveSettings_Click(object sender, EventArgs e) // Save button
         {
             //Server PC
             if (checkBoxServerPC.Checked)
@@ -166,6 +166,11 @@ namespace EcoPOSv2
             proc.StartInfo.UseShellExecute = true;
             proc.StartInfo.Verb = "runas";
             proc.Start();
+        }
+
+        public void PSexecute()
+        {
+
         }
 
         private void checkBoxServerType_CheckedChanged(object sender, EventArgs e)

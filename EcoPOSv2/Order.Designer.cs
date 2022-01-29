@@ -396,7 +396,7 @@
             this.lblOperation.BackColor = System.Drawing.Color.White;
             this.lblOperation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOperation.ForeColor = System.Drawing.Color.Black;
-            this.lblOperation.Location = new System.Drawing.Point(195, 420);
+            this.lblOperation.Location = new System.Drawing.Point(195, 153);
             this.lblOperation.Name = "lblOperation";
             this.lblOperation.Size = new System.Drawing.Size(191, 21);
             this.lblOperation.TabIndex = 45;
@@ -409,7 +409,7 @@
             this.lblOperationt.BackColor = System.Drawing.Color.White;
             this.lblOperationt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOperationt.ForeColor = System.Drawing.Color.Black;
-            this.lblOperationt.Location = new System.Drawing.Point(2, 420);
+            this.lblOperationt.Location = new System.Drawing.Point(2, 153);
             this.lblOperationt.Name = "lblOperationt";
             this.lblOperationt.Size = new System.Drawing.Size(80, 21);
             this.lblOperationt.TabIndex = 44;
@@ -421,7 +421,7 @@
             this.lblCustomer.BackColor = System.Drawing.Color.White;
             this.lblCustomer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomer.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomer.Location = new System.Drawing.Point(195, 399);
+            this.lblCustomer.Location = new System.Drawing.Point(195, 132);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(191, 21);
             this.lblCustomer.TabIndex = 43;
@@ -434,7 +434,7 @@
             this.lblCustomert.BackColor = System.Drawing.Color.White;
             this.lblCustomert.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomert.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomert.Location = new System.Drawing.Point(2, 399);
+            this.lblCustomert.Location = new System.Drawing.Point(2, 132);
             this.lblCustomert.Name = "lblCustomert";
             this.lblCustomert.Size = new System.Drawing.Size(78, 21);
             this.lblCustomert.TabIndex = 42;
@@ -446,7 +446,7 @@
             this.lblZeroRated.BackColor = System.Drawing.Color.White;
             this.lblZeroRated.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblZeroRated.ForeColor = System.Drawing.Color.Black;
-            this.lblZeroRated.Location = new System.Drawing.Point(195, 378);
+            this.lblZeroRated.Location = new System.Drawing.Point(195, 406);
             this.lblZeroRated.Name = "lblZeroRated";
             this.lblZeroRated.Size = new System.Drawing.Size(191, 21);
             this.lblZeroRated.TabIndex = 41;
@@ -459,7 +459,7 @@
             this.lblZeroRatedt.BackColor = System.Drawing.Color.White;
             this.lblZeroRatedt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblZeroRatedt.ForeColor = System.Drawing.Color.Black;
-            this.lblZeroRatedt.Location = new System.Drawing.Point(2, 378);
+            this.lblZeroRatedt.Location = new System.Drawing.Point(2, 406);
             this.lblZeroRatedt.Name = "lblZeroRatedt";
             this.lblZeroRatedt.Size = new System.Drawing.Size(86, 21);
             this.lblZeroRatedt.TabIndex = 40;
@@ -471,7 +471,7 @@
             this.lblVATExempt.BackColor = System.Drawing.Color.White;
             this.lblVATExempt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATExempt.ForeColor = System.Drawing.Color.Black;
-            this.lblVATExempt.Location = new System.Drawing.Point(195, 357);
+            this.lblVATExempt.Location = new System.Drawing.Point(195, 385);
             this.lblVATExempt.Name = "lblVATExempt";
             this.lblVATExempt.Size = new System.Drawing.Size(191, 21);
             this.lblVATExempt.TabIndex = 39;
@@ -484,7 +484,7 @@
             this.lblVATExemptt.BackColor = System.Drawing.Color.White;
             this.lblVATExemptt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATExemptt.ForeColor = System.Drawing.Color.Black;
-            this.lblVATExemptt.Location = new System.Drawing.Point(2, 357);
+            this.lblVATExemptt.Location = new System.Drawing.Point(2, 385);
             this.lblVATExemptt.Name = "lblVATExemptt";
             this.lblVATExemptt.Size = new System.Drawing.Size(87, 21);
             this.lblVATExemptt.TabIndex = 38;
@@ -496,7 +496,7 @@
             this.lblVAT.BackColor = System.Drawing.Color.White;
             this.lblVAT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVAT.ForeColor = System.Drawing.Color.Black;
-            this.lblVAT.Location = new System.Drawing.Point(195, 336);
+            this.lblVAT.Location = new System.Drawing.Point(195, 364);
             this.lblVAT.Name = "lblVAT";
             this.lblVAT.Size = new System.Drawing.Size(191, 21);
             this.lblVAT.TabIndex = 37;
@@ -509,7 +509,7 @@
             this.lblVATt.BackColor = System.Drawing.Color.White;
             this.lblVATt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATt.ForeColor = System.Drawing.Color.Black;
-            this.lblVATt.Location = new System.Drawing.Point(2, 336);
+            this.lblVATt.Location = new System.Drawing.Point(2, 364);
             this.lblVATt.Name = "lblVATt";
             this.lblVATt.Size = new System.Drawing.Size(77, 21);
             this.lblVATt.TabIndex = 36;
@@ -521,7 +521,7 @@
             this.lblVATSale.BackColor = System.Drawing.Color.White;
             this.lblVATSale.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATSale.ForeColor = System.Drawing.Color.Black;
-            this.lblVATSale.Location = new System.Drawing.Point(195, 315);
+            this.lblVATSale.Location = new System.Drawing.Point(195, 343);
             this.lblVATSale.Name = "lblVATSale";
             this.lblVATSale.Size = new System.Drawing.Size(191, 21);
             this.lblVATSale.TabIndex = 35;
@@ -534,7 +534,7 @@
             this.lblVATSalet.BackColor = System.Drawing.Color.White;
             this.lblVATSalet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVATSalet.ForeColor = System.Drawing.Color.Black;
-            this.lblVATSalet.Location = new System.Drawing.Point(2, 315);
+            this.lblVATSalet.Location = new System.Drawing.Point(2, 343);
             this.lblVATSalet.Name = "lblVATSalet";
             this.lblVATSalet.Size = new System.Drawing.Size(94, 21);
             this.lblVATSalet.TabIndex = 34;
@@ -546,7 +546,7 @@
             this.lblLessVAT.BackColor = System.Drawing.Color.White;
             this.lblLessVAT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLessVAT.ForeColor = System.Drawing.Color.Black;
-            this.lblLessVAT.Location = new System.Drawing.Point(195, 294);
+            this.lblLessVAT.Location = new System.Drawing.Point(195, 322);
             this.lblLessVAT.Name = "lblLessVAT";
             this.lblLessVAT.Size = new System.Drawing.Size(191, 21);
             this.lblLessVAT.TabIndex = 33;
@@ -559,7 +559,7 @@
             this.lblLessVATt.BackColor = System.Drawing.Color.White;
             this.lblLessVATt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLessVATt.ForeColor = System.Drawing.Color.Black;
-            this.lblLessVATt.Location = new System.Drawing.Point(2, 294);
+            this.lblLessVATt.Location = new System.Drawing.Point(2, 322);
             this.lblLessVATt.Name = "lblLessVATt";
             this.lblLessVATt.Size = new System.Drawing.Size(66, 21);
             this.lblLessVATt.TabIndex = 32;
@@ -571,7 +571,7 @@
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Green;
-            this.lblTotal.Location = new System.Drawing.Point(196, 230);
+            this.lblTotal.Location = new System.Drawing.Point(196, 271);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(191, 45);
             this.lblTotal.TabIndex = 31;
@@ -584,7 +584,7 @@
             this.label17.BackColor = System.Drawing.Color.White;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Green;
-            this.label17.Location = new System.Drawing.Point(-1, 230);
+            this.label17.Location = new System.Drawing.Point(-1, 271);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(126, 45);
             this.label17.TabIndex = 30;
@@ -596,7 +596,7 @@
             this.lblDiscount.BackColor = System.Drawing.Color.White;
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.ForeColor = System.Drawing.Color.Black;
-            this.lblDiscount.Location = new System.Drawing.Point(195, 203);
+            this.lblDiscount.Location = new System.Drawing.Point(195, 244);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(191, 21);
             this.lblDiscount.TabIndex = 29;
@@ -609,7 +609,7 @@
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(2, 203);
+            this.label15.Location = new System.Drawing.Point(2, 244);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(71, 21);
             this.label15.TabIndex = 28;
@@ -621,7 +621,7 @@
             this.lblSubtotal.BackColor = System.Drawing.Color.White;
             this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtotal.ForeColor = System.Drawing.Color.Black;
-            this.lblSubtotal.Location = new System.Drawing.Point(195, 182);
+            this.lblSubtotal.Location = new System.Drawing.Point(195, 223);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(191, 21);
             this.lblSubtotal.TabIndex = 27;
@@ -634,7 +634,7 @@
             this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(2, 182);
+            this.label13.Location = new System.Drawing.Point(2, 223);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(68, 21);
             this.label13.TabIndex = 26;
@@ -646,7 +646,7 @@
             this.lblItems.BackColor = System.Drawing.Color.White;
             this.lblItems.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblItems.ForeColor = System.Drawing.Color.Black;
-            this.lblItems.Location = new System.Drawing.Point(195, 161);
+            this.lblItems.Location = new System.Drawing.Point(195, 202);
             this.lblItems.Name = "lblItems";
             this.lblItems.Size = new System.Drawing.Size(191, 21);
             this.lblItems.TabIndex = 25;
@@ -659,7 +659,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(2, 161);
+            this.label11.Location = new System.Drawing.Point(2, 202);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 21);
             this.label11.TabIndex = 24;
@@ -671,7 +671,7 @@
             this.lblOrderNumber.BackColor = System.Drawing.Color.White;
             this.lblOrderNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrderNumber.ForeColor = System.Drawing.Color.Black;
-            this.lblOrderNumber.Location = new System.Drawing.Point(195, 140);
+            this.lblOrderNumber.Location = new System.Drawing.Point(195, 181);
             this.lblOrderNumber.Name = "lblOrderNumber";
             this.lblOrderNumber.Size = new System.Drawing.Size(191, 21);
             this.lblOrderNumber.TabIndex = 23;
@@ -684,7 +684,7 @@
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(2, 140);
+            this.label8.Location = new System.Drawing.Point(2, 181);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 21);
             this.label8.TabIndex = 22;
