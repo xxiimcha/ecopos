@@ -56,7 +56,7 @@ namespace EcoPOSv2
             }
             else if (count_records == 0)
             {
-                SQL.Query("INSERT INTO receipt_layout (receipt_footer_text) VALUES (@receipt_footer_text)");
+                SQL.Query("INSERT INTO receipt_layout (configuration_ID, receipt_footer_text, number_of_copies) VALUES (1, @receipt_footer_text, 1)");
 
                 if (SQL.HasException(true))
                     return;

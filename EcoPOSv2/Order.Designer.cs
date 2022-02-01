@@ -91,7 +91,7 @@
             this.OrderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrderPanel.Location = new System.Drawing.Point(0, 0);
             this.OrderPanel.Name = "OrderPanel";
-            this.OrderPanel.Size = new System.Drawing.Size(1242, 807);
+            this.OrderPanel.Size = new System.Drawing.Size(1242, 788);
             this.OrderPanel.TabIndex = 4;
             // 
             // enteredOrdersPanel
@@ -104,7 +104,7 @@
             this.enteredOrdersPanel.Controls.Add(this.label6);
             this.enteredOrdersPanel.Location = new System.Drawing.Point(4, 6);
             this.enteredOrdersPanel.Name = "enteredOrdersPanel";
-            this.enteredOrdersPanel.Size = new System.Drawing.Size(845, 797);
+            this.enteredOrdersPanel.Size = new System.Drawing.Size(845, 778);
             this.enteredOrdersPanel.TabIndex = 3;
             // 
             // dgvCart
@@ -149,7 +149,7 @@
             this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(842, 719);
+            this.dgvCart.Size = new System.Drawing.Size(842, 700);
             this.dgvCart.TabIndex = 19;
             this.dgvCart.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvCart.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -245,7 +245,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(851, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(391, 807);
+            this.panel4.Size = new System.Drawing.Size(391, 788);
             this.panel4.TabIndex = 0;
             // 
             // btnViewKeeps
@@ -260,7 +260,7 @@
             this.btnViewKeeps.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.btnViewKeeps.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnViewKeeps.HoverState.Parent = this.btnViewKeeps;
-            this.btnViewKeeps.Location = new System.Drawing.Point(196, 617);
+            this.btnViewKeeps.Location = new System.Drawing.Point(197, 635);
             this.btnViewKeeps.Name = "btnViewKeeps";
             this.btnViewKeeps.ShadowDecoration.Parent = this.btnViewKeeps;
             this.btnViewKeeps.Size = new System.Drawing.Size(185, 42);
@@ -280,7 +280,7 @@
             this.btnKeep.ForeColor = System.Drawing.Color.Olive;
             this.btnKeep.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnKeep.HoverState.Parent = this.btnKeep;
-            this.btnKeep.Location = new System.Drawing.Point(5, 617);
+            this.btnKeep.Location = new System.Drawing.Point(6, 635);
             this.btnKeep.Name = "btnKeep";
             this.btnKeep.ShadowDecoration.Parent = this.btnKeep;
             this.btnKeep.Size = new System.Drawing.Size(185, 42);
@@ -300,7 +300,7 @@
             this.btnPriceEditor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(163)))), ((int)(((byte)(154)))));
             this.btnPriceEditor.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPriceEditor.HoverState.Parent = this.btnPriceEditor;
-            this.btnPriceEditor.Location = new System.Drawing.Point(196, 521);
+            this.btnPriceEditor.Location = new System.Drawing.Point(197, 539);
             this.btnPriceEditor.Name = "btnPriceEditor";
             this.btnPriceEditor.ShadowDecoration.Parent = this.btnPriceEditor;
             this.btnPriceEditor.Size = new System.Drawing.Size(185, 42);
@@ -322,7 +322,7 @@
             this.btnPayment.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnPayment.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPayment.HoverState.Parent = this.btnPayment;
-            this.btnPayment.Location = new System.Drawing.Point(6, 726);
+            this.btnPayment.Location = new System.Drawing.Point(6, 707);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.ShadowDecoration.Parent = this.btnPayment;
             this.btnPayment.Size = new System.Drawing.Size(378, 76);
@@ -343,7 +343,7 @@
             this.btnRedeem.ForeColor = System.Drawing.Color.DarkBlue;
             this.btnRedeem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRedeem.HoverState.Parent = this.btnRedeem;
-            this.btnRedeem.Location = new System.Drawing.Point(5, 521);
+            this.btnRedeem.Location = new System.Drawing.Point(6, 539);
             this.btnRedeem.Name = "btnRedeem";
             this.btnRedeem.ShadowDecoration.Parent = this.btnRedeem;
             this.btnRedeem.Size = new System.Drawing.Size(185, 42);
@@ -363,7 +363,7 @@
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancel.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Location = new System.Drawing.Point(5, 569);
+            this.btnCancel.Location = new System.Drawing.Point(6, 587);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(185, 42);
@@ -383,7 +383,7 @@
             this.btnVoid.ForeColor = System.Drawing.Color.Red;
             this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVoid.HoverState.Parent = this.btnVoid;
-            this.btnVoid.Location = new System.Drawing.Point(196, 569);
+            this.btnVoid.Location = new System.Drawing.Point(197, 587);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
             this.btnVoid.Size = new System.Drawing.Size(185, 42);
@@ -835,7 +835,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1242, 807);
+            this.ClientSize = new System.Drawing.Size(1242, 788);
             this.Controls.Add(this.OrderPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -193,15 +193,29 @@ namespace EcoPOSv2
                             report.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
                         }
 
+
                         int no_of_prints = 1;
 
-                        if (Properties.Settings.Default.ShowAccountingReceipt)
-                            no_of_prints = 2;
+                        //Sets number of copies to print
+                        int print_count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));
+                        if (SQL.HasException(true))
+                            return;
+
+                        if (print_count_records == 1)
+                        {
+                            no_of_prints = Convert.ToInt32(SQL.ReturnResult("SELECT number_of_copies FROM receipt_layout WHERE configuration_ID = 1"));
+                            if (SQL.HasException(true))
+                                return;
+                        }
+
+                        //if (Properties.Settings.Default.ShowAccountingReceipt)
+                        //    no_of_prints = 2;
 
                         for (var i = 1; i <= no_of_prints; i++)
                         {
                             if (i == 1)
-                                report.SetParameterValue("note", note + "OFFICIAL RECEIPT");
+                                report.SetParameterValue("note", note + "CUSTOMER COPY");
+                                
                             if (i == 2)
                                 report.SetParameterValue("note", note + "ACCOUNTING COPY");
 

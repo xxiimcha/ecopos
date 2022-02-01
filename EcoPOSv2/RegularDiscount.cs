@@ -97,7 +97,7 @@ namespace EcoPOSv2
                     SQL.AddParam("@itemID", r["itemID"]);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    SQL.Query("UPDATE order_cart SET discount=(selling_price_inclusive*(disc_percent/100)) where itemID=@itemID and type='R' AND terminal_id=@terminal_id");
+                    SQL.Query("UPDATE order_cart SET discount=(selling_price_inclusive*(disc_percent/100)) where itemID=@itemID AND type='R' AND terminal_id=@terminal_id");
 
                     if (SQL.HasException(true))
                         return;

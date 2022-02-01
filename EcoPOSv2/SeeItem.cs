@@ -53,7 +53,7 @@ namespace EcoPOSv2
 
                 SQL.Query(@"SELECT p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', CAST(i.stock_qty AS INT) as 'Stock' FROM products as p 
                        INNER JOIN inventory as i ON p.productID = i.productID
-                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY name ASC");
+                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
 
                 if (SQL.HasException(true))
                     return;
@@ -134,8 +134,8 @@ namespace EcoPOSv2
                     SQL.AddParam("@type", type);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id,is_vatable) 
-                       SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable FROM products WHERE productID = @productID");
+                    SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id,is_vatable, base_price_inclusive, base_price_exclusive) 
+                       SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive) FROM products WHERE productID = @productID");
                     if (SQL.HasException(true))
                         return;
                 }

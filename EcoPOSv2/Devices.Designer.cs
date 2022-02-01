@@ -31,6 +31,8 @@ namespace EcoPOSv2
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devices));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbReceiptCopies = new System.Windows.Forms.ComboBox();
             this.moreOptionContainer = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbPaperSize = new System.Windows.Forms.ComboBox();
@@ -48,8 +50,6 @@ namespace EcoPOSv2
             this.cmbReportPrinter = new System.Windows.Forms.ComboBox();
             this.Label8 = new System.Windows.Forms.Label();
             this.cmbReceiptPrinter = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbReceiptCopies = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.moreOptionContainer.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +73,36 @@ namespace EcoPOSv2
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(607, 637);
             this.panel1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(31, 157);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(116, 25);
+            this.label6.TabIndex = 96;
+            this.label6.Text = "Receipt Copy";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbReceiptCopies
+            // 
+            this.cmbReceiptCopies.BackColor = System.Drawing.Color.White;
+            this.cmbReceiptCopies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbReceiptCopies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbReceiptCopies.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbReceiptCopies.ForeColor = System.Drawing.Color.Black;
+            this.cmbReceiptCopies.FormattingEnabled = true;
+            this.cmbReceiptCopies.Items.AddRange(new object[] {
+            "Don\'t print a receipt",
+            "Customer copy only",
+            "Customer and Accounting copy"});
+            this.cmbReceiptCopies.Location = new System.Drawing.Point(202, 154);
+            this.cmbReceiptCopies.MaxDropDownItems = 10;
+            this.cmbReceiptCopies.Name = "cmbReceiptCopies";
+            this.cmbReceiptCopies.Size = new System.Drawing.Size(372, 31);
+            this.cmbReceiptCopies.TabIndex = 97;
             // 
             // moreOptionContainer
             // 
@@ -315,32 +345,6 @@ namespace EcoPOSv2
             this.cmbReceiptPrinter.Name = "cmbReceiptPrinter";
             this.cmbReceiptPrinter.Size = new System.Drawing.Size(372, 31);
             this.cmbReceiptPrinter.TabIndex = 71;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(31, 157);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(116, 25);
-            this.label6.TabIndex = 96;
-            this.label6.Text = "Receipt Copy";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cmbReceiptCopies
-            // 
-            this.cmbReceiptCopies.BackColor = System.Drawing.Color.White;
-            this.cmbReceiptCopies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbReceiptCopies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbReceiptCopies.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbReceiptCopies.ForeColor = System.Drawing.Color.Black;
-            this.cmbReceiptCopies.FormattingEnabled = true;
-            this.cmbReceiptCopies.Location = new System.Drawing.Point(202, 154);
-            this.cmbReceiptCopies.MaxDropDownItems = 10;
-            this.cmbReceiptCopies.Name = "cmbReceiptCopies";
-            this.cmbReceiptCopies.Size = new System.Drawing.Size(372, 31);
-            this.cmbReceiptCopies.TabIndex = 97;
             // 
             // Devices
             // 

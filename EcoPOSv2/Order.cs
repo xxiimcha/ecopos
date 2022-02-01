@@ -543,12 +543,13 @@ namespace EcoPOSv2
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
                         SQL.AddParam("@quantity", quantity);
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive,selling_price_exclusive, quantity, discount,cost,terminal_id,is_vatable) 
-                                   SELECT productID, description, name, @type," + insert_type_query + ",0, @quantity, 0,cost,@terminal_id,is_vatable FROM products WHERE productID = @productID");
+                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive,selling_price_exclusive, quantity, base_price_inclusive, base_price_exclusive, discount,cost,terminal_id,is_vatable) 
+                                   SELECT productID, description, name, @type," + insert_type_query + ",0, @quantity, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), 0,cost, @terminal_id,is_vatable FROM products WHERE productID = @productID");
 
                         if (SQL.HasException(true))
                             return;
+
+
 
                         #region "customer display"
                         //customer display
@@ -1081,7 +1082,7 @@ namespace EcoPOSv2
 
                 if (SQL.HasException(true))
                 {
-                    MessageBox.Show("Error In Inserting VoidItem");
+                    MessageBox.Show("Error In Inserting Void Item");
                     return;
                 }
 

@@ -69,10 +69,61 @@ namespace EcoPOSv2
             }
 
             cmbPaperSize.Text = Properties.Settings.Default.papersize;
+
+            //Sets number of copies to print
+            int print_count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));
+            if (SQL.HasException(true))
+                return;
+
+            if (print_count_records == 1)
+            {
+                int printCopies = Convert.ToInt32(SQL.ReturnResult("SELECT number_of_copies FROM receipt_layout WHERE configuration_ID = 1"));
+                if (SQL.HasException(true))
+                    return;
+
+                if (printCopies==0)
+                {
+                    cmbReceiptCopies.SelectedIndex = 0;
+                }
+                else if (printCopies == 1)
+                {
+                    cmbReceiptCopies.SelectedIndex = 1;
+                }
+                else if (printCopies == 2)
+                {
+                    cmbReceiptCopies.SelectedIndex = 2;
+                }
+            }
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
         {
+            //Receipt number of copies to print
+            int printCopies = 0;
+            int print_count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));
+            if (SQL.HasException(true))
+                return;
+            if (print_count_records == 1)
+            {
+                if (cmbReceiptCopies.SelectedIndex == 0)
+                {
+                    printCopies = 0;
+                }else if (cmbReceiptCopies.SelectedIndex == 1)
+                {
+                    printCopies = 1;
+                }
+                else if (cmbReceiptCopies.SelectedIndex == 2)
+                {
+                    printCopies = 2;
+                }
+
+                SQL.AddParam("@printCopies", printCopies);
+                SQL.Query("UPDATE receipt_layout SET number_of_copies = @printCopies");
+                if (SQL.HasException(true))
+                    return;
+            }
+
+            
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM printers_devices where terminal_id=@terminal_id"));
             if (SQL.HasException(true))
