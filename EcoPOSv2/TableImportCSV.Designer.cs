@@ -41,6 +41,7 @@ namespace EcoPOSv2
             this.lblTotalNumberOfItems = new System.Windows.Forms.Label();
             this.lblImportedProducts = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pbLoad = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,11 +143,19 @@ namespace EcoPOSv2
             this.label4.TabIndex = 25;
             this.label4.Text = "Total of imported Item(s):";
             // 
+            // pbLoad
+            // 
+            this.pbLoad.Location = new System.Drawing.Point(0, 208);
+            this.pbLoad.Name = "pbLoad";
+            this.pbLoad.Size = new System.Drawing.Size(278, 23);
+            this.pbLoad.TabIndex = 27;
+            // 
             // TableImportCSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 196);
+            this.ClientSize = new System.Drawing.Size(278, 231);
+            this.Controls.Add(this.pbLoad);
             this.Controls.Add(this.lblImportedProducts);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblTotalNumberOfItems);
@@ -158,9 +167,9 @@ namespace EcoPOSv2
             this.Controls.Add(this.dgItems);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(294, 235);
+            this.MaximumSize = new System.Drawing.Size(294, 270);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(294, 235);
+            this.MinimumSize = new System.Drawing.Size(294, 270);
             this.Name = "TableImportCSV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableImportCSV";
@@ -183,5 +192,6 @@ namespace EcoPOSv2
         private System.Windows.Forms.Label lblTotalNumberOfItems;
         private System.Windows.Forms.Label lblImportedProducts;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ProgressBar pbLoad;
     }
 }

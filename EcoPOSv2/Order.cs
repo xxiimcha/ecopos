@@ -208,7 +208,8 @@ namespace EcoPOSv2
                     discount = 1300M;
 
 
-                lblItems.Text = r["Qty"].ToString();
+                decimal quantity = decimal.Parse(r["Qty"].ToString());
+                lblItems.Text = quantity.ToString("G29");
                 decimal subtotal = decimal.Parse(r["Subtotal"].ToString());
                 lblSubtotal.Text = subtotal.ToString("N2");
                 lblDiscount.Text = discount.ToString();

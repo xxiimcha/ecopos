@@ -96,7 +96,7 @@ namespace EcoPOSv2
         public bool rp_pay_gift_certificate = true;
 
         public bool by_pass_user = false;
-        public int by_pass_userID;
+        public int by_pass_userID = 0;
         public string by_pass_user_name = "";
 
         public bool bp_ord_payment = true;
@@ -427,9 +427,9 @@ namespace EcoPOSv2
 
         private void btnXReading_Click(object sender, EventArgs e)
         {
-            if(lblUser.Text == "Bypassed")
+            if(lblUser.Text == "Bypassed" || by_pass_userID != 0)
             {
-                MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please manually Log-in to your account.", "Account Currently Bypassed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

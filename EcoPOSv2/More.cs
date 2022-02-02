@@ -63,7 +63,11 @@ namespace EcoPOSv2
             {
                 return;
             }
-
+            if (Main.Instance.by_pass_userID != 0)
+            {
+                MessageBox.Show("Please manually Log-in to your account.", "Account Currently Bypassed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             SecureZReading s = new SecureZReading();
             s.ShowDialog();
 

@@ -43,6 +43,7 @@ namespace EcoPOSv2
                     txtFile.Text = ofd.FileName;
 
                     int numberofitems = dgItems.Rows.Count - 1;
+                    pbLoad.Maximum = numberofitems;
                     lblTotalNumberOfItems.Text = numberofitems.ToString();
                 }
             }
@@ -190,9 +191,10 @@ namespace EcoPOSv2
                 lblImportedProducts.Invoke(new System.Action(() => {
                     int total = i + 1;
                     lblImportedProducts.Text = total.ToString();
+                    pbLoad.Value = total;
+
                 }));
-
-
+                
                 SQL.AddParam("@name", dgItems.Rows[i].Cells[0].Value.ToString());
                 SQL.AddParam("@s_discR", dgItems.Rows[i].Cells[1].Value.ToString());
                 SQL.AddParam("@s_discPWD_SC", dgItems.Rows[i].Cells[2].Value.ToString());
@@ -226,6 +228,7 @@ namespace EcoPOSv2
                 lblImportedProducts.Invoke(new System.Action(() => {
                     int total = i + 1;
                     lblImportedProducts.Text = total.ToString();
+                    pbLoad.Value = total;
                 }));
 
 
