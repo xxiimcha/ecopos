@@ -204,8 +204,8 @@ namespace EcoPOSv2
                 }
 
                 discount = Convert.ToDecimal(r["Discount"].ToString());
-                if (Convert.ToDecimal(r["Discount"].ToString()) > 1300M & (check_if_PWDSC == 1 | check_if_PWDSC == 2))
-                    discount = 1300M;
+                //if (Convert.ToDecimal(r["Discount"].ToString()) > 1300M & (check_if_PWDSC == 1 | check_if_PWDSC == 2))
+                //    discount = 1300M;
 
 
                 decimal quantity = decimal.Parse(r["Qty"].ToString());
@@ -224,7 +224,7 @@ namespace EcoPOSv2
             if(lblDiscount.Text == "0.00")
             {
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0),0)".ToString()));
+                decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1),0)".ToString()));
 
                 lblVATSale.Text = vatsale.ToString("N2");
                 if (SQL.HasException(true))
@@ -233,7 +233,7 @@ namespace EcoPOSv2
             else
             {
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 0),0)".ToString()));
+                decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1) > 0,(SELECT SUM(selling_price_exclusive) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1) - (SELECT SUM(discount) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1),0)".ToString()));
 
                 lblVATSale.Text = vatsale.ToString("N2");
                 if (SQL.HasException(true))
@@ -241,7 +241,7 @@ namespace EcoPOSv2
             }
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1),0)".ToString()));
+            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(discount)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1),0)".ToString()));
 
             lblVATExempt.Text = vatexempt.ToString("N2");
 
@@ -255,7 +255,9 @@ namespace EcoPOSv2
                 decimal vat = 0;
 
                 total = decimal.Parse(lblTotal.Text);
-                vat_sale = decimal.Parse(lblVATSale.Text);
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                vat_sale = decimal.Parse(SQL.ReturnResult(@"SELECT SUM(selling_price_exclusive) FROM order_cart WHERE terminal_id = @terminal_id".ToString())) - vatexempt;
+
                 vat = decimal.Parse(lblVAT.Text);
 
                 lblDiscount.Text = regular_disc_amt.ToString();
@@ -269,7 +271,7 @@ namespace EcoPOSv2
                 decimal vatdisc = totalprice - totalvatdisc;
                 lblVAT.Text = vatdisc.ToString("N2");
 
-                decimal vatsaledisc = vat_sale - (regular_disc_amt / 1.12M);
+                decimal vatsaledisc = vat_sale;
                 lblVATSale.Text = vatsaledisc.ToString("N2");
             }
         }
@@ -546,7 +548,6 @@ namespace EcoPOSv2
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                         SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive,selling_price_exclusive, quantity, base_price_inclusive, base_price_exclusive, discount,cost,terminal_id,is_vatable) 
                                    SELECT productID, description, name, @type," + insert_type_query + ",0, @quantity, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), 0,cost, @terminal_id,is_vatable FROM products WHERE productID = @productID");
-
                         if (SQL.HasException(true))
                             return;
 

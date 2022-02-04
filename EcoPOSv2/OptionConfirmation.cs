@@ -59,7 +59,7 @@ namespace EcoPOSv2
                 }
                 else
                 {
-                    type_query = " rp_exclusive, rp_tax, rp_inclusive";
+                    type_query = "rp_exclusive, rp_tax, rp_inclusive";
                 }
 
                 if (!dr["customerID"].ToString().Equals("0")) //Check if customer was set
@@ -103,8 +103,8 @@ namespace EcoPOSv2
                 SQL.AddParam("@quantity", dr["quantity"]);
                 SQL.AddParam("@discount", dr["discount"]);
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id,is_vatable) 
-                       SELECT productID, description, name, @type," + type_query + ", @quantity, @discount, cost, @terminal_id,is_vatable FROM products WHERE productID = @productID");
+                SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, selling_price_exclusive, quantity, disc_percent, cost, terminal_id, is_vatable,base_price_inclusive, base_price_exclusive, discount, is_disc_percent) 
+                       SELECT productID, description, name, @type," + type_query + ", 0, @quantity, @discount, cost, @terminal_id,is_vatable, IIF(@type = 'R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), 0 , IIF(@discount > 0, 1, 0) FROM products WHERE productID = @productID");
                 if (SQL.HasException(true)) return;
             }
 

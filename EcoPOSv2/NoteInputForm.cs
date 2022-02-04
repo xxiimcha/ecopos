@@ -51,7 +51,7 @@ namespace EcoPOSv2
 
                             Order.Instance.lblCustomer.Text = "Name";
                         }
-                        KeepItem keepItem = new KeepItem(int.Parse(dr["terminal_id"].ToString()), int.Parse(dr["productID"].ToString()), dr["type"].ToString(), Convert.ToInt32(Convert.ToDouble(dr["quantity"].ToString())), Convert.ToDecimal(dr["discount"].ToString()), customerID);
+                        KeepItem keepItem = new KeepItem(int.Parse(dr["terminal_id"].ToString()), int.Parse(dr["productID"].ToString()), dr["type"].ToString(), Convert.ToInt32(Convert.ToDouble(dr["quantity"].ToString())), Convert.ToDecimal(dr["disc_percent"].ToString()), customerID);
                         itemToKeep.Add(keepItem);
                     }
 

@@ -43,7 +43,7 @@ namespace EcoPOSv2
                     txtFile.Text = ofd.FileName;
 
                     int numberofitems = dgItems.Rows.Count - 1;
-                    pbLoad.Maximum = numberofitems;
+                    pbLoad.Maximum = numberofitems > 0 ? numberofitems : 100;
                     lblTotalNumberOfItems.Text = numberofitems.ToString();
                 }
             }

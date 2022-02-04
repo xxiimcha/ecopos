@@ -72,7 +72,7 @@ namespace EcoPOSv2
                     case 1: // show options
                         {
                             DVOptions frmDVOptions = new DVOptions();
-                            frmDVOptions.login = 1;
+                            frmDVOptions.login = 2;
                             frmDVOptions.Show();
                             break;
                         }
