@@ -176,6 +176,8 @@ namespace EcoPOSv2
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
+                        report.SetParameterValue("Terminal_No", r["terminal_id"].ToString());
+                        report.SetParameterValue("machine_no", r["terminal_id"].ToString());
                         report.SetParameterValue("zreading_ref_temp", r["dis_zreading_ref_temp"].ToString());
                         report.SetParameterValue("store_open_date_time", r["start_date_time"].ToString());
                         report.SetParameterValue("store_open_user_name", r["store_open_user_name"].ToString());
@@ -256,6 +258,8 @@ namespace EcoPOSv2
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
+                        report80.SetParameterValue("Terminal_No", r["terminal_id"].ToString());
+                        report80.SetParameterValue("machine_no", r["terminal_id"].ToString());
                         report80.SetParameterValue("zreading_ref_temp", r["dis_zreading_ref_temp"].ToString());
                         report80.SetParameterValue("store_open_date_time", r["start_date_time"].ToString());
                         report80.SetParameterValue("store_open_user_name", r["store_open_user_name"].ToString());

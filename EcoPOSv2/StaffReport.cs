@@ -931,7 +931,9 @@ namespace EcoPOSv2
                             total = decimal.Parse(r["total"].ToString());
                         }
 
-                        if (r["Deductions"].ToString() == "")
+                        MessageBox.Show(r["Deductions"].ToString());
+
+                        if (r["Deductions"].ToString() == null || r["Deductions"].ToString() == "NULL" || r["Deductions"].ToString() == "")
                         {
                             deductions = 0;
                         }
@@ -940,7 +942,7 @@ namespace EcoPOSv2
                             deductions = decimal.Parse(r["Deductions"].ToString());
                         }
 
-                        report.SetParameterValue("Deductions", deductions.ToString("N2"));
+                        report.SetParameterValue("Deductions", deductions.ToString("N2"), "ItemSold");
                         report.SetParameterValue("no_of_items", no_of_items, "ItemSold");
                         report.SetParameterValue("total", total.ToString("N2"), "ItemSold");
                     }
@@ -949,6 +951,7 @@ namespace EcoPOSv2
                 {
                     report.SetParameterValue("no_of_items", "0.00", "ItemSold");
                     report.SetParameterValue("total", "0.00", "ItemSold");
+                    report.SetParameterValue("Deductions", "0.00", "ItemSold");
                 }
 
                 #endregion
