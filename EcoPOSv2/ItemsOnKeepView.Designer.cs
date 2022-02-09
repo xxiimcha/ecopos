@@ -32,6 +32,7 @@ namespace EcoPOSv2
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvKeep = new Guna.UI2.WinForms.Guna2DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,13 +56,14 @@ namespace EcoPOSv2
             this.dgvKeep.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvKeep.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvKeep.ColumnHeadersHeight = 27;
+            this.dgvKeep.ColumnHeadersHeight = 35;
             this.dgvKeep.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvKeep.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
@@ -79,8 +81,18 @@ namespace EcoPOSv2
             this.dgvKeep.EnableHeadersVisualStyles = false;
             this.dgvKeep.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvKeep.Location = new System.Drawing.Point(1, 1);
+            this.dgvKeep.Margin = new System.Windows.Forms.Padding(5);
             this.dgvKeep.Name = "dgvKeep";
             this.dgvKeep.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKeep.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvKeep.RowHeadersVisible = false;
             this.dgvKeep.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvKeep.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -99,7 +111,7 @@ namespace EcoPOSv2
             this.dgvKeep.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvKeep.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvKeep.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvKeep.ThemeStyle.HeaderStyle.Height = 27;
+            this.dgvKeep.ThemeStyle.HeaderStyle.Height = 35;
             this.dgvKeep.ThemeStyle.ReadOnly = true;
             this.dgvKeep.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvKeep.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -109,6 +121,7 @@ namespace EcoPOSv2
             this.dgvKeep.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvKeep.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvKeep.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKeep_CellDoubleClick);
+            this.dgvKeep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvKeep_KeyDown);
             // 
             // name
             // 
@@ -136,12 +149,12 @@ namespace EcoPOSv2
             this.btnCLose.BackColor = System.Drawing.Color.Gainsboro;
             this.btnCLose.IconColor = System.Drawing.Color.Black;
             this.btnCLose.IconSize = 15F;
-            this.btnCLose.Location = new System.Drawing.Point(817, 1);
+            this.btnCLose.Location = new System.Drawing.Point(813, 1);
             this.btnCLose.Name = "btnCLose";
             this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;
             this.btnCLose.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCLose.Size = new System.Drawing.Size(32, 27);
+            this.btnCLose.Size = new System.Drawing.Size(36, 35);
             this.btnCLose.TabIndex = 57;
             // 
             // ItemsOnKeepView

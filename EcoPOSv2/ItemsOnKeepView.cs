@@ -53,6 +53,11 @@ namespace EcoPOSv2
 
         private void dgvKeep_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            ShowOptions();
+        }
+
+        private void ShowOptions()
+        {
             String name = "";
             foreach (DataGridViewRow row in dgvKeep.SelectedRows)
             {
@@ -65,6 +70,14 @@ namespace EcoPOSv2
         private void ItemsOnKeepView_Load(object sender, EventArgs e)
         {
             _itemsOnKeep = this;
+        }
+
+        private void dgvKeep_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && dgvKeep.SelectedRows.Count == 1)
+            {
+                ShowOptions();
+            }
         }
     }
 }

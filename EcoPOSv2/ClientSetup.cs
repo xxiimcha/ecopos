@@ -63,6 +63,8 @@ namespace EcoPOSv2
                 Properties.Settings.Default.isBirAccredited = false;
                 Properties.Settings.Default.Save();
             }
+
+            new Notification().PopUp("Setup Settings Saved", "Success", "success");
         }
 
         private void ClientSetup_Load(object sender, EventArgs e)

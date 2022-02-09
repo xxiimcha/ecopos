@@ -931,8 +931,6 @@ namespace EcoPOSv2
                             total = decimal.Parse(r["total"].ToString());
                         }
 
-                        MessageBox.Show(r["Deductions"].ToString());
-
                         if (r["Deductions"].ToString() == null || r["Deductions"].ToString() == "NULL" || r["Deductions"].ToString() == "")
                         {
                             deductions = 0;

@@ -232,6 +232,8 @@ namespace EcoPOSv2
                 Properties.Settings.Default.priceeditor = false;
                 Properties.Settings.Default.Save();
             }
+
+            new Notification().PopUp("Features Settings Saved", "Success", "success");
         }
     }
 }

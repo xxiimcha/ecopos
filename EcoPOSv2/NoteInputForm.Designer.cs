@@ -118,6 +118,7 @@ namespace EcoPOSv2
             this.Name = "NoteInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Input Note";
+            this.Load += new System.EventHandler(this.NoteInputForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

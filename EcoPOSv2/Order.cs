@@ -1190,7 +1190,7 @@ namespace EcoPOSv2
             }
             else
             {
-                MessageBox.Show("There are no items in the cart.");
+                new Notification().PopUp("There are no items in the cart.", "Error!", "error");
             }
         }
 

@@ -75,7 +75,7 @@ namespace EcoPOSv2
                     }
                     else
                     {
-                        MessageBox.Show("Name already listed on keep.");
+                        new Notification().PopUp("Name already listed on keep.", "Error", "error");
                     }
                 }
             }
@@ -97,6 +97,15 @@ namespace EcoPOSv2
             {
                 btnKeep.PerformClick();
             }
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void NoteInputForm_Load(object sender, EventArgs e)
+        {
+            txtInputNote.Focus();
         }
     }
 }
