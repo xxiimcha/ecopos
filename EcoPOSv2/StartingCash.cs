@@ -137,16 +137,39 @@ namespace EcoPOSv2
                     }
 
                     // start order no
+
+
                     sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    sql.Query("INSERT INTO order_no (order_no, terminal_id) VALUES (1, @terminal_id)");
-
-                    if (sql.HasException(true))
+                    if (sql.ReturnResult("SELECT COUNT(order_ref) FROM order_no").Equals("0"))
                     {
-                        MessageBox.Show("Error in Start Order no");
-                        return;
+                        sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        sql.Query("INSERT INTO order_no (order_no, terminal_id) VALUES (1, @terminal_id)");
+
+                        if (sql.HasException(true))
+                        {
+                            MessageBox.Show("Error in Start Order no");
+                            return;
+                        }
                     }
-                        
+                    else
+                    {
+                        sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        int order_ref = int.Parse(sql.ReturnResult("SELECT MAX(order_ref) FROM order_no WHERE terminal_id = @terminal_id"));
+                        sql.Query("SELECT order_ref FROM transaction_items WHERE order_ref = " + order_ref + " ");
+                        if (sql.HasException(true)) return;
+                        if (sql.DBDT.Rows.Count == 1)
+                        {
+                            sql.Query("INSERT INTO order_no (order_no, terminal_id) VALUES (1, @terminal_id)");
+
+                            if (sql.HasException(true))
+                            {
+                                MessageBox.Show("Error in Start Order no");
+                                return;
+                            }
+                        }
+                    }
+                   
                 }
 
 

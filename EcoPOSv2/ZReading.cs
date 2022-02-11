@@ -453,7 +453,7 @@ namespace EcoPOSv2
             SQL.AddParam("@store_open_date_time", store_open_date_time);
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-            decimal starting_cash = Convert.ToDecimal(SQL.ReturnResult("SELECT SUM(starting_cash) FROM shift WHERE terminal_id=@terminal_id AND start > '@store_open_date_time' "));
+            decimal starting_cash = Convert.ToDecimal(SQL.ReturnResult("SELECT SUM(starting_cash) FROM shift WHERE terminal_id=@terminal_id AND start > @store_open_date_time "));
 
             if (SQL.HasException(true))
                 return;
