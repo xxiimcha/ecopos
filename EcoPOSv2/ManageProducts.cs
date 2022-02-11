@@ -1425,22 +1425,22 @@ namespace EcoPOSv2
 
         private void CbxVatable_CheckedChanged(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.vatnonvat == true)
-            {
-                if (cbxVatable.Checked == false)
-                {
-                    cbxDiscPWD.Checked = false;
-                    cbxDiscPWD.Enabled = false;
+            //if(Properties.Settings.Default.vatnonvat == true)
+            //{
+            //    if (cbxVatable.Checked == false)
+            //    {
+            //        cbxDiscPWD.Checked = false;
+            //        cbxDiscPWD.Enabled = false;
 
-                    cbxDiscAthlete.Checked = false;
-                    cbxDiscAthlete.Enabled = false;
-                }
-                else
-                {
-                    cbxDiscPWD.Enabled = true;
-                    cbxDiscAthlete.Enabled = true;
-                }
-            }
+            //        cbxDiscAthlete.Checked = false;
+            //        cbxDiscAthlete.Enabled = false;
+            //    }
+            //    else
+            //    {
+            //        cbxDiscPWD.Enabled = true;
+            //        cbxDiscAthlete.Enabled = true;
+            //    }
+            //}
         }
 
         private void txtCat_SearchCategory_KeyUp(object sender, KeyEventArgs e)

@@ -241,7 +241,7 @@ namespace EcoPOSv2
             }
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(discount)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1),0)".ToString()));
+            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_inclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1),0)".ToString()));
 
             lblVATExempt.Text = vatexempt.ToString("N2");
 
@@ -268,9 +268,11 @@ namespace EcoPOSv2
                 decimal totalprice = decimal.Parse(lblTotal.Text);
                 decimal totalvatdisc = decimal.Parse(lblTotal.Text) / 1.12M;
 
+                //shows Vat
                 decimal vatdisc = totalprice - totalvatdisc;
                 lblVAT.Text = vatdisc.ToString("N2");
 
+                //shows vatable sales
                 decimal vatsaledisc = vat_sale;
                 lblVATSale.Text = vatsaledisc.ToString("N2");
             }
