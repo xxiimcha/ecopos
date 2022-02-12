@@ -241,12 +241,21 @@ namespace EcoPOSv2
             }
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            decimal vatexempt = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_inclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vat_exempt = 1),0)".ToString()));
-
-            lblVATExempt.Text = vatexempt.ToString("N2");
-
+            decimal vatexempt_nonvat = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 0) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_inclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 0),0)".ToString()));
             if (SQL.HasException(true))
                 return;
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            decimal vatexempt_vatdiscount = decimal.Parse(SQL.ReturnResult(@"SELECT IIF
+                ((SELECT COUNT(*) FROM order_cart WHERE terminal_id=0 AND is_vatable = 1 AND is_vat_exempt = 1) > 0,
+                (SELECT CONVERT(DECIMAL(18,2), SUM(discount)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1 AND is_vat_exempt = 1)
+                ,0)".ToString()));
+            if (SQL.HasException(true))
+                return;
+
+            lblVATExempt.Text = (vatexempt_nonvat + vatexempt_vatdiscount).ToString("N2");
+
+        
 
             if (apply_regular_discount_fix_amt)
             {
@@ -256,12 +265,16 @@ namespace EcoPOSv2
 
                 total = decimal.Parse(lblTotal.Text);
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                vat_sale = decimal.Parse(SQL.ReturnResult(@"SELECT SUM(selling_price_exclusive) FROM order_cart WHERE terminal_id = @terminal_id".ToString())) - vatexempt;
+                vat_sale = decimal.Parse(SQL.ReturnResult(@"SELECT SUM(selling_price_exclusive) FROM order_cart WHERE terminal_id = @terminal_id".ToString())) - vatexempt_vatdiscount;
+                if (SQL.HasException(true))
+                    return;
 
                 vat = decimal.Parse(lblVAT.Text);
 
+                //shows discount
                 lblDiscount.Text = regular_disc_amt.ToString();
 
+                //shows total
                 decimal totaldisc = total - regular_disc_amt;
                 lblTotal.Text = totaldisc.ToString("N2");
 
