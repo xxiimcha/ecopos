@@ -22,7 +22,7 @@ namespace EcoPOSv2
         public string order_ref_temp, order_ref;
 
         SQLControl SQL = new SQLControl();
-
+        decimal currentQuantity = 0;
         PaymentReceipt58 report = new PaymentReceipt58();
         PaymentReceipt80 report80 = new PaymentReceipt80();
         public static VoidTransaction_UI _VoidTransaction_UI;
@@ -118,14 +118,10 @@ namespace EcoPOSv2
 
                 try
                 {
-                    SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, 
-                                                         (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items
-                                                         INNER JOIN transaction_details ON transaction_details.order_ref = transaction_items.order_ref
-                                                         WHERE transaction_details.order_ref_temp = " + order_ref_temp, SQL.DBCon);
+                    SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT quantity, description, static_price_inclusive as static_price_inclusive, selling_price_inclusive as selling_price_inclusive FROM transaction_items    INNER JOIN transaction_details ON transaction_details.order_ref = transaction_items.order_ref  WHERE transaction_details.order_ref_temp = " + order_ref_temp, SQL.DBCon);
                     SQL.DBDA.Fill(ds, "transaction_items");
 
                     report.SetDataSource(ds);
-
                     SQL.AddParam("@terminal_id", terminalNo);
                     SQL.AddParam("@order_ref_temp", order_ref_temp);
                     SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
@@ -622,7 +618,7 @@ namespace EcoPOSv2
                 SQL.AddParam("@itemID", dr.Cells[1].Value);
                 SQL.AddParam("@terminal_id", terminalNo);
 
-                SQL.Query("SELECT productID, quantity FROM transaction_items WHERE terminal_id=@terminal_id AND order_ref = @order_ref AND itemID=@itemID");
+                SQL.Query("SELECT productID, quantity,order_ref FROM transaction_items WHERE terminal_id=@terminal_id AND order_ref = @order_ref AND itemID=@itemID");
                 if (SQL.HasException(true))
                 {
                     MessageBox.Show("3");
@@ -642,20 +638,21 @@ namespace EcoPOSv2
                     }
 
                     // save to void item
-                    //SQL.AddParam("@productID", r["productID"].ToString());
-                    //SQL.AddParam("@userID", Main.Instance.current_id);
+                    SQL.AddParam("@productID", r["productID"].ToString());
+                    SQL.AddParam("@userID", Main.Instance.current_id);
+                    SQL.AddParam("@order_ref", r["order_ref"].ToString());
 
-                    //SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
-                    //   static_price_vat, static_price_inclusive, quantity, userID) SELECT itemID, productID, 
-                    //   (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
-                    //   name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID
-                    //   FROM order_cart WHERE productID = @productID");
+                    SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
+                       static_price_vat, static_price_inclusive, quantity, userID) SELECT itemID, productID, 
+                       (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
+                       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID
+                       FROM transaction_items WHERE itemID = @productID AND order_ref = @order_ref");
 
-                    //if (SQL.HasException(true))
-                    //{
-                    //    MessageBox.Show("5");
-                    //    return;
-                    //}
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("5");
+                        return;
+                    }
                 }
 
                 //UPDATE PROFIT
@@ -737,12 +734,14 @@ namespace EcoPOSv2
                     MessageBox.Show("10");
                     return;
                 }
+                SQL.AddParam("@order_ref", order_ref);
+                SQL.AddParam("@itemID", dr.Cells[1].Value);
+                currentQuantity = decimal.Parse(SQL.ReturnResult("SELECT quantity FROM transaction_items WHERE order_ref=@order_ref AND itemID=@itemID "));
 
                 SQL.AddParam("@order_ref", order_ref);
                 SQL.AddParam("@itemID", dr.Cells[1].Value);
                 SQL.AddParam("@terminal_id", terminalNo);
-
-                SQL.Query("UPDATE transaction_items set quantity=0 where terminal_id=@terminal_id AND order_ref=@order_ref AND itemID=@itemID");
+                SQL.Query("UPDATE transaction_items set quantity=(-1 * quantity) where terminal_id=@terminal_id AND order_ref=@order_ref AND itemID=@itemID");
                 if (SQL.HasException(true))
                 {
                     MessageBox.Show("11");
@@ -758,7 +757,7 @@ namespace EcoPOSv2
             SQL.AddParam("@MainTotal", lblCashReturn.Text);
             SQL.AddParam("@terminal_id", terminalNo);
 
-            SQL.Query("UPDATE transaction_details set no_of_items=(no_of_items-@quantity),subtotal=(subtotal-@MainTotal),total=(total-@MainTotal),grand_total=(grand_total-@MainTotal),payment_amt=(payment_amt-@MainTotal),vat_12=0,vat_exempt_sale=0,disc_amt=0 where terminal_id=@terminal_id AND order_ref=@order_ref");
+            SQL.Query("UPDATE transaction_details set subtotal=(subtotal-@MainTotal),total=(total-@MainTotal),grand_total=(grand_total-@MainTotal),payment_amt=(payment_amt-@MainTotal),vat_12=0,vat_exempt_sale=0,disc_amt=0 where terminal_id=@terminal_id AND order_ref=@order_ref");
             if (SQL.HasException(true))
             {
                 MessageBox.Show("12");

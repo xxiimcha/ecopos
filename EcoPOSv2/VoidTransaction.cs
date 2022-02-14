@@ -103,6 +103,7 @@ namespace EcoPOSv2
                 MessageBox.Show("1");
                 return;
             }
+
             if(SQL.DBDT.Rows.Count == 0)
             {
                 new Notification().PopUp("This OR no is not valid.", "Error", "error");
