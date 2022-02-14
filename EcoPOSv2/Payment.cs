@@ -410,21 +410,51 @@ namespace EcoPOSv2
                 {
                     try
                     {
+                        report.PrintOptions.NoPrinter = false;
                         report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
                         report.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                        report.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                         report.PrintToPrinter(1, false, 0, 0);
                     }
-                    catch (Exception) { }
+                    catch (Exception) {
+                        report.PrintOptions.NoPrinter = false;
+                        report.PrintOptions.PrinterName ="Microsoft Print to PDF";
+                        report.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                        report.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                        report.PrintToPrinter(1, false, 0, 0);
+                    }
+                    finally
+                    {
+                        if (report.IsLoaded)
+                        {
+                            report.Close();
+                        }
+                    }
                 }
                 else
                 {
                     try
                     {
+                        report80.PrintOptions.NoPrinter = false;
                         report80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
                         report80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                        report80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                         report80.PrintToPrinter(1, false, 0, 0);
                     }
-                    catch (Exception) { }
+                    catch (Exception) {
+                        report80.PrintOptions.NoPrinter = false;
+                        report80.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                        report80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                        report80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                        report80.PrintToPrinter(1, false, 0, 0);
+                    }
+                    finally
+                    {
+                        if (report80.IsLoaded)
+                        {
+                            report80.Close();
+                        }
+                    }
                 }
             }
         }

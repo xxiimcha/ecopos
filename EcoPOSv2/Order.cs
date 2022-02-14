@@ -247,7 +247,7 @@ namespace EcoPOSv2
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             decimal vatexempt_vatdiscount = decimal.Parse(SQL.ReturnResult(@"SELECT IIF
-                ((SELECT COUNT(*) FROM order_cart WHERE terminal_id=0 AND is_vatable = 1 AND is_vat_exempt = 1) > 0,
+                ((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1 AND is_vat_exempt = 1) > 0,
                 (SELECT CONVERT(DECIMAL(18,2), SUM(discount)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1 AND is_vat_exempt = 1)
                 ,0)".ToString()));
             if (SQL.HasException(true))
