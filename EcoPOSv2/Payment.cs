@@ -384,7 +384,7 @@ namespace EcoPOSv2
                         PChange pchange = new PChange();
 
                         pchange.lblChange.Text = lblChange.Text;
-                        pchange.Show();
+                        pchange.ShowDialog();
 
 
                         //temporary
