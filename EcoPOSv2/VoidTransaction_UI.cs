@@ -646,7 +646,7 @@ namespace EcoPOSv2
                        static_price_vat, static_price_inclusive, quantity, userID) SELECT itemID, productID, 
                        (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
                        name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID
-                       FROM transaction_items WHERE itemID = @productID AND order_ref = @order_ref");
+                       FROM transaction_items WHERE productID = @productID AND order_ref = @order_ref");
 
                     if (SQL.HasException(true))
                     {

@@ -51,7 +51,7 @@ namespace EcoPOSv2
             {
                 SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
 
-                SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', CAST(i.stock_qty AS INT) as 'Stock' FROM products as p 
+                SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
                        INNER JOIN inventory as i ON p.productID = i.productID
                        WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
 
