@@ -100,8 +100,6 @@ namespace EcoPOSv2
             Order.Instance.regular_disc_amt = 0;
             Order.Instance.is_refund = false;
             Order.Instance.is_return = false;
-
-
             Dispose();
         }
 
@@ -110,11 +108,13 @@ namespace EcoPOSv2
             if(e.KeyCode == Keys.Enter)
             {
                 PChange.Instance.btnConfirm.PerformClick();
+                Order.Instance.btnPayment.Enabled = true;
             }
 
             if(e.KeyCode == Keys.Escape)
             {
                 PChange.Instance.btnConfirm.PerformClick();
+                Order.Instance.btnPayment.Enabled = true;
             }
         }
     }

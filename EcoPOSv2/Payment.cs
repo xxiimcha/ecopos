@@ -384,7 +384,7 @@ namespace EcoPOSv2
                         PChange pchange = new PChange();
 
                         pchange.lblChange.Text = lblChange.Text;
-                        pchange.ShowDialog();
+                        pchange.Show();
 
 
                         //temporary
@@ -471,7 +471,7 @@ namespace EcoPOSv2
         }
         private void btnPay_Click(object sender, EventArgs e)
         {
-            int max_invoice = int.Parse(SQL.ReturnResult("SELECT MAX(order_ref_temp) FROM transaction_details"));
+            int max_invoice = int.Parse(SQL.ReturnResult("SELECT IIF( (SELECT COUNT(order_ref_temp) FROM transaction_details) > 0,(SELECT MAX(order_ref_temp) FROM transaction_details),0)"));
 
 
             if (txtAmount.Text == "") return;
