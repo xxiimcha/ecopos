@@ -50,15 +50,18 @@ namespace EcoPOSv2
 
         public void Advance_OrderNo()
         {
+
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query(@"INSERT INTO order_no (order_no)
-                       SELECT (order_no + 1) FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no)");
+            SQL.Query(@"INSERT INTO order_no (order_no, terminal_id)
+                       SELECT (order_no + 1), @terminal_id FROM order_no
+            WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
 
             if (SQL.HasException(true))
                 return;
 
-            frmOrder.LoadOrderNo();
+            Order.Instance.LoadOrderNo();
         }
+
         private void GenerateReceipt()
         {
             bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
@@ -385,7 +388,7 @@ namespace EcoPOSv2
 
                         pchange.lblChange.Text = lblChange.Text;
                         pchange.Show();
-
+                        pchange.Focus();
 
                         //temporary
                         this.Close();
@@ -754,7 +757,12 @@ namespace EcoPOSv2
             #endregion
 
             //this.Close();
+
+            Advance_OrderNo();
+
+
         }
+
 
         private void btnRemoveGC_Click(object sender, EventArgs e)
         {

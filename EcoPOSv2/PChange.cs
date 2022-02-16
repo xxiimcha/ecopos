@@ -42,7 +42,7 @@ namespace EcoPOSv2
             FormLoad Fl = new FormLoad();
             Fl.CusDisplay("CHANGE:", lblChange.Text);
 
-
+            Main.Instance.Enabled = false;
             btnConfirm.Focus();
         }
         private void btnReprint_Click(object sender, EventArgs e)
@@ -64,18 +64,7 @@ namespace EcoPOSv2
                 //btnConfirm.PerformClick();
             }
         }
-        public void Advance_OrderNo()
-        {
-
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query(@"INSERT INTO order_no (order_no, terminal_id)
-                       SELECT (order_no + 1), @terminal_id FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
-
-            if (SQL.HasException(true))
-                return;
-
-            Order.Instance.LoadOrderNo();
-        }
+        
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             FormLoad Fl = new FormLoad();
@@ -85,7 +74,7 @@ namespace EcoPOSv2
             //Order.Instance.btnCustomer.Enabled = true;
             //Order.Instance.btnQuantity.Enabled = true;
 
-            Advance_OrderNo();
+            
             Order.Instance.LoadOrder();
             Order.Instance.GetTotal();
             Order.Instance.LoadOrderNo();
@@ -100,6 +89,8 @@ namespace EcoPOSv2
             Order.Instance.regular_disc_amt = 0;
             Order.Instance.is_refund = false;
             Order.Instance.is_return = false;
+            Main.Instance.Enabled = true;
+
             Dispose();
         }
 
@@ -108,13 +99,11 @@ namespace EcoPOSv2
             if(e.KeyCode == Keys.Enter)
             {
                 PChange.Instance.btnConfirm.PerformClick();
-                Order.Instance.btnPayment.Enabled = true;
             }
 
             if(e.KeyCode == Keys.Escape)
             {
                 PChange.Instance.btnConfirm.PerformClick();
-                Order.Instance.btnPayment.Enabled = true;
             }
         }
     }

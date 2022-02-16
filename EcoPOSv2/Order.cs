@@ -411,7 +411,7 @@ namespace EcoPOSv2
                     frmPayment.cbxUsePoints.Enabled = false;
                     frmPayment.cmbMethod.Enabled = false;
                 }
-                frmPayment.Show(this);
+                frmPayment.ShowDialog(this);
 
                 FormLoad Fl = new FormLoad();
                 Fl.CusDisplay("TOTAL:", frmPayment.lblGrandTotal.Text);

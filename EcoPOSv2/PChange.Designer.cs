@@ -47,10 +47,11 @@
             this.guna2Panel1.Controls.Add(this.btnReprint);
             this.guna2Panel1.Controls.Add(this.lblChange);
             this.guna2Panel1.Controls.Add(this.Label9);
-            this.guna2Panel1.Location = new System.Drawing.Point(2, 1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(535, 214);
+            this.guna2Panel1.Size = new System.Drawing.Size(548, 216);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnConfirm
@@ -67,7 +68,7 @@
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(275, 141);
+            this.btnConfirm.Location = new System.Drawing.Point(279, 141);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(257, 57);
@@ -90,7 +91,7 @@
             this.btnReprint.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnReprint.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnReprint.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnReprint.Location = new System.Drawing.Point(10, 141);
+            this.btnReprint.Location = new System.Drawing.Point(12, 141);
             this.btnReprint.Name = "btnReprint";
             this.btnReprint.ShadowDecoration.Parent = this.btnReprint;
             this.btnReprint.Size = new System.Drawing.Size(257, 57);
@@ -104,9 +105,9 @@
             this.lblChange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblChange.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChange.ForeColor = System.Drawing.Color.Green;
-            this.lblChange.Location = new System.Drawing.Point(10, 54);
+            this.lblChange.Location = new System.Drawing.Point(12, 60);
             this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(522, 66);
+            this.lblChange.Size = new System.Drawing.Size(524, 66);
             this.lblChange.TabIndex = 42;
             this.lblChange.Text = "0.00";
             this.lblChange.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -116,7 +117,7 @@
             this.Label9.AutoSize = true;
             this.Label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label9.ForeColor = System.Drawing.Color.Green;
-            this.Label9.Location = new System.Drawing.Point(10, 8);
+            this.Label9.Location = new System.Drawing.Point(10, 12);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(97, 32);
             this.Label9.TabIndex = 41;
@@ -132,7 +133,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(539, 216);
+            this.ClientSize = new System.Drawing.Size(548, 216);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
