@@ -43,7 +43,7 @@ namespace EcoPOSv2
             Fl.CusDisplay("CHANGE:", lblChange.Text);
 
             Main.Instance.Enabled = false;
-            btnConfirm.Focus();
+            Focus();
         }
         private void btnReprint_Click(object sender, EventArgs e)
         {
@@ -98,12 +98,12 @@ namespace EcoPOSv2
         {
             if(e.KeyCode == Keys.Enter)
             {
-                PChange.Instance.btnConfirm.PerformClick();
+                btnConfirm.PerformClick();
             }
 
             if(e.KeyCode == Keys.Escape)
             {
-                PChange.Instance.btnConfirm.PerformClick();
+                btnConfirm.PerformClick();
             }
         }
     }

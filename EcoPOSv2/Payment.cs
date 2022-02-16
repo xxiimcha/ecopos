@@ -229,14 +229,7 @@ namespace EcoPOSv2
                             catch (Exception) { }
                         }
 
-                        PChange pchange = new PChange();
-
-                        pchange.lblChange.Text = lblChange.Text;
-                        pchange.Show();
-
-
-                        //temporary
-                        this.Close();
+                      
                     }
                     catch (Exception ex)
                     {
@@ -384,14 +377,7 @@ namespace EcoPOSv2
                             catch (Exception) { }
                         }
 
-                        PChange pchange = new PChange();
-
-                        pchange.lblChange.Text = lblChange.Text;
-                        pchange.Show();
-                        pchange.Focus();
-
-                        //temporary
-                        this.Close();
+                        
                     }
                     catch (Exception ex)
                     {
@@ -755,12 +741,15 @@ namespace EcoPOSv2
             //frmOrder.is_return = false;
 
             #endregion
-
-            //this.Close();
-
             Advance_OrderNo();
 
+            //this.Close();
+            PChange pchange = new PChange();
 
+            pchange.lblChange.Text = lblChange.Text;
+            pchange.ShowDialog();
+            //temporary
+            this.Close();
         }
 
 
