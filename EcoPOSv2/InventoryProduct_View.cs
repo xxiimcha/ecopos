@@ -66,7 +66,7 @@ namespace EcoPOSv2
                         SQL.AddParam("@ProductID", productID);
                         SQL.AddParam("@dateFrom", dtpFrom.Value.ToString());
                         SQL.AddParam("@dateTo", dtpTo.Value.ToString());
-                        SQL.Query(@"select CONVERT(DECIMAL(10,2),(ti.selling_price_inclusive/ti.static_price_inclusive)*1) as 'Quantity',ti.selling_price_inclusive as 'Price',td.date_time as 'DateTime' from transaction_items as ti INNER JOIN transaction_details as td ON td.order_ref = ti.order_ref where ti.productID = @productID AND td.date_time BETWEEN
+                        SQL.Query(@"select ti.quantity as 'Quantity',ti.selling_price_inclusive as 'Price',td.date_time as 'DateTime' from transaction_items as ti INNER JOIN transaction_details as td ON td.order_ref = ti.order_ref where ti.productID = @productID AND td.date_time BETWEEN
                                                           @dateFrom AND @dateTo AND ti.selling_price_inclusive >= 0 ORDER BY td.date_time desc");
 
                         if (SQL.HasException(true)) return;
@@ -115,7 +115,7 @@ namespace EcoPOSv2
                         SQL.AddParam("@ProductID", productID);
                         SQL.AddParam("@dateFrom", dtpFrom.Value.ToString());
                         SQL.AddParam("@dateTo", dtpTo.Value.ToString());
-                        SQL.Query(@"select CONVERT(DECIMAL(10,2),(ti.selling_price_inclusive/ti.static_price_inclusive)*1) as 'Quantity',ABS(ti.selling_price_inclusive) as 'Price',td.date_time as 'DateTime' from transaction_items as ti INNER JOIN transaction_details as td ON td.order_ref = ti.order_ref where ti.productID = @productID AND td.date_time BETWEEN
+                        SQL.Query(@"select ti.quantity as 'Quantity',ABS(ti.selling_price_inclusive) as 'Price',td.date_time as 'DateTime' from transaction_items as ti INNER JOIN transaction_details as td ON td.order_ref = ti.order_ref where ti.productID = @productID AND td.date_time BETWEEN
                                                           @dateFrom AND @dateTo AND ti.selling_price_inclusive < 0 ORDER BY td.date_time desc");
 
                         if (SQL.HasException(true)) return;
