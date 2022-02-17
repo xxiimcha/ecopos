@@ -48,10 +48,8 @@ namespace EcoPOSv2
         private void btnReprint_Click(object sender, EventArgs e)
         {
             tmrClose.Stop();
-
             Payment.Instance.report.SetParameterValue("note", "###REPRINT###");
             Payment.Instance.PrintReceipt();
-
 
             tmrClose.Start();
         }

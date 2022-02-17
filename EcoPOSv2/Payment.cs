@@ -748,7 +748,6 @@ namespace EcoPOSv2
 
             pchange.lblChange.Text = lblChange.Text;
             pchange.ShowDialog();
-            //temporary
             this.Close();
         }
 
