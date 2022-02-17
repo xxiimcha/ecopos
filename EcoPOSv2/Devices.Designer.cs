@@ -50,6 +50,8 @@ namespace EcoPOSv2
             this.cmbReportPrinter = new System.Windows.Forms.ComboBox();
             this.Label8 = new System.Windows.Forms.Label();
             this.cmbReceiptPrinter = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbRePrintPrinter = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.moreOptionContainer.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +59,8 @@ namespace EcoPOSv2
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.cmbRePrintPrinter);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.cmbReceiptCopies);
             this.panel1.Controls.Add(this.moreOptionContainer);
@@ -79,7 +83,7 @@ namespace EcoPOSv2
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(31, 157);
+            this.label6.Location = new System.Drawing.Point(31, 182);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 25);
             this.label6.TabIndex = 96;
@@ -98,7 +102,7 @@ namespace EcoPOSv2
             "Don\'t print a receipt",
             "Customer copy only",
             "Customer and Accounting copy"});
-            this.cmbReceiptCopies.Location = new System.Drawing.Point(202, 154);
+            this.cmbReceiptCopies.Location = new System.Drawing.Point(202, 179);
             this.cmbReceiptCopies.MaxDropDownItems = 10;
             this.cmbReceiptCopies.Name = "cmbReceiptCopies";
             this.cmbReceiptCopies.Size = new System.Drawing.Size(372, 31);
@@ -299,7 +303,7 @@ namespace EcoPOSv2
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(31, 100);
+            this.Label1.Location = new System.Drawing.Point(31, 135);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(121, 25);
             this.Label1.TabIndex = 72;
@@ -314,7 +318,7 @@ namespace EcoPOSv2
             this.cmbReportPrinter.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbReportPrinter.ForeColor = System.Drawing.Color.Black;
             this.cmbReportPrinter.FormattingEnabled = true;
-            this.cmbReportPrinter.Location = new System.Drawing.Point(202, 97);
+            this.cmbReportPrinter.Location = new System.Drawing.Point(202, 132);
             this.cmbReportPrinter.MaxDropDownItems = 10;
             this.cmbReportPrinter.Name = "cmbReportPrinter";
             this.cmbReportPrinter.Size = new System.Drawing.Size(372, 31);
@@ -345,6 +349,32 @@ namespace EcoPOSv2
             this.cmbReceiptPrinter.Name = "cmbReceiptPrinter";
             this.cmbReceiptPrinter.Size = new System.Drawing.Size(372, 31);
             this.cmbReceiptPrinter.TabIndex = 71;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(31, 87);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(130, 25);
+            this.label7.TabIndex = 98;
+            this.label7.Text = "Re-Print Printer";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbRePrintPrinter
+            // 
+            this.cmbRePrintPrinter.BackColor = System.Drawing.Color.White;
+            this.cmbRePrintPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRePrintPrinter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbRePrintPrinter.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRePrintPrinter.ForeColor = System.Drawing.Color.Black;
+            this.cmbRePrintPrinter.FormattingEnabled = true;
+            this.cmbRePrintPrinter.Location = new System.Drawing.Point(202, 84);
+            this.cmbRePrintPrinter.MaxDropDownItems = 10;
+            this.cmbRePrintPrinter.Name = "cmbRePrintPrinter";
+            this.cmbRePrintPrinter.Size = new System.Drawing.Size(372, 31);
+            this.cmbRePrintPrinter.TabIndex = 99;
             // 
             // Devices
             // 
@@ -390,5 +420,7 @@ namespace EcoPOSv2
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.ComboBox cmbReceiptCopies;
+        internal System.Windows.Forms.Label label7;
+        internal System.Windows.Forms.ComboBox cmbRePrintPrinter;
     }
 }

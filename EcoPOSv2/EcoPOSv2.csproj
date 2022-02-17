@@ -299,6 +299,12 @@
       <DependentUpon>EJournalReport80.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EmptyReceipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmptyReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExportDGVToExcel.cs" />
     <Compile Include="ExportImport.cs" />
     <Compile Include="Features.cs">
@@ -810,6 +816,10 @@
     <EmbeddedResource Include="EJournalReport80.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>EJournalReport80.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmptyReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmptyReceipt.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Features.resx">
       <DependentUpon>Features.cs</DependentUpon>

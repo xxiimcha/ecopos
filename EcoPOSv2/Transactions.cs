@@ -266,14 +266,14 @@ namespace EcoPOSv2
                 }
 
                 // print
-                if (Main.Instance.pd_receipt_printer == "")
+                if (Main.Instance.pd_reprint_printer == "")
                 {
                     new Notification().PopUp("No receipt printer selected.", "Error printing", "error");
                     return;
                 }
 
 
-                bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
+                bool checkprinter = Main.PrinterExists(Main.Instance.pd_reprint_printer);
 
                 if (checkprinter == false)
                 {
@@ -282,9 +282,10 @@ namespace EcoPOSv2
                 }
 
 
-                reprint_receipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                reprint_receipt.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
                 reprint_receipt.PrintOptions.PaperSource = PaperSource.Auto;
                 reprint_receipt.PrintToPrinter(1, false, 0, 0);
+
             }
             else
             {
@@ -434,7 +435,6 @@ namespace EcoPOSv2
                         reprint_receipt80.SetParameterValue("is_vatable", false);
                         reprint_receipt80.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -443,14 +443,14 @@ namespace EcoPOSv2
                 }
 
                 // print
-                if (Main.Instance.pd_receipt_printer == "")
+                if (Main.Instance.pd_reprint_printer == "")
                 {
                     new Notification().PopUp("No receipt printer selected.", "Error printing", "error");
                     return;
                 }
+                  
 
-
-                bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
+                bool checkprinter = Main.PrinterExists(Main.Instance.pd_reprint_printer);
 
                 if (checkprinter == false)
                 {
@@ -459,7 +459,7 @@ namespace EcoPOSv2
                 }
 
 
-                reprint_receipt80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                reprint_receipt80.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
                 reprint_receipt80.PrintOptions.PaperSource = PaperSource.Auto;
                 reprint_receipt80.PrintToPrinter(1, false, 0, 0);
             }

@@ -13,6 +13,7 @@ namespace EcoPOSv2
 {
     public partial class PChange : Form
     {
+        public Boolean isRePrint { get; set; }
         public PChange()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace EcoPOSv2
         private void PChange_Load(object sender, EventArgs e)
         {
             _PChange = this;
-
+            isRePrint = false;
             tmrClose.Start();
             this.ActiveControl = btnConfirm;
 
@@ -48,6 +49,7 @@ namespace EcoPOSv2
         private void btnReprint_Click(object sender, EventArgs e)
         {
             tmrClose.Stop();
+            isRePrint = true;
             Payment.Instance.report.SetParameterValue("note", "###REPRINT###");
             //Payment.Instance.report80.SetParameterValue("note", "###REPRINT###");
 

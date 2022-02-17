@@ -95,14 +95,14 @@ namespace EcoPOSv2
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (Main.Instance.pd_receipt_printer == "")
+            if (Main.Instance.pd_reprint_printer == "")
             {
                 new Notification().PopUp("No receipt printer selected.", "Error printing", "error");
                 return;
             }
 
 
-            bool checkprinter = Main.PrinterExists(Main.Instance.pd_receipt_printer);
+            bool checkprinter = Main.PrinterExists(Main.Instance.pd_reprint_printer);
 
             if (checkprinter == false)
             {
@@ -114,7 +114,7 @@ namespace EcoPOSv2
             {
                 try
                 {
-                    report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    report.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
                     report.PrintOptions.PaperSource = PaperSource.Auto;
                     report.PrintToPrinter(1, false, 0, 0);
                 }
@@ -127,7 +127,7 @@ namespace EcoPOSv2
             {
                 try
                 {
-                    report80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    report80.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
                     report80.PrintOptions.PaperSource = PaperSource.Auto;
                     report80.PrintToPrinter(1, false, 0, 0);
                 }

@@ -31,6 +31,7 @@ namespace EcoPOSv2
             {
                 cmbReceiptPrinter.Items.Add(itemInstalledPrinters);
                 cmbReportPrinter.Items.Add(itemInstalledPrinters);
+                cmbRePrintPrinter.Items.Add(itemInstalledPrinters);
             }
         }
 
@@ -44,7 +45,6 @@ namespace EcoPOSv2
             int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM printers_devices where terminal_id=@terminal_id"));
             if (SQL.HasException(true))
                 return;
-
             if (count_records == 1)
             {
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -57,6 +57,7 @@ namespace EcoPOSv2
                 {
                     cmbReceiptPrinter.Text = r["receipt_printer_name"].ToString();
                     cmbReportPrinter.Text = r["report_printer_name"].ToString();
+                    cmbRePrintPrinter.Text = r["reprint_printer_name"].ToString();
                     cbxEnable_CD.Checked = Convert.ToBoolean(r["customer_display_enabled"].ToString());
                     cmbPort.Text = r["customer_display_port"].ToString();
                 }
@@ -64,6 +65,7 @@ namespace EcoPOSv2
             else
             {
                 cmbReceiptPrinter.SelectedIndex = 0;
+                cmbRePrintPrinter.SelectedIndex = 0;
                 cmbReportPrinter.SelectedIndex = 0;
                 cmbPort.SelectedIndex = -1;
             }
@@ -131,6 +133,8 @@ namespace EcoPOSv2
 
             SQL.AddParam("@receipt_printer_name", cmbReceiptPrinter.Text);
             SQL.AddParam("@report_printer_name", cmbReportPrinter.Text);
+            SQL.AddParam("@reprint_printer_name", cmbRePrintPrinter.Text);
+
             SQL.AddParam("@customer_display_enabled", cbxEnable_CD.Checked);
             SQL.AddParam("@customer_display_port", cmbPort.Text);
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -138,15 +142,15 @@ namespace EcoPOSv2
             if (count_records == 1)
             {
                 SQL.Query(@"UPDATE printers_devices SET receipt_printer_name = @receipt_printer_name, report_printer_name = @report_printer_name, 
-                           customer_display_enabled = @customer_display_enabled, customer_display_port = @customer_display_port where terminal_id=@terminal_id");
+                           customer_display_enabled = @customer_display_enabled, customer_display_port = @customer_display_port, reprint_printer_name = @reprint_printer_name where terminal_id=@terminal_id");
 
                 if (SQL.HasException(true))
                     return;
             }
             else if (count_records == 0)
             {
-                SQL.Query(@"INSERT INTO printers_devices (receipt_printer_name, report_printer_name, customer_display_enabled, customer_display_port,terminal_id) VALUES 
-                           (@receipt_printer_name, @report_printer_name, @customer_display_enabled, @customer_display_port,@terminal_id)");
+                SQL.Query(@"INSERT INTO printers_devices (reprint_printer_name,receipt_printer_name, report_printer_name, customer_display_enabled, customer_display_port,terminal_id) VALUES 
+                           (@reprint_printer_name,@receipt_printer_name, @report_printer_name, @customer_display_enabled, @customer_display_port,@terminal_id)");
 
                 if (SQL.HasException(true))
                     return;

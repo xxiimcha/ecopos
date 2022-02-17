@@ -400,7 +400,15 @@ namespace EcoPOSv2
                     try
                     {
                         report.PrintOptions.NoPrinter = false;
-                        report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                        if (PChange.Instance.isRePrint)
+                        {
+                            report.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
+                            PChange.Instance.isRePrint = false;
+                        }
+                        else
+                        {
+                            report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                        }
                         report.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
                         report.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                         report.PrintToPrinter(1, false, 0, 0);
@@ -419,7 +427,15 @@ namespace EcoPOSv2
                     try
                     {
                         report80.PrintOptions.NoPrinter = false;
-                        report80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                        if (PChange.Instance.isRePrint)
+                        {
+                            report80.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
+                            PChange.Instance.isRePrint = false;
+                        }
+                        else
+                        {
+                            report80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                        }
                         report80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
                         report80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                         report80.PrintToPrinter(1, false, 0, 0);

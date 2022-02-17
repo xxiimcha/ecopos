@@ -63,6 +63,8 @@ namespace EcoPOSv2
 
         public string pd_receipt_printer = "";
         public string pd_report_printer = "";
+        public string pd_reprint_printer = "";
+
         public bool pd_customer_display_enabled = false;
         public string pd_customer_display_port = "";
 
@@ -235,6 +237,7 @@ namespace EcoPOSv2
                 {
                     pd_receipt_printer = dr["receipt_printer_name"].ToString();
                     pd_report_printer = dr["report_printer_name"].ToString();
+                    pd_reprint_printer = dr["reprint_printer_name"].ToString();
                     pd_customer_display_enabled = Convert.ToBoolean(dr["customer_display_enabled"].ToString());
                     pd_customer_display_port = dr["customer_display_port"].ToString();
                 }
