@@ -14,9 +14,37 @@ namespace EcoPOSv2
 {
     public partial class ZReading : Form
     {
+        public void OpenDrawer()
+        {
+            EmptyReceipt receipt = new EmptyReceipt();
+            try
+            {
+                receipt.PrintOptions.NoPrinter = false;
+                receipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                receipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                receipt.PrintToPrinter(0, false, 0, 0);
+            }
+            catch (Exception)
+            {
+                receipt.PrintOptions.NoPrinter = false;
+                receipt.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                receipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                receipt.PrintToPrinter(0, false, 0, 0);
+            }
+            finally
+            {
+                if (receipt.IsLoaded)
+                {
+                    receipt.Close();
+                }
+            }
+        }
         public ZReading()
         {
             InitializeComponent();
+            OpenDrawer();
         }
 
         //VARIABLES AND OTHERS

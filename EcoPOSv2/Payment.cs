@@ -213,7 +213,10 @@ namespace EcoPOSv2
 
                         //if (Properties.Settings.Default.ShowAccountingReceipt)
                         //    no_of_prints = 2;
-
+                        if (no_of_prints == 0) 
+                        {
+                            OpenDrawer();
+                        }
                         for (var i = 1; i <= no_of_prints; i++)
                         {
                             if (i == 1)
@@ -384,6 +387,33 @@ namespace EcoPOSv2
                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         report.Dispose();
                     }
+                }
+            }
+        }
+        public void OpenDrawer()
+        {
+            EmptyReceipt receipt = new EmptyReceipt();
+            try
+            {
+                receipt.PrintOptions.NoPrinter = false;
+                receipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                receipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                receipt.PrintToPrinter(0, false, 0, 0);
+            }
+            catch (Exception)
+            {
+                receipt.PrintOptions.NoPrinter = false;
+                receipt.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                receipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                receipt.PrintToPrinter(0, false, 0, 0);
+            }
+            finally
+            {
+                if (receipt.IsLoaded)
+                {
+                    receipt.Close();
                 }
             }
         }

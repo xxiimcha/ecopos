@@ -17,35 +17,35 @@ namespace EcoPOSv2
     {
         public void OpenDrawer()
         {
-            EmptyReceipt deliveryReceipt = new EmptyReceipt();
+            EmptyReceipt receipt = new EmptyReceipt();
             try
             {
-                deliveryReceipt.PrintOptions.NoPrinter = false;
-                deliveryReceipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-                deliveryReceipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
-                deliveryReceipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                deliveryReceipt.PrintToPrinter(0, false, 0, 0);
+                receipt.PrintOptions.NoPrinter = false;
+                receipt.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
+                receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                receipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                receipt.PrintToPrinter(0, false, 0, 0);
             }
             catch (Exception)
             {
-                deliveryReceipt.PrintOptions.NoPrinter = false;
-                deliveryReceipt.PrintOptions.PrinterName = "Microsoft Print to PDF";
-                deliveryReceipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
-                deliveryReceipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                deliveryReceipt.PrintToPrinter(0, false, 0, 0);
+                receipt.PrintOptions.NoPrinter = false;
+                receipt.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                receipt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                receipt.PrintToPrinter(0, false, 0, 0);
             }
             finally
             {
-                if (deliveryReceipt.IsLoaded)
+                if (receipt.IsLoaded)
                 {
-                    deliveryReceipt.Close();
+                    receipt.Close();
                 }
             }
         }
         public XReading()
         {
             InitializeComponent();
-           // OpenDrawer();
+            OpenDrawer();
         }
         SQLControl SQL = new SQLControl();
         XReadingReport58 report = new XReadingReport58();
