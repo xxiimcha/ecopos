@@ -49,6 +49,8 @@ namespace EcoPOSv2
         {
             tmrClose.Stop();
             Payment.Instance.report.SetParameterValue("note", "###REPRINT###");
+            //Payment.Instance.report80.SetParameterValue("note", "###REPRINT###");
+
             Payment.Instance.PrintReceipt();
 
             tmrClose.Start();

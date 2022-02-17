@@ -221,7 +221,7 @@ namespace EcoPOSv2
                                 
                             if (i == 2)
                                 report.SetParameterValue("note", note + "ACCOUNTING COPY");
-
+                           
                             try
                             {
                                 PrintReceipt();
@@ -412,13 +412,7 @@ namespace EcoPOSv2
                         report.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                         report.PrintToPrinter(1, false, 0, 0);
                     }
-                    finally
-                    {
-                        if (report.IsLoaded)
-                        {
-                            report.Close();
-                        }
-                    }
+                   
                 }
                 else
                 {
@@ -437,13 +431,7 @@ namespace EcoPOSv2
                         report80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
                         report80.PrintToPrinter(1, false, 0, 0);
                     }
-                    finally
-                    {
-                        if (report80.IsLoaded)
-                        {
-                            report80.Close();
-                        }
-                    }
+                   
                 }
             }
         }
