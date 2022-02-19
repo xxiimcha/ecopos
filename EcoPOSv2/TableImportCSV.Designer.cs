@@ -50,7 +50,7 @@ namespace EcoPOSv2
             this.btnImport.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImport.Location = new System.Drawing.Point(12, 95);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(259, 35);
+            this.btnImport.Size = new System.Drawing.Size(254, 35);
             this.btnImport.TabIndex = 18;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@ namespace EcoPOSv2
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(196, 66);
+            this.btnBrowse.Location = new System.Drawing.Point(191, 66);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(75, 23);
             this.btnBrowse.TabIndex = 17;
@@ -71,7 +71,7 @@ namespace EcoPOSv2
             this.txtFile.Enabled = false;
             this.txtFile.Location = new System.Drawing.Point(12, 40);
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(259, 20);
+            this.txtFile.Size = new System.Drawing.Size(254, 20);
             this.txtFile.TabIndex = 16;
             // 
             // Label1
@@ -116,7 +116,7 @@ namespace EcoPOSv2
             // 
             this.lblTotalNumberOfItems.AutoSize = true;
             this.lblTotalNumberOfItems.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalNumberOfItems.Location = new System.Drawing.Point(165, 141);
+            this.lblTotalNumberOfItems.Location = new System.Drawing.Point(173, 142);
             this.lblTotalNumberOfItems.Name = "lblTotalNumberOfItems";
             this.lblTotalNumberOfItems.Size = new System.Drawing.Size(15, 17);
             this.lblTotalNumberOfItems.TabIndex = 24;
@@ -127,7 +127,7 @@ namespace EcoPOSv2
             this.lblImportedProducts.AutoSize = true;
             this.lblImportedProducts.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblImportedProducts.ForeColor = System.Drawing.Color.Green;
-            this.lblImportedProducts.Location = new System.Drawing.Point(174, 165);
+            this.lblImportedProducts.Location = new System.Drawing.Point(173, 166);
             this.lblImportedProducts.Name = "lblImportedProducts";
             this.lblImportedProducts.Size = new System.Drawing.Size(15, 17);
             this.lblImportedProducts.TabIndex = 26;

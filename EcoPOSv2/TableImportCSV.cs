@@ -234,7 +234,28 @@ namespace EcoPOSv2
 
                 int categoryid = 0;
                 int warehouseID = 0;
-                //QUERY
+
+                //Checks if category name exists in database
+                Psql.AddParam("@name", dgItems.Rows[i].Cells[2].Value.ToString());
+                int categoryExistence = int.Parse(Psql.ReturnResult("SELECT COUNT(categoryID) FROM product_category WHERE name=@name"));
+                if (Psql.HasException(true)) return;
+
+                if (categoryExistence > 0)
+                {
+                    //do nothing
+                }else
+                {
+                    //Automatically creates category that does not exist in database
+                    Psql.AddParam("@name", dgItems.Rows[i].Cells[2].Value.ToString());
+                    Psql.Query(@"INSERT INTO product_category
+                                   (name, s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty)
+                                   VALUES
+                                   (@name, 0, 0, 0, 0, 0)
+                                  ");
+                    if (Psql.HasException(true)) return;
+                }
+
+                //Sets the ID of the category when adding the product
                 Psql.AddParam("@name", dgItems.Rows[i].Cells[2].Value.ToString());
                 Psql.Query("Select categoryID from product_category where name=@name");
                 if (Psql.HasException(true)) return;
@@ -244,6 +265,25 @@ namespace EcoPOSv2
                     categoryid = Convert.ToInt32(dr["categoryID"].ToString());
                 }
 
+
+
+                //Checks if warehouse name exists in database
+                Psql.AddParam("@name", dgItems.Rows[i].Cells[7].Value.ToString());
+                int warehouseExistence = int.Parse(Psql.ReturnResult("SELECT COUNT(warehouseID) FROM warehouse WHERE name=@name"));
+                if (Psql.HasException(true)) return;
+
+                if (warehouseExistence > 0)
+                {
+                    //Do nothing
+                }else
+                {
+                    //Automatically creates warehouse that does not exist in database
+                    Psql.AddParam("@name", dgItems.Rows[i].Cells[7].Value.ToString());
+                    Psql.Query("INSERT INTO warehouse (name) VALUES (@name)");
+                    if (Psql.HasException(true)) return;
+                }
+
+                //Sets the ID of the warehouse when adding the product
                 Psql.AddParam("@name", dgItems.Rows[i].Cells[7].Value.ToString());
                 Psql.Query("Select warehouseID from warehouse where name=@name");
                 if (Psql.HasException(true)) return;

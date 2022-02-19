@@ -38,7 +38,7 @@ namespace EcoPOSv2
         Helper HP = new Helper();
         private void btnProceed_Click(object sender, EventArgs e)
         {
-            if(txtUser.Text == "jeremyv19" && txtPass.Text == HP.Decrypt("704eThHyGZG+wivBr3J+lA=="))
+            if(txtUser.Text == "Ecopos2020" && txtPass.Text == HP.Decrypt("Lyi9rkx24tPNV+WSsNJLVA=="))
             {
                 switch (validation_type)
                 {
@@ -65,7 +65,7 @@ namespace EcoPOSv2
 
                 Close();
             }
-            else if(txtUser.Text == "wno1026" && txtPass.Text == HP.Decrypt("1GiDoTTlYMugGyexU4HsCw=="))
+            else if(txtUser.Text == "dinearlm" && txtPass.Text == HP.Decrypt("/aOLWqN3UYtlahsdqVk/dA=="))
             {
                 switch (validation_type)
                 {

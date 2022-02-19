@@ -492,7 +492,6 @@ namespace EcoPOSv2
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            btn2.FillColor = ColorTranslator.FromHtml("#97D5FE");
             btn2.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
 
             btn1.FillColor = Color.FromArgb(255, 255, 255);

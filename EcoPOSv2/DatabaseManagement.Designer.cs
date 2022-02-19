@@ -280,7 +280,6 @@ namespace EcoPOSv2
             this.parentContainer.Controls.Add(this.btn2);
             this.parentContainer.Controls.Add(this.btn1);
             this.parentContainer.Controls.Add(this.gunaLabel14);
-            this.parentContainer.Controls.Add(this.firstContainer);
             this.parentContainer.Controls.Add(this.secondContainer);
             this.parentContainer.FillColor = System.Drawing.Color.White;
             this.parentContainer.Location = new System.Drawing.Point(5, 66);
@@ -363,7 +362,7 @@ namespace EcoPOSv2
             this.firstContainer.Controls.Add(this.txtUsername);
             this.firstContainer.Controls.Add(this.btnNext);
             this.firstContainer.Controls.Add(this.gunaLabel9);
-            this.firstContainer.Location = new System.Drawing.Point(18, 55);
+            this.firstContainer.Location = new System.Drawing.Point(0, 0);
             this.firstContainer.Name = "firstContainer";
             this.firstContainer.Size = new System.Drawing.Size(793, 451);
             this.firstContainer.TabIndex = 17;
@@ -475,6 +474,7 @@ namespace EcoPOSv2
             this.secondContainer.Controls.Add(this.btnAttackFileEmail);
             this.secondContainer.Controls.Add(this.txtFileName);
             this.secondContainer.Controls.Add(this.btnSend);
+            this.secondContainer.Controls.Add(this.firstContainer);
             this.secondContainer.Controls.Add(this.txtMessage);
             this.secondContainer.Controls.Add(this.gunaLabel10);
             this.secondContainer.Controls.Add(this.txtTo);
@@ -574,7 +574,7 @@ namespace EcoPOSv2
             this.txtTo.BorderColor = System.Drawing.Color.Gray;
             this.txtTo.BorderRadius = 5;
             this.txtTo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTo.DefaultText = "jpvillabeto1999@gmail.com";
+            this.txtTo.DefaultText = "dinearlm@gmail.com";
             this.txtTo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtTo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtTo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -592,7 +592,6 @@ namespace EcoPOSv2
             this.txtTo.PasswordChar = '\0';
             this.txtTo.PlaceholderText = "";
             this.txtTo.SelectedText = "";
-            this.txtTo.SelectionStart = 25;
             this.txtTo.ShadowDecoration.Parent = this.txtTo;
             this.txtTo.Size = new System.Drawing.Size(251, 36);
             this.txtTo.TabIndex = 23;

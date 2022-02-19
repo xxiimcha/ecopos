@@ -61,10 +61,10 @@
             this.btnImportGC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImportGC.IconSize = 30;
             this.btnImportGC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportGC.Location = new System.Drawing.Point(3, 594);
+            this.btnImportGC.Location = new System.Drawing.Point(3, 538);
             this.btnImportGC.Name = "btnImportGC";
             this.btnImportGC.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnImportGC.Size = new System.Drawing.Size(1158, 49);
+            this.btnImportGC.Size = new System.Drawing.Size(1158, 44);
             this.btnImportGC.TabIndex = 14;
             this.btnImportGC.Text = "Import Gift Card";
             this.btnImportGC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -76,10 +76,10 @@
             this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.DimGray;
-            this.Label1.Location = new System.Drawing.Point(3, 646);
+            this.Label1.Location = new System.Drawing.Point(3, 585);
             this.Label1.Name = "Label1";
             this.Label1.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.Label1.Size = new System.Drawing.Size(1158, 110);
+            this.Label1.Size = new System.Drawing.Size(1158, 100);
             this.Label1.TabIndex = 11;
             this.Label1.Text = resources.GetString("Label1.Text");
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -97,10 +97,10 @@
             this.btnImportMembership.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImportMembership.IconSize = 30;
             this.btnImportMembership.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportMembership.Location = new System.Drawing.Point(3, 490);
+            this.btnImportMembership.Location = new System.Drawing.Point(3, 444);
             this.btnImportMembership.Name = "btnImportMembership";
             this.btnImportMembership.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnImportMembership.Size = new System.Drawing.Size(1158, 49);
+            this.btnImportMembership.Size = new System.Drawing.Size(1158, 44);
             this.btnImportMembership.TabIndex = 17;
             this.btnImportMembership.Text = "Import Membership";
             this.btnImportMembership.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -120,10 +120,10 @@
             this.btnExportGC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExportGC.IconSize = 30;
             this.btnExportGC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportGC.Location = new System.Drawing.Point(3, 545);
+            this.btnExportGC.Location = new System.Drawing.Point(3, 494);
             this.btnExportGC.Name = "btnExportGC";
             this.btnExportGC.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnExportGC.Size = new System.Drawing.Size(1158, 43);
+            this.btnExportGC.Size = new System.Drawing.Size(1158, 38);
             this.btnExportGC.TabIndex = 12;
             this.btnExportGC.Text = "Export Gift Card";
             this.btnExportGC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -145,7 +145,7 @@
             this.btnExportProducts.Location = new System.Drawing.Point(3, 3);
             this.btnExportProducts.Name = "btnExportProducts";
             this.btnExportProducts.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnExportProducts.Size = new System.Drawing.Size(1158, 59);
+            this.btnExportProducts.Size = new System.Drawing.Size(1158, 53);
             this.btnExportProducts.TabIndex = 5;
             this.btnExportProducts.Text = "Export Products";
             this.btnExportProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -164,10 +164,10 @@
             this.btnImportProducts.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImportProducts.IconSize = 30;
             this.btnImportProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportProducts.Location = new System.Drawing.Point(3, 68);
+            this.btnImportProducts.Location = new System.Drawing.Point(3, 62);
             this.btnImportProducts.Name = "btnImportProducts";
             this.btnImportProducts.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnImportProducts.Size = new System.Drawing.Size(1158, 54);
+            this.btnImportProducts.Size = new System.Drawing.Size(1158, 48);
             this.btnImportProducts.TabIndex = 8;
             this.btnImportProducts.Text = "Import Products";
             this.btnImportProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -186,10 +186,10 @@
             this.btnExportCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExportCategory.IconSize = 30;
             this.btnExportCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportCategory.Location = new System.Drawing.Point(3, 128);
+            this.btnExportCategory.Location = new System.Drawing.Point(3, 116);
             this.btnExportCategory.Name = "btnExportCategory";
             this.btnExportCategory.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnExportCategory.Size = new System.Drawing.Size(1158, 49);
+            this.btnExportCategory.Size = new System.Drawing.Size(1158, 44);
             this.btnExportCategory.TabIndex = 6;
             this.btnExportCategory.Text = "Export Category";
             this.btnExportCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -208,10 +208,10 @@
             this.btnImportCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImportCategory.IconSize = 30;
             this.btnImportCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportCategory.Location = new System.Drawing.Point(3, 183);
+            this.btnImportCategory.Location = new System.Drawing.Point(3, 166);
             this.btnImportCategory.Name = "btnImportCategory";
             this.btnImportCategory.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnImportCategory.Size = new System.Drawing.Size(1158, 46);
+            this.btnImportCategory.Size = new System.Drawing.Size(1158, 41);
             this.btnImportCategory.TabIndex = 9;
             this.btnImportCategory.Text = "Import Category";
             this.btnImportCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -231,10 +231,10 @@
             this.btnExportCustomer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExportCustomer.IconSize = 30;
             this.btnExportCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportCustomer.Location = new System.Drawing.Point(3, 235);
+            this.btnExportCustomer.Location = new System.Drawing.Point(3, 213);
             this.btnExportCustomer.Name = "btnExportCustomer";
             this.btnExportCustomer.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnExportCustomer.Size = new System.Drawing.Size(1158, 47);
+            this.btnExportCustomer.Size = new System.Drawing.Size(1158, 42);
             this.btnExportCustomer.TabIndex = 7;
             this.btnExportCustomer.Text = "Export Customer";
             this.btnExportCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -254,10 +254,10 @@
             this.btnImportCustomer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImportCustomer.IconSize = 30;
             this.btnImportCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportCustomer.Location = new System.Drawing.Point(3, 288);
+            this.btnImportCustomer.Location = new System.Drawing.Point(3, 261);
             this.btnImportCustomer.Name = "btnImportCustomer";
             this.btnImportCustomer.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnImportCustomer.Size = new System.Drawing.Size(1158, 39);
+            this.btnImportCustomer.Size = new System.Drawing.Size(1158, 35);
             this.btnImportCustomer.TabIndex = 10;
             this.btnImportCustomer.Text = "Import Customer";
             this.btnImportCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -277,10 +277,10 @@
             this.btnExportMC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExportMC.IconSize = 30;
             this.btnExportMC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportMC.Location = new System.Drawing.Point(3, 333);
+            this.btnExportMC.Location = new System.Drawing.Point(3, 302);
             this.btnExportMC.Name = "btnExportMC";
             this.btnExportMC.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnExportMC.Size = new System.Drawing.Size(1158, 45);
+            this.btnExportMC.Size = new System.Drawing.Size(1158, 40);
             this.btnExportMC.TabIndex = 13;
             this.btnExportMC.Text = "Export Member Card";
             this.btnExportMC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -300,10 +300,10 @@
             this.btnImportMC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImportMC.IconSize = 30;
             this.btnImportMC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImportMC.Location = new System.Drawing.Point(3, 384);
+            this.btnImportMC.Location = new System.Drawing.Point(3, 348);
             this.btnImportMC.Name = "btnImportMC";
             this.btnImportMC.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnImportMC.Size = new System.Drawing.Size(1158, 46);
+            this.btnImportMC.Size = new System.Drawing.Size(1158, 41);
             this.btnImportMC.TabIndex = 15;
             this.btnImportMC.Text = "Import Member Card";
             this.btnImportMC.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -323,10 +323,10 @@
             this.btnExportMembership.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnExportMembership.IconSize = 30;
             this.btnExportMembership.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportMembership.Location = new System.Drawing.Point(3, 436);
+            this.btnExportMembership.Location = new System.Drawing.Point(3, 395);
             this.btnExportMembership.Name = "btnExportMembership";
             this.btnExportMembership.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnExportMembership.Size = new System.Drawing.Size(1158, 48);
+            this.btnExportMembership.Size = new System.Drawing.Size(1158, 43);
             this.btnExportMembership.TabIndex = 16;
             this.btnExportMembership.Text = "Export Membership";
             this.btnExportMembership.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -370,7 +370,7 @@
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.351039F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.70208F));
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.47113F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(1164, 866);
+            this.TableLayoutPanel1.Size = new System.Drawing.Size(1164, 788);
             this.TableLayoutPanel1.TabIndex = 20;
             // 
             // dgv
@@ -378,11 +378,11 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(3, 759);
+            this.dgv.Location = new System.Drawing.Point(3, 688);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
-            this.dgv.Size = new System.Drawing.Size(1158, 104);
+            this.dgv.Size = new System.Drawing.Size(1158, 97);
             this.dgv.TabIndex = 18;
             this.dgv.Visible = false;
             // 
@@ -391,7 +391,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1164, 866);
+            this.ClientSize = new System.Drawing.Size(1164, 788);
             this.Controls.Add(this.TableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

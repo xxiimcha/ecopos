@@ -123,8 +123,8 @@ namespace EcoPOSv2
             dgvCart.Columns[9].Visible = false;
             dgvCart.Columns[12].Visible = false;
 
-            dgvCart.Columns[2].Width = 200;
-            dgvCart.Columns[3].Width = 200;
+            dgvCart.Columns[2].Width = 150;
+            dgvCart.Columns[3].Width = 150;
             dgvCart.Columns[4].Width = 60;
         }
         public void LoadOrderNo()
@@ -289,6 +289,10 @@ namespace EcoPOSv2
                 decimal vatsaledisc = vat_sale;
                 lblVATSale.Text = vatsaledisc.ToString("N2");
             }
+
+            dgvCart.Columns[2].Width = 150;
+            dgvCart.Columns[3].Width = 150;
+            dgvCart.Columns[4].Width = 60;
         }
 
         //METHODS
@@ -1046,7 +1050,10 @@ namespace EcoPOSv2
             //tbBarcode.Clear();
 
             //TEMPORARY
-          //  btnVoid.Enabled = false;
+            //  btnVoid.Enabled = false;
+            dgvCart.Columns[2].Width = 150;
+            dgvCart.Columns[3].Width = 150;
+            dgvCart.Columns[4].Width = 60;
         }
 
         private void btnVoidItem_Click(object sender, EventArgs e)
