@@ -104,74 +104,87 @@ namespace EcoPOSv2
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            switch (table_import_type)
+            if(int.Parse(lblTotalNumberOfItems.Text) > 1)
             {
-                case 1 // products
-               :
-                    {
-                        SQL.Query("DELETE FROM inventory");
-                        if (SQL.HasException(true))
-                            return;
+                switch (table_import_type)
+                {
+                    case 1 // products
+                   :
+                        {
+                            if (MessageBox.Show("Do you want to overwrite your current products and inventory?", "Products and Inventory", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                            {
+                                SQL.Query("DELETE FROM inventory");
+                                if (SQL.HasException(true))
+                                    return;
 
-                        SQL.Query("DELETE FROM products");
-                        if (SQL.HasException(true))
-                            return;
+                                SQL.Query("DELETE FROM products");
+                                if (SQL.HasException(true))
+                                    return;
 
-                        workerProducts = new BackgroundWorker();
-                        workerProducts.WorkerReportsProgress = true;
-                        workerProducts.DoWork += WorkerCSV_DoWork;
-                        workerProducts.RunWorkerCompleted += WorkerCSV_RunWorkerCompleted;
-                        workerProducts.RunWorkerAsync();
+                                workerProducts = new BackgroundWorker();
+                                workerProducts.WorkerReportsProgress = true;
+                                workerProducts.DoWork += WorkerCSV_DoWork;
+                                workerProducts.RunWorkerCompleted += WorkerCSV_RunWorkerCompleted;
+                                workerProducts.RunWorkerAsync();
 
-                        btnBrowse.Enabled = false;
-                        btnImport.Enabled = false;
-                        break;
-                    }
+                                btnBrowse.Enabled = false;
+                                btnImport.Enabled = false;
+                            }
+                            break;
+                        }
 
-                case 2 // category
-                :
-                    {
-                        SQL.Query("DELETE FROM product_category");
-                        if (SQL.HasException(true))
-                            return;
+                    case 2 // category
+                    :
+                        {
+                            if (MessageBox.Show("Do you want to overwrite your current categories?", "Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                            {
+                                SQL.Query("DELETE FROM product_category");
+                                if (SQL.HasException(true))
+                                    return;
 
-                        workerCategory = new BackgroundWorker();
-                        workerCategory.WorkerReportsProgress = true;
-                        workerCategory.DoWork += WorkerCategory_DoWork;
-                        workerCategory.RunWorkerCompleted += WorkerCategory_RunWorkerCompleted;
+                                workerCategory = new BackgroundWorker();
+                                workerCategory.WorkerReportsProgress = true;
+                                workerCategory.DoWork += WorkerCategory_DoWork;
+                                workerCategory.RunWorkerCompleted += WorkerCategory_RunWorkerCompleted;
 
-                        workerCategory.RunWorkerAsync();
+                                workerCategory.RunWorkerAsync();
 
-                        btnBrowse.Enabled = false;
-                        btnImport.Enabled = false;
-                        break;
-                    }
+                                btnBrowse.Enabled = false;
+                                btnImport.Enabled = false;
+                            }
+                            break;
+                        }
 
-                case 3 // customer
-                :
-                    {
-                        break;
-                    }
+                    case 3 // customer
+                    :
+                        {
+                            break;
+                        }
 
-                case 4 // member card
-                :
-                    {
-                        break;
-                    }
+                    case 4 // member card
+                    :
+                        {
+                            break;
+                        }
 
-                case 5 // membership
-                :
-                    {
-                        
-                        break;
-                    }
+                    case 5 // membership
+                    :
+                        {
 
-                case 6 // gift card
-                :
-                    {
-                        
-                        break;
-                    }
+                            break;
+                        }
+
+                    case 6 // gift card
+                    :
+                        {
+
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                new Notification().PopUp("Please enter a valid CSV file with atleast 1 data.", "Error", "error");
             }
         }
 
