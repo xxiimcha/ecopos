@@ -138,7 +138,6 @@ namespace EcoPOSv2
                 SQL.Query("DELETE FROM redeem_transaction_items");
                 SQL.Query("DELETE FROM role_permission");
                 SQL.Query("DELETE FROM shift");
-                SQL.Query("DELETE FROM store_start");
                 SQL.Query("DELETE FROM transaction_details");
                 SQL.Query("DELETE FROM transaction_items");
                 SQL.Query("DELETE FROM user_logs");
@@ -148,6 +147,7 @@ namespace EcoPOSv2
                 SQL.Query("DELETE FROM void_transaction");
                 SQL.Query("DELETE FROM xreading");
                 SQL.Query("DELETE FROM zreading");
+                SQL.Query("DELETE FROM store_start");
 
                 SQL.Query(@"DBCC CHECKIDENT ('[customer]', RESEED, 0);
                 DBCC CHECKIDENT('[discount]', RESEED, 0);
@@ -165,14 +165,15 @@ namespace EcoPOSv2
                 DBCC CHECKIDENT('[redeem_cart]', RESEED, 0);
                 DBCC CHECKIDENT('[redeem_items]', RESEED, 0);
                 DBCC CHECKIDENT('[shift]', RESEED, 0);
-                DBCC CHECKIDENT('[store_start]', RESEED, 0);
                 DBCC CHECKIDENT('[user_logs]', RESEED, 0);
                 DBCC CHECKIDENT('[user_role]', RESEED, 0);
                 DBCC CHECKIDENT('[users]', RESEED, 0);
                 DBCC CHECKIDENT('[void_item]', RESEED, 0);
                 DBCC CHECKIDENT('[void_transaction]', RESEED, 0);
                 DBCC CHECKIDENT('[warehouse]', RESEED, 0);
-                DBCC CHECKIDENT('[xreading]', RESEED, 0);");
+                DBCC CHECKIDENT('[xreading]', RESEED, 0);
+                DBCC CHECKIDENT('[store_start]', RESEED, 0);");
+
 
                 btnResetDatabase.Text = "Database tables has been cleaned.";
             }
@@ -223,6 +224,7 @@ namespace EcoPOSv2
                 SQL.Query("delete from void_transaction");
                 SQL.Query("delete from xreading");
                 SQL.Query("delete from zreading");
+                SQL.Query("DELETE FROM store_start");
 
                 SQL.Query(@"DBCC CHECKIDENT('[order_no]', RESEED, 0);
                 DBCC CHECKIDENT('[order_cart]', RESEED, 0);
@@ -232,7 +234,8 @@ namespace EcoPOSv2
                 DBCC CHECKIDENT('[shift]', RESEED, 0);
                 DBCC CHECKIDENT('[void_item]', RESEED, 0);
                 DBCC CHECKIDENT('[void_transaction]', RESEED, 0);
-                DBCC CHECKIDENT('[xreading]', RESEED, 0);");
+                DBCC CHECKIDENT('[xreading]', RESEED, 0);
+                DBCC CHECKIDENT('[store_start]', RESEED, 0);");
 
                 btnResetSales.Text = "Sales has been reset.";
             }
