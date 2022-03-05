@@ -518,9 +518,9 @@ namespace EcoPOSv2
                     }
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-                        decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
-                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
+                        decimal subtotal = r["subtotal"].ToString() != "" ? decimal.Parse(r["subtotal"].ToString()) : 0;
+                        decimal discount_deductions = r["discount_deductions"].ToString() != "" ? decimal.Parse(r["discount_deductions"].ToString()) : 0;
+                        decimal grand_total = r["grand_total"].ToString() != "" ? decimal.Parse(r["grand_total"].ToString()) : 0;
 
                         report.SetParameterValue("ss_subtotal", subtotal.ToString("N2"), "StaffSales");
                         report.SetParameterValue("ss_discount_deductions", discount_deductions.ToString("N2"), "StaffSales");
@@ -884,7 +884,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         report.SetParameterValue("no_of_orders", r["no_of_orders"].ToString(), "PaymentMethod");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         report.SetParameterValue("total", total.ToString("N2"), "PaymentMethod");
                     }
                 }
@@ -970,13 +970,14 @@ namespace EcoPOSv2
                         return;
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        report.SetParameterValue("Profit_Total_Sales", r["TotalSales"].ToString(), "Profit");
+                        report.SetParameterValue("Profit_Total_Sales", r["TotalSales"].ToString() != "" ? r["TotalSales"].ToString() : "0.00", "Profit");
                         report.SetParameterValue("Profit_Total_Cost", r["TotalCost"].ToString(), "Profit");
                         report.SetParameterValue("Profit_Total_Gross", r["TotalGross"].ToString(), "Profit");
                     }
                 }
                 else
                 {
+                    report.SetParameterValue("Profit_Total_Sales", "0.00", "Profit");
                     report.SetParameterValue("Profit_Total_Cost", "0.00", "Profit");
                     report.SetParameterValue("Profit_Total_Gross", "0.00", "Profit");
                 }

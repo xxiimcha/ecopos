@@ -534,10 +534,10 @@ namespace EcoPOSv2
             SQL.AddParam("@ReferenceNo", tbReferenceNo.Text);
 
             SQL.Query(@"INSERT INTO transaction_details 
-                       (order_ref, order_ref_temp, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref, 
+                       (order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref, 
                        no_of_items, subtotal, disc_amt, total, cus_pts_deducted, giftcard_deducted, grand_total, payment_amt, change, payment_method, giftcard_no, 
                        less_vat, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, userID, user_first_name,terminal_id,referenceNo) 
-                       SELECT order_ref, @order_ref_temp, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref,  
+                       SELECT order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref,  
                        @no_of_items, @subtotal, IIF((SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id) > 1300, 1300, (SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id)), @total, @cus_pts_deducted, 
                        @giftcard_deducted, @grand_total, @payment_amt, @change, @payment_method, @giftcard_no, @less_vat, @vatable_sale, @vat_12, @vat_exempt_sale, 
                        @zero_rated_sale, @userID, @user_first_name,@terminal_id,@ReferenceNo FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");

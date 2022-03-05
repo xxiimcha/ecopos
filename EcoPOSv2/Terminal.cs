@@ -1432,9 +1432,9 @@ namespace EcoPOSv2
                     {
                         decimal TotalSales, TotalCost, TotalGross;
 
-                        TotalSales = decimal.Parse(r["TotalSales"].ToString());
-                        TotalCost = decimal.Parse(r["TotalCost"].ToString());
-                        TotalGross = decimal.Parse(r["TotalGross"].ToString());
+                        TotalSales = r["TotalSales"].ToString() != "" ? decimal.Parse(r["TotalSales"].ToString()) : 0;
+                        TotalCost = r["TotalCost"].ToString() != "" ? decimal.Parse(r["TotalCost"].ToString()) : 0;
+                        TotalGross = r["TotalGross"].ToString() != "" ? decimal.Parse(r["TotalGross"].ToString()) : 0;
 
                         terminal_report.SetParameterValue("Profit_Total_Sales", TotalSales.ToString("N2"), "Profit");
                         terminal_report.SetParameterValue("Profit_Total_Cost", TotalCost.ToString("N2"), "Profit");
@@ -1443,6 +1443,7 @@ namespace EcoPOSv2
                 }
                 else
                 {
+                    terminal_report.SetParameterValue("Profit_Total_Sales", "0.00", "Profit");
                     terminal_report.SetParameterValue("Profit_Total_Cost", "0.00", "Profit");
                     terminal_report.SetParameterValue("Profit_Total_Gross", "0.00", "Profit");
                 }
@@ -1467,13 +1468,14 @@ namespace EcoPOSv2
                         return;
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        terminal_report.SetParameterValue("Profit_Total_Sales", r["TotalSales"].ToString(), "Profit");
-                        terminal_report.SetParameterValue("Profit_Total_Cost", r["TotalCost"].ToString(), "Profit");
-                        terminal_report.SetParameterValue("Profit_Total_Gross", r["TotalGross"].ToString(), "Profit");
+                        terminal_report.SetParameterValue("Profit_Total_Sales", r["TotalSales"].ToString() != "" ? r["TotalSales"].ToString() : "0.00", "Profit");
+                        terminal_report.SetParameterValue("Profit_Total_Cost", r["TotalCost"].ToString() != "" ? r["TotalCost"].ToString() : "0.00", "Profit");
+                        terminal_report.SetParameterValue("Profit_Total_Gross", r["TotalGross"].ToString() != "" ? r["TotalGross"].ToString() : "0.00", "Profit");
                     }
                 }
                 else
                 {
+                    terminal_report.SetParameterValue("Profit_Total_Sales", "0.00", "Profit");
                     terminal_report.SetParameterValue("Profit_Total_Cost", "0.00", "Profit");
                     terminal_report.SetParameterValue("Profit_Total_Gross", "0.00", "Profit");
                 }

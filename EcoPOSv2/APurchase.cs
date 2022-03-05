@@ -304,10 +304,11 @@ namespace EcoPOSv2
                 if (int.Parse(SQL.ReturnResult("select count(operation) from inventory_operation where operation_code = @operation_code and operation = 'Purchase Inventory'")) > 0)
                 {
                     new Notification().PopUp("Duplicate operation code found in our system.", "", "error");
+                    btnSave.Enabled = true;
                     return;
                 }
 
-
+                /*
                 foreach (DataGridViewRow row in dgvPurchase.Rows)
                 {
                     if (Convert.ToDecimal(dgvPurchase.Rows[row.Index].Cells[2].Value.ToString()) == 0 | dgvPurchase.Rows[row.Index].Cells[2].Value.ToString() == "")
@@ -315,8 +316,14 @@ namespace EcoPOSv2
                         new Notification().PopUp("Purchase quantity cannot be zero/blank.", "Error", "error");
                         return;
                     }
-                }
+                }*/
 
+                if (dgvPurchase.RowCount == 0)
+                {
+                    btnSave.Enabled = true;
+                    return;
+                }
+                    
                 foreach (DataGridViewRow row in dgvPurchase.Rows)
                 {
                     SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
@@ -328,6 +335,7 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                     {
                         new Notification().PopUp("Something went wrong.","Error","error");
+                        btnSave.Enabled = true;
                         return;
                     }
                 }
@@ -346,6 +354,7 @@ namespace EcoPOSv2
 
                 if (SQL.HasException(true))
                 {
+                    btnSave.Enabled = true;
                     new Notification().PopUp("Something went wrong.", "Error", "error" );
                     return;
                 }
@@ -353,27 +362,32 @@ namespace EcoPOSv2
                 // save to inventory_operation_items
                 foreach (DataGridViewRow row in dgvPurchase.Rows)
                 {
-                    SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
-                    SQL.AddParam("@product_name", dgvPurchase.Rows[row.Index].Cells[1].Value.ToString());
-                    SQL.AddParam("@qty", Convert.ToDecimal(dgvPurchase.Rows[row.Index].Cells[2].Value.ToString()));
+                    if (dgvPurchase.Rows[row.Index].Cells[2].Value.ToString() != "" && dgvPurchase.Rows[row.Index].Cells[2].Value.ToString() != "0")
+                    {
+                        SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
+                        SQL.AddParam("@product_name", dgvPurchase.Rows[row.Index].Cells[1].Value.ToString());
+                        SQL.AddParam("@qty", Convert.ToDecimal(dgvPurchase.Rows[row.Index].Cells[2].Value.ToString()));
 
-                    SQL.Query(@"INSERT INTO inventory_operation_items (operationID, productID, product_name, qty) 
+                        SQL.Query(@"INSERT INTO inventory_operation_items (operationID, productID, product_name, qty) 
                            VALUES ((SELECT MAX(operationID) FROM inventory_operation), @productID, @product_name, @qty)");
 
-                    if (SQL.HasException(true)) return;
+                        if (SQL.HasException(true)) return;
 
-                    //UPDATE COST
-                    SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
-                    SQL.AddParam("@cost", dgvPurchase.Rows[row.Index].Cells[3].Value.ToString());
-                    SQL.Query("update products set cost = @cost where productID=@productID");
+                        //UPDATE COST
+                        SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
+                        SQL.AddParam("@cost", dgvPurchase.Rows[row.Index].Cells[3].Value.ToString());
+                        SQL.Query("update products set cost = @cost where productID=@productID");
 
-                    if (SQL.HasException(true)) return;
+                        if (SQL.HasException(true))
+                            return;
 
 
-                    if (SQL.HasException(true))
-                    {
-                        new Notification().PopUp("Something went wrong.", "Error", "error" );
-                        return;
+                        if (SQL.HasException(true))
+                        {
+                            new Notification().PopUp("Something went wrong.", "Error", "error");
+                            btnSave.Enabled = true;
+                            return;
+                        }
                     }
                 }
 
