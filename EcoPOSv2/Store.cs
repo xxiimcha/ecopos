@@ -33,7 +33,7 @@ namespace EcoPOSv2
         private void BtnPrintersDevices_Click(object sender, EventArgs e)
         {
             var frmDevices = new Devices();
-            frmDevices.ShowDialog();
+            frmDevices.ShowDialog();//
         }
     }
 }
