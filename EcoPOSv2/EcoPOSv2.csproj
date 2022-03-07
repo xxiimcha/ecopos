@@ -93,10 +93,10 @@
       <HintPath>..\packages\FontAwesome.Sharp.5.15.4\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI">
-      <HintPath>..\..\..\..\Desktop\Guna\Guna.UI.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Installers\Guna\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>..\..\..\..\Desktop\Guna\Guna.UI2.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Installers\Guna\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
@@ -838,6 +838,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NoteInputForm.resx">
       <DependentUpon>NoteInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order.zh-Hans.resx">
+      <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order.zh.resx">
+      <DependentUpon>Order.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ORItems58.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
