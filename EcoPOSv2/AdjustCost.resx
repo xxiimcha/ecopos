@@ -117,41 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>AdjustCost</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAABvFJREFUeF7t
-        XduLVVUc/nW/WVnYhaDLS0H1J1TkWAMVRA8VPSQ9dLNEqjfB6EIvCRlYYVhED74lQeAMkY4zo3MrS0tR
-        ybRG0caki4UPYanZ97PvyJnVmtnnzF5r77XP/n3wcWbm7P37fpe91jpnrTV7i8FgMBgMBoPBYDAYDAZD
-        exgWuWyDSNdGkQV4fROvveBm/LwLPAAeJvXnXfqeHjMosgyvT+N1rtqgOUO7GBG5GEl8CMl9G9wGngBP
-        5qTa2Aq+NSDyIOzPopzBByTobCTrYbAHPAr6khqSqrEavF+16YZhp8i5SMiTSMx3TFQZ1G7uCfWFbtUP
-        YyIXoBAvIBna7/uSVAb3g8+pb3SzHsDV+BgCP9iUiNQ4oT7S3c5Fv8j1CHaNE3zK/ASFuZbudxYQ2PMI
-        8E8n4CrwCLrW+Qyj+kAwsxDUKifIKnKVxsKwqolRkSvRMvQLnC/AKnITijKH4VUL+GZ8EwLY6wTUCRzH
-        RXYjw6wGhkRugeMTTiCdxAMoys0MN23o1QOHf3YC6EQeRPd1A8NOE+tFroKj3zuOdzL3aMwMPy18KnIe
-        HBx1HK4Dh5KcckHzXelxti5cwTSkARRjvsfJWhFj56NMR7nQgQ0O/eE6WEMeHhG5jmkpD3BkneNYbYlW
-        8hnTUg7gwCM+x+pMXY1keooFuiqdo9L1A69jNea+zSIXMk3FAa3jRY8zRhC5Wcw0FQO2jl9dR4yneajQ
-        VUcILnQcCMG/wRX8CL0E/JF/j0FdNl5CrXdB1fYdN2OilSxguuLipMiZEBx3HcjJYxgMb6PEKSBZs/H3
-        fue43ESi1veJXEqZU4DW7XjvmHtsTu5Brs6gRDxAqMsRzk0kZCXNT4IOjng/ZFH6pxpw4cMHnuPz8g6a
-        jweIfOiI5iau2sdp/n8IWJQpi6FAQXQrku+8PHyf5uOAyTniiIbgy5TwgroDzjntcNpiKHDMa845Ifg7
-        Cn0+JcID/fwDHtEQnIDjsynjRY6iDGQVg3uHo2xLQuu/jzLhgaQt94mGoA62WR8VWZRB99xpmFkMfV+1
-        PecGIXK2jFLhAYHtrmBIIjEjutGacl5w3UX3/3ptNLEna51CtVTTc25IbqVcWKDSc2D8H0csBvuyWspa
-        kYtw3HQtZTCrZahGzJbRxBPQupyy4YCC3OMRi8JWWwqO6/Wc26vv8TAvCmoZzeymdDggAN156BOLxeF2
-        i5JoMXQcWUT5cIBhnWLwCkbkMIKZdregdj04ri/VYiih+Q5dCAcYLaK/9XFt1piiRdNxhb96wcKVtZgG
-        9wIDRnc4IkUys6VMBz1XbTg2i+Q2uhIOMLrPESmaMypKAsVQjtOdcIDR3xyRMthWURIphvIXuhQOMPqX
-        I1IWh1opSkLFUB6lW+EAo8EXcWbIzI/DirI+UU3BKAVJocvK/BbfDM599Tk2ymCULqvsQb2tYjTQ+J7i
-        2CqaUQb1qBOLGVw3k2I0kEBRwk8wlvXFELobsr706QDeyjGwt9G1XxDDfzHUr/8eodjsyZoO+ULkEhz3
-        OTimP/PPXrhzX0URF8NyuhAOMLrIJxaRrRZjrOmcloqitpvOKYLPUj4cYLTbEYnJzMUlTzEaTK4oaJXz
-        KB0OaCFFLVBlbkjQ8QLH5Vqg4kfiPBsnWmWcBSoFjH/jiIXmmhwtw+VoVktRLRwX+1YfX1EuPHRw8ggG
-        oX6Ka/GqDr7JAccF3yHZIHIWb5ODbQNqn7jQ4m0DYlJibJR7iRJe5ChGg5njEi6IVz3n5WXcjXIKiNhW
-        0tYZdyupAiLBN1uD79H8JAQsRoNTFgUFqeZma/47wg+OcF7avyPkAQJ4xuNAXup6i+5sWQj72p9H/Ycd
-        FOYVvKqW3vAgxlrPU0xXfKDZnwPBsqfjU+a45ojpKga4soqe26oMtQdhmooD1xhCjyWdwN1Zk6LRAPEi
-        JxwrQXw4uYvpKQcYHD/2OVZTfsS0lAf0l3bzmf+Yxs1nFDpfA4eKmJpPlfrkhXuZjjSAorzhOFkbopdY
-        yjSkA67C2S3+UgIXj2IvYqXEr1vZRVkq4OA1cLQTb6DscveQyBUMO23wRsopPRckNPdjzKzGjZQbwEB3
-        NRzf4gRSeaIQm5O9V28WuDRa1m7BGBxwp+4rh9UiZ6G16HR6iCetlcXjaBmLC1vfKAIIaB4CO+QEWgX+
-        BHYxjM6CPfIoUaALm4tgdzrBp8QdAyJ30t16QNdTUBh7bF5q0GkHFKbsB0t+i66p3g+W9AHdxK0ozlIk
-        qIhnHO7VT3+qSXnDVOAm6G4W50vwOJOYh2pjE1rC67B7t7WGHEACdY/WpMd341VnAfR2tfrY7kbS9Wf9
-        2xY9Buedfny32qA5g8FgMBgMBoPBYDAYDIaWIPIv2W12buf8pPoAAAAASUVORK5CYII=
-</value>
+  <data name="btnConfirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 57</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>427, 355</value>
+  </data>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Remarks</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>guna2Panel1</value>
   </data>
   <data name="btnConfirm.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -191,9 +175,130 @@
         fJkKf+f/NnIYcAnfPlcdRCANSc7BwcHBwcHBwcHBwcHBwcEhFIj+A9frHjiigiHHAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="guna2ShadowForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="txtRemarks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 133</value>
+  </data>
+  <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 99</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="guna2Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
+    <value>Label2</value>
+  </data>
+  <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;txtRemarks.Name" xml:space="preserve">
+    <value>txtRemarks</value>
+  </data>
+  <data name="txtRemarks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 14.25pt</value>
+  </data>
+  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="&gt;&gt;txtRemarks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtRemarks.Parent" xml:space="preserve">
+    <value>guna2Panel1</value>
+  </data>
+  <data name="Label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 15pt</value>
+  </data>
+  <data name="txtRemarks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>402, 135</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="btnConfirm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt, style=Bold</value>
+  </data>
+  <data name="Label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
+  <data name="&gt;&gt;txtNewCost.Name" xml:space="preserve">
+    <value>txtNewCost</value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 28</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>New cost</value>
+  </data>
+  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
+    <value>guna2Panel1</value>
+  </data>
+  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 16</value>
+  </data>
+  <data name="txtNewCost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>402, 33</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
+  </data>
+  <data name="&gt;&gt;btnConfirm.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtNewCost.Parent" xml:space="preserve">
+    <value>guna2Panel1</value>
+  </data>
+  <data name="txtRemarks.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="&gt;&gt;btnConfirm.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
+  </data>
+  <data name="&gt;&gt;guna2Panel1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Panel, Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
+  </data>
+  <data name="guna2Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="&gt;&gt;txtRemarks.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="txtNewCost.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label2.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="&gt;&gt;Label5.Name" xml:space="preserve">
+    <value>Label5</value>
+  </data>
+  <data name="&gt;&gt;txtNewCost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 28</value>
+  </data>
+  <data name="&gt;&gt;guna2ShadowForm1.Name" xml:space="preserve">
+    <value>guna2ShadowForm1</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>224, 285</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 57</value>
+  </data>
+  <data name="&gt;&gt;guna2Panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAC9MgAAZgAAAICAAAABACAAKAgBACMzAABAQAAAAQAgAChCAABLOwEAMDAAAAEA
@@ -2077,4 +2182,120 @@
         /wAA
 </value>
   </data>
+  <data name="guna2Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>425, 353</value>
+  </data>
+  <data name="&gt;&gt;guna2Panel1.Name" xml:space="preserve">
+    <value>guna2Panel1</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnConfirm.Name" xml:space="preserve">
+    <value>btnConfirm</value>
+  </data>
+  <data name="txtNewCost.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;Label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="txtNewCost.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 14.25pt</value>
+  </data>
+  <data name="Label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;Label5.Parent" xml:space="preserve">
+    <value>guna2Panel1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Label5.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>AdjustCost</value>
+  </data>
+  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnConfirm.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="&gt;&gt;txtNewCost.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 15pt</value>
+  </data>
+  <data name="&gt;&gt;guna2ShadowForm1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2ShadowForm, Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
+  </data>
+  <data name="btnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="txtNewCost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 52</value>
+  </data>
+  <data name="btnConfirm.Text" xml:space="preserve">
+    <value>CONFIRM</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="txtRemarks.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;Label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnConfirm.Parent" xml:space="preserve">
+    <value>guna2Panel1</value>
+  </data>
+  <data name="btnConfirm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 285</value>
+  </data>
+  <data name="&gt;&gt;guna2Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="guna2ShadowForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
