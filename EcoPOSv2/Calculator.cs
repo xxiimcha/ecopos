@@ -216,6 +216,7 @@ namespace EcoPOSv2
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            //ajs
             txtInput.Text = string.Empty;
             valHolder1 = 0;
             valHolder2 = 0;
