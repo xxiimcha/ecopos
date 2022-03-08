@@ -33,16 +33,12 @@
             this.btnPrintersDevices = new FontAwesome.Sharp.IconButton();
             this.btnEditReceiptFooter = new FontAwesome.Sharp.IconButton();
             this.btnSeeStoreDetails = new FontAwesome.Sharp.IconButton();
-            this.lblLanguage = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.White;
-            this.Panel1.Controls.Add(this.comboBox1);
-            this.Panel1.Controls.Add(this.lblLanguage);
             this.Panel1.Controls.Add(this.btnPrintersDevices);
             this.Panel1.Controls.Add(this.btnEditReceiptFooter);
             this.Panel1.Controls.Add(this.btnSeeStoreDetails);
@@ -121,31 +117,6 @@
             this.btnSeeStoreDetails.UseVisualStyleBackColor = false;
             this.btnSeeStoreDetails.Click += new System.EventHandler(this.BtnSeeStoreDetails_Click);
             // 
-            // lblLanguage
-            // 
-            this.lblLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblLanguage.AutoSize = true;
-            this.lblLanguage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLanguage.Location = new System.Drawing.Point(810, 697);
-            this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(81, 21);
-            this.lblLanguage.TabIndex = 6;
-            this.lblLanguage.Text = "Language:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "English",
-            "Chinese (Simplified)"});
-            this.comboBox1.Location = new System.Drawing.Point(897, 694);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(181, 29);
-            this.comboBox1.TabIndex = 7;
-            // 
             // Store
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,13 +127,11 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "Store";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Panel1.ResumeLayout(false);
-            this.Panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -173,7 +142,5 @@
         internal FontAwesome.Sharp.IconButton btnPrintersDevices;
         internal FontAwesome.Sharp.IconButton btnEditReceiptFooter;
         internal FontAwesome.Sharp.IconButton btnSeeStoreDetails;
-        private System.Windows.Forms.Label lblLanguage;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

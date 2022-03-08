@@ -78,7 +78,7 @@ namespace EcoPOSv2
 
             if (myKey == null)
             {
-                MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Do not try to copy this application to other system unit, if you intent to avail, please directly contact EcoPOS.", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }

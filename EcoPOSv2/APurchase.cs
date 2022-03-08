@@ -286,8 +286,6 @@ namespace EcoPOSv2
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // check if qty not zero
-
             PurchaseRF();
 
             int requiredFieldsMet = RequireField(ref requiredFields);
@@ -308,7 +306,7 @@ namespace EcoPOSv2
                     return;
                 }
 
-                /*
+                /* JEREMY's WAY
                 foreach (DataGridViewRow row in dgvPurchase.Rows)
                 {
                     if (Convert.ToDecimal(dgvPurchase.Rows[row.Index].Cells[2].Value.ToString()) == 0 | dgvPurchase.Rows[row.Index].Cells[2].Value.ToString() == "")
@@ -322,22 +320,6 @@ namespace EcoPOSv2
                 {
                     btnSave.Enabled = true;
                     return;
-                }
-                    
-                foreach (DataGridViewRow row in dgvPurchase.Rows)
-                {
-                    SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
-                    SQL.AddParam("@qty", Convert.ToDecimal(dgvPurchase.Rows[row.Index].Cells[2].Value.ToString()));
-
-                    SQL.Query(@"UPDATE inventory SET stock_qty = stock_qty + @qty
-                           WHERE productID = @productID");
-
-                    if (SQL.HasException(true))
-                    {
-                        new Notification().PopUp("Something went wrong.","Error","error");
-                        btnSave.Enabled = true;
-                        return;
-                    }
                 }
 
                 // save to inventory_operation
@@ -359,11 +341,14 @@ namespace EcoPOSv2
                     return;
                 }
 
-                // save to inventory_operation_items
+                int number_of_items_updated = 0;
+                //LOOPS THROUGH ALL THE ITEMS ADDED
                 foreach (DataGridViewRow row in dgvPurchase.Rows)
                 {
+                    //CHECKS IF QUANTITY IS BLANK OR ZERO
                     if (dgvPurchase.Rows[row.Index].Cells[2].Value.ToString() != "" && dgvPurchase.Rows[row.Index].Cells[2].Value.ToString() != "0")
                     {
+                        //INSERTS TO OPERATION ITEMS
                         SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
                         SQL.AddParam("@product_name", dgvPurchase.Rows[row.Index].Cells[1].Value.ToString());
                         SQL.AddParam("@qty", Convert.ToDecimal(dgvPurchase.Rows[row.Index].Cells[2].Value.ToString()));
@@ -388,21 +373,55 @@ namespace EcoPOSv2
                             btnSave.Enabled = true;
                             return;
                         }
+
+                        //UPDATE QUANTITY 
+                        SQL.AddParam("@productID", dgvPurchase.Rows[row.Index].Cells[0].Value.ToString());
+                        SQL.AddParam("@qty", Convert.ToDecimal(dgvPurchase.Rows[row.Index].Cells[2].Value.ToString()));
+
+                        SQL.Query(@"UPDATE inventory SET stock_qty = stock_qty + @qty
+                           WHERE productID = @productID");
+
+                        if (SQL.HasException(true))
+                        {
+                            new Notification().PopUp("Something went wrong.", "Error", "error");
+                            btnSave.Enabled = true;
+                            return;
+                        }
+                        number_of_items_updated++;
+                    }
+                }
+
+                if (number_of_items_updated > 0)
+                {
+                    btnSearch.PerformClick();
+                    dt_purchase.Rows.Clear();
+
+                    tbOperationCode.Clear();
+                    txtRemarks.Clear();
+                    txtTotalAmount.Clear();
+
+                    new Notification().PopUp("Item saved.", "", "information");
+                }
+                else
+                {
+                    new Notification().PopUp("Values for the items hasn't been set.", "Save failed", "error");
+
+                    SQL.AddParam("@operation_code", tbOperationCode.Text);
+                    SQL.Query(@"DELETE FROM inventory_operation WHERE operation_code = @operation_code AND operation = 'Purchase Inventory'");
+
+                    if (SQL.HasException(true))
+                    {
+                        new Notification().PopUp("Something went wrong.", "Error", "error");
+                        btnSave.Enabled = true;
+                        return;
                     }
                 }
 
                 GlobalVariables.LoadPurchaseProducts();
-
-                btnSearch.PerformClick();
-                dt_purchase.Rows.Clear();
-                new Notification().PopUp("Item saved.", "", "information");
+                
 
                 //ENABLING PURCHASE BUTTON
                 btnSave.Enabled = true;
-
-                tbOperationCode.Clear();
-                txtRemarks.Clear();
-                txtTotalAmount.Clear();
             }
             else
                 new Notification().PopUp("Please fill all required fields.","Save failed", "error");

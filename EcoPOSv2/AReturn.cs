@@ -199,6 +199,7 @@ namespace EcoPOSv2
             dgvReturn.DataSource = null;
             dgvProducts.DataSource = null;
 
+            GlobalVariables.LoadPurchaseProducts();
             new Notification().PopUp("Item saved.","","information");
         }
 

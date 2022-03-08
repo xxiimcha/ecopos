@@ -126,7 +126,6 @@
             this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.ForeColor = System.Drawing.Color.Black;
             this.txtQuantity.Location = new System.Drawing.Point(112, 58);
-            this.txtQuantity.Multiline = true;
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(398, 33);
             this.txtQuantity.TabIndex = 54;

@@ -86,9 +86,9 @@
             // 
             // OrderPanel
             // 
-            resources.ApplyResources(this.OrderPanel, "OrderPanel");
             this.OrderPanel.Controls.Add(this.enteredOrdersPanel);
             this.OrderPanel.Controls.Add(this.panel4);
+            resources.ApplyResources(this.OrderPanel, "OrderPanel");
             this.OrderPanel.Name = "OrderPanel";
             // 
             // enteredOrdersPanel
@@ -101,13 +101,13 @@
             // 
             // dgvCart
             // 
-            resources.ApplyResources(this.dgvCart, "dgvCart");
             this.dgvCart.AllowUserToAddRows = false;
             this.dgvCart.AllowUserToDeleteRows = false;
             this.dgvCart.AllowUserToResizeColumns = false;
             this.dgvCart.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.dgvCart, "dgvCart");
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.White;
             this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -178,7 +178,6 @@
             // 
             // panel4
             // 
-            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.btnViewKeeps);
             this.panel4.Controls.Add(this.btnKeep);
@@ -217,6 +216,7 @@
             this.panel4.Controls.Add(this.btnDiscount);
             this.panel4.Controls.Add(this.guna2Panel1);
             this.panel4.Controls.Add(this.label7);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
             // btnViewKeeps
@@ -328,8 +328,8 @@
             // 
             // lblOperation
             // 
-            resources.ApplyResources(this.lblOperation, "lblOperation");
             this.lblOperation.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblOperation, "lblOperation");
             this.lblOperation.ForeColor = System.Drawing.Color.Black;
             this.lblOperation.Name = "lblOperation";
             // 
@@ -342,8 +342,8 @@
             // 
             // lblCustomer
             // 
-            resources.ApplyResources(this.lblCustomer, "lblCustomer");
             this.lblCustomer.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblCustomer, "lblCustomer");
             this.lblCustomer.ForeColor = System.Drawing.Color.Black;
             this.lblCustomer.Name = "lblCustomer";
             // 
@@ -356,8 +356,8 @@
             // 
             // lblZeroRated
             // 
-            resources.ApplyResources(this.lblZeroRated, "lblZeroRated");
             this.lblZeroRated.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblZeroRated, "lblZeroRated");
             this.lblZeroRated.ForeColor = System.Drawing.Color.Black;
             this.lblZeroRated.Name = "lblZeroRated";
             // 
@@ -370,8 +370,8 @@
             // 
             // lblVATExempt
             // 
-            resources.ApplyResources(this.lblVATExempt, "lblVATExempt");
             this.lblVATExempt.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblVATExempt, "lblVATExempt");
             this.lblVATExempt.ForeColor = System.Drawing.Color.Black;
             this.lblVATExempt.Name = "lblVATExempt";
             // 
@@ -384,8 +384,8 @@
             // 
             // lblVAT
             // 
-            resources.ApplyResources(this.lblVAT, "lblVAT");
             this.lblVAT.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblVAT, "lblVAT");
             this.lblVAT.ForeColor = System.Drawing.Color.Black;
             this.lblVAT.Name = "lblVAT";
             // 
@@ -398,8 +398,8 @@
             // 
             // lblVATSale
             // 
-            resources.ApplyResources(this.lblVATSale, "lblVATSale");
             this.lblVATSale.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblVATSale, "lblVATSale");
             this.lblVATSale.ForeColor = System.Drawing.Color.Black;
             this.lblVATSale.Name = "lblVATSale";
             // 
@@ -412,8 +412,8 @@
             // 
             // lblLessVAT
             // 
-            resources.ApplyResources(this.lblLessVAT, "lblLessVAT");
             this.lblLessVAT.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblLessVAT, "lblLessVAT");
             this.lblLessVAT.ForeColor = System.Drawing.Color.Black;
             this.lblLessVAT.Name = "lblLessVAT";
             // 
@@ -426,8 +426,8 @@
             // 
             // lblTotal
             // 
-            resources.ApplyResources(this.lblTotal, "lblTotal");
             this.lblTotal.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblTotal, "lblTotal");
             this.lblTotal.ForeColor = System.Drawing.Color.Green;
             this.lblTotal.Name = "lblTotal";
             // 
@@ -440,8 +440,8 @@
             // 
             // lblDiscount
             // 
-            resources.ApplyResources(this.lblDiscount, "lblDiscount");
             this.lblDiscount.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblDiscount, "lblDiscount");
             this.lblDiscount.ForeColor = System.Drawing.Color.Black;
             this.lblDiscount.Name = "lblDiscount";
             // 
@@ -454,8 +454,8 @@
             // 
             // lblSubtotal
             // 
-            resources.ApplyResources(this.lblSubtotal, "lblSubtotal");
             this.lblSubtotal.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblSubtotal, "lblSubtotal");
             this.lblSubtotal.ForeColor = System.Drawing.Color.Black;
             this.lblSubtotal.Name = "lblSubtotal";
             // 
@@ -468,8 +468,8 @@
             // 
             // lblItems
             // 
-            resources.ApplyResources(this.lblItems, "lblItems");
             this.lblItems.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblItems, "lblItems");
             this.lblItems.ForeColor = System.Drawing.Color.Black;
             this.lblItems.Name = "lblItems";
             // 
@@ -482,8 +482,8 @@
             // 
             // lblOrderNumber
             // 
-            resources.ApplyResources(this.lblOrderNumber, "lblOrderNumber");
             this.lblOrderNumber.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.lblOrderNumber, "lblOrderNumber");
             this.lblOrderNumber.ForeColor = System.Drawing.Color.Black;
             this.lblOrderNumber.Name = "lblOrderNumber";
             // 
@@ -496,12 +496,12 @@
             // 
             // btnVoidItem
             // 
-            resources.ApplyResources(this.btnVoidItem, "btnVoidItem");
             this.btnVoidItem.BorderColor = System.Drawing.Color.Red;
             this.btnVoidItem.BorderThickness = 1;
             this.btnVoidItem.CheckedState.Parent = this.btnVoidItem;
             this.btnVoidItem.CustomImages.Parent = this.btnVoidItem;
             this.btnVoidItem.FillColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnVoidItem, "btnVoidItem");
             this.btnVoidItem.ForeColor = System.Drawing.Color.Red;
             this.btnVoidItem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVoidItem.HoverState.Parent = this.btnVoidItem;
@@ -511,12 +511,12 @@
             // 
             // btnQuantity
             // 
-            resources.ApplyResources(this.btnQuantity, "btnQuantity");
             this.btnQuantity.BorderColor = System.Drawing.Color.Green;
             this.btnQuantity.BorderThickness = 1;
             this.btnQuantity.CheckedState.Parent = this.btnQuantity;
             this.btnQuantity.CustomImages.Parent = this.btnQuantity;
             this.btnQuantity.FillColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnQuantity, "btnQuantity");
             this.btnQuantity.ForeColor = System.Drawing.Color.Green;
             this.btnQuantity.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnQuantity.HoverState.Parent = this.btnQuantity;
@@ -526,12 +526,12 @@
             // 
             // btnCustomer
             // 
-            resources.ApplyResources(this.btnCustomer, "btnCustomer");
             this.btnCustomer.BorderColor = System.Drawing.Color.Navy;
             this.btnCustomer.BorderThickness = 1;
             this.btnCustomer.CheckedState.Parent = this.btnCustomer;
             this.btnCustomer.CustomImages.Parent = this.btnCustomer;
             this.btnCustomer.FillColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnCustomer, "btnCustomer");
             this.btnCustomer.ForeColor = System.Drawing.Color.Navy;
             this.btnCustomer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCustomer.HoverState.Parent = this.btnCustomer;
@@ -541,12 +541,12 @@
             // 
             // btnDiscount
             // 
-            resources.ApplyResources(this.btnDiscount, "btnDiscount");
             this.btnDiscount.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnDiscount.BorderThickness = 1;
             this.btnDiscount.CheckedState.Parent = this.btnDiscount;
             this.btnDiscount.CustomImages.Parent = this.btnDiscount;
             this.btnDiscount.FillColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnDiscount, "btnDiscount");
             this.btnDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnDiscount.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDiscount.HoverState.Parent = this.btnDiscount;
@@ -556,15 +556,14 @@
             // 
             // guna2Panel1
             // 
-            resources.ApplyResources(this.guna2Panel1, "guna2Panel1");
             this.guna2Panel1.Controls.Add(this.btnWholeSale);
             this.guna2Panel1.Controls.Add(this.btnRetail);
+            resources.ApplyResources(this.guna2Panel1, "guna2Panel1");
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             // 
             // btnWholeSale
             // 
-            resources.ApplyResources(this.btnWholeSale, "btnWholeSale");
             this.btnWholeSale.BorderRadius = 5;
             this.btnWholeSale.BorderThickness = 1;
             this.btnWholeSale.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -572,6 +571,7 @@
             this.btnWholeSale.CheckedState.Parent = this.btnWholeSale;
             this.btnWholeSale.CustomImages.Parent = this.btnWholeSale;
             this.btnWholeSale.FillColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnWholeSale, "btnWholeSale");
             this.btnWholeSale.ForeColor = System.Drawing.Color.Black;
             this.btnWholeSale.HoverState.Parent = this.btnWholeSale;
             this.btnWholeSale.Name = "btnWholeSale";
@@ -580,7 +580,6 @@
             // 
             // btnRetail
             // 
-            resources.ApplyResources(this.btnRetail, "btnRetail");
             this.btnRetail.BorderRadius = 5;
             this.btnRetail.BorderThickness = 1;
             this.btnRetail.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -588,6 +587,7 @@
             this.btnRetail.CheckedState.Parent = this.btnRetail;
             this.btnRetail.CustomImages.Parent = this.btnRetail;
             this.btnRetail.FillColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.btnRetail, "btnRetail");
             this.btnRetail.ForeColor = System.Drawing.Color.Black;
             this.btnRetail.HoverState.Parent = this.btnRetail;
             this.btnRetail.Name = "btnRetail";

@@ -532,15 +532,28 @@ namespace EcoPOSv2
 
             //ReferenceNo
             SQL.AddParam("@ReferenceNo", tbReferenceNo.Text);
+            SQL.AddParam("@date", DateTime.Now);
 
-            SQL.Query(@"INSERT INTO transaction_details 
-                       (order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref, 
-                       no_of_items, subtotal, disc_amt, total, cus_pts_deducted, giftcard_deducted, grand_total, payment_amt, change, payment_method, giftcard_no, 
-                       less_vat, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, userID, user_first_name,terminal_id,referenceNo) 
-                       SELECT order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref,  
-                       @no_of_items, @subtotal, IIF((SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id) > 1300, 1300, (SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id)), @total, @cus_pts_deducted, 
-                       @giftcard_deducted, @grand_total, @payment_amt, @change, @payment_method, @giftcard_no, @less_vat, @vatable_sale, @vat_12, @vat_exempt_sale, 
-                       @zero_rated_sale, @userID, @user_first_name,@terminal_id,@ReferenceNo FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
+
+            SQL.Query(@"BEGIN TRANSACTION;
+
+                        INSERT INTO transaction_details 
+                           (order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref, 
+                           no_of_items, subtotal, disc_amt, total, cus_pts_deducted, giftcard_deducted, grand_total, payment_amt, change, payment_method, giftcard_no, 
+                           less_vat, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, userID, user_first_name,terminal_id,referenceNo) 
+                           SELECT order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref,  
+                           @no_of_items, @subtotal, IIF((SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id) > 1300, 1300, (SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id)), @total, @cus_pts_deducted, 
+                           @giftcard_deducted, @grand_total, @payment_amt, @change, @payment_method, @giftcard_no, @less_vat, @vatable_sale, @vat_12, @vat_exempt_sale, 
+                           @zero_rated_sale, @userID, @user_first_name,@terminal_id,@ReferenceNo FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id);
+
+                        INSERT INTO transaction_items (order_ref, itemID, productID, description, name, type, static_price_exclusive,
+                           static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
+                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id)
+                           SELECT (SELECT MAX(order_ref) FROM transaction_details where terminal_id=@terminal_id), itemID, productID, description, name, type, static_price_exclusive,
+                           static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
+                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id FROM order_cart where terminal_id=@terminal_id;
+
+                     COMMIT");
             if (SQL.HasException(true))
             {
                 MessageBox.Show("1");
@@ -551,28 +564,33 @@ namespace EcoPOSv2
 
             #endregion
 
+            /*
             #region transaction_items
             SQL.AddParam("@date", DateTime.Now);
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query(@"INSERT INTO transaction_items (order_ref, itemID, productID, description, name, type, static_price_exclusive,
+            SQL.Query(@"BEGIN TRANSACTION;
+                           INSERT INTO transaction_items (order_ref, itemID, productID, description, name, type, static_price_exclusive,
                            static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
                            quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id)
                            SELECT (SELECT MAX(order_ref) FROM transaction_details where terminal_id=@terminal_id), itemID, productID, description, name, type, static_price_exclusive,
                            static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
-                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id FROM order_cart where terminal_id=@terminal_id");
+                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id FROM order_cart where terminal_id=@terminal_id;
+                       COMMIT");
             if (SQL.HasException(true))
             {
                 MessageBox.Show("2");
                 return;
             }
 
-
             #endregion
+            */
+
+            Advance_OrderNo();
 
             #region remove/add to inventory
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query("SELECT productID, quantity, is_return, is_refund FROM order_cart where terminal_id=@terminal_id");
+            SQL.Query("SELECT productID, quantity, is_return, is_refund FROM order_cart where terminal_id=@terminal_id;");
             if (SQL.HasException(true))
             {
                 MessageBox.Show("3");
@@ -584,7 +602,7 @@ namespace EcoPOSv2
                 SQL.AddParam("@quantity", r["quantity"].ToString());
                 if (Convert.ToBoolean(r["is_return"].ToString()) || Convert.ToBoolean(r["is_refund"].ToString()))
                 {
-                    SQL.Query("UPDATE inventory SET stock_qty = stock_qty + @quantity WHERE productID = @productID");
+                    SQL.Query("BEGIN TRANSACTION; UPDATE inventory SET stock_qty = stock_qty + @quantity WHERE productID = @productID; COMMIT");
                     if (SQL.HasException(true))
                     {
                         MessageBox.Show("4");
@@ -593,7 +611,7 @@ namespace EcoPOSv2
                 }
                 else
                 {
-                    SQL.Query("UPDATE inventory SET stock_qty = stock_qty - @quantity WHERE productID = @productID");
+                    SQL.Query("BEGIN TRANSACTION; UPDATE inventory SET stock_qty = stock_qty - @quantity WHERE productID = @productID; COMMIT");
                     if (SQL.HasException(true))
                     {
                         MessageBox.Show("5");
@@ -657,20 +675,20 @@ namespace EcoPOSv2
             SQL.AddParam("@date", DateTime.Now.ToString("yyy-MM-dd"));
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-            SQL.Query("UPDATE profit set Sales = Sales + @Sales, Total_Cost=Total_Cost + @Total_Cost where date=@date AND terminal_id=@terminal_id");
+            SQL.Query("BEGIN TRANSACTION; UPDATE profit set Sales = Sales + @Sales, Total_Cost=Total_Cost + @Total_Cost where date=@date AND terminal_id=@terminal_id; COMMIT");
             if (SQL.HasException(true))
             {
-                MessageBox.Show("Error sa pag compute ng profit Sales+Total Sales per transaction");
+                MessageBox.Show("Profit Computation Failed 1");
                 return;
             }
 
             SQL.AddParam("@date", DateTime.Now.ToString("yyy-MM-dd"));
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-            SQL.Query("UPDATE profit set Gross = Sales-Total_Cost where date=@date AND terminal_id=@terminal_id");
+            SQL.Query("BEGIN TRANSACTION; UPDATE profit set Gross = Sales-Total_Cost where date=@date AND terminal_id=@terminal_id; COMMIT");
             if (SQL.HasException(true))
             {
-                MessageBox.Show("Error sa pag compute ng profit Total Sales - TotalCost");
+                MessageBox.Show("Profit Computation Failed 2");
                 return;
             }
 
@@ -775,7 +793,7 @@ namespace EcoPOSv2
             //frmOrder.is_return = false;
 
             #endregion
-            Advance_OrderNo();
+            
 
             //this.Close();
             PChange pchange = new PChange();

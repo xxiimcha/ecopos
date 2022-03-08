@@ -341,10 +341,12 @@ namespace EcoPOSv2
 
                 if (Psql.HasException(true))
                 {
-                    MessageBox.Show("Error sa inventory");
+                    MessageBox.Show("Inventory Error");
                     return;
                 }
             }
+
+            GlobalVariables.LoadPurchaseProducts();
         }
     }
 }
