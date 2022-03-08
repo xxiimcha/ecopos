@@ -306,52 +306,55 @@
             // TableLayoutPanel3
             // 
             this.TableLayoutPanel3.ColumnCount = 3;
-            this.TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.92537F));
-            this.TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.89552F));
-            this.TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.42786F));
-            this.TableLayoutPanel3.Controls.Add(this.Label13, 0, 1);
+            this.TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.98914F));
+            this.TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.31224F));
+            this.TableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.69863F));
             this.TableLayoutPanel3.Controls.Add(this.dtpFrom, 1, 1);
-            this.TableLayoutPanel3.Controls.Add(this.btnSearch, 2, 1);
             this.TableLayoutPanel3.Controls.Add(this.Label14, 0, 2);
             this.TableLayoutPanel3.Controls.Add(this.dtpTo, 1, 2);
+            this.TableLayoutPanel3.Controls.Add(this.Label13, 0, 1);
+            this.TableLayoutPanel3.Controls.Add(this.btnSearch, 2, 1);
             this.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.TableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel3.Name = "TableLayoutPanel3";
             this.TableLayoutPanel3.RowCount = 4;
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.3617F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.76596F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.888492F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.56512F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.92278F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.62361F));
             this.TableLayoutPanel3.Size = new System.Drawing.Size(267, 103);
             this.TableLayoutPanel3.TabIndex = 113;
             // 
             // Label13
             // 
             this.Label13.AutoSize = true;
+            this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
             this.Label13.Location = new System.Drawing.Point(3, 10);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(24, 30);
+            this.Label13.Size = new System.Drawing.Size(44, 39);
             this.Label13.TabIndex = 101;
             this.Label13.Text = "From";
             this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpFrom
             // 
+            this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFrom.CustomFormat = "MMMM dd, yyyy";
             this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(42, 13);
+            this.dtpFrom.Location = new System.Drawing.Point(53, 13);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(182, 29);
+            this.dtpFrom.Size = new System.Drawing.Size(173, 29);
             this.dtpFrom.TabIndex = 102;
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -361,9 +364,9 @@
             this.btnSearch.IconColor = System.Drawing.Color.Black;
             this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSearch.IconSize = 31;
-            this.btnSearch.Location = new System.Drawing.Point(230, 13);
+            this.btnSearch.Location = new System.Drawing.Point(232, 13);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(34, 29);
+            this.btnSearch.Size = new System.Drawing.Size(32, 33);
             this.btnSearch.TabIndex = 105;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -371,23 +374,27 @@
             // Label14
             // 
             this.Label14.AutoSize = true;
+            this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
             this.Label14.Location = new System.Drawing.Point(3, 49);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(25, 16);
+            this.Label14.Size = new System.Drawing.Size(44, 40);
             this.Label14.TabIndex = 103;
             this.Label14.Text = "To";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpTo
             // 
+            this.dtpTo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTo.CustomFormat = "MMMM dd, yyyy";
             this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(42, 52);
+            this.dtpTo.Location = new System.Drawing.Point(53, 52);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(182, 29);
+            this.dtpTo.Size = new System.Drawing.Size(173, 29);
             this.dtpTo.TabIndex = 104;
             // 
             // CrystalReportViewer1

@@ -40,9 +40,10 @@ namespace EcoPOSv2
             cmbType.SelectedIndex = 0;
 
 
-            btnSearch.PerformClick();
+            SearchTransactions();
         }
-        private void btnSearch_Click(object sender, EventArgs e)
+
+        private void SearchTransactions()
         {
             int action = 0;
 
@@ -69,7 +70,7 @@ namespace EcoPOSv2
                              WHEN cus_type = 2 THEN 'PWD'
                              WHEN cus_type = 3 THEN 'Athlete'
                              WHEN cus_type = 0 THEN 'Member' END) AS 'Customer Type', 
-                             payment_method as 'PaymentMethod', CONVERT(DECIMAL(18,2), ABS(disc_amt + cus_pts_deducted + giftcard_deducted)) as 'Deductions', CONVERT(DECIMAL(18,2), grand_total) as 'Total',
+                             payment_method as 'Payment Method', CONVERT(DECIMAL(18,2), ABS(disc_amt + cus_pts_deducted + giftcard_deducted)) as 'Deductions', CONVERT(DECIMAL(18,2), grand_total) as 'Total',
                              CONVERT(DECIMAL(18,2), vatable_sale) as 'VATable Sale', CONVERT(DECIMAL(18,2), vat_12) as 'VAT', CONVERT(DECIMAL(18,2), less_vat) as 'Less VAT', 
                              CONVERT(DECIMAL(18,2), vat_exempt_sale) as 'VAT Exempt' FROM transaction_details WHERE " + where_query + " AND date_time BETWEEN @from AND @to ORDER BY date_time DESC");
 
@@ -81,22 +82,6 @@ namespace EcoPOSv2
             dgvRecords.Columns[1].Width = 100;
         }
 
-        private void btnSort_Click(object sender, EventArgs e)
-        {
-            if (dgvRecords.RowCount == 0)
-                return;
-
-            if (btnSort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvRecords.Sort(dgvRecords.Columns[1], ListSortDirection.Ascending);
-                btnSort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvRecords.Sort(dgvRecords.Columns[1], ListSortDirection.Descending);
-                btnSort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
@@ -465,14 +450,18 @@ namespace EcoPOSv2
             }
         }
 
-        private void dgvRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
                 return;
 
+            report.Dispose();
+
             dgvClickedOnce = true;
 
             report = new TransactionsReport58();
+
 
             DataSet ds = new DataSet();
 
@@ -550,6 +539,7 @@ namespace EcoPOSv2
 
                 CrystalReportViewer1.ReportSource = report;
                 CrystalReportViewer1.Refresh();
+                CrystalReportViewer1.Zoom(1);
             }
             //}
             //catch (Exception ex)
@@ -727,6 +717,26 @@ namespace EcoPOSv2
             //        CrystalReportViewer1.Refresh();
             //    }
             //}
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            SearchTransactions();
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            SearchTransactions();
+        }
+
+        private void cmbType_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SearchTransactions();
+        }
+
+        private void TableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

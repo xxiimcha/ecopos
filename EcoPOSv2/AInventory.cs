@@ -186,7 +186,6 @@ namespace EcoPOSv2
             {
                 InventoryProduct_View.Instance.lblProductName.Text = dgvInventory.CurrentRow.Cells[1].Value.ToString() + "|" + dgvInventory.CurrentRow.Cells[2].Value.ToString();
                 InventoryProduct_View.Instance.productID = dgvInventory.CurrentRow.Cells[0].Value.ToString();
-
                 InventoryProduct_View.Instance.ShowDialog();
             }
         }

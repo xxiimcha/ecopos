@@ -373,7 +373,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.gunaControlBox1);
             this.panel1.Controls.Add(this.dtpTo);
             this.panel1.Controls.Add(this.lblProductName);
@@ -614,7 +614,7 @@
             // InventoryProduct_View
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1065, 624);
             this.Controls.Add(this.licensing1);
             this.Controls.Add(this.dgvReturn);
@@ -629,6 +629,7 @@
             this.Controls.Add(this.gpSold);
             this.Controls.Add(this.guna2Separator1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
