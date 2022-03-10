@@ -138,6 +138,7 @@ namespace EcoPOSv2
                 SQL.Query("DELETE FROM redeem_transaction_items");
                 SQL.Query("DELETE FROM role_permission");
                 SQL.Query("DELETE FROM shift");
+                SQL.Query("DELETE FROM store_start");
                 SQL.Query("DELETE FROM transaction_details");
                 SQL.Query("DELETE FROM transaction_items");
                 SQL.Query("DELETE FROM user_logs");
@@ -147,7 +148,7 @@ namespace EcoPOSv2
                 SQL.Query("DELETE FROM void_transaction");
                 SQL.Query("DELETE FROM xreading");
                 SQL.Query("DELETE FROM zreading");
-                SQL.Query("DELETE FROM store_start");
+                
 
                 SQL.Query(@"DBCC CHECKIDENT ('[customer]', RESEED, 0);
                 DBCC CHECKIDENT('[discount]', RESEED, 0);
@@ -218,13 +219,13 @@ namespace EcoPOSv2
                 SQL.Query("delete from keep");
                 SQL.Query("delete from redeem_transaction");
                 SQL.Query("delete from redeem_transaction_items");
+                SQL.Query("DELETE FROM store_start");
                 SQL.Query("delete from transaction_details");
                 SQL.Query("delete from transaction_items");
                 SQL.Query("delete from void_item");
                 SQL.Query("delete from void_transaction");
                 SQL.Query("delete from xreading");
                 SQL.Query("delete from zreading");
-                SQL.Query("DELETE FROM store_start");
 
                 SQL.Query(@"DBCC CHECKIDENT('[order_no]', RESEED, 0);
                 DBCC CHECKIDENT('[order_cart]', RESEED, 0);

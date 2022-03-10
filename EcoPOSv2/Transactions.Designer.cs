@@ -35,23 +35,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transactions));
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvRecords = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.CrystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmbType = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.btnGenerateReport = new FontAwesome.Sharp.IconButton();
-            this.Label14 = new System.Windows.Forms.Label();
-            this.Label13 = new System.Windows.Forms.Label();
             this.btnReprint = new FontAwesome.Sharp.IconButton();
-            this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.Label13 = new System.Windows.Forms.Label();
+            this.Label14 = new System.Windows.Forms.Label();
+            this.btnGenerateReport = new FontAwesome.Sharp.IconButton();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.cmbType = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.CrystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.TableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecords)).BeginInit();
+            this.TableLayoutPanel2.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.TableLayoutPanel3.SuspendLayout();
-            this.TableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanel1
@@ -82,7 +82,7 @@
             this.dgvRecords.BackgroundColor = System.Drawing.Color.White;
             this.dgvRecords.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvRecords.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvRecords.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRecords.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -131,7 +131,7 @@
             this.dgvRecords.ThemeStyle.BackColor = System.Drawing.Color.White;
             this.dgvRecords.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvRecords.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvRecords.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRecords.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvRecords.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dgvRecords.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvRecords.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -146,19 +146,20 @@
             this.dgvRecords.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvRecords.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecords_CellContentClick);
             // 
-            // CrystalReportViewer1
+            // TableLayoutPanel2
             // 
-            this.CrystalReportViewer1.ActiveViewIndex = -1;
-            this.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CrystalReportViewer1.DisplayStatusBar = false;
-            this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CrystalReportViewer1.Location = new System.Drawing.Point(0, 230);
-            this.CrystalReportViewer1.Margin = new System.Windows.Forms.Padding(0);
-            this.CrystalReportViewer1.Name = "CrystalReportViewer1";
-            this.CrystalReportViewer1.Size = new System.Drawing.Size(267, 498);
-            this.CrystalReportViewer1.TabIndex = 1;
-            this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.TableLayoutPanel2.ColumnCount = 1;
+            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanel2.Controls.Add(this.Panel2, 0, 0);
+            this.TableLayoutPanel2.Controls.Add(this.CrystalReportViewer1, 0, 1);
+            this.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanel2.Location = new System.Drawing.Point(820, 3);
+            this.TableLayoutPanel2.Name = "TableLayoutPanel2";
+            this.TableLayoutPanel2.RowCount = 2;
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.59341F));
+            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.40659F));
+            this.TableLayoutPanel2.Size = new System.Drawing.Size(267, 728);
+            this.TableLayoutPanel2.TabIndex = 3;
             // 
             // Panel2
             // 
@@ -197,6 +198,133 @@
             this.TableLayoutPanel3.TabIndex = 0;
             this.TableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanel3_Paint);
             // 
+            // btnReprint
+            // 
+            this.btnReprint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReprint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnReprint.FlatAppearance.BorderSize = 0;
+            this.btnReprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReprint.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReprint.ForeColor = System.Drawing.Color.Black;
+            this.btnReprint.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btnReprint.IconColor = System.Drawing.Color.Black;
+            this.btnReprint.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReprint.IconSize = 31;
+            this.btnReprint.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnReprint.Location = new System.Drawing.Point(68, 190);
+            this.btnReprint.Name = "btnReprint";
+            this.btnReprint.Size = new System.Drawing.Size(176, 31);
+            this.btnReprint.TabIndex = 117;
+            this.btnReprint.Text = "Reprint Receipt";
+            this.btnReprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReprint.UseVisualStyleBackColor = true;
+            this.btnReprint.Click += new System.EventHandler(this.btnReprint_Click);
+            // 
+            // Label13
+            // 
+            this.Label13.AutoSize = true;
+            this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label13.ForeColor = System.Drawing.Color.Black;
+            this.Label13.Location = new System.Drawing.Point(3, 11);
+            this.Label13.Name = "Label13";
+            this.Label13.Size = new System.Drawing.Size(59, 47);
+            this.Label13.TabIndex = 110;
+            this.Label13.Text = "From";
+            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Label14
+            // 
+            this.Label14.AutoSize = true;
+            this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label14.ForeColor = System.Drawing.Color.Black;
+            this.Label14.Location = new System.Drawing.Point(3, 58);
+            this.Label14.Name = "Label14";
+            this.Label14.Size = new System.Drawing.Size(59, 47);
+            this.Label14.TabIndex = 112;
+            this.Label14.Text = "To";
+            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGenerateReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnGenerateReport.FlatAppearance.BorderSize = 0;
+            this.btnGenerateReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateReport.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateReport.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerateReport.IconChar = FontAwesome.Sharp.IconChar.FileInvoice;
+            this.btnGenerateReport.IconColor = System.Drawing.Color.Black;
+            this.btnGenerateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerateReport.IconSize = 31;
+            this.btnGenerateReport.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGenerateReport.Location = new System.Drawing.Point(68, 155);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(176, 29);
+            this.btnGenerateReport.TabIndex = 116;
+            this.btnGenerateReport.Text = "Generate Report";
+            this.btnGenerateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.ForeColor = System.Drawing.Color.Black;
+            this.Label1.Location = new System.Drawing.Point(3, 105);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(59, 47);
+            this.Label1.TabIndex = 120;
+            this.Label1.Text = "Type";
+            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.BorderRadius = 5;
+            this.dtpFrom.BorderThickness = 1;
+            this.dtpFrom.CheckedState.Parent = this.dtpFrom;
+            this.dtpFrom.CustomFormat = "MMMM dd, yyyy";
+            this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpFrom.FillColor = System.Drawing.Color.White;
+            this.dtpFrom.ForeColor = System.Drawing.Color.Black;
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFrom.HoverState.Parent = this.dtpFrom;
+            this.dtpFrom.Location = new System.Drawing.Point(68, 14);
+            this.dtpFrom.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpFrom.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.ShadowDecoration.Parent = this.dtpFrom;
+            this.dtpFrom.Size = new System.Drawing.Size(176, 41);
+            this.dtpFrom.TabIndex = 121;
+            this.dtpFrom.Tag = "From";
+            this.dtpFrom.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.BorderRadius = 5;
+            this.dtpTo.BorderThickness = 1;
+            this.dtpTo.CheckedState.Parent = this.dtpTo;
+            this.dtpTo.CustomFormat = "MMMM dd, yyyy";
+            this.dtpTo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpTo.FillColor = System.Drawing.Color.White;
+            this.dtpTo.ForeColor = System.Drawing.Color.Black;
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpTo.HoverState.Parent = this.dtpTo;
+            this.dtpTo.Location = new System.Drawing.Point(68, 61);
+            this.dtpTo.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpTo.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.ShadowDecoration.Parent = this.dtpTo;
+            this.dtpTo.Size = new System.Drawing.Size(176, 41);
+            this.dtpTo.TabIndex = 122;
+            this.dtpTo.Tag = "To";
+            this.dtpTo.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
+            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpTo_ValueChanged);
+            // 
             // cmbType
             // 
             this.cmbType.BackColor = System.Drawing.Color.Transparent;
@@ -224,147 +352,19 @@
             this.cmbType.TabIndex = 123;
             this.cmbType.SelectedValueChanged += new System.EventHandler(this.cmbType_SelectedValueChanged);
             // 
-            // dtpTo
+            // CrystalReportViewer1
             // 
-            this.dtpTo.BorderRadius = 5;
-            this.dtpTo.BorderThickness = 1;
-            this.dtpTo.CheckedState.Parent = this.dtpTo;
-            this.dtpTo.CustomFormat = "MMMM dd, yyyy";
-            this.dtpTo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpTo.FillColor = System.Drawing.Color.White;
-            this.dtpTo.ForeColor = System.Drawing.Color.Black;
-            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.HoverState.Parent = this.dtpTo;
-            this.dtpTo.Location = new System.Drawing.Point(68, 61);
-            this.dtpTo.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpTo.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.ShadowDecoration.Parent = this.dtpTo;
-            this.dtpTo.Size = new System.Drawing.Size(176, 41);
-            this.dtpTo.TabIndex = 122;
-            this.dtpTo.Tag = "To";
-            this.dtpTo.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
-            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpTo_ValueChanged);
-            // 
-            // dtpFrom
-            // 
-            this.dtpFrom.BorderRadius = 5;
-            this.dtpFrom.BorderThickness = 1;
-            this.dtpFrom.CheckedState.Parent = this.dtpFrom;
-            this.dtpFrom.CustomFormat = "MMMM dd, yyyy";
-            this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpFrom.FillColor = System.Drawing.Color.White;
-            this.dtpFrom.ForeColor = System.Drawing.Color.Black;
-            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.HoverState.Parent = this.dtpFrom;
-            this.dtpFrom.Location = new System.Drawing.Point(68, 14);
-            this.dtpFrom.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpFrom.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.ShadowDecoration.Parent = this.dtpFrom;
-            this.dtpFrom.Size = new System.Drawing.Size(176, 41);
-            this.dtpFrom.TabIndex = 121;
-            this.dtpFrom.Tag = "From";
-            this.dtpFrom.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
-            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
-            // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(3, 105);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(59, 47);
-            this.Label1.TabIndex = 120;
-            this.Label1.Text = "Type";
-            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnGenerateReport
-            // 
-            this.btnGenerateReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGenerateReport.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
-            this.btnGenerateReport.FlatAppearance.BorderSize = 0;
-            this.btnGenerateReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerateReport.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateReport.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerateReport.IconChar = FontAwesome.Sharp.IconChar.FileInvoice;
-            this.btnGenerateReport.IconColor = System.Drawing.Color.Black;
-            this.btnGenerateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGenerateReport.IconSize = 31;
-            this.btnGenerateReport.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGenerateReport.Location = new System.Drawing.Point(68, 155);
-            this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(176, 29);
-            this.btnGenerateReport.TabIndex = 116;
-            this.btnGenerateReport.Text = "Generate Report";
-            this.btnGenerateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerateReport.UseVisualStyleBackColor = true;
-            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
-            // 
-            // Label14
-            // 
-            this.Label14.AutoSize = true;
-            this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label14.ForeColor = System.Drawing.Color.Black;
-            this.Label14.Location = new System.Drawing.Point(3, 58);
-            this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(59, 47);
-            this.Label14.TabIndex = 112;
-            this.Label14.Text = "To";
-            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label13
-            // 
-            this.Label13.AutoSize = true;
-            this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 11);
-            this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(59, 47);
-            this.Label13.TabIndex = 110;
-            this.Label13.Text = "From";
-            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnReprint
-            // 
-            this.btnReprint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReprint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
-            this.btnReprint.FlatAppearance.BorderSize = 0;
-            this.btnReprint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReprint.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReprint.ForeColor = System.Drawing.Color.Black;
-            this.btnReprint.IconChar = FontAwesome.Sharp.IconChar.Print;
-            this.btnReprint.IconColor = System.Drawing.Color.Black;
-            this.btnReprint.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReprint.IconSize = 31;
-            this.btnReprint.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnReprint.Location = new System.Drawing.Point(68, 190);
-            this.btnReprint.Name = "btnReprint";
-            this.btnReprint.Size = new System.Drawing.Size(176, 31);
-            this.btnReprint.TabIndex = 117;
-            this.btnReprint.Text = "Reprint Receipt";
-            this.btnReprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReprint.UseVisualStyleBackColor = true;
-            this.btnReprint.Click += new System.EventHandler(this.btnReprint_Click);
-            // 
-            // TableLayoutPanel2
-            // 
-            this.TableLayoutPanel2.ColumnCount = 1;
-            this.TableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanel2.Controls.Add(this.Panel2, 0, 0);
-            this.TableLayoutPanel2.Controls.Add(this.CrystalReportViewer1, 0, 1);
-            this.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanel2.Location = new System.Drawing.Point(820, 3);
-            this.TableLayoutPanel2.Name = "TableLayoutPanel2";
-            this.TableLayoutPanel2.RowCount = 2;
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.59341F));
-            this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.40659F));
-            this.TableLayoutPanel2.Size = new System.Drawing.Size(267, 728);
-            this.TableLayoutPanel2.TabIndex = 3;
+            this.CrystalReportViewer1.ActiveViewIndex = -1;
+            this.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CrystalReportViewer1.DisplayStatusBar = false;
+            this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CrystalReportViewer1.Location = new System.Drawing.Point(0, 230);
+            this.CrystalReportViewer1.Margin = new System.Windows.Forms.Padding(0);
+            this.CrystalReportViewer1.Name = "CrystalReportViewer1";
+            this.CrystalReportViewer1.Size = new System.Drawing.Size(267, 498);
+            this.CrystalReportViewer1.TabIndex = 1;
+            this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // Transactions
             // 
@@ -377,14 +377,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Transactions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Transactions";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Transactions_Load);
             this.TableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecords)).EndInit();
+            this.TableLayoutPanel2.ResumeLayout(false);
             this.Panel2.ResumeLayout(false);
             this.TableLayoutPanel3.ResumeLayout(false);
             this.TableLayoutPanel3.PerformLayout();
-            this.TableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
