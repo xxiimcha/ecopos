@@ -322,6 +322,8 @@ namespace EcoPOSv2
         //METHODS
         private void Main_Load(object sender, EventArgs e)
         {
+            lblBypassedBy.Visible = false;
+            btnXReading.Text ="Switch Cashier (F8)" + Environment.NewLine + "(X-READ)";
             lblTerminalName.Text = "Terminal Name: " + Properties.Settings.Default.Terminal_id;
 
             //SERVER TYPE OR NOT
@@ -372,12 +374,13 @@ namespace EcoPOSv2
             UpdateGiftCards();
 
             store_bypass_list();
+
+            String role_name = sql.ReturnResult("SELECT name FROM user_role WHERE roleID = " + roleid);
+            Main.Instance.btnUserRole.Text = role_name != "" ? role_name : "ADMIN";
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            btnItemChecker.Enabled = true;
-            
             Order frmOrder = new Order();
             RP.Order(frmOrder);
             OL.changeForm(frmOrder, currentChildForm, pnlChild);
@@ -385,47 +388,17 @@ namespace EcoPOSv2
 
         private void btnclosetemp_Click(object sender, EventArgs e)
         {
-            if(lblUser.Text == "Bypassed")
-            {
-                this.close = true;
-                Close();
-                return;
-            }
-
-
-            close = true;
-            Application.Exit();
+            
         }
 
         private void btnMore_Click(object sender, EventArgs e)
         {
-            btnItemChecker.Enabled = false;
-            
             More m = new More();
 
             RP.More(m);
             OL.changeForm(m, currentChildForm, pnlChild);
 
             Order.Instance.Close();
-        }
-
-        private void btnSeeItem_Click(object sender, EventArgs e)
-        {
-            if (lblUser.Text == "Bypassed")
-            {
-                MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (Order.Instance.CheckOpened("SeeItem") == true)
-            {
-                return;
-            }
-            Order.Instance.dgvCart.ClearSelection();
-
-            new SeeItem().ShowDialog();
-
-            SeeItem.Instance.ActiveControl = SeeItem.Instance.txtBarcode;
         }
 
         private void btnXReading_Click(object sender, EventArgs e)
@@ -465,14 +438,33 @@ namespace EcoPOSv2
 
         }
 
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnclosetemp_Click_1(object sender, EventArgs e)
+        {
+            if (lblUser.Text == "Bypassed")
+            {
+                this.close = true;
+                Close();
+                return;
+            }
+
+
+            close = true;
+            Application.Exit();
+        }
+
+        private void btnMinimize_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
 
         private void btnMinimize_KeyDown(object sender, KeyEventArgs e)
@@ -524,13 +516,6 @@ namespace EcoPOSv2
                 else return;
             }
 
-            if(e.Control && e.KeyCode == Keys.I)
-            {
-                if (btnItemChecker.Enabled == true)
-                    btnItemChecker.PerformClick();
-                else return;
-            }
-
             if(e.KeyCode == Keys.F11)
             {
                 UserBypass frmUserBypass = new UserBypass();
@@ -545,6 +530,7 @@ namespace EcoPOSv2
                     Main.Instance.bypass_list[i] = false;
                 }
 
+                Main.Instance.lblBypassedBy.Visible = false;
                 Main.Instance.by_pass_user = false;
                 Main.Instance.by_pass_userID = 0;
                 Main.Instance.by_pass_user_name = "";

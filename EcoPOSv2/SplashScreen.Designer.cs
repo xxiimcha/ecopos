@@ -88,7 +88,7 @@ namespace EcoPOSv2
             this.lblVersion.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.lblVersion.Size = new System.Drawing.Size(479, 123);
             this.lblVersion.TabIndex = 3;
-            this.lblVersion.Text = "v2.000";
+            this.lblVersion.Text = "v3.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CountDownTimer

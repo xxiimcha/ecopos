@@ -31,7 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnMinimize = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.btnclosetemp = new Guna.UI2.WinForms.Guna2ControlBox();
             this.lblTraningMode = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.lblByPassUser = new System.Windows.Forms.Label();
@@ -42,7 +43,7 @@
             this.lblType = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.lblBypassedBy = new Guna.UI.WinForms.GunaLabel();
             this.btnUserRole = new Guna.UI.WinForms.GunaButton();
             this.btnOrder = new Guna.UI2.WinForms.Guna2Button();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -53,23 +54,20 @@
             this.btnCalculator = new Guna.UI2.WinForms.Guna2Button();
             this.btnXReading = new Guna.UI2.WinForms.Guna2Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.btnItemChecker = new Guna.UI2.WinForms.Guna2Button();
-            this.btnclosetemp = new Guna.UI2.WinForms.Guna2Button();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
-            this.gunaTileButton1 = new Guna.UI.WinForms.GunaTileButton();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
-            this.pnlChild.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.btnMinimize);
+            this.panel1.Controls.Add(this.btnclosetemp);
             this.panel1.Controls.Add(this.lblTraningMode);
             this.panel1.Controls.Add(this.lblDateTime);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -80,31 +78,45 @@
             // 
             // btnMinimize
             // 
-            this.btnMinimize.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimize.ForeColor = System.Drawing.Color.White;
-            this.btnMinimize.Location = new System.Drawing.Point(1217, 0);
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.btnMinimize.FillColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.HoverState.Parent = this.btnMinimize;
+            this.btnMinimize.IconColor = System.Drawing.Color.White;
+            this.btnMinimize.Location = new System.Drawing.Point(1275, 0);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(148, 34);
-            this.btnMinimize.TabIndex = 13;
-            this.btnMinimize.Text = "Minimize";
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            this.btnMinimize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnMinimize_KeyDown);
+            this.btnMinimize.PressedColor = System.Drawing.Color.Gray;
+            this.btnMinimize.ShadowDecoration.Parent = this.btnMinimize;
+            this.btnMinimize.Size = new System.Drawing.Size(45, 34);
+            this.btnMinimize.TabIndex = 15;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click_1);
+            // 
+            // btnclosetemp
+            // 
+            this.btnclosetemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnclosetemp.BackColor = System.Drawing.Color.Transparent;
+            this.btnclosetemp.FillColor = System.Drawing.Color.Transparent;
+            this.btnclosetemp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnclosetemp.HoverState.Parent = this.btnclosetemp;
+            this.btnclosetemp.IconColor = System.Drawing.Color.White;
+            this.btnclosetemp.Location = new System.Drawing.Point(1320, 0);
+            this.btnclosetemp.Name = "btnclosetemp";
+            this.btnclosetemp.PressedColor = System.Drawing.Color.Firebrick;
+            this.btnclosetemp.ShadowDecoration.Parent = this.btnclosetemp;
+            this.btnclosetemp.Size = new System.Drawing.Size(46, 34);
+            this.btnclosetemp.TabIndex = 14;
+            this.btnclosetemp.Click += new System.EventHandler(this.btnclosetemp_Click_1);
             // 
             // lblTraningMode
             // 
-            this.lblTraningMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTraningMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTraningMode.AutoSize = true;
-            this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTraningMode.ForeColor = System.Drawing.Color.White;
-            this.lblTraningMode.Location = new System.Drawing.Point(1005, 5);
+            this.lblTraningMode.Location = new System.Drawing.Point(591, 1);
             this.lblTraningMode.Name = "lblTraningMode";
-            this.lblTraningMode.Size = new System.Drawing.Size(155, 25);
+            this.lblTraningMode.Size = new System.Drawing.Size(185, 30);
             this.lblTraningMode.TabIndex = 12;
             this.lblTraningMode.Text = "TRAINING MODE";
             // 
@@ -112,7 +124,7 @@
             // 
             this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(11, 0);
+            this.lblDateTime.Location = new System.Drawing.Point(11, 2);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(359, 32);
             this.lblDateTime.TabIndex = 1;
@@ -124,9 +136,9 @@
             this.lblByPassUser.BackColor = System.Drawing.Color.Transparent;
             this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
-            this.lblByPassUser.Location = new System.Drawing.Point(15, 119);
+            this.lblByPassUser.Location = new System.Drawing.Point(15, 114);
             this.lblByPassUser.Name = "lblByPassUser";
-            this.lblByPassUser.Size = new System.Drawing.Size(181, 28);
+            this.lblByPassUser.Size = new System.Drawing.Size(181, 32);
             this.lblByPassUser.TabIndex = 11;
             this.lblByPassUser.Text = "                   ";
             this.lblByPassUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -135,7 +147,7 @@
             // 
             this.lblUser.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.lblUser.Location = new System.Drawing.Point(12, 12);
+            this.lblUser.Location = new System.Drawing.Point(12, 5);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(184, 60);
             this.lblUser.TabIndex = 2;
@@ -169,16 +181,17 @@
             this.guna2Panel2.Controls.Add(this.lblTerminalName);
             this.guna2Panel2.Controls.Add(this.lblType);
             this.guna2Panel2.Controls.Add(this.Label3);
-            this.guna2Panel2.Location = new System.Drawing.Point(-1, 149);
+            this.guna2Panel2.Location = new System.Drawing.Point(-1, 151);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.Size = new System.Drawing.Size(211, 100);
+            this.guna2Panel2.Size = new System.Drawing.Size(211, 90);
             this.guna2Panel2.TabIndex = 17;
             // 
             // lblTerminalName
             // 
             this.lblTerminalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerminalName.Location = new System.Drawing.Point(0, 0);
+            this.lblTerminalName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.lblTerminalName.Location = new System.Drawing.Point(0, -7);
             this.lblTerminalName.Name = "lblTerminalName";
             this.lblTerminalName.Size = new System.Drawing.Size(209, 31);
             this.lblTerminalName.TabIndex = 15;
@@ -190,7 +203,7 @@
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.ForeColor = System.Drawing.Color.Black;
-            this.lblType.Location = new System.Drawing.Point(35, 34);
+            this.lblType.Location = new System.Drawing.Point(35, 27);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(138, 17);
             this.lblType.TabIndex = 7;
@@ -200,7 +213,7 @@
             // 
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(-1, 48);
+            this.Label3.Location = new System.Drawing.Point(-1, 39);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(210, 50);
             this.Label3.TabIndex = 9;
@@ -212,26 +225,26 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.DimGray;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.gunaLabel1);
+            this.guna2Panel1.Controls.Add(this.lblBypassedBy);
             this.guna2Panel1.Controls.Add(this.btnUserRole);
             this.guna2Panel1.Controls.Add(this.lblByPassUser);
             this.guna2Panel1.Controls.Add(this.lblUser);
             this.guna2Panel1.Location = new System.Drawing.Point(-1, -1);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(210, 148);
+            this.guna2Panel1.Size = new System.Drawing.Size(210, 146);
             this.guna2Panel1.TabIndex = 16;
             // 
-            // gunaLabel1
+            // lblBypassedBy
             // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gunaLabel1.Location = new System.Drawing.Point(63, 103);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(95, 19);
-            this.gunaLabel1.TabIndex = 4;
-            this.gunaLabel1.Text = "BYPASSED BY:";
+            this.lblBypassedBy.AutoSize = true;
+            this.lblBypassedBy.BackColor = System.Drawing.Color.Transparent;
+            this.lblBypassedBy.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblBypassedBy.Location = new System.Drawing.Point(63, 98);
+            this.lblBypassedBy.Name = "lblBypassedBy";
+            this.lblBypassedBy.Size = new System.Drawing.Size(95, 19);
+            this.lblBypassedBy.TabIndex = 4;
+            this.lblBypassedBy.Text = "BYPASSED BY:";
             // 
             // btnUserRole
             // 
@@ -247,7 +260,7 @@
             this.btnUserRole.ForeColor = System.Drawing.Color.White;
             this.btnUserRole.Image = global::EcoPOSv2.Properties.Resources.OnlineGreenIcon2;
             this.btnUserRole.ImageSize = new System.Drawing.Size(8, 8);
-            this.btnUserRole.Location = new System.Drawing.Point(27, 72);
+            this.btnUserRole.Location = new System.Drawing.Point(27, 62);
             this.btnUserRole.Name = "btnUserRole";
             this.btnUserRole.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnUserRole.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -263,21 +276,29 @@
             // btnOrder
             // 
             this.btnOrder.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnOrder.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(119)))), ((int)(((byte)(252)))));
+            this.btnOrder.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.btnOrder.CheckedState.Image = global::EcoPOSv2.Properties.Resources.cart_white1;
             this.btnOrder.CheckedState.Parent = this.btnOrder;
             this.btnOrder.CustomImages.Parent = this.btnOrder;
-            this.btnOrder.FillColor = System.Drawing.Color.White;
-            this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnOrder.ForeColor = System.Drawing.Color.Black;
-            this.btnOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOrder.FillColor = System.Drawing.Color.Transparent;
+            this.btnOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
+            this.btnOrder.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrder.HoverState.Parent = this.btnOrder;
-            this.btnOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnOrder.Image")));
-            this.btnOrder.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnOrder.Location = new System.Drawing.Point(0, 250);
+            this.btnOrder.Image = global::EcoPOSv2.Properties.Resources.cart_black1;
+            this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOrder.ImageSize = new System.Drawing.Size(32, 32);
+            this.btnOrder.Location = new System.Drawing.Point(0, 241);
             this.btnOrder.Name = "btnOrder";
+            this.btnOrder.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
-            this.btnOrder.Size = new System.Drawing.Size(210, 82);
+            this.btnOrder.Size = new System.Drawing.Size(210, 60);
             this.btnOrder.TabIndex = 6;
             this.btnOrder.Text = "Order (F2)";
+            this.btnOrder.TextOffset = new System.Drawing.Point(5, 0);
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // lblVersion
@@ -286,44 +307,46 @@
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.ForeColor = System.Drawing.Color.Black;
-            this.lblVersion.Location = new System.Drawing.Point(110, 713);
+            this.lblVersion.Location = new System.Drawing.Point(82, 703);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(47, 17);
             this.lblVersion.TabIndex = 8;
             this.lblVersion.Text = "ver 2.0";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Location = new System.Drawing.Point(7, 675);
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
+            this.label6.Location = new System.Drawing.Point(17, 580);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(170, 20);
+            this.label6.Size = new System.Drawing.Size(173, 20);
             this.label6.TabIndex = 14;
-            this.label6.Text = "REMOVE BYPASS (F12)";
+            this.label6.Text = "REMOVE BYPASS    (F12)";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(10, 642);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
+            this.label2.Location = new System.Drawing.Point(17, 553);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 20);
+            this.label2.Size = new System.Drawing.Size(171, 20);
             this.label2.TabIndex = 13;
-            this.label2.Text = "USER BYPASS  (F11)";
+            this.label2.Text = "USER BYPASS          (F11)";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(7, 602);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.label1.Location = new System.Drawing.Point(17, 521);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 23);
+            this.label1.Size = new System.Drawing.Size(178, 21);
             this.label1.TabIndex = 12;
             this.label1.Text = "HOTKEY SHORTCUT(S)";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -331,119 +354,98 @@
             // btnMore
             // 
             this.btnMore.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.btnMore.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(119)))), ((int)(((byte)(252)))));
+            this.btnMore.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMore.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.btnMore.CheckedState.Image = global::EcoPOSv2.Properties.Resources.more_white2;
             this.btnMore.CheckedState.Parent = this.btnMore;
             this.btnMore.CustomImages.Parent = this.btnMore;
-            this.btnMore.FillColor = System.Drawing.Color.White;
-            this.btnMore.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnMore.ForeColor = System.Drawing.Color.Black;
-            this.btnMore.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMore.FillColor = System.Drawing.Color.Transparent;
+            this.btnMore.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnMore.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
+            this.btnMore.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMore.HoverState.Parent = this.btnMore;
-            this.btnMore.Image = ((System.Drawing.Image)(resources.GetObject("btnMore.Image")));
-            this.btnMore.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnMore.Location = new System.Drawing.Point(0, 514);
+            this.btnMore.Image = global::EcoPOSv2.Properties.Resources.more_black2;
+            this.btnMore.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnMore.ImageSize = new System.Drawing.Size(32, 32);
+            this.btnMore.Location = new System.Drawing.Point(0, 421);
             this.btnMore.Name = "btnMore";
+            this.btnMore.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnMore.ShadowDecoration.Parent = this.btnMore;
-            this.btnMore.Size = new System.Drawing.Size(210, 82);
+            this.btnMore.Size = new System.Drawing.Size(210, 60);
             this.btnMore.TabIndex = 9;
             this.btnMore.Text = "More (F10)";
+            this.btnMore.TextOffset = new System.Drawing.Point(5, 0);
             this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
             // 
             // btnCalculator
             // 
+            this.btnCalculator.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(119)))), ((int)(((byte)(252)))));
+            this.btnCalculator.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalculator.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.btnCalculator.CheckedState.Image = global::EcoPOSv2.Properties.Resources.calculator_white1;
             this.btnCalculator.CheckedState.Parent = this.btnCalculator;
             this.btnCalculator.CustomImages.Parent = this.btnCalculator;
-            this.btnCalculator.FillColor = System.Drawing.Color.White;
-            this.btnCalculator.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnCalculator.ForeColor = System.Drawing.Color.Black;
-            this.btnCalculator.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCalculator.FillColor = System.Drawing.Color.Transparent;
+            this.btnCalculator.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalculator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnCalculator.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
+            this.btnCalculator.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalculator.HoverState.Parent = this.btnCalculator;
-            this.btnCalculator.Image = ((System.Drawing.Image)(resources.GetObject("btnCalculator.Image")));
-            this.btnCalculator.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnCalculator.Location = new System.Drawing.Point(0, 426);
+            this.btnCalculator.Image = global::EcoPOSv2.Properties.Resources.calculator_black1;
+            this.btnCalculator.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCalculator.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnCalculator.Location = new System.Drawing.Point(0, 361);
             this.btnCalculator.Name = "btnCalculator";
+            this.btnCalculator.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
-            this.btnCalculator.Size = new System.Drawing.Size(210, 82);
+            this.btnCalculator.Size = new System.Drawing.Size(210, 60);
             this.btnCalculator.TabIndex = 8;
             this.btnCalculator.Text = "Calculator (F9)";
+            this.btnCalculator.TextOffset = new System.Drawing.Point(5, 0);
             this.btnCalculator.Click += new System.EventHandler(this.btnCalculator_Click);
             // 
             // btnXReading
             // 
+            this.btnXReading.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(119)))), ((int)(((byte)(252)))));
+            this.btnXReading.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXReading.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.btnXReading.CheckedState.Image = global::EcoPOSv2.Properties.Resources.switchcashier_white1;
             this.btnXReading.CheckedState.Parent = this.btnXReading;
             this.btnXReading.CustomImages.Parent = this.btnXReading;
-            this.btnXReading.FillColor = System.Drawing.Color.White;
-            this.btnXReading.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnXReading.ForeColor = System.Drawing.Color.Black;
-            this.btnXReading.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnXReading.FillColor = System.Drawing.Color.Transparent;
+            this.btnXReading.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXReading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnXReading.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
+            this.btnXReading.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXReading.HoverState.Parent = this.btnXReading;
-            this.btnXReading.Image = ((System.Drawing.Image)(resources.GetObject("btnXReading.Image")));
-            this.btnXReading.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnXReading.Location = new System.Drawing.Point(0, 338);
+            this.btnXReading.Image = global::EcoPOSv2.Properties.Resources.switchcashier_black1;
+            this.btnXReading.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnXReading.ImageSize = new System.Drawing.Size(32, 28);
+            this.btnXReading.Location = new System.Drawing.Point(0, 301);
             this.btnXReading.Name = "btnXReading";
+            this.btnXReading.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnXReading.ShadowDecoration.Parent = this.btnXReading;
-            this.btnXReading.Size = new System.Drawing.Size(210, 82);
+            this.btnXReading.Size = new System.Drawing.Size(210, 60);
             this.btnXReading.TabIndex = 7;
-            this.btnXReading.Text = "Switch Cashier (X-Read) (F8)";
+            this.btnXReading.Text = "Switch Cashier (F8)";
+            this.btnXReading.TextOffset = new System.Drawing.Point(20, 0);
             this.btnXReading.Click += new System.EventHandler(this.btnXReading_Click);
             // 
             // pbLogo
             // 
             this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pbLogo.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
-            this.pbLogo.Location = new System.Drawing.Point(4, 698);
+            this.pbLogo.Location = new System.Drawing.Point(0, 628);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(250, 117);
+            this.pbLogo.Size = new System.Drawing.Size(210, 105);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLogo.TabIndex = 3;
             this.pbLogo.TabStop = false;
             // 
-            // btnItemChecker
-            // 
-            this.btnItemChecker.CheckedState.Parent = this.btnItemChecker;
-            this.btnItemChecker.CustomImages.Parent = this.btnItemChecker;
-            this.btnItemChecker.FillColor = System.Drawing.Color.White;
-            this.btnItemChecker.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnItemChecker.ForeColor = System.Drawing.Color.Black;
-            this.btnItemChecker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnItemChecker.HoverState.Parent = this.btnItemChecker;
-            this.btnItemChecker.Image = ((System.Drawing.Image)(resources.GetObject("btnItemChecker.Image")));
-            this.btnItemChecker.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnItemChecker.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnItemChecker.Location = new System.Drawing.Point(44, 502);
-            this.btnItemChecker.Name = "btnItemChecker";
-            this.btnItemChecker.ShadowDecoration.Parent = this.btnItemChecker;
-            this.btnItemChecker.Size = new System.Drawing.Size(274, 60);
-            this.btnItemChecker.TabIndex = 11;
-            this.btnItemChecker.Text = "ITEM CHECKER (CTRL + I)";
-            this.btnItemChecker.TextOffset = new System.Drawing.Point(15, 0);
-            this.btnItemChecker.Click += new System.EventHandler(this.btnSeeItem_Click);
-            // 
-            // btnclosetemp
-            // 
-            this.btnclosetemp.CheckedState.Parent = this.btnclosetemp;
-            this.btnclosetemp.CustomImages.Parent = this.btnclosetemp;
-            this.btnclosetemp.FillColor = System.Drawing.Color.White;
-            this.btnclosetemp.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnclosetemp.ForeColor = System.Drawing.Color.Black;
-            this.btnclosetemp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnclosetemp.HoverState.Parent = this.btnclosetemp;
-            this.btnclosetemp.Image = ((System.Drawing.Image)(resources.GetObject("btnclosetemp.Image")));
-            this.btnclosetemp.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnclosetemp.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnclosetemp.Location = new System.Drawing.Point(255, 603);
-            this.btnclosetemp.Name = "btnclosetemp";
-            this.btnclosetemp.ShadowDecoration.Parent = this.btnclosetemp;
-            this.btnclosetemp.Size = new System.Drawing.Size(274, 60);
-            this.btnclosetemp.TabIndex = 10;
-            this.btnclosetemp.Text = "Close (Temporary)";
-            this.btnclosetemp.TextOffset = new System.Drawing.Point(10, 0);
-            this.btnclosetemp.Click += new System.EventHandler(this.btnclosetemp_Click);
-            // 
             // pnlChild
             // 
-            this.pnlChild.Controls.Add(this.gunaTileButton1);
-            this.pnlChild.Controls.Add(this.btnItemChecker);
-            this.pnlChild.Controls.Add(this.btnclosetemp);
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChild.Location = new System.Drawing.Point(210, 34);
             this.pnlChild.Name = "pnlChild";
@@ -454,30 +456,6 @@
             // 
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
-            // 
-            // gunaTileButton1
-            // 
-            this.gunaTileButton1.AnimationHoverSpeed = 0.07F;
-            this.gunaTileButton1.AnimationSpeed = 0.03F;
-            this.gunaTileButton1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaTileButton1.BaseColor = System.Drawing.Color.Transparent;
-            this.gunaTileButton1.BorderColor = System.Drawing.Color.Black;
-            this.gunaTileButton1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.gunaTileButton1.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaTileButton1.Font = new System.Drawing.Font("Segoe UI Light", 15.75F);
-            this.gunaTileButton1.ForeColor = System.Drawing.Color.Black;
-            this.gunaTileButton1.Image = global::EcoPOSv2.Properties.Resources.order;
-            this.gunaTileButton1.ImageSize = new System.Drawing.Size(52, 52);
-            this.gunaTileButton1.Location = new System.Drawing.Point(163, 403);
-            this.gunaTileButton1.Name = "gunaTileButton1";
-            this.gunaTileButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.gunaTileButton1.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.gunaTileButton1.OnHoverForeColor = System.Drawing.Color.White;
-            this.gunaTileButton1.OnHoverImage = null;
-            this.gunaTileButton1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaTileButton1.Size = new System.Drawing.Size(188, 93);
-            this.gunaTileButton1.TabIndex = 12;
-            this.gunaTileButton1.Text = "gunaTileButton1";
             // 
             // Main
             // 
@@ -507,7 +485,6 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            this.pnlChild.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -520,27 +497,25 @@
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label lblType;
         internal System.Windows.Forms.Label lblVersion;
-        private Guna.UI2.WinForms.Guna2Button btnclosetemp;
         public System.Windows.Forms.Label lblUser;
         public Guna.UI2.WinForms.Guna2Button btnXReading;
         public Guna.UI2.WinForms.Guna2Button btnCalculator;
         public Guna.UI2.WinForms.Guna2Button btnMore;
-        public Guna.UI2.WinForms.Guna2Button btnItemChecker;
         public System.Windows.Forms.Panel pnlChild;
         internal System.Windows.Forms.Timer tmrCurrentDateTime;
         public System.Windows.Forms.PictureBox pbLogo;
         public System.Windows.Forms.Label lblByPassUser;
         public Guna.UI2.WinForms.Guna2Button btnOrder;
         private System.Windows.Forms.Label lblTraningMode;
-        private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTerminalName;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI.WinForms.GunaButton btnUserRole;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        public Guna.UI.WinForms.GunaLabel lblBypassedBy;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI.WinForms.GunaTileButton gunaTileButton1;
+        private Guna.UI2.WinForms.Guna2ControlBox btnclosetemp;
+        private Guna.UI2.WinForms.Guna2ControlBox btnMinimize;
     }
 }

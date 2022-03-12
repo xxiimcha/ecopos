@@ -146,7 +146,7 @@ namespace EcoPOSv2
                     Close();
                 }
                 Main.Instance.btnOrder.PerformClick();
-
+                Main.Instance.lblBypassedBy.Visible = true;
             }
             else
             {

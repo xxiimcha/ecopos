@@ -118,28 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="enteredOrdersPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <data name="dgvCart.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dgvCart.ColumnHeadersHeight" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>40</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dgvCart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 75</value>
-  </data>
-  <data name="dgvCart.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+    <value>0, 62</value>
   </data>
   <data name="dgvCart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>842, 700</value>
+    <value>884, 726</value>
   </data>
   <data name="dgvCart.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="&gt;&gt;dgvCart.Name" xml:space="preserve">
     <value>dgvCart</value>
@@ -153,74 +147,101 @@
   <data name="&gt;&gt;dgvCart.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tbBarcode.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="btnSeeItem.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnSeeItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnSeeItem.Location" type="System.Drawing.Point, System.Drawing">
+    <value>735, 8</value>
+  </data>
+  <data name="btnSeeItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 45</value>
+  </data>
+  <data name="btnSeeItem.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="btnSeeItem.Text" xml:space="preserve">
+    <value>ITEM CHECKER (CTRL + I)</value>
+  </data>
+  <data name="&gt;&gt;btnSeeItem.Name" xml:space="preserve">
+    <value>btnSeeItem</value>
+  </data>
+  <data name="&gt;&gt;btnSeeItem.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
+  </data>
+  <data name="&gt;&gt;btnSeeItem.Parent" xml:space="preserve">
+    <value>enteredOrdersPanel</value>
+  </data>
+  <data name="&gt;&gt;btnSeeItem.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbBarcode.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="tbBarcode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 18pt</value>
+    <value>Segoe UI Semibold, 14.25pt, style=Bold</value>
   </data>
   <data name="tbBarcode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 0</value>
+    <value>143, 8</value>
+  </data>
+  <data name="tbBarcode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
   <data name="tbBarcode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>709, 39</value>
+    <value>585, 45</value>
   </data>
   <data name="tbBarcode.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tbBarcode.Name" xml:space="preserve">
     <value>tbBarcode</value>
   </data>
   <data name="&gt;&gt;tbBarcode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Guna.UI2.WinForms.Guna2TextBox, Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
   </data>
   <data name="&gt;&gt;tbBarcode.Parent" xml:space="preserve">
     <value>enteredOrdersPanel</value>
   </data>
   <data name="&gt;&gt;tbBarcode.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 20pt</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 37</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Barcode #</value>
-  </data>
-  <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>enteredOrdersPanel</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnBarcode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 15.75pt, style=Bold</value>
+  </data>
+  <data name="btnBarcode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 8</value>
+  </data>
+  <data name="btnBarcode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 45</value>
+  </data>
+  <data name="btnBarcode.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="btnBarcode.Text" xml:space="preserve">
+    <value>CODE</value>
+  </data>
+  <data name="&gt;&gt;btnBarcode.Name" xml:space="preserve">
+    <value>btnBarcode</value>
+  </data>
+  <data name="&gt;&gt;btnBarcode.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
+  </data>
+  <data name="&gt;&gt;btnBarcode.Parent" xml:space="preserve">
+    <value>enteredOrdersPanel</value>
+  </data>
+  <data name="&gt;&gt;btnBarcode.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="enteredOrdersPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="enteredOrdersPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 6</value>
+    <value>0, 0</value>
   </data>
   <data name="enteredOrdersPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>845, 778</value>
+    <value>883, 788</value>
   </data>
   <data name="enteredOrdersPanel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -237,17 +258,38 @@
   <data name="&gt;&gt;enteredOrdersPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 419</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>336, 23</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnViewKeeps.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="btnViewKeeps.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnViewKeeps.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 635</value>
+    <value>183, 631</value>
   </data>
   <data name="btnViewKeeps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 42</value>
+    <value>167, 42</value>
   </data>
   <data name="btnViewKeeps.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -265,19 +307,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnViewKeeps.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnKeep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="btnKeep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnKeep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 635</value>
+    <value>10, 631</value>
   </data>
   <data name="btnKeep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 42</value>
+    <value>167, 42</value>
   </data>
   <data name="btnKeep.TabIndex" type="System.Int32, mscorlib">
     <value>51</value>
@@ -295,19 +337,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnKeep.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnPriceEditor.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="btnPriceEditor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnPriceEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 539</value>
+    <value>183, 535</value>
   </data>
   <data name="btnPriceEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 42</value>
+    <value>167, 42</value>
   </data>
   <data name="btnPriceEditor.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -328,7 +370,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnPriceEditor.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btnPayment.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
@@ -337,10 +379,10 @@
     <value>Segoe UI, 13pt, style=Bold</value>
   </data>
   <data name="btnPayment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 707</value>
+    <value>10, 703</value>
   </data>
   <data name="btnPayment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 76</value>
+    <value>336, 76</value>
   </data>
   <data name="btnPayment.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -358,19 +400,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnPayment.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnRedeem.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="btnRedeem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnRedeem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 539</value>
+    <value>10, 535</value>
   </data>
   <data name="btnRedeem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 42</value>
+    <value>167, 42</value>
   </data>
   <data name="btnRedeem.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -388,19 +430,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnRedeem.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 587</value>
+    <value>10, 583</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 42</value>
+    <value>167, 42</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -418,19 +460,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnVoid.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="btnVoid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnVoid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 587</value>
+    <value>183, 583</value>
   </data>
   <data name="btnVoid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 42</value>
+    <value>167, 42</value>
   </data>
   <data name="btnVoid.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -448,13 +490,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnVoid.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="lblOperation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblOperation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 153</value>
+    <value>150, 171</value>
   </data>
   <data name="lblOperation.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -478,19 +520,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblOperation.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lblOperationt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblOperationt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 12pt</value>
+    <value>Segoe UI Semibold, 12pt, style=Bold</value>
   </data>
   <data name="lblOperationt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 153</value>
+    <value>14, 171</value>
   </data>
   <data name="lblOperationt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 21</value>
+    <value>84, 21</value>
   </data>
   <data name="lblOperationt.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -511,13 +553,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblOperationt.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblCustomer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblCustomer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 132</value>
+    <value>150, 150</value>
   </data>
   <data name="lblCustomer.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -541,19 +583,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblCustomer.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lblCustomert.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="lblCustomert.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 12pt</value>
+    <value>Segoe UI Semibold, 12pt, style=Bold</value>
   </data>
   <data name="lblCustomert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 132</value>
+    <value>14, 150</value>
   </data>
   <data name="lblCustomert.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 21</value>
+    <value>81, 21</value>
   </data>
   <data name="lblCustomert.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -574,13 +616,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblCustomert.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="lblZeroRated.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblZeroRated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 406</value>
+    <value>152, 387</value>
   </data>
   <data name="lblZeroRated.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -604,7 +646,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblZeroRated.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="lblZeroRatedt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -613,7 +655,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblZeroRatedt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 406</value>
+    <value>14, 387</value>
   </data>
   <data name="lblZeroRatedt.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 21</value>
@@ -637,13 +679,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblZeroRatedt.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="lblVATExempt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATExempt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 385</value>
+    <value>152, 366</value>
   </data>
   <data name="lblVATExempt.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -667,7 +709,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblVATExempt.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="lblVATExemptt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -676,7 +718,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATExemptt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 385</value>
+    <value>14, 366</value>
   </data>
   <data name="lblVATExemptt.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 21</value>
@@ -700,13 +742,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblVATExemptt.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="lblVAT.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVAT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 364</value>
+    <value>152, 345</value>
   </data>
   <data name="lblVAT.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -730,7 +772,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblVAT.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="lblVATt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -739,7 +781,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 364</value>
+    <value>14, 345</value>
   </data>
   <data name="lblVATt.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 21</value>
@@ -763,13 +805,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblVATt.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="lblVATSale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATSale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 343</value>
+    <value>152, 324</value>
   </data>
   <data name="lblVATSale.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -793,7 +835,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblVATSale.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="lblVATSalet.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -802,7 +844,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATSalet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 343</value>
+    <value>14, 324</value>
   </data>
   <data name="lblVATSalet.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -826,13 +868,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblVATSalet.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="lblLessVAT.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblLessVAT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 322</value>
+    <value>152, 303</value>
   </data>
   <data name="lblLessVAT.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -856,7 +898,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblLessVAT.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="lblLessVATt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -865,7 +907,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblLessVATt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 322</value>
+    <value>14, 303</value>
   </data>
   <data name="lblLessVATt.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 21</value>
@@ -889,13 +931,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblLessVATt.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="lblTotal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 24pt, style=Bold</value>
   </data>
   <data name="lblTotal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 271</value>
+    <value>166, 440</value>
   </data>
   <data name="lblTotal.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 45</value>
@@ -919,7 +961,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblTotal.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -928,7 +970,7 @@
     <value>Segoe UI, 24pt, style=Bold</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 271</value>
+    <value>1, 440</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 45</value>
@@ -952,13 +994,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="lblDiscount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblDiscount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 244</value>
+    <value>152, 268</value>
   </data>
   <data name="lblDiscount.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -982,7 +1024,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblDiscount.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -991,7 +1033,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 244</value>
+    <value>14, 268</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 21</value>
@@ -1015,13 +1057,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="lblSubtotal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblSubtotal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 223</value>
+    <value>152, 247</value>
   </data>
   <data name="lblSubtotal.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -1045,7 +1087,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblSubtotal.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1054,7 +1096,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 223</value>
+    <value>14, 247</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 21</value>
@@ -1078,13 +1120,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="lblItems.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblItems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 202</value>
+    <value>152, 226</value>
   </data>
   <data name="lblItems.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -1108,7 +1150,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblItems.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1117,7 +1159,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 202</value>
+    <value>14, 226</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -1141,13 +1183,13 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="lblOrderNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="lblOrderNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 181</value>
+    <value>152, 205</value>
   </data>
   <data name="lblOrderNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -1171,7 +1213,7 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;lblOrderNumber.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>30</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1180,7 +1222,7 @@
     <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 181</value>
+    <value>14, 205</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 21</value>
@@ -1204,22 +1246,22 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>31</value>
   </data>
   <data name="btnVoidItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnVoidItem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 82</value>
+    <value>266, 91</value>
   </data>
   <data name="btnVoidItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 45</value>
+    <value>80, 45</value>
   </data>
   <data name="btnVoidItem.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
   <data name="btnVoidItem.Text" xml:space="preserve">
-    <value>VOID ITEM (CTRL + V)</value>
+    <value>VOID ITEM (CTRL+V)</value>
   </data>
   <data name="&gt;&gt;btnVoidItem.Name" xml:space="preserve">
     <value>btnVoidItem</value>
@@ -1231,22 +1273,22 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnVoidItem.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>32</value>
   </data>
   <data name="btnQuantity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnQuantity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 82</value>
+    <value>180, 91</value>
   </data>
   <data name="btnQuantity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 45</value>
+    <value>80, 45</value>
   </data>
   <data name="btnQuantity.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <data name="btnQuantity.Text" xml:space="preserve">
-    <value>QUANTITY (CTRL +Q)</value>
+    <value>QUANTITY (CTRL+Q)</value>
   </data>
   <data name="&gt;&gt;btnQuantity.Name" xml:space="preserve">
     <value>btnQuantity</value>
@@ -1258,22 +1300,22 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnQuantity.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>33</value>
   </data>
   <data name="btnCustomer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnCustomer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 82</value>
+    <value>95, 91</value>
   </data>
   <data name="btnCustomer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 45</value>
+    <value>80, 45</value>
   </data>
   <data name="btnCustomer.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
   <data name="btnCustomer.Text" xml:space="preserve">
-    <value>CUSTOMER (CTRL + C)</value>
+    <value>CUSTOMER (CTRL+C)</value>
   </data>
   <data name="&gt;&gt;btnCustomer.Name" xml:space="preserve">
     <value>btnCustomer</value>
@@ -1285,22 +1327,22 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnCustomer.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>34</value>
   </data>
   <data name="btnDiscount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnDiscount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 82</value>
+    <value>10, 91</value>
   </data>
   <data name="btnDiscount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 45</value>
+    <value>80, 45</value>
   </data>
   <data name="btnDiscount.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
   <data name="btnDiscount.Text" xml:space="preserve">
-    <value>DISCOUNT (CTRL + D)</value>
+    <value>DISCOUNT (CTRL+D)</value>
   </data>
   <data name="&gt;&gt;btnDiscount.Name" xml:space="preserve">
     <value>btnDiscount</value>
@@ -1312,16 +1354,16 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnDiscount.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>35</value>
   </data>
   <data name="btnWholeSale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 12pt</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="btnWholeSale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 4</value>
+    <value>182, 5</value>
   </data>
   <data name="btnWholeSale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 45</value>
+    <value>165, 45</value>
   </data>
   <data name="btnWholeSale.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1342,13 +1384,13 @@
     <value>0</value>
   </data>
   <data name="btnRetail.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 12pt</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="btnRetail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 4</value>
+    <value>11, 5</value>
   </data>
   <data name="btnRetail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 45</value>
+    <value>165, 45</value>
   </data>
   <data name="btnRetail.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1369,10 +1411,10 @@
     <value>1</value>
   </data>
   <data name="guna2Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
+    <value>-1, 29</value>
   </data>
   <data name="guna2Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>388, 56</value>
+    <value>359, 56</value>
   </data>
   <data name="guna2Panel1.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -1387,19 +1429,19 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;guna2Panel1.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>36</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 12pt</value>
+    <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>4, 5</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 21</value>
+    <value>110, 21</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1420,16 +1462,16 @@
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>37</value>
   </data>
   <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>851, 0</value>
+    <value>883, 0</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>391, 788</value>
+    <value>359, 788</value>
   </data>
   <data name="panel4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

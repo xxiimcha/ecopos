@@ -423,273 +423,6 @@ namespace EcoPOSv2
             }
         }
 
-        String[] hybrid;
-        string quantitytalaga;
-        decimal totalquantity;
-        private void tbBarcode_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (tbBarcode.Text == "")
-                {
-                    return;
-                }
-                int check_product;
-                string barcode;
-                int quantity = 1;
-
-                if (tbBarcode.Text.Contains("*"))
-                {
-                    hybrid = tbBarcode.Text.Split('*');
-                    try
-                    {
-                        quantity = int.Parse(hybrid[0]);
-                    }
-                    catch (Exception)
-                    {
-                        quantity = 1;
-                    }
-
-                    barcode = hybrid[1];
-                }
-                else
-                {
-                    barcode = tbBarcode.Text;
-                }
-                //int count = 
-
-                SQL.AddParam("@barcode", barcode);
-                check_product = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode"));
-                if (SQL.HasException(true))
-                    return;
-
-                if (check_product == 1)
-                {
-                    //CHECKER KUNG TAMA BA YUNG QUANTITY AT STOCK
-                    SQL.AddParam("@barcode", barcode);
-                    string productID1 = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
-                    if (SQL.HasException(true))
-                        return;
-
-                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                    SQL.AddParam("@productID", productID1);
-                    if (int.Parse(SQL.ReturnResult("select count(*) from order_cart where productID=@productID AND terminal_id=@terminal_id")) != 0)
-                    {
-                        SQL.AddParam("@productID", productID1);
-                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                        quantitytalaga = SQL.ReturnResult("select quantity from order_cart where productID=@productID AND terminal_id=@terminal_id");
-
-                        if (quantitytalaga != "")
-                        {
-                            totalquantity = decimal.Parse(quantitytalaga) + quantity;
-                        }
-                        else
-                        {
-                            totalquantity = 0 + quantity;
-                        }
-                        //MessageBox.Show("No of quantity: "+ totalquantity.ToString());
-
-                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
-                        SQL.AddParam("@productID", productID1);
-                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
-
-                        if (SQL.HasException(true)) return;
-
-                        //MessageBox.Show("No of stock: "+stock.ToString());
-
-                        if (totalquantity > stock)
-                        {
-                            new Notification().PopUp("Insufficient stock", "", "error");
-                            tbBarcode.Clear();
-                            tbBarcode.Focus();
-                            return;
-                        }
-                    }
-                    //END OF THE CHECKER
-
-                    SQL.AddParam("@barcode", barcode);
-                    string productID = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
-                    if (SQL.HasException(true))
-                        return;
-
-                    
-
-                    string prod_description = "";
-                    string prod_price = "";
-
-                    SQL.AddParam("@barcode", barcode);
-                    SQL.AddParam("@type", type);
-                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                    int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND productID = (SELECT productID FROM products WHERE (barcode1 = @barcode OR barcode2 = @barcode) AND type = @type AND is_return = 0)"));
-                    if (SQL.HasException(true))
-                        return;
-
-                    if (check_in_cart == 0)
-                    {
-                        //check if still in stock
-                        SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                        int check1 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE terminal_id=@terminal_id AND productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
-                        if (SQL.HasException(true)) return;
-
-                        SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        int check2 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT stock_qty FROM INVENTORY WHERE productID = @productID) = 0, 1, 0)"));
-                        if (SQL.HasException(true)) return;
-
-                        if (check1 == 1 || check2 == 1)
-                        {
-                            new Notification().PopUp("Insufficient stock", "", "error");
-                            tbBarcode.Clear();
-                            tbBarcode.Focus();
-                            return;
-                        }
-
-                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
-                        SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
-
-                        if (SQL.HasException(true)) return;
-
-                        if(quantity > stock)
-                        {
-                            new Notification().PopUp("Insufficient stock", "", "error");
-                            tbBarcode.Clear();
-                            tbBarcode.Focus();
-                            return;
-                        }
-
-
-
-                        SQL.AddParam("@type", type);
-                        SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        SQL.AddParam("@quantity", quantity);
-                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive,selling_price_exclusive, quantity, base_price_inclusive, base_price_exclusive, discount,cost,terminal_id,is_vatable) 
-                                   SELECT productID, description, name, @type," + insert_type_query + ",0, @quantity, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), 0,cost, @terminal_id,is_vatable FROM products WHERE productID = @productID");
-                        if (SQL.HasException(true))
-                            return;
-
-
-
-                        #region "customer display"
-                        //customer display
-                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                        SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE terminal_id=@terminal_id AND itemID = (SELECT MAX(itemID) FROM order_cart where terminal_id=@terminal_id)");
-                        if (SQL.HasException(true))
-                            return;
-
-                        foreach (DataRow r in SQL.DBDT.Rows)
-                        {
-                            prod_description = r["name"].ToString();
-                            prod_price = r["static_price_inclusive"].ToString();
-                        }
-
-                        FormLoad Fl = new FormLoad();
-                        Fl.CusDisplay(prod_description, prod_price);
-                        #endregion
-                    }
-                    else
-                    {
-
-                        //check if still in stock (retail and wholesale)
-                        SQL.AddParam("@productID", Convert.ToInt32(productID));
-                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                        if (int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE terminal_id=@terminal_id AND productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)")) == 1)
-                        {
-                            new Notification().PopUp("Insufficient stock", "", "error");
-                            tbBarcode.Clear();
-                            tbBarcode.Focus();
-                            return;
-                        }
-
-                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
-                        SQL.AddParam("@productID", productID);
-                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
-
-                        if (SQL.HasException(true)) return;
-
-                        if (quantity > stock)
-                        {
-                            new Notification().PopUp("Insufficient stock", "", "error");
-                            tbBarcode.Clear();
-                            tbBarcode.Focus();
-                            return;
-                        }
-
-
-                        SQL.AddParam("@barcode", tbBarcode.Text);
-                        SQL.AddParam("@productID", productID);
-                        SQL.AddParam("@type", type);
-                        SQL.AddParam("@quantity", quantity);
-                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                        SQL.Query("UPDATE order_cart SET quantity = quantity + @quantity WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
-                        if (SQL.HasException(true))
-                            return;
-
-                        #region "customer display"
-                        //customer display
-                        SQL.AddParam("@barcode", tbBarcode.Text);
-                        SQL.AddParam("@productID", productID);
-                        SQL.AddParam("@type", type);
-                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                        SQL.Query("SELECT name, static_price_inclusive from order_cart WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
-                        if (SQL.HasException(true)) return;
-
-                        foreach (DataRow r in SQL.DBDT.Rows)
-                        {
-                            prod_description = r["name"].ToString();
-                            prod_price = r["static_price_inclusive"].ToString();
-
-                        }
-                        FormLoad Fl = new FormLoad();
-                        Fl.CusDisplay(prod_description, prod_price);
-                        #endregion
-                    }
-
-                    LoadOrder();
-                    GetTotal();
-                    tbBarcode.Clear();
-                    tbBarcode.Focus();
-
-                }
-
-                else if(check_product > 1)
-                {
-                    SQL.AddParam("@barcode", barcode);
-                    SQL.Query("SELECT description FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
-                    if (SQL.HasException(true))
-                        return;
-
-                    string duplicatebarcode = "";
-
-                    foreach (DataRow r in SQL.DBDT.Rows)
-                    {
-                        duplicatebarcode = duplicatebarcode + (r["description"].ToString()) + "\n";
-                    }
-
-                    MessageBox.Show("Duplicate barcodes:\n" + duplicatebarcode);
-
-                    new Notification().PopUp("There is duplicate barcode found in the products", "Please try again", "error");
-                    return;
-                }
-
-                else
-                {
-
-                 
-                    new Notification().PopUp("No item found!", "Barcode not registered.", "error");
-                    //MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    tbBarcode.Clear();
-                    tbBarcode.Focus();
-                }
-            }
-        }
-
         private void btnWholeSale_Click(object sender, EventArgs e)
         {
             type = "W";
@@ -1150,10 +883,7 @@ namespace EcoPOSv2
             this.ActiveControl = tbBarcode;
         }
 
-        private void tbBarcode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = (e.KeyChar == (char)Keys.Space);
-        }
+        
 
         private void dgvCart_Click(object sender, EventArgs e)
         {
@@ -1196,13 +926,7 @@ namespace EcoPOSv2
             this.ActiveControl = tbBarcode;
         }
 
-        private void tbBarcode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.F5)
-            {
-                btnPriceEditor.PerformClick();
-            }
-        }
+        
 
         private void btnKeep_Click(object sender, EventArgs e)
         {
@@ -1219,6 +943,305 @@ namespace EcoPOSv2
         private void btnViewKeep(object sender, EventArgs e)
         {
             new ItemsOnKeepView().ShowDialog();
+        }
+
+        String[] hybrid;
+        string quantitytalaga;
+        decimal totalquantity;
+        private void tbBarcode_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (tbBarcode.Text == "")
+                {
+                    return;
+                }
+                int check_product;
+                string barcode;
+                int quantity = 1;
+
+                if (tbBarcode.Text.Contains("*"))
+                {
+                    hybrid = tbBarcode.Text.Split('*');
+                    try
+                    {
+                        quantity = int.Parse(hybrid[0]);
+                    }
+                    catch (Exception)
+                    {
+                        quantity = 1;
+                    }
+
+                    barcode = hybrid[1];
+                }
+                else
+                {
+                    barcode = tbBarcode.Text;
+                }
+                //int count = 
+
+                SQL.AddParam("@barcode", barcode);
+                check_product = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode"));
+                if (SQL.HasException(true))
+                    return;
+
+                if (check_product == 1)
+                {
+                    //CHECKER KUNG TAMA BA YUNG QUANTITY AT STOCK
+                    SQL.AddParam("@barcode", barcode);
+                    string productID1 = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
+                    if (SQL.HasException(true))
+                        return;
+
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    SQL.AddParam("@productID", productID1);
+                    if (int.Parse(SQL.ReturnResult("select count(*) from order_cart where productID=@productID AND terminal_id=@terminal_id")) != 0)
+                    {
+                        SQL.AddParam("@productID", productID1);
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        quantitytalaga = SQL.ReturnResult("select quantity from order_cart where productID=@productID AND terminal_id=@terminal_id");
+
+                        if (quantitytalaga != "")
+                        {
+                            totalquantity = decimal.Parse(quantitytalaga) + quantity;
+                        }
+                        else
+                        {
+                            totalquantity = 0 + quantity;
+                        }
+                        //MessageBox.Show("No of quantity: "+ totalquantity.ToString());
+
+                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                        SQL.AddParam("@productID", productID1);
+                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                        if (SQL.HasException(true)) return;
+
+                        //MessageBox.Show("No of stock: "+stock.ToString());
+
+                        if (totalquantity > stock)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+                    }
+                    //END OF THE CHECKER
+
+                    SQL.AddParam("@barcode", barcode);
+                    string productID = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
+                    if (SQL.HasException(true))
+                        return;
+
+
+
+                    string prod_description = "";
+                    string prod_price = "";
+
+                    SQL.AddParam("@barcode", barcode);
+                    SQL.AddParam("@type", type);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    int check_in_cart = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND productID = (SELECT productID FROM products WHERE (barcode1 = @barcode OR barcode2 = @barcode) AND type = @type AND is_return = 0)"));
+                    if (SQL.HasException(true))
+                        return;
+
+                    if (check_in_cart == 0)
+                    {
+                        //check if still in stock
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        int check1 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE terminal_id=@terminal_id AND productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)"));
+                        if (SQL.HasException(true)) return;
+
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        int check2 = int.Parse(SQL.ReturnResult("SELECT IIF((SELECT stock_qty FROM INVENTORY WHERE productID = @productID) = 0, 1, 0)"));
+                        if (SQL.HasException(true)) return;
+
+                        if (check1 == 1 || check2 == 1)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+
+                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                        if (SQL.HasException(true)) return;
+
+                        if (quantity > stock)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+
+
+
+                        SQL.AddParam("@type", type);
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        SQL.AddParam("@quantity", quantity);
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive,selling_price_exclusive, quantity, base_price_inclusive, base_price_exclusive, discount,cost,terminal_id,is_vatable) 
+                                   SELECT productID, description, name, @type," + insert_type_query + ",0, @quantity, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), 0,cost, @terminal_id,is_vatable FROM products WHERE productID = @productID");
+                        if (SQL.HasException(true))
+                            return;
+
+
+
+                        #region "customer display"
+                        //customer display
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        SQL.Query("SELECT name, static_price_inclusive FROM order_cart WHERE terminal_id=@terminal_id AND itemID = (SELECT MAX(itemID) FROM order_cart where terminal_id=@terminal_id)");
+                        if (SQL.HasException(true))
+                            return;
+
+                        foreach (DataRow r in SQL.DBDT.Rows)
+                        {
+                            prod_description = r["name"].ToString();
+                            prod_price = r["static_price_inclusive"].ToString();
+                        }
+
+                        FormLoad Fl = new FormLoad();
+                        Fl.CusDisplay(prod_description, prod_price);
+                        #endregion
+                    }
+                    else
+                    {
+
+                        //check if still in stock (retail and wholesale)
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        if (int.Parse(SQL.ReturnResult("SELECT IIF((SELECT SUM(quantity) FROM order_cart WHERE terminal_id=@terminal_id AND productID = @productID) >= (SELECT stock_qty FROM inventory WHERE productID = @productID), 1, 0)")) == 1)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+
+                        //CHECKER KUNG MAS MATAAS ANG QUANTITY
+                        SQL.AddParam("@productID", productID);
+                        decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=@productID"));
+
+                        if (SQL.HasException(true)) return;
+
+                        if (quantity > stock)
+                        {
+                            new Notification().PopUp("Insufficient stock", "", "error");
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                            return;
+                        }
+
+
+                        SQL.AddParam("@barcode", tbBarcode.Text);
+                        SQL.AddParam("@productID", productID);
+                        SQL.AddParam("@type", type);
+                        SQL.AddParam("@quantity", quantity);
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        SQL.Query("UPDATE order_cart SET quantity = quantity + @quantity WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
+                        if (SQL.HasException(true))
+                            return;
+
+                        #region "customer display"
+                        //customer display
+                        SQL.AddParam("@barcode", tbBarcode.Text);
+                        SQL.AddParam("@productID", productID);
+                        SQL.AddParam("@type", type);
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        SQL.Query("SELECT name, static_price_inclusive from order_cart WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
+                        if (SQL.HasException(true)) return;
+
+                        foreach (DataRow r in SQL.DBDT.Rows)
+                        {
+                            prod_description = r["name"].ToString();
+                            prod_price = r["static_price_inclusive"].ToString();
+
+                        }
+                        FormLoad Fl = new FormLoad();
+                        Fl.CusDisplay(prod_description, prod_price);
+                        #endregion
+                    }
+
+                    LoadOrder();
+                    GetTotal();
+                    tbBarcode.Clear();
+                    tbBarcode.Focus();
+
+                }
+
+                else if (check_product > 1)
+                {
+                    SQL.AddParam("@barcode", barcode);
+                    SQL.Query("SELECT description FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
+                    if (SQL.HasException(true))
+                        return;
+
+                    string duplicatebarcode = "";
+
+                    foreach (DataRow r in SQL.DBDT.Rows)
+                    {
+                        duplicatebarcode = duplicatebarcode + (r["description"].ToString()) + "\n";
+                    }
+
+                    MessageBox.Show("Duplicate barcodes:\n" + duplicatebarcode);
+
+                    new Notification().PopUp("There is duplicate barcode found in the products", "Please try again", "error");
+                    return;
+                }
+
+                else
+                {
+
+
+                    new Notification().PopUp("No item found!", "Barcode not registered.", "error");
+                    //MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    tbBarcode.Clear();
+                    tbBarcode.Focus();
+                }
+            }
+        }
+
+        private void tbBarcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (e.KeyChar == (char)Keys.Space);
+        }
+
+        private void tbBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                btnPriceEditor.PerformClick();
+            }
+        }
+
+        private void btnSeeItem_Click(object sender, EventArgs e)
+        {
+            if (Main.Instance.lblUser.Text == "Bypassed")
+            {
+                MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Order.Instance.CheckOpened("SeeItem") == true)
+            {
+                return;
+            }
+            Order.Instance.dgvCart.ClearSelection();
+
+            new SeeItem().ShowDialog();
+
+            SeeItem.Instance.ActiveControl = SeeItem.Instance.txtBarcode;
         }
 
         private void OpenPayment(object sender, EventArgs e)

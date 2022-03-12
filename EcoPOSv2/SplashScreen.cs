@@ -78,14 +78,14 @@ namespace EcoPOSv2
 
             if (myKey == null)
             {
-                MessageBox.Show("Do not try to copy this application to other system unit, if you intent to avail, please directly contact EcoPOS.", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Do not try to copy this application to other system unit, if you intent to avail, please directly contact EcoPOS / WNO.", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
 
             if (myKey.GetValue("EcoPOS").ToString() != new Helper().Decrypt("CD7MY63RkDVQJfI8epabkw=="))
             {
-                MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Do not try to copy this application to other system unit, if you intent to avail, please directly contact EcoPOS / WNO.", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
                 return;
             }
