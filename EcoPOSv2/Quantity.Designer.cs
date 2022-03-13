@@ -34,8 +34,8 @@
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.lblItem = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,15 +49,17 @@
             this.guna2Panel1.Controls.Add(this.Label1);
             this.guna2Panel1.Controls.Add(this.txtQuantity);
             this.guna2Panel1.Controls.Add(this.Label3);
-            this.guna2Panel1.Location = new System.Drawing.Point(2, 3);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(529, 210);
+            this.guna2Panel1.Size = new System.Drawing.Size(533, 218);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnQuantity
             // 
             this.btnQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnQuantity.BorderRadius = 5;
             this.btnQuantity.BorderThickness = 2;
             this.btnQuantity.CheckedState.Parent = this.btnQuantity;
             this.btnQuantity.CustomImages.Parent = this.btnQuantity;
@@ -81,6 +83,7 @@
             // btnConfirm
             // 
             this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderRadius = 5;
             this.btnConfirm.BorderThickness = 2;
             this.btnConfirm.CheckedState.Parent = this.btnConfirm;
             this.btnConfirm.CustomImages.Parent = this.btnConfirm;
@@ -113,36 +116,36 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
             this.Label1.Location = new System.Drawing.Point(18, 15);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(51, 28);
+            this.Label1.Size = new System.Drawing.Size(55, 28);
             this.Label1.TabIndex = 55;
             this.Label1.Text = "Item";
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
-            this.txtQuantity.Location = new System.Drawing.Point(112, 58);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(398, 33);
-            this.txtQuantity.TabIndex = 54;
-            this.txtQuantity.Tag = "";
-            this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
-            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuantity_KeyPress);
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(18, 58);
+            this.Label3.Location = new System.Drawing.Point(18, 65);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(88, 28);
             this.Label3.TabIndex = 53;
             this.Label3.Text = "Quantity";
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
+            this.txtQuantity.Location = new System.Drawing.Point(112, 65);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(398, 33);
+            this.txtQuantity.TabIndex = 54;
+            this.txtQuantity.Tag = "";
+            this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuantity_KeyPress);
             // 
             // Quantity
             // 
@@ -172,7 +175,7 @@
         private Guna.UI2.WinForms.Guna2Button btnConfirm;
         internal System.Windows.Forms.Label lblItem;
         public System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.TextBox txtQuantity;
         internal System.Windows.Forms.Label Label3;
+        internal System.Windows.Forms.TextBox txtQuantity;
     }
 }

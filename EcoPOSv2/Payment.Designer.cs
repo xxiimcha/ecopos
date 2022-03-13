@@ -40,6 +40,9 @@
             this.btnGC = new System.Windows.Forms.Button();
             this.btnRemoveGC = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
+            this.lblReferenceNo = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tbReferenceNo = new System.Windows.Forms.TextBox();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -58,12 +61,9 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.lblReferenceNo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tbReferenceNo = new System.Windows.Forms.TextBox();
             this.TableLayoutPanel2.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtAmount
@@ -239,6 +239,34 @@
             this.btnPay.Text = "Pay (Enter)";
             this.btnPay.UseVisualStyleBackColor = false;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
+            // 
+            // lblReferenceNo
+            // 
+            this.lblReferenceNo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblReferenceNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReferenceNo.Location = new System.Drawing.Point(3, 0);
+            this.lblReferenceNo.Name = "lblReferenceNo";
+            this.lblReferenceNo.Size = new System.Drawing.Size(128, 65);
+            this.lblReferenceNo.TabIndex = 20;
+            this.lblReferenceNo.Text = "Reference No:";
+            this.lblReferenceNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tbReferenceNo);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(137, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(201, 59);
+            this.panel1.TabIndex = 21;
+            // 
+            // tbReferenceNo
+            // 
+            this.tbReferenceNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbReferenceNo.Location = new System.Drawing.Point(0, 16);
+            this.tbReferenceNo.Name = "tbReferenceNo";
+            this.tbReferenceNo.Size = new System.Drawing.Size(201, 29);
+            this.tbReferenceNo.TabIndex = 0;
             // 
             // gunaControlBox1
             // 
@@ -468,34 +496,6 @@
             this.Label1.TabIndex = 104;
             this.Label1.Text = "Method";
             // 
-            // lblReferenceNo
-            // 
-            this.lblReferenceNo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblReferenceNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReferenceNo.Location = new System.Drawing.Point(3, 0);
-            this.lblReferenceNo.Name = "lblReferenceNo";
-            this.lblReferenceNo.Size = new System.Drawing.Size(128, 65);
-            this.lblReferenceNo.TabIndex = 20;
-            this.lblReferenceNo.Text = "Reference No:";
-            this.lblReferenceNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tbReferenceNo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(137, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 59);
-            this.panel1.TabIndex = 21;
-            // 
-            // tbReferenceNo
-            // 
-            this.tbReferenceNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbReferenceNo.Location = new System.Drawing.Point(0, 16);
-            this.tbReferenceNo.Name = "tbReferenceNo";
-            this.tbReferenceNo.Size = new System.Drawing.Size(201, 29);
-            this.tbReferenceNo.TabIndex = 0;
-            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,10 +513,10 @@
             this.Load += new System.EventHandler(this.Payment_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Payment_KeyDown);
             this.TableLayoutPanel2.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

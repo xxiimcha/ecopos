@@ -144,7 +144,7 @@
             this.dgvRecords.ThemeStyle.RowsStyle.Height = 35;
             this.dgvRecords.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvRecords.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvRecords.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecords_CellContentClick);
+            this.dgvRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecords_CellContentClick);
             // 
             // TableLayoutPanel2
             // 
@@ -188,12 +188,12 @@
             this.TableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel3.Name = "TableLayoutPanel3";
             this.TableLayoutPanel3.RowCount = 6;
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.263158F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.05263F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.05263F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.05263F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.78947F));
-            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.78947F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.761905F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.TableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
             this.TableLayoutPanel3.Size = new System.Drawing.Size(261, 224);
             this.TableLayoutPanel3.TabIndex = 0;
             this.TableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanel3_Paint);
@@ -211,9 +211,9 @@
             this.btnReprint.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnReprint.IconSize = 31;
             this.btnReprint.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnReprint.Location = new System.Drawing.Point(68, 190);
+            this.btnReprint.Location = new System.Drawing.Point(68, 181);
             this.btnReprint.Name = "btnReprint";
-            this.btnReprint.Size = new System.Drawing.Size(176, 31);
+            this.btnReprint.Size = new System.Drawing.Size(176, 40);
             this.btnReprint.TabIndex = 117;
             this.btnReprint.Text = "Reprint Receipt";
             this.btnReprint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -226,9 +226,9 @@
             this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 11);
+            this.Label13.Location = new System.Drawing.Point(3, 10);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(59, 47);
+            this.Label13.Size = new System.Drawing.Size(59, 42);
             this.Label13.TabIndex = 110;
             this.Label13.Text = "From";
             this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -239,9 +239,9 @@
             this.Label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
-            this.Label14.Location = new System.Drawing.Point(3, 58);
+            this.Label14.Location = new System.Drawing.Point(3, 52);
             this.Label14.Name = "Label14";
-            this.Label14.Size = new System.Drawing.Size(59, 47);
+            this.Label14.Size = new System.Drawing.Size(59, 42);
             this.Label14.TabIndex = 112;
             this.Label14.Text = "To";
             this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -259,9 +259,9 @@
             this.btnGenerateReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGenerateReport.IconSize = 31;
             this.btnGenerateReport.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGenerateReport.Location = new System.Drawing.Point(68, 155);
+            this.btnGenerateReport.Location = new System.Drawing.Point(68, 139);
             this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.Size = new System.Drawing.Size(176, 29);
+            this.btnGenerateReport.Size = new System.Drawing.Size(176, 36);
             this.btnGenerateReport.TabIndex = 116;
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -274,9 +274,9 @@
             this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(3, 105);
+            this.Label1.Location = new System.Drawing.Point(3, 94);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(59, 47);
+            this.Label1.Size = new System.Drawing.Size(59, 42);
             this.Label1.TabIndex = 120;
             this.Label1.Text = "Type";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -292,12 +292,12 @@
             this.dtpFrom.ForeColor = System.Drawing.Color.Black;
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.HoverState.Parent = this.dtpFrom;
-            this.dtpFrom.Location = new System.Drawing.Point(68, 14);
+            this.dtpFrom.Location = new System.Drawing.Point(68, 13);
             this.dtpFrom.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFrom.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.ShadowDecoration.Parent = this.dtpFrom;
-            this.dtpFrom.Size = new System.Drawing.Size(176, 41);
+            this.dtpFrom.Size = new System.Drawing.Size(176, 36);
             this.dtpFrom.TabIndex = 121;
             this.dtpFrom.Tag = "From";
             this.dtpFrom.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
@@ -314,12 +314,12 @@
             this.dtpTo.ForeColor = System.Drawing.Color.Black;
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.HoverState.Parent = this.dtpTo;
-            this.dtpTo.Location = new System.Drawing.Point(68, 61);
+            this.dtpTo.Location = new System.Drawing.Point(68, 55);
             this.dtpTo.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpTo.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.ShadowDecoration.Parent = this.dtpTo;
-            this.dtpTo.Size = new System.Drawing.Size(176, 41);
+            this.dtpTo.Size = new System.Drawing.Size(176, 36);
             this.dtpTo.TabIndex = 122;
             this.dtpTo.Tag = "To";
             this.dtpTo.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
@@ -345,7 +345,7 @@
             "Order",
             "Void"});
             this.cmbType.ItemsAppearance.Parent = this.cmbType;
-            this.cmbType.Location = new System.Drawing.Point(68, 108);
+            this.cmbType.Location = new System.Drawing.Point(68, 97);
             this.cmbType.Name = "cmbType";
             this.cmbType.ShadowDecoration.Parent = this.cmbType;
             this.cmbType.Size = new System.Drawing.Size(176, 36);
@@ -362,6 +362,16 @@
             this.CrystalReportViewer1.Location = new System.Drawing.Point(0, 230);
             this.CrystalReportViewer1.Margin = new System.Windows.Forms.Padding(0);
             this.CrystalReportViewer1.Name = "CrystalReportViewer1";
+            this.CrystalReportViewer1.ShowCloseButton = false;
+            this.CrystalReportViewer1.ShowCopyButton = false;
+            this.CrystalReportViewer1.ShowExportButton = false;
+            this.CrystalReportViewer1.ShowGotoPageButton = false;
+            this.CrystalReportViewer1.ShowGroupTreeButton = false;
+            this.CrystalReportViewer1.ShowLogo = false;
+            this.CrystalReportViewer1.ShowPageNavigateButtons = false;
+            this.CrystalReportViewer1.ShowParameterPanelButton = false;
+            this.CrystalReportViewer1.ShowPrintButton = false;
+            this.CrystalReportViewer1.ShowRefreshButton = false;
             this.CrystalReportViewer1.Size = new System.Drawing.Size(267, 498);
             this.CrystalReportViewer1.TabIndex = 1;
             this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
@@ -403,6 +413,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpFrom;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
         private Guna.UI2.WinForms.Guna2ComboBox cmbType;
-        internal CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer1;
     }
 }

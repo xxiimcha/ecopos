@@ -191,9 +191,10 @@ namespace EcoPOSv2
 
         private void OptionConfirmation_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
             btn1.Text = buttonText1;
             btn2.Text = buttonText2;
-            lblMessage.Text = "";
+            lblMessage.Text = message;
         }
 
         public OptionConfirmation(string message, string buttonText1, string buttonText2)

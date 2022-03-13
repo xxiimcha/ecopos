@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContinueSession));
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
@@ -45,6 +46,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lbLoginCard = new System.Windows.Forms.LinkLabel();
             this.lblLoginCardAdmin = new System.Windows.Forms.LinkLabel();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.SuspendLayout();
             // 
             // gunaControlBox1
@@ -311,5 +313,6 @@
         public Guna.UI2.WinForms.Guna2TileButton btnLoginAdmin;
         private System.Windows.Forms.LinkLabel lbLoginCard;
         private System.Windows.Forms.LinkLabel lblLoginCardAdmin;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

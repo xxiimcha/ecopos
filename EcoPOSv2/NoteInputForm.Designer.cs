@@ -29,16 +29,19 @@ namespace EcoPOSv2
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteInputForm));
             this.btnKeep = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            this.txtInputNote = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
+            this.txtInputNote = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.SuspendLayout();
             // 
             // btnKeep
             // 
             this.btnKeep.BorderColor = System.Drawing.Color.Green;
+            this.btnKeep.BorderRadius = 3;
             this.btnKeep.BorderThickness = 2;
             this.btnKeep.CheckedState.Parent = this.btnKeep;
             this.btnKeep.CustomImages.Parent = this.btnKeep;
@@ -49,11 +52,11 @@ namespace EcoPOSv2
             this.btnKeep.Image = ((System.Drawing.Image)(resources.GetObject("btnKeep.Image")));
             this.btnKeep.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnKeep.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnKeep.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnKeep.Location = new System.Drawing.Point(14, 112);
+            this.btnKeep.ImageSize = new System.Drawing.Size(28, 28);
+            this.btnKeep.Location = new System.Drawing.Point(23, 119);
             this.btnKeep.Name = "btnKeep";
             this.btnKeep.ShadowDecoration.Parent = this.btnKeep;
-            this.btnKeep.Size = new System.Drawing.Size(195, 57);
+            this.btnKeep.Size = new System.Drawing.Size(177, 43);
             this.btnKeep.TabIndex = 58;
             this.btnKeep.Text = "KEEP";
             this.btnKeep.TextOffset = new System.Drawing.Point(10, 0);
@@ -64,6 +67,7 @@ namespace EcoPOSv2
             // btnCancel
             // 
             this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.BorderRadius = 3;
             this.btnCancel.BorderThickness = 2;
             this.btnCancel.CheckedState.Parent = this.btnCancel;
             this.btnCancel.CustomImages.Parent = this.btnCancel;
@@ -74,44 +78,61 @@ namespace EcoPOSv2
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnCancel.Location = new System.Drawing.Point(221, 112);
+            this.btnCancel.ImageSize = new System.Drawing.Size(28, 28);
+            this.btnCancel.Location = new System.Drawing.Point(233, 119);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
-            this.btnCancel.Size = new System.Drawing.Size(195, 57);
+            this.btnCancel.Size = new System.Drawing.Size(177, 43);
             this.btnCancel.TabIndex = 59;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // txtInputNote
-            // 
-            this.txtInputNote.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInputNote.ForeColor = System.Drawing.Color.Black;
-            this.txtInputNote.Location = new System.Drawing.Point(14, 61);
-            this.txtInputNote.Name = "txtInputNote";
-            this.txtInputNote.Size = new System.Drawing.Size(402, 33);
-            this.txtInputNote.TabIndex = 60;
-            this.txtInputNote.Tag = "";
-            // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.Label2.ForeColor = System.Drawing.Color.Black;
-            this.Label2.Location = new System.Drawing.Point(14, 16);
+            this.Label2.Location = new System.Drawing.Point(18, 20);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(64, 28);
+            this.Label2.Size = new System.Drawing.Size(62, 25);
             this.Label2.TabIndex = 61;
             this.Label2.Text = "Name";
+            // 
+            // txtInputNote
+            // 
+            this.txtInputNote.BorderRadius = 3;
+            this.txtInputNote.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtInputNote.DefaultText = "";
+            this.txtInputNote.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtInputNote.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtInputNote.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtInputNote.DisabledState.Parent = this.txtInputNote;
+            this.txtInputNote.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtInputNote.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
+            this.txtInputNote.FocusedState.Parent = this.txtInputNote;
+            this.txtInputNote.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInputNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.txtInputNote.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.txtInputNote.HoverState.Parent = this.txtInputNote;
+            this.txtInputNote.Location = new System.Drawing.Point(23, 62);
+            this.txtInputNote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtInputNote.Name = "txtInputNote";
+            this.txtInputNote.PasswordChar = '\0';
+            this.txtInputNote.PlaceholderText = "";
+            this.txtInputNote.SelectedText = "";
+            this.txtInputNote.ShadowDecoration.Parent = this.txtInputNote;
+            this.txtInputNote.Size = new System.Drawing.Size(387, 33);
+            this.txtInputNote.TabIndex = 62;
             // 
             // NoteInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 198);
-            this.Controls.Add(this.Label2);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(436, 190);
             this.Controls.Add(this.txtInputNote);
+            this.Controls.Add(this.Label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnKeep);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -127,7 +148,8 @@ namespace EcoPOSv2
         #endregion
         private Guna.UI2.WinForms.Guna2Button btnKeep;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
-        internal System.Windows.Forms.TextBox txtInputNote;
         internal System.Windows.Forms.Label Label2;
+        private Guna.UI2.WinForms.Guna2TextBox txtInputNote;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

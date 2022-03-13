@@ -120,6 +120,9 @@
   <data name="Label4.Text" xml:space="preserve">
     <value>Or use administrator account to temporarily access the system. By using this option you are forcing access as the current user and will be recorded under that identity. Please use this only to log out/switch cashier the unfinished session to avoid creating damage to the database.</value>
   </data>
+  <metadata name="guna2ShadowForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -78,6 +78,7 @@ namespace EcoPOSv2
         //METHODS
         private void ContinueSession_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
             _ContinueSession = this;
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);

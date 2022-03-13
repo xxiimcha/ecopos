@@ -31,17 +31,31 @@ namespace EcoPOSv2
         public ItemsOnKeepView()
         {
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
             LoadItemsOnKeep();
         }
 
         public void LoadItemsOnKeep()
         {
-            dgvKeep.Rows.Clear();
-            SQL.Query("SELECT DISTINCT note ,total ,dateTime FROM keep");
-            if (SQL.HasException(true)) return;
+            dgvRecords.Rows.Clear();
+            if (txtSearch.Text == "")
+            {
+                SQL.Query(@"SELECT DISTINCT note, total, dateTime from keep");
+                if (SQL.HasException(true))
+                    return;
+            }
+            else
+            {
+                SQL.AddParam("@find", "%" + txtSearch.Text + "%");
+                SQL.Query(@"SELECT DISTINCT note, total, dateTime from keep
+                       WHERE note LIKE @find ORDER BY note DESC");
+                if (SQL.HasException(true))
+                    return;
+            }
+            
             foreach (DataRow dr in SQL.DBDT.Rows)
             {
-                dgvKeep.Rows.Add(dr["note"].ToString(), Convert.ToDouble(dr["total"].ToString()), dr["dateTime"].ToString());
+                dgvRecords.Rows.Add(dr["note"].ToString(), dr["total"].ToString(), dr["dateTime"].ToString());
             }
         }
 
@@ -59,7 +73,7 @@ namespace EcoPOSv2
         private void ShowOptions()
         {
             String name = "";
-            foreach (DataGridViewRow row in dgvKeep.SelectedRows)
+            foreach (DataGridViewRow row in dgvRecords.SelectedRows)
             {
                 name = row.Cells[0].Value.ToString();
             }
@@ -74,10 +88,15 @@ namespace EcoPOSv2
 
         private void dgvKeep_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && dgvKeep.SelectedRows.Count == 1)
+            if (e.KeyCode == Keys.Enter && dgvRecords.SelectedRows.Count == 1)
             {
                 ShowOptions();
             }
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            LoadItemsOnKeep();
         }
     }
 }

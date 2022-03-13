@@ -57,6 +57,7 @@
             // btnConfirm
             // 
             this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderRadius = 5;
             this.btnConfirm.BorderThickness = 2;
             this.btnConfirm.CheckedState.Parent = this.btnConfirm;
             this.btnConfirm.CustomImages.Parent = this.btnConfirm;
@@ -80,6 +81,7 @@
             // btnReprint
             // 
             this.btnReprint.BorderColor = System.Drawing.Color.Orange;
+            this.btnReprint.BorderRadius = 5;
             this.btnReprint.BorderThickness = 2;
             this.btnReprint.CheckedState.Parent = this.btnReprint;
             this.btnReprint.CustomImages.Parent = this.btnReprint;

@@ -60,6 +60,7 @@
             // guna2Button1
             // 
             this.guna2Button1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.guna2Button1.BorderRadius = 5;
             this.guna2Button1.BorderThickness = 2;
             this.guna2Button1.CheckedState.Parent = this.guna2Button1;
             this.guna2Button1.CustomImages.Parent = this.guna2Button1;
@@ -71,7 +72,7 @@
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.ImageOffset = new System.Drawing.Point(10, 0);
             this.guna2Button1.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2Button1.Location = new System.Drawing.Point(27, 153);
+            this.guna2Button1.Location = new System.Drawing.Point(20, 151);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
             this.guna2Button1.Size = new System.Drawing.Size(238, 57);
@@ -83,6 +84,7 @@
             // btnConfirm
             // 
             this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderRadius = 5;
             this.btnConfirm.BorderThickness = 2;
             this.btnConfirm.CheckedState.Parent = this.btnConfirm;
             this.btnConfirm.CustomImages.Parent = this.btnConfirm;
@@ -94,7 +96,7 @@
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(276, 153);
+            this.btnConfirm.Location = new System.Drawing.Point(274, 151);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(238, 57);
@@ -114,7 +116,7 @@
             "Senior Citizen",
             "Person with Disability",
             "Athlete"});
-            this.cmbDesc.Location = new System.Drawing.Point(151, 11);
+            this.cmbDesc.Location = new System.Drawing.Point(149, 12);
             this.cmbDesc.MaxDropDownItems = 10;
             this.cmbDesc.Name = "cmbDesc";
             this.cmbDesc.Size = new System.Drawing.Size(363, 31);
@@ -124,7 +126,7 @@
             // 
             this.txtIDNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIDNo.ForeColor = System.Drawing.Color.Black;
-            this.txtIDNo.Location = new System.Drawing.Point(151, 99);
+            this.txtIDNo.Location = new System.Drawing.Point(149, 100);
             this.txtIDNo.Multiline = true;
             this.txtIDNo.Name = "txtIDNo";
             this.txtIDNo.Size = new System.Drawing.Size(363, 33);
@@ -136,7 +138,7 @@
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.Color.Black;
-            this.txtName.Location = new System.Drawing.Point(151, 53);
+            this.txtName.Location = new System.Drawing.Point(149, 54);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(363, 33);
@@ -148,7 +150,7 @@
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(17, 53);
+            this.Label3.Location = new System.Drawing.Point(15, 54);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(64, 28);
             this.Label3.TabIndex = 57;
@@ -159,7 +161,7 @@
             this.Label1.AutoSize = true;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(17, 101);
+            this.Label1.Location = new System.Drawing.Point(15, 102);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(67, 28);
             this.Label1.TabIndex = 56;
@@ -170,7 +172,7 @@
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.Black;
-            this.Label2.Location = new System.Drawing.Point(17, 9);
+            this.Label2.Location = new System.Drawing.Point(15, 10);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(112, 28);
             this.Label2.TabIndex = 55;

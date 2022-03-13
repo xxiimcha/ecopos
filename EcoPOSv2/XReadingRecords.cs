@@ -57,6 +57,7 @@ namespace EcoPOSv2
             dgvRecords.DataSource = SQL.DBDT;
             dgvRecords.Columns[0].Visible = false;
         }
+
         //METHODS
         private void XReadingRecords_Load(object sender, EventArgs e)
         {
@@ -64,28 +65,6 @@ namespace EcoPOSv2
             dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
 
             loadData();
-        }
-
-        private void btnSearchDates_Click(object sender, EventArgs e)
-        {
-            loadData();
-        }
-
-        private void btnSort_Click(object sender, EventArgs e)
-        {
-            if (dgvRecords.RowCount == 0)
-                return;
-
-            if (btnSort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvRecords.Sort(dgvRecords.Columns[4], ListSortDirection.Ascending);
-                btnSort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvRecords.Sort(dgvRecords.Columns[4], ListSortDirection.Descending);
-                btnSort.IconChar = IconChar.SortAlphaDown;
-            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -211,6 +190,7 @@ namespace EcoPOSv2
 
                     CrystalReportViewer1.ReportSource = report;
                     CrystalReportViewer1.Refresh();
+                    CrystalReportViewer1.Zoom(1);
                 }
                 catch (Exception ex)
                 {
@@ -291,6 +271,16 @@ namespace EcoPOSv2
                     report80.Dispose();
                 }
             }
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }

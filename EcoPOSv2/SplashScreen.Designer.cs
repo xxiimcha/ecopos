@@ -51,9 +51,9 @@ namespace EcoPOSv2
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
-            this.pictureBox1.Location = new System.Drawing.Point(456, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(434, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(538, 718);
+            this.pictureBox1.Size = new System.Drawing.Size(511, 657);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -63,7 +63,7 @@ namespace EcoPOSv2
             this.pictureBox2.Image = global::EcoPOSv2.Properties.Resources.wno;
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(259, 117);
+            this.pictureBox2.Size = new System.Drawing.Size(172, 107);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -72,9 +72,9 @@ namespace EcoPOSv2
             // 
             this.lblType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblType.Font = new System.Drawing.Font("Segoe UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(486, 0);
+            this.lblType.Location = new System.Drawing.Point(463, 0);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(477, 123);
+            this.lblType.Size = new System.Drawing.Size(454, 113);
             this.lblType.TabIndex = 2;
             this.lblType.Text = "STAND-ALONE POS SYSTEM  ";
             this.lblType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,10 +83,10 @@ namespace EcoPOSv2
             // 
             this.lblVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(969, 0);
+            this.lblVersion.Location = new System.Drawing.Point(923, 0);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.lblVersion.Size = new System.Drawing.Size(479, 123);
+            this.lblVersion.Size = new System.Drawing.Size(454, 113);
             this.lblVersion.TabIndex = 3;
             this.lblVersion.Text = "v3.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -108,7 +108,7 @@ namespace EcoPOSv2
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1457, 859);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1386, 788);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -124,7 +124,7 @@ namespace EcoPOSv2
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1451, 724);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1380, 663);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gunaControlBox1
@@ -134,7 +134,7 @@ namespace EcoPOSv2
             this.gunaControlBox1.AnimationSpeed = 0.03F;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(1387, 3);
+            this.gunaControlBox1.Location = new System.Drawing.Point(1316, 3);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
@@ -153,11 +153,11 @@ namespace EcoPOSv2
             this.tableLayoutPanel3.Controls.Add(this.lblType, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 733);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 672);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1451, 123);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1380, 113);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // SplashScreen
@@ -165,7 +165,7 @@ namespace EcoPOSv2
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1457, 859);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

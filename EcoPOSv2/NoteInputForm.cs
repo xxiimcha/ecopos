@@ -17,7 +17,7 @@ namespace EcoPOSv2
         private void button1_Click(object sender, EventArgs e)
         {
             
-           }
+        }
 
         private void btnKeep_Click(object sender, EventArgs e)
         {
@@ -106,6 +106,7 @@ namespace EcoPOSv2
         private void NoteInputForm_Load(object sender, EventArgs e)
         {
             txtInputNote.Focus();
+            guna2ShadowForm1.SetShadowForm(this);
         }
     }
 }

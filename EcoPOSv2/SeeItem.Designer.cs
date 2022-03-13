@@ -59,10 +59,11 @@
             this.guna2Panel1.Controls.Add(this.txtBarcode);
             this.guna2Panel1.Controls.Add(this.Label3);
             this.guna2Panel1.Controls.Add(this.Label2);
-            this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(826, 676);
+            this.guna2Panel1.Size = new System.Drawing.Size(830, 680);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnConfirm
@@ -149,7 +150,7 @@
             this.btnCLose.AnimationSpeed = 0.03F;
             this.btnCLose.IconColor = System.Drawing.Color.Black;
             this.btnCLose.IconSize = 15F;
-            this.btnCLose.Location = new System.Drawing.Point(782, 4);
+            this.btnCLose.Location = new System.Drawing.Point(786, 4);
             this.btnCLose.Name = "btnCLose";
             this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;

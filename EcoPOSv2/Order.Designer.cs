@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Order));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.OrderPanel = new System.Windows.Forms.Panel();
             this.enteredOrdersPanel = new System.Windows.Forms.Panel();
             this.dgvCart = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -40,7 +40,7 @@
             this.tbBarcode = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnBarcode = new Guna.UI2.WinForms.Guna2Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.btnViewKeeps = new Guna.UI2.WinForms.Guna2Button();
             this.btnKeep = new Guna.UI2.WinForms.Guna2Button();
             this.btnPriceEditor = new Guna.UI2.WinForms.Guna2Button();
@@ -108,44 +108,44 @@
             this.dgvCart.AllowUserToAddRows = false;
             this.dgvCart.AllowUserToDeleteRows = false;
             this.dgvCart.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.dgvCart, "dgvCart");
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.White;
             this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvCart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCart.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCart.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCart.EnableHeadersVisualStyles = false;
             this.dgvCart.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCart.MultiSelect = false;
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCart.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCart.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.RowTemplate.DividerHeight = 1;
             this.dgvCart.RowTemplate.Height = 35;
@@ -191,6 +191,7 @@
             // tbBarcode
             // 
             resources.ApplyResources(this.tbBarcode, "tbBarcode");
+            this.tbBarcode.Animated = true;
             this.tbBarcode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(119)))), ((int)(((byte)(252)))));
             this.tbBarcode.BorderRadius = 5;
             this.tbBarcode.BorderThickness = 2;
@@ -221,12 +222,12 @@
             this.btnBarcode.CustomImages.Parent = this.btnBarcode;
             this.btnBarcode.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             resources.ApplyResources(this.btnBarcode, "btnBarcode");
-            this.btnBarcode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(119)))), ((int)(((byte)(232)))));
+            this.btnBarcode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(119)))), ((int)(((byte)(252)))));
             this.btnBarcode.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.btnBarcode.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(119)))), ((int)(((byte)(232)))));
             this.btnBarcode.HoverState.Parent = this.btnBarcode;
             this.btnBarcode.Image = global::EcoPOSv2.Properties.Resources.code;
-            this.btnBarcode.ImageSize = new System.Drawing.Size(30, 20);
+            this.btnBarcode.ImageSize = new System.Drawing.Size(30, 40);
             this.btnBarcode.Name = "btnBarcode";
             this.btnBarcode.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             this.btnBarcode.ShadowDecoration.Parent = this.btnBarcode;
@@ -234,7 +235,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.gunaLabel1);
             this.panel4.Controls.Add(this.btnViewKeeps);
             this.panel4.Controls.Add(this.btnKeep);
             this.panel4.Controls.Add(this.btnPriceEditor);
@@ -275,125 +276,162 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
-            // label1
+            // gunaLabel1
             // 
-            this.label1.Image = global::EcoPOSv2.Properties.Resources.Line;
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.gunaLabel1, "gunaLabel1");
+            this.gunaLabel1.Image = global::EcoPOSv2.Properties.Resources.paymentline;
+            this.gunaLabel1.Name = "gunaLabel1";
             // 
             // btnViewKeeps
             // 
             resources.ApplyResources(this.btnViewKeeps, "btnViewKeeps");
+            this.btnViewKeeps.BackColor = System.Drawing.Color.Transparent;
             this.btnViewKeeps.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(214)))));
-            this.btnViewKeeps.BorderRadius = 5;
-            this.btnViewKeeps.BorderThickness = 2;
+            this.btnViewKeeps.BorderRadius = 3;
+            this.btnViewKeeps.BorderThickness = 1;
             this.btnViewKeeps.CheckedState.Parent = this.btnViewKeeps;
             this.btnViewKeeps.CustomImages.Parent = this.btnViewKeeps;
             this.btnViewKeeps.FillColor = System.Drawing.Color.White;
             this.btnViewKeeps.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnViewKeeps.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnViewKeeps.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnViewKeeps.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnViewKeeps.HoverState.Parent = this.btnViewKeeps;
             this.btnViewKeeps.Name = "btnViewKeeps";
+            this.btnViewKeeps.ShadowDecoration.BorderRadius = 3;
+            this.btnViewKeeps.ShadowDecoration.Depth = 50;
+            this.btnViewKeeps.ShadowDecoration.Enabled = true;
             this.btnViewKeeps.ShadowDecoration.Parent = this.btnViewKeeps;
+            this.btnViewKeeps.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnViewKeeps.Click += new System.EventHandler(this.btnViewKeep);
             // 
             // btnKeep
             // 
             resources.ApplyResources(this.btnKeep, "btnKeep");
+            this.btnKeep.BackColor = System.Drawing.Color.Transparent;
             this.btnKeep.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(214)))));
-            this.btnKeep.BorderRadius = 5;
-            this.btnKeep.BorderThickness = 2;
+            this.btnKeep.BorderRadius = 3;
+            this.btnKeep.BorderThickness = 1;
             this.btnKeep.CheckedState.Parent = this.btnKeep;
             this.btnKeep.CustomImages.Parent = this.btnKeep;
             this.btnKeep.FillColor = System.Drawing.Color.White;
             this.btnKeep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnKeep.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnKeep.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnKeep.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnKeep.HoverState.Parent = this.btnKeep;
             this.btnKeep.Name = "btnKeep";
+            this.btnKeep.ShadowDecoration.BorderRadius = 3;
+            this.btnKeep.ShadowDecoration.Depth = 50;
+            this.btnKeep.ShadowDecoration.Enabled = true;
             this.btnKeep.ShadowDecoration.Parent = this.btnKeep;
+            this.btnKeep.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnKeep.Click += new System.EventHandler(this.btnKeep_Click);
             // 
             // btnPriceEditor
             // 
             resources.ApplyResources(this.btnPriceEditor, "btnPriceEditor");
+            this.btnPriceEditor.BackColor = System.Drawing.Color.Transparent;
             this.btnPriceEditor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(214)))));
-            this.btnPriceEditor.BorderRadius = 5;
-            this.btnPriceEditor.BorderThickness = 2;
+            this.btnPriceEditor.BorderRadius = 3;
+            this.btnPriceEditor.BorderThickness = 1;
             this.btnPriceEditor.CheckedState.Parent = this.btnPriceEditor;
             this.btnPriceEditor.CustomImages.Parent = this.btnPriceEditor;
             this.btnPriceEditor.FillColor = System.Drawing.Color.White;
             this.btnPriceEditor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnPriceEditor.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPriceEditor.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnPriceEditor.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnPriceEditor.HoverState.Parent = this.btnPriceEditor;
             this.btnPriceEditor.Name = "btnPriceEditor";
+            this.btnPriceEditor.ShadowDecoration.BorderRadius = 3;
+            this.btnPriceEditor.ShadowDecoration.Depth = 50;
+            this.btnPriceEditor.ShadowDecoration.Enabled = true;
             this.btnPriceEditor.ShadowDecoration.Parent = this.btnPriceEditor;
+            this.btnPriceEditor.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnPriceEditor.Click += new System.EventHandler(this.btnPriceEditor_Click);
             // 
             // btnPayment
             // 
             resources.ApplyResources(this.btnPayment, "btnPayment");
             this.btnPayment.BackColor = System.Drawing.Color.White;
-            this.btnPayment.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnPayment.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnPayment.BorderRadius = 5;
             this.btnPayment.BorderThickness = 2;
             this.btnPayment.CheckedState.Parent = this.btnPayment;
             this.btnPayment.CustomImages.Parent = this.btnPayment;
-            this.btnPayment.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnPayment.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnPayment.ForeColor = System.Drawing.Color.White;
-            this.btnPayment.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnPayment.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnPayment.HoverState.FillColor = System.Drawing.Color.Green;
             this.btnPayment.HoverState.Parent = this.btnPayment;
             this.btnPayment.Name = "btnPayment";
-            this.btnPayment.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnPayment.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnPayment.ShadowDecoration.Depth = 50;
             this.btnPayment.ShadowDecoration.Parent = this.btnPayment;
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
             // btnRedeem
             // 
             resources.ApplyResources(this.btnRedeem, "btnRedeem");
-            this.btnRedeem.BackColor = System.Drawing.Color.White;
+            this.btnRedeem.BackColor = System.Drawing.Color.Transparent;
             this.btnRedeem.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(214)))));
-            this.btnRedeem.BorderRadius = 5;
-            this.btnRedeem.BorderThickness = 2;
+            this.btnRedeem.BorderRadius = 3;
+            this.btnRedeem.BorderThickness = 1;
             this.btnRedeem.CheckedState.Parent = this.btnRedeem;
             this.btnRedeem.CustomImages.Parent = this.btnRedeem;
             this.btnRedeem.FillColor = System.Drawing.Color.White;
             this.btnRedeem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnRedeem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRedeem.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnRedeem.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnRedeem.HoverState.Parent = this.btnRedeem;
             this.btnRedeem.Name = "btnRedeem";
+            this.btnRedeem.ShadowDecoration.BorderRadius = 3;
+            this.btnRedeem.ShadowDecoration.Depth = 50;
+            this.btnRedeem.ShadowDecoration.Enabled = true;
             this.btnRedeem.ShadowDecoration.Parent = this.btnRedeem;
+            this.btnRedeem.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnRedeem.Click += new System.EventHandler(this.btnRedeem_Click);
             // 
             // btnCancel
             // 
             resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(214)))));
-            this.btnCancel.BorderRadius = 5;
-            this.btnCancel.BorderThickness = 2;
+            this.btnCancel.BorderRadius = 3;
+            this.btnCancel.BorderThickness = 1;
             this.btnCancel.CheckedState.Parent = this.btnCancel;
             this.btnCancel.CustomImages.Parent = this.btnCancel;
             this.btnCancel.FillColor = System.Drawing.Color.White;
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnCancel.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancel.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnCancel.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.HoverState.Parent = this.btnCancel;
             this.btnCancel.Name = "btnCancel";
+            this.btnCancel.ShadowDecoration.BorderRadius = 3;
+            this.btnCancel.ShadowDecoration.Depth = 50;
+            this.btnCancel.ShadowDecoration.Enabled = true;
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
+            this.btnCancel.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnVoid
             // 
             resources.ApplyResources(this.btnVoid, "btnVoid");
+            this.btnVoid.BackColor = System.Drawing.Color.Transparent;
             this.btnVoid.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(214)))));
-            this.btnVoid.BorderRadius = 5;
-            this.btnVoid.BorderThickness = 2;
+            this.btnVoid.BorderRadius = 3;
+            this.btnVoid.BorderThickness = 1;
             this.btnVoid.CheckedState.Parent = this.btnVoid;
             this.btnVoid.CustomImages.Parent = this.btnVoid;
             this.btnVoid.FillColor = System.Drawing.Color.White;
             this.btnVoid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.btnVoid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVoid.HoverState.FillColor = System.Drawing.Color.Gainsboro;
+            this.btnVoid.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnVoid.HoverState.Parent = this.btnVoid;
             this.btnVoid.Name = "btnVoid";
+            this.btnVoid.ShadowDecoration.BorderRadius = 3;
+            this.btnVoid.ShadowDecoration.Depth = 50;
+            this.btnVoid.ShadowDecoration.Enabled = true;
             this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
+            this.btnVoid.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // lblOperation
@@ -498,14 +536,14 @@
             // 
             this.lblTotal.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.lblTotal, "lblTotal");
-            this.lblTotal.ForeColor = System.Drawing.Color.Green;
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.lblTotal.Name = "lblTotal";
             // 
             // label17
             // 
             resources.ApplyResources(this.label17, "label17");
             this.label17.BackColor = System.Drawing.Color.White;
-            this.label17.ForeColor = System.Drawing.Color.Green;
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.label17.Name = "label17";
             // 
             // lblDiscount
@@ -568,13 +606,16 @@
             // 
             this.btnVoidItem.BorderColor = System.Drawing.Color.Red;
             this.btnVoidItem.BorderRadius = 5;
-            this.btnVoidItem.BorderThickness = 2;
+            this.btnVoidItem.BorderThickness = 1;
             this.btnVoidItem.CheckedState.Parent = this.btnVoidItem;
             this.btnVoidItem.CustomImages.Parent = this.btnVoidItem;
             this.btnVoidItem.FillColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnVoidItem, "btnVoidItem");
             this.btnVoidItem.ForeColor = System.Drawing.Color.Red;
-            this.btnVoidItem.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVoidItem.HoverState.BorderColor = System.Drawing.Color.Red;
+            this.btnVoidItem.HoverState.FillColor = System.Drawing.Color.Red;
+            this.btnVoidItem.HoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoidItem.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnVoidItem.HoverState.Parent = this.btnVoidItem;
             this.btnVoidItem.Name = "btnVoidItem";
             this.btnVoidItem.ShadowDecoration.Parent = this.btnVoidItem;
@@ -584,13 +625,16 @@
             // 
             this.btnQuantity.BorderColor = System.Drawing.Color.Green;
             this.btnQuantity.BorderRadius = 5;
-            this.btnQuantity.BorderThickness = 2;
+            this.btnQuantity.BorderThickness = 1;
             this.btnQuantity.CheckedState.Parent = this.btnQuantity;
             this.btnQuantity.CustomImages.Parent = this.btnQuantity;
             this.btnQuantity.FillColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnQuantity, "btnQuantity");
             this.btnQuantity.ForeColor = System.Drawing.Color.Green;
-            this.btnQuantity.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnQuantity.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnQuantity.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnQuantity.HoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuantity.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnQuantity.HoverState.Parent = this.btnQuantity;
             this.btnQuantity.Name = "btnQuantity";
             this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
@@ -600,13 +644,16 @@
             // 
             this.btnCustomer.BorderColor = System.Drawing.Color.Navy;
             this.btnCustomer.BorderRadius = 5;
-            this.btnCustomer.BorderThickness = 2;
+            this.btnCustomer.BorderThickness = 1;
             this.btnCustomer.CheckedState.Parent = this.btnCustomer;
             this.btnCustomer.CustomImages.Parent = this.btnCustomer;
             this.btnCustomer.FillColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnCustomer, "btnCustomer");
             this.btnCustomer.ForeColor = System.Drawing.Color.Navy;
-            this.btnCustomer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCustomer.HoverState.BorderColor = System.Drawing.Color.Navy;
+            this.btnCustomer.HoverState.FillColor = System.Drawing.Color.Navy;
+            this.btnCustomer.HoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnCustomer.HoverState.Parent = this.btnCustomer;
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.ShadowDecoration.Parent = this.btnCustomer;
@@ -616,13 +663,16 @@
             // 
             this.btnDiscount.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnDiscount.BorderRadius = 5;
-            this.btnDiscount.BorderThickness = 2;
+            this.btnDiscount.BorderThickness = 1;
             this.btnDiscount.CheckedState.Parent = this.btnDiscount;
             this.btnDiscount.CustomImages.Parent = this.btnDiscount;
             this.btnDiscount.FillColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnDiscount, "btnDiscount");
             this.btnDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnDiscount.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDiscount.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnDiscount.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnDiscount.HoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDiscount.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnDiscount.HoverState.Parent = this.btnDiscount;
             this.btnDiscount.Name = "btnDiscount";
             this.btnDiscount.ShadowDecoration.Parent = this.btnDiscount;
@@ -638,40 +688,50 @@
             // 
             // btnWholeSale
             // 
-            this.btnWholeSale.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnWholeSale.BackColor = System.Drawing.Color.Transparent;
+            this.btnWholeSale.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnWholeSale.BorderRadius = 5;
-            this.btnWholeSale.BorderThickness = 2;
             this.btnWholeSale.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnWholeSale.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnWholeSale.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnWholeSale.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnWholeSale.CheckedState.ForeColor = System.Drawing.Color.White;
             this.btnWholeSale.CheckedState.Parent = this.btnWholeSale;
             this.btnWholeSale.CustomImages.Parent = this.btnWholeSale;
             this.btnWholeSale.FillColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnWholeSale, "btnWholeSale");
-            this.btnWholeSale.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnWholeSale.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnWholeSale.HoverState.FillColor = System.Drawing.Color.Silver;
             this.btnWholeSale.HoverState.Parent = this.btnWholeSale;
             this.btnWholeSale.Name = "btnWholeSale";
-            this.btnWholeSale.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnWholeSale.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnWholeSale.ShadowDecoration.Depth = 50;
+            this.btnWholeSale.ShadowDecoration.Enabled = true;
             this.btnWholeSale.ShadowDecoration.Parent = this.btnWholeSale;
+            this.btnWholeSale.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnWholeSale.Click += new System.EventHandler(this.btnWholeSale_Click);
             // 
             // btnRetail
             // 
-            this.btnRetail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnRetail.BackColor = System.Drawing.Color.Transparent;
+            this.btnRetail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnRetail.BorderRadius = 5;
-            this.btnRetail.BorderThickness = 2;
             this.btnRetail.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btnRetail.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnRetail.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnRetail.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnRetail.CheckedState.ForeColor = System.Drawing.Color.White;
             this.btnRetail.CheckedState.Parent = this.btnRetail;
             this.btnRetail.CustomImages.Parent = this.btnRetail;
             this.btnRetail.FillColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnRetail, "btnRetail");
-            this.btnRetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnRetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.btnRetail.HoverState.FillColor = System.Drawing.Color.Silver;
             this.btnRetail.HoverState.Parent = this.btnRetail;
             this.btnRetail.Name = "btnRetail";
-            this.btnRetail.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(198)))), ((int)(((byte)(125)))));
+            this.btnRetail.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnRetail.ShadowDecoration.Depth = 50;
+            this.btnRetail.ShadowDecoration.Enabled = true;
             this.btnRetail.ShadowDecoration.Parent = this.btnRetail;
+            this.btnRetail.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.btnRetail.Click += new System.EventHandler(this.btnRetail_Click);
             // 
             // label7
@@ -750,6 +810,6 @@
         public Guna.UI2.WinForms.Guna2TextBox tbBarcode;
         private Guna.UI2.WinForms.Guna2Button btnSeeItem;
         public Guna.UI2.WinForms.Guna2DataGridView dgvCart;
-        private System.Windows.Forms.Label label1;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
     }
 }

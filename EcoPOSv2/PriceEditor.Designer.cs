@@ -68,6 +68,7 @@ namespace EcoPOSv2
             // btnCancel
             // 
             this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCancel.BorderRadius = 5;
             this.btnCancel.BorderThickness = 2;
             this.btnCancel.CheckedState.Parent = this.btnCancel;
             this.btnCancel.CustomImages.Parent = this.btnCancel;
@@ -91,6 +92,7 @@ namespace EcoPOSv2
             // btnConfirm
             // 
             this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderRadius = 5;
             this.btnConfirm.BorderThickness = 2;
             this.btnConfirm.CheckedState.Parent = this.btnConfirm;
             this.btnConfirm.CustomImages.Parent = this.btnConfirm;

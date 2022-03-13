@@ -123,9 +123,12 @@ namespace EcoPOSv2
             dgvCart.Columns[9].Visible = false;
             dgvCart.Columns[12].Visible = false;
 
-            dgvCart.Columns[2].Width = 150;
-            dgvCart.Columns[3].Width = 150;
-            dgvCart.Columns[4].Width = 60;
+            dgvCart.Columns[2].Width = (int)(dgvCart.Width * 0.25);
+            dgvCart.Columns[3].Width = (int)(dgvCart.Width * 0.25);
+            dgvCart.Columns[4].Width = (int)(dgvCart.Width * 0.08);
+            dgvCart.Columns[7].Width = (int)(dgvCart.Width * 0.15);
+            dgvCart.Columns[10].Width = (int)(dgvCart.Width * 0.15);
+            dgvCart.Columns[11].Width = (int)(dgvCart.Width * 0.10);
         }
         public void LoadOrderNo()
         {
@@ -290,9 +293,6 @@ namespace EcoPOSv2
                 lblVATSale.Text = vatsaledisc.ToString("N2");
             }
 
-            dgvCart.Columns[2].Width = 150;
-            dgvCart.Columns[3].Width = 150;
-            dgvCart.Columns[4].Width = 60;
         }
 
         //METHODS
@@ -432,7 +432,12 @@ namespace EcoPOSv2
 
         private void Order_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Control && e.KeyCode == Keys.D)
+            if (e.Control && e.KeyCode == Keys.I)
+            {
+                btnSeeItem.PerformClick();
+            }
+
+            if (e.Control && e.KeyCode == Keys.D)
             {
                 btnDiscount.PerformClick();
             }
@@ -485,6 +490,10 @@ namespace EcoPOSv2
                 btnPayment.PerformClick();
             }
 
+            if (e.KeyCode == Keys.Escape)
+            {
+                tbBarcode.Focus();
+            }
 
             //if (e.KeyCode != Keys.Modifiers == Keys.D && e.Modifiers == Keys.Control)
             //    btnDiscount.PerformClick();
@@ -573,7 +582,7 @@ namespace EcoPOSv2
                     }
 
                     lblCustomer.Text = "";
-                    lblOperation.Text = "";
+                    lblOperation.Text = "Order/Payment";
 
                     LoadOrderNo();
                     LoadOrder();
@@ -672,7 +681,7 @@ namespace EcoPOSv2
             lblCustomer.Text = "";
             lblOperation.Text = "Order/Payment";
             tbBarcode.Enabled = true;
-
+            
             if (dgvCart.Rows.Count == 0)
                 return;
 
@@ -779,14 +788,13 @@ namespace EcoPOSv2
             this.ActiveControl = tbBarcode;
 
 
-            //tbBarcode.Focus();
-            //tbBarcode.Clear();
+            tbBarcode.Focus();
+            tbBarcode.Clear();
 
             //TEMPORARY
             //  btnVoid.Enabled = false;
-            dgvCart.Columns[2].Width = 150;
-            dgvCart.Columns[3].Width = 150;
-            dgvCart.Columns[4].Width = 60;
+
+            btnPayment.Text = "PAYMENT" + Environment.NewLine + "(CTRL + P)";
         }
 
         private void btnVoidItem_Click(object sender, EventArgs e)

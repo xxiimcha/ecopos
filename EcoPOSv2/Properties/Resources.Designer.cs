@@ -75,37 +75,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap calculator_black {
             get {
-                object obj = ResourceManager.GetObject("calculator-black", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap calculator_black1 {
-            get {
-                object obj = ResourceManager.GetObject("calculator-black1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap calculator_gray {
-            get {
-                object obj = ResourceManager.GetObject("calculator-gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap calculator_purple {
-            get {
-                object obj = ResourceManager.GetObject("calculator-purple", resourceCulture);
+                object obj = ResourceManager.GetObject("calculator_black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,27 +85,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap calculator_white {
             get {
-                object obj = ResourceManager.GetObject("calculator-white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap calculator_white1 {
-            get {
-                object obj = ResourceManager.GetObject("calculator-white1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cart {
-            get {
-                object obj = ResourceManager.GetObject("cart", resourceCulture);
+                object obj = ResourceManager.GetObject("calculator_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -145,37 +95,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap cart_black {
             get {
-                object obj = ResourceManager.GetObject("cart-black", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cart_black1 {
-            get {
-                object obj = ResourceManager.GetObject("cart-black1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cart_gray {
-            get {
-                object obj = ResourceManager.GetObject("cart-gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cart_purple {
-            get {
-                object obj = ResourceManager.GetObject("cart-purple", resourceCulture);
+                object obj = ResourceManager.GetObject("cart_black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -185,17 +105,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap cart_white {
             get {
-                object obj = ResourceManager.GetObject("cart-white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cart_white1 {
-            get {
-                object obj = ResourceManager.GetObject("cart-white1", resourceCulture);
+                object obj = ResourceManager.GetObject("cart_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -242,16 +152,6 @@ namespace EcoPOSv2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Line {
-            get {
-                object obj = ResourceManager.GetObject("Line", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap more {
             get {
                 object obj = ResourceManager.GetObject("more", resourceCulture);
@@ -264,47 +164,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap more_black {
             get {
-                object obj = ResourceManager.GetObject("more-black", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap more_black1 {
-            get {
-                object obj = ResourceManager.GetObject("more-black1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap more_black2 {
-            get {
-                object obj = ResourceManager.GetObject("more-black2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap more_gray {
-            get {
-                object obj = ResourceManager.GetObject("more-gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap more_purple {
-            get {
-                object obj = ResourceManager.GetObject("more-purple", resourceCulture);
+                object obj = ResourceManager.GetObject("more_black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -314,27 +174,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap more_white {
             get {
-                object obj = ResourceManager.GetObject("more-white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap more_white1 {
-            get {
-                object obj = ResourceManager.GetObject("more-white1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap more_white2 {
-            get {
-                object obj = ResourceManager.GetObject("more-white2", resourceCulture);
+                object obj = ResourceManager.GetObject("more_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -352,29 +192,19 @@ namespace EcoPOSv2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap OnlineGreenIcon1 {
-            get {
-                object obj = ResourceManager.GetObject("OnlineGreenIcon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap OnlineGreenIcon2 {
-            get {
-                object obj = ResourceManager.GetObject("OnlineGreenIcon2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap order {
             get {
                 object obj = ResourceManager.GetObject("order", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap paymentline {
+            get {
+                object obj = ResourceManager.GetObject("paymentline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -394,37 +224,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap switchcashier_black {
             get {
-                object obj = ResourceManager.GetObject("switchcashier-black", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap switchcashier_black1 {
-            get {
-                object obj = ResourceManager.GetObject("switchcashier-black1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap switchcashier_gray {
-            get {
-                object obj = ResourceManager.GetObject("switchcashier-gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap switchcashier_purple {
-            get {
-                object obj = ResourceManager.GetObject("switchcashier-purple", resourceCulture);
+                object obj = ResourceManager.GetObject("switchcashier_black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -434,17 +234,7 @@ namespace EcoPOSv2.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap switchcashier_white {
             get {
-                object obj = ResourceManager.GetObject("switchcashier-white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap switchcashier_white1 {
-            get {
-                object obj = ResourceManager.GetObject("switchcashier-white1", resourceCulture);
+                object obj = ResourceManager.GetObject("switchcashier_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
