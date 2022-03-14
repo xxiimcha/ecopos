@@ -1,12 +1,5 @@
 ﻿using EcoPOSControl;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EcoPOSv2
@@ -30,80 +23,76 @@ namespace EcoPOSv2
             }
         }
 
-
-
-
         SQLControl SQL = new SQLControl();
 
         public Order frmOrder;
- 
+
         private void SeeItem_Load(object sender, EventArgs e)
         {
+            _SeeItem = this;
+
+            loadTable();
+            
             this.ActiveControl = txtBarcode;
             txtBarcode.Focus();
-
-            _SeeItem = this;
         }
-        public static string seeitemsearch;
+       
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
+                loadTable();
+                dgvProducts.Focus();
+            }
+        }
 
-                SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
+        //Loads the data in the table
+        private void loadTable()
+        {
+            SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
+
+            SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
                        INNER JOIN inventory as i ON p.productID = i.productID
                        WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
 
-                if (SQL.HasException(true))
-                    return;
+            if (SQL.HasException(true))
+                return;
 
-                dgvProducts.DataSource = SQL.DBDT;
+            dgvProducts.DataSource = SQL.DBDT;
 
-                dgvProducts.Columns[0].Visible = false;
-
-
-                if(dgvProducts.Rows.Count > 0)
-                {
-                    dgvProducts.Rows[0].Selected = true;
-                }
+            dgvProducts.Columns[0].Visible = false;
 
 
-                txtBarcode.Clear();
+            if (dgvProducts.Rows.Count > 0)
+            {
+                dgvProducts.Rows[0].Selected = true;
             }
-        }
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txtBarcode.Focus();
-            //(dgvProducts.DataSource as DataTable).DefaultView.RowFilter =
-            //            string.Format("Barcode1 LIKE '{0}%'", "");
 
-            //txtBarcode.Clear();
-            //txtBarcode.Focus();
-            //txtBarcode.Text = txtBarcode.Text.Replace(" ", "");
+            txtBarcode.Clear();
+            txtBarcode.Focus();
         }
 
         private void dgvProducts_Click(object sender, EventArgs e)
         {
             txtBarcode.Focus();
         }
-        string quantitytalaga;
+
         decimal totalquantity;
         decimal quantity = 1;
-        private void btnConfirm_Click(object sender, EventArgs e)
+
+        private void selectProduct()
         {
             if (dgvProducts.SelectedRows.Count == 0)
                 return;
 
-            string type_query = " rp_exclusive, rp_tax, rp_inclusive";
+            string type_query = "rp_exclusive, rp_tax, rp_inclusive";
             string type = "R";
 
-            if (rbWholesale.Checked)
+            if (cmbPricemode.Text == "Wholesale")
             {
                 type = "W";
                 type_query = "wp_exclusive, wp_tax, wp_inclusive";
             }
-
 
             foreach (DataGridViewRow r in dgvProducts.SelectedRows)
             {
@@ -119,7 +108,7 @@ namespace EcoPOSv2
                 {
                     totalquantity = 0 + quantity;
 
-                    decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID="+ r.Cells[0].Value.ToString()));
+                    decimal stock = decimal.Parse(SQL.ReturnResult("select stock_qty from inventory where productID=" + r.Cells[0].Value.ToString()));
                     if (SQL.HasException(true)) return;
 
                     //Check if stock is sufficient
@@ -181,24 +170,39 @@ namespace EcoPOSv2
             }
         }
 
-        private void txtBarcode_TextChanged(object sender, EventArgs e)
-        {
-            if (txtBarcode.Text == "")
-            {
-                return;
-            }
-        }
 
         private void dgvProducts_DoubleClick(object sender, EventArgs e)
         {
-            btnConfirm.PerformClick();
+            selectProduct();
         }
 
         private void SeeItem_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtBarcode.Clear();
+            //(dgvProducts.DataSource as DataTable).DefaultView.RowFilter =
+            //            string.Format("Barcode1 LIKE '{0}%'", "");
+
+            //txtBarcode.Clear();
+            //txtBarcode.Focus();
+            //txtBarcode.Text = txtBarcode.Text.Replace(" ", "");
+        }
+
+        private void dgvProducts_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (dgvProducts.SelectedRows.Count == 1)
+                {
+                    selectProduct();
+                }
             }
         }
     }

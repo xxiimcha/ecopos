@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PChange));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblChange = new Guna.UI.WinForms.GunaLabel();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.btnReprint = new Guna.UI2.WinForms.Guna2Button();
-            this.lblChange = new System.Windows.Forms.Label();
             this.Label9 = new System.Windows.Forms.Label();
             this.tmrClose = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1.SuspendLayout();
@@ -41,29 +41,42 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.lblChange);
             this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.btnReprint);
-            this.guna2Panel1.Controls.Add(this.lblChange);
             this.guna2Panel1.Controls.Add(this.Label9);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(548, 216);
             this.guna2Panel1.TabIndex = 0;
             // 
+            // lblChange
+            // 
+            this.lblChange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblChange.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.lblChange.Location = new System.Drawing.Point(12, 55);
+            this.lblChange.Name = "lblChange";
+            this.lblChange.Size = new System.Drawing.Size(524, 66);
+            this.lblChange.TabIndex = 43;
+            this.lblChange.Text = "0.00";
+            this.lblChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // btnConfirm
             // 
-            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnConfirm.BorderRadius = 5;
             this.btnConfirm.BorderThickness = 2;
             this.btnConfirm.CheckedState.Parent = this.btnConfirm;
             this.btnConfirm.CustomImages.Parent = this.btnConfirm;
             this.btnConfirm.FillColor = System.Drawing.Color.White;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
+            this.btnConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnConfirm.HoverState.Parent = this.btnConfirm;
             this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -102,23 +115,11 @@
             this.btnReprint.TextOffset = new System.Drawing.Point(10, 0);
             this.btnReprint.Click += new System.EventHandler(this.btnReprint_Click);
             // 
-            // lblChange
-            // 
-            this.lblChange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblChange.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChange.ForeColor = System.Drawing.Color.Green;
-            this.lblChange.Location = new System.Drawing.Point(12, 60);
-            this.lblChange.Name = "lblChange";
-            this.lblChange.Size = new System.Drawing.Size(524, 66);
-            this.lblChange.TabIndex = 42;
-            this.lblChange.Text = "0.00";
-            this.lblChange.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // Label9
             // 
             this.Label9.AutoSize = true;
             this.Label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label9.ForeColor = System.Drawing.Color.Green;
+            this.Label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.Label9.Location = new System.Drawing.Point(10, 12);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(97, 32);
@@ -156,9 +157,9 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button btnReprint;
-        internal System.Windows.Forms.Label lblChange;
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.Timer tmrClose;
         public Guna.UI2.WinForms.Guna2Button btnConfirm;
+        public Guna.UI.WinForms.GunaLabel lblChange;
     }
 }

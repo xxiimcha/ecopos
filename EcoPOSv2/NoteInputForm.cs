@@ -108,5 +108,17 @@ namespace EcoPOSv2
             txtInputNote.Focus();
             guna2ShadowForm1.SetShadowForm(this);
         }
+
+        private void txtInputNote_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnKeep.PerformClick();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

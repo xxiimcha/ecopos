@@ -17,6 +17,30 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         int customerID = 0;
 
+        public OptionConfirmation(string message, string buttonText1, string buttonText2)
+        {
+            InitializeComponent();
+            this.message = message;
+            this.buttonText1 = buttonText1;
+            this.buttonText2 = buttonText2;
+        }
+
+        private void OptionConfirmation_Load(object sender, EventArgs e)
+        {
+            btn1.Text = buttonText1;
+            btn2.Text = buttonText2;
+            lblMessage.Text = message;
+
+            this.ActiveControl = btn1;
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            SQL.Query("DELETE FROM keep WHERE note = '" + message + "'");
+            if (SQL.HasException(true)) return;
+            Close();
+        }
+
         private void btn1_Click(object sender, EventArgs e)
         {
             SQL.Query("SELECT * FROM order_cart WHERE terminal_id = " + Properties.Settings.Default.Terminal_id);
@@ -169,13 +193,7 @@ namespace EcoPOSv2
             Close();
         }
 
-        private void btn2_Click(object sender, EventArgs e)
-        {
-            SQL.Query("DELETE FROM keep WHERE note = '" + message + "'");
-            if (SQL.HasException(true)) return;
-            Close();
-        }
-
+        
         private void btnCLose_Click(object sender, EventArgs e)
         {
             Close();
@@ -187,22 +205,10 @@ namespace EcoPOSv2
             {
                 btn1.PerformClick();
             }
-        }
-
-        private void OptionConfirmation_Load(object sender, EventArgs e)
-        {
-            guna2ShadowForm1.SetShadowForm(this);
-            btn1.Text = buttonText1;
-            btn2.Text = buttonText2;
-            lblMessage.Text = message;
-        }
-
-        public OptionConfirmation(string message, string buttonText1, string buttonText2)
-        {
-            InitializeComponent();
-            this.message = message;
-            this.buttonText1 = buttonText1;
-            this.buttonText2 = buttonText2;
+            if (e.KeyCode == Keys.Escape)
+            {
+                btn2.PerformClick();
+            }
         }
     }
 }

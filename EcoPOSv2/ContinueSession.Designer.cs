@@ -289,6 +289,7 @@
             this.Text = "ContinueSession";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContinueSession_FormClosing);
             this.Load += new System.EventHandler(this.ContinueSession_Load);
+            this.Shown += new System.EventHandler(this.ContinueSession_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ContinueSession_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();

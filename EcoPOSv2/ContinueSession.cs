@@ -78,14 +78,13 @@ namespace EcoPOSv2
         //METHODS
         private void ContinueSession_Load(object sender, EventArgs e)
         {
-            guna2ShadowForm1.SetShadowForm(this);
             _ContinueSession = this;
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             lblCS_Username.Text = SQL.ReturnResult("SELECT user_name FROM shift WHERE terminal_id = @terminal_id AND ended IS NULL AND shiftID = (SELECT MAX(shiftID) FROM shift WHERE terminal_id = @terminal_id)");
             if (SQL.HasException(true))return;
 
-            this.ActiveControl = tbCSPassword;
+            
 
             if (Properties.Settings.Default.cardlogin == false)
             {
@@ -101,6 +100,8 @@ namespace EcoPOSv2
             BackgroundWorker bg = new BackgroundWorker();
             bg.DoWork += Bg_DoWork;
             bg.RunWorkerAsync();
+
+            this.ActiveControl = tbCSPassword;
         }
 
         private void Bg_DoWork(object sender, DoWorkEventArgs e)
@@ -216,7 +217,6 @@ namespace EcoPOSv2
                     Main.Instance.lblUser.Text = r["first_name"].ToString() + " " + r["last_name"].ToString();
                 }
 
-                //new Notification().PopUp("Login Success!", "Success", "success");
                 close = true;
 
                 Main.Instance.Show();
@@ -225,7 +225,6 @@ namespace EcoPOSv2
             else
             {
                 new Notification().PopUp("Incorrect username or password.", "Error", "error");
-                //MessageBox.Show("Incorrect password.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -261,8 +260,7 @@ namespace EcoPOSv2
             }
             else
             {
-                //new Notification().PopUp("Incorrect Username or password", "Error", "error");
-                //MessageBox.Show("Incorrect username or password.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                new Notification().PopUp("Incorrect Username or password", "Error", "error");
             }
         }
 
@@ -318,6 +316,14 @@ namespace EcoPOSv2
 
             cl.type = "3";
             cl.ShowDialog();
+        }
+
+        private void ContinueSession_Shown(object sender, EventArgs e)
+        {
+            
+            this.Focus();
+            tbCSPassword.Focus();
+            
         }
     }
 }

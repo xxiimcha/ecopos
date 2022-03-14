@@ -31,7 +31,6 @@ namespace EcoPOSv2
         public ItemsOnKeepView()
         {
             InitializeComponent();
-            guna2ShadowForm1.SetShadowForm(this);
             LoadItemsOnKeep();
         }
 
@@ -73,17 +72,21 @@ namespace EcoPOSv2
         private void ShowOptions()
         {
             String name = "";
-            foreach (DataGridViewRow row in dgvRecords.SelectedRows)
+            if(dgvRecords.SelectedRows.Count == 1)
             {
-                name = row.Cells[0].Value.ToString();
+                foreach (DataGridViewRow row in dgvRecords.SelectedRows)
+                {
+                    name = row.Cells[0].Value.ToString();
+                }
+                new OptionConfirmation(name, "PAY", "DELETE").ShowDialog();
             }
-            new OptionConfirmation(name, "PAY", "DELETE").ShowDialog();
-            LoadItemsOnKeep();
         }
 
         private void ItemsOnKeepView_Load(object sender, EventArgs e)
         {
             _itemsOnKeep = this;
+
+            this.ActiveControl = txtSearch;
         }
 
         private void dgvKeep_KeyDown(object sender, KeyEventArgs e)
@@ -97,6 +100,26 @@ namespace EcoPOSv2
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             LoadItemsOnKeep();
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && dgvRecords.SelectedRows.Count == 1)
+            {
+                ShowOptions();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void ItemsOnKeepView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
     }
 }

@@ -124,6 +124,7 @@ namespace EcoPOSv2
             this.txtInputNote.ShadowDecoration.Parent = this.txtInputNote;
             this.txtInputNote.Size = new System.Drawing.Size(387, 33);
             this.txtInputNote.TabIndex = 62;
+            this.txtInputNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInputNote_KeyDown);
             // 
             // NoteInputForm
             // 

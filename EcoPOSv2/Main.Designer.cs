@@ -114,7 +114,7 @@
             this.lblTraningMode.AutoSize = true;
             this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTraningMode.ForeColor = System.Drawing.Color.White;
-            this.lblTraningMode.Location = new System.Drawing.Point(597, 4);
+            this.lblTraningMode.Location = new System.Drawing.Point(601, 4);
             this.lblTraningMode.Name = "lblTraningMode";
             this.lblTraningMode.Size = new System.Drawing.Size(165, 25);
             this.lblTraningMode.TabIndex = 12;
@@ -136,7 +136,7 @@
             this.lblByPassUser.BackColor = System.Drawing.Color.Transparent;
             this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
-            this.lblByPassUser.Location = new System.Drawing.Point(15, 114);
+            this.lblByPassUser.Location = new System.Drawing.Point(16, 114);
             this.lblByPassUser.Name = "lblByPassUser";
             this.lblByPassUser.Size = new System.Drawing.Size(181, 32);
             this.lblByPassUser.TabIndex = 11;
@@ -147,7 +147,7 @@
             // 
             this.lblUser.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.lblUser.Location = new System.Drawing.Point(12, 5);
+            this.lblUser.Location = new System.Drawing.Point(13, 5);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(184, 60);
             this.lblUser.TabIndex = 2;
@@ -191,7 +191,7 @@
             // 
             this.lblTerminalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTerminalName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.lblTerminalName.Location = new System.Drawing.Point(0, -7);
+            this.lblTerminalName.Location = new System.Drawing.Point(1, -7);
             this.lblTerminalName.Name = "lblTerminalName";
             this.lblTerminalName.Size = new System.Drawing.Size(209, 31);
             this.lblTerminalName.TabIndex = 15;
@@ -203,7 +203,7 @@
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.ForeColor = System.Drawing.Color.Black;
-            this.lblType.Location = new System.Drawing.Point(35, 27);
+            this.lblType.Location = new System.Drawing.Point(36, 27);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(138, 17);
             this.lblType.TabIndex = 7;
@@ -213,7 +213,7 @@
             // 
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(-1, 39);
+            this.Label3.Location = new System.Drawing.Point(0, 39);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(210, 50);
             this.Label3.TabIndex = 9;
@@ -237,14 +237,14 @@
             // 
             // lblBypassedBy
             // 
-            this.lblBypassedBy.AutoSize = true;
             this.lblBypassedBy.BackColor = System.Drawing.Color.Transparent;
-            this.lblBypassedBy.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblBypassedBy.Location = new System.Drawing.Point(63, 98);
+            this.lblBypassedBy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBypassedBy.Location = new System.Drawing.Point(58, 98);
             this.lblBypassedBy.Name = "lblBypassedBy";
             this.lblBypassedBy.Size = new System.Drawing.Size(95, 19);
             this.lblBypassedBy.TabIndex = 4;
             this.lblBypassedBy.Text = "BYPASSED BY:";
+            this.lblBypassedBy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnUserRole
             // 
@@ -260,7 +260,7 @@
             this.btnUserRole.ForeColor = System.Drawing.Color.White;
             this.btnUserRole.Image = global::EcoPOSv2.Properties.Resources.OnlineGreenIcon;
             this.btnUserRole.ImageSize = new System.Drawing.Size(8, 8);
-            this.btnUserRole.Location = new System.Drawing.Point(27, 62);
+            this.btnUserRole.Location = new System.Drawing.Point(28, 62);
             this.btnUserRole.Name = "btnUserRole";
             this.btnUserRole.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnUserRole.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -286,12 +286,12 @@
             this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
-            this.btnOrder.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrder.HoverState.Parent = this.btnOrder;
             this.btnOrder.Image = global::EcoPOSv2.Properties.Resources.cart_black;
             this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnOrder.Location = new System.Drawing.Point(0, 241);
+            this.btnOrder.Location = new System.Drawing.Point(-1, 241);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
@@ -307,7 +307,7 @@
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.ForeColor = System.Drawing.Color.Black;
-            this.lblVersion.Location = new System.Drawing.Point(80, 708);
+            this.lblVersion.Location = new System.Drawing.Point(81, 708);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(47, 17);
             this.lblVersion.TabIndex = 8;
@@ -319,7 +319,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
-            this.label6.Location = new System.Drawing.Point(17, 580);
+            this.label6.Location = new System.Drawing.Point(15, 580);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(173, 20);
             this.label6.TabIndex = 14;
@@ -331,7 +331,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
-            this.label2.Location = new System.Drawing.Point(17, 553);
+            this.label2.Location = new System.Drawing.Point(15, 553);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(171, 20);
             this.label2.TabIndex = 13;
@@ -344,7 +344,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.label1.Location = new System.Drawing.Point(17, 521);
+            this.label1.Location = new System.Drawing.Point(15, 521);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 21);
             this.label1.TabIndex = 12;
@@ -364,7 +364,7 @@
             this.btnMore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnMore.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
-            this.btnMore.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMore.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMore.HoverState.Parent = this.btnMore;
             this.btnMore.Image = global::EcoPOSv2.Properties.Resources.more_black;
             this.btnMore.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -391,12 +391,12 @@
             this.btnCalculator.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalculator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnCalculator.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
-            this.btnCalculator.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalculator.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalculator.HoverState.Parent = this.btnCalculator;
             this.btnCalculator.Image = global::EcoPOSv2.Properties.Resources.calculator_black;
             this.btnCalculator.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCalculator.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnCalculator.Location = new System.Drawing.Point(0, 361);
+            this.btnCalculator.Location = new System.Drawing.Point(-1, 361);
             this.btnCalculator.Name = "btnCalculator";
             this.btnCalculator.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
@@ -418,12 +418,12 @@
             this.btnXReading.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXReading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnXReading.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
-            this.btnXReading.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXReading.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXReading.HoverState.Parent = this.btnXReading;
             this.btnXReading.Image = global::EcoPOSv2.Properties.Resources.switchcashier_black;
             this.btnXReading.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnXReading.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnXReading.Location = new System.Drawing.Point(0, 301);
+            this.btnXReading.Location = new System.Drawing.Point(-1, 301);
             this.btnXReading.Name = "btnXReading";
             this.btnXReading.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnXReading.ShadowDecoration.Parent = this.btnXReading;
@@ -483,7 +483,6 @@
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 

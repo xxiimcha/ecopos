@@ -487,10 +487,12 @@ namespace EcoPOSv2
             _Payment = this;
 
             cmbMethod.SelectedIndex = 0;
+            this.ActiveControl = txtAmount;
         }
         private void btnExact_Click(object sender, EventArgs e)
         {
             txtAmount.Text = lblGrandTotal.Text;
+            txtAmount.Focus();
         }
         private void btnPay_Click(object sender, EventArgs e)
         {
@@ -1048,6 +1050,19 @@ namespace EcoPOSv2
 
                 lblReferenceNo.Enabled = true;
                 tbReferenceNo.Enabled = true;
+            }
+        }
+
+        private void Label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExact_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnPay.PerformClick();
             }
         }
     }

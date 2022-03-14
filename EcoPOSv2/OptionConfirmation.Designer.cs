@@ -35,6 +35,7 @@ namespace EcoPOSv2
             this.lblMessage = new System.Windows.Forms.Label();
             this.btnCLose = new Guna.UI.WinForms.GunaControlBox();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.SuspendLayout();
             // 
             // btn2
@@ -51,7 +52,7 @@ namespace EcoPOSv2
             this.btn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn2.HoverState.Parent = this.btn2;
-            this.btn2.Location = new System.Drawing.Point(188, 67);
+            this.btn2.Location = new System.Drawing.Point(188, 76);
             this.btn2.Name = "btn2";
             this.btn2.ShadowDecoration.Parent = this.btn2;
             this.btn2.Size = new System.Drawing.Size(161, 43);
@@ -73,7 +74,7 @@ namespace EcoPOSv2
             this.btn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btn1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn1.HoverState.Parent = this.btn1;
-            this.btn1.Location = new System.Drawing.Point(12, 67);
+            this.btn1.Location = new System.Drawing.Point(12, 76);
             this.btn1.Name = "btn1";
             this.btn1.ShadowDecoration.Parent = this.btn1;
             this.btn1.Size = new System.Drawing.Size(161, 43);
@@ -84,9 +85,9 @@ namespace EcoPOSv2
             // lblMessage
             // 
             this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.lblMessage.Location = new System.Drawing.Point(12, 18);
+            this.lblMessage.Location = new System.Drawing.Point(12, 24);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(306, 40);
+            this.lblMessage.Size = new System.Drawing.Size(232, 40);
             this.lblMessage.TabIndex = 49;
             this.lblMessage.Text = "Name";
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -96,27 +97,41 @@ namespace EcoPOSv2
             this.btnCLose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCLose.AnimationHoverSpeed = 0.07F;
             this.btnCLose.AnimationSpeed = 0.03F;
+            this.btnCLose.BackColor = System.Drawing.Color.Transparent;
             this.btnCLose.IconColor = System.Drawing.Color.Black;
             this.btnCLose.IconSize = 15F;
-            this.btnCLose.Location = new System.Drawing.Point(324, -1);
+            this.btnCLose.Location = new System.Drawing.Point(323, 3);
             this.btnCLose.Name = "btnCLose";
             this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;
             this.btnCLose.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCLose.Size = new System.Drawing.Size(39, 36);
+            this.btnCLose.Size = new System.Drawing.Size(35, 33);
             this.btnCLose.TabIndex = 57;
             this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(361, 133);
+            this.guna2Panel1.TabIndex = 58;
             // 
             // OptionConfirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(361, 124);
+            this.ClientSize = new System.Drawing.Size(361, 133);
             this.Controls.Add(this.btnCLose);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.btn1);
             this.Controls.Add(this.btn2);
+            this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OptionConfirmation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -134,5 +149,6 @@ namespace EcoPOSv2
         private System.Windows.Forms.Label lblMessage;
         private Guna.UI.WinForms.GunaControlBox btnCLose;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

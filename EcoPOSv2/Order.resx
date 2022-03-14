@@ -223,7 +223,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnViewKeeps.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 639</value>
+    <value>179, 639</value>
   </data>
   <data name="btnViewKeeps.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 42</value>
@@ -253,7 +253,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnKeep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 639</value>
+    <value>6, 639</value>
   </data>
   <data name="btnKeep.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 42</value>
@@ -283,7 +283,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnPriceEditor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 543</value>
+    <value>179, 543</value>
   </data>
   <data name="btnPriceEditor.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 42</value>
@@ -316,7 +316,7 @@
     <value>Segoe UI, 13pt, style=Bold</value>
   </data>
   <data name="btnPayment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 698</value>
+    <value>6, 698</value>
   </data>
   <data name="btnPayment.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 76</value>
@@ -346,7 +346,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnRedeem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 543</value>
+    <value>6, 543</value>
   </data>
   <data name="btnRedeem.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 42</value>
@@ -376,7 +376,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 591</value>
+    <value>6, 591</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 42</value>
@@ -406,7 +406,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="btnVoid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 591</value>
+    <value>179, 591</value>
   </data>
   <data name="btnVoid.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 42</value>
@@ -433,7 +433,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblOperation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 167</value>
+    <value>152, 167</value>
   </data>
   <data name="lblOperation.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -466,7 +466,7 @@
     <value>Segoe UI Semibold, 12pt, style=Bold</value>
   </data>
   <data name="lblOperationt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 167</value>
+    <value>16, 167</value>
   </data>
   <data name="lblOperationt.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 21</value>
@@ -496,7 +496,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblCustomer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 146</value>
+    <value>152, 146</value>
   </data>
   <data name="lblCustomer.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -529,7 +529,7 @@
     <value>Segoe UI Semibold, 12pt, style=Bold</value>
   </data>
   <data name="lblCustomert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 146</value>
+    <value>16, 146</value>
   </data>
   <data name="lblCustomert.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 21</value>
@@ -559,7 +559,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblZeroRated.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 383</value>
+    <value>154, 383</value>
   </data>
   <data name="lblZeroRated.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -592,7 +592,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblZeroRatedt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 383</value>
+    <value>16, 383</value>
   </data>
   <data name="lblZeroRatedt.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 21</value>
@@ -622,7 +622,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATExempt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 362</value>
+    <value>154, 362</value>
   </data>
   <data name="lblVATExempt.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -655,7 +655,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATExemptt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 362</value>
+    <value>16, 362</value>
   </data>
   <data name="lblVATExemptt.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 21</value>
@@ -685,7 +685,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVAT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 341</value>
+    <value>154, 341</value>
   </data>
   <data name="lblVAT.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -718,7 +718,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 341</value>
+    <value>16, 341</value>
   </data>
   <data name="lblVATt.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 21</value>
@@ -748,7 +748,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATSale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 320</value>
+    <value>154, 320</value>
   </data>
   <data name="lblVATSale.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -781,7 +781,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblVATSalet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 320</value>
+    <value>16, 320</value>
   </data>
   <data name="lblVATSalet.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -811,7 +811,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblLessVAT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 299</value>
+    <value>154, 299</value>
   </data>
   <data name="lblLessVAT.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -844,7 +844,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblLessVATt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 299</value>
+    <value>16, 299</value>
   </data>
   <data name="lblLessVATt.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 21</value>
@@ -874,7 +874,7 @@
     <value>Segoe UI, 24pt, style=Bold</value>
   </data>
   <data name="lblTotal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 421</value>
+    <value>157, 421</value>
   </data>
   <data name="lblTotal.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 45</value>
@@ -907,7 +907,7 @@
     <value>Segoe UI, 24pt, style=Bold</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 421</value>
+    <value>3, 421</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 45</value>
@@ -937,7 +937,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblDiscount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 264</value>
+    <value>154, 264</value>
   </data>
   <data name="lblDiscount.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -970,7 +970,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 264</value>
+    <value>16, 264</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 21</value>
@@ -1000,7 +1000,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblSubtotal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 243</value>
+    <value>154, 243</value>
   </data>
   <data name="lblSubtotal.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -1033,7 +1033,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 243</value>
+    <value>16, 243</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 21</value>
@@ -1063,7 +1063,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="lblItems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 222</value>
+    <value>154, 222</value>
   </data>
   <data name="lblItems.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -1096,7 +1096,7 @@
     <value>Segoe UI, 12pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 222</value>
+    <value>16, 222</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
@@ -1126,7 +1126,7 @@
     <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="lblOrderNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 201</value>
+    <value>154, 201</value>
   </data>
   <data name="lblOrderNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 21</value>
@@ -1159,7 +1159,7 @@
     <value>Segoe UI, 12pt, style=Bold</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 201</value>
+    <value>16, 201</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 21</value>

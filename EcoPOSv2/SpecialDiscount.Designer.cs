@@ -32,29 +32,33 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
-            this.cmbDesc = new System.Windows.Forms.ComboBox();
-            this.txtIDNo = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
+            this.cmbDesc = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtIDNo = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.guna2Button1);
-            this.guna2Panel1.Controls.Add(this.btnConfirm);
-            this.guna2Panel1.Controls.Add(this.cmbDesc);
+            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.txtIDNo);
             this.guna2Panel1.Controls.Add(this.txtName);
+            this.guna2Panel1.Controls.Add(this.cmbDesc);
+            this.guna2Panel1.Controls.Add(this.guna2Button1);
+            this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.Label3);
             this.guna2Panel1.Controls.Add(this.Label1);
             this.guna2Panel1.Controls.Add(this.Label2);
-            this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(530, 219);
+            this.guna2Panel1.Size = new System.Drawing.Size(533, 262);
             this.guna2Panel1.TabIndex = 0;
             // 
             // guna2Button1
@@ -71,11 +75,11 @@
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2Button1.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2Button1.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2Button1.Location = new System.Drawing.Point(20, 151);
+            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button1.Location = new System.Drawing.Point(273, 189);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(238, 57);
+            this.guna2Button1.Size = new System.Drawing.Size(238, 51);
             this.guna2Button1.TabIndex = 62;
             this.guna2Button1.Text = "CANCEL";
             this.guna2Button1.TextOffset = new System.Drawing.Point(10, 0);
@@ -95,95 +99,134 @@
             this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(274, 151);
+            this.btnConfirm.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnConfirm.Location = new System.Drawing.Point(19, 189);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
-            this.btnConfirm.Size = new System.Drawing.Size(238, 57);
+            this.btnConfirm.Size = new System.Drawing.Size(238, 51);
             this.btnConfirm.TabIndex = 61;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // Label3
+            // 
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.Color.Black;
+            this.Label3.Location = new System.Drawing.Point(14, 80);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(113, 36);
+            this.Label3.TabIndex = 57;
+            this.Label3.Text = "Name";
+            this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Label1
+            // 
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.ForeColor = System.Drawing.Color.Black;
+            this.Label1.Location = new System.Drawing.Point(15, 131);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(113, 36);
+            this.Label1.TabIndex = 56;
+            this.Label1.Text = "ID No.";
+            this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Label2
+            // 
+            this.Label2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.ForeColor = System.Drawing.Color.Black;
+            this.Label2.Location = new System.Drawing.Point(15, 27);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(112, 36);
+            this.Label2.TabIndex = 55;
+            this.Label2.Text = "Description";
+            this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // cmbDesc
             // 
+            this.cmbDesc.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDesc.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.cmbDesc.BorderRadius = 3;
+            this.cmbDesc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDesc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbDesc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDesc.ForeColor = System.Drawing.Color.Black;
+            this.cmbDesc.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbDesc.FocusedState.Parent = this.cmbDesc;
+            this.cmbDesc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
             this.cmbDesc.FormattingEnabled = true;
+            this.cmbDesc.HoverState.Parent = this.cmbDesc;
+            this.cmbDesc.ItemHeight = 30;
             this.cmbDesc.Items.AddRange(new object[] {
             "Senior Citizen",
             "Person with Disability",
             "Athlete"});
-            this.cmbDesc.Location = new System.Drawing.Point(149, 12);
-            this.cmbDesc.MaxDropDownItems = 10;
+            this.cmbDesc.ItemsAppearance.Parent = this.cmbDesc;
+            this.cmbDesc.Location = new System.Drawing.Point(148, 27);
             this.cmbDesc.Name = "cmbDesc";
-            this.cmbDesc.Size = new System.Drawing.Size(363, 31);
-            this.cmbDesc.TabIndex = 60;
-            // 
-            // txtIDNo
-            // 
-            this.txtIDNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIDNo.ForeColor = System.Drawing.Color.Black;
-            this.txtIDNo.Location = new System.Drawing.Point(149, 100);
-            this.txtIDNo.Multiline = true;
-            this.txtIDNo.Name = "txtIDNo";
-            this.txtIDNo.Size = new System.Drawing.Size(363, 33);
-            this.txtIDNo.TabIndex = 59;
-            this.txtIDNo.Tag = "";
-            this.txtIDNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIDNo_KeyDown);
+            this.cmbDesc.ShadowDecoration.Parent = this.cmbDesc;
+            this.cmbDesc.Size = new System.Drawing.Size(363, 36);
+            this.cmbDesc.TabIndex = 63;
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.ForeColor = System.Drawing.Color.Black;
-            this.txtName.Location = new System.Drawing.Point(149, 54);
-            this.txtName.Multiline = true;
+            this.txtName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.txtName.BorderRadius = 3;
+            this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtName.DefaultText = "";
+            this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.DisabledState.Parent = this.txtName;
+            this.txtName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.FocusedState.Parent = this.txtName;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.HoverState.Parent = this.txtName;
+            this.txtName.Location = new System.Drawing.Point(148, 80);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(363, 33);
-            this.txtName.TabIndex = 58;
-            this.txtName.Tag = "";
+            this.txtName.PasswordChar = '\0';
+            this.txtName.PlaceholderText = "";
+            this.txtName.SelectedText = "";
+            this.txtName.ShadowDecoration.Parent = this.txtName;
+            this.txtName.Size = new System.Drawing.Size(363, 36);
+            this.txtName.TabIndex = 64;
             // 
-            // Label3
+            // txtIDNo
             // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(15, 54);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(64, 28);
-            this.Label3.TabIndex = 57;
-            this.Label3.Text = "Name";
-            // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(15, 102);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(67, 28);
-            this.Label1.TabIndex = 56;
-            this.Label1.Text = "ID No.";
-            // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.ForeColor = System.Drawing.Color.Black;
-            this.Label2.Location = new System.Drawing.Point(15, 10);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(112, 28);
-            this.Label2.TabIndex = 55;
-            this.Label2.Text = "Description";
+            this.txtIDNo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.txtIDNo.BorderRadius = 3;
+            this.txtIDNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIDNo.DefaultText = "";
+            this.txtIDNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtIDNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtIDNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIDNo.DisabledState.Parent = this.txtIDNo;
+            this.txtIDNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtIDNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIDNo.FocusedState.Parent = this.txtIDNo;
+            this.txtIDNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
+            this.txtIDNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtIDNo.HoverState.Parent = this.txtIDNo;
+            this.txtIDNo.Location = new System.Drawing.Point(148, 131);
+            this.txtIDNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtIDNo.Name = "txtIDNo";
+            this.txtIDNo.PasswordChar = '\0';
+            this.txtIDNo.PlaceholderText = "";
+            this.txtIDNo.SelectedText = "";
+            this.txtIDNo.ShadowDecoration.Parent = this.txtIDNo;
+            this.txtIDNo.Size = new System.Drawing.Size(363, 36);
+            this.txtIDNo.TabIndex = 65;
             // 
             // SpecialDiscount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(533, 223);
+            this.ClientSize = new System.Drawing.Size(533, 262);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -192,7 +235,6 @@
             this.Text = "SpecialDiscount";
             this.Load += new System.EventHandler(this.SpecialDiscount_Load);
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -202,11 +244,11 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button btnConfirm;
-        internal System.Windows.Forms.ComboBox cmbDesc;
-        internal System.Windows.Forms.TextBox txtIDNo;
-        internal System.Windows.Forms.TextBox txtName;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Label Label2;
+        private Guna.UI2.WinForms.Guna2TextBox txtIDNo;
+        private Guna.UI2.WinForms.Guna2TextBox txtName;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbDesc;
     }
 }

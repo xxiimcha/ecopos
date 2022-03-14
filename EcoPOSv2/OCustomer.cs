@@ -34,7 +34,7 @@ namespace EcoPOSv2
 
         private void LoadCustomer()
         {
-            SQL.AddParam("@find", txtNameCard.Text + "%");
+            SQL.AddParam("@find", "%" + txtNameCard.Text + "%");
             SQL.Query(@"SELECT customerID, name as 'Customer', card_no as 'Card No.', member_type_ID FROM 
                        customer WHERE name LIKE @find OR card_no LIKE @find ORDER BY name ASC");
             if (SQL.HasException(true))
@@ -49,7 +49,6 @@ namespace EcoPOSv2
             this.ActiveControl = txtNameCard;
 
             LoadCustomer();
-            //guna2ShadowForm1.SetShadowForm(this);
         }
 
         private void BtnConfirm_Click(object sender, EventArgs e)
