@@ -62,13 +62,13 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.pnlTitle = new System.Windows.Forms.Panel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
             this.pnlChange.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.pnlTitle.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label9
@@ -139,7 +139,7 @@
             this.btnClose.AnimationSpeed = 0.03F;
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.IconColor = System.Drawing.Color.White;
+            this.btnClose.IconColor = System.Drawing.Color.Black;
             this.btnClose.IconSize = 15F;
             this.btnClose.Location = new System.Drawing.Point(577, 0);
             this.btnClose.Name = "btnClose";
@@ -162,8 +162,10 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2Panel1.BackColor = System.Drawing.Color.White;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
             this.guna2Panel1.Controls.Add(this.btnRemoveGC);
             this.guna2Panel1.Controls.Add(this.btnGC);
             this.guna2Panel1.Controls.Add(this.btnExact);
@@ -199,7 +201,7 @@
             this.btnRemoveGC.CheckedState.Parent = this.btnRemoveGC;
             this.btnRemoveGC.CustomImages.Parent = this.btnRemoveGC;
             this.btnRemoveGC.FillColor = System.Drawing.Color.White;
-            this.btnRemoveGC.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveGC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveGC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnRemoveGC.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnRemoveGC.HoverState.ForeColor = System.Drawing.Color.Black;
@@ -226,7 +228,7 @@
             this.btnGC.CheckedState.Parent = this.btnGC;
             this.btnGC.CustomImages.Parent = this.btnGC;
             this.btnGC.FillColor = System.Drawing.Color.White;
-            this.btnGC.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGC.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnGC.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnGC.HoverState.ForeColor = System.Drawing.Color.Black;
@@ -253,7 +255,7 @@
             this.btnExact.CheckedState.Parent = this.btnExact;
             this.btnExact.CustomImages.Parent = this.btnExact;
             this.btnExact.FillColor = System.Drawing.Color.White;
-            this.btnExact.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExact.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnExact.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnExact.HoverState.ForeColor = System.Drawing.Color.Black;
@@ -281,7 +283,7 @@
             this.btnPay.CheckedState.Parent = this.btnPay;
             this.btnPay.CustomImages.Parent = this.btnPay;
             this.btnPay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
-            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPay.ForeColor = System.Drawing.Color.White;
             this.btnPay.HoverState.BorderColor = System.Drawing.Color.Green;
             this.btnPay.HoverState.FillColor = System.Drawing.Color.Green;
@@ -307,7 +309,7 @@
             this.tbReferenceNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.tbReferenceNo.DisabledState.Parent = this.tbReferenceNo;
             this.tbReferenceNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.tbReferenceNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbReferenceNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.tbReferenceNo.FocusedState.Parent = this.tbReferenceNo;
             this.tbReferenceNo.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbReferenceNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -345,7 +347,10 @@
             this.cmbMethod.BorderRadius = 3;
             this.cmbMethod.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMethod.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbMethod.FocusedColor = System.Drawing.Color.Fuchsia;
+            this.cmbMethod.FocusedState.BorderColor = System.Drawing.Color.Fuchsia;
+            this.cmbMethod.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmbMethod.FocusedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMethod.FocusedState.Parent = this.cmbMethod;
             this.cmbMethod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
@@ -532,7 +537,7 @@
             this.txtAmount.PlaceholderText = "";
             this.txtAmount.SelectedText = "";
             this.txtAmount.ShadowDecoration.Parent = this.txtAmount;
-            this.txtAmount.Size = new System.Drawing.Size(583, 44);
+            this.txtAmount.Size = new System.Drawing.Size(583, 46);
             this.txtAmount.TabIndex = 119;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
@@ -618,32 +623,31 @@
             this.Label1.Text = "PAYMENT METHOD";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pnlTitle
-            // 
-            this.pnlTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pnlTitle.Controls.Add(this.gunaLabel1);
-            this.pnlTitle.Controls.Add(this.btnClose);
-            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(619, 35);
-            this.pnlTitle.TabIndex = 1;
-            // 
             // gunaLabel1
             // 
             this.gunaLabel1.AutoSize = true;
             this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel1.Location = new System.Drawing.Point(16, 7);
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
             this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(70, 21);
+            this.gunaLabel1.Size = new System.Drawing.Size(78, 21);
             this.gunaLabel1.TabIndex = 103;
-            this.gunaLabel1.Text = "Payment";
+            this.gunaLabel1.Text = "PAYMENT";
             this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // guna2DragControl1
+            // guna2Panel2
             // 
-            this.guna2DragControl1.TargetControl = this.pnlTitle;
+            this.guna2Panel2.Controls.Add(this.btnClose);
+            this.guna2Panel2.Controls.Add(this.gunaLabel1);
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.ShadowDecoration.Depth = 40;
+            this.guna2Panel2.ShadowDecoration.Enabled = true;
+            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
+            this.guna2Panel2.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.guna2Panel2.Size = new System.Drawing.Size(619, 35);
+            this.guna2Panel2.TabIndex = 128;
             // 
             // Payment
             // 
@@ -651,7 +655,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(619, 686);
-            this.Controls.Add(this.pnlTitle);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -666,8 +669,8 @@
             this.guna2Panel1.PerformLayout();
             this.pnlChange.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.pnlTitle.ResumeLayout(false);
-            this.pnlTitle.PerformLayout();
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -696,7 +699,6 @@
         internal System.Windows.Forms.Label lblRemainingPoints;
         internal System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblReferenceNo;
-        private System.Windows.Forms.Panel pnlTitle;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
         public Guna.UI2.WinForms.Guna2TextBox txtAmount;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
@@ -708,5 +710,6 @@
         public Guna.UI2.WinForms.Guna2Button btnRemoveGC;
         public Guna.UI2.WinForms.Guna2Button btnGC;
         public Guna.UI2.WinForms.Guna2Button btnExact;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
     }
 }

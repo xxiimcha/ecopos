@@ -314,6 +314,7 @@ namespace EcoPOSv2
             _RedeemCart = this;
 
             LoadItems();
+            LoadCart();
             Control c = (Control)txtSearchItem;
             ControlBehavior.SetBehavior(ref c, Behavior.ClearSearch);
         }

@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 using Microsoft.VisualBasic; // Install-Package Microsoft.VisualBasic
 using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
-
 namespace EcoPOSv2
 {
     class TextBoxValidation

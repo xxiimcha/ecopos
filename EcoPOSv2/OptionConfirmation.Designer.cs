@@ -36,6 +36,7 @@ namespace EcoPOSv2
             this.btnCLose = new Guna.UI.WinForms.GunaControlBox();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn2
@@ -52,7 +53,7 @@ namespace EcoPOSv2
             this.btn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn2.HoverState.Parent = this.btn2;
-            this.btn2.Location = new System.Drawing.Point(188, 76);
+            this.btn2.Location = new System.Drawing.Point(14, 78);
             this.btn2.Name = "btn2";
             this.btn2.ShadowDecoration.Parent = this.btn2;
             this.btn2.Size = new System.Drawing.Size(161, 43);
@@ -74,7 +75,7 @@ namespace EcoPOSv2
             this.btn1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btn1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn1.HoverState.Parent = this.btn1;
-            this.btn1.Location = new System.Drawing.Point(12, 76);
+            this.btn1.Location = new System.Drawing.Point(186, 78);
             this.btn1.Name = "btn1";
             this.btn1.ShadowDecoration.Parent = this.btn1;
             this.btn1.Size = new System.Drawing.Size(161, 43);
@@ -114,6 +115,8 @@ namespace EcoPOSv2
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.btn1);
+            this.guna2Panel1.Controls.Add(this.btn2);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -129,8 +132,6 @@ namespace EcoPOSv2
             this.ClientSize = new System.Drawing.Size(361, 133);
             this.Controls.Add(this.btnCLose);
             this.Controls.Add(this.lblMessage);
-            this.Controls.Add(this.btn1);
-            this.Controls.Add(this.btn2);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OptionConfirmation";
@@ -138,6 +139,7 @@ namespace EcoPOSv2
             this.Text = "Options";
             this.Load += new System.EventHandler(this.OptionConfirmation_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OptionConfirmation_KeyDown);
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

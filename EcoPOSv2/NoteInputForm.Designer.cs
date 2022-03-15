@@ -29,13 +29,12 @@ namespace EcoPOSv2
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteInputForm));
             this.btnKeep = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.Label2 = new System.Windows.Forms.Label();
             this.txtInputNote = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.SuspendLayout();
             // 
             // btnKeep
@@ -53,7 +52,7 @@ namespace EcoPOSv2
             this.btnKeep.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnKeep.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnKeep.ImageSize = new System.Drawing.Size(28, 28);
-            this.btnKeep.Location = new System.Drawing.Point(23, 119);
+            this.btnKeep.Location = new System.Drawing.Point(227, 122);
             this.btnKeep.Name = "btnKeep";
             this.btnKeep.ShadowDecoration.Parent = this.btnKeep;
             this.btnKeep.Size = new System.Drawing.Size(177, 43);
@@ -79,7 +78,7 @@ namespace EcoPOSv2
             this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnCancel.ImageSize = new System.Drawing.Size(28, 28);
-            this.btnCancel.Location = new System.Drawing.Point(233, 119);
+            this.btnCancel.Location = new System.Drawing.Point(33, 122);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(177, 43);
@@ -115,7 +114,7 @@ namespace EcoPOSv2
             this.txtInputNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
             this.txtInputNote.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.txtInputNote.HoverState.Parent = this.txtInputNote;
-            this.txtInputNote.Location = new System.Drawing.Point(23, 62);
+            this.txtInputNote.Location = new System.Drawing.Point(25, 62);
             this.txtInputNote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtInputNote.Name = "txtInputNote";
             this.txtInputNote.PasswordChar = '\0';
@@ -125,6 +124,17 @@ namespace EcoPOSv2
             this.txtInputNote.Size = new System.Drawing.Size(387, 33);
             this.txtInputNote.TabIndex = 62;
             this.txtInputNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInputNote_KeyDown);
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(436, 190);
+            this.guna2Panel1.TabIndex = 63;
             // 
             // NoteInputForm
             // 
@@ -136,6 +146,7 @@ namespace EcoPOSv2
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnKeep);
+            this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NoteInputForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -151,6 +162,6 @@ namespace EcoPOSv2
         private Guna.UI2.WinForms.Guna2Button btnCancel;
         internal System.Windows.Forms.Label Label2;
         private Guna.UI2.WinForms.Guna2TextBox txtInputNote;
-        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

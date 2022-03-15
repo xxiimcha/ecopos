@@ -35,25 +35,25 @@
             this.lblItem = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.txtQuantity);
             this.guna2Panel1.Controls.Add(this.btnQuantity);
             this.guna2Panel1.Controls.Add(this.btnConfirm);
             this.guna2Panel1.Controls.Add(this.lblItem);
             this.guna2Panel1.Controls.Add(this.Label1);
-            this.guna2Panel1.Controls.Add(this.txtQuantity);
             this.guna2Panel1.Controls.Add(this.Label3);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(533, 218);
+            this.guna2Panel1.Size = new System.Drawing.Size(533, 202);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnQuantity
@@ -70,11 +70,11 @@
             this.btnQuantity.Image = ((System.Drawing.Image)(resources.GetObject("btnQuantity.Image")));
             this.btnQuantity.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnQuantity.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnQuantity.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnQuantity.Location = new System.Drawing.Point(23, 139);
+            this.btnQuantity.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnQuantity.Location = new System.Drawing.Point(23, 131);
             this.btnQuantity.Name = "btnQuantity";
             this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
-            this.btnQuantity.Size = new System.Drawing.Size(238, 57);
+            this.btnQuantity.Size = new System.Drawing.Size(238, 49);
             this.btnQuantity.TabIndex = 58;
             this.btnQuantity.Text = "CANCEL";
             this.btnQuantity.TextOffset = new System.Drawing.Point(10, 0);
@@ -94,11 +94,11 @@
             this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnConfirm.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnConfirm.Location = new System.Drawing.Point(272, 139);
+            this.btnConfirm.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnConfirm.Location = new System.Drawing.Point(272, 131);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
-            this.btnConfirm.Size = new System.Drawing.Size(238, 57);
+            this.btnConfirm.Size = new System.Drawing.Size(238, 49);
             this.btnConfirm.TabIndex = 57;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
@@ -126,24 +126,41 @@
             // 
             // Label3
             // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(18, 65);
+            this.Label3.Location = new System.Drawing.Point(21, 65);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(88, 28);
+            this.Label3.Size = new System.Drawing.Size(88, 33);
             this.Label3.TabIndex = 53;
             this.Label3.Text = "Quantity";
+            this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.ForeColor = System.Drawing.Color.Black;
+            this.txtQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtQuantity.BorderRadius = 3;
+            this.txtQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtQuantity.DefaultText = "";
+            this.txtQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtQuantity.DisabledState.Parent = this.txtQuantity;
+            this.txtQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtQuantity.FocusedState.Parent = this.txtQuantity;
+            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtQuantity.HoverState.Parent = this.txtQuantity;
             this.txtQuantity.Location = new System.Drawing.Point(112, 65);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(398, 33);
-            this.txtQuantity.TabIndex = 54;
-            this.txtQuantity.Tag = "";
+            this.txtQuantity.PasswordChar = '\0';
+            this.txtQuantity.PlaceholderText = "";
+            this.txtQuantity.SelectedText = "";
+            this.txtQuantity.ShadowDecoration.Parent = this.txtQuantity;
+            this.txtQuantity.Size = new System.Drawing.Size(399, 33);
+            this.txtQuantity.TabIndex = 59;
             this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuantity_KeyPress);
             // 
@@ -152,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(533, 218);
+            this.ClientSize = new System.Drawing.Size(533, 202);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -176,6 +193,6 @@
         internal System.Windows.Forms.Label lblItem;
         public System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Label Label3;
-        internal System.Windows.Forms.TextBox txtQuantity;
+        internal Guna.UI2.WinForms.Guna2TextBox txtQuantity;
     }
 }

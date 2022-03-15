@@ -210,6 +210,7 @@ namespace EcoPOSv2
 
                 btnResetSales.Enabled = false;
                 btnResetSales.Text = "Resetting Sales..";
+                SQL.Query("DELETE FROM store_start");
                 SQL.Query("delete from order_cart");
                 SQL.Query("delete from order_no");
                 SQL.Query("delete from points_award");
@@ -219,7 +220,6 @@ namespace EcoPOSv2
                 SQL.Query("delete from keep");
                 SQL.Query("delete from redeem_transaction");
                 SQL.Query("delete from redeem_transaction_items");
-                SQL.Query("DELETE FROM store_start");
                 SQL.Query("delete from transaction_details");
                 SQL.Query("delete from transaction_items");
                 SQL.Query("delete from void_item");

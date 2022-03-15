@@ -58,7 +58,7 @@ namespace EcoPOSv2
             this.btnCLose.BackColor = System.Drawing.Color.Transparent;
             this.btnCLose.IconColor = System.Drawing.Color.White;
             this.btnCLose.IconSize = 15F;
-            this.btnCLose.Location = new System.Drawing.Point(819, 0);
+            this.btnCLose.Location = new System.Drawing.Point(811, 0);
             this.btnCLose.Name = "btnCLose";
             this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;
@@ -216,13 +216,14 @@ namespace EcoPOSv2
             // 
             // pnlTitle
             // 
-            this.pnlTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
+            this.pnlTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.pnlTitle.Controls.Add(this.lblTitle);
             this.pnlTitle.Controls.Add(this.btnCLose);
-            this.pnlTitle.Location = new System.Drawing.Point(-6, 0);
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(1, 1);
             this.pnlTitle.Name = "pnlTitle";
             this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
-            this.pnlTitle.Size = new System.Drawing.Size(856, 36);
+            this.pnlTitle.Size = new System.Drawing.Size(848, 36);
             this.pnlTitle.TabIndex = 62;
             // 
             // guna2DragControl1

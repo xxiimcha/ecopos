@@ -119,5 +119,10 @@ namespace EcoPOSv2
         {
             LoadDiscount();
         }
+
+        private void dgvDiscount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnConfirm.PerformClick();
+        }
     }
 }

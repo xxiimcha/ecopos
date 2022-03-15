@@ -17,7 +17,6 @@ namespace EcoPOSv2
 
         private SQLControl SQL = new SQLControl();
         public Order frmOrder;
-        private bool dgvClickedOnce = false;
 
         public OCustomer()
         {
@@ -53,8 +52,6 @@ namespace EcoPOSv2
 
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            if (dgvClickedOnce == false)
-                return;
             if (dgvCustomer.SelectedRows.Count == 0)
                 return;
             SQL.AddParam("@customerID", dgvCustomer.CurrentRow.Cells[0].Value.ToString());
@@ -174,7 +171,7 @@ namespace EcoPOSv2
 
         private void DgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvClickedOnce = true;
+
         }
 
         private void OCustomer_KeyDown(object sender, KeyEventArgs e)

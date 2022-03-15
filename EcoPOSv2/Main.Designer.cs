@@ -136,7 +136,7 @@
             this.lblByPassUser.BackColor = System.Drawing.Color.Transparent;
             this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
-            this.lblByPassUser.Location = new System.Drawing.Point(16, 114);
+            this.lblByPassUser.Location = new System.Drawing.Point(16, 112);
             this.lblByPassUser.Name = "lblByPassUser";
             this.lblByPassUser.Size = new System.Drawing.Size(181, 32);
             this.lblByPassUser.TabIndex = 11;
@@ -145,14 +145,14 @@
             // 
             // lblUser
             // 
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.lblUser.Location = new System.Drawing.Point(13, 5);
+            this.lblUser.Location = new System.Drawing.Point(5, 3);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(184, 60);
+            this.lblUser.Size = new System.Drawing.Size(201, 55);
             this.lblUser.TabIndex = 2;
             this.lblUser.Text = "Bypassed";
-            this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUser.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // gunaPanel1
             // 
@@ -239,7 +239,7 @@
             // 
             this.lblBypassedBy.BackColor = System.Drawing.Color.Transparent;
             this.lblBypassedBy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBypassedBy.Location = new System.Drawing.Point(58, 98);
+            this.lblBypassedBy.Location = new System.Drawing.Point(58, 96);
             this.lblBypassedBy.Name = "lblBypassedBy";
             this.lblBypassedBy.Size = new System.Drawing.Size(95, 19);
             this.lblBypassedBy.TabIndex = 4;
@@ -260,7 +260,7 @@
             this.btnUserRole.ForeColor = System.Drawing.Color.White;
             this.btnUserRole.Image = global::EcoPOSv2.Properties.Resources.OnlineGreenIcon;
             this.btnUserRole.ImageSize = new System.Drawing.Size(8, 8);
-            this.btnUserRole.Location = new System.Drawing.Point(28, 62);
+            this.btnUserRole.Location = new System.Drawing.Point(28, 64);
             this.btnUserRole.Name = "btnUserRole";
             this.btnUserRole.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnUserRole.OnHoverBorderColor = System.Drawing.Color.Black;

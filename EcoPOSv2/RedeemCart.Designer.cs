@@ -28,21 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedeemCart));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnRemove = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnQuantity = new Guna.UI2.WinForms.Guna2TileButton();
-            this.dgvRedeemItems = new System.Windows.Forms.DataGridView();
             this.txtSearchItem = new System.Windows.Forms.TextBox();
-            this.dgvRedeemCart = new System.Windows.Forms.DataGridView();
-            this.Panel3 = new System.Windows.Forms.Panel();
-            this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnProceed = new Guna.UI2.WinForms.Guna2Button();
             this.lblRemainingPoints = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
@@ -56,216 +54,76 @@
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
+            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnCancel = new Guna.UI.WinForms.GunaControlBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnRemove = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.dgvRedeemCart = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dgvRedeemItems = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemItems)).BeginInit();
+            this.pnlTitle.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemCart)).BeginInit();
-            this.Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemItems)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.btnRemove);
-            this.guna2Panel1.Controls.Add(this.btnQuantity);
             this.guna2Panel1.Controls.Add(this.dgvRedeemItems);
-            this.guna2Panel1.Controls.Add(this.txtSearchItem);
             this.guna2Panel1.Controls.Add(this.dgvRedeemCart);
-            this.guna2Panel1.Controls.Add(this.Panel3);
-            this.guna2Panel1.Location = new System.Drawing.Point(2, 2);
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Controls.Add(this.label4);
+            this.guna2Panel1.Controls.Add(this.btnRemove);
+            this.guna2Panel1.Controls.Add(this.pnlTitle);
+            this.guna2Panel1.Controls.Add(this.btnQuantity);
+            this.guna2Panel1.Controls.Add(this.txtSearchItem);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(970, 697);
+            this.guna2Panel1.Size = new System.Drawing.Size(961, 705);
             this.guna2Panel1.TabIndex = 0;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BorderColor = System.Drawing.Color.Red;
-            this.btnRemove.BorderThickness = 2;
-            this.btnRemove.CheckedState.Parent = this.btnRemove;
-            this.btnRemove.CustomImages.Parent = this.btnRemove;
-            this.btnRemove.FillColor = System.Drawing.Color.White;
-            this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.ForeColor = System.Drawing.Color.Red;
-            this.btnRemove.HoverState.Parent = this.btnRemove;
-            this.btnRemove.Location = new System.Drawing.Point(565, 47);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.ShadowDecoration.Parent = this.btnRemove;
-            this.btnRemove.Size = new System.Drawing.Size(78, 45);
-            this.btnRemove.TabIndex = 81;
-            this.btnRemove.Text = "X";
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnQuantity
             // 
             this.btnQuantity.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnQuantity.BorderRadius = 3;
             this.btnQuantity.BorderThickness = 2;
             this.btnQuantity.CheckedState.Parent = this.btnQuantity;
             this.btnQuantity.CustomImages.Parent = this.btnQuantity;
             this.btnQuantity.FillColor = System.Drawing.Color.White;
-            this.btnQuantity.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuantity.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuantity.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnQuantity.HoverState.Parent = this.btnQuantity;
-            this.btnQuantity.Location = new System.Drawing.Point(565, -1);
+            this.btnQuantity.Location = new System.Drawing.Point(258, 47);
             this.btnQuantity.Name = "btnQuantity";
             this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
-            this.btnQuantity.Size = new System.Drawing.Size(78, 45);
+            this.btnQuantity.Size = new System.Drawing.Size(91, 35);
             this.btnQuantity.TabIndex = 80;
-            this.btnQuantity.Text = "Qty";
+            this.btnQuantity.Text = "QUANTITY";
             this.btnQuantity.Click += new System.EventHandler(this.btnQuantity_Click);
-            // 
-            // dgvRedeemItems
-            // 
-            this.dgvRedeemItems.AllowUserToAddRows = false;
-            this.dgvRedeemItems.AllowUserToDeleteRows = false;
-            this.dgvRedeemItems.AllowUserToResizeColumns = false;
-            this.dgvRedeemItems.AllowUserToResizeRows = false;
-            this.dgvRedeemItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRedeemItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvRedeemItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvRedeemItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRedeemItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemItems.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvRedeemItems.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvRedeemItems.Location = new System.Drawing.Point(647, 40);
-            this.dgvRedeemItems.MultiSelect = false;
-            this.dgvRedeemItems.Name = "dgvRedeemItems";
-            this.dgvRedeemItems.ReadOnly = true;
-            this.dgvRedeemItems.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemItems.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvRedeemItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRedeemItems.Size = new System.Drawing.Size(322, 654);
-            this.dgvRedeemItems.TabIndex = 79;
-            this.dgvRedeemItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRedeemItems_CellClick);
             // 
             // txtSearchItem
             // 
             this.txtSearchItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchItem.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchItem.Location = new System.Drawing.Point(647, 1);
+            this.txtSearchItem.Location = new System.Drawing.Point(584, 49);
             this.txtSearchItem.Name = "txtSearchItem";
-            this.txtSearchItem.Size = new System.Drawing.Size(322, 33);
+            this.txtSearchItem.Size = new System.Drawing.Size(358, 33);
             this.txtSearchItem.TabIndex = 78;
             this.txtSearchItem.Tag = "Search item/barcode";
-            this.txtSearchItem.Text = "Search item/barcode";
             this.txtSearchItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchItem_KeyDown);
             this.txtSearchItem.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchItem_KeyUp);
-            // 
-            // dgvRedeemCart
-            // 
-            this.dgvRedeemCart.AllowUserToAddRows = false;
-            this.dgvRedeemCart.AllowUserToDeleteRows = false;
-            this.dgvRedeemCart.AllowUserToResizeColumns = false;
-            this.dgvRedeemCart.AllowUserToResizeRows = false;
-            this.dgvRedeemCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRedeemCart.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvRedeemCart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvRedeemCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvRedeemCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemCart.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvRedeemCart.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvRedeemCart.Location = new System.Drawing.Point(5, 1);
-            this.dgvRedeemCart.MultiSelect = false;
-            this.dgvRedeemCart.Name = "dgvRedeemCart";
-            this.dgvRedeemCart.ReadOnly = true;
-            this.dgvRedeemCart.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRedeemCart.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvRedeemCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRedeemCart.Size = new System.Drawing.Size(556, 441);
-            this.dgvRedeemCart.TabIndex = 77;
-            this.dgvRedeemCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRedeemCart_CellClick);
-            // 
-            // Panel3
-            // 
-            this.Panel3.Controls.Add(this.btnCancel);
-            this.Panel3.Controls.Add(this.btnProceed);
-            this.Panel3.Controls.Add(this.lblRemainingPoints);
-            this.Panel3.Controls.Add(this.Label5);
-            this.Panel3.Controls.Add(this.lblBalance);
-            this.Panel3.Controls.Add(this.Label3);
-            this.Panel3.Controls.Add(this.lblTotal);
-            this.Panel3.Controls.Add(this.lblItems);
-            this.Panel3.Controls.Add(this.Label7);
-            this.Panel3.Controls.Add(this.Label8);
-            this.Panel3.Controls.Add(this.lblCardNo);
-            this.Panel3.Controls.Add(this.lblCustomerName);
-            this.Panel3.Controls.Add(this.Label1);
-            this.Panel3.Controls.Add(this.Label6);
-            this.Panel3.Location = new System.Drawing.Point(2, 448);
-            this.Panel3.Name = "Panel3";
-            this.Panel3.Size = new System.Drawing.Size(636, 249);
-            this.Panel3.TabIndex = 76;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancel.BorderThickness = 2;
-            this.btnCancel.CheckedState.Parent = this.btnCancel;
-            this.btnCancel.CustomImages.Parent = this.btnCancel;
-            this.btnCancel.FillColor = System.Drawing.Color.White;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnCancel.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnCancel.Location = new System.Drawing.Point(75, 193);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
-            this.btnCancel.Size = new System.Drawing.Size(238, 45);
-            this.btnCancel.TabIndex = 57;
-            this.btnCancel.Text = "CANCEL";
-            this.btnCancel.TextOffset = new System.Drawing.Point(10, 0);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnProceed
             // 
             this.btnProceed.BorderColor = System.Drawing.Color.Green;
+            this.btnProceed.BorderRadius = 5;
             this.btnProceed.BorderThickness = 2;
             this.btnProceed.CheckedState.Parent = this.btnProceed;
             this.btnProceed.CustomImages.Parent = this.btnProceed;
@@ -277,7 +135,7 @@
             this.btnProceed.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnProceed.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnProceed.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnProceed.Location = new System.Drawing.Point(324, 193);
+            this.btnProceed.Location = new System.Drawing.Point(152, 191);
             this.btnProceed.Name = "btnProceed";
             this.btnProceed.ShadowDecoration.Parent = this.btnProceed;
             this.btnProceed.Size = new System.Drawing.Size(238, 45);
@@ -290,146 +148,396 @@
             // 
             this.lblRemainingPoints.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRemainingPoints.ForeColor = System.Drawing.Color.Black;
-            this.lblRemainingPoints.Location = new System.Drawing.Point(326, 139);
+            this.lblRemainingPoints.Location = new System.Drawing.Point(311, 151);
             this.lblRemainingPoints.Name = "lblRemainingPoints";
-            this.lblRemainingPoints.Size = new System.Drawing.Size(295, 26);
+            this.lblRemainingPoints.Size = new System.Drawing.Size(220, 26);
             this.lblRemainingPoints.TabIndex = 55;
             this.lblRemainingPoints.Text = "0.00";
-            this.lblRemainingPoints.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblRemainingPoints.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.Black;
-            this.Label5.Location = new System.Drawing.Point(489, 118);
+            this.Label5.Location = new System.Drawing.Point(311, 131);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(131, 21);
+            this.Label5.Size = new System.Drawing.Size(159, 21);
             this.Label5.TabIndex = 54;
-            this.Label5.Text = "Remaining Points";
+            this.Label5.Text = "REMAINING POINTS";
             this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblBalance
             // 
             this.lblBalance.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBalance.ForeColor = System.Drawing.Color.Black;
-            this.lblBalance.Location = new System.Drawing.Point(5, 149);
+            this.lblBalance.Location = new System.Drawing.Point(12, 151);
             this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(293, 26);
+            this.lblBalance.Size = new System.Drawing.Size(283, 26);
             this.lblBalance.TabIndex = 53;
             this.lblBalance.Text = "0.00";
-            this.lblBalance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(6, 128);
+            this.Label3.Location = new System.Drawing.Point(12, 131);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(63, 21);
+            this.Label3.Size = new System.Drawing.Size(80, 21);
             this.Label3.TabIndex = 52;
-            this.Label3.Text = "Balance";
+            this.Label3.Text = "BALANCE";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTotal
             // 
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblTotal.Location = new System.Drawing.Point(326, 88);
+            this.lblTotal.Location = new System.Drawing.Point(311, 95);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(295, 26);
+            this.lblTotal.Size = new System.Drawing.Size(220, 26);
             this.lblTotal.TabIndex = 51;
             this.lblTotal.Text = "0.00";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblItems
             // 
             this.lblItems.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblItems.ForeColor = System.Drawing.Color.Black;
-            this.lblItems.Location = new System.Drawing.Point(327, 36);
+            this.lblItems.Location = new System.Drawing.Point(310, 34);
             this.lblItems.Name = "lblItems";
-            this.lblItems.Size = new System.Drawing.Size(294, 25);
+            this.lblItems.Size = new System.Drawing.Size(219, 25);
             this.lblItems.TabIndex = 50;
             this.lblItems.Text = "0.00";
-            this.lblItems.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblItems.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label7
             // 
             this.Label7.AutoSize = true;
-            this.Label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label7.ForeColor = System.Drawing.Color.Black;
-            this.Label7.Location = new System.Drawing.Point(577, 67);
+            this.Label7.Location = new System.Drawing.Point(311, 74);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(42, 21);
+            this.Label7.Size = new System.Drawing.Size(56, 21);
             this.Label7.TabIndex = 49;
-            this.Label7.Text = "Total";
+            this.Label7.Text = "TOTAL";
             this.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label8
             // 
             this.Label8.AutoSize = true;
-            this.Label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label8.ForeColor = System.Drawing.Color.Black;
-            this.Label8.Location = new System.Drawing.Point(573, 15);
+            this.Label8.Location = new System.Drawing.Point(310, 14);
             this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(48, 21);
+            this.Label8.Size = new System.Drawing.Size(56, 21);
             this.Label8.TabIndex = 48;
-            this.Label8.Text = "Items";
+            this.Label8.Text = "ITEMS";
             this.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCardNo
             // 
             this.lblCardNo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCardNo.ForeColor = System.Drawing.Color.Black;
-            this.lblCardNo.Location = new System.Drawing.Point(5, 93);
+            this.lblCardNo.Location = new System.Drawing.Point(12, 95);
             this.lblCardNo.Name = "lblCardNo";
-            this.lblCardNo.Size = new System.Drawing.Size(293, 26);
+            this.lblCardNo.Size = new System.Drawing.Size(283, 26);
             this.lblCardNo.TabIndex = 47;
             this.lblCardNo.Text = "0";
-            this.lblCardNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCardNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCustomerName
             // 
             this.lblCustomerName.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomerName.ForeColor = System.Drawing.Color.Black;
-            this.lblCustomerName.Location = new System.Drawing.Point(5, 36);
+            this.lblCustomerName.Location = new System.Drawing.Point(12, 34);
             this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(292, 25);
+            this.lblCustomerName.Size = new System.Drawing.Size(282, 25);
             this.lblCustomerName.TabIndex = 46;
             this.lblCustomerName.Text = "Customer";
-            this.lblCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(7, 72);
+            this.Label1.Location = new System.Drawing.Point(13, 75);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(71, 21);
+            this.Label1.Size = new System.Drawing.Size(83, 21);
             this.Label1.TabIndex = 44;
-            this.Label1.Text = "Card No.";
+            this.Label1.Text = "CARD NO.";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label6.ForeColor = System.Drawing.Color.Black;
-            this.Label6.Location = new System.Drawing.Point(6, 11);
+            this.Label6.Location = new System.Drawing.Point(12, 14);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(78, 21);
+            this.Label6.Size = new System.Drawing.Size(93, 21);
             this.Label6.TabIndex = 43;
-            this.Label6.Text = "Customer";
+            this.Label6.Text = "CUSTOMER";
             this.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pnlTitle
+            // 
+            this.pnlTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pnlTitle.Controls.Add(this.btnCancel);
+            this.pnlTitle.Controls.Add(this.label2);
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
+            this.pnlTitle.Size = new System.Drawing.Size(961, 35);
+            this.pnlTitle.TabIndex = 94;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.AnimationHoverSpeed = 0.07F;
+            this.btnCancel.AnimationSpeed = 0.03F;
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCancel.IconColor = System.Drawing.Color.White;
+            this.btnCancel.IconSize = 15F;
+            this.btnCancel.Location = new System.Drawing.Point(916, 0);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCancel.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnCancel.OnPressedColor = System.Drawing.Color.Black;
+            this.btnCancel.Size = new System.Drawing.Size(45, 35);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(9, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 21);
+            this.label2.TabIndex = 86;
+            this.label2.Text = "REDEEM CART";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(23, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(185, 21);
+            this.label4.TabIndex = 96;
+            this.label4.Text = "ITEMS TO BE REDEEMED";
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRemove.BorderRadius = 3;
+            this.btnRemove.BorderThickness = 2;
+            this.btnRemove.CheckedState.Parent = this.btnRemove;
+            this.btnRemove.CustomImages.Parent = this.btnRemove;
+            this.btnRemove.FillColor = System.Drawing.Color.White;
+            this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnRemove.HoverState.Parent = this.btnRemove;
+            this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
+            this.btnRemove.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnRemove.ImageOffset = new System.Drawing.Point(5, 0);
+            this.btnRemove.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnRemove.Location = new System.Drawing.Point(355, 47);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.ShadowDecoration.Parent = this.btnRemove;
+            this.btnRemove.Size = new System.Drawing.Size(207, 35);
+            this.btnRemove.TabIndex = 95;
+            this.btnRemove.Text = "REMOVE FROM LIST";
+            this.btnRemove.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.BorderColor = System.Drawing.Color.Silver;
+            this.guna2Panel2.BorderRadius = 5;
+            this.guna2Panel2.Controls.Add(this.btnProceed);
+            this.guna2Panel2.Controls.Add(this.Label6);
+            this.guna2Panel2.Controls.Add(this.lblRemainingPoints);
+            this.guna2Panel2.Controls.Add(this.Label1);
+            this.guna2Panel2.Controls.Add(this.Label5);
+            this.guna2Panel2.Controls.Add(this.lblCustomerName);
+            this.guna2Panel2.Controls.Add(this.lblBalance);
+            this.guna2Panel2.Controls.Add(this.lblCardNo);
+            this.guna2Panel2.Controls.Add(this.Label3);
+            this.guna2Panel2.Controls.Add(this.Label8);
+            this.guna2Panel2.Controls.Add(this.lblTotal);
+            this.guna2Panel2.Controls.Add(this.Label7);
+            this.guna2Panel2.Controls.Add(this.lblItems);
+            this.guna2Panel2.Location = new System.Drawing.Point(19, 436);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
+            this.guna2Panel2.Size = new System.Drawing.Size(543, 249);
+            this.guna2Panel2.TabIndex = 97;
+            // 
+            // dgvRedeemCart
+            // 
+            this.dgvRedeemCart.AllowUserToAddRows = false;
+            this.dgvRedeemCart.AllowUserToDeleteRows = false;
+            this.dgvRedeemCart.AllowUserToResizeRows = false;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgvRedeemCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRedeemCart.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRedeemCart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvRedeemCart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvRedeemCart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dgvRedeemCart.ColumnHeadersHeight = 40;
+            this.dgvRedeemCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRedeemCart.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dgvRedeemCart.EnableHeadersVisualStyles = false;
+            this.dgvRedeemCart.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvRedeemCart.Location = new System.Drawing.Point(19, 88);
+            this.dgvRedeemCart.MultiSelect = false;
+            this.dgvRedeemCart.Name = "dgvRedeemCart";
+            this.dgvRedeemCart.ReadOnly = true;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemCart.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            this.dgvRedeemCart.RowHeadersVisible = false;
+            this.dgvRedeemCart.RowTemplate.DividerHeight = 1;
+            this.dgvRedeemCart.RowTemplate.Height = 35;
+            this.dgvRedeemCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRedeemCart.Size = new System.Drawing.Size(543, 338);
+            this.dgvRedeemCart.TabIndex = 98;
+            this.dgvRedeemCart.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvRedeemCart.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemCart.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvRedeemCart.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvRedeemCart.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvRedeemCart.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvRedeemCart.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemCart.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvRedeemCart.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvRedeemCart.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvRedeemCart.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRedeemCart.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvRedeemCart.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvRedeemCart.ThemeStyle.HeaderStyle.Height = 40;
+            this.dgvRedeemCart.ThemeStyle.ReadOnly = true;
+            this.dgvRedeemCart.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemCart.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvRedeemCart.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRedeemCart.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvRedeemCart.ThemeStyle.RowsStyle.Height = 35;
+            this.dgvRedeemCart.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvRedeemCart.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvRedeemCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRedeemCart_CellClick);
+            // 
+            // dgvRedeemItems
+            // 
+            this.dgvRedeemItems.AllowUserToAddRows = false;
+            this.dgvRedeemItems.AllowUserToDeleteRows = false;
+            this.dgvRedeemItems.AllowUserToResizeRows = false;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgvRedeemItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRedeemItems.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRedeemItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvRedeemItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvRedeemItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            this.dgvRedeemItems.ColumnHeadersHeight = 40;
+            this.dgvRedeemItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRedeemItems.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvRedeemItems.EnableHeadersVisualStyles = false;
+            this.dgvRedeemItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvRedeemItems.Location = new System.Drawing.Point(584, 88);
+            this.dgvRedeemItems.MultiSelect = false;
+            this.dgvRedeemItems.Name = "dgvRedeemItems";
+            this.dgvRedeemItems.ReadOnly = true;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRedeemItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgvRedeemItems.RowHeadersVisible = false;
+            this.dgvRedeemItems.RowTemplate.DividerHeight = 1;
+            this.dgvRedeemItems.RowTemplate.Height = 35;
+            this.dgvRedeemItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRedeemItems.Size = new System.Drawing.Size(358, 597);
+            this.dgvRedeemItems.TabIndex = 99;
+            this.dgvRedeemItems.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvRedeemItems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemItems.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvRedeemItems.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvRedeemItems.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvRedeemItems.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvRedeemItems.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemItems.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvRedeemItems.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvRedeemItems.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvRedeemItems.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRedeemItems.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvRedeemItems.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvRedeemItems.ThemeStyle.HeaderStyle.Height = 40;
+            this.dgvRedeemItems.ThemeStyle.ReadOnly = true;
+            this.dgvRedeemItems.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvRedeemItems.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvRedeemItems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvRedeemItems.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvRedeemItems.ThemeStyle.RowsStyle.Height = 35;
+            this.dgvRedeemItems.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvRedeemItems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvRedeemItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRedeemItems_CellClick);
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
             // RedeemCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(973, 701);
+            this.ClientSize = new System.Drawing.Size(961, 705);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -439,10 +547,12 @@
             this.Load += new System.EventHandler(this.RedeemCart_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemItems)).EndInit();
+            this.pnlTitle.ResumeLayout(false);
+            this.pnlTitle.PerformLayout();
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemCart)).EndInit();
-            this.Panel3.ResumeLayout(false);
-            this.Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRedeemItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -450,13 +560,8 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TileButton btnRemove;
         private Guna.UI2.WinForms.Guna2TileButton btnQuantity;
-        internal System.Windows.Forms.DataGridView dgvRedeemItems;
         internal System.Windows.Forms.TextBox txtSearchItem;
-        internal System.Windows.Forms.DataGridView dgvRedeemCart;
-        internal System.Windows.Forms.Panel Panel3;
-        private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Button btnProceed;
         internal System.Windows.Forms.Label lblRemainingPoints;
         internal System.Windows.Forms.Label Label5;
@@ -470,5 +575,14 @@
         internal System.Windows.Forms.Label lblCustomerName;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Label Label6;
+        private Guna.UI2.WinForms.Guna2Panel pnlTitle;
+        private Guna.UI.WinForms.GunaControlBox btnCancel;
+        internal System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2Button btnRemove;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        internal Guna.UI2.WinForms.Guna2DataGridView dgvRedeemCart;
+        internal Guna.UI2.WinForms.Guna2DataGridView dgvRedeemItems;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

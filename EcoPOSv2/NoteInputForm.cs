@@ -105,8 +105,7 @@ namespace EcoPOSv2
 
         private void NoteInputForm_Load(object sender, EventArgs e)
         {
-            txtInputNote.Focus();
-            guna2ShadowForm1.SetShadowForm(this);
+            this.ActiveControl = txtInputNote;
         }
 
         private void txtInputNote_KeyDown(object sender, KeyEventArgs e)

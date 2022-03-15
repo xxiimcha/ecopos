@@ -90,7 +90,7 @@ namespace EcoPOSv2
                 SQLControl psql = new SQLControl();
 
                 psql.AddParam("@order_ref", int.Parse(order_ref));
-                psql.Query("select order_ref,itemID,productID,description as 'Description',name as 'Name',quantity as 'Quantity',selling_price_inclusive from transaction_items where order_ref = @order_ref");
+                psql.Query("select order_ref,itemID,productID,description as 'Description',name as 'Name',quantity as 'Quantity', selling_price_inclusive as 'Price' from transaction_items where order_ref = @order_ref");
 
                 if (psql.HasException(true)) return;
 

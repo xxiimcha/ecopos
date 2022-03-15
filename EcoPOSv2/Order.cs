@@ -1252,6 +1252,11 @@ namespace EcoPOSv2
             SeeItem.Instance.ActiveControl = SeeItem.Instance.txtBarcode;
         }
 
+        private void btnBarcode_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = tbBarcode;
+        }
+
         private void OpenPayment(object sender, EventArgs e)
         {
             Order.Instance.btnPayment.PerformClick();
