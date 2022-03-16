@@ -25,11 +25,9 @@ namespace EcoPOSv2
         {
             dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
             dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
-
-            btnSearchDates.PerformClick();
         }
 
-        private void btnSearchDates_Click(object sender, EventArgs e)
+        private void loadData()
         {
             SQL.AddParam("@from", dtpFrom.Value);
             SQL.AddParam("@to", dtpTo.Value);
@@ -47,26 +45,19 @@ namespace EcoPOSv2
             dgv_VoidReport.Columns[5].Width = 50;
         }
 
-        private void btnSort_Click(object sender, EventArgs e)
-        {
-            if (dgv_VoidReport.RowCount == 0)
-                return;
-
-            if (btnSort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgv_VoidReport.Sort(dgv_VoidReport.Columns[10], ListSortDirection.Ascending);
-                btnSort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgv_VoidReport.Sort(dgv_VoidReport.Columns[10], ListSortDirection.Descending);
-                btnSort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             EI.ExportDgvToPDF("Void Report", dgv_VoidReport);
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }

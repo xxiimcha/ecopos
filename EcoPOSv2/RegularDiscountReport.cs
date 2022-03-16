@@ -74,26 +74,24 @@ namespace EcoPOSv2
             LoadData();
         }
 
-        private void btnSort_Click(object sender, EventArgs e)
-        {
-            if (dgvRecords.RowCount == 0)
-                return;
-
-            if (btnSort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvRecords.Sort(dgvRecords.Columns[2], ListSortDirection.Ascending);
-                btnSort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvRecords.Sort(dgvRecords.Columns[2], ListSortDirection.Descending);
-                btnSort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             EI.ExportDgvToPDF("Regular Discount Report", dgvRecords);
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void cmbDiscType_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

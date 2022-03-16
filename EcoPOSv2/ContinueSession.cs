@@ -187,10 +187,9 @@ namespace EcoPOSv2
                     roleID = Convert.ToInt32(r["roleID"].ToString());
                 }
 
-                LoadPermissions(roleID);
-
                 Main.Instance.roleid = roleID.ToString();
-
+                LoadPermissions(roleID);
+                
                 RP.Order(Order.Instance);
                 RP.Home(Main.Instance);
 

@@ -78,8 +78,8 @@
             // 
             // btnMinimize
             // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMinimize.FillColor = System.Drawing.Color.Transparent;
             this.btnMinimize.HoverState.Parent = this.btnMinimize;
             this.btnMinimize.IconColor = System.Drawing.Color.White;
@@ -93,8 +93,8 @@
             // 
             // btnclosetemp
             // 
-            this.btnclosetemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnclosetemp.BackColor = System.Drawing.Color.Transparent;
+            this.btnclosetemp.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnclosetemp.FillColor = System.Drawing.Color.Transparent;
             this.btnclosetemp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnclosetemp.HoverState.Parent = this.btnclosetemp;
@@ -109,12 +109,13 @@
             // 
             // lblTraningMode
             // 
-            this.lblTraningMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTraningMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTraningMode.AutoSize = true;
             this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTraningMode.ForeColor = System.Drawing.Color.White;
-            this.lblTraningMode.Location = new System.Drawing.Point(601, 4);
+            this.lblTraningMode.Location = new System.Drawing.Point(601, 5);
             this.lblTraningMode.Name = "lblTraningMode";
             this.lblTraningMode.Size = new System.Drawing.Size(165, 25);
             this.lblTraningMode.TabIndex = 12;
@@ -124,7 +125,7 @@
             // 
             this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(11, 2);
+            this.lblDateTime.Location = new System.Drawing.Point(11, 1);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(359, 32);
             this.lblDateTime.TabIndex = 1;
@@ -317,11 +318,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
-            this.label6.Location = new System.Drawing.Point(15, 580);
+            this.label6.Location = new System.Drawing.Point(36, 573);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(173, 20);
+            this.label6.Size = new System.Drawing.Size(137, 15);
             this.label6.TabIndex = 14;
             this.label6.Text = "REMOVE BYPASS    (F12)";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -329,11 +330,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
-            this.label2.Location = new System.Drawing.Point(15, 553);
+            this.label2.Location = new System.Drawing.Point(36, 550);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 20);
+            this.label2.Size = new System.Drawing.Size(134, 15);
             this.label2.TabIndex = 13;
             this.label2.Text = "USER BYPASS          (F11)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -67,7 +67,7 @@
             this.btnCancel.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Location = new System.Drawing.Point(32, 167);
+            this.btnCancel.Location = new System.Drawing.Point(33, 168);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(248, 53);
@@ -90,7 +90,7 @@
             this.btnSpecial.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpecial.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnSpecial.HoverState.Parent = this.btnSpecial;
-            this.btnSpecial.Location = new System.Drawing.Point(32, 96);
+            this.btnSpecial.Location = new System.Drawing.Point(33, 97);
             this.btnSpecial.Name = "btnSpecial";
             this.btnSpecial.ShadowDecoration.Parent = this.btnSpecial;
             this.btnSpecial.Size = new System.Drawing.Size(248, 53);
@@ -113,7 +113,7 @@
             this.btnRegular.HoverState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegular.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnRegular.HoverState.Parent = this.btnRegular;
-            this.btnRegular.Location = new System.Drawing.Point(32, 28);
+            this.btnRegular.Location = new System.Drawing.Point(33, 29);
             this.btnRegular.Name = "btnRegular";
             this.btnRegular.ShadowDecoration.Parent = this.btnRegular;
             this.btnRegular.Size = new System.Drawing.Size(248, 53);

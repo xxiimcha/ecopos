@@ -80,5 +80,13 @@ namespace EcoPOSv2
         {
             _Notification = this;
         }
+
+        private void Notification_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

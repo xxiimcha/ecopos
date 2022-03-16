@@ -154,7 +154,7 @@
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="btnSeeItem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>739, 8</value>
+    <value>738, 8</value>
   </data>
   <data name="btnSeeItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 45</value>
@@ -184,7 +184,7 @@
     <value>Segoe UI Semibold, 14.25pt, style=Bold</value>
   </data>
   <data name="tbBarcode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 8</value>
+    <value>142, 8</value>
   </data>
   <data name="tbBarcode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
@@ -211,7 +211,7 @@
     <value>Segoe UI, 15.75pt, style=Bold</value>
   </data>
   <data name="btnBarcode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 8</value>
+    <value>8, 8</value>
   </data>
   <data name="btnBarcode.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 45</value>

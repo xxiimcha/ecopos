@@ -99,6 +99,7 @@ namespace EcoPOSv2
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Notification";
             this.Load += new System.EventHandler(this.Notification_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Notification_KeyDown);
             this.tbllayout.ResumeLayout(false);
             this.tbllayout.PerformLayout();
             this.ResumeLayout(false);

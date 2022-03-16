@@ -70,28 +70,6 @@ namespace EcoPOSv2
             loaddata();
         }
 
-        private void btnSort_Click(object sender, EventArgs e)
-        {
-            if (dgvRecords.RowCount == 0)
-                return;
-
-            if (btnSort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvRecords.Sort(dgvRecords.Columns[2], ListSortDirection.Ascending);
-                btnSort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvRecords.Sort(dgvRecords.Columns[2], ListSortDirection.Descending);
-                btnSort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
-        private void btnSearchDates_Click(object sender, EventArgs e)
-        {
-            loaddata();
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             EI.ExportDgvToPDF("Z-Reading Reports", dgvRecords);
@@ -304,6 +282,16 @@ namespace EcoPOSv2
                     report80.Dispose();
                 }
             }
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            loaddata();
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            loaddata();
         }
     }
 }

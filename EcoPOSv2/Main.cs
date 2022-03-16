@@ -537,9 +537,9 @@ namespace EcoPOSv2
                 Main.Instance.lblByPassUser.Text = "";
 
 
-                if(roleid != "")
+                if(roleid != "" && roleid != null)
                 {
-                    Login.Instance.LoadPermissions(int.Parse(roleid));
+                    Login.Instance.LoadPermissions(int.Parse(Main.Instance.roleid));
                     RP.Home(Main.Instance);
 
                     Main.Instance.btnOrder.PerformClick();

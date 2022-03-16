@@ -177,5 +177,10 @@ namespace EcoPOSv2
                 this.Close();
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

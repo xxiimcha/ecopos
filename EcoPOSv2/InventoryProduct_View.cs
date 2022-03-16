@@ -220,6 +220,7 @@ namespace EcoPOSv2
             LoadDataSoldSummary();
             LoadDataReturnSummary();
             LoadDataTotalProductSummary();
+            guna2ShadowForm1.SetShadowForm(this);
         }
     }
 }

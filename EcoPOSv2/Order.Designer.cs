@@ -751,6 +751,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Order";
+            this.Activated += new System.EventHandler(this.Order_Activated);
             this.Load += new System.EventHandler(this.Order_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Order_KeyDown);
             this.OrderPanel.ResumeLayout(false);
