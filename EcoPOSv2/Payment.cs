@@ -587,8 +587,6 @@ namespace EcoPOSv2
             #endregion
             */
 
-            Advance_OrderNo();
-
             #region remove/add to inventory
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -701,9 +699,13 @@ namespace EcoPOSv2
             if (action == 1 && lblCustomerID.Text != "0" && cbxUsePoints.Checked == false)
             {
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
                 bool rewardable = Convert.ToBoolean(SQL.ReturnResult("SELECT cus_rewardable FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)".ToString()));
                 if (SQL.HasException(true))
+                {
                     return;
+                }
+
                 if (rewardable)
                 {
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -724,7 +726,6 @@ namespace EcoPOSv2
                     }
 
                     // update card balance
-
                     SQL.AddParam("@customerID", lblCustomerID.Text);
                     SQL.AddParam("@cash_paid", decimal.Parse(txtAmount.Text));
                     SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
@@ -781,6 +782,7 @@ namespace EcoPOSv2
             #endregion
 
             GenerateReceipt();
+            Advance_OrderNo();
 
             #region reset values
 
@@ -795,7 +797,7 @@ namespace EcoPOSv2
             //frmOrder.is_return = false;
 
             #endregion
-            
+
 
             //this.Close();
             PChange pchange = new PChange();

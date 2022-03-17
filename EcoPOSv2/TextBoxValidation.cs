@@ -117,7 +117,97 @@ namespace EcoPOSv2
             }
         }
 
-        #region definitions
+        public static void AssignValidation(ref Guna2TextBox CTRL, ValidationType Validation_Type)
+        {
+            var txt = CTRL;
+            switch (Validation_Type)
+            {
+                case ValidationType.Only_Numbers:
+                    {
+                        txt.KeyPress += Guna_number_Leave;
+                        break;
+                    }
+
+                case ValidationType.Only_Characters:
+                    {
+                        txt.KeyPress += Guna_OCHAR_Leave;
+                        break;
+                    }
+
+                case ValidationType.Not_Null:
+                    {
+                        txt.Leave += Guna_NotNull_Leave;
+                        break;
+                    }
+
+                case ValidationType.Only_Email:
+                    {
+                        txt.Leave += Guna_Email_Leave;
+                        break;
+                    }
+
+                case ValidationType.Phone_Number:
+                    {
+                        txt.KeyPress += Guna_Phonenumber_Leave;
+                        break;
+                    }
+
+                case ValidationType.SetText_Null:
+                    {
+                        txt.Leave += Guna_SetTextToNull_Leave;
+                        break;
+                    }
+
+                case ValidationType.Number_Negative:
+                    {
+                        txt.KeyPress += Guna_numberNegative_Leave;
+                        break;
+                    }
+
+                case ValidationType.Barcode_Only:
+                    {
+                        txt.KeyPress += Guna_barcode_Only;
+                        break;
+                    }
+
+                case ValidationType.Text_Warn:
+                    {
+                        txt.TextChanged += Guna_Text_Change;
+                        break;
+                    }
+
+                case ValidationType.Int_Only:
+                    {
+                        txt.KeyPress += Guna_Int_Only;
+                        break;
+                    }
+
+                case ValidationType.Username:
+                    {
+                        txt.KeyPress += Guna_Username;
+                        break;
+                    }
+
+                case ValidationType.NumberDash:
+                    {
+                        txt.KeyPress += Guna_numberdash;
+                        break;
+                    }
+
+                case ValidationType.Price:
+                    {
+                        txt.TextChanged += Guna_Price;
+                        break;
+                    }
+                case ValidationType.Barcode2:
+                    {
+                        txt.TextChanged += Guna_Barcode2;
+                        break;
+                    }
+            }
+        }
+
+        #region Guna_definitions
 
         public static void number_Leave(object sender, KeyPressEventArgs e)
         {
@@ -272,6 +362,170 @@ namespace EcoPOSv2
         public static void Int_Only(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             TextBox numbers = sender as TextBox;
+            if (Strings.InStr("1234567890", e.KeyChar.ToString()) == 0 & Strings.Asc(e.KeyChar) != 8 | e.KeyChar == '.' & Strings.InStr(numbers.Text, ".") > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        #endregion
+
+        #region definitions
+
+        public static void Guna_number_Leave(object sender, KeyPressEventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
+            if ((Strings.InStr("1234567890.", e.KeyChar.ToString()) == 0 & Strings.Asc(e.KeyChar) != 8) | e.KeyChar == '.' & Strings.InStr(numbers.Text, ".") > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        public static void Guna_Price(object sender, EventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
+            if (((Guna2TextBox)sender).Text.Contains("."))
+            {
+                string s = Conversions.ToString(numbers.Text);
+                int i = Strings.InStr(s, "."); // //Find Position of decimal place
+                if (i + 2 <= s.Length) // //If try to write more than 2 decimal places then truncate it.
+                {
+                    numbers.Text = s.Substring(0, i + 2);
+                    numbers.SelectionStart = numbers.Text.Length;
+                }
+            }
+        }
+
+        public static void Guna_Barcode2(object sender, EventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
+            if (((Guna2TextBox)sender).Text.Contains("*"))
+            {
+                string s = Conversions.ToString(numbers.Text);
+                int i = Strings.InStr(s, "*"); // //Find Position of decimal place
+                if (i + 50 <= s.Length) // //If try to write more than 2 decimal places then truncate it.
+                {
+                    numbers.Text = s.Substring(0, i);
+                    numbers.SelectionStart = numbers.Text.Length;
+                }
+            }
+        }
+
+        public static void Guna_numberdash(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
+            if (Strings.InStr("1234567890-", e.KeyChar.ToString()) == 0 & Strings.Asc(e.KeyChar) != 8 | e.KeyChar == '.' & Strings.InStr(numbers.Text, ".") > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        public static void Guna_barcode_Only(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
+            if (Strings.InStr("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ", e.KeyChar.ToString()) == 0 & Strings.Asc(e.KeyChar) != 8 | e.KeyChar == '.' & Strings.InStr(numbers.Text, ".") > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        public static void Guna_numberNegative_Leave(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
+            if (Strings.InStr("1234567890.-", e.KeyChar.ToString()) == 0 & Strings.Asc(e.KeyChar) != 8 | e.KeyChar == '.' & Strings.InStr(numbers.Text, ".") > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        public static void Guna_Phonenumber_Leave(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
+            if (Strings.InStr("1234567890.()-+ ", e.KeyChar.ToString()) == 0 & Strings.Asc(e.KeyChar) != 8 | e.KeyChar == '.' & Strings.InStr(numbers.Text, ".") > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        public static void Guna_OCHAR_Leave(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (Strings.InStr("1234567890!@#$%^&*()_+=-", e.KeyChar.ToString()) > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        public static void Guna_Username(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (Strings.InStr(@"?!@#$%^&*()_+=-<>.,/\{}:;'""", e.KeyChar.ToString()) > 0)
+            {
+                e.KeyChar = '\0';
+                e.Handled = true;
+            }
+        }
+
+        public static void Guna_NotNull_Leave(object sender, EventArgs e)
+        {
+            Guna2TextBox No = sender as Guna2TextBox;
+            if (No.Text.Trim() == "")
+            {
+                MessageBox.Show("Cannot be blank");
+                No.Focus();
+            }
+        }
+
+        public static void Guna_SetTextToNull_Leave(object sender, EventArgs e)
+        {
+            Guna2TextBox No = sender as Guna2TextBox;
+            if (No.Text.Trim() == "")
+            {
+                No.Text = "0";
+            }
+        }
+
+        public static void Guna_Email_Leave(object sender, EventArgs e)
+        {
+            Guna2TextBox Email = sender as Guna2TextBox;
+            if (Email.Text != "")
+            {
+                var rex = Regex.Match(Strings.Trim(Email.Text), @"^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,3})$", RegexOptions.IgnoreCase);
+                if (rex.Success == false)
+                {
+                    // MessageBox.Show("Please Enter a valid Email Address", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Email.BackColor = Color.Red;
+                    // Email.Focus()
+                    return;
+                }
+                else
+                {
+                    Email.BackColor = Color.White;
+                }
+            }
+        }
+
+        public static void Guna_Text_Change(object sender, EventArgs e)
+        {
+            Guna2TextBox No = sender as Guna2TextBox;
+            if (No.Text.Trim() == "")
+            {
+                No.BackColor = Color.Red;
+            }
+            else
+            {
+                No.BackColor = Color.White;
+            }
+        }
+
+        public static void Guna_Int_Only(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            Guna2TextBox numbers = sender as Guna2TextBox;
             if (Strings.InStr("1234567890", e.KeyChar.ToString()) == 0 & Strings.Asc(e.KeyChar) != 8 | e.KeyChar == '.' & Strings.InStr(numbers.Text, ".") > 0)
             {
                 e.KeyChar = '\0';

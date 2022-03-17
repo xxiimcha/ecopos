@@ -40,13 +40,12 @@
             this.textPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.btnClear = new Guna.UI2.WinForms.Guna2CircleButton();
             this.txtBarcode = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.btnCLose = new Guna.UI.WinForms.GunaControlBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.lblPricemode = new System.Windows.Forms.Label();
-            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.textPanel.SuspendLayout();
@@ -57,10 +56,10 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.pnlTitle);
             this.guna2Panel1.Controls.Add(this.dgvProducts);
             this.guna2Panel1.Controls.Add(this.cmbPricemode);
             this.guna2Panel1.Controls.Add(this.textPanel);
-            this.guna2Panel1.Controls.Add(this.pnlTitle);
             this.guna2Panel1.Controls.Add(this.Label3);
             this.guna2Panel1.Controls.Add(this.lblPricemode);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -227,44 +226,6 @@
             this.txtBarcode.TabIndex = 58;
             this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
             // 
-            // pnlTitle
-            // 
-            this.pnlTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
-            this.pnlTitle.Controls.Add(this.gunaLabel1);
-            this.pnlTitle.Controls.Add(this.btnCLose);
-            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
-            this.pnlTitle.Size = new System.Drawing.Size(830, 35);
-            this.pnlTitle.TabIndex = 57;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel1.Location = new System.Drawing.Point(3, -1);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(122, 35);
-            this.gunaLabel1.TabIndex = 57;
-            this.gunaLabel1.Text = "Item Checker";
-            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCLose
-            // 
-            this.btnCLose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCLose.AnimationHoverSpeed = 0.07F;
-            this.btnCLose.AnimationSpeed = 0.03F;
-            this.btnCLose.IconColor = System.Drawing.Color.White;
-            this.btnCLose.IconSize = 15F;
-            this.btnCLose.Location = new System.Drawing.Point(790, 0);
-            this.btnCLose.Name = "btnCLose";
-            this.btnCLose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnCLose.OnHoverIconColor = System.Drawing.Color.White;
-            this.btnCLose.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCLose.Size = new System.Drawing.Size(40, 35);
-            this.btnCLose.TabIndex = 56;
-            // 
             // Label3
             // 
             this.Label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -291,6 +252,51 @@
             // 
             this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
+            // pnlTitle
+            // 
+            this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
+            this.pnlTitle.BorderThickness = 1;
+            this.pnlTitle.Controls.Add(this.btnClose);
+            this.pnlTitle.Controls.Add(this.gunaLabel1);
+            this.pnlTitle.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.ShadowDecoration.Depth = 40;
+            this.pnlTitle.ShadowDecoration.Enabled = true;
+            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
+            this.pnlTitle.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.pnlTitle.Size = new System.Drawing.Size(830, 35);
+            this.pnlTitle.TabIndex = 129;
+            // 
+            // btnClose
+            // 
+            this.btnClose.AnimationHoverSpeed = 0.07F;
+            this.btnClose.AnimationSpeed = 0.03F;
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.IconColor = System.Drawing.Color.Black;
+            this.btnClose.IconSize = 15F;
+            this.btnClose.Location = new System.Drawing.Point(788, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnClose.Size = new System.Drawing.Size(42, 35);
+            this.btnClose.TabIndex = 102;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(114, 21);
+            this.gunaLabel1.TabIndex = 103;
+            this.gunaLabel1.Text = "ITEM CHECKER";
+            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // SeeItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,6 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.textPanel.ResumeLayout(false);
             this.pnlTitle.ResumeLayout(false);
+            this.pnlTitle.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -318,17 +325,16 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI.WinForms.GunaControlBox btnCLose;
         internal System.Windows.Forms.Label lblPricemode;
         internal System.Windows.Forms.Label Label3;
-        private Guna.UI2.WinForms.Guna2Panel pnlTitle;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Guna.UI2.WinForms.Guna2CircleButton btnClear;
         private Guna.UI2.WinForms.Guna2Panel textPanel;
         private Guna.UI2.WinForms.Guna2ComboBox cmbPricemode;
         public Guna.UI2.WinForms.Guna2TextBox txtBarcode;
-        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
         private Guna.UI2.WinForms.Guna2DataGridView dgvProducts;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2Panel pnlTitle;
+        private Guna.UI.WinForms.GunaControlBox btnClose;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
     }
 }

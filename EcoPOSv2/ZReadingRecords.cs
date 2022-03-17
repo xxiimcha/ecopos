@@ -192,6 +192,7 @@ namespace EcoPOSv2
 
                         CrystalReportViewer1.ReportSource = report;
                         CrystalReportViewer1.Refresh();
+                        CrystalReportViewer1.Zoom(2);
                     }
                 }
                 catch (Exception ex)

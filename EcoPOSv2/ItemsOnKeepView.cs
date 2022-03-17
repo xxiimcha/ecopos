@@ -121,5 +121,10 @@ namespace EcoPOSv2
                 Close();
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

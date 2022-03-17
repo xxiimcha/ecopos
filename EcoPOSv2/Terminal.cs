@@ -430,8 +430,8 @@ namespace EcoPOSv2
                                                      WHEN cus_type = 3 THEN 'Athlete'
                                                      END) as 'cus_name', 
                                                      COUNT(*) as 'no_of_items', SUM(grand_total) as 'total'
-                                                     FROM transaction_details 
-                                                     WHERE cus_type IN (1,2,3) AND (action = 1 or action = 4) AND terminal_id=" + cmbTerminalNames.Text + " AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
+                                                     FROM transaction_details as td
+                                                     WHERE cus_type IN (1,2,3) AND (action = 1 or action = 4) AND td.terminal_id=" + cmbTerminalNames.Text + " AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      GROUP BY dateadd(DAY,0, datediff(day,0, date_time)),  cus_type ORDER BY 'date_time'", SQL.DBCon);
             }
 
@@ -1173,7 +1173,7 @@ namespace EcoPOSv2
                     SQL.AddParam("@terminal_id", cmbTerminalNames.Text);
                     SQL.Query(@"SELECT COUNT(*) as 'no_of_orders', SUM(selling_price_inclusive)*-1 as 'total'
                                FROM transaction_details as td JOIN transaction_items as ti
-                               ON terminal_id=@terminal_id AND td.action = 4 AND td.order_ref=ti.order_ref AND selling_price_inclusive < 0 AND td.date_time BETWEEN @from AND @to");
+                               ON td.terminal_id=@terminal_id AND td.action = 4 AND td.order_ref=ti.order_ref AND selling_price_inclusive < 0 AND td.date_time BETWEEN @from AND @to");
                     if (SQL.HasException(true))
                         return;
                     foreach (DataRow r in SQL.DBDT.Rows)

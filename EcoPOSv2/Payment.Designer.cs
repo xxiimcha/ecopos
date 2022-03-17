@@ -38,6 +38,8 @@
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.btnRemoveGC = new Guna.UI2.WinForms.Guna2Button();
             this.btnGC = new Guna.UI2.WinForms.Guna2Button();
             this.btnExact = new Guna.UI2.WinForms.Guna2Button();
@@ -62,13 +64,11 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
+            this.pnlTitle.SuspendLayout();
             this.pnlChange.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label9
@@ -165,7 +165,7 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Controls.Add(this.pnlTitle);
             this.guna2Panel1.Controls.Add(this.btnRemoveGC);
             this.guna2Panel1.Controls.Add(this.btnGC);
             this.guna2Panel1.Controls.Add(this.btnExact);
@@ -190,6 +190,35 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(619, 686);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // pnlTitle
+            // 
+            this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
+            this.pnlTitle.BorderThickness = 1;
+            this.pnlTitle.Controls.Add(this.btnClose);
+            this.pnlTitle.Controls.Add(this.gunaLabel1);
+            this.pnlTitle.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.ShadowDecoration.Depth = 40;
+            this.pnlTitle.ShadowDecoration.Enabled = true;
+            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
+            this.pnlTitle.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.pnlTitle.Size = new System.Drawing.Size(619, 35);
+            this.pnlTitle.TabIndex = 128;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(78, 21);
+            this.gunaLabel1.TabIndex = 103;
+            this.gunaLabel1.Text = "PAYMENT";
+            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnRemoveGC
             // 
@@ -623,31 +652,9 @@
             this.Label1.Text = "PAYMENT METHOD";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // gunaLabel1
+            // guna2DragControl1
             // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(78, 21);
-            this.gunaLabel1.TabIndex = 103;
-            this.gunaLabel1.Text = "PAYMENT";
-            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.btnClose);
-            this.guna2Panel2.Controls.Add(this.gunaLabel1);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.ShadowDecoration.Depth = 40;
-            this.guna2Panel2.ShadowDecoration.Enabled = true;
-            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.guna2Panel2.Size = new System.Drawing.Size(619, 35);
-            this.guna2Panel2.TabIndex = 128;
+            this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
             // Payment
             // 
@@ -667,10 +674,10 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Payment_KeyDown);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            this.pnlTitle.ResumeLayout(false);
+            this.pnlTitle.PerformLayout();
             this.pnlChange.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -710,6 +717,6 @@
         public Guna.UI2.WinForms.Guna2Button btnRemoveGC;
         public Guna.UI2.WinForms.Guna2Button btnGC;
         public Guna.UI2.WinForms.Guna2Button btnExact;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2Panel pnlTitle;
     }
 }

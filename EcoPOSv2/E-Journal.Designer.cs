@@ -32,6 +32,7 @@
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnVoid = new FontAwesome.Sharp.IconButton();
+            this.btnTerminal = new FontAwesome.Sharp.IconButton();
             this.btnTransactions = new FontAwesome.Sharp.IconButton();
             this.btnStaff = new FontAwesome.Sharp.IconButton();
             this.btnXReading = new FontAwesome.Sharp.IconButton();
@@ -39,7 +40,6 @@
             this.btnSD = new FontAwesome.Sharp.IconButton();
             this.btnRD = new FontAwesome.Sharp.IconButton();
             this.pnlChild = new System.Windows.Forms.Panel();
-            this.btnTerminal = new FontAwesome.Sharp.IconButton();
             this.TableLayoutPanel2.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -105,10 +105,32 @@
             this.btnVoid.Location = new System.Drawing.Point(948, 3);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(133, 36);
-            this.btnVoid.TabIndex = 19;
+            this.btnVoid.TabIndex = 8;
             this.btnVoid.Text = "VOID";
             this.btnVoid.UseVisualStyleBackColor = false;
             this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
+            // 
+            // btnTerminal
+            // 
+            this.btnTerminal.BackColor = System.Drawing.Color.White;
+            this.btnTerminal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTerminal.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(147)))), ((int)(((byte)(214)))));
+            this.btnTerminal.FlatAppearance.BorderSize = 2;
+            this.btnTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTerminal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTerminal.ForeColor = System.Drawing.Color.Black;
+            this.btnTerminal.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnTerminal.IconColor = System.Drawing.Color.White;
+            this.btnTerminal.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnTerminal.IconSize = 30;
+            this.btnTerminal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTerminal.Location = new System.Drawing.Point(3, 3);
+            this.btnTerminal.Name = "btnTerminal";
+            this.btnTerminal.Size = new System.Drawing.Size(129, 36);
+            this.btnTerminal.TabIndex = 1;
+            this.btnTerminal.Text = "TERMINAL";
+            this.btnTerminal.UseVisualStyleBackColor = false;
+            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
             // 
             // btnTransactions
             // 
@@ -127,7 +149,7 @@
             this.btnTransactions.Location = new System.Drawing.Point(138, 3);
             this.btnTransactions.Name = "btnTransactions";
             this.btnTransactions.Size = new System.Drawing.Size(129, 36);
-            this.btnTransactions.TabIndex = 20;
+            this.btnTransactions.TabIndex = 2;
             this.btnTransactions.Text = "TRANSACTIONS";
             this.btnTransactions.UseVisualStyleBackColor = false;
             this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
@@ -149,7 +171,7 @@
             this.btnStaff.Location = new System.Drawing.Point(273, 3);
             this.btnStaff.Name = "btnStaff";
             this.btnStaff.Size = new System.Drawing.Size(129, 36);
-            this.btnStaff.TabIndex = 13;
+            this.btnStaff.TabIndex = 3;
             this.btnStaff.Text = "STAFF";
             this.btnStaff.UseVisualStyleBackColor = false;
             this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
@@ -171,7 +193,7 @@
             this.btnXReading.Location = new System.Drawing.Point(408, 3);
             this.btnXReading.Name = "btnXReading";
             this.btnXReading.Size = new System.Drawing.Size(129, 36);
-            this.btnXReading.TabIndex = 17;
+            this.btnXReading.TabIndex = 4;
             this.btnXReading.Text = "X-READING";
             this.btnXReading.UseVisualStyleBackColor = false;
             this.btnXReading.Click += new System.EventHandler(this.btnXReading_Click);
@@ -193,7 +215,7 @@
             this.btnZReading.Location = new System.Drawing.Point(543, 3);
             this.btnZReading.Name = "btnZReading";
             this.btnZReading.Size = new System.Drawing.Size(129, 36);
-            this.btnZReading.TabIndex = 16;
+            this.btnZReading.TabIndex = 5;
             this.btnZReading.Text = "Z-READING";
             this.btnZReading.UseVisualStyleBackColor = false;
             this.btnZReading.Click += new System.EventHandler(this.btnZReading_Click);
@@ -215,7 +237,7 @@
             this.btnSD.Location = new System.Drawing.Point(678, 3);
             this.btnSD.Name = "btnSD";
             this.btnSD.Size = new System.Drawing.Size(129, 36);
-            this.btnSD.TabIndex = 14;
+            this.btnSD.TabIndex = 6;
             this.btnSD.Text = "SPECIAL DISCOUNTS";
             this.btnSD.UseVisualStyleBackColor = false;
             this.btnSD.Click += new System.EventHandler(this.btnSD_Click);
@@ -237,7 +259,7 @@
             this.btnRD.Location = new System.Drawing.Point(813, 3);
             this.btnRD.Name = "btnRD";
             this.btnRD.Size = new System.Drawing.Size(129, 36);
-            this.btnRD.TabIndex = 15;
+            this.btnRD.TabIndex = 7;
             this.btnRD.Text = "REGULAR DISCOUNT";
             this.btnRD.UseVisualStyleBackColor = false;
             this.btnRD.Click += new System.EventHandler(this.btnRD_Click);
@@ -250,28 +272,6 @@
             this.pnlChild.Name = "pnlChild";
             this.pnlChild.Size = new System.Drawing.Size(1084, 680);
             this.pnlChild.TabIndex = 0;
-            // 
-            // btnTerminal
-            // 
-            this.btnTerminal.BackColor = System.Drawing.Color.White;
-            this.btnTerminal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTerminal.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(147)))), ((int)(((byte)(214)))));
-            this.btnTerminal.FlatAppearance.BorderSize = 2;
-            this.btnTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTerminal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTerminal.ForeColor = System.Drawing.Color.Black;
-            this.btnTerminal.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnTerminal.IconColor = System.Drawing.Color.White;
-            this.btnTerminal.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnTerminal.IconSize = 30;
-            this.btnTerminal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTerminal.Location = new System.Drawing.Point(3, 3);
-            this.btnTerminal.Name = "btnTerminal";
-            this.btnTerminal.Size = new System.Drawing.Size(129, 36);
-            this.btnTerminal.TabIndex = 12;
-            this.btnTerminal.Text = "TERMINAL";
-            this.btnTerminal.UseVisualStyleBackColor = false;
-            this.btnTerminal.Click += new System.EventHandler(this.btnTerminal_Click);
             // 
             // E_Journal
             // 

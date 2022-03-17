@@ -54,9 +54,9 @@ namespace EcoPOSv2
         {
             if (dgvCustomer.SelectedRows.Count == 0)
                 return;
-            SQL.AddParam("@customerID", dgvCustomer.CurrentRow.Cells[0].Value.ToString());
-            SQL.AddParam("@cus_name", dgvCustomer.CurrentRow.Cells[1].Value.ToString());
-            SQL.AddParam("@cus_mem_ID", dgvCustomer.CurrentRow.Cells[3].Value.ToString());
+            SQL.AddParam("@customerID", dgvCustomer.SelectedRows[0].Cells[0].Value.ToString());
+            SQL.AddParam("@cus_name", dgvCustomer.SelectedRows[0].Cells[1].Value.ToString());
+            SQL.AddParam("@cus_mem_ID", dgvCustomer.SelectedRows[0].Cells[3].Value.ToString());
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
             SQL.Query(@"UPDATE order_no SET 
@@ -169,11 +169,6 @@ namespace EcoPOSv2
             LoadCustomer();
         }
 
-        private void DgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void OCustomer_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) Close();
@@ -187,6 +182,16 @@ namespace EcoPOSv2
         private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnConfirm.PerformClick();
+        }
+
+        private void dgvCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) btnConfirm.PerformClick();
+        }
+
+        private void txtNameCard_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) this.ActiveControl = dgvCustomer;
         }
     }
 }

@@ -124,5 +124,10 @@ namespace EcoPOSv2
         {
             btnConfirm.PerformClick();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

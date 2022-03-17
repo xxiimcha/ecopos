@@ -25,6 +25,10 @@ namespace EcoPOSv2
 {
     public partial class Customers : Form
     {
+        //SELECTED ID
+        string card_id = "";
+        
+
         public Customers()
         {
             InitializeComponent();
@@ -66,13 +70,16 @@ namespace EcoPOSv2
         private void CardRF()
         {
             requiredFields = new List<TextBox>();
-
-            requiredFields.Add(txtMC_CardNo);
         }
 
         private void ClearFields_Card()
         {
-            GA.DoThis(ref allTxt, TableLayoutPanel6, ControlType.TextBox, GroupAction.Action.Clear);
+            card_id = "";
+            txtMC_CardNo.Text = "";
+            txtMC_Membership.Text = "";
+            txtMC_Owner.Text = "";
+            txtMC_Balance.Text = "";
+            txtMC_Status.Text = "";
         }
         public static bool PrinterExists(string printerName)
         {
@@ -96,7 +103,6 @@ namespace EcoPOSv2
             txtMC_Search.Clear();
             txtMC_Owner.Clear();
             txtMC_Membership.Clear();
-            txtMC_ID.Clear();
             txtMC_CardNo.Clear();
             txtMC_Balance.Clear();
 
@@ -133,7 +139,7 @@ namespace EcoPOSv2
 
         private void LoadMembership()
         {
-            SQL.Query("SELECT member_type_ID, name FROM membership ORDER BY name ASC");
+            SQL.Query("SELECT member_type_ID, name as 'Memberships' FROM membership ORDER BY name ASC");
             if (SQL.HasException(true))
                 return;
 
@@ -720,23 +726,6 @@ namespace EcoPOSv2
             ClearFields_Mem();
         }
 
-        private void btnMem_Sort_Click(object sender, EventArgs e)
-        {
-            if (dgvMembership.RowCount == 0)
-                return;
-
-            if (btnMem_Sort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvMembership.Sort(dgvMembership.Columns[1], ListSortDirection.Ascending);
-                btnMem_Sort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvMembership.Sort(dgvMembership.Columns[1], ListSortDirection.Descending);
-                btnMem_Sort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
         private void dgvCard_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -750,7 +739,7 @@ namespace EcoPOSv2
 
             foreach (DataRow r in SQL.DBDT.Rows)
             {
-                txtMC_ID.Text = r["cardID"].ToString();
+                card_id = r["cardID"].ToString();
                 txtMC_CardNo.Text = r["card_no"].ToString();
                 txtMC_Membership.Text = r["member_type_ID"].ToString();
                 txtMC_Owner.Text = r["customer_name"].ToString();
@@ -844,14 +833,6 @@ namespace EcoPOSv2
             ClearCard_Mem();
         }
 
-        private void txtMC_ID_TextChanged(object sender, EventArgs e)
-        {
-            if (txtMC_ID.Text != "")
-                txtMC_CardNo.Enabled = false;
-            else
-                txtMC_CardNo.Enabled = true;
-        }
-
         private void txtMC_Search_KeyUp(object sender, KeyEventArgs e)
         {
             if (txtMC_Search.Text == "")
@@ -860,7 +841,7 @@ namespace EcoPOSv2
             {
                 SQL.AddParam("@find", txtMC_Search.Text + "%");
 
-                SQL.Query(@"SELECT cardID, card_no FROM member_card WHERE card_no LIKE @find 
+                SQL.Query(@"SELECT cardID, card_no as 'CARD NUMBER' FROM member_card WHERE card_no LIKE @find 
                            OR customer_name LIKE @find ORDER BY card_no ASC");
 
                 if (SQL.HasException(true))
@@ -868,20 +849,6 @@ namespace EcoPOSv2
 
                 dgvCard.DataSource = SQL.DBDT;
                 dgvCard.Columns[0].Visible = false;
-            }
-        }
-
-        private void btnMC_Sort_Click(object sender, EventArgs e)
-        {
-            if (btnMC_Sort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvCard.Sort(dgvCard.Columns[1], ListSortDirection.Ascending);
-                btnMC_Sort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvCard.Sort(dgvCard.Columns[1], ListSortDirection.Descending);
-                btnMC_Sort.IconChar = IconChar.SortAlphaDown;
             }
         }
 
@@ -1211,24 +1178,7 @@ namespace EcoPOSv2
             EI.ExportDgvToPDF("Member Transactions", dgvMT_Records);
         }
 
-        private void btnMT_Sort_Click(object sender, EventArgs e)
-        {
-            if (dgvMT_Records.RowCount == 0)
-                return;
-
-            if (btnMT_Sort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvMT_Records.Sort(dgvMT_Records.Columns[1], ListSortDirection.Ascending);
-                btnMT_Sort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvMT_Records.Sort(dgvMT_Records.Columns[1], ListSortDirection.Descending);
-                btnMT_Sort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
-        private void btnMT_SrcDate_Click(object sender, EventArgs e)
+        private void loadDGVdata()
         {
             string cus_query = "cus_ID_no <> 0";
 
@@ -1247,9 +1197,6 @@ namespace EcoPOSv2
 
             dgvMT_Records.DataSource = SQL.DBDT;
             dgvMT_Records.Columns[0].Visible = false;
-
-
-           // MessageBox.Show(dtpMT_From.Value.ToString() + "\n" + dtpMT_To.Value.ToString());
         }
 
         private void dgvMT_Records_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1316,10 +1263,11 @@ namespace EcoPOSv2
                         report.SetParameterValue("cus_name", r["cus_name"].ToString());
                         report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
                         report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
-
+                        report.SetParameterValue("ReferenceNo", r["referenceNo"].ToString());
 
                         CrystalReportViewer1.ReportSource = report;
                         CrystalReportViewer1.Refresh();
+                        CrystalReportViewer1.Zoom(1);
                     }
                 }
                 catch (Exception ex)
@@ -1433,6 +1381,26 @@ namespace EcoPOSv2
                 }
                 else return;
             }
+        }
+
+        private void cmbMT_Customer_SelectedValueChanged(object sender, EventArgs e)
+        {
+            loadDGVdata();
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            loadDGVdata();
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            loadDGVdata();
+        }
+
+        private void btnExportDGVToExcel_Click(object sender, EventArgs e)
+        {
+            new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvMT_Records), "Customer Report", "Customer Report");
         }
 
         private void btnMembership_Click(object sender, EventArgs e)

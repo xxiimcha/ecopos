@@ -67,9 +67,9 @@
             // 
             // Label3
             // 
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(12, 53);
+            this.Label3.Location = new System.Drawing.Point(14, 53);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(103, 33);
             this.Label3.TabIndex = 43;
@@ -91,7 +91,7 @@
             this.btnConfirm.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(51, 50);
-            this.btnConfirm.TabIndex = 2;
+            this.btnConfirm.TabIndex = 3;
             this.btnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // label1
@@ -171,7 +171,7 @@
             this.dgvCustomer.RowTemplate.Height = 35;
             this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomer.Size = new System.Drawing.Size(564, 486);
-            this.dgvCustomer.TabIndex = 50;
+            this.dgvCustomer.TabIndex = 2;
             this.dgvCustomer.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCustomer.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -195,6 +195,7 @@
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCustomer.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvCustomer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellDoubleClick);
+            this.dgvCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvCustomer_KeyDown);
             // 
             // pnlTitle
             // 
@@ -233,7 +234,8 @@
             this.txtNameCard.SelectedText = "";
             this.txtNameCard.ShadowDecoration.Parent = this.txtNameCard;
             this.txtNameCard.Size = new System.Drawing.Size(399, 33);
-            this.txtNameCard.TabIndex = 48;
+            this.txtNameCard.TabIndex = 1;
+            this.txtNameCard.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNameCard_KeyDown);
             this.txtNameCard.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtNameCard_KeyUp);
             // 
             // guna2DragControl1
