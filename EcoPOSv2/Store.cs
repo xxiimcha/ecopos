@@ -26,7 +26,8 @@ namespace EcoPOSv2
         private void BtnSeeStoreDetails_Click(object sender, EventArgs e)
         {
             var frmEditSD = new EditSD();
-            frmEditSD.btnSave.Enabled = false;
+            frmEditSD.btnSave.Visible = false;
+            frmEditSD.textBoxPanel.Enabled = false;
             frmEditSD.ShowDialog();
         }
 

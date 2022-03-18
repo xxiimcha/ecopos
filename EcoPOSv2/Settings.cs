@@ -31,8 +31,8 @@ namespace EcoPOSv2
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            btnDatabaseManagement.Enabled = true;
-            btnDatabaseManagement.Visible = true;
+            btnDatabaseManagement.Enabled = false;
+            btnDatabaseManagement.Visible = false;
 
             currentBtn = btnStore;
             OL.changeFormWithButton(new Store(), ref currentChildForm, btnStore, ref currentBtn, ref pnlChild);

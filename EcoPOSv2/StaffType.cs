@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 using static EcoPOSv2.GroupAction;
 
 namespace EcoPOSv2
@@ -21,7 +22,7 @@ namespace EcoPOSv2
 
         SQLControl SQL = new SQLControl();
         GroupAction GA = new GroupAction();
-        List<TextBox> requiredFields = new List<TextBox>();
+        List<Guna2TextBox> requiredFields = new List<Guna2TextBox>();
         string roleID = "";
         List<Control> allTxt = new List<Control>();
         //METHODS
@@ -39,7 +40,7 @@ namespace EcoPOSv2
         }
         private void LoadStaffType()
         {
-            SQL.Query("SELECT roleID, name FROM user_role ORDER BY name ASC");
+            SQL.Query("SELECT roleID, name as 'Staff Type' FROM user_role ORDER BY name ASC");
             if (SQL.HasException(true))
                 return;
 
@@ -49,7 +50,7 @@ namespace EcoPOSv2
 
         private void StaffTypeRF()
         {
-            requiredFields = new List<TextBox>();
+            requiredFields = new List<Guna2TextBox>();
 
             requiredFields.Add(txtStaffType);
         }
@@ -104,7 +105,7 @@ namespace EcoPOSv2
         {
             StaffTypeRF();
 
-            int requiredFieldsMet = ControlBehavior.RequireField(ref requiredFields);
+            int requiredFieldsMet = ControlBehavior.GunaRequireField(ref requiredFields);
 
             if (requiredFieldsMet == 1)
             {

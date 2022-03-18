@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
 using static EcoPOSv2.GroupAction;
+using Guna.UI2.WinForms;
 
 namespace EcoPOSv2
 {
@@ -27,7 +28,7 @@ namespace EcoPOSv2
 
         string userID = "";
         List<Control> allTxt = new List<Control>();
-        List<TextBox> requiredFields = new List<TextBox>();
+        List<Guna2TextBox> requiredFields = new List<Guna2TextBox>();
 
         //METHODS
         public static Staff _Staff;
@@ -56,15 +57,15 @@ namespace EcoPOSv2
 
         private void ClearFields()
         {
-            GA.DoThis(ref allTxt, TableLayoutPanel1, ControlType.TextBox, GroupAction.Action.Clear);
-            GA.DoThis(ref allTxt, TableLayoutPanel1, ControlType.CheckBox, GroupAction.Action.Uncheck);
+            GA.DoThis(ref allTxt, Panel4, ControlType.GunaTextBox, GroupAction.Action.Clear);
+            GA.DoThis(ref allTxt, Panel4, ControlType.CheckBox, GroupAction.Action.Uncheck);
 
             userID = "";
         }
 
         private void StaffRF()
         {
-            requiredFields = new List<TextBox>();
+            requiredFields = new List<Guna2TextBox>();
 
             requiredFields.Add(txtUsername);
             requiredFields.Add(txtPassword);
@@ -139,7 +140,7 @@ namespace EcoPOSv2
         {
             StaffRF();
 
-            int requiredFieldsMet = RequireField(ref requiredFields);
+            int requiredFieldsMet = GunaRequireField(ref requiredFields);
 
             if (requiredFieldsMet == 1 && cmbStaffType.Text != "")
             {
@@ -326,7 +327,7 @@ namespace EcoPOSv2
         {
             SQL.AddParam("@find", txtSearchUser.Text + "%");
 
-            SQL.Query(@"SELECT userID, user_name, first_name, last_name, user_role.name
+            SQL.Query(@"SELECT userID, user_name as 'Username', first_name as 'First Name', last_name as 'Last Name', user_role.name as 'Role'
                        FROM users INNER JOIN user_role ON users.roleID = user_role.roleID
                        WHERE user_name LIKE @find OR first_name LIKE @find OR last_name LIKE @find");
 

@@ -46,6 +46,7 @@ namespace EcoPOSv2
 
             new CreateParams();
             SetDoubleBuffered(TableLayoutPanel2);
+            OL.changeFormWithButton(new Terminal(), ref currentChildForm, btnTerminal, ref currentButton, ref pnlChild);
         }
 
         private void btnVoid_Click(object sender, EventArgs e)

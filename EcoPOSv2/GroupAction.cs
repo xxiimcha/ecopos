@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace EcoPOSv2
 {
@@ -13,7 +14,8 @@ namespace EcoPOSv2
         {
             TextBox = 1,
             RadioButton = 2,
-            CheckBox = 3
+            CheckBox = 3,
+            GunaTextBox = 4
         }
 
         public enum Action
@@ -159,7 +161,44 @@ namespace EcoPOSv2
 
                         break;
                     }
+
+                case ControlType.GunaTextBox:
+                    {
+                        foreach (Guna2TextBox txt in FindControlRecursive(list, parent, typeof(Guna2TextBox)))
+                        {
+                            switch (Action)
+                            {
+                                case Action.Clear:
+                                    {
+                                        txt.Clear();
+                                        break;
+                                    }
+
+                                case Action.Enable:
+                                    {
+                                        txt.Enabled = true;
+                                        break;
+                                    }
+
+                                case Action.Disable:
+                                    {
+                                        txt.Enabled = false;
+                                        break;
+                                    }
+
+                                default:
+                                    {
+                                        MessageBox.Show("No action");
+                                        break;
+                                    }
+                            }
+                        }
+
+                        break;
+                    }
             }
+
+
 
             list = new List<Control>();
         }

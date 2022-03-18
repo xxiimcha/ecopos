@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DVOptions));
             this.Label1 = new System.Windows.Forms.Label();
             this.btnShowMainForm = new System.Windows.Forms.Button();
-            this.btnImportDatabase = new System.Windows.Forms.Button();
             this.btnChangeStoreSettings = new System.Windows.Forms.Button();
             this.btnResetDatabase = new System.Windows.Forms.Button();
             this.btnInvoiceEditor = new System.Windows.Forms.Button();
@@ -46,7 +45,7 @@
             // 
             // Label1
             // 
-            this.Label1.Location = new System.Drawing.Point(190, 248);
+            this.Label1.Location = new System.Drawing.Point(193, 251);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(267, 34);
             this.Label1.TabIndex = 7;
@@ -57,7 +56,7 @@
             // btnShowMainForm
             // 
             this.btnShowMainForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowMainForm.Location = new System.Drawing.Point(11, 285);
+            this.btnShowMainForm.Location = new System.Drawing.Point(14, 288);
             this.btnShowMainForm.Name = "btnShowMainForm";
             this.btnShowMainForm.Size = new System.Drawing.Size(596, 46);
             this.btnShowMainForm.TabIndex = 6;
@@ -65,20 +64,10 @@
             this.btnShowMainForm.UseVisualStyleBackColor = true;
             this.btnShowMainForm.Click += new System.EventHandler(this.btnShowMainForm_Click);
             // 
-            // btnImportDatabase
-            // 
-            this.btnImportDatabase.Location = new System.Drawing.Point(631, 12);
-            this.btnImportDatabase.Name = "btnImportDatabase";
-            this.btnImportDatabase.Size = new System.Drawing.Size(295, 47);
-            this.btnImportDatabase.TabIndex = 5;
-            this.btnImportDatabase.Text = "Import database";
-            this.btnImportDatabase.UseVisualStyleBackColor = true;
-            this.btnImportDatabase.Click += new System.EventHandler(this.btnImportDatabase_Click);
-            // 
             // btnChangeStoreSettings
             // 
             this.btnChangeStoreSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeStoreSettings.Location = new System.Drawing.Point(12, 12);
+            this.btnChangeStoreSettings.Location = new System.Drawing.Point(15, 15);
             this.btnChangeStoreSettings.Name = "btnChangeStoreSettings";
             this.btnChangeStoreSettings.Size = new System.Drawing.Size(298, 47);
             this.btnChangeStoreSettings.TabIndex = 4;
@@ -89,7 +78,7 @@
             // btnResetDatabase
             // 
             this.btnResetDatabase.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetDatabase.Location = new System.Drawing.Point(12, 65);
+            this.btnResetDatabase.Location = new System.Drawing.Point(15, 68);
             this.btnResetDatabase.Name = "btnResetDatabase";
             this.btnResetDatabase.Size = new System.Drawing.Size(298, 47);
             this.btnResetDatabase.TabIndex = 10;
@@ -100,7 +89,7 @@
             // btnInvoiceEditor
             // 
             this.btnInvoiceEditor.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoiceEditor.Location = new System.Drawing.Point(314, 65);
+            this.btnInvoiceEditor.Location = new System.Drawing.Point(317, 68);
             this.btnInvoiceEditor.Name = "btnInvoiceEditor";
             this.btnInvoiceEditor.Size = new System.Drawing.Size(295, 47);
             this.btnInvoiceEditor.TabIndex = 11;
@@ -111,7 +100,7 @@
             // btnTerminal
             // 
             this.btnTerminal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTerminal.Location = new System.Drawing.Point(12, 171);
+            this.btnTerminal.Location = new System.Drawing.Point(15, 174);
             this.btnTerminal.Name = "btnTerminal";
             this.btnTerminal.Size = new System.Drawing.Size(298, 47);
             this.btnTerminal.TabIndex = 12;
@@ -122,7 +111,7 @@
             // btnFeatures
             // 
             this.btnFeatures.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFeatures.Location = new System.Drawing.Point(314, 118);
+            this.btnFeatures.Location = new System.Drawing.Point(317, 121);
             this.btnFeatures.Name = "btnFeatures";
             this.btnFeatures.Size = new System.Drawing.Size(295, 47);
             this.btnFeatures.TabIndex = 13;
@@ -133,7 +122,7 @@
             // btnResetSales
             // 
             this.btnResetSales.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetSales.Location = new System.Drawing.Point(12, 118);
+            this.btnResetSales.Location = new System.Drawing.Point(15, 121);
             this.btnResetSales.Name = "btnResetSales";
             this.btnResetSales.Size = new System.Drawing.Size(298, 47);
             this.btnResetSales.TabIndex = 14;
@@ -144,7 +133,7 @@
             // btnQuery
             // 
             this.btnQuery.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuery.Location = new System.Drawing.Point(314, 171);
+            this.btnQuery.Location = new System.Drawing.Point(317, 174);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(295, 47);
             this.btnQuery.TabIndex = 15;
@@ -155,7 +144,7 @@
             // btnClientSetup
             // 
             this.btnClientSetup.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientSetup.Location = new System.Drawing.Point(314, 12);
+            this.btnClientSetup.Location = new System.Drawing.Point(317, 15);
             this.btnClientSetup.Name = "btnClientSetup";
             this.btnClientSetup.Size = new System.Drawing.Size(293, 47);
             this.btnClientSetup.TabIndex = 16;
@@ -173,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 348);
+            this.ClientSize = new System.Drawing.Size(627, 348);
             this.Controls.Add(this.btnClientSetup);
             this.Controls.Add(this.btnQuery);
             this.Controls.Add(this.btnResetSales);
@@ -183,7 +172,6 @@
             this.Controls.Add(this.btnResetDatabase);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.btnShowMainForm);
-            this.Controls.Add(this.btnImportDatabase);
             this.Controls.Add(this.btnChangeStoreSettings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -204,7 +192,6 @@
 
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Button btnShowMainForm;
-        internal System.Windows.Forms.Button btnImportDatabase;
         internal System.Windows.Forms.Button btnChangeStoreSettings;
         internal System.Windows.Forms.Button btnResetDatabase;
         internal System.Windows.Forms.Button btnInvoiceEditor;

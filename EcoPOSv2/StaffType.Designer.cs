@@ -32,10 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffType));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.SplitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dgvStaffType = new System.Windows.Forms.DataGridView();
+            this.dgvStaffType = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
+            this.txtStaffType = new Guna.UI2.WinForms.Guna2TextBox();
             this.lblID = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
@@ -50,6 +53,7 @@
             this.cbxOrd_VoidTransaction = new System.Windows.Forms.CheckBox();
             this.cbxOrd_CancelTransaction = new System.Windows.Forms.CheckBox();
             this.cbxOrd_RefundTransaction = new System.Windows.Forms.CheckBox();
+            this.cbxOrd_KeepTransaction = new System.Windows.Forms.CheckBox();
             this.cbxOrd_ReturnExchange = new System.Windows.Forms.CheckBox();
             this.cbxOrd_RedeemItem = new System.Windows.Forms.CheckBox();
             this.Label3 = new System.Windows.Forms.Label();
@@ -71,11 +75,9 @@
             this.cbxMore_CustomerMembership = new System.Windows.Forms.CheckBox();
             this.cbxMore_PayInOut = new System.Windows.Forms.CheckBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.btnClose = new FontAwesome.Sharp.IconButton();
-            this.txtStaffType = new System.Windows.Forms.TextBox();
             this.Label6 = new System.Windows.Forms.Label();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.cbxOrd_KeepTransaction = new System.Windows.Forms.CheckBox();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer1)).BeginInit();
             this.SplitContainer1.Panel1.SuspendLayout();
@@ -98,17 +100,22 @@
             // 
             // SplitContainer1
             // 
+            this.SplitContainer1.BackColor = System.Drawing.Color.White;
+            this.SplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SplitContainer1.Location = new System.Drawing.Point(0, 0);
             this.SplitContainer1.Name = "SplitContainer1";
             // 
             // SplitContainer1.Panel1
             // 
+            this.SplitContainer1.Panel1.BackColor = System.Drawing.Color.White;
             this.SplitContainer1.Panel1.Controls.Add(this.dgvStaffType);
             // 
             // SplitContainer1.Panel2
             // 
-            this.SplitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SplitContainer1.Panel2.BackColor = System.Drawing.Color.White;
+            this.SplitContainer1.Panel2.Controls.Add(this.btnClose);
+            this.SplitContainer1.Panel2.Controls.Add(this.txtStaffType);
             this.SplitContainer1.Panel2.Controls.Add(this.lblID);
             this.SplitContainer1.Panel2.Controls.Add(this.label7);
             this.SplitContainer1.Panel2.Controls.Add(this.btnSave);
@@ -116,8 +123,6 @@
             this.SplitContainer1.Panel2.Controls.Add(this.btnAdd);
             this.SplitContainer1.Panel2.Controls.Add(this.flpPermission);
             this.SplitContainer1.Panel2.Controls.Add(this.Label1);
-            this.SplitContainer1.Panel2.Controls.Add(this.btnClose);
-            this.SplitContainer1.Panel2.Controls.Add(this.txtStaffType);
             this.SplitContainer1.Panel2.Controls.Add(this.Label6);
             this.SplitContainer1.Size = new System.Drawing.Size(948, 577);
             this.SplitContainer1.SplitterDistance = 315;
@@ -127,72 +132,145 @@
             // 
             this.dgvStaffType.AllowUserToAddRows = false;
             this.dgvStaffType.AllowUserToDeleteRows = false;
-            this.dgvStaffType.AllowUserToResizeColumns = false;
             this.dgvStaffType.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvStaffType.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStaffType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStaffType.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvStaffType.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvStaffType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvStaffType.ColumnHeadersHeight = 6;
-            this.dgvStaffType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvStaffType.BackgroundColor = System.Drawing.Color.White;
+            this.dgvStaffType.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvStaffType.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvStaffType.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvStaffType.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvStaffType.ColumnHeadersHeight = 40;
+            this.dgvStaffType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStaffType.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStaffType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStaffType.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvStaffType.EnableHeadersVisualStyles = false;
+            this.dgvStaffType.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvStaffType.Location = new System.Drawing.Point(0, 0);
+            this.dgvStaffType.MultiSelect = false;
             this.dgvStaffType.Name = "dgvStaffType";
             this.dgvStaffType.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStaffType.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvStaffType.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStaffType.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvStaffType.Size = new System.Drawing.Size(315, 577);
-            this.dgvStaffType.TabIndex = 10;
+            this.dgvStaffType.RowTemplate.DividerHeight = 1;
+            this.dgvStaffType.RowTemplate.Height = 35;
+            this.dgvStaffType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStaffType.Size = new System.Drawing.Size(313, 575);
+            this.dgvStaffType.TabIndex = 131;
+            this.dgvStaffType.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
+            this.dgvStaffType.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvStaffType.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvStaffType.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvStaffType.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvStaffType.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvStaffType.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvStaffType.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvStaffType.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvStaffType.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvStaffType.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.dgvStaffType.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvStaffType.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvStaffType.ThemeStyle.HeaderStyle.Height = 40;
+            this.dgvStaffType.ThemeStyle.ReadOnly = true;
+            this.dgvStaffType.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvStaffType.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvStaffType.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.dgvStaffType.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvStaffType.ThemeStyle.RowsStyle.Height = 35;
+            this.dgvStaffType.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvStaffType.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvStaffType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaffType_CellClick);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.AnimationHoverSpeed = 0.07F;
+            this.btnClose.AnimationSpeed = 0.03F;
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.IconColor = System.Drawing.Color.Black;
+            this.btnClose.IconSize = 15F;
+            this.btnClose.Location = new System.Drawing.Point(585, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnClose.Size = new System.Drawing.Size(42, 35);
+            this.btnClose.TabIndex = 103;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // txtStaffType
+            // 
+            this.txtStaffType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtStaffType.BorderRadius = 3;
+            this.txtStaffType.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStaffType.DefaultText = "";
+            this.txtStaffType.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtStaffType.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtStaffType.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtStaffType.DisabledState.Parent = this.txtStaffType;
+            this.txtStaffType.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtStaffType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtStaffType.FocusedState.Parent = this.txtStaffType;
+            this.txtStaffType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStaffType.ForeColor = System.Drawing.Color.Black;
+            this.txtStaffType.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtStaffType.HoverState.Parent = this.txtStaffType;
+            this.txtStaffType.Location = new System.Drawing.Point(106, 56);
+            this.txtStaffType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStaffType.Name = "txtStaffType";
+            this.txtStaffType.PasswordChar = '\0';
+            this.txtStaffType.PlaceholderText = "";
+            this.txtStaffType.SelectedText = "";
+            this.txtStaffType.ShadowDecoration.Parent = this.txtStaffType;
+            this.txtStaffType.Size = new System.Drawing.Size(488, 33);
+            this.txtStaffType.TabIndex = 76;
             // 
             // lblID
             // 
-            this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.ForeColor = System.Drawing.Color.Black;
-            this.lblID.Location = new System.Drawing.Point(102, 4);
+            this.lblID.Location = new System.Drawing.Point(108, 26);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(32, 25);
+            this.lblID.Size = new System.Drawing.Size(259, 25);
             this.lblID.TabIndex = 75;
             this.lblID.Text = "    ";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(27, 5);
+            this.label7.Location = new System.Drawing.Point(8, 26);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 25);
+            this.label7.Size = new System.Drawing.Size(63, 21);
             this.label7.TabIndex = 74;
             this.label7.Text = "Staff ID:";
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.BorderColor = System.Drawing.Color.Green;
             this.btnSave.BorderThickness = 2;
             this.btnSave.CheckedState.Parent = this.btnSave;
@@ -204,10 +282,10 @@
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSave.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSave.Location = new System.Drawing.Point(108, 519);
+            this.btnSave.Location = new System.Drawing.Point(89, 519);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShadowDecoration.Parent = this.btnSave;
-            this.btnSave.Size = new System.Drawing.Size(120, 40);
+            this.btnSave.Size = new System.Drawing.Size(142, 40);
             this.btnSave.TabIndex = 72;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextOffset = new System.Drawing.Point(10, 0);
@@ -215,6 +293,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDelete.BorderThickness = 2;
             this.btnDelete.CheckedState.Parent = this.btnDelete;
@@ -226,10 +305,10 @@
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDelete.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnDelete.Location = new System.Drawing.Point(243, 519);
+            this.btnDelete.Location = new System.Drawing.Point(246, 519);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
-            this.btnDelete.Size = new System.Drawing.Size(120, 40);
+            this.btnDelete.Size = new System.Drawing.Size(142, 40);
             this.btnDelete.TabIndex = 73;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.TextOffset = new System.Drawing.Point(10, 0);
@@ -237,7 +316,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAdd.BackColor = System.Drawing.Color.White;
             this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.Orange;
             this.btnAdd.FlatAppearance.BorderSize = 2;
@@ -249,7 +328,7 @@
             this.btnAdd.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAdd.IconSize = 30;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdd.Location = new System.Drawing.Point(378, 519);
+            this.btnAdd.Location = new System.Drawing.Point(403, 519);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(142, 40);
             this.btnAdd.TabIndex = 71;
@@ -260,7 +339,7 @@
             // 
             // flpPermission
             // 
-            this.flpPermission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.flpPermission.BackColor = System.Drawing.Color.White;
             this.flpPermission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpPermission.Controls.Add(this.Label2);
             this.flpPermission.Controls.Add(this.cbxOrd_Payment);
@@ -300,11 +379,11 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.Black;
             this.Label2.Location = new System.Drawing.Point(3, 0);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(58, 25);
+            this.Label2.Size = new System.Drawing.Size(54, 23);
             this.Label2.TabIndex = 53;
             this.Label2.Text = "Order";
             // 
@@ -313,7 +392,7 @@
             this.cbxOrd_Payment.AutoSize = true;
             this.cbxOrd_Payment.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_Payment.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_Payment.Location = new System.Drawing.Point(3, 28);
+            this.cbxOrd_Payment.Location = new System.Drawing.Point(3, 26);
             this.cbxOrd_Payment.Name = "cbxOrd_Payment";
             this.cbxOrd_Payment.Size = new System.Drawing.Size(84, 24);
             this.cbxOrd_Payment.TabIndex = 0;
@@ -325,7 +404,7 @@
             this.cbxOrd_Customer.AutoSize = true;
             this.cbxOrd_Customer.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_Customer.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_Customer.Location = new System.Drawing.Point(3, 58);
+            this.cbxOrd_Customer.Location = new System.Drawing.Point(3, 56);
             this.cbxOrd_Customer.Name = "cbxOrd_Customer";
             this.cbxOrd_Customer.Size = new System.Drawing.Size(91, 24);
             this.cbxOrd_Customer.TabIndex = 13;
@@ -337,7 +416,7 @@
             this.cbxOrd_Discount.AutoSize = true;
             this.cbxOrd_Discount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_Discount.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_Discount.Location = new System.Drawing.Point(3, 88);
+            this.cbxOrd_Discount.Location = new System.Drawing.Point(3, 86);
             this.cbxOrd_Discount.Name = "cbxOrd_Discount";
             this.cbxOrd_Discount.Size = new System.Drawing.Size(86, 24);
             this.cbxOrd_Discount.TabIndex = 10;
@@ -349,7 +428,7 @@
             this.cbxOrd_VoidItem.AutoSize = true;
             this.cbxOrd_VoidItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_VoidItem.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_VoidItem.Location = new System.Drawing.Point(3, 118);
+            this.cbxOrd_VoidItem.Location = new System.Drawing.Point(3, 116);
             this.cbxOrd_VoidItem.Name = "cbxOrd_VoidItem";
             this.cbxOrd_VoidItem.Size = new System.Drawing.Size(92, 24);
             this.cbxOrd_VoidItem.TabIndex = 12;
@@ -361,7 +440,7 @@
             this.cbxOrd_VoidTransaction.AutoSize = true;
             this.cbxOrd_VoidTransaction.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_VoidTransaction.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_VoidTransaction.Location = new System.Drawing.Point(3, 148);
+            this.cbxOrd_VoidTransaction.Location = new System.Drawing.Point(3, 146);
             this.cbxOrd_VoidTransaction.Name = "cbxOrd_VoidTransaction";
             this.cbxOrd_VoidTransaction.Size = new System.Drawing.Size(137, 24);
             this.cbxOrd_VoidTransaction.TabIndex = 2;
@@ -373,7 +452,7 @@
             this.cbxOrd_CancelTransaction.AutoSize = true;
             this.cbxOrd_CancelTransaction.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_CancelTransaction.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_CancelTransaction.Location = new System.Drawing.Point(3, 178);
+            this.cbxOrd_CancelTransaction.Location = new System.Drawing.Point(3, 176);
             this.cbxOrd_CancelTransaction.Name = "cbxOrd_CancelTransaction";
             this.cbxOrd_CancelTransaction.Size = new System.Drawing.Size(151, 24);
             this.cbxOrd_CancelTransaction.TabIndex = 3;
@@ -385,19 +464,31 @@
             this.cbxOrd_RefundTransaction.AutoSize = true;
             this.cbxOrd_RefundTransaction.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_RefundTransaction.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_RefundTransaction.Location = new System.Drawing.Point(3, 208);
+            this.cbxOrd_RefundTransaction.Location = new System.Drawing.Point(3, 206);
             this.cbxOrd_RefundTransaction.Name = "cbxOrd_RefundTransaction";
             this.cbxOrd_RefundTransaction.Size = new System.Drawing.Size(154, 24);
             this.cbxOrd_RefundTransaction.TabIndex = 4;
             this.cbxOrd_RefundTransaction.Text = "Refund Transaction";
             this.cbxOrd_RefundTransaction.UseVisualStyleBackColor = true;
             // 
+            // cbxOrd_KeepTransaction
+            // 
+            this.cbxOrd_KeepTransaction.AutoSize = true;
+            this.cbxOrd_KeepTransaction.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxOrd_KeepTransaction.ForeColor = System.Drawing.Color.Black;
+            this.cbxOrd_KeepTransaction.Location = new System.Drawing.Point(3, 236);
+            this.cbxOrd_KeepTransaction.Name = "cbxOrd_KeepTransaction";
+            this.cbxOrd_KeepTransaction.Size = new System.Drawing.Size(141, 24);
+            this.cbxOrd_KeepTransaction.TabIndex = 69;
+            this.cbxOrd_KeepTransaction.Text = "Keep Transaction";
+            this.cbxOrd_KeepTransaction.UseVisualStyleBackColor = true;
+            // 
             // cbxOrd_ReturnExchange
             // 
             this.cbxOrd_ReturnExchange.AutoSize = true;
             this.cbxOrd_ReturnExchange.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_ReturnExchange.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_ReturnExchange.Location = new System.Drawing.Point(3, 268);
+            this.cbxOrd_ReturnExchange.Location = new System.Drawing.Point(3, 266);
             this.cbxOrd_ReturnExchange.Name = "cbxOrd_ReturnExchange";
             this.cbxOrd_ReturnExchange.Size = new System.Drawing.Size(140, 24);
             this.cbxOrd_ReturnExchange.TabIndex = 5;
@@ -409,7 +500,7 @@
             this.cbxOrd_RedeemItem.AutoSize = true;
             this.cbxOrd_RedeemItem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOrd_RedeemItem.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_RedeemItem.Location = new System.Drawing.Point(3, 298);
+            this.cbxOrd_RedeemItem.Location = new System.Drawing.Point(3, 296);
             this.cbxOrd_RedeemItem.Name = "cbxOrd_RedeemItem";
             this.cbxOrd_RedeemItem.Size = new System.Drawing.Size(117, 24);
             this.cbxOrd_RedeemItem.TabIndex = 6;
@@ -419,11 +510,11 @@
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(3, 325);
+            this.Label3.Location = new System.Drawing.Point(3, 323);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(61, 25);
+            this.Label3.Size = new System.Drawing.Size(57, 23);
             this.Label3.TabIndex = 54;
             this.Label3.Text = "Home";
             // 
@@ -432,7 +523,7 @@
             this.cbxHome_SwitchCashier.AutoSize = true;
             this.cbxHome_SwitchCashier.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxHome_SwitchCashier.ForeColor = System.Drawing.Color.Black;
-            this.cbxHome_SwitchCashier.Location = new System.Drawing.Point(3, 353);
+            this.cbxHome_SwitchCashier.Location = new System.Drawing.Point(3, 349);
             this.cbxHome_SwitchCashier.Name = "cbxHome_SwitchCashier";
             this.cbxHome_SwitchCashier.Size = new System.Drawing.Size(123, 24);
             this.cbxHome_SwitchCashier.TabIndex = 7;
@@ -454,11 +545,11 @@
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.Black;
             this.Label5.Location = new System.Drawing.Point(163, 30);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(80, 25);
+            this.Label5.Size = new System.Drawing.Size(78, 23);
             this.Label5.TabIndex = 65;
             this.Label5.Text = "Payment";
             // 
@@ -467,7 +558,7 @@
             this.cbxPay_PaymentMethod.AutoSize = true;
             this.cbxPay_PaymentMethod.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPay_PaymentMethod.ForeColor = System.Drawing.Color.Black;
-            this.cbxPay_PaymentMethod.Location = new System.Drawing.Point(163, 58);
+            this.cbxPay_PaymentMethod.Location = new System.Drawing.Point(163, 56);
             this.cbxPay_PaymentMethod.Name = "cbxPay_PaymentMethod";
             this.cbxPay_PaymentMethod.Size = new System.Drawing.Size(140, 24);
             this.cbxPay_PaymentMethod.TabIndex = 66;
@@ -479,7 +570,7 @@
             this.cbxPay_GiftCertificate.AutoSize = true;
             this.cbxPay_GiftCertificate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPay_GiftCertificate.ForeColor = System.Drawing.Color.Black;
-            this.cbxPay_GiftCertificate.Location = new System.Drawing.Point(163, 88);
+            this.cbxPay_GiftCertificate.Location = new System.Drawing.Point(163, 86);
             this.cbxPay_GiftCertificate.Name = "cbxPay_GiftCertificate";
             this.cbxPay_GiftCertificate.Size = new System.Drawing.Size(124, 24);
             this.cbxPay_GiftCertificate.TabIndex = 67;
@@ -489,11 +580,11 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.Color.Black;
-            this.Label4.Location = new System.Drawing.Point(163, 115);
+            this.Label4.Location = new System.Drawing.Point(163, 113);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(54, 25);
+            this.Label4.Size = new System.Drawing.Size(51, 23);
             this.Label4.TabIndex = 55;
             this.Label4.Text = "More";
             // 
@@ -502,7 +593,7 @@
             this.cbxMore_EJournal.AutoSize = true;
             this.cbxMore_EJournal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_EJournal.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_EJournal.Location = new System.Drawing.Point(163, 143);
+            this.cbxMore_EJournal.Location = new System.Drawing.Point(163, 139);
             this.cbxMore_EJournal.Name = "cbxMore_EJournal";
             this.cbxMore_EJournal.Size = new System.Drawing.Size(89, 24);
             this.cbxMore_EJournal.TabIndex = 15;
@@ -514,7 +605,7 @@
             this.cbxMore_Logs.AutoSize = true;
             this.cbxMore_Logs.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_Logs.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_Logs.Location = new System.Drawing.Point(163, 173);
+            this.cbxMore_Logs.Location = new System.Drawing.Point(163, 169);
             this.cbxMore_Logs.Name = "cbxMore_Logs";
             this.cbxMore_Logs.Size = new System.Drawing.Size(59, 24);
             this.cbxMore_Logs.TabIndex = 57;
@@ -526,7 +617,7 @@
             this.cbxMore_RedeemSettings.AutoSize = true;
             this.cbxMore_RedeemSettings.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_RedeemSettings.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_RedeemSettings.Location = new System.Drawing.Point(163, 203);
+            this.cbxMore_RedeemSettings.Location = new System.Drawing.Point(163, 199);
             this.cbxMore_RedeemSettings.Name = "cbxMore_RedeemSettings";
             this.cbxMore_RedeemSettings.Size = new System.Drawing.Size(140, 24);
             this.cbxMore_RedeemSettings.TabIndex = 58;
@@ -538,7 +629,7 @@
             this.cbxMore_ManageDiscounts.AutoSize = true;
             this.cbxMore_ManageDiscounts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_ManageDiscounts.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_ManageDiscounts.Location = new System.Drawing.Point(163, 233);
+            this.cbxMore_ManageDiscounts.Location = new System.Drawing.Point(163, 229);
             this.cbxMore_ManageDiscounts.Name = "cbxMore_ManageDiscounts";
             this.cbxMore_ManageDiscounts.Size = new System.Drawing.Size(150, 24);
             this.cbxMore_ManageDiscounts.TabIndex = 60;
@@ -550,7 +641,7 @@
             this.cbxMore_ManageProducts.AutoSize = true;
             this.cbxMore_ManageProducts.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_ManageProducts.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_ManageProducts.Location = new System.Drawing.Point(163, 263);
+            this.cbxMore_ManageProducts.Location = new System.Drawing.Point(163, 259);
             this.cbxMore_ManageProducts.Name = "cbxMore_ManageProducts";
             this.cbxMore_ManageProducts.Size = new System.Drawing.Size(143, 24);
             this.cbxMore_ManageProducts.TabIndex = 59;
@@ -562,7 +653,7 @@
             this.cbxMore_Inventory.AutoSize = true;
             this.cbxMore_Inventory.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_Inventory.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_Inventory.Location = new System.Drawing.Point(163, 293);
+            this.cbxMore_Inventory.Location = new System.Drawing.Point(163, 289);
             this.cbxMore_Inventory.Name = "cbxMore_Inventory";
             this.cbxMore_Inventory.Size = new System.Drawing.Size(89, 24);
             this.cbxMore_Inventory.TabIndex = 61;
@@ -574,7 +665,7 @@
             this.cbxMore_CloseStore.AutoSize = true;
             this.cbxMore_CloseStore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_CloseStore.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_CloseStore.Location = new System.Drawing.Point(163, 323);
+            this.cbxMore_CloseStore.Location = new System.Drawing.Point(163, 319);
             this.cbxMore_CloseStore.Name = "cbxMore_CloseStore";
             this.cbxMore_CloseStore.Size = new System.Drawing.Size(103, 24);
             this.cbxMore_CloseStore.TabIndex = 62;
@@ -586,7 +677,7 @@
             this.cbxMore_Database.AutoSize = true;
             this.cbxMore_Database.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMore_Database.ForeColor = System.Drawing.Color.Black;
-            this.cbxMore_Database.Location = new System.Drawing.Point(163, 353);
+            this.cbxMore_Database.Location = new System.Drawing.Point(163, 349);
             this.cbxMore_Database.Name = "cbxMore_Database";
             this.cbxMore_Database.Size = new System.Drawing.Size(91, 24);
             this.cbxMore_Database.TabIndex = 63;
@@ -633,75 +724,34 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(9, 86);
+            this.Label1.Location = new System.Drawing.Point(7, 95);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(202, 21);
+            this.Label1.Size = new System.Drawing.Size(224, 21);
             this.Label1.TabIndex = 55;
             this.Label1.Text = "Accessibility and Restriction";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
-            this.btnClose.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            this.btnClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(22)))), ((int)(((byte)(47)))));
-            this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnClose.IconSize = 25;
-            this.btnClose.Location = new System.Drawing.Point(593, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.btnClose.Size = new System.Drawing.Size(28, 30);
-            this.btnClose.TabIndex = 54;
-            this.btnClose.Text = "no";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // txtStaffType
-            // 
-            this.txtStaffType.BackColor = System.Drawing.Color.White;
-            this.txtStaffType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStaffType.Font = new System.Drawing.Font("Segoe UI", 14.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStaffType.ForeColor = System.Drawing.Color.Black;
-            this.txtStaffType.Location = new System.Drawing.Point(105, 38);
-            this.txtStaffType.Multiline = true;
-            this.txtStaffType.Name = "txtStaffType";
-            this.txtStaffType.Size = new System.Drawing.Size(511, 29);
-            this.txtStaffType.TabIndex = 53;
             // 
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label6.ForeColor = System.Drawing.Color.Black;
-            this.Label6.Location = new System.Drawing.Point(8, 42);
+            this.Label6.Location = new System.Drawing.Point(8, 60);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(94, 25);
+            this.Label6.Size = new System.Drawing.Size(80, 21);
             this.Label6.TabIndex = 52;
             this.Label6.Text = "Staff Type:";
             // 
-            // cbxOrd_KeepTransaction
+            // guna2DragControl1
             // 
-            this.cbxOrd_KeepTransaction.AutoSize = true;
-            this.cbxOrd_KeepTransaction.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxOrd_KeepTransaction.ForeColor = System.Drawing.Color.Black;
-            this.cbxOrd_KeepTransaction.Location = new System.Drawing.Point(3, 238);
-            this.cbxOrd_KeepTransaction.Name = "cbxOrd_KeepTransaction";
-            this.cbxOrd_KeepTransaction.Size = new System.Drawing.Size(141, 24);
-            this.cbxOrd_KeepTransaction.TabIndex = 69;
-            this.cbxOrd_KeepTransaction.Text = "Keep Transaction";
-            this.cbxOrd_KeepTransaction.UseVisualStyleBackColor = true;
+            this.guna2DragControl1.TargetControl = this.SplitContainer1.Panel2;
             // 
             // StaffType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(950, 579);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -727,7 +777,6 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         internal System.Windows.Forms.SplitContainer SplitContainer1;
-        internal System.Windows.Forms.DataGridView dgvStaffType;
         internal System.Windows.Forms.FlowLayoutPanel flpPermission;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.CheckBox cbxOrd_Payment;
@@ -757,8 +806,6 @@
         internal System.Windows.Forms.CheckBox cbxMore_Database;
         internal System.Windows.Forms.CheckBox cbxMore_Settings;
         internal System.Windows.Forms.Label Label1;
-        internal FontAwesome.Sharp.IconButton btnClose;
-        internal System.Windows.Forms.TextBox txtStaffType;
         internal System.Windows.Forms.Label Label6;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
@@ -768,5 +815,9 @@
         internal System.Windows.Forms.Label lblID;
         internal System.Windows.Forms.Label label7;
         internal System.Windows.Forms.CheckBox cbxOrd_KeepTransaction;
+        internal Guna.UI2.WinForms.Guna2TextBox txtStaffType;
+        internal Guna.UI2.WinForms.Guna2DataGridView dgvStaffType;
+        private Guna.UI.WinForms.GunaControlBox btnClose;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

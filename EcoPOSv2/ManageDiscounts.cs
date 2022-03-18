@@ -66,7 +66,7 @@ namespace EcoPOSv2
         private void ClearFields()
         {
             discountID = "";
-            GA.DoThis(ref allTxt, SplitContainer1.Panel2, ControlType.TextBox, GroupAction.Action.Clear);
+            GA.DoThis(ref allTxt, SplitContainer1.Panel2, ControlType.GunaTextBox, GroupAction.Action.Clear);
         }
 
         private void BtnProduct_Delete_Click(object sender, EventArgs e)
