@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace EcoPOSv2
 {
@@ -85,6 +86,27 @@ namespace EcoPOSv2
 
             return result;
             list = new List<TextBox>();
+        }
+
+        public static int GunaRequireField(ref List<Guna2TextBox> list)
+        {
+            int textbox_not_empty = 0;
+            int result = 0;
+            foreach (Guna2TextBox field in list)
+            {
+                if (field.Text != "")
+                {
+                    textbox_not_empty = textbox_not_empty + 1;
+                }
+            }
+
+            if (textbox_not_empty == list.Count)
+            {
+                result = 1;
+            }
+
+            return result;
+            list = new List<Guna2TextBox>();
         }
     }
 }

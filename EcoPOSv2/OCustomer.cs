@@ -84,7 +84,7 @@ namespace EcoPOSv2
 
             // check if membership is discountable and percentage type
 
-            SQL.AddParam("@customerID", dgvCustomer.CurrentRow.Cells[0].Value.ToString());
+            SQL.AddParam("@customerID", dgvCustomer.SelectedRows[0].Cells[0].Value.ToString());
             int result = Convert.ToInt32(SQL.ReturnResult(@"SELECT COUNT(*) FROM membership as m 
                                                     INNER JOIN customer as c ON m.member_type_ID = c.member_type_ID
                                                     WHERE c.customerID = @customerID AND m.discountable = 1 AND disc_type = 2"));
@@ -92,7 +92,7 @@ namespace EcoPOSv2
                 return;
             if (result == 1)
             {
-                SQL.AddParam("@customerID", dgvCustomer.CurrentRow.Cells[0].Value.ToString());
+                SQL.AddParam("@customerID", dgvCustomer.SelectedRows[0].Cells[0].Value.ToString());
                 decimal disc_amt = Convert.ToDecimal(SQL.ReturnResult(@"SELECT disc_amt FROM membership as m INNER JOIN customer as c 
                                                              ON m.member_type_ID = c.member_type_ID WHERE c.customerID = @customerID"));
                 if (SQL.HasException(true))
@@ -133,7 +133,7 @@ namespace EcoPOSv2
 
             #region discountable and fix amount
 
-            SQL.AddParam("@customerID", dgvCustomer.CurrentRow.Cells[0].Value.ToString());
+            SQL.AddParam("@customerID", dgvCustomer.SelectedRows[0].Cells[0].Value.ToString());
             int result_fx = Convert.ToInt32(SQL.ReturnResult(@"SELECT COUNT(*) FROM membership as m 
                                                     INNER JOIN customer as c ON m.member_type_ID = c.member_type_ID
                                                     WHERE c.customerID = @customerID AND m.discountable = 1 AND disc_type = 1"));
@@ -141,7 +141,7 @@ namespace EcoPOSv2
                 return;
             if (result_fx == 1)
             {
-                SQL.AddParam("@member_type_ID", dgvCustomer.CurrentRow.Cells[3].Value.ToString());
+                SQL.AddParam("@member_type_ID", dgvCustomer.SelectedRows[0].Cells[3].Value.ToString());
                 frmOrder.regular_disc_amt = Convert.ToDecimal(SQL.ReturnResult("SELECT disc_amt FROM membership WHERE member_type_ID = @member_type_ID"));
                 if (SQL.HasException(true))
                     return;
@@ -151,7 +151,7 @@ namespace EcoPOSv2
 
             #endregion
 
-            frmOrder.lblCustomer.Text = dgvCustomer.CurrentRow.Cells[1].Value.ToString();
+            frmOrder.lblCustomer.Text = dgvCustomer.SelectedRows[0].Cells[1].Value.ToString();
             frmOrder.LoadOrder();
             frmOrder.GetTotal();
             new Notification().PopUp("Discount applied.", "","information");

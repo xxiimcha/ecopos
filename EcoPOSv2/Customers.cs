@@ -27,6 +27,7 @@ namespace EcoPOSv2
     {
         //SELECTED ID
         string card_id = "";
+        string membership_id = "";
         
 
         public Customers()
@@ -113,10 +114,10 @@ namespace EcoPOSv2
             txtMem_AmtPerPoint.Clear();
             txtMem_DiscAmount.Clear();
             txtMem_Expiration.Clear();
-            txtMem_ID.Clear();
             txtMem_Name.Clear();
             txtMem_Search.Clear();
             txtMC_Membership.Clear();
+            membership_id = "";
 
             rbMem_DiscNo.Checked = false;
             rbMem_DiscYes.Checked = false;
@@ -129,7 +130,7 @@ namespace EcoPOSv2
         }
         public void LoadCard()
         {
-            SQL.Query("SELECT cardID, card_no FROM member_card ORDER BY card_no ASC");
+            SQL.Query("SELECT cardID, card_no AS 'CARD NUMBER' FROM member_card ORDER BY card_no ASC");
             if (SQL.HasException(true))
                 return;
 
@@ -211,7 +212,9 @@ namespace EcoPOSv2
 
         public void LoadCustomer()
         {
-            SQL.Query("SELECT customerID, name FROM customer ORDER BY name ASC");
+            SQL.Query(@"SELECT customer.customerID, customer.name as 'Members', customer.card_no as 'CARD NO.', membership.name as 'Membership' FROM customer
+                            INNER JOIN membership ON customer.member_type_ID = membership.member_type_ID
+                            ORDER BY customer.name ASC");
             if (SQL.HasException(true))
                 return;
 
@@ -225,7 +228,7 @@ namespace EcoPOSv2
             txtCus_Add2.Clear();
             txtCus_CardNo.Clear();
             txtCus_Contact.Clear();
-            txtCus_Email.Clear();
+            guna2TextBox6.Clear();
             txtCus_ID.Clear();
             txtCus_Name.Clear();
             txtCus_Search.Clear();
@@ -259,9 +262,9 @@ namespace EcoPOSv2
 
             pnlCustomer.BringToFront();
             clickbtnCustomer = true;
-            currentBtn = btnCustomer;
-            currentPanel = pnlCustomer;
-            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions,btnMC);
+            currentBtn = btnMC;
+            currentPanel = pnlMC;
+            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
 
             currentBtn = btnCustomer;
             currentPanel = pnlCustomer;
@@ -318,7 +321,7 @@ namespace EcoPOSv2
                         return;
                     }
 
-                    if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || txtCus_Email.Text != "" || txtCus_CardNo.Text != "" || cmbCus_Membership.Text != "")
+                    if (txtCus_Name.Text != "" || txtCus_Contact.Text != "" || txtCus_Add1.Text != "" || guna2TextBox6.Text != "" || txtCus_CardNo.Text != "" || cmbCus_Membership.Text != "")
                     {
                         string action = "Update";
                         if (txtCus_ID.Text == "")
@@ -350,7 +353,7 @@ namespace EcoPOSv2
                                             SQL.AddParam("@birthday", dtpCus_Bday.Value);
                                             SQL.AddParam("@add1", txtCus_Add1.Text);
                                             SQL.AddParam("@add2", txtCus_Add2.Text);
-                                            SQL.AddParam("@email", txtCus_Email.Text);
+                                            SQL.AddParam("@email", guna2TextBox6.Text);
                                             SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
                                             SQL.AddParam("@card_no", txtCus_CardNo.Text);
 
@@ -393,7 +396,7 @@ namespace EcoPOSv2
                                             SQL.AddParam("@birthday", dtpCus_Bday.Value);
                                             SQL.AddParam("@add1", txtCus_Add1.Text);
                                             SQL.AddParam("@add2", txtCus_Add2.Text);
-                                            SQL.AddParam("@email", txtCus_Email.Text);
+                                            SQL.AddParam("@email", guna2TextBox6.Text);
                                             SQL.AddParam("@member_type_ID", cmbCus_Membership.SelectedValue);
                                             SQL.AddParam("@card_no", txtCus_CardNo.Text);
 
@@ -472,7 +475,7 @@ namespace EcoPOSv2
                 dtpCus_Bday.Value = DateTime.Parse(r["birthday"].ToString());
                 txtCus_Add1.Text = r["add1"].ToString();
                 txtCus_Add2.Text = r["add2"].ToString();
-                txtCus_Email.Text = r["email"].ToString();
+                guna2TextBox6.Text = r["email"].ToString();
                 cmbCus_Membership.SelectedValue = r["member_type_ID"].ToString();
                 txtCus_CardNo.Text = r["card_no"].ToString();
             }
@@ -486,29 +489,12 @@ namespace EcoPOSv2
             {
                 SQL.AddParam("@find", txtCus_Search.Text + "%");
 
-                SQL.Query("SELECT customerID, name FROM customer WHERE name LIKE @find ORDER BY name ASC");
+                SQL.Query("SELECT customerID, name as 'Customers / Members' FROM customer WHERE name LIKE @find ORDER BY name ASC");
                 if (SQL.HasException(true))
                     return;
 
                 dgvCustomer.DataSource = SQL.DBDT;
                 dgvCustomer.Columns[0].Visible = false;
-            }
-        }
-
-        private void btnCus_Sort_Click(object sender, EventArgs e)
-        {
-            if (dgvCustomer.RowCount == 0)
-                return;
-
-            if (btnCus_Sort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvCustomer.Sort(dgvCustomer.Columns[1], ListSortDirection.Ascending);
-                btnCus_Sort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvCustomer.Sort(dgvCustomer.Columns[1], ListSortDirection.Descending);
-                btnCus_Sort.IconChar = IconChar.SortAlphaDown;
             }
         }
 
@@ -525,7 +511,7 @@ namespace EcoPOSv2
 
             foreach (DataRow r in SQL.DBDT.Rows)
             {
-                txtMem_ID.Text = r["member_type_ID"].ToString();
+                membership_id = r["member_type_ID"].ToString();
                 txtMem_Name.Text = r["name"].ToString();
                 txtMem_DiscAmount.Text = r["disc_amt"].ToString();
                 txtMem_Expiration.Text = r["expiration"].ToString();
@@ -561,7 +547,7 @@ namespace EcoPOSv2
                         int disc_type = 2;
                         bool rewardable = false;
 
-                        if (txtMem_ID.Text == "")
+                        if (membership_id == "")
                             action = "New";
 
 
@@ -614,7 +600,7 @@ namespace EcoPOSv2
 
                             default:
                                 {
-                                    SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                                    SQL.AddParam("@member_type_ID", membership_id);
                                     SQL.AddParam("@name", txtMem_Name.Text);
 
                                     string result = SQL.ReturnResult(@"SELECT IIF((
@@ -627,7 +613,7 @@ namespace EcoPOSv2
 
                                     if (result == "0")
                                     {
-                                        SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                                        SQL.AddParam("@member_type_ID", membership_id);
                                         SQL.AddParam("@name", txtMem_Name.Text);
                                         SQL.AddParam("@discountable", discountable);
                                         SQL.AddParam("@disc_amt", txtMem_DiscAmount.Text);
@@ -697,13 +683,13 @@ namespace EcoPOSv2
 
                     if (approval == DialogResult.Yes)
                     {
-                        if (txtMem_ID.Text == "")
+                        if (membership_id == "")
                         {
                             new Notification().PopUp("No item selected.", "", "error");
                             return;
                         }
 
-                        SQL.AddParam("@member_type_ID", txtMem_ID.Text);
+                        SQL.AddParam("@member_type_ID", membership_id);
                         SQL.Query("DELETE FROM membership WHERE member_type_ID = @member_type_ID");
 
                         if (SQL.HasException(true))
@@ -733,7 +719,9 @@ namespace EcoPOSv2
 
             SQL.AddParam("@cardID", dgvCard.CurrentRow.Cells[0].Value.ToString());
 
-            SQL.Query("SELECT * FROM member_card WHERE cardID = @cardID");
+            SQL.Query(@"SELECT member_card.cardID, member_card.card_no, membership.name, member_card.customer_name, member_card.card_balance, member_card.status FROM member_card
+                        INNER JOIN membership ON member_card.member_type_ID = membership.member_type_ID
+                        WHERE member_card.cardID = @cardID");
             if (SQL.HasException(true))
                 return;
 
@@ -741,7 +729,7 @@ namespace EcoPOSv2
             {
                 card_id = r["cardID"].ToString();
                 txtMC_CardNo.Text = r["card_no"].ToString();
-                txtMC_Membership.Text = r["member_type_ID"].ToString();
+                txtMC_Membership.Text = r["name"].ToString();
                 txtMC_Owner.Text = r["customer_name"].ToString();
                 txtMC_Balance.Text = r["card_balance"].ToString();
                 txtMC_Status.Text = r["status"].ToString();

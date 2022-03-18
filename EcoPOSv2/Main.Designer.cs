@@ -134,18 +134,25 @@
             // 
             // lblByPassUser
             // 
+            this.lblByPassUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblByPassUser.BackColor = System.Drawing.Color.Transparent;
             this.lblByPassUser.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.lblByPassUser.ForeColor = System.Drawing.Color.Red;
-            this.lblByPassUser.Location = new System.Drawing.Point(16, 112);
+            this.lblByPassUser.Location = new System.Drawing.Point(6, 115);
             this.lblByPassUser.Name = "lblByPassUser";
-            this.lblByPassUser.Size = new System.Drawing.Size(181, 32);
+            this.lblByPassUser.Size = new System.Drawing.Size(197, 28);
             this.lblByPassUser.TabIndex = 11;
-            this.lblByPassUser.Text = "                   ";
+            this.lblByPassUser.Text = "               ";
             this.lblByPassUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUser
             // 
+            this.lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUser.BackColor = System.Drawing.Color.Transparent;
             this.lblUser.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.lblUser.Location = new System.Drawing.Point(5, 3);
@@ -178,33 +185,43 @@
             // guna2Panel2
             // 
             this.guna2Panel2.BorderColor = System.Drawing.Color.DimGray;
-            this.guna2Panel2.BorderThickness = 1;
             this.guna2Panel2.Controls.Add(this.lblTerminalName);
             this.guna2Panel2.Controls.Add(this.lblType);
             this.guna2Panel2.Controls.Add(this.Label3);
-            this.guna2Panel2.Location = new System.Drawing.Point(-1, 151);
+            this.guna2Panel2.CustomBorderColor = System.Drawing.Color.Black;
+            this.guna2Panel2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 146);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.Size = new System.Drawing.Size(211, 90);
+            this.guna2Panel2.Size = new System.Drawing.Size(208, 90);
             this.guna2Panel2.TabIndex = 17;
             // 
             // lblTerminalName
             // 
+            this.lblTerminalName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTerminalName.BackColor = System.Drawing.Color.Transparent;
             this.lblTerminalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTerminalName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.lblTerminalName.Location = new System.Drawing.Point(1, -7);
+            this.lblTerminalName.Location = new System.Drawing.Point(2, 3);
             this.lblTerminalName.Name = "lblTerminalName";
-            this.lblTerminalName.Size = new System.Drawing.Size(209, 31);
+            this.lblTerminalName.Size = new System.Drawing.Size(204, 22);
             this.lblTerminalName.TabIndex = 15;
             this.lblTerminalName.Text = "Terminal";
             this.lblTerminalName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblType
             // 
+            this.lblType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblType.AutoSize = true;
+            this.lblType.BackColor = System.Drawing.Color.Transparent;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.ForeColor = System.Drawing.Color.Black;
-            this.lblType.Location = new System.Drawing.Point(36, 27);
+            this.lblType.Location = new System.Drawing.Point(32, 24);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(138, 17);
             this.lblType.TabIndex = 7;
@@ -212,11 +229,15 @@
             // 
             // Label3
             // 
+            this.Label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(0, 39);
+            this.Label3.Location = new System.Drawing.Point(-1, 40);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(210, 50);
+            this.Label3.Size = new System.Drawing.Size(210, 38);
             this.Label3.TabIndex = 9;
             this.Label3.Text = "Provided By:\r\nWNO ELECTRONICS TRADING";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -225,19 +246,24 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.DimGray;
-            this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.lblBypassedBy);
             this.guna2Panel1.Controls.Add(this.btnUserRole);
             this.guna2Panel1.Controls.Add(this.lblByPassUser);
             this.guna2Panel1.Controls.Add(this.lblUser);
-            this.guna2Panel1.Location = new System.Drawing.Point(-1, -1);
+            this.guna2Panel1.CustomBorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(210, 146);
+            this.guna2Panel1.Size = new System.Drawing.Size(208, 146);
             this.guna2Panel1.TabIndex = 16;
             // 
             // lblBypassedBy
             // 
+            this.lblBypassedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBypassedBy.BackColor = System.Drawing.Color.Transparent;
             this.lblBypassedBy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBypassedBy.Location = new System.Drawing.Point(58, 96);
@@ -249,6 +275,9 @@
             // 
             // btnUserRole
             // 
+            this.btnUserRole.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUserRole.Animated = true;
             this.btnUserRole.AnimationHoverSpeed = 0.07F;
             this.btnUserRole.AnimationSpeed = 0.03F;
@@ -292,7 +321,7 @@
             this.btnOrder.Image = global::EcoPOSv2.Properties.Resources.cart_black;
             this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnOrder.Location = new System.Drawing.Point(-1, 241);
+            this.btnOrder.Location = new System.Drawing.Point(-1, 243);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
@@ -370,7 +399,7 @@
             this.btnMore.Image = global::EcoPOSv2.Properties.Resources.more_black;
             this.btnMore.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMore.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnMore.Location = new System.Drawing.Point(0, 421);
+            this.btnMore.Location = new System.Drawing.Point(0, 423);
             this.btnMore.Name = "btnMore";
             this.btnMore.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnMore.ShadowDecoration.Parent = this.btnMore;
@@ -397,7 +426,7 @@
             this.btnCalculator.Image = global::EcoPOSv2.Properties.Resources.calculator_black;
             this.btnCalculator.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCalculator.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnCalculator.Location = new System.Drawing.Point(-1, 361);
+            this.btnCalculator.Location = new System.Drawing.Point(-1, 363);
             this.btnCalculator.Name = "btnCalculator";
             this.btnCalculator.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
@@ -424,7 +453,7 @@
             this.btnXReading.Image = global::EcoPOSv2.Properties.Resources.switchcashier_black;
             this.btnXReading.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnXReading.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnXReading.Location = new System.Drawing.Point(-1, 301);
+            this.btnXReading.Location = new System.Drawing.Point(-1, 303);
             this.btnXReading.Name = "btnXReading";
             this.btnXReading.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnXReading.ShadowDecoration.Parent = this.btnXReading;

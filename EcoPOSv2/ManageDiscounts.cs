@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
 using static EcoPOSv2.GroupAction;
 using static EcoPOSv2.TextBoxValidation;
+using Guna.UI2.WinForms;
 
 namespace EcoPOSv2
 {
@@ -20,7 +21,7 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         GroupAction GA = new GroupAction();
         string discountID = "";
-        List<TextBox> requiredFields = new List<TextBox>();
+        List<Guna2TextBox> requiredFields = new List<Guna2TextBox>();
         List<Control> allTxt = new List<Control>();
 
         public ManageDiscounts()
@@ -47,7 +48,7 @@ namespace EcoPOSv2
 
         private void LoadDiscounts()
         {
-            SQL.Query("SELECT discountID, disc_name FROM discount ORDER BY disc_name ASC");
+            SQL.Query("SELECT discountID, disc_name as 'Discount Name' FROM discount ORDER BY disc_name ASC");
             if (SQL.HasException(true))
                 return;
             dgvDiscount.DataSource = SQL.DBDT;
@@ -56,7 +57,7 @@ namespace EcoPOSv2
 
         private void DiscountRF()
         {
-            requiredFields = new List<TextBox>();
+            requiredFields = new List<Guna2TextBox>();
 
             requiredFields.Add(txtName);
             requiredFields.Add(txtAmount);
@@ -65,7 +66,7 @@ namespace EcoPOSv2
         private void ClearFields()
         {
             discountID = "";
-            GA.DoThis(ref allTxt, TableLayoutPanel1, ControlType.TextBox, GroupAction.Action.Clear);
+            GA.DoThis(ref allTxt, SplitContainer1.Panel2, ControlType.TextBox, GroupAction.Action.Clear);
         }
 
         private void BtnProduct_Delete_Click(object sender, EventArgs e)
@@ -92,7 +93,7 @@ namespace EcoPOSv2
         private void BtnProduct_Save_Click(object sender, EventArgs e)
         {
             DiscountRF();
-            int requiredFieldsMet = RequireField(ref requiredFields);
+            int requiredFieldsMet = GunaRequireField(ref requiredFields);
 
             if (requiredFieldsMet == 1)
             {
@@ -180,22 +181,6 @@ namespace EcoPOSv2
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
         }
 
-        private void BtnSort_Click(object sender, EventArgs e)
-        {
-            if (dgvDiscount.RowCount == 0)
-                return;
-
-            if (btnSort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvDiscount.Sort(dgvDiscount.Columns[1], ListSortDirection.Ascending);
-                btnSort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvDiscount.Sort(dgvDiscount.Columns[1], ListSortDirection.Descending);
-                btnSort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
 
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {

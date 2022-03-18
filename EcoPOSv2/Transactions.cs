@@ -738,5 +738,10 @@ namespace EcoPOSv2
         {
 
         }
+
+        private void btnExportDGVToExcel_Click(object sender, EventArgs e)
+        {
+            new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvRecords), "Transaction Report", "Transaction Report");
+        }
     }
 }

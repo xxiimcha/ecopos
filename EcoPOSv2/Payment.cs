@@ -9,6 +9,7 @@ using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -497,11 +498,31 @@ namespace EcoPOSv2
         private void btnPay_Click(object sender, EventArgs e)
         {
             int max_invoice = int.Parse(SQL.ReturnResult("SELECT IIF( (SELECT COUNT(order_ref_temp) FROM transaction_details) > 0,(SELECT MAX(order_ref_temp) FROM transaction_details),0)"));
-
-
             if (txtAmount.Text == "") return;
 
-            #region transaction_details
+            #region remove/add to inventory
+            string inventory_query = "";
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            SQL.Query("SELECT productID, quantity, is_return, is_refund FROM order_cart where terminal_id=@terminal_id;");
+            if (SQL.HasException(true))
+            {
+                MessageBox.Show("Inventory Error");
+                return;
+            }
+            foreach (DataRow r in SQL.DBDT.Rows)
+            {
+                if (Convert.ToBoolean(r["is_return"].ToString()) || Convert.ToBoolean(r["is_refund"].ToString()))
+                {
+                    inventory_query = inventory_query + "UPDATE inventory SET stock_qty = stock_qty + " + r["quantity"].ToString() + " WHERE productID = " + r["productID"].ToString() + "; ";
+                }
+                else
+                {
+                    inventory_query = inventory_query + "UPDATE inventory SET stock_qty = stock_qty - " + r["quantity"].ToString() + " WHERE productID = " + r["productID"].ToString() + "; ";
+                }
+            }
+            #endregion
+
+            #region transaction_details and transaction_items
 
             if (action == 1)
             {
@@ -510,7 +531,6 @@ namespace EcoPOSv2
             }
 
             btnPay.Enabled = false;
-
             SQL.AddParam("@no_of_items", Convert.ToDecimal(frmOrder.lblItems.Text));
             SQL.AddParam("@order_ref_temp", String.Format("{0:D8}", (max_invoice + 1)));
             SQL.AddParam("@cus_pts_deducted", lblDeductPoints.Text);
@@ -536,8 +556,14 @@ namespace EcoPOSv2
             SQL.AddParam("@ReferenceNo", tbReferenceNo.Text);
             SQL.AddParam("@date", DateTime.Now);
 
-
-            SQL.Query(@"BEGIN TRANSACTION;
+            //SQL SERVER BLOCKING
+            int retryCount = 5;
+            bool success = false;
+            while (retryCount > 0 && !success)
+            {
+                try
+                {
+                    SQL.Query(@"BEGIN TRAN
 
                         INSERT INTO transaction_details 
                            (order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref, 
@@ -555,71 +581,28 @@ namespace EcoPOSv2
                            static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
                            quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id FROM order_cart where terminal_id=@terminal_id;
 
-                     COMMIT");
-            if (SQL.HasException(true))
-            {
-                MessageBox.Show("1");
-                return;
-            }
-
-
-
-            #endregion
-
-            /*
-            #region transaction_items
-            SQL.AddParam("@date", DateTime.Now);
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query(@"BEGIN TRANSACTION;
-                           INSERT INTO transaction_items (order_ref, itemID, productID, description, name, type, static_price_exclusive,
-                           static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
-                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id)
-                           SELECT (SELECT MAX(order_ref) FROM transaction_details where terminal_id=@terminal_id), itemID, productID, description, name, type, static_price_exclusive,
-                           static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
-                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id FROM order_cart where terminal_id=@terminal_id;
-                       COMMIT");
-            if (SQL.HasException(true))
-            {
-                MessageBox.Show("2");
-                return;
-            }
-
-            #endregion
-            */
-
-            #region remove/add to inventory
-
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query("SELECT productID, quantity, is_return, is_refund FROM order_cart where terminal_id=@terminal_id;");
-            if (SQL.HasException(true))
-            {
-                MessageBox.Show("3");
-                return;
-            }
-            foreach (DataRow r in SQL.DBDT.Rows)
-            {
-                SQL.AddParam("@productID", r["productID"].ToString());
-                SQL.AddParam("@quantity", r["quantity"].ToString());
-                if (Convert.ToBoolean(r["is_return"].ToString()) || Convert.ToBoolean(r["is_refund"].ToString()))
-                {
-                    SQL.Query("BEGIN TRANSACTION; UPDATE inventory SET stock_qty = stock_qty + @quantity WHERE productID = @productID; COMMIT");
-                    if (SQL.HasException(true))
-                    {
-                        MessageBox.Show("4");
-                        return;
-                    }
+                        " + inventory_query + " COMMIT;");
+                    success = true;
                 }
-                else
+                catch (SqlException exception)
                 {
-                    SQL.Query("BEGIN TRANSACTION; UPDATE inventory SET stock_qty = stock_qty - @quantity WHERE productID = @productID; COMMIT");
-                    if (SQL.HasException(true))
+                    if (exception.Number != 1205)
                     {
-                        MessageBox.Show("5");
-                        return;
+                        new Notification().PopUp("Transaction Failed", "Error", "error");
+                        throw;
                     }
+                    
+                    Thread.Sleep(1000);
+                    retryCount--;
+                    if (retryCount == 0) throw;
                 }
             }
 
+            if (!success)
+            {
+                new Notification().PopUp("Transaction Failed", "Error", "error");
+                return;
+            }
             #endregion
 
             #region calculate profit

@@ -35,6 +35,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeeItem));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.dgvProducts = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cmbPricemode = new Guna.UI2.WinForms.Guna2ComboBox();
             this.textPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -43,13 +46,10 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.lblPricemode = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.guna2Panel1.SuspendLayout();
+            this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.textPanel.SuspendLayout();
-            this.pnlTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -68,6 +68,51 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(830, 680);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // pnlTitle
+            // 
+            this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
+            this.pnlTitle.BorderThickness = 1;
+            this.pnlTitle.Controls.Add(this.btnClose);
+            this.pnlTitle.Controls.Add(this.gunaLabel1);
+            this.pnlTitle.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.ShadowDecoration.Depth = 40;
+            this.pnlTitle.ShadowDecoration.Enabled = true;
+            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
+            this.pnlTitle.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.pnlTitle.Size = new System.Drawing.Size(830, 35);
+            this.pnlTitle.TabIndex = 129;
+            // 
+            // btnClose
+            // 
+            this.btnClose.AnimationHoverSpeed = 0.07F;
+            this.btnClose.AnimationSpeed = 0.03F;
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.IconColor = System.Drawing.Color.Black;
+            this.btnClose.IconSize = 15F;
+            this.btnClose.Location = new System.Drawing.Point(788, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnClose.Size = new System.Drawing.Size(42, 35);
+            this.btnClose.TabIndex = 102;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(114, 21);
+            this.gunaLabel1.TabIndex = 103;
+            this.gunaLabel1.Text = "ITEM CHECKER";
+            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvProducts
             // 
@@ -141,7 +186,6 @@
             this.dgvProducts.ThemeStyle.RowsStyle.Height = 35;
             this.dgvProducts.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvProducts.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvProducts.Click += new System.EventHandler(this.dgvProducts_DoubleClick);
             this.dgvProducts.DoubleClick += new System.EventHandler(this.dgvProducts_DoubleClick);
             this.dgvProducts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProducts_KeyDown);
             // 
@@ -252,51 +296,6 @@
             // 
             this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
-            // pnlTitle
-            // 
-            this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
-            this.pnlTitle.BorderThickness = 1;
-            this.pnlTitle.Controls.Add(this.btnClose);
-            this.pnlTitle.Controls.Add(this.gunaLabel1);
-            this.pnlTitle.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.ShadowDecoration.Depth = 40;
-            this.pnlTitle.ShadowDecoration.Enabled = true;
-            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
-            this.pnlTitle.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.pnlTitle.Size = new System.Drawing.Size(830, 35);
-            this.pnlTitle.TabIndex = 129;
-            // 
-            // btnClose
-            // 
-            this.btnClose.AnimationHoverSpeed = 0.07F;
-            this.btnClose.AnimationSpeed = 0.03F;
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.IconColor = System.Drawing.Color.Black;
-            this.btnClose.IconSize = 15F;
-            this.btnClose.Location = new System.Drawing.Point(788, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
-            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
-            this.btnClose.Size = new System.Drawing.Size(42, 35);
-            this.btnClose.TabIndex = 102;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(114, 21);
-            this.gunaLabel1.TabIndex = 103;
-            this.gunaLabel1.Text = "ITEM CHECKER";
-            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // SeeItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,10 +313,10 @@
             this.Load += new System.EventHandler(this.SeeItem_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SeeItem_KeyDown);
             this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
-            this.textPanel.ResumeLayout(false);
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            this.textPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -107,7 +107,7 @@ namespace EcoPOSv2
                        ,[selling_price_exclusive]
                        ,[selling_price_vat]
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
-                       ,CAST([quantity] AS INT) as 'Quantity'
+                       ,CONVERT(DECIMAL(18,2),[quantity]) as 'Quantity'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
                         FROM order_cart where terminal_id=@terminal_id order by ID desc");
 
@@ -835,21 +835,21 @@ namespace EcoPOSv2
                     return;
 
                 // save to void item
-                SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
-                SQL.AddParam("@userID", Main.Instance.current_id);
-                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                //SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
+                //SQL.AddParam("@userID", Main.Instance.current_id);
+                //SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
-                       static_price_vat, static_price_inclusive, quantity, userID, terminal_id) SELECT itemID, productID, 
-                       (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
-                       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID, @terminal_id
-                       FROM order_cart WHERE terminal_id=@terminal_id and productID = @productID");
+                //SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
+                //       static_price_vat, static_price_inclusive, quantity, userID, terminal_id) SELECT itemID, productID, 
+                //       (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
+                //       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID, @terminal_id
+                //       FROM order_cart WHERE terminal_id=@terminal_id and productID = @productID");
 
-                if (SQL.HasException(true))
-                {
-                    MessageBox.Show("Error In Inserting Void Item");
-                    return;
-                }
+                //if (SQL.HasException(true))
+                //{
+                //    MessageBox.Show("Error In Inserting Void Item");
+                //    return;
+                //}
 
                 SQL.AddParam("@itemID", dgvCart.CurrentRow.Cells[0].Value.ToString());
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);

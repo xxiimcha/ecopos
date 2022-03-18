@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transactions));
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.CrystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.dgvRecords = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -47,11 +46,15 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnReprint = new FontAwesome.Sharp.IconButton();
             this.btnGenerateReport = new FontAwesome.Sharp.IconButton();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnExportDGVToExcel = new Guna.UI2.WinForms.Guna2Button();
+            this.CrystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.TableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecords)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanel1
@@ -59,10 +62,10 @@
             this.TableLayoutPanel1.ColumnCount = 2;
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.TableLayoutPanel1.Controls.Add(this.CrystalReportViewer1, 1, 1);
             this.TableLayoutPanel1.Controls.Add(this.dgvRecords, 0, 1);
             this.TableLayoutPanel1.Controls.Add(this.guna2Panel1, 0, 0);
             this.TableLayoutPanel1.Controls.Add(this.guna2Panel2, 1, 0);
+            this.TableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 1, 1);
             this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
@@ -71,30 +74,6 @@
             this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93F));
             this.TableLayoutPanel1.Size = new System.Drawing.Size(1090, 734);
             this.TableLayoutPanel1.TabIndex = 2;
-            // 
-            // CrystalReportViewer1
-            // 
-            this.CrystalReportViewer1.ActiveViewIndex = -1;
-            this.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CrystalReportViewer1.DisplayStatusBar = false;
-            this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CrystalReportViewer1.Location = new System.Drawing.Point(817, 51);
-            this.CrystalReportViewer1.Margin = new System.Windows.Forms.Padding(0);
-            this.CrystalReportViewer1.Name = "CrystalReportViewer1";
-            this.CrystalReportViewer1.ShowCloseButton = false;
-            this.CrystalReportViewer1.ShowCopyButton = false;
-            this.CrystalReportViewer1.ShowExportButton = false;
-            this.CrystalReportViewer1.ShowGotoPageButton = false;
-            this.CrystalReportViewer1.ShowGroupTreeButton = false;
-            this.CrystalReportViewer1.ShowLogo = false;
-            this.CrystalReportViewer1.ShowPageNavigateButtons = false;
-            this.CrystalReportViewer1.ShowParameterPanelButton = false;
-            this.CrystalReportViewer1.ShowPrintButton = false;
-            this.CrystalReportViewer1.ShowRefreshButton = false;
-            this.CrystalReportViewer1.Size = new System.Drawing.Size(273, 683);
-            this.CrystalReportViewer1.TabIndex = 1;
-            this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // dgvRecords
             // 
@@ -263,8 +242,7 @@
             // 
             // cmbType
             // 
-            this.cmbType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbType.BackColor = System.Drawing.Color.Transparent;
             this.cmbType.BorderColor = System.Drawing.Color.Black;
             this.cmbType.BorderRadius = 5;
@@ -291,8 +269,7 @@
             // 
             // Label1
             // 
-            this.Label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
             this.Label1.Location = new System.Drawing.Point(584, 4);
@@ -372,6 +349,70 @@
             this.btnGenerateReport.UseVisualStyleBackColor = true;
             this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Controls.Add(this.btnExportDGVToExcel, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.CrystalReportViewer1, 0, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(820, 54);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(267, 677);
+            this.tableLayoutPanel8.TabIndex = 124;
+            // 
+            // btnExportDGVToExcel
+            // 
+            this.btnExportDGVToExcel.BackColor = System.Drawing.Color.White;
+            this.btnExportDGVToExcel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnExportDGVToExcel.BorderRadius = 5;
+            this.btnExportDGVToExcel.BorderThickness = 2;
+            this.btnExportDGVToExcel.CheckedState.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.CustomImages.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExportDGVToExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnExportDGVToExcel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportDGVToExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportDGVToExcel.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnExportDGVToExcel.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnExportDGVToExcel.HoverState.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.Location = new System.Drawing.Point(3, 3);
+            this.btnExportDGVToExcel.Name = "btnExportDGVToExcel";
+            this.btnExportDGVToExcel.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnExportDGVToExcel.ShadowDecoration.Depth = 50;
+            this.btnExportDGVToExcel.ShadowDecoration.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.Size = new System.Drawing.Size(261, 41);
+            this.btnExportDGVToExcel.TabIndex = 125;
+            this.btnExportDGVToExcel.Text = "EXPORT TO EXCEL";
+            this.btnExportDGVToExcel.Click += new System.EventHandler(this.btnExportDGVToExcel_Click);
+            // 
+            // CrystalReportViewer1
+            // 
+            this.CrystalReportViewer1.ActiveViewIndex = -1;
+            this.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CrystalReportViewer1.DisplayStatusBar = false;
+            this.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CrystalReportViewer1.Location = new System.Drawing.Point(0, 47);
+            this.CrystalReportViewer1.Margin = new System.Windows.Forms.Padding(0);
+            this.CrystalReportViewer1.Name = "CrystalReportViewer1";
+            this.CrystalReportViewer1.ShowCloseButton = false;
+            this.CrystalReportViewer1.ShowCopyButton = false;
+            this.CrystalReportViewer1.ShowExportButton = false;
+            this.CrystalReportViewer1.ShowGotoPageButton = false;
+            this.CrystalReportViewer1.ShowGroupTreeButton = false;
+            this.CrystalReportViewer1.ShowLogo = false;
+            this.CrystalReportViewer1.ShowPageNavigateButtons = false;
+            this.CrystalReportViewer1.ShowParameterPanelButton = false;
+            this.CrystalReportViewer1.ShowPrintButton = false;
+            this.CrystalReportViewer1.ShowRefreshButton = false;
+            this.CrystalReportViewer1.Size = new System.Drawing.Size(267, 630);
+            this.CrystalReportViewer1.TabIndex = 2;
+            this.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
             // Transactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,6 +431,7 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -402,12 +444,14 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpFrom;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
         private Guna.UI2.WinForms.Guna2ComboBox cmbType;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer1;
         internal Guna.UI2.WinForms.Guna2DataGridView dgvRecords;
         internal FontAwesome.Sharp.IconButton btnGenerateReport;
         internal FontAwesome.Sharp.IconButton btnReprint;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        public Guna.UI2.WinForms.Guna2Button btnExportDGVToExcel;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer1;
     }
 }

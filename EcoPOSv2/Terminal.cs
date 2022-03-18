@@ -566,7 +566,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         decimal no_of_orders, subtotal, discount_deductions, grand_total, less_vat, vatable_sale, vat_12, vat_exempt_sale;
-                        if (r["no_of_orders"].ToString() == "")
+                        if (r["no_of_orders"].ToString() != "" & r["no_of_orders"].ToString() == null)
                         {
                             no_of_orders = 0;
                         }
@@ -575,7 +575,7 @@ namespace EcoPOSv2
                             no_of_orders = decimal.Parse(r["no_of_orders"].ToString());
                         }
 
-                        if (r["subtotal"].ToString() == "")
+                        if (r["subtotal"].ToString() == "" & r["subtotal"].ToString() == null)
                         {
                             subtotal = 0;
                         }
@@ -584,7 +584,7 @@ namespace EcoPOSv2
                             subtotal = decimal.Parse(r["subtotal"].ToString());
                         }
 
-                        if (r["discount_deductions"].ToString() == "")
+                        if (r["discount_deductions"].ToString() == "" & r["discount_deductions"].ToString() == null)
                         {
                             discount_deductions = 0;
                         }
@@ -593,7 +593,7 @@ namespace EcoPOSv2
                             discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
                         }
 
-                        if (r["grand_total"].ToString() == "")
+                        if (r["grand_total"].ToString() == "" & r["grand_total"].ToString() == null)
                         {
                             grand_total = 0;
                         }
@@ -602,7 +602,7 @@ namespace EcoPOSv2
                             grand_total = decimal.Parse(r["grand_total"].ToString());
                         }
 
-                        if (r["less_vat"].ToString() == "")
+                        if (r["less_vat"].ToString() == "" & r["less_vat"].ToString() == null)
                         {
                             less_vat = 0;
                         }
@@ -611,7 +611,7 @@ namespace EcoPOSv2
                             less_vat = decimal.Parse(r["less_vat"].ToString());
                         }
 
-                        if (r["vatable_sale"].ToString() == "")
+                        if (r["vatable_sale"].ToString() == "" & r["vatable_sale"].ToString() == null)
                         {
                             vatable_sale = 0;
                         }
@@ -620,7 +620,7 @@ namespace EcoPOSv2
                             vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
                         }
 
-                        if (r["vat_12"].ToString() == "")
+                        if (r["vat_12"].ToString() == "" & r["vat_12"].ToString() == null)
                         {
                             vat_12 = 0;
                         }
@@ -629,7 +629,7 @@ namespace EcoPOSv2
                             vat_12 = decimal.Parse(r["vat_12"].ToString());
                         }
 
-                        if (r["vat_exempt_sale"].ToString() == "")
+                        if (r["vat_exempt_sale"].ToString() == "" & r["vat_exempt_sale"].ToString() == null)
                         {
                             vat_exempt_sale = 0;
                         }
@@ -807,9 +807,9 @@ namespace EcoPOSv2
                     }
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-                        decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
-                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
+                        decimal subtotal = r["subtotal"].ToString() != "" ? decimal.Parse(r["subtotal"].ToString()) : 0;
+                        decimal discount_deductions = r["discount_deductions"].ToString() != "" ? decimal.Parse(r["discount_deductions"].ToString()) : 0;
+                        decimal grand_total = r["grand_total"].ToString() != "" ? decimal.Parse(r["grand_total"].ToString()) : 0;
 
                         terminal_report.SetParameterValue("ss_subtotal", subtotal.ToString("N2"), "StaffSales");
                         terminal_report.SetParameterValue("ss_discount_deductions", discount_deductions.ToString("N2"), "StaffSales");
@@ -840,9 +840,9 @@ namespace EcoPOSv2
                     }
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-                        decimal discount_deductions = decimal.Parse(r["discount_deductions"].ToString());
-                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
+                        decimal subtotal = r["subtotal"].ToString() != "" ? decimal.Parse(r["subtotal"].ToString()) : 0;
+                        decimal discount_deductions = r["discount_deductions"].ToString() != "" ? decimal.Parse(r["discount_deductions"].ToString()) : 0;
+                        decimal grand_total = r["grand_total"].ToString() != "" ? decimal.Parse(r["grand_total"].ToString()) : 0;
 
                         terminal_report.SetParameterValue("ss_subtotal", subtotal.ToString("N2"), "StaffSales");
                         terminal_report.SetParameterValue("ss_discount_deductions", discount_deductions.ToString("N2"), "StaffSales");
@@ -979,8 +979,8 @@ namespace EcoPOSv2
                 
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
-                    decimal grand_total = decimal.Parse(r["grand_total"].ToString());
-                    decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                    decimal grand_total = r["grand_total"].ToString() != "" ? decimal.Parse(r["grand_total"].ToString()) : 0;
+                    decimal no_of_items = r["no_of_items"].ToString() != "" ? decimal.Parse(r["no_of_items"].ToString()) : 0;
 
                     terminal_report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "WholesaleSales");
                     terminal_report.SetParameterValue("total", grand_total.ToString("N2"), "WholesaleSales");
@@ -1013,9 +1013,9 @@ namespace EcoPOSv2
                     return;
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
-                    decimal total = decimal.Parse(r["total"].ToString());
-                    decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
-                    decimal no_of_orders = decimal.Parse(r["no_of_orders"].ToString());
+                    decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
+                    decimal no_of_items = r["no_of_items"].ToString() != "" ? decimal.Parse(r["no_of_items"].ToString()) : 0;
+                    decimal no_of_orders = r["no_of_orders"].ToString() != "" ? decimal.Parse(r["no_of_orders"].ToString()) : 0;
 
                     terminal_report.SetParameterValue("no_of_orders", no_of_orders.ToString("N2"), "Refund");
                     terminal_report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "Refund");
@@ -1050,9 +1050,9 @@ namespace EcoPOSv2
                     return;
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
-                    decimal total = decimal.Parse(r["total"].ToString());
-                    decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
-                    decimal no_of_orders = decimal.Parse(r["no_of_orders"].ToString());
+                    decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
+                    decimal no_of_items = r["no_of_items"].ToString() != "" ? decimal.Parse(r["no_of_items"].ToString()) : 0;
+                    decimal no_of_orders = r["no_of_orders"].ToString() != "" ? decimal.Parse(r["no_of_orders"].ToString()) : 0;
 
                     terminal_report.SetParameterValue("no_of_orders", no_of_orders.ToString("N2"), "Return");
                     terminal_report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "Return");
@@ -1128,7 +1128,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         terminal_report.SetParameterValue("no_of_items", r["no_of_items"], "VoidItem");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         terminal_report.SetParameterValue("total", total.ToString("N2"), "VoidItem");
                     }
                 }
@@ -1162,7 +1162,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         terminal_report.SetParameterValue("no_of_orders", r["no_of_orders"], "VoidTransaction");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         terminal_report.SetParameterValue("total", total.ToString("N2"), "VoidTransaction");
                     }
                 }
@@ -1222,7 +1222,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         terminal_report.SetParameterValue("no_of_orders", r["no_of_orders"], "RegularDiscount");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         terminal_report.SetParameterValue("total", total.ToString("N2"), "RegularDiscount");
                     }
                 }
@@ -1240,7 +1240,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         terminal_report.SetParameterValue("no_of_orders", r["no_of_orders"], "RegularDiscount");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         terminal_report.SetParameterValue("total", total.ToString("N2"), "RegularDiscount");
                     }
                 }
@@ -1284,7 +1284,7 @@ namespace EcoPOSv2
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
                     terminal_report.SetParameterValue("no_of_orders", r["no_of_orders"], "SpecialDiscount");
-                    decimal total = decimal.Parse(r["total"].ToString());
+                    decimal total = r["total"].ToString() != "" & r["total"].ToString() != null ? decimal.Parse(r["total"].ToString()) : 0;
                     terminal_report.SetParameterValue("total", total.ToString("N2"), "SpecialDiscount");
                 }
             }
@@ -1323,7 +1323,7 @@ namespace EcoPOSv2
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
                     terminal_report.SetParameterValue("no_of_orders", r["no_of_orders"], "PaymentMethod");
-                    decimal total = decimal.Parse(r["total"].ToString());
+                    decimal total = r["total"].ToString() != null & r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                     terminal_report.SetParameterValue("total", total.ToString("N2"), "PaymentMethod");
                 }
             }
@@ -1370,7 +1370,7 @@ namespace EcoPOSv2
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
                     decimal no_of_items, total,deductions;
-                    if (r["no_of_items"].ToString() == "")
+                    if (r["no_of_items"].ToString() == "" & r["no_of_items"].ToString() == null)
                     {
                         no_of_items = 0;
                     }
@@ -1379,7 +1379,7 @@ namespace EcoPOSv2
                         no_of_items = decimal.Parse(r["no_of_items"].ToString());
                     }
 
-                    if(r["total"].ToString() == "")
+                    if(r["total"].ToString() == "" & r["total"].ToString() == null)
                     {
                         total = 0;
                     }
@@ -1388,7 +1388,7 @@ namespace EcoPOSv2
                         total = decimal.Parse(r["total"].ToString());
                     }
 
-                    if(r["Deductions"].ToString() == "")
+                    if(r["Deductions"].ToString() == "" & r["Deductions"].ToString() == null)
                     {
                         deductions = 0;
                     }

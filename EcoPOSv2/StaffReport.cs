@@ -623,8 +623,8 @@ namespace EcoPOSv2
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
-                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
-                        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                        decimal grand_total = r["grand_total"].ToString() != "" ? decimal.Parse(r["grand_total"].ToString()) : 0;
+                        decimal no_of_items = r["no_of_items"].ToString() != "" ? decimal.Parse(r["no_of_items"].ToString()) : 0;
 
                         report.SetParameterValue("no_of_items", no_of_items.ToString("N2"), "WholesaleSales");
                         report.SetParameterValue("total", grand_total.ToString("N2"), "WholesaleSales");
@@ -666,7 +666,7 @@ namespace EcoPOSv2
                     {
                         report.SetParameterValue("no_of_orders", r["no_of_orders"].ToString(), "Refund");
                         report.SetParameterValue("no_of_items", r["no_of_items"].ToString(), "Refund");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         report.SetParameterValue("total", total.ToString("N2"), "Refund");
 
                     }
@@ -708,7 +708,7 @@ namespace EcoPOSv2
                     {
                         report.SetParameterValue("no_of_orders", r["no_of_orders"].ToString(), "Return");
                         report.SetParameterValue("no_of_items", r["no_of_items"].ToString(), "Return");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         report.SetParameterValue("total", total.ToString("N2"), "Return");
                     }
                 }
@@ -746,7 +746,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         report.SetParameterValue("no_of_items", r["no_of_items"].ToString(), "VoidItem");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         report.SetParameterValue("total", total.ToString("N2"), "VoidItem");
                     }
                 }
@@ -784,7 +784,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         report.SetParameterValue("no_of_orders", r["no_of_orders"].ToString(), "VoidTransaction");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         report.SetParameterValue("total", total.ToString("N2"), "VoidTransaction");
                     }
                 }
@@ -820,7 +820,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         report.SetParameterValue("no_of_orders", r["no_of_orders"].ToString(), "RegularDiscount");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         report.SetParameterValue("total", total.ToString("N2"), "RegularDiscount");
                     }
                 }
@@ -856,7 +856,7 @@ namespace EcoPOSv2
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         report.SetParameterValue("no_of_orders", r["no_of_orders"].ToString(), "SpecialDiscount");
-                        decimal total = decimal.Parse(r["total"].ToString());
+                        decimal total = r["total"].ToString() != "" ? decimal.Parse(r["total"].ToString()) : 0;
                         report.SetParameterValue("total", total.ToString("N2"), "SpecialDiscount");
                     }
                 }

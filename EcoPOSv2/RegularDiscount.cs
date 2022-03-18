@@ -41,9 +41,9 @@ namespace EcoPOSv2
             if (dgvDiscount.SelectedRows.Count == 0)
                 return;
 
-            int discountID = Convert.ToInt32(dgvDiscount.CurrentRow.Cells[0].Value.ToString());
-            int disc_type = Convert.ToInt32(dgvDiscount.CurrentRow.Cells[3].Value.ToString());
-            decimal disc_amt = decimal.Parse(dgvDiscount.CurrentRow.Cells[2].Value.ToString());
+            int discountID = Convert.ToInt32(dgvDiscount.SelectedRows[0].Cells[0].Value.ToString());
+            int disc_type = Convert.ToInt32(dgvDiscount.SelectedRows[0].Cells[3].Value.ToString());
+            decimal disc_amt = decimal.Parse(dgvDiscount.SelectedRows[0].Cells[2].Value.ToString());
 
             SQL.AddParam("@discountID", discountID);
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
