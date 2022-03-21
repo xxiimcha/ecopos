@@ -47,12 +47,9 @@
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvCategory = new System.Windows.Forms.DataGridView();
             this.Panel4 = new System.Windows.Forms.Panel();
-            this.txtSearchCategory = new System.Windows.Forms.TextBox();
-            this.btnSortCategory = new FontAwesome.Sharp.IconButton();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.txtSearchProduct = new System.Windows.Forms.TextBox();
-            this.btnSortProduct = new FontAwesome.Sharp.IconButton();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtBarcode1 = new System.Windows.Forms.TextBox();
@@ -136,6 +133,7 @@
             this.btnExpirationDate = new FontAwesome.Sharp.IconButton();
             this.btnCategory = new FontAwesome.Sharp.IconButton();
             this.btnProduct = new FontAwesome.Sharp.IconButton();
+            this.comboCategory = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             this.pnlParent.SuspendLayout();
             this.pnlProducts.SuspendLayout();
@@ -293,47 +291,12 @@
             // 
             // Panel4
             // 
-            this.Panel4.Controls.Add(this.txtSearchCategory);
-            this.Panel4.Controls.Add(this.btnSortCategory);
+            this.Panel4.Controls.Add(this.comboCategory);
             this.Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel4.Location = new System.Drawing.Point(3, 3);
             this.Panel4.Name = "Panel4";
             this.Panel4.Size = new System.Drawing.Size(219, 34);
             this.Panel4.TabIndex = 7;
-            // 
-            // txtSearchCategory
-            // 
-            this.txtSearchCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSearchCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchCategory.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchCategory.Location = new System.Drawing.Point(0, 0);
-            this.txtSearchCategory.Name = "txtSearchCategory";
-            this.txtSearchCategory.Size = new System.Drawing.Size(172, 29);
-            this.txtSearchCategory.TabIndex = 3;
-            this.txtSearchCategory.Tag = "Search category";
-            this.txtSearchCategory.Text = "Search category";
-            this.txtSearchCategory.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchCategory_KeyUp);
-            // 
-            // btnSortCategory
-            // 
-            this.btnSortCategory.BackColor = System.Drawing.Color.White;
-            this.btnSortCategory.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSortCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnSortCategory.FlatAppearance.BorderSize = 0;
-            this.btnSortCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortCategory.ForeColor = System.Drawing.Color.White;
-            this.btnSortCategory.IconChar = FontAwesome.Sharp.IconChar.SortAlphaUp;
-            this.btnSortCategory.IconColor = System.Drawing.Color.DimGray;
-            this.btnSortCategory.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSortCategory.IconSize = 30;
-            this.btnSortCategory.Location = new System.Drawing.Point(172, 0);
-            this.btnSortCategory.Name = "btnSortCategory";
-            this.btnSortCategory.Size = new System.Drawing.Size(47, 34);
-            this.btnSortCategory.TabIndex = 4;
-            this.btnSortCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSortCategory.UseVisualStyleBackColor = false;
-            this.btnSortCategory.Click += new System.EventHandler(this.btnSortCategory_Click);
             // 
             // dgvProducts
             // 
@@ -386,7 +349,6 @@
             // Panel2
             // 
             this.Panel2.Controls.Add(this.txtSearchProduct);
-            this.Panel2.Controls.Add(this.btnSortProduct);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(228, 3);
             this.Panel2.Name = "Panel2";
@@ -400,32 +362,11 @@
             this.txtSearchProduct.ForeColor = System.Drawing.Color.DimGray;
             this.txtSearchProduct.Location = new System.Drawing.Point(0, 0);
             this.txtSearchProduct.Name = "txtSearchProduct";
-            this.txtSearchProduct.Size = new System.Drawing.Size(369, 29);
+            this.txtSearchProduct.Size = new System.Drawing.Size(416, 29);
             this.txtSearchProduct.TabIndex = 6;
             this.txtSearchProduct.Tag = "Search product/product code/barcode";
             this.txtSearchProduct.Text = "Search product/product code/barcode";
             this.txtSearchProduct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchProduct_KeyUp);
-            // 
-            // btnSortProduct
-            // 
-            this.btnSortProduct.BackColor = System.Drawing.Color.White;
-            this.btnSortProduct.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSortProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnSortProduct.FlatAppearance.BorderSize = 0;
-            this.btnSortProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortProduct.ForeColor = System.Drawing.Color.White;
-            this.btnSortProduct.IconChar = FontAwesome.Sharp.IconChar.SortAlphaUp;
-            this.btnSortProduct.IconColor = System.Drawing.Color.DimGray;
-            this.btnSortProduct.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSortProduct.IconSize = 30;
-            this.btnSortProduct.Location = new System.Drawing.Point(369, 0);
-            this.btnSortProduct.Name = "btnSortProduct";
-            this.btnSortProduct.Size = new System.Drawing.Size(47, 34);
-            this.btnSortProduct.TabIndex = 7;
-            this.btnSortProduct.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSortProduct.UseVisualStyleBackColor = false;
-            this.btnSortProduct.Click += new System.EventHandler(this.btnSortProduct_Click);
             // 
             // TableLayoutPanel1
             // 
@@ -1754,6 +1695,26 @@
             this.btnProduct.UseVisualStyleBackColor = false;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
+            // comboCategory
+            // 
+            this.comboCategory.BackColor = System.Drawing.Color.Transparent;
+            this.comboCategory.Dock = System.Windows.Forms.DockStyle.Right;
+            this.comboCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCategory.FocusedColor = System.Drawing.Color.Empty;
+            this.comboCategory.FocusedState.Parent = this.comboCategory;
+            this.comboCategory.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.comboCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.comboCategory.FormattingEnabled = true;
+            this.comboCategory.HoverState.Parent = this.comboCategory;
+            this.comboCategory.ItemHeight = 30;
+            this.comboCategory.ItemsAppearance.Parent = this.comboCategory;
+            this.comboCategory.Location = new System.Drawing.Point(79, 0);
+            this.comboCategory.Name = "comboCategory";
+            this.comboCategory.ShadowDecoration.Parent = this.comboCategory;
+            this.comboCategory.Size = new System.Drawing.Size(140, 36);
+            this.comboCategory.TabIndex = 3;
+            // 
             // ManageProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1778,7 +1739,6 @@
             this.TableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).EndInit();
             this.Panel4.ResumeLayout(false);
-            this.Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.Panel2.ResumeLayout(false);
             this.Panel2.PerformLayout();
@@ -1820,11 +1780,8 @@
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel2;
         internal System.Windows.Forms.DataGridView dgvCategory;
         internal System.Windows.Forms.Panel Panel4;
-        internal System.Windows.Forms.TextBox txtSearchCategory;
-        internal FontAwesome.Sharp.IconButton btnSortCategory;
         internal System.Windows.Forms.DataGridView dgvProducts;
         internal System.Windows.Forms.TextBox txtSearchProduct;
-        internal FontAwesome.Sharp.IconButton btnSortProduct;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
         internal System.Windows.Forms.TextBox txtName;
         internal System.Windows.Forms.TextBox txtBarcode1;
@@ -1909,5 +1866,6 @@
         internal FontAwesome.Sharp.IconButton btnEShowAll;
         internal FontAwesome.Sharp.IconButton btnESearchByDate;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private Guna.UI2.WinForms.Guna2ComboBox comboCategory;
     }
 }

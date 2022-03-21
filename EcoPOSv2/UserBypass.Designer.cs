@@ -33,12 +33,12 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.txtKeycode = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
+            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtKeycode = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel1.SuspendLayout();
             this.pnlTitle.SuspendLayout();
@@ -84,85 +84,6 @@
             this.guna2Panel1.Size = new System.Drawing.Size(364, 239);
             this.guna2Panel1.TabIndex = 10;
             // 
-            // txtKeycode
-            // 
-            this.txtKeycode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtKeycode.BorderRadius = 3;
-            this.txtKeycode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtKeycode.DefaultText = "";
-            this.txtKeycode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtKeycode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtKeycode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtKeycode.DisabledState.Parent = this.txtKeycode;
-            this.txtKeycode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtKeycode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKeycode.FocusedState.Parent = this.txtKeycode;
-            this.txtKeycode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKeycode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtKeycode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKeycode.HoverState.Parent = this.txtKeycode;
-            this.txtKeycode.Location = new System.Drawing.Point(32, 139);
-            this.txtKeycode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtKeycode.Name = "txtKeycode";
-            this.txtKeycode.PasswordChar = '*';
-            this.txtKeycode.PlaceholderText = "";
-            this.txtKeycode.SelectedText = "";
-            this.txtKeycode.ShadowDecoration.Parent = this.txtKeycode;
-            this.txtKeycode.Size = new System.Drawing.Size(304, 33);
-            this.txtKeycode.TabIndex = 60;
-            this.txtKeycode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtKeycode_KeyDown);
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtUsername.BorderRadius = 3;
-            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUsername.DefaultText = "";
-            this.txtUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUsername.DisabledState.Parent = this.txtUsername;
-            this.txtUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUsername.FocusedState.Parent = this.txtUsername;
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUsername.HoverState.Parent = this.txtUsername;
-            this.txtUsername.Location = new System.Drawing.Point(32, 73);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.PasswordChar = '\0';
-            this.txtUsername.PlaceholderText = "";
-            this.txtUsername.SelectedText = "";
-            this.txtUsername.ShadowDecoration.Parent = this.txtUsername;
-            this.txtUsername.Size = new System.Drawing.Size(304, 33);
-            this.txtUsername.TabIndex = 61;
-            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtUsername_KeyDown);
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
-            this.btnConfirm.BorderRadius = 5;
-            this.btnConfirm.BorderThickness = 2;
-            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
-            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
-            this.btnConfirm.FillColor = System.Drawing.Color.White;
-            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
-            this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
-            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnConfirm.Location = new System.Drawing.Point(110, 190);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
-            this.btnConfirm.Size = new System.Drawing.Size(144, 32);
-            this.btnConfirm.TabIndex = 62;
-            this.btnConfirm.Text = "CONFIRM";
-            this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
-            this.btnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
-            // 
             // pnlTitle
             // 
             this.pnlTitle.BackColor = System.Drawing.Color.White;
@@ -193,6 +114,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.AnimationHoverSpeed = 0.07F;
             this.btnClose.AnimationSpeed = 0.03F;
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
@@ -206,6 +128,85 @@
             this.btnClose.Size = new System.Drawing.Size(36, 29);
             this.btnClose.TabIndex = 10;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BorderColor = System.Drawing.Color.Green;
+            this.btnConfirm.BorderRadius = 5;
+            this.btnConfirm.BorderThickness = 2;
+            this.btnConfirm.CheckedState.Parent = this.btnConfirm;
+            this.btnConfirm.CustomImages.Parent = this.btnConfirm;
+            this.btnConfirm.FillColor = System.Drawing.Color.White;
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.Green;
+            this.btnConfirm.HoverState.Parent = this.btnConfirm;
+            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
+            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Location = new System.Drawing.Point(110, 190);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
+            this.btnConfirm.Size = new System.Drawing.Size(144, 32);
+            this.btnConfirm.TabIndex = 2;
+            this.btnConfirm.Text = "CONFIRM";
+            this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtUsername.BorderRadius = 3;
+            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUsername.DefaultText = "";
+            this.txtUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUsername.DisabledState.Parent = this.txtUsername;
+            this.txtUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtUsername.FocusedState.Parent = this.txtUsername;
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtUsername.HoverState.Parent = this.txtUsername;
+            this.txtUsername.Location = new System.Drawing.Point(32, 73);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.PasswordChar = '\0';
+            this.txtUsername.PlaceholderText = "";
+            this.txtUsername.SelectedText = "";
+            this.txtUsername.ShadowDecoration.Parent = this.txtUsername;
+            this.txtUsername.Size = new System.Drawing.Size(304, 33);
+            this.txtUsername.TabIndex = 0;
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtUsername_KeyDown);
+            // 
+            // txtKeycode
+            // 
+            this.txtKeycode.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtKeycode.BorderRadius = 3;
+            this.txtKeycode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtKeycode.DefaultText = "";
+            this.txtKeycode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtKeycode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtKeycode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtKeycode.DisabledState.Parent = this.txtKeycode;
+            this.txtKeycode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtKeycode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtKeycode.FocusedState.Parent = this.txtKeycode;
+            this.txtKeycode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeycode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtKeycode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtKeycode.HoverState.Parent = this.txtKeycode;
+            this.txtKeycode.Location = new System.Drawing.Point(32, 139);
+            this.txtKeycode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtKeycode.Name = "txtKeycode";
+            this.txtKeycode.PasswordChar = '*';
+            this.txtKeycode.PlaceholderText = "";
+            this.txtKeycode.SelectedText = "";
+            this.txtKeycode.ShadowDecoration.Parent = this.txtKeycode;
+            this.txtKeycode.Size = new System.Drawing.Size(304, 33);
+            this.txtKeycode.TabIndex = 1;
+            this.txtKeycode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtKeycode_KeyDown);
             // 
             // guna2DragControl1
             // 

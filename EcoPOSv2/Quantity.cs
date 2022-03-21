@@ -26,7 +26,7 @@ namespace EcoPOSv2
 
         private void Quantity_Load(object sender, EventArgs e)
         {
-
+            this.ActiveControl = txtQuantity;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

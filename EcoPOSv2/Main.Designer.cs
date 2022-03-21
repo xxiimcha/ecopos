@@ -56,11 +56,13 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
+            this.pnlType = new Guna.UI2.WinForms.Guna2Panel();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.pnlType.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -112,14 +114,14 @@
             this.lblTraningMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTraningMode.AutoSize = true;
             this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTraningMode.ForeColor = System.Drawing.Color.White;
-            this.lblTraningMode.Location = new System.Drawing.Point(601, 5);
+            this.lblTraningMode.Location = new System.Drawing.Point(592, 5);
             this.lblTraningMode.Name = "lblTraningMode";
-            this.lblTraningMode.Size = new System.Drawing.Size(165, 25);
+            this.lblTraningMode.Size = new System.Drawing.Size(182, 25);
             this.lblTraningMode.TabIndex = 12;
             this.lblTraningMode.Text = "TRAINING MODE";
+            this.lblTraningMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDateTime
             // 
@@ -185,9 +187,8 @@
             // guna2Panel2
             // 
             this.guna2Panel2.BorderColor = System.Drawing.Color.DimGray;
+            this.guna2Panel2.Controls.Add(this.pnlType);
             this.guna2Panel2.Controls.Add(this.lblTerminalName);
-            this.guna2Panel2.Controls.Add(this.lblType);
-            this.guna2Panel2.Controls.Add(this.Label3);
             this.guna2Panel2.CustomBorderColor = System.Drawing.Color.Black;
             this.guna2Panel2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -205,7 +206,7 @@
             this.lblTerminalName.BackColor = System.Drawing.Color.Transparent;
             this.lblTerminalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTerminalName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.lblTerminalName.Location = new System.Drawing.Point(2, 3);
+            this.lblTerminalName.Location = new System.Drawing.Point(2, 6);
             this.lblTerminalName.Name = "lblTerminalName";
             this.lblTerminalName.Size = new System.Drawing.Size(204, 22);
             this.lblTerminalName.TabIndex = 15;
@@ -214,18 +215,16 @@
             // 
             // lblType
             // 
-            this.lblType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblType.AutoSize = true;
+            this.lblType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblType.BackColor = System.Drawing.Color.Transparent;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.ForeColor = System.Drawing.Color.Black;
-            this.lblType.Location = new System.Drawing.Point(32, 24);
+            this.lblType.Location = new System.Drawing.Point(1, 1);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(138, 17);
+            this.lblType.Size = new System.Drawing.Size(207, 24);
             this.lblType.TabIndex = 7;
             this.lblType.Text = "ECOPOS SERVER TYPE";
+            this.lblType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Label3
             // 
@@ -235,9 +234,9 @@
             this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(-1, 40);
+            this.Label3.Location = new System.Drawing.Point(0, 19);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(210, 38);
+            this.Label3.Size = new System.Drawing.Size(208, 41);
             this.Label3.TabIndex = 9;
             this.Label3.Text = "Provided By:\r\nWNO ELECTRONICS TRADING";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -321,7 +320,7 @@
             this.btnOrder.Image = global::EcoPOSv2.Properties.Resources.cart_black;
             this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnOrder.Location = new System.Drawing.Point(-1, 243);
+            this.btnOrder.Location = new System.Drawing.Point(-1, 237);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
@@ -399,7 +398,7 @@
             this.btnMore.Image = global::EcoPOSv2.Properties.Resources.more_black;
             this.btnMore.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMore.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnMore.Location = new System.Drawing.Point(0, 423);
+            this.btnMore.Location = new System.Drawing.Point(0, 417);
             this.btnMore.Name = "btnMore";
             this.btnMore.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnMore.ShadowDecoration.Parent = this.btnMore;
@@ -426,7 +425,7 @@
             this.btnCalculator.Image = global::EcoPOSv2.Properties.Resources.calculator_black;
             this.btnCalculator.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCalculator.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnCalculator.Location = new System.Drawing.Point(-1, 363);
+            this.btnCalculator.Location = new System.Drawing.Point(-1, 357);
             this.btnCalculator.Name = "btnCalculator";
             this.btnCalculator.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
@@ -453,7 +452,7 @@
             this.btnXReading.Image = global::EcoPOSv2.Properties.Resources.switchcashier_black;
             this.btnXReading.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnXReading.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnXReading.Location = new System.Drawing.Point(-1, 303);
+            this.btnXReading.Location = new System.Drawing.Point(-1, 297);
             this.btnXReading.Name = "btnXReading";
             this.btnXReading.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnXReading.ShadowDecoration.Parent = this.btnXReading;
@@ -487,6 +486,17 @@
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
             // 
+            // pnlType
+            // 
+            this.pnlType.BackColor = System.Drawing.Color.Transparent;
+            this.pnlType.Controls.Add(this.lblType);
+            this.pnlType.Controls.Add(this.Label3);
+            this.pnlType.Location = new System.Drawing.Point(0, 28);
+            this.pnlType.Name = "pnlType";
+            this.pnlType.ShadowDecoration.Parent = this.pnlType;
+            this.pnlType.Size = new System.Drawing.Size(208, 62);
+            this.pnlType.TabIndex = 16;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,13 +517,12 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            this.pnlType.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -546,5 +555,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2ControlBox btnclosetemp;
         private Guna.UI2.WinForms.Guna2ControlBox btnMinimize;
+        private Guna.UI2.WinForms.Guna2Panel pnlType;
     }
 }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace EcoPOSv2
 {
@@ -79,6 +80,19 @@ namespace EcoPOSv2
                     DataSet ds = new DataSet();
 
                     report = new PaymentR58();
+
+                    //int fontSize_bname = 8;
+                    //int fontSize_bdetails = 10;
+                    //int fontSize_transactionDetails = 0;
+
+                    //((FieldObject)report.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new Font("Arial", fontSize_bname, FontStyle.Bold));
+                    //((FieldObject)report.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new Font("Arial", 5, FontStyle.Bold));
+                    //((FieldObject)report.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new Font("Arial", 5, FontStyle.Bold));
+
+                    //foreach (FieldObject c in report.ReportDefinition.Sections["TransactionDetails"].ReportObjects)
+                    //{
+                    //    c.ApplyFont(new Font("Arial", fontSize_bdetails, FontStyle.Bold));
+                    //}
 
                     try
                     {

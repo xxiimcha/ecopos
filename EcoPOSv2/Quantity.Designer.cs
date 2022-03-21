@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Quantity));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.lblItem = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
-            this.txtQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,35 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(533, 202);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtQuantity.BorderRadius = 3;
+            this.txtQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtQuantity.DefaultText = "";
+            this.txtQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtQuantity.DisabledState.Parent = this.txtQuantity;
+            this.txtQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtQuantity.FocusedState.Parent = this.txtQuantity;
+            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtQuantity.HoverState.Parent = this.txtQuantity;
+            this.txtQuantity.Location = new System.Drawing.Point(112, 65);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.PasswordChar = '\0';
+            this.txtQuantity.PlaceholderText = "";
+            this.txtQuantity.SelectedText = "";
+            this.txtQuantity.ShadowDecoration.Parent = this.txtQuantity;
+            this.txtQuantity.Size = new System.Drawing.Size(399, 33);
+            this.txtQuantity.TabIndex = 0;
+            this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuantity_KeyPress);
             // 
             // btnQuantity
             // 
@@ -99,7 +128,7 @@
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(238, 49);
-            this.btnConfirm.TabIndex = 57;
+            this.btnConfirm.TabIndex = 1;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -134,35 +163,6 @@
             this.Label3.TabIndex = 53;
             this.Label3.Text = "Quantity";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtQuantity.BorderRadius = 3;
-            this.txtQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtQuantity.DefaultText = "";
-            this.txtQuantity.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtQuantity.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtQuantity.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtQuantity.DisabledState.Parent = this.txtQuantity;
-            this.txtQuantity.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtQuantity.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtQuantity.FocusedState.Parent = this.txtQuantity;
-            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtQuantity.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtQuantity.HoverState.Parent = this.txtQuantity;
-            this.txtQuantity.Location = new System.Drawing.Point(112, 65);
-            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.PasswordChar = '\0';
-            this.txtQuantity.PlaceholderText = "";
-            this.txtQuantity.SelectedText = "";
-            this.txtQuantity.ShadowDecoration.Parent = this.txtQuantity;
-            this.txtQuantity.Size = new System.Drawing.Size(399, 33);
-            this.txtQuantity.TabIndex = 59;
-            this.txtQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuantity_KeyDown);
-            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtQuantity_KeyPress);
             // 
             // Quantity
             // 

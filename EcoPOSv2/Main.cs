@@ -336,6 +336,7 @@ namespace EcoPOSv2
             {
                 lblTerminalName.Visible = false;
                 lblType.Text = "ECOPOS STAND-ALONE";
+                pnlType.Dock = DockStyle.Fill;
             }
 
             FormLoad Fl = new FormLoad();

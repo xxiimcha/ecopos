@@ -26,10 +26,15 @@ namespace EcoPOSv2
             dgvProducts.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvCategory, true, null);
             dgvCat_Category.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvCategory, true, null);
 
-
-            this.dgvCategory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCat_Category.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+
+            OL.ComboValues(comboCategory, "categoryID", "name", "product_category");
+            if (comboCategory.Items.Count > 0)
+            {
+                comboCategory.SelectedIndex = 0;
+            }
+            else return;
         }
 
         SQLControl SQL = new SQLControl();
@@ -295,11 +300,9 @@ namespace EcoPOSv2
         private void ControlBehavior()
         {
             Control sp = (Control)txtSearchProduct;
-            Control sc = (Control)txtSearchCategory;
             Control csc = (Control)txtCat_SearchCategory;
 
             SetBehavior(ref sp, Behavior.ClearSearch);
-            SetBehavior(ref sc, Behavior.ClearSearch);
             SetBehavior(ref csc, Behavior.ClearSearch);
         }
         //METHODS
@@ -470,6 +473,7 @@ namespace EcoPOSv2
 
             this.ActiveControl = txtDescription;
         }
+
         string description, name;
         int checkerforduplicateB1 = 0, checkerforduplicateB2 = 0;
         private void btnProduct_Save_Click(object sender, EventArgs e)
@@ -829,41 +833,6 @@ namespace EcoPOSv2
             }
         }
 
-        private void btnSortProduct_Click(object sender, EventArgs e)
-        {
-            if (dgvProducts.RowCount == 0)
-                return;
-
-            if (btnSortProduct.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvProducts.Sort(dgvProducts.Columns[1], ListSortDirection.Ascending);
-                btnSortProduct.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvProducts.Sort(dgvProducts.Columns[1], ListSortDirection.Descending);
-                btnSortProduct.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
-        private void btnSortCategory_Click(object sender, EventArgs e)
-        {
-            if (dgvCategory.RowCount == 0)
-                return;
-
-            if (btnSortCategory.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvCategory.Sort(dgvCategory.Columns[1], ListSortDirection.Ascending);
-                btnSortCategory.IconChar = IconChar.SortAlphaUp;
-                return;
-            }
-            else
-            {
-                dgvCategory.Sort(dgvCategory.Columns[1], ListSortDirection.Descending);
-                btnSortCategory.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
         private void dgvCat_Category_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1)
@@ -1113,46 +1082,6 @@ namespace EcoPOSv2
             }
         }
 
-        private void txtSearchCategory_KeyUp(object sender, KeyEventArgs e)
-        {
-            SQLControl psql = new SQLControl();
-            new Thread(() =>
-            {
-                Invoke(new MethodInvoker(delegate ()
-                {
-                    if (txtSearchCategory.Text == "")
-                    {
-                        //SQL.Query(@"SELECT catID, catName FROM
-                        //   (
-                        //   SELECT 0 as catID, 'All Categories' as catName
-                        //   UNION ALL 
-                        //   SELECT categoryID as catID, name as catName FROM product_category 
-                        //   ) x ORDER BY 
-                        //   CASE WHEN catName = 'All Categories' then 1
-                        //   ELSE 5
-                        //   END,
-                        //   catname ASC");
-
-                        psql.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
-
-                        if (psql.HasException(true))
-                            return;
-                    }
-                    else
-                    {
-                        psql.AddParam("@find", txtSearchCategory.Text + "%");
-
-                        psql.Query("Select categoryID, Name FROM product_category WHERE name Like @find ORDER BY name ASC");
-                        if (psql.HasException(true))
-                            return;
-                    }
-
-                    dgvCategory.DataSource = psql.DBDT;
-                    dgvCategory.Columns[0].Visible = false;
-                }));
-            }).Start();
-        }
-
         private void txtSearchProduct_KeyUp(object sender, KeyEventArgs e)
         {
             new Thread(() =>
@@ -1161,7 +1090,7 @@ namespace EcoPOSv2
                 {
                     if (txtSearchProduct.Text != "")
                     {
-                        SQL.AddParam("@find", txtSearchProduct.Text + "%");
+                        SQL.AddParam("@find", "%" + txtSearchProduct.Text + "%");
 
                         SQL.Query(@"SELECT productID, description, Name FROM products WHERE name LIKE @find OR description LIKE @find 
                        OR barcode1 LIKE @find OR barcode2 LIKE @find ORDER BY description ASC");
