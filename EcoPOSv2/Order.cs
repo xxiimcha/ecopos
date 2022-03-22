@@ -434,27 +434,32 @@ namespace EcoPOSv2
         {
             if (e.Control && e.KeyCode == Keys.I)
             {
-                btnSeeItem.PerformClick();
+                if (btnSeeItem.Enabled)
+                    btnSeeItem.PerformClick();
             }
 
             if (e.Control && e.KeyCode == Keys.D)
             {
-                btnDiscount.PerformClick();
+                if (btnDiscount.Enabled)
+                    btnDiscount.PerformClick();
             }
 
             if (e.Control && e.KeyCode == Keys.C)
             {
-                btnCustomer.PerformClick();
+                if (btnCustomer.Enabled)
+                    btnCustomer.PerformClick();
             }
 
             if (e.Control && e.KeyCode == Keys.Q)
             {
-                btnQuantity.PerformClick();
+                if (btnQuantity.Enabled)
+                    btnQuantity.PerformClick();
             }
 
             if (e.Control && e.KeyCode == Keys.V)
             {
-                btnVoidItem.PerformClick();
+                if (btnVoidItem.Enabled)
+                    btnVoidItem.PerformClick();
             }
 
             if(e.KeyCode == Keys.F5)
@@ -462,7 +467,8 @@ namespace EcoPOSv2
                 //MessageBox.Show("f5 price editor");
                 if(btnPriceEditor.Visible == true)
                 {
-                    btnPriceEditor.PerformClick();
+                    if (btnPriceEditor.Enabled)
+                        btnPriceEditor.PerformClick();
                 }
                 else
                 {
@@ -472,22 +478,26 @@ namespace EcoPOSv2
 
             if(e.KeyCode == Keys.F7)
             {
-                btnRedeem.PerformClick();
+                if (btnRedeem.Enabled)
+                    btnRedeem.PerformClick();
             }
 
             if (e.KeyCode == Keys.F4)
             {
-                btnCancel.PerformClick();
+                if (btnCancel.Enabled)
+                    btnCancel.PerformClick();
             }
 
             if (e.KeyCode == Keys.F3)
             {
-                btnVoid.PerformClick();
+                if (btnVoid.Enabled)
+                    btnVoid.PerformClick();
             }
 
             if(e.Control && e.KeyCode == Keys.P)
             {
-                btnPayment.PerformClick();
+                if (btnPayment.Enabled)
+                    btnPayment.PerformClick();
             }
 
             if (e.KeyCode == Keys.Escape)

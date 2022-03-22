@@ -210,6 +210,8 @@ namespace EcoPOSv2
 
                 btnResetSales.Enabled = false;
                 btnResetSales.Text = "Resetting Sales..";
+                SQL.Query("delete from zreading");
+                SQL.Query("delete from shift");
                 SQL.Query("DELETE FROM store_start");
                 SQL.Query("delete from order_cart");
                 SQL.Query("delete from order_no");
@@ -225,7 +227,7 @@ namespace EcoPOSv2
                 SQL.Query("delete from void_item");
                 SQL.Query("delete from void_transaction");
                 SQL.Query("delete from xreading");
-                SQL.Query("delete from zreading");
+                
 
                 SQL.Query(@"DBCC CHECKIDENT('[order_no]', RESEED, 0);
                 DBCC CHECKIDENT('[order_cart]', RESEED, 0);
