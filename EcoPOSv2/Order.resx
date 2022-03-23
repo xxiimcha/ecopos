@@ -258,28 +258,28 @@
   <data name="&gt;&gt;enteredOrdersPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="gunaLabel1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblLine.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="gunaLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 404</value>
+  <data name="lblLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 404</value>
   </data>
-  <data name="gunaLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 23</value>
+  <data name="lblLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 23</value>
   </data>
-  <data name="gunaLabel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblLine.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="&gt;&gt;gunaLabel1.Name" xml:space="preserve">
-    <value>gunaLabel1</value>
+  <data name="&gt;&gt;lblLine.Name" xml:space="preserve">
+    <value>lblLine</value>
   </data>
-  <data name="&gt;&gt;gunaLabel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblLine.Type" xml:space="preserve">
     <value>Guna.UI.WinForms.GunaLabel, Guna.UI, Version=1.9.0.1, Culture=neutral, PublicKeyToken=ad275b4be6718d4b</value>
   </data>
-  <data name="&gt;&gt;gunaLabel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblLine.Parent" xml:space="preserve">
     <value>panel4</value>
   </data>
-  <data name="&gt;&gt;gunaLabel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblLine.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="btnViewKeeps.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -966,37 +966,37 @@
   <data name="&gt;&gt;lblTotal.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="label17.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblTotalTitle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblTotalTitle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 24pt, style=Bold</value>
   </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblTotalTitle.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 421</value>
   </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblTotalTitle.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 45</value>
   </data>
-  <data name="label17.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblTotalTitle.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
+  <data name="lblTotalTitle.Text" xml:space="preserve">
     <value>TOTAL:</value>
   </data>
-  <data name="label17.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="lblTotalTitle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
+  <data name="&gt;&gt;lblTotalTitle.Name" xml:space="preserve">
+    <value>lblTotalTitle</value>
   </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblTotalTitle.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblTotalTitle.Parent" xml:space="preserve">
     <value>panel4</value>
   </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblTotalTitle.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
   <data name="lblDiscount.Font" type="System.Drawing.Font, System.Drawing">

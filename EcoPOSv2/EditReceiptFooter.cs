@@ -25,6 +25,8 @@ namespace EcoPOSv2
             cmbTitleText.Text = Properties.Settings.Default.TitleTextFont;
             cmbRegularText.Text = Properties.Settings.Default.RegularTextFont;
             cmbTransactionText.Text = Properties.Settings.Default.TransactionDetailsFont;
+            cmbBusinessDetails.Text = Properties.Settings.Default.BusinessDetailsFont;
+            cmbProducts.Text = Properties.Settings.Default.ProductListFont;
 
             int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));
             if (SQL.HasException(true))
@@ -48,6 +50,8 @@ namespace EcoPOSv2
             Properties.Settings.Default.TitleTextFont = cmbTitleText.Text;
             Properties.Settings.Default.RegularTextFont = cmbRegularText.Text;
             Properties.Settings.Default.TransactionDetailsFont = cmbTransactionText.Text;
+            Properties.Settings.Default.BusinessDetailsFont = cmbBusinessDetails.Text;
+            Properties.Settings.Default.ProductListFont = cmbProducts.Text;
             Properties.Settings.Default.Save();
 
             int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));

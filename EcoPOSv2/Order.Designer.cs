@@ -40,7 +40,7 @@
             this.tbBarcode = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnBarcode = new Guna.UI2.WinForms.Guna2Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.lblLine = new Guna.UI.WinForms.GunaLabel();
             this.btnViewKeeps = new Guna.UI2.WinForms.Guna2Button();
             this.btnKeep = new Guna.UI2.WinForms.Guna2Button();
             this.btnPriceEditor = new Guna.UI2.WinForms.Guna2Button();
@@ -63,7 +63,7 @@
             this.lblLessVAT = new System.Windows.Forms.Label();
             this.lblLessVATt = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lblTotalTitle = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
@@ -236,7 +236,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.gunaLabel1);
+            this.panel4.Controls.Add(this.lblLine);
             this.panel4.Controls.Add(this.btnViewKeeps);
             this.panel4.Controls.Add(this.btnKeep);
             this.panel4.Controls.Add(this.btnPriceEditor);
@@ -259,7 +259,7 @@
             this.panel4.Controls.Add(this.lblLessVAT);
             this.panel4.Controls.Add(this.lblLessVATt);
             this.panel4.Controls.Add(this.lblTotal);
-            this.panel4.Controls.Add(this.label17);
+            this.panel4.Controls.Add(this.lblTotalTitle);
             this.panel4.Controls.Add(this.lblDiscount);
             this.panel4.Controls.Add(this.label15);
             this.panel4.Controls.Add(this.lblSubtotal);
@@ -277,11 +277,12 @@
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
-            // gunaLabel1
+            // lblLine
             // 
-            resources.ApplyResources(this.gunaLabel1, "gunaLabel1");
-            this.gunaLabel1.Image = global::EcoPOSv2.Properties.Resources.paymentline;
-            this.gunaLabel1.Name = "gunaLabel1";
+            this.lblLine.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.lblLine, "lblLine");
+            this.lblLine.Image = global::EcoPOSv2.Properties.Resources.paymentline;
+            this.lblLine.Name = "lblLine";
             // 
             // btnViewKeeps
             // 
@@ -540,12 +541,12 @@
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.lblTotal.Name = "lblTotal";
             // 
-            // label17
+            // lblTotalTitle
             // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.BackColor = System.Drawing.Color.White;
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
-            this.label17.Name = "label17";
+            resources.ApplyResources(this.lblTotalTitle, "lblTotalTitle");
+            this.lblTotalTitle.BackColor = System.Drawing.Color.White;
+            this.lblTotalTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.lblTotalTitle.Name = "lblTotalTitle";
             // 
             // lblDiscount
             // 
@@ -783,7 +784,7 @@
         internal System.Windows.Forms.Label lblLessVAT;
         internal System.Windows.Forms.Label lblLessVATt;
         internal System.Windows.Forms.Label lblTotal;
-        internal System.Windows.Forms.Label label17;
+        internal System.Windows.Forms.Label lblTotalTitle;
         internal System.Windows.Forms.Label lblDiscount;
         internal System.Windows.Forms.Label label15;
         internal System.Windows.Forms.Label lblSubtotal;
@@ -812,6 +813,6 @@
         public Guna.UI2.WinForms.Guna2TextBox tbBarcode;
         private Guna.UI2.WinForms.Guna2Button btnSeeItem;
         public Guna.UI2.WinForms.Guna2DataGridView dgvCart;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI.WinForms.GunaLabel lblLine;
     }
 }

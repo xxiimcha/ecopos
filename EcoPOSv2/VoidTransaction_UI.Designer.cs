@@ -430,6 +430,7 @@
             this.btnVoid.BorderThickness = 2;
             this.btnVoid.CheckedState.Parent = this.btnVoid;
             this.btnVoid.CustomImages.Parent = this.btnVoid;
+            this.btnVoid.Enabled = false;
             this.btnVoid.FillColor = System.Drawing.Color.White;
             this.btnVoid.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnVoid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

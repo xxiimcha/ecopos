@@ -746,6 +746,10 @@ namespace EcoPOSv2
         {
             if(!Properties.Settings.Default.isBirAccredited)
             {
+                lblLine.Location = new Point(7, 300);
+                lblTotalTitle.Location = new Point(3, 320);
+                lblTotal.Location = new Point(157, 320);
+
                 btnPriceEditor.Enabled = true;
                 btnPriceEditor.Visible = true;
             }

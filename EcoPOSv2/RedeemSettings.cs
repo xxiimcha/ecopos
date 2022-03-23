@@ -728,6 +728,8 @@ namespace EcoPOSv2
             {
                 reprint_receipt = new RedeemReceipt58();
 
+
+
                 DataSet ds = new DataSet();
 
                 try

@@ -340,7 +340,7 @@ namespace EcoPOSv2.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
         public string TransactionDetailsFont
         {
             get
@@ -350,6 +350,36 @@ namespace EcoPOSv2.Properties {
             set
             {
                 this["TransactionDetailsFont"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public string ProductListFont
+        {
+            get
+            {
+                return ((string)(this["ProductListFont"]));
+            }
+            set
+            {
+                this["ProductListFont"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public string BusinessDetailsFont
+        {
+            get
+            {
+                return ((string)(this["BusinessDetailsFont"]));
+            }
+            set
+            {
+                this["BusinessDetailsFont"] = value;
             }
         }
 

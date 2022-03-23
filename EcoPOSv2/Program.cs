@@ -19,7 +19,7 @@ namespace EcoPOSv2
         static void Main()
         {
             Mutex mutex = null;
-            const string appName = "EcoPOSv2";
+            const string appName = "EcoPOSv3";
             bool createdNew;
 
             mutex = new Mutex(true, appName, out createdNew);
@@ -46,13 +46,13 @@ namespace EcoPOSv2
 
                 if (myKey == null)
                 {
-                    MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Copying this to another PC is illegal and falls under Piracy. If you want to avail another POS, please directly contact WNO", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (myKey.GetValue("EcoPOS").ToString() != new Helper().Decrypt("CD7MY63RkDVQJfI8epabkw=="))
                 {
-                    MessageBox.Show("Wag mo na icopy. Sa Ibang Computer ^_^", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Copying this to another PC is illegal and falls under Piracy. If you want to avail another POS, please directly contact WNO", "Piracy", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

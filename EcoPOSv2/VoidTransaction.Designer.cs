@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoidTransaction));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.tbTerminalNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
+            this.txtORNo = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.txtORNo = new System.Windows.Forms.TextBox();
-            this.tbTerminalNo = new System.Windows.Forms.TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,17 @@
             this.guna2Panel1.Size = new System.Drawing.Size(533, 193);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Click += new System.EventHandler(this.guna2Panel1_Click);
+            // 
+            // tbTerminalNo
+            // 
+            this.tbTerminalNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTerminalNo.ForeColor = System.Drawing.Color.Black;
+            this.tbTerminalNo.Location = new System.Drawing.Point(130, 26);
+            this.tbTerminalNo.Name = "tbTerminalNo";
+            this.tbTerminalNo.Size = new System.Drawing.Size(386, 33);
+            this.tbTerminalNo.TabIndex = 0;
+            this.tbTerminalNo.Tag = "";
+            this.tbTerminalNo.Click += new System.EventHandler(this.tbTerminalNo_Click);
             // 
             // label1
             // 
@@ -118,17 +129,6 @@
             this.btnConfirm.TextOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(17, 74);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(75, 28);
-            this.Label3.TabIndex = 57;
-            this.Label3.Text = "OR No.";
-            // 
             // txtORNo
             // 
             this.txtORNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,17 +141,16 @@
             this.txtORNo.Tag = "";
             this.txtORNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtORNo_KeyDown);
             // 
-            // tbTerminalNo
+            // Label3
             // 
-            this.tbTerminalNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTerminalNo.ForeColor = System.Drawing.Color.Black;
-            this.tbTerminalNo.Location = new System.Drawing.Point(130, 26);
-            this.tbTerminalNo.Multiline = true;
-            this.tbTerminalNo.Name = "tbTerminalNo";
-            this.tbTerminalNo.Size = new System.Drawing.Size(386, 33);
-            this.tbTerminalNo.TabIndex = 0;
-            this.tbTerminalNo.Tag = "";
-            this.tbTerminalNo.Click += new System.EventHandler(this.tbTerminalNo_Click);
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.Color.Black;
+            this.Label3.Location = new System.Drawing.Point(17, 74);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(75, 28);
+            this.Label3.TabIndex = 57;
+            this.Label3.Text = "OR No.";
             // 
             // VoidTransaction
             // 
