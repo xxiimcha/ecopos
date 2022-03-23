@@ -58,7 +58,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Address {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection4 {
             get {
                 return this.ReportDefinition.Sections[1];
             }
@@ -66,7 +66,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Note {
+        public CrystalDecisions.CrystalReports.Engine.Section Address {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection5 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection6 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section TransactionDetails {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection7 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection9 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,7 +98,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection8 {
             get {
                 return this.ReportDefinition.Sections[6];
             }
@@ -106,7 +106,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Note {
             get {
                 return this.ReportDefinition.Sections[7];
             }
@@ -114,7 +114,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Header {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection10 {
             get {
                 return this.ReportDefinition.Sections[8];
             }
@@ -122,7 +122,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Product {
+        public CrystalDecisions.CrystalReports.Engine.Section TransactionDetails {
             get {
                 return this.ReportDefinition.Sections[9];
             }
@@ -130,7 +130,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection2 {
             get {
                 return this.ReportDefinition.Sections[10];
             }
@@ -138,7 +138,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[11];
             }
@@ -146,7 +146,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ItemNo {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection3 {
             get {
                 return this.ReportDefinition.Sections[12];
             }
@@ -154,7 +154,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection31 {
+        public CrystalDecisions.CrystalReports.Engine.Section Header {
             get {
                 return this.ReportDefinition.Sections[13];
             }
@@ -162,7 +162,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Subtotal {
+        public CrystalDecisions.CrystalReports.Engine.Section Product {
             get {
                 return this.ReportDefinition.Sections[14];
             }
@@ -170,7 +170,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section LessVAT {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
             get {
                 return this.ReportDefinition.Sections[15];
             }
@@ -178,7 +178,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Discount {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[16];
             }
@@ -186,7 +186,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Points {
+        public CrystalDecisions.CrystalReports.Engine.Section ItemNo {
             get {
                 return this.ReportDefinition.Sections[17];
             }
@@ -194,7 +194,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Giftcard {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection31 {
             get {
                 return this.ReportDefinition.Sections[18];
             }
@@ -202,7 +202,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection34 {
+        public CrystalDecisions.CrystalReports.Engine.Section Subtotal {
             get {
                 return this.ReportDefinition.Sections[19];
             }
@@ -210,7 +210,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Total {
+        public CrystalDecisions.CrystalReports.Engine.Section LessVAT {
             get {
                 return this.ReportDefinition.Sections[20];
             }
@@ -218,7 +218,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection24 {
+        public CrystalDecisions.CrystalReports.Engine.Section Discount {
             get {
                 return this.ReportDefinition.Sections[21];
             }
@@ -226,7 +226,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section VatableSales {
+        public CrystalDecisions.CrystalReports.Engine.Section Points {
             get {
                 return this.ReportDefinition.Sections[22];
             }
@@ -234,7 +234,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section VatAmount {
+        public CrystalDecisions.CrystalReports.Engine.Section Giftcard {
             get {
                 return this.ReportDefinition.Sections[23];
             }
@@ -242,7 +242,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section VatExempt {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection34 {
             get {
                 return this.ReportDefinition.Sections[24];
             }
@@ -250,7 +250,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ZeroRated {
+        public CrystalDecisions.CrystalReports.Engine.Section Total {
             get {
                 return this.ReportDefinition.Sections[25];
             }
@@ -258,7 +258,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection18 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection24 {
             get {
                 return this.ReportDefinition.Sections[26];
             }
@@ -266,7 +266,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GiftcardNo {
+        public CrystalDecisions.CrystalReports.Engine.Section VatableSales {
             get {
                 return this.ReportDefinition.Sections[27];
             }
@@ -274,7 +274,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Payment {
+        public CrystalDecisions.CrystalReports.Engine.Section VatAmount {
             get {
                 return this.ReportDefinition.Sections[28];
             }
@@ -282,7 +282,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReferenceNo {
+        public CrystalDecisions.CrystalReports.Engine.Section VatExempt {
             get {
                 return this.ReportDefinition.Sections[29];
             }
@@ -290,7 +290,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Change {
+        public CrystalDecisions.CrystalReports.Engine.Section ZeroRated {
             get {
                 return this.ReportDefinition.Sections[30];
             }
@@ -298,7 +298,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection15 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection18 {
             get {
                 return this.ReportDefinition.Sections[31];
             }
@@ -306,7 +306,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section CustomerInfo {
+        public CrystalDecisions.CrystalReports.Engine.Section GiftcardNo {
             get {
                 return this.ReportDefinition.Sections[32];
             }
@@ -314,7 +314,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection12 {
+        public CrystalDecisions.CrystalReports.Engine.Section Payment {
             get {
                 return this.ReportDefinition.Sections[33];
             }
@@ -322,7 +322,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Accreditation {
+        public CrystalDecisions.CrystalReports.Engine.Section ReferenceNo {
             get {
                 return this.ReportDefinition.Sections[34];
             }
@@ -330,7 +330,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section AccreditationDateIssue {
+        public CrystalDecisions.CrystalReports.Engine.Section Change {
             get {
                 return this.ReportDefinition.Sections[35];
             }
@@ -338,7 +338,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section AccreditationDateUntil {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection15 {
             get {
                 return this.ReportDefinition.Sections[36];
             }
@@ -346,7 +346,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PTUNo {
+        public CrystalDecisions.CrystalReports.Engine.Section CustomerInfo {
             get {
                 return this.ReportDefinition.Sections[37];
             }
@@ -354,7 +354,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection14 {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection12 {
             get {
                 return this.ReportDefinition.Sections[38];
             }
@@ -362,7 +362,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Footer {
+        public CrystalDecisions.CrystalReports.Engine.Section Accreditation {
             get {
                 return this.ReportDefinition.Sections[39];
             }
@@ -370,7 +370,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection33 {
+        public CrystalDecisions.CrystalReports.Engine.Section AccreditationDateIssue {
             get {
                 return this.ReportDefinition.Sections[40];
             }
@@ -378,7 +378,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Validity {
+        public CrystalDecisions.CrystalReports.Engine.Section AccreditationDateUntil {
             get {
                 return this.ReportDefinition.Sections[41];
             }
@@ -386,7 +386,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section PTUNo {
             get {
                 return this.ReportDefinition.Sections[42];
             }
@@ -394,7 +394,7 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section footertext {
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection14 {
             get {
                 return this.ReportDefinition.Sections[43];
             }
@@ -402,9 +402,49 @@ namespace EcoPOSv2 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section Footer {
             get {
                 return this.ReportDefinition.Sections[44];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection33 {
+            get {
+                return this.ReportDefinition.Sections[45];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Validity {
+            get {
+                return this.ReportDefinition.Sections[46];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection2 {
+            get {
+                return this.ReportDefinition.Sections[47];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section footertext {
+            get {
+                return this.ReportDefinition.Sections[48];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[49];
             }
         }
         

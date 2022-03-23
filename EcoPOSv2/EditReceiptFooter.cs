@@ -22,6 +22,10 @@ namespace EcoPOSv2
 
         private void EditReceiptFooter_Load(object sender, EventArgs e)
         {
+            cmbTitleText.Text = Properties.Settings.Default.TitleTextFont;
+            cmbRegularText.Text = Properties.Settings.Default.RegularTextFont;
+            cmbTransactionText.Text = Properties.Settings.Default.TransactionDetailsFont;
+
             int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));
             if (SQL.HasException(true))
                 return;
@@ -41,6 +45,11 @@ namespace EcoPOSv2
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.TitleTextFont = cmbTitleText.Text;
+            Properties.Settings.Default.RegularTextFont = cmbRegularText.Text;
+            Properties.Settings.Default.TransactionDetailsFont = cmbTransactionText.Text;
+            Properties.Settings.Default.Save();
+
             int count_records = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) FROM receipt_layout"));
             if (SQL.HasException(true))
                 return;

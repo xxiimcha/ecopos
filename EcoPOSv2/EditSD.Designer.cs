@@ -31,19 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSD));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.dtpPTU_ValidUntil = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.dtpPTU_DateIssued = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.txtPTUNo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dtpAN_ValidUntil = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.dtpAN_DateIssued = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.txtAN = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtSN = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtMIN = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtVATRegTin = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtTaxPayer = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtContactNo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.lblCompanyDetails = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
@@ -59,9 +47,21 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.Label10 = new System.Windows.Forms.Label();
             this.Label11 = new System.Windows.Forms.Label();
-            this.tmrClose = new System.Windows.Forms.Timer(this.components);
-            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.textBoxPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtpPTU_ValidUntil = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.txtAddress = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtpPTU_DateIssued = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.txtContactNo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtPTUNo = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTaxPayer = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtpAN_ValidUntil = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.txtVATRegTin = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtpAN_DateIssued = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.txtMIN = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtAN = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtSN = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tmrClose = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1.SuspendLayout();
             this.textBoxPanel.SuspendLayout();
             this.SuspendLayout();
@@ -95,340 +95,22 @@
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
-            // dtpPTU_ValidUntil
+            // btnClose
             // 
-            this.dtpPTU_ValidUntil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpPTU_ValidUntil.BorderRadius = 5;
-            this.dtpPTU_ValidUntil.BorderThickness = 1;
-            this.dtpPTU_ValidUntil.CheckedState.Parent = this.dtpPTU_ValidUntil;
-            this.dtpPTU_ValidUntil.CustomFormat = "MMMM dd, yyyy";
-            this.dtpPTU_ValidUntil.FillColor = System.Drawing.Color.White;
-            this.dtpPTU_ValidUntil.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpPTU_ValidUntil.ForeColor = System.Drawing.Color.Black;
-            this.dtpPTU_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPTU_ValidUntil.HoverState.Parent = this.dtpPTU_ValidUntil;
-            this.dtpPTU_ValidUntil.Location = new System.Drawing.Point(0, 518);
-            this.dtpPTU_ValidUntil.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpPTU_ValidUntil.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpPTU_ValidUntil.Name = "dtpPTU_ValidUntil";
-            this.dtpPTU_ValidUntil.ShadowDecoration.Parent = this.dtpPTU_ValidUntil;
-            this.dtpPTU_ValidUntil.Size = new System.Drawing.Size(391, 33);
-            this.dtpPTU_ValidUntil.TabIndex = 136;
-            this.dtpPTU_ValidUntil.Tag = "To";
-            this.dtpPTU_ValidUntil.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
-            // 
-            // dtpPTU_DateIssued
-            // 
-            this.dtpPTU_DateIssued.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpPTU_DateIssued.BorderRadius = 5;
-            this.dtpPTU_DateIssued.BorderThickness = 1;
-            this.dtpPTU_DateIssued.CheckedState.Parent = this.dtpPTU_DateIssued;
-            this.dtpPTU_DateIssued.CustomFormat = "MMMM dd, yyyy";
-            this.dtpPTU_DateIssued.FillColor = System.Drawing.Color.White;
-            this.dtpPTU_DateIssued.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpPTU_DateIssued.ForeColor = System.Drawing.Color.Black;
-            this.dtpPTU_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPTU_DateIssued.HoverState.Parent = this.dtpPTU_DateIssued;
-            this.dtpPTU_DateIssued.Location = new System.Drawing.Point(0, 477);
-            this.dtpPTU_DateIssued.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpPTU_DateIssued.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpPTU_DateIssued.Name = "dtpPTU_DateIssued";
-            this.dtpPTU_DateIssued.ShadowDecoration.Parent = this.dtpPTU_DateIssued;
-            this.dtpPTU_DateIssued.Size = new System.Drawing.Size(391, 33);
-            this.dtpPTU_DateIssued.TabIndex = 135;
-            this.dtpPTU_DateIssued.Tag = "To";
-            this.dtpPTU_DateIssued.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
-            // 
-            // txtPTUNo
-            // 
-            this.txtPTUNo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtPTUNo.BorderRadius = 3;
-            this.txtPTUNo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPTUNo.DefaultText = "";
-            this.txtPTUNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPTUNo.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtPTUNo.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtPTUNo.DisabledState.Parent = this.txtPTUNo;
-            this.txtPTUNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtPTUNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPTUNo.FocusedState.Parent = this.txtPTUNo;
-            this.txtPTUNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPTUNo.ForeColor = System.Drawing.Color.Black;
-            this.txtPTUNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPTUNo.HoverState.Parent = this.txtPTUNo;
-            this.txtPTUNo.Location = new System.Drawing.Point(0, 436);
-            this.txtPTUNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPTUNo.Name = "txtPTUNo";
-            this.txtPTUNo.PasswordChar = '\0';
-            this.txtPTUNo.PlaceholderText = "";
-            this.txtPTUNo.SelectedText = "";
-            this.txtPTUNo.ShadowDecoration.Parent = this.txtPTUNo;
-            this.txtPTUNo.Size = new System.Drawing.Size(391, 33);
-            this.txtPTUNo.TabIndex = 134;
-            // 
-            // dtpAN_ValidUntil
-            // 
-            this.dtpAN_ValidUntil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpAN_ValidUntil.BorderRadius = 5;
-            this.dtpAN_ValidUntil.BorderThickness = 1;
-            this.dtpAN_ValidUntil.CheckedState.Parent = this.dtpAN_ValidUntil;
-            this.dtpAN_ValidUntil.CustomFormat = "MMMM dd, yyyy";
-            this.dtpAN_ValidUntil.FillColor = System.Drawing.Color.White;
-            this.dtpAN_ValidUntil.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpAN_ValidUntil.ForeColor = System.Drawing.Color.Black;
-            this.dtpAN_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAN_ValidUntil.HoverState.Parent = this.dtpAN_ValidUntil;
-            this.dtpAN_ValidUntil.Location = new System.Drawing.Point(0, 395);
-            this.dtpAN_ValidUntil.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpAN_ValidUntil.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpAN_ValidUntil.Name = "dtpAN_ValidUntil";
-            this.dtpAN_ValidUntil.ShadowDecoration.Parent = this.dtpAN_ValidUntil;
-            this.dtpAN_ValidUntil.Size = new System.Drawing.Size(391, 33);
-            this.dtpAN_ValidUntil.TabIndex = 133;
-            this.dtpAN_ValidUntil.Tag = "To";
-            this.dtpAN_ValidUntil.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
-            // 
-            // dtpAN_DateIssued
-            // 
-            this.dtpAN_DateIssued.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpAN_DateIssued.BorderRadius = 5;
-            this.dtpAN_DateIssued.BorderThickness = 1;
-            this.dtpAN_DateIssued.CheckedState.Parent = this.dtpAN_DateIssued;
-            this.dtpAN_DateIssued.CustomFormat = "MMMM dd, yyyy";
-            this.dtpAN_DateIssued.FillColor = System.Drawing.Color.White;
-            this.dtpAN_DateIssued.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpAN_DateIssued.ForeColor = System.Drawing.Color.Black;
-            this.dtpAN_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAN_DateIssued.HoverState.Parent = this.dtpAN_DateIssued;
-            this.dtpAN_DateIssued.Location = new System.Drawing.Point(0, 354);
-            this.dtpAN_DateIssued.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpAN_DateIssued.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpAN_DateIssued.Name = "dtpAN_DateIssued";
-            this.dtpAN_DateIssued.ShadowDecoration.Parent = this.dtpAN_DateIssued;
-            this.dtpAN_DateIssued.Size = new System.Drawing.Size(391, 33);
-            this.dtpAN_DateIssued.TabIndex = 132;
-            this.dtpAN_DateIssued.Tag = "To";
-            this.dtpAN_DateIssued.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
-            // 
-            // txtAN
-            // 
-            this.txtAN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtAN.BorderRadius = 3;
-            this.txtAN.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAN.DefaultText = "";
-            this.txtAN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAN.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtAN.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtAN.DisabledState.Parent = this.txtAN;
-            this.txtAN.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtAN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAN.FocusedState.Parent = this.txtAN;
-            this.txtAN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAN.ForeColor = System.Drawing.Color.Black;
-            this.txtAN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAN.HoverState.Parent = this.txtAN;
-            this.txtAN.Location = new System.Drawing.Point(0, 313);
-            this.txtAN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtAN.Name = "txtAN";
-            this.txtAN.PasswordChar = '\0';
-            this.txtAN.PlaceholderText = "";
-            this.txtAN.SelectedText = "";
-            this.txtAN.ShadowDecoration.Parent = this.txtAN;
-            this.txtAN.Size = new System.Drawing.Size(391, 33);
-            this.txtAN.TabIndex = 131;
-            // 
-            // txtSN
-            // 
-            this.txtSN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtSN.BorderRadius = 3;
-            this.txtSN.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSN.DefaultText = "";
-            this.txtSN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSN.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtSN.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtSN.DisabledState.Parent = this.txtSN;
-            this.txtSN.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtSN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSN.FocusedState.Parent = this.txtSN;
-            this.txtSN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSN.ForeColor = System.Drawing.Color.Black;
-            this.txtSN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSN.HoverState.Parent = this.txtSN;
-            this.txtSN.Location = new System.Drawing.Point(0, 272);
-            this.txtSN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtSN.Name = "txtSN";
-            this.txtSN.PasswordChar = '\0';
-            this.txtSN.PlaceholderText = "";
-            this.txtSN.SelectedText = "";
-            this.txtSN.ShadowDecoration.Parent = this.txtSN;
-            this.txtSN.Size = new System.Drawing.Size(391, 33);
-            this.txtSN.TabIndex = 130;
-            // 
-            // txtMIN
-            // 
-            this.txtMIN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtMIN.BorderRadius = 3;
-            this.txtMIN.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMIN.DefaultText = "";
-            this.txtMIN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMIN.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtMIN.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtMIN.DisabledState.Parent = this.txtMIN;
-            this.txtMIN.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtMIN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMIN.FocusedState.Parent = this.txtMIN;
-            this.txtMIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMIN.ForeColor = System.Drawing.Color.Black;
-            this.txtMIN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMIN.HoverState.Parent = this.txtMIN;
-            this.txtMIN.Location = new System.Drawing.Point(0, 231);
-            this.txtMIN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMIN.Name = "txtMIN";
-            this.txtMIN.PasswordChar = '\0';
-            this.txtMIN.PlaceholderText = "";
-            this.txtMIN.SelectedText = "";
-            this.txtMIN.ShadowDecoration.Parent = this.txtMIN;
-            this.txtMIN.Size = new System.Drawing.Size(391, 33);
-            this.txtMIN.TabIndex = 129;
-            // 
-            // txtVATRegTin
-            // 
-            this.txtVATRegTin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtVATRegTin.BorderRadius = 3;
-            this.txtVATRegTin.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtVATRegTin.DefaultText = "";
-            this.txtVATRegTin.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtVATRegTin.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtVATRegTin.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtVATRegTin.DisabledState.Parent = this.txtVATRegTin;
-            this.txtVATRegTin.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtVATRegTin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVATRegTin.FocusedState.Parent = this.txtVATRegTin;
-            this.txtVATRegTin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVATRegTin.ForeColor = System.Drawing.Color.Black;
-            this.txtVATRegTin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVATRegTin.HoverState.Parent = this.txtVATRegTin;
-            this.txtVATRegTin.Location = new System.Drawing.Point(0, 190);
-            this.txtVATRegTin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtVATRegTin.Name = "txtVATRegTin";
-            this.txtVATRegTin.PasswordChar = '\0';
-            this.txtVATRegTin.PlaceholderText = "";
-            this.txtVATRegTin.SelectedText = "";
-            this.txtVATRegTin.ShadowDecoration.Parent = this.txtVATRegTin;
-            this.txtVATRegTin.Size = new System.Drawing.Size(391, 33);
-            this.txtVATRegTin.TabIndex = 128;
-            // 
-            // txtTaxPayer
-            // 
-            this.txtTaxPayer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtTaxPayer.BorderRadius = 3;
-            this.txtTaxPayer.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTaxPayer.DefaultText = "";
-            this.txtTaxPayer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTaxPayer.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtTaxPayer.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtTaxPayer.DisabledState.Parent = this.txtTaxPayer;
-            this.txtTaxPayer.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtTaxPayer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTaxPayer.FocusedState.Parent = this.txtTaxPayer;
-            this.txtTaxPayer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaxPayer.ForeColor = System.Drawing.Color.Black;
-            this.txtTaxPayer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTaxPayer.HoverState.Parent = this.txtTaxPayer;
-            this.txtTaxPayer.Location = new System.Drawing.Point(0, 149);
-            this.txtTaxPayer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtTaxPayer.Name = "txtTaxPayer";
-            this.txtTaxPayer.PasswordChar = '\0';
-            this.txtTaxPayer.PlaceholderText = "";
-            this.txtTaxPayer.SelectedText = "";
-            this.txtTaxPayer.ShadowDecoration.Parent = this.txtTaxPayer;
-            this.txtTaxPayer.Size = new System.Drawing.Size(391, 33);
-            this.txtTaxPayer.TabIndex = 127;
-            // 
-            // txtContactNo
-            // 
-            this.txtContactNo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtContactNo.BorderRadius = 3;
-            this.txtContactNo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtContactNo.DefaultText = "";
-            this.txtContactNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtContactNo.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtContactNo.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtContactNo.DisabledState.Parent = this.txtContactNo;
-            this.txtContactNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtContactNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtContactNo.FocusedState.Parent = this.txtContactNo;
-            this.txtContactNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNo.ForeColor = System.Drawing.Color.Black;
-            this.txtContactNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtContactNo.HoverState.Parent = this.txtContactNo;
-            this.txtContactNo.Location = new System.Drawing.Point(0, 108);
-            this.txtContactNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.PasswordChar = '\0';
-            this.txtContactNo.PlaceholderText = "";
-            this.txtContactNo.SelectedText = "";
-            this.txtContactNo.ShadowDecoration.Parent = this.txtContactNo;
-            this.txtContactNo.Size = new System.Drawing.Size(391, 33);
-            this.txtContactNo.TabIndex = 126;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtAddress.BorderRadius = 3;
-            this.txtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAddress.DefaultText = "";
-            this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAddress.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtAddress.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtAddress.DisabledState.Parent = this.txtAddress;
-            this.txtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.FocusedState.Parent = this.txtAddress;
-            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.ForeColor = System.Drawing.Color.Black;
-            this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddress.HoverState.Parent = this.txtAddress;
-            this.txtAddress.Location = new System.Drawing.Point(0, 67);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.PasswordChar = '\0';
-            this.txtAddress.PlaceholderText = "";
-            this.txtAddress.SelectedText = "";
-            this.txtAddress.ShadowDecoration.Parent = this.txtAddress;
-            this.txtAddress.Size = new System.Drawing.Size(391, 33);
-            this.txtAddress.TabIndex = 125;
-            // 
-            // txtName
-            // 
-            this.txtName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtName.BorderRadius = 3;
-            this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtName.DefaultText = "";
-            this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtName.DisabledState.FillColor = System.Drawing.Color.White;
-            this.txtName.DisabledState.ForeColor = System.Drawing.Color.Black;
-            this.txtName.DisabledState.Parent = this.txtName;
-            this.txtName.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.FocusedState.Parent = this.txtName;
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.ForeColor = System.Drawing.Color.Black;
-            this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.HoverState.Parent = this.txtName;
-            this.txtName.Location = new System.Drawing.Point(0, 0);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtName.Name = "txtName";
-            this.txtName.PasswordChar = '\0';
-            this.txtName.PlaceholderText = "";
-            this.txtName.SelectedText = "";
-            this.txtName.ShadowDecoration.Parent = this.txtName;
-            this.txtName.Size = new System.Drawing.Size(391, 57);
-            this.txtName.TabIndex = 124;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.AnimationHoverSpeed = 0.07F;
+            this.btnClose.AnimationSpeed = 0.03F;
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.IconColor = System.Drawing.Color.Black;
+            this.btnClose.IconSize = 15F;
+            this.btnClose.Location = new System.Drawing.Point(724, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnClose.Size = new System.Drawing.Size(42, 35);
+            this.btnClose.TabIndex = 137;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblCompanyDetails
             // 
@@ -609,27 +291,6 @@
             this.Label11.Text = "Serial Number (SN)";
             this.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tmrClose
-            // 
-            this.tmrClose.Interval = 1000;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.AnimationHoverSpeed = 0.07F;
-            this.btnClose.AnimationSpeed = 0.03F;
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.IconColor = System.Drawing.Color.Black;
-            this.btnClose.IconSize = 15F;
-            this.btnClose.Location = new System.Drawing.Point(724, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
-            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
-            this.btnClose.Size = new System.Drawing.Size(42, 35);
-            this.btnClose.TabIndex = 137;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // textBoxPanel
             // 
             this.textBoxPanel.Controls.Add(this.txtName);
@@ -650,6 +311,346 @@
             this.textBoxPanel.ShadowDecoration.Parent = this.textBoxPanel;
             this.textBoxPanel.Size = new System.Drawing.Size(391, 551);
             this.textBoxPanel.TabIndex = 138;
+            // 
+            // txtName
+            // 
+            this.txtName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtName.BorderRadius = 3;
+            this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtName.DefaultText = "";
+            this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtName.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtName.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtName.DisabledState.Parent = this.txtName;
+            this.txtName.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.FocusedState.Parent = this.txtName;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.Black;
+            this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.HoverState.Parent = this.txtName;
+            this.txtName.Location = new System.Drawing.Point(0, 0);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.PasswordChar = '\0';
+            this.txtName.PlaceholderText = "";
+            this.txtName.SelectedText = "";
+            this.txtName.ShadowDecoration.Parent = this.txtName;
+            this.txtName.Size = new System.Drawing.Size(391, 57);
+            this.txtName.TabIndex = 124;
+            // 
+            // dtpPTU_ValidUntil
+            // 
+            this.dtpPTU_ValidUntil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpPTU_ValidUntil.BorderRadius = 5;
+            this.dtpPTU_ValidUntil.BorderThickness = 1;
+            this.dtpPTU_ValidUntil.CheckedState.Parent = this.dtpPTU_ValidUntil;
+            this.dtpPTU_ValidUntil.CustomFormat = "MMMM dd, yyyy";
+            this.dtpPTU_ValidUntil.FillColor = System.Drawing.Color.White;
+            this.dtpPTU_ValidUntil.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPTU_ValidUntil.ForeColor = System.Drawing.Color.Black;
+            this.dtpPTU_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPTU_ValidUntil.HoverState.Parent = this.dtpPTU_ValidUntil;
+            this.dtpPTU_ValidUntil.Location = new System.Drawing.Point(0, 518);
+            this.dtpPTU_ValidUntil.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpPTU_ValidUntil.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpPTU_ValidUntil.Name = "dtpPTU_ValidUntil";
+            this.dtpPTU_ValidUntil.ShadowDecoration.Parent = this.dtpPTU_ValidUntil;
+            this.dtpPTU_ValidUntil.Size = new System.Drawing.Size(391, 33);
+            this.dtpPTU_ValidUntil.TabIndex = 136;
+            this.dtpPTU_ValidUntil.Tag = "To";
+            this.dtpPTU_ValidUntil.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtAddress.BorderRadius = 3;
+            this.txtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAddress.DefaultText = "";
+            this.txtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAddress.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtAddress.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtAddress.DisabledState.Parent = this.txtAddress;
+            this.txtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtAddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAddress.FocusedState.Parent = this.txtAddress;
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.ForeColor = System.Drawing.Color.Black;
+            this.txtAddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAddress.HoverState.Parent = this.txtAddress;
+            this.txtAddress.Location = new System.Drawing.Point(0, 67);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.PasswordChar = '\0';
+            this.txtAddress.PlaceholderText = "";
+            this.txtAddress.SelectedText = "";
+            this.txtAddress.ShadowDecoration.Parent = this.txtAddress;
+            this.txtAddress.Size = new System.Drawing.Size(391, 33);
+            this.txtAddress.TabIndex = 125;
+            // 
+            // dtpPTU_DateIssued
+            // 
+            this.dtpPTU_DateIssued.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpPTU_DateIssued.BorderRadius = 5;
+            this.dtpPTU_DateIssued.BorderThickness = 1;
+            this.dtpPTU_DateIssued.CheckedState.Parent = this.dtpPTU_DateIssued;
+            this.dtpPTU_DateIssued.CustomFormat = "MMMM dd, yyyy";
+            this.dtpPTU_DateIssued.FillColor = System.Drawing.Color.White;
+            this.dtpPTU_DateIssued.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPTU_DateIssued.ForeColor = System.Drawing.Color.Black;
+            this.dtpPTU_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPTU_DateIssued.HoverState.Parent = this.dtpPTU_DateIssued;
+            this.dtpPTU_DateIssued.Location = new System.Drawing.Point(0, 477);
+            this.dtpPTU_DateIssued.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpPTU_DateIssued.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpPTU_DateIssued.Name = "dtpPTU_DateIssued";
+            this.dtpPTU_DateIssued.ShadowDecoration.Parent = this.dtpPTU_DateIssued;
+            this.dtpPTU_DateIssued.Size = new System.Drawing.Size(391, 33);
+            this.dtpPTU_DateIssued.TabIndex = 135;
+            this.dtpPTU_DateIssued.Tag = "To";
+            this.dtpPTU_DateIssued.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
+            // 
+            // txtContactNo
+            // 
+            this.txtContactNo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtContactNo.BorderRadius = 3;
+            this.txtContactNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtContactNo.DefaultText = "";
+            this.txtContactNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtContactNo.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtContactNo.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtContactNo.DisabledState.Parent = this.txtContactNo;
+            this.txtContactNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtContactNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContactNo.FocusedState.Parent = this.txtContactNo;
+            this.txtContactNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContactNo.ForeColor = System.Drawing.Color.Black;
+            this.txtContactNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtContactNo.HoverState.Parent = this.txtContactNo;
+            this.txtContactNo.Location = new System.Drawing.Point(0, 108);
+            this.txtContactNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtContactNo.Name = "txtContactNo";
+            this.txtContactNo.PasswordChar = '\0';
+            this.txtContactNo.PlaceholderText = "";
+            this.txtContactNo.SelectedText = "";
+            this.txtContactNo.ShadowDecoration.Parent = this.txtContactNo;
+            this.txtContactNo.Size = new System.Drawing.Size(391, 33);
+            this.txtContactNo.TabIndex = 126;
+            // 
+            // txtPTUNo
+            // 
+            this.txtPTUNo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtPTUNo.BorderRadius = 3;
+            this.txtPTUNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPTUNo.DefaultText = "";
+            this.txtPTUNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPTUNo.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtPTUNo.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtPTUNo.DisabledState.Parent = this.txtPTUNo;
+            this.txtPTUNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtPTUNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPTUNo.FocusedState.Parent = this.txtPTUNo;
+            this.txtPTUNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPTUNo.ForeColor = System.Drawing.Color.Black;
+            this.txtPTUNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPTUNo.HoverState.Parent = this.txtPTUNo;
+            this.txtPTUNo.Location = new System.Drawing.Point(0, 436);
+            this.txtPTUNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPTUNo.Name = "txtPTUNo";
+            this.txtPTUNo.PasswordChar = '\0';
+            this.txtPTUNo.PlaceholderText = "";
+            this.txtPTUNo.SelectedText = "";
+            this.txtPTUNo.ShadowDecoration.Parent = this.txtPTUNo;
+            this.txtPTUNo.Size = new System.Drawing.Size(391, 33);
+            this.txtPTUNo.TabIndex = 134;
+            // 
+            // txtTaxPayer
+            // 
+            this.txtTaxPayer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtTaxPayer.BorderRadius = 3;
+            this.txtTaxPayer.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTaxPayer.DefaultText = "";
+            this.txtTaxPayer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTaxPayer.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtTaxPayer.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtTaxPayer.DisabledState.Parent = this.txtTaxPayer;
+            this.txtTaxPayer.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtTaxPayer.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTaxPayer.FocusedState.Parent = this.txtTaxPayer;
+            this.txtTaxPayer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTaxPayer.ForeColor = System.Drawing.Color.Black;
+            this.txtTaxPayer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTaxPayer.HoverState.Parent = this.txtTaxPayer;
+            this.txtTaxPayer.Location = new System.Drawing.Point(0, 149);
+            this.txtTaxPayer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTaxPayer.Name = "txtTaxPayer";
+            this.txtTaxPayer.PasswordChar = '\0';
+            this.txtTaxPayer.PlaceholderText = "";
+            this.txtTaxPayer.SelectedText = "";
+            this.txtTaxPayer.ShadowDecoration.Parent = this.txtTaxPayer;
+            this.txtTaxPayer.Size = new System.Drawing.Size(391, 33);
+            this.txtTaxPayer.TabIndex = 127;
+            // 
+            // dtpAN_ValidUntil
+            // 
+            this.dtpAN_ValidUntil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpAN_ValidUntil.BorderRadius = 5;
+            this.dtpAN_ValidUntil.BorderThickness = 1;
+            this.dtpAN_ValidUntil.CheckedState.Parent = this.dtpAN_ValidUntil;
+            this.dtpAN_ValidUntil.CustomFormat = "MMMM dd, yyyy";
+            this.dtpAN_ValidUntil.FillColor = System.Drawing.Color.White;
+            this.dtpAN_ValidUntil.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAN_ValidUntil.ForeColor = System.Drawing.Color.Black;
+            this.dtpAN_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpAN_ValidUntil.HoverState.Parent = this.dtpAN_ValidUntil;
+            this.dtpAN_ValidUntil.Location = new System.Drawing.Point(0, 395);
+            this.dtpAN_ValidUntil.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpAN_ValidUntil.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpAN_ValidUntil.Name = "dtpAN_ValidUntil";
+            this.dtpAN_ValidUntil.ShadowDecoration.Parent = this.dtpAN_ValidUntil;
+            this.dtpAN_ValidUntil.Size = new System.Drawing.Size(391, 33);
+            this.dtpAN_ValidUntil.TabIndex = 133;
+            this.dtpAN_ValidUntil.Tag = "To";
+            this.dtpAN_ValidUntil.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
+            // 
+            // txtVATRegTin
+            // 
+            this.txtVATRegTin.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtVATRegTin.BorderRadius = 3;
+            this.txtVATRegTin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtVATRegTin.DefaultText = "";
+            this.txtVATRegTin.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtVATRegTin.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtVATRegTin.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtVATRegTin.DisabledState.Parent = this.txtVATRegTin;
+            this.txtVATRegTin.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtVATRegTin.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtVATRegTin.FocusedState.Parent = this.txtVATRegTin;
+            this.txtVATRegTin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVATRegTin.ForeColor = System.Drawing.Color.Black;
+            this.txtVATRegTin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtVATRegTin.HoverState.Parent = this.txtVATRegTin;
+            this.txtVATRegTin.Location = new System.Drawing.Point(0, 190);
+            this.txtVATRegTin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtVATRegTin.Name = "txtVATRegTin";
+            this.txtVATRegTin.PasswordChar = '\0';
+            this.txtVATRegTin.PlaceholderText = "";
+            this.txtVATRegTin.SelectedText = "";
+            this.txtVATRegTin.ShadowDecoration.Parent = this.txtVATRegTin;
+            this.txtVATRegTin.Size = new System.Drawing.Size(391, 33);
+            this.txtVATRegTin.TabIndex = 128;
+            // 
+            // dtpAN_DateIssued
+            // 
+            this.dtpAN_DateIssued.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpAN_DateIssued.BorderRadius = 5;
+            this.dtpAN_DateIssued.BorderThickness = 1;
+            this.dtpAN_DateIssued.CheckedState.Parent = this.dtpAN_DateIssued;
+            this.dtpAN_DateIssued.CustomFormat = "MMMM dd, yyyy";
+            this.dtpAN_DateIssued.FillColor = System.Drawing.Color.White;
+            this.dtpAN_DateIssued.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAN_DateIssued.ForeColor = System.Drawing.Color.Black;
+            this.dtpAN_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpAN_DateIssued.HoverState.Parent = this.dtpAN_DateIssued;
+            this.dtpAN_DateIssued.Location = new System.Drawing.Point(0, 354);
+            this.dtpAN_DateIssued.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpAN_DateIssued.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpAN_DateIssued.Name = "dtpAN_DateIssued";
+            this.dtpAN_DateIssued.ShadowDecoration.Parent = this.dtpAN_DateIssued;
+            this.dtpAN_DateIssued.Size = new System.Drawing.Size(391, 33);
+            this.dtpAN_DateIssued.TabIndex = 132;
+            this.dtpAN_DateIssued.Tag = "To";
+            this.dtpAN_DateIssued.Value = new System.DateTime(2021, 11, 22, 8, 55, 16, 532);
+            // 
+            // txtMIN
+            // 
+            this.txtMIN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtMIN.BorderRadius = 3;
+            this.txtMIN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMIN.DefaultText = "";
+            this.txtMIN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMIN.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtMIN.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtMIN.DisabledState.Parent = this.txtMIN;
+            this.txtMIN.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtMIN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMIN.FocusedState.Parent = this.txtMIN;
+            this.txtMIN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMIN.ForeColor = System.Drawing.Color.Black;
+            this.txtMIN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMIN.HoverState.Parent = this.txtMIN;
+            this.txtMIN.Location = new System.Drawing.Point(0, 231);
+            this.txtMIN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMIN.Name = "txtMIN";
+            this.txtMIN.PasswordChar = '\0';
+            this.txtMIN.PlaceholderText = "";
+            this.txtMIN.SelectedText = "";
+            this.txtMIN.ShadowDecoration.Parent = this.txtMIN;
+            this.txtMIN.Size = new System.Drawing.Size(391, 33);
+            this.txtMIN.TabIndex = 129;
+            // 
+            // txtAN
+            // 
+            this.txtAN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtAN.BorderRadius = 3;
+            this.txtAN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAN.DefaultText = "";
+            this.txtAN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAN.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtAN.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtAN.DisabledState.Parent = this.txtAN;
+            this.txtAN.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtAN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAN.FocusedState.Parent = this.txtAN;
+            this.txtAN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAN.ForeColor = System.Drawing.Color.Black;
+            this.txtAN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtAN.HoverState.Parent = this.txtAN;
+            this.txtAN.Location = new System.Drawing.Point(0, 313);
+            this.txtAN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAN.Name = "txtAN";
+            this.txtAN.PasswordChar = '\0';
+            this.txtAN.PlaceholderText = "";
+            this.txtAN.SelectedText = "";
+            this.txtAN.ShadowDecoration.Parent = this.txtAN;
+            this.txtAN.Size = new System.Drawing.Size(391, 33);
+            this.txtAN.TabIndex = 131;
+            // 
+            // txtSN
+            // 
+            this.txtSN.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtSN.BorderRadius = 3;
+            this.txtSN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSN.DefaultText = "";
+            this.txtSN.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSN.DisabledState.FillColor = System.Drawing.Color.White;
+            this.txtSN.DisabledState.ForeColor = System.Drawing.Color.Black;
+            this.txtSN.DisabledState.Parent = this.txtSN;
+            this.txtSN.DisabledState.PlaceholderForeColor = System.Drawing.Color.White;
+            this.txtSN.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSN.FocusedState.Parent = this.txtSN;
+            this.txtSN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSN.ForeColor = System.Drawing.Color.Black;
+            this.txtSN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSN.HoverState.Parent = this.txtSN;
+            this.txtSN.Location = new System.Drawing.Point(0, 272);
+            this.txtSN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSN.Name = "txtSN";
+            this.txtSN.PasswordChar = '\0';
+            this.txtSN.PlaceholderText = "";
+            this.txtSN.SelectedText = "";
+            this.txtSN.ShadowDecoration.Parent = this.txtSN;
+            this.txtSN.Size = new System.Drawing.Size(391, 33);
+            this.txtSN.TabIndex = 130;
+            // 
+            // tmrClose
+            // 
+            this.tmrClose.Interval = 1000;
             // 
             // EditSD
             // 

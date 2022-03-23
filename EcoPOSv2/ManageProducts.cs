@@ -26,15 +26,10 @@ namespace EcoPOSv2
             dgvProducts.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvCategory, true, null);
             dgvCat_Category.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dgvCategory, true, null);
 
+
+            this.dgvCategory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCat_Category.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-
-            OL.ComboValues(comboCategory, "categoryID", "name", "product_category");
-            if (comboCategory.Items.Count > 0)
-            {
-                comboCategory.SelectedIndex = 0;
-            }
-            else return;
         }
 
         SQLControl SQL = new SQLControl();
@@ -50,7 +45,7 @@ namespace EcoPOSv2
         {
             new Thread(() =>
             {
-                Invoke(new MethodInvoker(delegate()
+                Invoke(new MethodInvoker(delegate ()
                 {
                     cat_query = "products.categoryID NOT IN (0)";
 
@@ -146,11 +141,11 @@ namespace EcoPOSv2
 
             dtpExpiry.Value = DateTime.Now;
 
-            if(Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == false)
+            if (Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == false)
             {
                 cbxVatable.Checked = true;
             }
-            else if(Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == false)
+            else if (Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == false)
             {
                 cbxVatable.Checked = false;
             }
@@ -252,7 +247,7 @@ namespace EcoPOSv2
         }
         private void LoadCategory()
         {
-            new Thread(()=>
+            new Thread(() =>
             {
                 Invoke(new MethodInvoker(delegate ()
                 {
@@ -300,9 +295,11 @@ namespace EcoPOSv2
         private void ControlBehavior()
         {
             Control sp = (Control)txtSearchProduct;
+            Control sc = (Control)txtSearchCategory;
             Control csc = (Control)txtCat_SearchCategory;
 
             SetBehavior(ref sp, Behavior.ClearSearch);
+            SetBehavior(ref sc, Behavior.ClearSearch);
             SetBehavior(ref csc, Behavior.ClearSearch);
         }
         //METHODS
@@ -325,7 +322,7 @@ namespace EcoPOSv2
             OL.ComboValues(cmbWarehouse, "warehouseID", "name", "warehouse");
 
             //VAT-NONVAT
-            if(Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == false)
+            if (Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == false)
             {
                 cbxVatable.Enabled = true;
                 cbxVatable.Visible = true;
@@ -335,7 +332,7 @@ namespace EcoPOSv2
                 cbxCat_DiscAthlete.Enabled = true;
                 cbxCat_AskQuantity.Enabled = true;
             }
-            else if(Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == true)
+            else if (Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == true)
             {
                 cbxVatable.Enabled = false;
                 cbxVatable.Visible = true;
@@ -378,7 +375,7 @@ namespace EcoPOSv2
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            new Thread(()=>
+            new Thread(() =>
             {
                 Invoke(new MethodInvoker(delegate ()
                 {
@@ -473,7 +470,6 @@ namespace EcoPOSv2
 
             this.ActiveControl = txtDescription;
         }
-
         string description, name;
         int checkerforduplicateB1 = 0, checkerforduplicateB2 = 0;
         private void btnProduct_Save_Click(object sender, EventArgs e)
@@ -544,7 +540,7 @@ namespace EcoPOSv2
 
                                     if (result == 0 && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
                                     {
-                                        if(Properties.Settings.Default.vatnonvat == true)
+                                        if (Properties.Settings.Default.vatnonvat == true)
                                         {
                                             SQL.AddParam("@name", txtName.Text);
                                             SQL.AddParam("@description", txtDescription.Text);
@@ -679,7 +675,7 @@ namespace EcoPOSv2
 
                                     if (result == "0" && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
                                     {
-                                        if(Properties.Settings.Default.vatnonvat == true)
+                                        if (Properties.Settings.Default.vatnonvat == true)
                                         {
                                             SQL.AddParam("@productID", txtProductID.Text);
                                             SQL.AddParam("@name", txtName.Text);
@@ -761,7 +757,7 @@ namespace EcoPOSv2
                             description = "";
                             name = "";
                         }
-                        if(txtProductID.Text == "")
+                        if (txtProductID.Text == "")
                         {
                             ReloadProducts();
                             description = "";
@@ -780,7 +776,7 @@ namespace EcoPOSv2
                     else
                     {
                         new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
-                    }   
+                    }
                 }));
             }).Start();
         }
@@ -791,7 +787,7 @@ namespace EcoPOSv2
             {
                 Invoke(new MethodInvoker(delegate ()
                 {
-                    DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (approval == DialogResult.Yes)
                     {
@@ -830,6 +826,41 @@ namespace EcoPOSv2
             {
                 GA.DoThis(ref allTxt, TableLayoutPanel8, ControlType.RadioButton, GroupAction.Action.Uncheck);
                 GA.DoThis(ref allTxt, TableLayoutPanel8, ControlType.RadioButton, GroupAction.Action.Disable);
+            }
+        }
+
+        private void btnSortProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.RowCount == 0)
+                return;
+
+            if (btnSortProduct.IconChar == IconChar.SortAlphaDown)
+            {
+                dgvProducts.Sort(dgvProducts.Columns[1], ListSortDirection.Ascending);
+                btnSortProduct.IconChar = IconChar.SortAlphaUp;
+            }
+            else
+            {
+                dgvProducts.Sort(dgvProducts.Columns[1], ListSortDirection.Descending);
+                btnSortProduct.IconChar = IconChar.SortAlphaDown;
+            }
+        }
+
+        private void btnSortCategory_Click(object sender, EventArgs e)
+        {
+            if (dgvCategory.RowCount == 0)
+                return;
+
+            if (btnSortCategory.IconChar == IconChar.SortAlphaDown)
+            {
+                dgvCategory.Sort(dgvCategory.Columns[1], ListSortDirection.Ascending);
+                btnSortCategory.IconChar = IconChar.SortAlphaUp;
+                return;
+            }
+            else
+            {
+                dgvCategory.Sort(dgvCategory.Columns[1], ListSortDirection.Descending);
+                btnSortCategory.IconChar = IconChar.SortAlphaDown;
             }
         }
 
@@ -1082,6 +1113,46 @@ namespace EcoPOSv2
             }
         }
 
+        private void txtSearchCategory_KeyUp(object sender, KeyEventArgs e)
+        {
+            SQLControl psql = new SQLControl();
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    if (txtSearchCategory.Text == "")
+                    {
+                        //SQL.Query(@"SELECT catID, catName FROM
+                        //   (
+                        //   SELECT 0 as catID, 'All Categories' as catName
+                        //   UNION ALL 
+                        //   SELECT categoryID as catID, name as catName FROM product_category 
+                        //   ) x ORDER BY 
+                        //   CASE WHEN catName = 'All Categories' then 1
+                        //   ELSE 5
+                        //   END,
+                        //   catname ASC");
+
+                        psql.Query("Select categoryID as catID, Name FROM product_category ORDER BY name ASC");
+
+                        if (psql.HasException(true))
+                            return;
+                    }
+                    else
+                    {
+                        psql.AddParam("@find", txtSearchCategory.Text + "%");
+
+                        psql.Query("Select categoryID, Name FROM product_category WHERE name Like @find ORDER BY name ASC");
+                        if (psql.HasException(true))
+                            return;
+                    }
+
+                    dgvCategory.DataSource = psql.DBDT;
+                    dgvCategory.Columns[0].Visible = false;
+                }));
+            }).Start();
+        }
+
         private void txtSearchProduct_KeyUp(object sender, KeyEventArgs e)
         {
             new Thread(() =>
@@ -1090,7 +1161,7 @@ namespace EcoPOSv2
                 {
                     if (txtSearchProduct.Text != "")
                     {
-                        SQL.AddParam("@find", "%" + txtSearchProduct.Text + "%");
+                        SQL.AddParam("@find", txtSearchProduct.Text + "%");
 
                         SQL.Query(@"SELECT productID, description, Name FROM products WHERE name LIKE @find OR description LIKE @find 
                        OR barcode1 LIKE @find OR barcode2 LIKE @find ORDER BY description ASC");
@@ -1107,7 +1178,7 @@ namespace EcoPOSv2
 
         private void txtRPInclusive_Enter(object sender, EventArgs e)
         {
-            if(txtRPInclusive.Text == "0.00")
+            if (txtRPInclusive.Text == "0.00")
             {
                 txtRPInclusive.Clear();
                 txtRPInclusive.Focus();
@@ -1126,7 +1197,7 @@ namespace EcoPOSv2
 
         private void txtRPInclusive_Leave(object sender, EventArgs e)
         {
-            if(txtRPInclusive.Text == "")
+            if (txtRPInclusive.Text == "")
             {
                 txtRPInclusive.Text = "0.00";
             }
@@ -1142,7 +1213,7 @@ namespace EcoPOSv2
 
         private void txtProductStock_Leave(object sender, EventArgs e)
         {
-            if((sender as TextBox).Text == "")
+            if ((sender as TextBox).Text == "")
             {
                 (sender as TextBox).Text = "0";
             }
@@ -1150,7 +1221,7 @@ namespace EcoPOSv2
 
         private void txtProductStock_Enter(object sender, EventArgs e)
         {
-            if((sender as TextBox).Text == "0")
+            if ((sender as TextBox).Text == "0")
             {
                 (sender as TextBox).Text = "";
             }
@@ -1175,7 +1246,7 @@ namespace EcoPOSv2
             LoadExpirationCategory();
 
             LoadExpirationDate();
-            
+
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -1266,7 +1337,7 @@ namespace EcoPOSv2
 
         private void TxtSearch_Enter(object sender, EventArgs e)
         {
-            if(txtSearch.Text == "Search description, Name or Barcode")
+            if (txtSearch.Text == "Search description, Name or Barcode")
             {
                 txtSearch.Text = "";
                 txtSearch.ForeColor = Color.Black;
@@ -1346,7 +1417,7 @@ namespace EcoPOSv2
 
         private void txtProductStock_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnProduct_Save.PerformClick();
             }

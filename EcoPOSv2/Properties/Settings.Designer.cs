@@ -310,6 +310,51 @@ namespace EcoPOSv2.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        public string TitleTextFont
+        {
+            get
+            {
+                return ((string)(this["TitleTextFont"]));
+            }
+            set
+            {
+                this["TitleTextFont"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public string RegularTextFont
+        {
+            get
+            {
+                return ((string)(this["RegularTextFont"]));
+            }
+            set
+            {
+                this["RegularTextFont"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public string TransactionDetailsFont
+        {
+            get
+            {
+                return ((string)(this["TransactionDetailsFont"]));
+            }
+            set
+            {
+                this["TransactionDetailsFont"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("English")]
         public string Language
         {
