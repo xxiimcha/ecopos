@@ -126,7 +126,7 @@ namespace EcoPOSv2
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-                //((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["description1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
@@ -296,11 +296,7 @@ namespace EcoPOSv2
                             reprint_receipt.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
                         }
 
-
-
-
                         reprint_receipt.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
-
                         string note = "###REPRINT###";
 
                         if (r["action"].ToString() == "4")
@@ -327,12 +323,12 @@ namespace EcoPOSv2
                     if (Properties.Settings.Default.isBirAccredited)
                     {
                         reprint_receipt.SetParameterValue("is_vatable", true);
-                        reprint_receipt.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                        reprint_receipt.SetParameterValue("txt_footer", "THIS SERVERS AS OFFICIAL RECEIPT.");
                     }
                     else
                     {
                         reprint_receipt.SetParameterValue("is_vatable", false);
-                        reprint_receipt.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                        reprint_receipt.SetParameterValue("txt_footer", "THIS SERVERS AS DEMO RECEIPT.");
                     }
                 }
                 catch (Exception ex)

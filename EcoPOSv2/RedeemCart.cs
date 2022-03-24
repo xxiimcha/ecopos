@@ -104,6 +104,17 @@ namespace EcoPOSv2
                         report.SetParameterValue("remaining_pts", remaining_pts.ToString("N2"));
                         report.SetParameterValue("cus_name", r["cus_name"].ToString());
                         report.SetParameterValue("cus_card_no", r["cus_card_no"].ToString());
+
+                        if (Properties.Settings.Default.isBirAccredited)
+                        {
+                            report.SetParameterValue("is_vatable", true);
+                            report.SetParameterValue("receipt_footer", "THIS SERVERS AS OFFICIAL RECEIPT");
+                        }
+                        else
+                        {
+                            report.SetParameterValue("is_vatable", false);
+                            report.SetParameterValue("receipt_footer", "THIS SERVERS AS DEMO RECEIPT");
+                        }
                     }
 
                     report.SetParameterValue("Terminal_no", Properties.Settings.Default.Terminal_id);
@@ -490,7 +501,6 @@ namespace EcoPOSv2
             SQL.AddParam("@customerID", customerID);
 
             SQL.Query("UPDATE member_card SET card_balance = @card_balance WHERE customerID = @customerID");
-
             if (SQL.HasException(true))
                 return;
 

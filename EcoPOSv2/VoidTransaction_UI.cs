@@ -200,7 +200,7 @@ namespace EcoPOSv2
                         ((TextObject)report.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
                         //((TextObject)report.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
                         ((TextObject)report.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-                        //((FieldObject)report.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                        ((FieldObject)report.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                         ((FieldObject)report.ReportDefinition.ReportObjects["description1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                         ((TextObject)report.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                         ((TextObject)report.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
@@ -326,12 +326,12 @@ namespace EcoPOSv2
                     if (Properties.Settings.Default.isBirAccredited)
                     {
                         report.SetParameterValue("is_vatable", true);
-                        report.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                        report.SetParameterValue("txt_footer", "THIS SERVERS AS OFFICIAL RECEIPT.");
                     }
                     else
                     {
                         report.SetParameterValue("is_vatable", false);
-                        report.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                        report.SetParameterValue("txt_footer", "THIS SERVERS AS DEMO RECEIPT.");
                     }
                 }
                 catch (Exception ex)

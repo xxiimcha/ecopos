@@ -878,7 +878,7 @@ namespace EcoPOSv2
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
-                //((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["description1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
@@ -916,20 +916,6 @@ namespace EcoPOSv2
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["change1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
 
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tcustomerinfo"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tname"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["cusname1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tpwd"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["cusscpwdid1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["ttin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tsign"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["sign"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["taddress"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["addr"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tbstyle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["bstyle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-
                 //Footer
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["wno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["dateissued"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
@@ -945,50 +931,22 @@ namespace EcoPOSv2
 
                 try
                 {
-                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-                    SQL.DBDA.Fill(ds, "transaction_items");
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
 
+                    //SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                    SQL.DBDA.Fill(ds, "transaction_items");
                     reprint_receipt.SetDataSource(ds);
 
-                    SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
-
-                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
-                           SELECT * INTO #Temp_users
-                           FROM
-                           (
-                           SELECT ID, user_name, first_name FROM
-                           (
-                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
-                           UNION ALL
-                           SELECT userID, user_name, first_name FROM users
-                           ) x
-                           ) as a;
-                           SELECT date_time,
-                           order_ref_temp, 
-                           u.first_name as 'user_first_name', 
-                           no_of_items, 
-                           subtotal, 
-                           less_vat, 
-                           disc_amt, 
-                           cus_pts_deducted, 
-                           grand_total,
-                           vatable_sale,
-                           vat_12,
-                           vat_exempt_sale,
-                           zero_rated_sale,
-                           payment_amt, 
-                           change,
-                           giftcard_no, 
-                           giftcard_deducted,
-                           IIF(cus_name = '', '0', cus_name) as 'cus_name',
-                           cus_special_ID_no,
-                           refund_order_ref_temp, 
-                           return_order_ref_temp, 
-                           action,
-                           payment_method 
-                           FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
-                           WHERE order_ref = @order_ref");
-
+                        SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
+                        SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users 
+                            SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name 
+                            FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
+                            UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
+                            SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
+                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
+                            giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
+                            payment_method, action,referenceNo FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                            WHERE transaction_details.order_ref = @order_ref");
                     if (SQL.HasException(true))
                         return;
 
@@ -1025,18 +983,34 @@ namespace EcoPOSv2
                         reprint_receipt.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
                         reprint_receipt.SetParameterValue("change", change.ToString("N2"));
-                        reprint_receipt.SetParameterValue("cus_name", r["cus_name"].ToString());
-                        reprint_receipt.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
-                        reprint_receipt.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
 
+                        //REFERENCE NO
+                        reprint_receipt.SetParameterValue("ReferenceNo", r["referenceNo"].ToString());
+
+                        if (r["cus_name"].ToString() == "0")
+                        {
+                            reprint_receipt.SetParameterValue("cus_name", "________________________________________________________");
+                        }
+                        else
+                        {
+                            reprint_receipt.SetParameterValue("cus_name", r["cus_name"].ToString());
+                        }
+
+
+                        if (r["cus_special_ID_no"].ToString() == "0")
+                        {
+                            reprint_receipt.SetParameterValue("cus_sc_pwd_id", "________________________________________________________");
+                        }
+                        else
+                        {
+                            reprint_receipt.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                        }
+
+                        reprint_receipt.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
                         string note = "###REPRINT###";
 
-                        if (Convert.ToInt32(r["action"].ToString()) == 2)
-                            note = note + Constants.vbCrLf + "REFUND FROM INVOICE # " + r["refund_order_ref_temp"].ToString();
-                        else if (Convert.ToInt32(r["action"].ToString()) == 3)
-                            note = note + Constants.vbCrLf + "RETURN ITEM FROM INVOICE # " + r["return_order_ref_temp"].ToString();
-                        else if (Convert.ToInt32(r["action"].ToString()) == 4)
-                            note = note + Constants.vbCrLf + "VOID TRANSACTION";
+                        if (r["action"].ToString() == "4")
+                            note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString();
 
                         reprint_receipt.SetParameterValue("note", note);
                     }
@@ -1059,12 +1033,12 @@ namespace EcoPOSv2
                     if (Properties.Settings.Default.isBirAccredited)
                     {
                         reprint_receipt.SetParameterValue("is_vatable", true);
-                        reprint_receipt.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                        reprint_receipt.SetParameterValue("txt_footer", "THIS SERVERS AS OFFICIAL RECEIPT.");
                     }
                     else
                     {
                         reprint_receipt.SetParameterValue("is_vatable", false);
-                        reprint_receipt.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                        reprint_receipt.SetParameterValue("txt_footer", "THIS SERVERS AS DEMO RECEIPT.");
                     }
                 }
                 catch (Exception ex)

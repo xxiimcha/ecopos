@@ -30,6 +30,7 @@ namespace EcoPOSv2
         private void Redeem_Load(object sender, EventArgs e)
         {
             AssignValidation(ref txtCardNo, ValidationType.Int_Only);
+            this.ActiveControl = txtCardNo;
         }
 
         private void btnProceed_Click(object sender, EventArgs e)

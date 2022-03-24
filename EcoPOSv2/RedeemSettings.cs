@@ -784,6 +784,16 @@ namespace EcoPOSv2
                         reprint_receipt.SetParameterValue("cus_card_no", r["cus_card_no"].ToString());
                     }
 
+                    if (Properties.Settings.Default.isBirAccredited)
+                    {
+                        report.SetParameterValue("is_vatable", true);
+                        reprint_receipt.SetParameterValue("receipt_footer", "THIS SERVERS AS OFFICIAL RECEIPT");
+                    }
+                    else
+                    {
+                        reprint_receipt.SetParameterValue("is_vatable", false);
+                        reprint_receipt.SetParameterValue("receipt_footer", "THIS SERVERS AS DEMO RECEIPT");
+                    }
                     reprint_receipt.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
                     reprint_receipt.SetParameterValue("business_name", Main.Instance.sd_business_name);
                     reprint_receipt.SetParameterValue("business_address", Main.Instance.sd_business_address);

@@ -432,6 +432,7 @@
             this.txtContactNo.HoverState.Parent = this.txtContactNo;
             this.txtContactNo.Location = new System.Drawing.Point(0, 108);
             this.txtContactNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtContactNo.Multiline = true;
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.PasswordChar = '\0';
             this.txtContactNo.PlaceholderText = "";

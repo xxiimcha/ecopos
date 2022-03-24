@@ -112,7 +112,7 @@ namespace EcoPOSv2
                     ((TextObject)report.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
                     //((TextObject)report.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
                     ((TextObject)report.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-                    //((FieldObject)report.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                    ((FieldObject)report.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                     ((FieldObject)report.ReportDefinition.ReportObjects["description1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                     ((TextObject)report.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
                     ((TextObject)report.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
@@ -281,12 +281,12 @@ namespace EcoPOSv2
                         if (Properties.Settings.Default.isBirAccredited)
                         {
                             report.SetParameterValue("is_vatable", true);
-                            report.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                            report.SetParameterValue("txt_footer", "THIS SERVERS AS OFFCIAL RECEIPT.");
                         }
                         else
                         {
                             report.SetParameterValue("is_vatable", false);
-                            report.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                            report.SetParameterValue("txt_footer", "THIS SERVERS AS DEMO RECEIPT.");
                         }
 
 
@@ -589,6 +589,11 @@ namespace EcoPOSv2
         }
         private void btnPay_Click(object sender, EventArgs e)
         {
+            if(txtAmount.Text == "")
+            {
+                return;
+            }
+
             int max_invoice = int.Parse(SQL.ReturnResult("SELECT IIF( (SELECT COUNT(order_ref_temp) FROM transaction_details) > 0,(SELECT MAX(order_ref_temp) FROM transaction_details),0)"));
             if (txtAmount.Text == "") return;
 
