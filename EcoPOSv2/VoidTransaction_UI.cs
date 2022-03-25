@@ -321,12 +321,12 @@ namespace EcoPOSv2
                     if (Properties.Settings.Default.isBirAccredited)
                     {
                         report.SetParameterValue("is_vatable", true);
-                        report.SetParameterValue("txt_footer", "THIS SERVERS AS OFFICIAL RECEIPT.");
+                        report.SetParameterValue("txt_footer", "THIS SERVES AS OFFICIAL RECEIPT.");
                     }
                     else
                     {
                         report.SetParameterValue("is_vatable", false);
-                        report.SetParameterValue("txt_footer", "THIS SERVERS AS DEMO RECEIPT.");
+                        report.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
                     }
                 }
                 catch (Exception ex)

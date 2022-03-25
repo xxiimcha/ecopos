@@ -97,7 +97,10 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
+            string pricing = Properties.Settings.Default.Pricing == "Wholesale" ? "W" : "R";
+
             SQL.AddParam("@itemScanned", last_item_scanned);
+            SQL.AddParam("@pricing", pricing);
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             SQL.Query(@"SELECT [itemID] as 'ID'
                        ,[productID] 
@@ -112,7 +115,7 @@ namespace EcoPOSv2
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
                        ,CONVERT(DECIMAL(18,2),[quantity]) as 'Quantity'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
-                        FROM order_cart where terminal_id=@terminal_id ORDER BY ABS(productID - @itemScanned)");
+                        FROM order_cart where terminal_id=@terminal_id ORDER BY ABS(productID - @itemScanned), Difference([type], @pricing) DESC");
 
             if (SQL.HasException(true))
                 return;

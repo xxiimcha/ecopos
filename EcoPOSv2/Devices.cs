@@ -161,6 +161,7 @@ namespace EcoPOSv2
             // update global variables in main form
             Main.Instance.pd_receipt_printer = cmbReceiptPrinter.Text;
             Main.Instance.pd_report_printer = cmbReportPrinter.Text;
+            Main.Instance.pd_reprint_printer = cmbRePrintPrinter.Text;
             Main.Instance.pd_customer_display_enabled = cbxEnable_CD.Checked;
             Main.Instance.pd_customer_display_port = cmbPort.Text;
 
