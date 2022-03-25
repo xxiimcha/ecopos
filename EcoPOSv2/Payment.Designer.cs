@@ -566,6 +566,7 @@
             this.txtAmount.PlaceholderText = "";
             this.txtAmount.SelectedText = "";
             this.txtAmount.ShadowDecoration.Parent = this.txtAmount;
+            this.txtAmount.ShortcutsEnabled = false;
             this.txtAmount.Size = new System.Drawing.Size(583, 46);
             this.txtAmount.TabIndex = 119;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

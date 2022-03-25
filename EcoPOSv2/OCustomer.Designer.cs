@@ -54,7 +54,7 @@
             this.gunaControlBox1.AnimationSpeed = 0.03F;
             this.gunaControlBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaControlBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.gunaControlBox1.IconColor = System.Drawing.Color.White;
+            this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
             this.gunaControlBox1.Location = new System.Drawing.Point(561, 0);
             this.gunaControlBox1.Name = "gunaControlBox1";
@@ -98,7 +98,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(5, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 21);
@@ -199,13 +199,17 @@
             // 
             // pnlTitle
             // 
-            this.pnlTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pnlTitle.BackColor = System.Drawing.Color.White;
+            this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
+            this.pnlTitle.BorderThickness = 1;
             this.pnlTitle.Controls.Add(this.gunaControlBox1);
             this.pnlTitle.Controls.Add(this.label1);
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
             this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.ShadowDecoration.Enabled = true;
             this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
+            this.pnlTitle.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.pnlTitle.Size = new System.Drawing.Size(606, 35);
             this.pnlTitle.TabIndex = 49;
             // 

@@ -86,6 +86,8 @@ namespace EcoPOSv2
         public bool is_refund = false;
         public bool is_return = false;
 
+        public string last_item_scanned = "";
+
         string type, insert_type_query;
         //METHODS
         public void LoadOrder()
@@ -95,6 +97,7 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
+            SQL.AddParam("@itemScanned", last_item_scanned);
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             SQL.Query(@"SELECT [itemID] as 'ID'
                        ,[productID] 
@@ -109,7 +112,7 @@ namespace EcoPOSv2
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
                        ,CONVERT(DECIMAL(18,2),[quantity]) as 'Quantity'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
-                        FROM order_cart where terminal_id=@terminal_id order by ID desc");
+                        FROM order_cart where terminal_id=@terminal_id ORDER BY ABS(productID - @itemScanned)");
 
             if (SQL.HasException(true))
                 return;
@@ -425,6 +428,9 @@ namespace EcoPOSv2
 
         private void btnWholeSale_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Pricing = "Wholesale";
+            Properties.Settings.Default.Save();
+
             type = "W";
             insert_type_query = "wp_exclusive, wp_tax, wp_inclusive";
             tbBarcode.Focus();
@@ -744,7 +750,10 @@ namespace EcoPOSv2
 
         private void Order_Load(object sender, EventArgs e)
         {
-            if(!Properties.Settings.Default.isBirAccredited)
+            new CreateParams();
+            SetDoubleBuffered(OrderPanel);
+
+            if (!Properties.Settings.Default.isBirAccredited)
             {
                 lblLine.Location = new Point(7, 300);
                 lblTotalTitle.Location = new Point(3, 320);
@@ -790,25 +799,26 @@ namespace EcoPOSv2
 
             _order = this;
 
-            new CreateParams();
-            SetDoubleBuffered(OrderPanel);
+            btnPayment.Text = "PAYMENT" + Environment.NewLine + "(CTRL + P)";
 
-            btnRetail.PerformClick();
+            if (Properties.Settings.Default.Pricing == "Wholesale")
+            {
+                btnWholeSale.PerformClick();
+            }
+            else
+            {
+                btnRetail.PerformClick();
+            }
+
             LoadOrderNo();
             LoadOrder();
             GetTotal();
 
-            tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
-
-
             tbBarcode.Focus();
             tbBarcode.Clear();
 
-            //TEMPORARY
-            //  btnVoid.Enabled = false;
-
-            btnPayment.Text = "PAYMENT" + Environment.NewLine + "(CTRL + P)";
+            tbBarcode.Clear();
+            this.ActiveControl = tbBarcode;
         }
 
         private void btnVoidItem_Click(object sender, EventArgs e)
@@ -879,6 +889,8 @@ namespace EcoPOSv2
         }
         private void btnRetail_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Pricing = "Retail";
+            Properties.Settings.Default.Save();
             insert_type_query = " rp_exclusive, rp_tax, rp_inclusive";
             type = "R";
             tbBarcode.Focus();
@@ -1015,6 +1027,7 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
 
+
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                     SQL.AddParam("@productID", productID1);
                     if (int.Parse(SQL.ReturnResult("select count(*) from order_cart where productID=@productID AND terminal_id=@terminal_id")) != 0)
@@ -1056,8 +1069,6 @@ namespace EcoPOSv2
                     string productID = SQL.ReturnResult("SELECT productID FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
                     if (SQL.HasException(true))
                         return;
-
-
 
                     string prod_description = "";
                     string prod_price = "";
@@ -1193,6 +1204,11 @@ namespace EcoPOSv2
                         Fl.CusDisplay(prod_description, prod_price);
                         #endregion
                     }
+
+                    SQL.AddParam("@barcode", barcode);
+                    last_item_scanned = productID1;
+                    if (SQL.HasException(true))
+                        return;
 
                     LoadOrder();
                     GetTotal();

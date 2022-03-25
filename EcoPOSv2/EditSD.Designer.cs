@@ -91,7 +91,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(769, 733);
+            this.guna2Panel1.Size = new System.Drawing.Size(769, 769);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
@@ -148,11 +148,11 @@
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSave.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnSave.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnSave.Location = new System.Drawing.Point(272, 655);
+            this.btnSave.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnSave.Location = new System.Drawing.Point(280, 705);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShadowDecoration.Parent = this.btnSave;
-            this.btnSave.Size = new System.Drawing.Size(232, 57);
+            this.btnSave.Size = new System.Drawing.Size(209, 40);
             this.btnSave.TabIndex = 57;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextOffset = new System.Drawing.Point(10, 0);
@@ -184,7 +184,7 @@
             // 
             this.Label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label18.ForeColor = System.Drawing.Color.Black;
-            this.Label18.Location = new System.Drawing.Point(35, 439);
+            this.Label18.Location = new System.Drawing.Point(35, 481);
             this.Label18.Name = "Label18";
             this.Label18.Size = new System.Drawing.Size(275, 33);
             this.Label18.TabIndex = 43;
@@ -195,7 +195,7 @@
             // 
             this.Label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(35, 480);
+            this.Label13.Location = new System.Drawing.Point(35, 522);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(275, 33);
             this.Label13.TabIndex = 35;
@@ -206,7 +206,7 @@
             // 
             this.Label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label23.ForeColor = System.Drawing.Color.Black;
-            this.Label23.Location = new System.Drawing.Point(35, 603);
+            this.Label23.Location = new System.Drawing.Point(35, 645);
             this.Label23.Name = "Label23";
             this.Label23.Size = new System.Drawing.Size(275, 33);
             this.Label23.TabIndex = 48;
@@ -217,7 +217,7 @@
             // 
             this.Label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label21.ForeColor = System.Drawing.Color.Black;
-            this.Label21.Location = new System.Drawing.Point(35, 562);
+            this.Label21.Location = new System.Drawing.Point(35, 604);
             this.Label21.Name = "Label21";
             this.Label21.Size = new System.Drawing.Size(275, 33);
             this.Label21.TabIndex = 46;
@@ -228,7 +228,7 @@
             // 
             this.Label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label16.ForeColor = System.Drawing.Color.Black;
-            this.Label16.Location = new System.Drawing.Point(35, 521);
+            this.Label16.Location = new System.Drawing.Point(35, 563);
             this.Label16.Name = "Label16";
             this.Label16.Size = new System.Drawing.Size(275, 35);
             this.Label16.TabIndex = 42;
@@ -239,7 +239,7 @@
             // 
             this.Label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.Black;
-            this.Label5.Location = new System.Drawing.Point(35, 234);
+            this.Label5.Location = new System.Drawing.Point(35, 276);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(275, 33);
             this.Label5.TabIndex = 27;
@@ -250,7 +250,7 @@
             // 
             this.Label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
-            this.Label14.Location = new System.Drawing.Point(35, 398);
+            this.Label14.Location = new System.Drawing.Point(35, 440);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(275, 33);
             this.Label14.TabIndex = 41;
@@ -261,7 +261,7 @@
             // 
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(35, 275);
+            this.Label3.Location = new System.Drawing.Point(35, 317);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(275, 33);
             this.Label3.TabIndex = 26;
@@ -273,7 +273,7 @@
             this.Label10.AutoSize = true;
             this.Label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label10.ForeColor = System.Drawing.Color.Black;
-            this.Label10.Location = new System.Drawing.Point(35, 325);
+            this.Label10.Location = new System.Drawing.Point(35, 367);
             this.Label10.Name = "Label10";
             this.Label10.Size = new System.Drawing.Size(269, 21);
             this.Label10.TabIndex = 32;
@@ -284,7 +284,7 @@
             // 
             this.Label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label11.ForeColor = System.Drawing.Color.Black;
-            this.Label11.Location = new System.Drawing.Point(35, 357);
+            this.Label11.Location = new System.Drawing.Point(35, 399);
             this.Label11.Name = "Label11";
             this.Label11.Size = new System.Drawing.Size(275, 33);
             this.Label11.TabIndex = 33;
@@ -309,7 +309,7 @@
             this.textBoxPanel.Location = new System.Drawing.Point(335, 85);
             this.textBoxPanel.Name = "textBoxPanel";
             this.textBoxPanel.ShadowDecoration.Parent = this.textBoxPanel;
-            this.textBoxPanel.Size = new System.Drawing.Size(391, 551);
+            this.textBoxPanel.Size = new System.Drawing.Size(391, 598);
             this.textBoxPanel.TabIndex = 138;
             // 
             // txtName
@@ -342,8 +342,6 @@
             // 
             // dtpPTU_ValidUntil
             // 
-            this.dtpPTU_ValidUntil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpPTU_ValidUntil.BorderRadius = 5;
             this.dtpPTU_ValidUntil.BorderThickness = 1;
             this.dtpPTU_ValidUntil.CheckedState.Parent = this.dtpPTU_ValidUntil;
@@ -353,7 +351,7 @@
             this.dtpPTU_ValidUntil.ForeColor = System.Drawing.Color.Black;
             this.dtpPTU_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpPTU_ValidUntil.HoverState.Parent = this.dtpPTU_ValidUntil;
-            this.dtpPTU_ValidUntil.Location = new System.Drawing.Point(0, 518);
+            this.dtpPTU_ValidUntil.Location = new System.Drawing.Point(0, 560);
             this.dtpPTU_ValidUntil.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpPTU_ValidUntil.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpPTU_ValidUntil.Name = "dtpPTU_ValidUntil";
@@ -392,8 +390,6 @@
             // 
             // dtpPTU_DateIssued
             // 
-            this.dtpPTU_DateIssued.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpPTU_DateIssued.BorderRadius = 5;
             this.dtpPTU_DateIssued.BorderThickness = 1;
             this.dtpPTU_DateIssued.CheckedState.Parent = this.dtpPTU_DateIssued;
@@ -403,7 +399,7 @@
             this.dtpPTU_DateIssued.ForeColor = System.Drawing.Color.Black;
             this.dtpPTU_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpPTU_DateIssued.HoverState.Parent = this.dtpPTU_DateIssued;
-            this.dtpPTU_DateIssued.Location = new System.Drawing.Point(0, 477);
+            this.dtpPTU_DateIssued.Location = new System.Drawing.Point(0, 519);
             this.dtpPTU_DateIssued.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpPTU_DateIssued.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpPTU_DateIssued.Name = "dtpPTU_DateIssued";
@@ -438,7 +434,7 @@
             this.txtContactNo.PlaceholderText = "";
             this.txtContactNo.SelectedText = "";
             this.txtContactNo.ShadowDecoration.Parent = this.txtContactNo;
-            this.txtContactNo.Size = new System.Drawing.Size(391, 33);
+            this.txtContactNo.Size = new System.Drawing.Size(391, 73);
             this.txtContactNo.TabIndex = 126;
             // 
             // txtPTUNo
@@ -458,7 +454,7 @@
             this.txtPTUNo.ForeColor = System.Drawing.Color.Black;
             this.txtPTUNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPTUNo.HoverState.Parent = this.txtPTUNo;
-            this.txtPTUNo.Location = new System.Drawing.Point(0, 436);
+            this.txtPTUNo.Location = new System.Drawing.Point(0, 478);
             this.txtPTUNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPTUNo.Name = "txtPTUNo";
             this.txtPTUNo.PasswordChar = '\0';
@@ -485,7 +481,7 @@
             this.txtTaxPayer.ForeColor = System.Drawing.Color.Black;
             this.txtTaxPayer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTaxPayer.HoverState.Parent = this.txtTaxPayer;
-            this.txtTaxPayer.Location = new System.Drawing.Point(0, 149);
+            this.txtTaxPayer.Location = new System.Drawing.Point(0, 191);
             this.txtTaxPayer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTaxPayer.Name = "txtTaxPayer";
             this.txtTaxPayer.PasswordChar = '\0';
@@ -497,8 +493,6 @@
             // 
             // dtpAN_ValidUntil
             // 
-            this.dtpAN_ValidUntil.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpAN_ValidUntil.BorderRadius = 5;
             this.dtpAN_ValidUntil.BorderThickness = 1;
             this.dtpAN_ValidUntil.CheckedState.Parent = this.dtpAN_ValidUntil;
@@ -508,7 +502,7 @@
             this.dtpAN_ValidUntil.ForeColor = System.Drawing.Color.Black;
             this.dtpAN_ValidUntil.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpAN_ValidUntil.HoverState.Parent = this.dtpAN_ValidUntil;
-            this.dtpAN_ValidUntil.Location = new System.Drawing.Point(0, 395);
+            this.dtpAN_ValidUntil.Location = new System.Drawing.Point(0, 437);
             this.dtpAN_ValidUntil.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpAN_ValidUntil.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpAN_ValidUntil.Name = "dtpAN_ValidUntil";
@@ -535,7 +529,7 @@
             this.txtVATRegTin.ForeColor = System.Drawing.Color.Black;
             this.txtVATRegTin.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtVATRegTin.HoverState.Parent = this.txtVATRegTin;
-            this.txtVATRegTin.Location = new System.Drawing.Point(0, 190);
+            this.txtVATRegTin.Location = new System.Drawing.Point(0, 232);
             this.txtVATRegTin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtVATRegTin.Name = "txtVATRegTin";
             this.txtVATRegTin.PasswordChar = '\0';
@@ -547,8 +541,6 @@
             // 
             // dtpAN_DateIssued
             // 
-            this.dtpAN_DateIssued.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpAN_DateIssued.BorderRadius = 5;
             this.dtpAN_DateIssued.BorderThickness = 1;
             this.dtpAN_DateIssued.CheckedState.Parent = this.dtpAN_DateIssued;
@@ -558,7 +550,7 @@
             this.dtpAN_DateIssued.ForeColor = System.Drawing.Color.Black;
             this.dtpAN_DateIssued.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpAN_DateIssued.HoverState.Parent = this.dtpAN_DateIssued;
-            this.dtpAN_DateIssued.Location = new System.Drawing.Point(0, 354);
+            this.dtpAN_DateIssued.Location = new System.Drawing.Point(0, 396);
             this.dtpAN_DateIssued.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpAN_DateIssued.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpAN_DateIssued.Name = "dtpAN_DateIssued";
@@ -585,7 +577,7 @@
             this.txtMIN.ForeColor = System.Drawing.Color.Black;
             this.txtMIN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMIN.HoverState.Parent = this.txtMIN;
-            this.txtMIN.Location = new System.Drawing.Point(0, 231);
+            this.txtMIN.Location = new System.Drawing.Point(0, 273);
             this.txtMIN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMIN.Name = "txtMIN";
             this.txtMIN.PasswordChar = '\0';
@@ -612,7 +604,7 @@
             this.txtAN.ForeColor = System.Drawing.Color.Black;
             this.txtAN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAN.HoverState.Parent = this.txtAN;
-            this.txtAN.Location = new System.Drawing.Point(0, 313);
+            this.txtAN.Location = new System.Drawing.Point(0, 355);
             this.txtAN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAN.Name = "txtAN";
             this.txtAN.PasswordChar = '\0';
@@ -639,7 +631,7 @@
             this.txtSN.ForeColor = System.Drawing.Color.Black;
             this.txtSN.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSN.HoverState.Parent = this.txtSN;
-            this.txtSN.Location = new System.Drawing.Point(0, 272);
+            this.txtSN.Location = new System.Drawing.Point(0, 314);
             this.txtSN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSN.Name = "txtSN";
             this.txtSN.PasswordChar = '\0';
@@ -657,7 +649,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(769, 733);
+            this.ClientSize = new System.Drawing.Size(769, 769);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

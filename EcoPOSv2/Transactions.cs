@@ -25,8 +25,8 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         ExportImport EI = new ExportImport();
 
-        TransactionsReport58 report = new TransactionsReport58();
-        PaymentReceipt58 reprint_receipt = new PaymentReceipt58();
+        PaymentR58 report = new PaymentR58();
+        PaymentR58 reprint_receipt = new PaymentR58();
 
         TransactionsReport80 report80 = new TransactionsReport80();
         PaymentReceipt80 reprint_receipt80 = new PaymentReceipt80();
@@ -96,7 +96,7 @@ namespace EcoPOSv2
 
             if (Properties.Settings.Default.papersize == "58MM")
             {
-                reprint_receipt = new PaymentReceipt58();
+                reprint_receipt = new PaymentR58();
 
                 int fontSize_regular = int.Parse(Properties.Settings.Default.RegularTextFont);
                 int fontSize_products = int.Parse(Properties.Settings.Default.ProductListFont);
@@ -105,6 +105,8 @@ namespace EcoPOSv2
                 int fontSize_transactionDetails = int.Parse(Properties.Settings.Default.TransactionDetailsFont);
 
                 #region Font
+                //header
+
                 //Business Name
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new Font("Arial", fontSize_bname, FontStyle.Bold));
                 //Business details
@@ -183,8 +185,9 @@ namespace EcoPOSv2
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["dateissued"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["validtil"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["ptu"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
                 //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["validity1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+
+                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
 
                 #endregion
@@ -217,7 +220,7 @@ namespace EcoPOSv2
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
                             cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
-                            payment_method, action,referenceNo FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                            payment_method, action,referenceNo, terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             WHERE transaction_details.order_ref = @order_ref");
 
                     }
@@ -231,7 +234,7 @@ namespace EcoPOSv2
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
                             cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
-                            payment_method, action,referenceNo, vt.void_order_ref_temp FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                            payment_method, action,referenceNo, vt.void_order_ref_temp, transaction_details.terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             INNER JOIN void_transaction as vt ON vt.order_ref = transaction_details.order_ref WHERE transaction_details.order_ref = @order_ref");
 
                     }
@@ -242,12 +245,13 @@ namespace EcoPOSv2
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
+
                         reprint_receipt.SetParameterValue("date_time", r["date_time"].ToString());
                         reprint_receipt.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
                         reprint_receipt.SetParameterValue("user_first_name", r["user_first_name"].ToString());
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
                         reprint_receipt.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
-                        reprint_receipt.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
+                        reprint_receipt.SetParameterValue("Terminal_No", r["tid"].ToString());
                         decimal subtotal = decimal.Parse(r["subtotal"].ToString());
                         reprint_receipt.SetParameterValue("subtotal", subtotal.ToString("N2"));
                         decimal less_vat = decimal.Parse(r["less_vat"].ToString());
@@ -268,14 +272,15 @@ namespace EcoPOSv2
                         reprint_receipt.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
                         decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
                         reprint_receipt.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-                        reprint_receipt.SetParameterValue("giftcard_no", r["giftcard_no"].ToString());
+                        decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
+                        reprint_receipt.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
                         decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                         reprint_receipt.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
                         reprint_receipt.SetParameterValue("change", change.ToString("N2"));
 
                         //REFERENCE NO
-                        reprint_receipt.SetParameterValue("ReferenceNo", r["referenceNo"].ToString());
+                        reprint_receipt.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
 
                         if (r["cus_name"].ToString() == "0")
                         {
@@ -451,7 +456,7 @@ namespace EcoPOSv2
                         reprint_receipt80.SetParameterValue("change", change.ToString("N2"));
 
                         //REFERENCE NO
-                        reprint_receipt80.SetParameterValue("ReferenceNo", r["referenceNo"].ToString());
+                        reprint_receipt80.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
 
                         if (r["cus_name"].ToString() == "0")
                         {
@@ -547,13 +552,10 @@ namespace EcoPOSv2
 
             dgvClickedOnce = true;
 
-            report = new TransactionsReport58();
-
+            report = new PaymentR58();
 
             DataSet ds = new DataSet();
 
-            //try
-            //{
             CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
             if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
             {
@@ -566,9 +568,10 @@ namespace EcoPOSv2
             SQL.DBDA.Fill(ds, "transaction_items");
             report.SetDataSource(ds);
 
-            SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
-
-            SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+            if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
+            {
+                SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
+                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
                            SELECT * INTO #Temp_users
                            FROM
                            (
@@ -579,9 +582,30 @@ namespace EcoPOSv2
                            SELECT userID, user_name, first_name FROM users
                            ) x
                            ) as a;
-                           SELECT td.*, u.first_name as 'user_first_name' 
+                           SELECT td.*, u.first_name as 'user_first_name', td.terminal_id as 'tid'
                            FROM transaction_details as td INNER JOIN #Temp_users as u ON td.userID = u.ID
                            WHERE order_ref = @order_ref");
+            }
+            else
+            {
+                SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
+                SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                           SELECT * INTO #Temp_users
+                           FROM
+                           (
+                           SELECT ID, user_name, first_name FROM
+                           (
+                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
+                           UNION ALL
+                           SELECT userID, user_name, first_name FROM users
+                           ) x
+                           ) as a;
+                           SELECT td.*, u.first_name as 'user_first_name', vt.void_order_ref_temp, td.terminal_id as 'tid'
+                           FROM transaction_details as td INNER JOIN #Temp_users as u ON td.userID = u.ID 
+                           INNER JOIN void_transaction as vt ON vt.order_ref = td.order_ref
+                           WHERE td.order_ref = @order_ref");
+            }
+            
 
             if (SQL.HasException(true))
                 return;
@@ -593,6 +617,7 @@ namespace EcoPOSv2
                 report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
                 decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
                 report.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
+                report.SetParameterValue("Terminal_No", r["tid"].ToString());
                 decimal subtotal = decimal.Parse(r["subtotal"].ToString());
                 report.SetParameterValue("subtotal", subtotal.ToString("N2"));
                 decimal less_vat = decimal.Parse(r["less_vat"].ToString());
@@ -602,7 +627,7 @@ namespace EcoPOSv2
                 decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
                 report.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
                 decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
-                report.SetParameterValue("gift_card_deduct", giftcard_deducted.ToString("N2"));
+                report.SetParameterValue("giftcard_deduct", giftcard_deducted.ToString("N2"));
                 decimal grand_total = decimal.Parse(r["grand_total"].ToString());
                 report.SetParameterValue("total", grand_total.ToString("N2"));
                 decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
@@ -613,197 +638,73 @@ namespace EcoPOSv2
                 report.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
                 decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
                 report.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-                report.SetParameterValue("gift_card_no", r["giftcard_no"].ToString());
+                decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
+                report.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
                 decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                 report.SetParameterValue("cash", payment_amt.ToString("N2"));
                 decimal change = decimal.Parse(r["change"].ToString());
                 report.SetParameterValue("change", change.ToString("N2"));
-                report.SetParameterValue("cus_name", r["cus_name"].ToString());
-                report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
-                report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
 
-                report.SetParameterValue("ReferenceNo", r["referenceNo"].ToString());
+                //REFERENCE NO
+                report.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
+
+                if (r["cus_name"].ToString() == "0" || r["cus_name"].ToString() == "")
+                {
+                    report.SetParameterValue("cus_name", "________________________________________________________");
+                }
+                else
+                {
+                    report.SetParameterValue("cus_name", r["cus_name"].ToString());
+                }
+
+
+                if (r["cus_special_ID_no"].ToString() == "0")
+                {
+                    report.SetParameterValue("cus_sc_pwd_id", "________________________________________________________");
+                }
+                else
+                {
+                    report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                }
+
+                report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
+                string note = "###REPRINT###";
+
+                if (r["action"].ToString() == "4")
+                    note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString();
+
+                report.SetParameterValue("note", note);
+
+                report.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                report.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                report.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+                report.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
+                report.SetParameterValue("sn", Main.Instance.sd_sn);
+                report.SetParameterValue("min", Main.Instance.sd_min);
+                report.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
+                report.SetParameterValue("ptu_no", Main.Instance.sd_ptu_no);
+
+                DateTime dateissue = DateTime.Parse(Main.Instance.sd_pn_date_issued);
+                report.SetParameterValue("date_issued", dateissue.ToString("MM/dd/yyyy"));
+
+                DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
+                report.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
+
+                if (Properties.Settings.Default.isBirAccredited)
+                {
+                    report.SetParameterValue("is_vatable", true);
+                    report.SetParameterValue("txt_footer", "THIS SERVERS AS OFFICIAL RECEIPT.");
+                }
+                else
+                {
+                    report.SetParameterValue("is_vatable", false);
+                    report.SetParameterValue("txt_footer", "THIS SERVERS AS DEMO RECEIPT.");
+                }
 
                 CrystalReportViewer1.ReportSource = report;
                 CrystalReportViewer1.Refresh();
                 CrystalReportViewer1.Zoom(1);
             }
-            //}
-            //catch (Exception ex)
-            //{
-            //    new Notification().PopUp(ex.Message,"","error");
-            //    report.Dispose();
-            //}
-
-
-            //if (Properties.Settings.Default.papersize == "58MM")
-            //{
-            //    report = new TransactionsReport58();
-
-            //    DataSet ds = new DataSet();
-
-            //    //try
-            //    //{
-            //    CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
-            //    if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
-            //    {
-            //        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-            //    }
-            //    else
-            //    {
-            //        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-            //    }
-            //    SQL.DBDA.Fill(ds, "transaction_items");
-            //    report.SetDataSource(ds);
-
-            //    SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
-
-            //    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
-            //               SELECT * INTO #Temp_users
-            //               FROM
-            //               (
-            //               SELECT ID, user_name, first_name FROM
-            //               (
-            //               SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
-            //               UNION ALL
-            //               SELECT userID, user_name, first_name FROM users
-            //               ) x
-            //               ) as a;
-            //               SELECT td.*, u.first_name as 'user_first_name' 
-            //               FROM transaction_details as td INNER JOIN #Temp_users as u ON td.userID = u.ID
-            //               WHERE order_ref = @order_ref");
-
-            //    if (SQL.HasException(true))
-            //        return;
-
-            //    foreach (DataRow r in SQL.DBDT.Rows)
-            //    {
-            //        report.SetParameterValue("date_time", r["date_time"].ToString());
-            //        report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-            //        report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-            //        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
-            //        report.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
-            //        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-            //        report.SetParameterValue("subtotal", subtotal.ToString("N2"));
-            //        decimal less_vat = decimal.Parse(r["less_vat"].ToString());
-            //        report.SetParameterValue("less_vat", less_vat.ToString("N2"));
-            //        decimal disc_amt = decimal.Parse(r["disc_amt"].ToString());
-            //        report.SetParameterValue("discount", disc_amt.ToString("N2"));
-            //        decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
-            //        report.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
-            //        decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
-            //        report.SetParameterValue("gift_card_deduct", giftcard_deducted.ToString("N2"));
-            //        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
-            //        report.SetParameterValue("total", grand_total.ToString("N2"));
-            //        decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
-            //        report.SetParameterValue("vatable_sales", vatable_sale.ToString("N2"));
-            //        decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
-            //        report.SetParameterValue("vat_12", vat_12.ToString("N2"));
-            //        decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
-            //        report.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
-            //        decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
-            //        report.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-            //        report.SetParameterValue("gift_card_no", r["giftcard_no"].ToString());
-            //        decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
-            //        report.SetParameterValue("cash", payment_amt.ToString("N2"));
-            //        decimal change = decimal.Parse(r["change"].ToString());
-            //        report.SetParameterValue("change", change.ToString("N2"));
-            //        report.SetParameterValue("cus_name", r["cus_name"].ToString());
-            //        report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
-            //        report.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
-
-
-            //        CrystalReportViewer1.ReportSource = report;
-            //        CrystalReportViewer1.Refresh();
-            //    }
-            //    //}
-            //    //catch (Exception ex)
-            //    //{
-            //    //    new Notification().PopUp(ex.Message,"","error");
-            //    //    report.Dispose();
-            //    //}
-            //}
-            //else
-            //{
-            //    report80 = new TransactionsReport80();
-
-            //    DataSet ds = new DataSet();
-
-            //    //try
-            //    //{
-            //    CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
-            //    if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
-            //    {
-            //        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-            //    }
-            //    else
-            //    {
-            //        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-            //    }
-            //    SQL.DBDA.Fill(ds, "transaction_items");
-            //    report80.SetDataSource(ds);
-
-            //    SQL.AddParam("@order_ref", dgvRecords.CurrentRow.Cells[0].Value.ToString());
-
-            //    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
-            //               SELECT * INTO #Temp_users
-            //               FROM
-            //               (
-            //               SELECT ID, user_name, first_name FROM
-            //               (
-            //               SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
-            //               UNION ALL
-            //               SELECT userID, user_name, first_name FROM users
-            //               ) x
-            //               ) as a;
-            //               SELECT td.*, u.first_name as 'user_first_name' 
-            //               FROM transaction_details as td INNER JOIN #Temp_users as u ON td.userID = u.ID
-            //               WHERE order_ref = @order_ref");
-
-            //    if (SQL.HasException(true))
-            //        return;
-
-            //    foreach (DataRow r in SQL.DBDT.Rows)
-            //    {
-            //        report80.SetParameterValue("date_time", r["date_time"].ToString());
-            //        report80.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-            //        report80.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-            //        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
-            //        report80.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
-            //        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-            //        report80.SetParameterValue("subtotal", subtotal.ToString("N2"));
-            //        decimal less_vat = decimal.Parse(r["less_vat"].ToString());
-            //        report80.SetParameterValue("less_vat", less_vat.ToString("N2"));
-            //        decimal disc_amt = decimal.Parse(r["disc_amt"].ToString());
-            //        report80.SetParameterValue("discount", disc_amt.ToString("N2"));
-            //        decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
-            //        report80.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
-            //        decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
-            //        report80.SetParameterValue("gift_card_deduct", giftcard_deducted.ToString("N2"));
-            //        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
-            //        report80.SetParameterValue("total", grand_total.ToString("N2"));
-            //        decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
-            //        report80.SetParameterValue("vatable_sales", vatable_sale.ToString("N2"));
-            //        decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
-            //        report80.SetParameterValue("vat_12", vat_12.ToString("N2"));
-            //        decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
-            //        report80.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
-            //        decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
-            //        report80.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-            //        report80.SetParameterValue("gift_card_no", r["giftcard_no"].ToString());
-            //        decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
-            //        report80.SetParameterValue("cash", payment_amt.ToString("N2"));
-            //        decimal change = decimal.Parse(r["change"].ToString());
-            //        report80.SetParameterValue("change", change.ToString("N2"));
-            //        report80.SetParameterValue("cus_name", r["cus_name"].ToString());
-            //        report80.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
-            //        report80.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
-
-
-            //        CrystalReportViewer1.ReportSource = report80;
-            //        CrystalReportViewer1.Refresh();
-            //    }
-            //}
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)

@@ -397,5 +397,20 @@ namespace EcoPOSv2.Properties {
                 this["Language"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Retail")]
+        public string Pricing
+        {
+            get
+            {
+                return ((string)(this["Pricing"]));
+            }
+            set
+            {
+                this["Pricing"] = value;
+            }
+        }
     }
 }

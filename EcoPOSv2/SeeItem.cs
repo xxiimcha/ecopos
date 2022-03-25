@@ -30,6 +30,14 @@ namespace EcoPOSv2
         private void SeeItem_Load(object sender, EventArgs e)
         {
             _SeeItem = this;
+            if (Properties.Settings.Default.Pricing == "Wholesale")
+            {
+                cmbPricemode.SelectedIndex = 1;
+            }
+            else
+            {
+                cmbPricemode.SelectedIndex = 0;
+            }
 
             loadTable();
             
@@ -160,6 +168,8 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
                 }
+
+                Order.Instance.last_item_scanned = r.Cells[0].Value.ToString();
 
                 Order.Instance.LoadOrder();
                 Order.Instance.GetTotal();
