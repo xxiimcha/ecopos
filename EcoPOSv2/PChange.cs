@@ -80,7 +80,6 @@ namespace EcoPOSv2
             Order.Instance.LoadOrder();
             Order.Instance.GetTotal();
             Order.Instance.LoadOrderNo();
-            Order.Instance.tbBarcode.Focus();
 
             Order.Instance.apply_regular_discount_fix_amt = false;
             Order.Instance.apply_special_discount = false;

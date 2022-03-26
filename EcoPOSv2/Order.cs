@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using EcoPOSControl;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using System.IO.Ports;
 
 namespace EcoPOSv2
 {
@@ -135,6 +136,8 @@ namespace EcoPOSv2
             dgvCart.Columns[7].Width = (int)(dgvCart.Width * 0.15);
             dgvCart.Columns[10].Width = (int)(dgvCart.Width * 0.15);
             dgvCart.Columns[11].Width = (int)(dgvCart.Width * 0.10);
+
+            this.ActiveControl = tbBarcode;
         }
         public void LoadOrderNo()
         {
@@ -298,7 +301,7 @@ namespace EcoPOSv2
                 decimal vatsaledisc = vat_sale;
                 lblVATSale.Text = vatsaledisc.ToString("N2");
             }
-
+            this.ActiveControl = tbBarcode;
         }
 
         //METHODS
@@ -421,10 +424,12 @@ namespace EcoPOSv2
                     frmPayment.cbxUsePoints.Enabled = false;
                     frmPayment.cmbMethod.Enabled = false;
                 }
-                frmPayment.ShowDialog(this);
-
+               
                 FormLoad Fl = new FormLoad();
                 Fl.CusDisplay("TOTAL:", frmPayment.lblGrandTotal.Text);
+                frmPayment.ShowDialog(this);
+                tbBarcode.Clear();
+                tbBarcode.Focus();
 
             }
         }
@@ -654,15 +659,13 @@ namespace EcoPOSv2
             DiscountOption frmDiscountOption = new DiscountOption();
             frmDiscountOption.frmOrder = this;
             frmDiscountOption.ShowDialog();
-
-
             tbBarcode.Clear();
             this.ActiveControl = tbBarcode;
         }
 
         private void btnQuantity_Click(object sender, EventArgs e)
         {
-            if(CheckOpened("Quantity") == true)
+            if (CheckOpened("Quantity") == true)
             {
                 return;
             }
@@ -678,10 +681,10 @@ namespace EcoPOSv2
                 decimal x = decimal.Parse(dgvCart.CurrentRow.Cells[11].Value.ToString());
                 frmQuantity.currentQty = x;
                 frmQuantity.ShowDialog();
-            }
 
-            tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
+                tbBarcode.Clear();
+                tbBarcode.Focus();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -724,6 +727,9 @@ namespace EcoPOSv2
             btnDiscount.Enabled = true;
             btnCustomer.Enabled = true;
             btnQuantity.Enabled = true;
+
+            tbBarcode.Clear();
+            tbBarcode.Focus();
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
@@ -732,9 +738,8 @@ namespace EcoPOSv2
 
             VoidTransaction frmVT = new VoidTransaction();
             frmVT.ShowDialog();
-
             tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
+            tbBarcode.Focus();
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
@@ -845,8 +850,8 @@ namespace EcoPOSv2
                 cl.ItemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
                 cl.ProductID = dgvCart.CurrentRow.Cells[1].Value.ToString();
                 cl.type = "Void";
-                cl.ShowDialog();
-
+                tbBarcode.Clear();
+                tbBarcode.Focus();
                 return;
             }
             else
@@ -854,7 +859,7 @@ namespace EcoPOSv2
                 try
                 {
                     tbBarcode.Clear();
-                    this.ActiveControl = tbBarcode;
+                    tbBarcode.Focus();
                 }
                 catch (Exception) { }
 
@@ -888,7 +893,11 @@ namespace EcoPOSv2
 
                 LoadOrder();
                 GetTotal();
+
+                tbBarcode.Clear();
+                tbBarcode.Focus();
             }
+            tbBarcode.Focus();
         }
         private void btnRetail_Click(object sender, EventArgs e)
         {
@@ -957,29 +966,32 @@ namespace EcoPOSv2
                 frmPrice.tbPrice.Text = dgvCart.CurrentRow.Cells[7].Value.ToString();
                 frmPrice.currentPrice = dgvCart.CurrentRow.Cells[7].Value.ToString();
                 frmPrice.ShowDialog();
+                tbBarcode.Clear();
+                tbBarcode.Focus();
             }
 
             tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
+            tbBarcode.Focus();
         }
-
-        
 
         private void btnKeep_Click(object sender, EventArgs e)
         {
             if (dgvCart.RowCount>0)
             {
                 new NoteInputForm().ShowDialog();
+                tbBarcode.Focus();
             }
             else
             {
                 new Notification().PopUp("There are no items in the cart.", "Error!", "error");
+                tbBarcode.Focus();
             }
         }
 
         private void btnViewKeep(object sender, EventArgs e)
         {
             new ItemsOnKeepView().ShowDialog();
+            tbBarcode.Focus();
         }
 
         String[] hybrid;
@@ -1268,6 +1280,7 @@ namespace EcoPOSv2
 
         private void btnSeeItem_Click(object sender, EventArgs e)
         {
+            
             if (Main.Instance.lblUser.Text == "Bypassed")
             {
                 MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -65,7 +65,6 @@ namespace EcoPOSv2
                     frmOrder.LoadOrder();
                     frmOrder.GetTotal();
                     Close();
-                    frmOrder.tbBarcode.Focus();
                 }
                 catch (Exception) { }
             }
@@ -79,12 +78,17 @@ namespace EcoPOSv2
         private void txtQuantity_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 btnConfirm.PerformClick();
+            }
         }
 
         private void Quantity_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) Close();
+            if (e.KeyCode == Keys.Escape) 
+            {
+                Close();
+            }
         }
 
         private void TxtQuantity_KeyPress(object sender, KeyPressEventArgs e)

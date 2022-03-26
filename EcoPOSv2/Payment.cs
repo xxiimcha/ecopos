@@ -954,7 +954,7 @@ namespace EcoPOSv2
 
         private void Payment_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
+            
         }
 
         private void cbxUsePoints_CheckedChanged(object sender, EventArgs e)
