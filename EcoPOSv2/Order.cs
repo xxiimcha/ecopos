@@ -681,10 +681,9 @@ namespace EcoPOSv2
                 decimal x = decimal.Parse(dgvCart.CurrentRow.Cells[11].Value.ToString());
                 frmQuantity.currentQty = x;
                 frmQuantity.ShowDialog();
-
-                tbBarcode.Clear();
-                tbBarcode.Focus();
             }
+            tbBarcode.Clear();
+            tbBarcode.Focus();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

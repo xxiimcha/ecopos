@@ -93,6 +93,18 @@
             this.btnProduct_Save = new Guna.UI2.WinForms.Guna2Button();
             this.btnProduct_Delete = new Guna.UI2.WinForms.Guna2Button();
             this.btnProduct_New = new FontAwesome.Sharp.IconButton();
+            this.pnlExpiration = new System.Windows.Forms.Panel();
+            this.btnEShowAll = new FontAwesome.Sharp.IconButton();
+            this.btnESearchByDate = new FontAwesome.Sharp.IconButton();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.btnExportPDF = new FontAwesome.Sharp.IconButton();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbECategory = new System.Windows.Forms.ComboBox();
+            this.dgvExpirationDate = new System.Windows.Forms.DataGridView();
             this.pnlCategory = new System.Windows.Forms.Panel();
             this.splCategory = new System.Windows.Forms.SplitContainer();
             this.TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -120,18 +132,6 @@
             this.rbCat_5PWD = new System.Windows.Forms.RadioButton();
             this.Label19 = new System.Windows.Forms.Label();
             this.lblCat_ItemCount = new System.Windows.Forms.Label();
-            this.pnlExpiration = new System.Windows.Forms.Panel();
-            this.btnEShowAll = new FontAwesome.Sharp.IconButton();
-            this.btnESearchByDate = new FontAwesome.Sharp.IconButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.btnExportPDF = new FontAwesome.Sharp.IconButton();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmbECategory = new System.Windows.Forms.ComboBox();
-            this.dgvExpirationDate = new System.Windows.Forms.DataGridView();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.btnExpirationDate = new FontAwesome.Sharp.IconButton();
             this.btnCategory = new FontAwesome.Sharp.IconButton();
@@ -153,6 +153,8 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.Panel3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.pnlExpiration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpirationDate)).BeginInit();
             this.pnlCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splCategory)).BeginInit();
             this.splCategory.Panel1.SuspendLayout();
@@ -165,8 +167,6 @@
             this.TableLayoutPanel4.SuspendLayout();
             this.Panel7.SuspendLayout();
             this.TableLayoutPanel5.SuspendLayout();
-            this.pnlExpiration.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpirationDate)).BeginInit();
             this.Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -186,8 +186,8 @@
             // pnlParent
             // 
             this.pnlParent.Controls.Add(this.pnlProducts);
-            this.pnlParent.Controls.Add(this.pnlCategory);
             this.pnlParent.Controls.Add(this.pnlExpiration);
+            this.pnlParent.Controls.Add(this.pnlCategory);
             this.pnlParent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlParent.Location = new System.Drawing.Point(0, 39);
             this.pnlParent.Name = "pnlParent";
@@ -251,7 +251,7 @@
             this.dgvCategory.AllowUserToResizeRows = false;
             this.dgvCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvCategory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvCategory.BackgroundColor = System.Drawing.Color.White;
             this.dgvCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -343,7 +343,7 @@
             this.dgvProducts.AllowUserToResizeRows = false;
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvProducts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.White;
             this.dgvProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -634,7 +634,7 @@
             // 
             // txtProductID
             // 
-            this.txtProductID.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtProductID.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtProductID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProductID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtProductID.Enabled = false;
@@ -1046,6 +1046,226 @@
             this.btnProduct_New.UseVisualStyleBackColor = true;
             this.btnProduct_New.Click += new System.EventHandler(this.btnProduct_New_Click);
             // 
+            // pnlExpiration
+            // 
+            this.pnlExpiration.Controls.Add(this.btnEShowAll);
+            this.pnlExpiration.Controls.Add(this.btnESearchByDate);
+            this.pnlExpiration.Controls.Add(this.label15);
+            this.pnlExpiration.Controls.Add(this.dtpTo);
+            this.pnlExpiration.Controls.Add(this.label14);
+            this.pnlExpiration.Controls.Add(this.dtpFrom);
+            this.pnlExpiration.Controls.Add(this.btnExportPDF);
+            this.pnlExpiration.Controls.Add(this.txtSearch);
+            this.pnlExpiration.Controls.Add(this.label13);
+            this.pnlExpiration.Controls.Add(this.cmbECategory);
+            this.pnlExpiration.Controls.Add(this.dgvExpirationDate);
+            this.pnlExpiration.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlExpiration.Location = new System.Drawing.Point(0, 0);
+            this.pnlExpiration.Name = "pnlExpiration";
+            this.pnlExpiration.Size = new System.Drawing.Size(1090, 695);
+            this.pnlExpiration.TabIndex = 3;
+            // 
+            // btnEShowAll
+            // 
+            this.btnEShowAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEShowAll.BackColor = System.Drawing.Color.White;
+            this.btnEShowAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(51)))));
+            this.btnEShowAll.FlatAppearance.BorderSize = 0;
+            this.btnEShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEShowAll.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnEShowAll.ForeColor = System.Drawing.Color.Black;
+            this.btnEShowAll.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnEShowAll.IconColor = System.Drawing.Color.Black;
+            this.btnEShowAll.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEShowAll.IconSize = 27;
+            this.btnEShowAll.Location = new System.Drawing.Point(424, 23);
+            this.btnEShowAll.Name = "btnEShowAll";
+            this.btnEShowAll.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnEShowAll.Size = new System.Drawing.Size(176, 53);
+            this.btnEShowAll.TabIndex = 117;
+            this.btnEShowAll.Text = "Show All";
+            this.btnEShowAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEShowAll.UseVisualStyleBackColor = false;
+            this.btnEShowAll.Click += new System.EventHandler(this.BtnEShowAll_Click);
+            // 
+            // btnESearchByDate
+            // 
+            this.btnESearchByDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnESearchByDate.BackColor = System.Drawing.Color.White;
+            this.btnESearchByDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(51)))));
+            this.btnESearchByDate.FlatAppearance.BorderSize = 0;
+            this.btnESearchByDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnESearchByDate.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnESearchByDate.ForeColor = System.Drawing.Color.Black;
+            this.btnESearchByDate.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnESearchByDate.IconColor = System.Drawing.Color.Black;
+            this.btnESearchByDate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnESearchByDate.IconSize = 27;
+            this.btnESearchByDate.Location = new System.Drawing.Point(919, 12);
+            this.btnESearchByDate.Name = "btnESearchByDate";
+            this.btnESearchByDate.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnESearchByDate.Size = new System.Drawing.Size(165, 35);
+            this.btnESearchByDate.TabIndex = 116;
+            this.btnESearchByDate.Text = "Search by date";
+            this.btnESearchByDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnESearchByDate.UseVisualStyleBackColor = false;
+            this.btnESearchByDate.Click += new System.EventHandler(this.BtnESearchByDate_Click);
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.label15.Location = new System.Drawing.Point(692, 57);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(35, 25);
+            this.label15.TabIndex = 115;
+            this.label15.Text = "To:";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpTo.CustomFormat = "MMMM dd, yyyy HH:mm:ss";
+            this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(730, 56);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(175, 29);
+            this.dtpTo.TabIndex = 114;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.label14.Location = new System.Drawing.Point(670, 17);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 25);
+            this.label14.TabIndex = 113;
+            this.label14.Text = "From:";
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpFrom.CustomFormat = "MMMM dd, yyyy HH:mm:ss";
+            this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(730, 16);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(175, 29);
+            this.dtpFrom.TabIndex = 112;
+            // 
+            // btnExportPDF
+            // 
+            this.btnExportPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportPDF.BackColor = System.Drawing.Color.White;
+            this.btnExportPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(51)))));
+            this.btnExportPDF.FlatAppearance.BorderSize = 0;
+            this.btnExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportPDF.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnExportPDF.ForeColor = System.Drawing.Color.Black;
+            this.btnExportPDF.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
+            this.btnExportPDF.IconColor = System.Drawing.Color.Black;
+            this.btnExportPDF.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnExportPDF.IconSize = 27;
+            this.btnExportPDF.Location = new System.Drawing.Point(919, 54);
+            this.btnExportPDF.Name = "btnExportPDF";
+            this.btnExportPDF.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnExportPDF.Size = new System.Drawing.Size(165, 35);
+            this.btnExportPDF.TabIndex = 37;
+            this.btnExportPDF.Text = "Export to PDF";
+            this.btnExportPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportPDF.UseVisualStyleBackColor = false;
+            this.btnExportPDF.Click += new System.EventHandler(this.BtnExportPDF_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.ForeColor = System.Drawing.Color.DimGray;
+            this.txtSearch.Location = new System.Drawing.Point(11, 60);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(354, 33);
+            this.txtSearch.TabIndex = 31;
+            this.txtSearch.Tag = "Search category";
+            this.txtSearch.Text = "Search description, Name or Barcode";
+            this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
+            this.txtSearch.Enter += new System.EventHandler(this.TxtSearch_Enter);
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
+            this.txtSearch.Leave += new System.EventHandler(this.TxtSearch_Leave);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.label13.Location = new System.Drawing.Point(15, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(92, 25);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Category:";
+            // 
+            // cmbECategory
+            // 
+            this.cmbECategory.BackColor = System.Drawing.Color.Gainsboro;
+            this.cmbECategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbECategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbECategory.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbECategory.ForeColor = System.Drawing.Color.Black;
+            this.cmbECategory.FormattingEnabled = true;
+            this.cmbECategory.Location = new System.Drawing.Point(109, 14);
+            this.cmbECategory.MaxDropDownItems = 10;
+            this.cmbECategory.Name = "cmbECategory";
+            this.cmbECategory.Size = new System.Drawing.Size(256, 31);
+            this.cmbECategory.TabIndex = 29;
+            this.cmbECategory.SelectedIndexChanged += new System.EventHandler(this.CmbECategory_SelectedIndexChanged);
+            // 
+            // dgvExpirationDate
+            // 
+            this.dgvExpirationDate.AllowUserToAddRows = false;
+            this.dgvExpirationDate.AllowUserToDeleteRows = false;
+            this.dgvExpirationDate.AllowUserToResizeColumns = false;
+            this.dgvExpirationDate.AllowUserToResizeRows = false;
+            this.dgvExpirationDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvExpirationDate.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvExpirationDate.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvExpirationDate.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExpirationDate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvExpirationDate.ColumnHeadersHeight = 30;
+            this.dgvExpirationDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExpirationDate.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvExpirationDate.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvExpirationDate.Location = new System.Drawing.Point(11, 100);
+            this.dgvExpirationDate.MultiSelect = false;
+            this.dgvExpirationDate.Name = "dgvExpirationDate";
+            this.dgvExpirationDate.ReadOnly = true;
+            this.dgvExpirationDate.RowHeadersVisible = false;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExpirationDate.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvExpirationDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvExpirationDate.Size = new System.Drawing.Size(1073, 579);
+            this.dgvExpirationDate.TabIndex = 6;
+            // 
             // pnlCategory
             // 
             this.pnlCategory.Controls.Add(this.splCategory);
@@ -1102,22 +1322,22 @@
             this.dgvCat_Category.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCat_Category.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCat_Category.ColumnHeadersVisible = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCat_Category.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCat_Category.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvCat_Category.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCat_Category.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCat_Category.Location = new System.Drawing.Point(3, 40);
             this.dgvCat_Category.Name = "dgvCat_Category";
             this.dgvCat_Category.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCat_Category.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCat_Category.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvCat_Category.Size = new System.Drawing.Size(310, 652);
             this.dgvCat_Category.TabIndex = 28;
             this.dgvCat_Category.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCat_Category_CellClick);
@@ -1455,227 +1675,6 @@
             this.lblCat_ItemCount.Text = "0";
             this.lblCat_ItemCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pnlExpiration
-            // 
-            this.pnlExpiration.Controls.Add(this.btnEShowAll);
-            this.pnlExpiration.Controls.Add(this.btnESearchByDate);
-            this.pnlExpiration.Controls.Add(this.label15);
-            this.pnlExpiration.Controls.Add(this.dtpTo);
-            this.pnlExpiration.Controls.Add(this.label14);
-            this.pnlExpiration.Controls.Add(this.dtpFrom);
-            this.pnlExpiration.Controls.Add(this.btnExportPDF);
-            this.pnlExpiration.Controls.Add(this.txtSearch);
-            this.pnlExpiration.Controls.Add(this.label13);
-            this.pnlExpiration.Controls.Add(this.cmbECategory);
-            this.pnlExpiration.Controls.Add(this.dgvExpirationDate);
-            this.pnlExpiration.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlExpiration.Location = new System.Drawing.Point(0, 0);
-            this.pnlExpiration.Name = "pnlExpiration";
-            this.pnlExpiration.Size = new System.Drawing.Size(1090, 695);
-            this.pnlExpiration.TabIndex = 3;
-            // 
-            // btnEShowAll
-            // 
-            this.btnEShowAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEShowAll.BackColor = System.Drawing.Color.White;
-            this.btnEShowAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(51)))));
-            this.btnEShowAll.FlatAppearance.BorderSize = 0;
-            this.btnEShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEShowAll.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnEShowAll.ForeColor = System.Drawing.Color.Black;
-            this.btnEShowAll.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnEShowAll.IconColor = System.Drawing.Color.Black;
-            this.btnEShowAll.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnEShowAll.IconSize = 27;
-            this.btnEShowAll.Location = new System.Drawing.Point(424, 23);
-            this.btnEShowAll.Name = "btnEShowAll";
-            this.btnEShowAll.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnEShowAll.Size = new System.Drawing.Size(176, 53);
-            this.btnEShowAll.TabIndex = 117;
-            this.btnEShowAll.Text = "Show All";
-            this.btnEShowAll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEShowAll.UseVisualStyleBackColor = false;
-            this.btnEShowAll.Click += new System.EventHandler(this.BtnEShowAll_Click);
-            // 
-            // btnESearchByDate
-            // 
-            this.btnESearchByDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnESearchByDate.BackColor = System.Drawing.Color.White;
-            this.btnESearchByDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(51)))));
-            this.btnESearchByDate.FlatAppearance.BorderSize = 0;
-            this.btnESearchByDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnESearchByDate.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnESearchByDate.ForeColor = System.Drawing.Color.Black;
-            this.btnESearchByDate.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnESearchByDate.IconColor = System.Drawing.Color.Black;
-            this.btnESearchByDate.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnESearchByDate.IconSize = 27;
-            this.btnESearchByDate.Location = new System.Drawing.Point(919, 12);
-            this.btnESearchByDate.Name = "btnESearchByDate";
-            this.btnESearchByDate.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnESearchByDate.Size = new System.Drawing.Size(165, 35);
-            this.btnESearchByDate.TabIndex = 116;
-            this.btnESearchByDate.Text = "Search by date";
-            this.btnESearchByDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnESearchByDate.UseVisualStyleBackColor = false;
-            this.btnESearchByDate.Click += new System.EventHandler(this.BtnESearchByDate_Click);
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label15.Location = new System.Drawing.Point(692, 57);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 25);
-            this.label15.TabIndex = 115;
-            this.label15.Text = "To:";
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpTo.CustomFormat = "MMMM dd, yyyy HH:mm:ss";
-            this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(730, 56);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(175, 29);
-            this.dtpTo.TabIndex = 114;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label14.Location = new System.Drawing.Point(670, 17);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 25);
-            this.label14.TabIndex = 113;
-            this.label14.Text = "From:";
-            // 
-            // dtpFrom
-            // 
-            this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpFrom.CustomFormat = "MMMM dd, yyyy HH:mm:ss";
-            this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(730, 16);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(175, 29);
-            this.dtpFrom.TabIndex = 112;
-            // 
-            // btnExportPDF
-            // 
-            this.btnExportPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportPDF.BackColor = System.Drawing.Color.White;
-            this.btnExportPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(51)))));
-            this.btnExportPDF.FlatAppearance.BorderSize = 0;
-            this.btnExportPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportPDF.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnExportPDF.ForeColor = System.Drawing.Color.Black;
-            this.btnExportPDF.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
-            this.btnExportPDF.IconColor = System.Drawing.Color.Black;
-            this.btnExportPDF.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnExportPDF.IconSize = 27;
-            this.btnExportPDF.Location = new System.Drawing.Point(919, 54);
-            this.btnExportPDF.Name = "btnExportPDF";
-            this.btnExportPDF.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnExportPDF.Size = new System.Drawing.Size(165, 35);
-            this.btnExportPDF.TabIndex = 37;
-            this.btnExportPDF.Text = "Export to PDF";
-            this.btnExportPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExportPDF.UseVisualStyleBackColor = false;
-            this.btnExportPDF.Click += new System.EventHandler(this.BtnExportPDF_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearch.Location = new System.Drawing.Point(11, 60);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(354, 33);
-            this.txtSearch.TabIndex = 31;
-            this.txtSearch.Tag = "Search category";
-            this.txtSearch.Text = "Search description, Name or Barcode";
-            this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
-            this.txtSearch.Enter += new System.EventHandler(this.TxtSearch_Enter);
-            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyUp);
-            this.txtSearch.Leave += new System.EventHandler(this.TxtSearch_Leave);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label13.Location = new System.Drawing.Point(15, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 25);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "Category:";
-            // 
-            // cmbECategory
-            // 
-            this.cmbECategory.BackColor = System.Drawing.Color.Gainsboro;
-            this.cmbECategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbECategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbECategory.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbECategory.ForeColor = System.Drawing.Color.Black;
-            this.cmbECategory.FormattingEnabled = true;
-            this.cmbECategory.Location = new System.Drawing.Point(109, 14);
-            this.cmbECategory.MaxDropDownItems = 10;
-            this.cmbECategory.Name = "cmbECategory";
-            this.cmbECategory.Size = new System.Drawing.Size(256, 31);
-            this.cmbECategory.TabIndex = 29;
-            this.cmbECategory.SelectedIndexChanged += new System.EventHandler(this.CmbECategory_SelectedIndexChanged);
-            // 
-            // dgvExpirationDate
-            // 
-            this.dgvExpirationDate.AllowUserToAddRows = false;
-            this.dgvExpirationDate.AllowUserToDeleteRows = false;
-            this.dgvExpirationDate.AllowUserToResizeColumns = false;
-            this.dgvExpirationDate.AllowUserToResizeRows = false;
-            this.dgvExpirationDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvExpirationDate.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvExpirationDate.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvExpirationDate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvExpirationDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExpirationDate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvExpirationDate.ColumnHeadersHeight = 30;
-            this.dgvExpirationDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExpirationDate.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvExpirationDate.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvExpirationDate.Location = new System.Drawing.Point(11, 100);
-            this.dgvExpirationDate.MultiSelect = false;
-            this.dgvExpirationDate.Name = "dgvExpirationDate";
-            this.dgvExpirationDate.ReadOnly = true;
-            this.dgvExpirationDate.RowHeadersVisible = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExpirationDate.RowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvExpirationDate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExpirationDate.Size = new System.Drawing.Size(1073, 579);
-            this.dgvExpirationDate.TabIndex = 6;
-            // 
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.White;
@@ -1690,9 +1689,9 @@
             // 
             // btnExpirationDate
             // 
-            this.btnExpirationDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnExpirationDate.BackColor = System.Drawing.Color.White;
             this.btnExpirationDate.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnExpirationDate.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnExpirationDate.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnExpirationDate.FlatAppearance.BorderSize = 2;
             this.btnExpirationDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExpirationDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1712,9 +1711,9 @@
             // 
             // btnCategory
             // 
-            this.btnCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCategory.BackColor = System.Drawing.Color.White;
             this.btnCategory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCategory.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCategory.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnCategory.FlatAppearance.BorderSize = 2;
             this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1734,7 +1733,7 @@
             // 
             // btnProduct
             // 
-            this.btnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnProduct.BackColor = System.Drawing.Color.White;
             this.btnProduct.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(147)))), ((int)(((byte)(214)))));
             this.btnProduct.FlatAppearance.BorderSize = 2;
@@ -1789,6 +1788,9 @@
             this.tableLayoutPanel6.PerformLayout();
             this.Panel3.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
+            this.pnlExpiration.ResumeLayout(false);
+            this.pnlExpiration.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExpirationDate)).EndInit();
             this.pnlCategory.ResumeLayout(false);
             this.splCategory.Panel1.ResumeLayout(false);
             this.splCategory.Panel2.ResumeLayout(false);
@@ -1803,9 +1805,6 @@
             this.TableLayoutPanel4.PerformLayout();
             this.Panel7.ResumeLayout(false);
             this.TableLayoutPanel5.ResumeLayout(false);
-            this.pnlExpiration.ResumeLayout(false);
-            this.pnlExpiration.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvExpirationDate)).EndInit();
             this.Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

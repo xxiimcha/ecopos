@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 using static EcoPOSv2.ControlBehavior;
 using static EcoPOSv2.GroupAction;
 using static EcoPOSv2.TextBoxValidation;
@@ -48,7 +49,7 @@ namespace EcoPOSv2
         private RedeemReceipt80 reprint_receipt80 = new RedeemReceipt80();
 
         private List<Control> allTxt = new List<Control>();
-        private List<TextBox> requiredFields = new List<TextBox>();
+        private List<Guna2TextBox> requiredFields = new List<Guna2TextBox>();
 
         //METHODS
         private void LoadRT_Customers()
@@ -73,9 +74,7 @@ namespace EcoPOSv2
 
         private void RIRF()
         {
-            requiredFields = new List<TextBox>();
-
-            requiredFields.Add(txtRI_Points);
+            requiredFields = new List<Guna2TextBox>();
         }
         string cat_queryLI = "categoryID <> 0 ";
         private void LoadItems()
@@ -109,7 +108,9 @@ namespace EcoPOSv2
                 dgvRI_Items.Columns[4].Visible = false;
             }));
         }
+
         string cat_queryLRI = "categoryID <> 0 ";
+
         private void LoadRedeemItems()
         {
             if (cmbRI_CategoryRedeem.SelectedIndex != 0)
@@ -153,7 +154,7 @@ namespace EcoPOSv2
         }
         private void GCRF()
         {
-            requiredFields = new List<TextBox>();
+            requiredFields = new List<Guna2TextBox>();
 
             requiredFields.Add(txtGC_GCNo);
             requiredFields.Add(txtGC_Amount);
@@ -161,7 +162,9 @@ namespace EcoPOSv2
 
         private void ClearFields_GC()
         {
-            GA.DoThis(ref allTxt, TableLayoutPanel8, ControlType.TextBox, GroupAction.Action.Clear);
+            txtGC_GCNo.Clear();
+            txtGC_Amount.Clear();
+            lblGC_Status.Clear();
             lblGC_Status.Text = "";
             giftcardID = "";
         }
@@ -234,8 +237,6 @@ namespace EcoPOSv2
         private void btnRT_Click(object sender, EventArgs e)
         {
             OL.changePanel(pnlRT, ref currentPanel, btnRT, ref currentBtn);
-
-            btnRT_Search.PerformClick();
         }
 
         private void btnRI_Click(object sender, EventArgs e)
@@ -246,8 +247,6 @@ namespace EcoPOSv2
         private void btnAPT_Click(object sender, EventArgs e)
         {
             OL.changePanel(pnlAPT, ref currentPanel, btnAPT, ref currentBtn);
-
-            btnAPT_Search.PerformClick();
         }
 
         private void btnGC_Click(object sender, EventArgs e)
@@ -277,32 +276,16 @@ namespace EcoPOSv2
             }
         }
 
-        private void btnGC_Sort_Click(object sender, EventArgs e)
-        {
-            if (dgvGC.RowCount == 0)
-                return;
-
-            if (btnGC_Sort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvGC.Sort(dgvGC.Columns[1], ListSortDirection.Ascending);
-                btnGC_Sort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvGC.Sort(dgvGC.Columns[1], ListSortDirection.Descending);
-                btnGC_Sort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
         private void btnGC_Add_Click(object sender, EventArgs e)
         {
             ClearFields_GC();
+            
         }
 
         private void btnGC_Save_Click(object sender, EventArgs e)
         {
             GCRF();
-            int requiredFieldsMet = RequireField(ref requiredFields);
+            int requiredFieldsMet = GunaRequireField(ref requiredFields);
 
             if (requiredFieldsMet == 1)
             {
@@ -376,6 +359,9 @@ namespace EcoPOSv2
                 }
 
                 LoadGC();
+                txtGC_GCNo.Clear();
+                txtGC_Amount.Clear();
+                lblGC_Status.Clear();
             }
             else
                 new Notification().PopUp("Please fill all required fields.", "Save failed", "error");
@@ -520,40 +506,6 @@ namespace EcoPOSv2
             }
         }
 
-        private void btnRI_SortItems_Click(object sender, EventArgs e)
-        {
-            if (dgvRI_Items.RowCount == 0)
-                return;
-
-            if (btnRI_SortItems.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvRI_Items.Sort(dgvRI_Items.Columns[1], ListSortDirection.Ascending);
-                btnRI_SortItems.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvRI_Items.Sort(dgvRI_Items.Columns[1], ListSortDirection.Descending);
-                btnRI_SortItems.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
-        private void btnRI_SortRedeem_Click(object sender, EventArgs e)
-        {
-            if (dgvRI_RedeemItems.RowCount == 0)
-                return;
-
-            if (btnRI_SortRedeem.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvRI_RedeemItems.Sort(dgvRI_RedeemItems.Columns[2], ListSortDirection.Ascending);
-                btnRI_SortRedeem.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvRI_RedeemItems.Sort(dgvRI_RedeemItems.Columns[2], ListSortDirection.Descending);
-                btnRI_SortRedeem.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
         private void btnRI_Save_Click(object sender, EventArgs e)
         {
             if (redeemID == "")
@@ -563,7 +515,7 @@ namespace EcoPOSv2
             }
 
             RIRF();
-            int requiredFieldsMet = RequireField(ref requiredFields);
+            int requiredFieldsMet = GunaRequireField(ref requiredFields);
 
             if (requiredFieldsMet == 1)
             {
@@ -638,7 +590,8 @@ namespace EcoPOSv2
             EI.ExportDgvToPDF("Awarded Points Transaction", dgvAPT_Records);
         }
 
-        private void btnAPT_Search_Click(object sender, EventArgs e)
+
+        private void APTSearch()
         {
             string cus_query = "pa.cus_ID_no <> 0";
 
@@ -659,24 +612,7 @@ namespace EcoPOSv2
             dgvAPT_Records.Columns[0].Visible = false;
         }
 
-        private void btnAPT_Sort_Click(object sender, EventArgs e)
-        {
-            if (dgvAPT_Records.RowCount == 0)
-                return;
-
-            if (btnAPT_Sort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvAPT_Records.Sort(dgvAPT_Records.Columns[2], ListSortDirection.Ascending);
-                btnAPT_Sort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvAPT_Records.Sort(dgvAPT_Records.Columns[2], ListSortDirection.Descending);
-                btnAPT_Sort.IconChar = IconChar.SortAlphaDown;
-            }
-        }
-
-        private void btnRT_Search_Click(object sender, EventArgs e)
+        private void RTSearch()
         {
             string cus_query = "cus_ID_no <> 0";
 
@@ -695,23 +631,6 @@ namespace EcoPOSv2
 
             dgvRT_Records.DataSource = SQL.DBDT;
             dgvRT_Records.Columns[0].Visible = false;
-        }
-
-        private void btnRT_Sort_Click(object sender, EventArgs e)
-        {
-            if (dgvRT_Records.RowCount == 0)
-                return;
-
-            if (btnRT_Sort.IconChar == IconChar.SortAlphaDown)
-            {
-                dgvRT_Records.Sort(dgvRT_Records.Columns[2], ListSortDirection.Ascending);
-                btnRT_Sort.IconChar = IconChar.SortAlphaUp;
-            }
-            else
-            {
-                dgvRT_Records.Sort(dgvRT_Records.Columns[2], ListSortDirection.Descending);
-                btnRT_Sort.IconChar = IconChar.SortAlphaDown;
-            }
         }
 
         private void btnRT_ExportReport_Click(object sender, EventArgs e)
@@ -992,6 +911,7 @@ namespace EcoPOSv2
 
                 CrystalReportViewer1.ReportSource = report;
                 CrystalReportViewer1.Refresh();
+                CrystalReportViewer1.Zoom(2);
             }
             catch (Exception ex)
             {
@@ -1099,6 +1019,46 @@ namespace EcoPOSv2
 
             if (SQL.HasException(true))
                 return;
+        }
+
+        private void cmbRI_CategoryRedeem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRI_SearchRedeem.PerformClick();
+        }
+
+        private void dtpRT_From_ValueChanged(object sender, EventArgs e)
+        {
+            RTSearch();
+        }
+
+        private void dtpRT_To_ValueChanged(object sender, EventArgs e)
+        {
+            RTSearch();
+        }
+
+        private void cmbRT_Customer_SelectedValueChanged(object sender, EventArgs e)
+        {
+            RTSearch();
+        }
+
+        private void btnRTExportDGVToExcel_Click(object sender, EventArgs e)
+        {
+            new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvRT_Records), "Redeem Transaction Report", "Redeem Transaction Report");
+        }
+
+        private void dtpAPT_From_ValueChanged(object sender, EventArgs e)
+        {
+            APTSearch();
+        }
+
+        private void dtpAPT_To_ValueChanged(object sender, EventArgs e)
+        {
+            APTSearch();
+        }
+
+        private void cmbAPT_Customer_SelectedValueChanged(object sender, EventArgs e)
+        {
+            APTSearch();
         }
 
         private void btnSelectAllRedeemItems_Click(object sender, EventArgs e)

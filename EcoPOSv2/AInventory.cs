@@ -106,7 +106,7 @@ namespace EcoPOSv2
         {
             SQLControl workerSQL = new SQLControl();
 
-            workerSQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost FROM products as p
+            workerSQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost as 'Cost' FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID
                        INNER JOIN product_category as c ON
@@ -162,7 +162,7 @@ namespace EcoPOSv2
 
             SQL.AddParam("@find", txtSearch.Text + "%");
 
-            SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost FROM products as p
+            SQL.Query(@"SELECT p.productID, p.description as 'Item', c.name as 'Category', w.name as 'Warehouse', i.stock_qty as 'Stock',p.cost as 'Cost' FROM products as p
                        INNER JOIN warehouse as w ON
                        p.warehouseID = w.warehouseID
                        INNER JOIN product_category as c ON

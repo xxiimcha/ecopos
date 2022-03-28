@@ -304,7 +304,7 @@
             // 
             // Panel2
             // 
-            this.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Panel2.BackColor = System.Drawing.Color.White;
             this.Panel2.Controls.Add(this.TableLayoutPanel2);
             this.Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel2.Location = new System.Drawing.Point(3, 3);
@@ -504,7 +504,7 @@
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Panel1.BackColor = System.Drawing.Color.White;
             this.Panel1.Controls.Add(this.btnNext);
             this.Panel1.Controls.Add(this.btnPrevious);
             this.Panel1.Controls.Add(this.btnUA);

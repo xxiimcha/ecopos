@@ -589,6 +589,10 @@ namespace EcoPOSv2
         }
         private void btnPay_Click(object sender, EventArgs e)
         {
+            if (Double.Parse(txtAmount.Text) > 999999999.99d)
+            {
+                return;
+            }
             if(txtAmount.Text == "")
             {
                 return;

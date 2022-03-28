@@ -40,15 +40,15 @@
             this.btnSort = new FontAwesome.Sharp.IconButton();
             this.cbxShowZero = new System.Windows.Forms.CheckBox();
             this.Label4 = new System.Windows.Forms.Label();
-            this.cmbWarehouse = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.Panel2 = new System.Windows.Forms.Panel();
             this.TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnExportExcel = new FontAwesome.Sharp.IconButton();
             this.btnExportPDF = new FontAwesome.Sharp.IconButton();
             this.btnSearch = new FontAwesome.Sharp.IconButton();
             this.dgvInventory = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.cmbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbWarehouse = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -89,11 +89,12 @@
             // 
             // Panel1
             // 
-            this.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Panel1.BackColor = System.Drawing.Color.White;
             this.Panel1.Controls.Add(this.TableLayoutPanel2);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(3, 3);
             this.Panel1.Name = "Panel1";
+            this.Panel1.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.Panel1.Size = new System.Drawing.Size(277, 728);
             this.Panel1.TabIndex = 7;
             // 
@@ -107,13 +108,13 @@
             this.TableLayoutPanel2.Controls.Add(this.btnSort, 1, 1);
             this.TableLayoutPanel2.Controls.Add(this.cbxShowZero, 1, 6);
             this.TableLayoutPanel2.Controls.Add(this.Label4, 1, 2);
-            this.TableLayoutPanel2.Controls.Add(this.cmbWarehouse, 1, 5);
             this.TableLayoutPanel2.Controls.Add(this.Label1, 1, 4);
-            this.TableLayoutPanel2.Controls.Add(this.cmbCategory, 1, 3);
             this.TableLayoutPanel2.Controls.Add(this.Panel2, 1, 7);
             this.TableLayoutPanel2.Controls.Add(this.btnSearch, 1, 8);
+            this.TableLayoutPanel2.Controls.Add(this.cmbCategory, 1, 3);
+            this.TableLayoutPanel2.Controls.Add(this.cmbWarehouse, 1, 5);
             this.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.TableLayoutPanel2.Location = new System.Drawing.Point(0, 40);
             this.TableLayoutPanel2.Name = "TableLayoutPanel2";
             this.TableLayoutPanel2.RowCount = 9;
             this.TableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.46512F));
@@ -188,20 +189,6 @@
             this.Label4.Text = "Category";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // cmbWarehouse
-            // 
-            this.cmbWarehouse.BackColor = System.Drawing.Color.White;
-            this.cmbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbWarehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbWarehouse.ForeColor = System.Drawing.Color.Black;
-            this.cmbWarehouse.FormattingEnabled = true;
-            this.cmbWarehouse.Location = new System.Drawing.Point(18, 176);
-            this.cmbWarehouse.MaxDropDownItems = 10;
-            this.cmbWarehouse.Name = "cmbWarehouse";
-            this.cmbWarehouse.Size = new System.Drawing.Size(239, 31);
-            this.cmbWarehouse.TabIndex = 30;
-            // 
             // Label1
             // 
             this.Label1.AutoSize = true;
@@ -215,20 +202,6 @@
             this.Label1.TabIndex = 31;
             this.Label1.Text = "Warehouse";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // cmbCategory
-            // 
-            this.cmbCategory.BackColor = System.Drawing.Color.White;
-            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCategory.ForeColor = System.Drawing.Color.Black;
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(18, 111);
-            this.cmbCategory.MaxDropDownItems = 10;
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(239, 31);
-            this.cmbCategory.TabIndex = 28;
             // 
             // Panel2
             // 
@@ -332,7 +305,6 @@
             this.dgvInventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventory.BackgroundColor = System.Drawing.Color.White;
-            this.dgvInventory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInventory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvInventory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -388,6 +360,50 @@
             this.dgvInventory.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgvInventory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvInventory_CellClick);
             // 
+            // cmbCategory
+            // 
+            this.cmbCategory.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCategory.BorderColor = System.Drawing.Color.Gray;
+            this.cmbCategory.BorderRadius = 3;
+            this.cmbCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbCategory.FocusedState.Parent = this.cmbCategory;
+            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.HoverState.Parent = this.cmbCategory;
+            this.cmbCategory.ItemHeight = 30;
+            this.cmbCategory.ItemsAppearance.Parent = this.cmbCategory;
+            this.cmbCategory.Location = new System.Drawing.Point(18, 111);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.ShadowDecoration.Parent = this.cmbCategory;
+            this.cmbCategory.Size = new System.Drawing.Size(239, 36);
+            this.cmbCategory.TabIndex = 36;
+            // 
+            // cmbWarehouse
+            // 
+            this.cmbWarehouse.BackColor = System.Drawing.Color.Transparent;
+            this.cmbWarehouse.BorderColor = System.Drawing.Color.Gray;
+            this.cmbWarehouse.BorderRadius = 3;
+            this.cmbWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbWarehouse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWarehouse.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbWarehouse.FocusedState.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbWarehouse.FormattingEnabled = true;
+            this.cmbWarehouse.HoverState.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.ItemHeight = 30;
+            this.cmbWarehouse.ItemsAppearance.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.Location = new System.Drawing.Point(18, 176);
+            this.cmbWarehouse.Name = "cmbWarehouse";
+            this.cmbWarehouse.ShadowDecoration.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.Size = new System.Drawing.Size(239, 36);
+            this.cmbWarehouse.TabIndex = 37;
+            // 
             // AInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,13 +441,13 @@
         internal FontAwesome.Sharp.IconButton btnSort;
         internal System.Windows.Forms.CheckBox cbxShowZero;
         internal System.Windows.Forms.Label Label4;
-        internal System.Windows.Forms.ComboBox cmbWarehouse;
         internal System.Windows.Forms.Label Label1;
-        internal System.Windows.Forms.ComboBox cmbCategory;
         internal System.Windows.Forms.Panel Panel2;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel3;
         internal FontAwesome.Sharp.IconButton btnExportExcel;
         internal FontAwesome.Sharp.IconButton btnExportPDF;
         private Guna.UI2.WinForms.Guna2DataGridView dgvInventory;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbCategory;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbWarehouse;
     }
 }

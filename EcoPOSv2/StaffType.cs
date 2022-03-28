@@ -216,6 +216,7 @@ namespace EcoPOSv2
                                 SQL.AddParam("@ord_redeem_item", cbxOrd_RedeemItem.Checked);
                                 SQL.AddParam("@home_switch_cashier", cbxHome_SwitchCashier.Checked);
                                 SQL.AddParam("@home_more", cbxHome_More.Checked);
+                                SQL.AddParam("@more_customer_membership", cbxMore_CustomerMembership.Checked);
                                 SQL.AddParam("@more_ejournal", cbxMore_EJournal.Checked);
                                 SQL.AddParam("@more_pay_in_out", false);
                                 SQL.AddParam("@more_logs", cbxMore_Logs.Checked);
@@ -232,7 +233,7 @@ namespace EcoPOSv2
                                 SQL.Query(@"UPDATE role_permission SET ord_payment = @ord_payment, ord_customer = @ord_customer, ord_discount = @ord_discount, 
                                         ord_void_item = @ord_void_item, ord_void_transaction = @ord_void_transaction, ord_cancel_transaction = @ord_cancel_transaction, 
                                         ord_refund_transaction = @ord_refund_transaction, ord_keep_transaction = @ord_keep_transaction, ord_return_exchange = @ord_return_exchange, ord_redeem_item = @ord_redeem_item, 
-                                        home_switch_cashier = @home_switch_cashier, home_more = @home_more, more_ejournal = @more_ejournal, more_pay_in_out = @more_pay_in_out, 
+                                        home_switch_cashier = @home_switch_cashier, home_more = @home_more, more_ejournal = @more_ejournal, more_customer_membership = @more_customer_membership, more_pay_in_out = @more_pay_in_out, 
                                         more_logs = @more_logs, more_redeem_settings = @more_redeem_settings, more_manage_discounts = @more_manage_discounts, 
                                         more_manage_products = @more_manage_products, more_inventory = @more_inventory, more_close_store = @more_close_store, more_database = @more_database,
                                         more_settings = @more_settings, pay_payment_method = @pay_payment_method, pay_gift_certificate = @pay_gift_certificate where roleID=@roleID");
