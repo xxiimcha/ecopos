@@ -46,9 +46,10 @@
             this.btnExportExcel = new FontAwesome.Sharp.IconButton();
             this.btnExportPDF = new FontAwesome.Sharp.IconButton();
             this.btnSearch = new FontAwesome.Sharp.IconButton();
-            this.dgvInventory = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cmbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbWarehouse = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.dgvInventory = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.guna2Panel1.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -90,6 +91,7 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.White;
+            this.Panel1.Controls.Add(this.gunaLabel1);
             this.Panel1.Controls.Add(this.TableLayoutPanel2);
             this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel1.Location = new System.Drawing.Point(3, 3);
@@ -296,6 +298,50 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // cmbCategory
+            // 
+            this.cmbCategory.BackColor = System.Drawing.Color.Transparent;
+            this.cmbCategory.BorderColor = System.Drawing.Color.Gray;
+            this.cmbCategory.BorderRadius = 3;
+            this.cmbCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategory.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbCategory.FocusedState.Parent = this.cmbCategory;
+            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.HoverState.Parent = this.cmbCategory;
+            this.cmbCategory.ItemHeight = 30;
+            this.cmbCategory.ItemsAppearance.Parent = this.cmbCategory;
+            this.cmbCategory.Location = new System.Drawing.Point(18, 111);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.ShadowDecoration.Parent = this.cmbCategory;
+            this.cmbCategory.Size = new System.Drawing.Size(239, 36);
+            this.cmbCategory.TabIndex = 36;
+            // 
+            // cmbWarehouse
+            // 
+            this.cmbWarehouse.BackColor = System.Drawing.Color.Transparent;
+            this.cmbWarehouse.BorderColor = System.Drawing.Color.Gray;
+            this.cmbWarehouse.BorderRadius = 3;
+            this.cmbWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbWarehouse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWarehouse.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbWarehouse.FocusedState.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbWarehouse.FormattingEnabled = true;
+            this.cmbWarehouse.HoverState.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.ItemHeight = 30;
+            this.cmbWarehouse.ItemsAppearance.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.Location = new System.Drawing.Point(18, 176);
+            this.cmbWarehouse.Name = "cmbWarehouse";
+            this.cmbWarehouse.ShadowDecoration.Parent = this.cmbWarehouse;
+            this.cmbWarehouse.Size = new System.Drawing.Size(239, 36);
+            this.cmbWarehouse.TabIndex = 37;
+            // 
             // dgvInventory
             // 
             this.dgvInventory.AllowUserToAddRows = false;
@@ -305,6 +351,7 @@
             this.dgvInventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventory.BackgroundColor = System.Drawing.Color.White;
+            this.dgvInventory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInventory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvInventory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -360,49 +407,15 @@
             this.dgvInventory.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgvInventory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvInventory_CellClick);
             // 
-            // cmbCategory
+            // gunaLabel1
             // 
-            this.cmbCategory.BackColor = System.Drawing.Color.Transparent;
-            this.cmbCategory.BorderColor = System.Drawing.Color.Gray;
-            this.cmbCategory.BorderRadius = 3;
-            this.cmbCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategory.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbCategory.FocusedState.Parent = this.cmbCategory;
-            this.cmbCategory.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.HoverState.Parent = this.cmbCategory;
-            this.cmbCategory.ItemHeight = 30;
-            this.cmbCategory.ItemsAppearance.Parent = this.cmbCategory;
-            this.cmbCategory.Location = new System.Drawing.Point(18, 111);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.ShadowDecoration.Parent = this.cmbCategory;
-            this.cmbCategory.Size = new System.Drawing.Size(239, 36);
-            this.cmbCategory.TabIndex = 36;
-            // 
-            // cmbWarehouse
-            // 
-            this.cmbWarehouse.BackColor = System.Drawing.Color.Transparent;
-            this.cmbWarehouse.BorderColor = System.Drawing.Color.Gray;
-            this.cmbWarehouse.BorderRadius = 3;
-            this.cmbWarehouse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbWarehouse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbWarehouse.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbWarehouse.FocusedState.Parent = this.cmbWarehouse;
-            this.cmbWarehouse.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbWarehouse.FormattingEnabled = true;
-            this.cmbWarehouse.HoverState.Parent = this.cmbWarehouse;
-            this.cmbWarehouse.ItemHeight = 30;
-            this.cmbWarehouse.ItemsAppearance.Parent = this.cmbWarehouse;
-            this.cmbWarehouse.Location = new System.Drawing.Point(18, 176);
-            this.cmbWarehouse.Name = "cmbWarehouse";
-            this.cmbWarehouse.ShadowDecoration.Parent = this.cmbWarehouse;
-            this.cmbWarehouse.Size = new System.Drawing.Size(239, 36);
-            this.cmbWarehouse.TabIndex = 37;
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.Location = new System.Drawing.Point(14, 11);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(101, 21);
+            this.gunaLabel1.TabIndex = 37;
+            this.gunaLabel1.Text = "INVENTORY";
             // 
             // AInventory
             // 
@@ -421,6 +434,7 @@
             this.guna2Panel1.ResumeLayout(false);
             this.TableLayoutPanel1.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
+            this.Panel1.PerformLayout();
             this.TableLayoutPanel2.ResumeLayout(false);
             this.TableLayoutPanel2.PerformLayout();
             this.Panel2.ResumeLayout(false);
@@ -449,5 +463,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvInventory;
         private Guna.UI2.WinForms.Guna2ComboBox cmbCategory;
         private Guna.UI2.WinForms.Guna2ComboBox cmbWarehouse;
+        private Guna.UI.WinForms.GunaLabel gunaLabel1;
     }
 }

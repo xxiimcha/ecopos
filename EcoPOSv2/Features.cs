@@ -18,11 +18,6 @@ namespace EcoPOSv2
             InitializeComponent();
         }
 
-        private void checkBoxCardLogin_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void Features_Load(object sender, EventArgs e)
         {
             //CARD LOGIN
@@ -85,8 +80,18 @@ namespace EcoPOSv2
                 CheckBox_CloudBase.Checked = false;
             }
 
+            //CLOUDBASE
+            if (Properties.Settings.Default.ShowInventoryEditor == true)
+            {
+                checkBox_InventoryEditor.Checked = true;
+            }
+            else
+            {
+                checkBox_InventoryEditor.Checked = false;
+            }
 
-            if(DVOptions.Instance.login == 1)
+
+            if (DVOptions.Instance.login == 1)
             {
                 checkBoxCardLogin.Enabled = false;
                 checkBoxPriceEditor.Enabled = false;
@@ -102,37 +107,12 @@ namespace EcoPOSv2
             
         }
 
-        private void CheckBoxPriceEditor_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CheckBoxVatNonVat_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CheckBox_InventoryView_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void CheckBox_Non_Vat_Registered_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void Features_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Escape)
             {
                 this.Close();
             }
-        }
-
-        private void CheckBox_CloudBase_CheckedChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void BtnCloudConfig_Click(object sender, EventArgs e)
@@ -230,6 +210,18 @@ namespace EcoPOSv2
             else
             {
                 Properties.Settings.Default.priceeditor = false;
+                Properties.Settings.Default.Save();
+            }
+
+            //if price editor is checked
+            if (checkBox_InventoryEditor.Checked)
+            {
+                Properties.Settings.Default.ShowInventoryEditor = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.ShowInventoryEditor = false;
                 Properties.Settings.Default.Save();
             }
 

@@ -310,6 +310,21 @@ namespace EcoPOSv2.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowInventoryEditor
+        {
+            get
+            {
+                return ((bool)(this["ShowInventoryEditor"]));
+            }
+            set
+            {
+                this["ShowInventoryEditor"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9")]
         public string TitleTextFont
         {

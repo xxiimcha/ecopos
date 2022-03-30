@@ -91,16 +91,23 @@ namespace EcoPOSv2
         {
             _AWarehouse = this;
 
-            LoadWarehouse();
-            LoadWarehouseCMB();
-            ControlBehavior();
+            new Thread(() =>
+            {
+                Invoke(new MethodInvoker(delegate ()
+                {
+                    LoadWarehouse();
+                    LoadWarehouseCMB();
+                    ControlBehavior();
 
-            OL.ComboValuesQuery(cmbCategory, @"SELECT categoryID, name FROM
+                    OL.ComboValuesQuery(cmbCategory, @"SELECT categoryID, name FROM
                                          (
                                           SELECT 0 as 'categoryID', 'All category' as 'name', 1 as ord
                                           UNION ALL
                                           SELECT categoryID, name, 2 as ord FROM product_category
                                          ) x ORDER BY ord, name ASC", "categoryID", "name");
+                }));
+            })
+            { IsBackground = true }.Start();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

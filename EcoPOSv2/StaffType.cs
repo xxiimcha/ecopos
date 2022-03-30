@@ -59,7 +59,6 @@ namespace EcoPOSv2
         {
             txtStaffType.Clear();
             roleID = "";
-
             lblID.Text = "";
 
             // uncheck all permission
@@ -70,7 +69,7 @@ namespace EcoPOSv2
         {
             guna2ShadowForm1.SetShadowForm(this);
             _StaffType = this;
-            
+            ClearFields();
             LoadStaffType();
         }
 

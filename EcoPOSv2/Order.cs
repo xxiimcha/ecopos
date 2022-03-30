@@ -130,12 +130,7 @@ namespace EcoPOSv2
             dgvCart.Columns[9].Visible = false;
             dgvCart.Columns[12].Visible = false;
 
-            dgvCart.Columns[2].Width = (int)(dgvCart.Width * 0.25);
-            dgvCart.Columns[3].Width = (int)(dgvCart.Width * 0.25);
-            dgvCart.Columns[4].Width = (int)(dgvCart.Width * 0.08);
-            dgvCart.Columns[7].Width = (int)(dgvCart.Width * 0.15);
-            dgvCart.Columns[10].Width = (int)(dgvCart.Width * 0.15);
-            dgvCart.Columns[11].Width = (int)(dgvCart.Width * 0.10);
+         
 
             this.ActiveControl = tbBarcode;
         }
@@ -821,6 +816,12 @@ namespace EcoPOSv2
             LoadOrder();
             GetTotal();
 
+            dgvCart.Columns[2].Width = (int)(dgvCart.Width * 0.25);
+            dgvCart.Columns[3].Width = (int)(dgvCart.Width * 0.25);
+            dgvCart.Columns[4].Width = (int)(dgvCart.Width * 0.08);
+            dgvCart.Columns[7].Width = (int)(dgvCart.Width * 0.15);
+            dgvCart.Columns[10].Width = (int)(dgvCart.Width * 0.15);
+            dgvCart.Columns[11].Width = (int)(dgvCart.Width * 0.10);
             tbBarcode.Focus();
             tbBarcode.Clear();
 

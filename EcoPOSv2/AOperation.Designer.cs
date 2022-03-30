@@ -44,11 +44,11 @@
             this.btnPrint = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.TableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.Label13 = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.btnSearch = new FontAwesome.Sharp.IconButton();
             this.Label14 = new System.Windows.Forms.Label();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.Label13 = new System.Windows.Forms.Label();
+            this.btnSearch = new FontAwesome.Sharp.IconButton();
             this.CrystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.tbSeachItem = new System.Windows.Forms.TextBox();
@@ -325,19 +325,6 @@
             this.TableLayoutPanel3.Size = new System.Drawing.Size(267, 103);
             this.TableLayoutPanel3.TabIndex = 113;
             // 
-            // Label13
-            // 
-            this.Label13.AutoSize = true;
-            this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 10);
-            this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(44, 39);
-            this.Label13.TabIndex = 101;
-            this.Label13.Text = "From";
-            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // dtpFrom
             // 
             this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -350,26 +337,6 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(173, 29);
             this.dtpFrom.TabIndex = 102;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnSearch.IconColor = System.Drawing.Color.Black;
-            this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSearch.IconSize = 31;
-            this.btnSearch.Location = new System.Drawing.Point(232, 13);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(32, 33);
-            this.btnSearch.TabIndex = 105;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // Label14
             // 
@@ -396,6 +363,39 @@
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(173, 29);
             this.dtpTo.TabIndex = 104;
+            // 
+            // Label13
+            // 
+            this.Label13.AutoSize = true;
+            this.Label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label13.ForeColor = System.Drawing.Color.Black;
+            this.Label13.Location = new System.Drawing.Point(3, 10);
+            this.Label13.Name = "Label13";
+            this.Label13.Size = new System.Drawing.Size(44, 39);
+            this.Label13.TabIndex = 101;
+            this.Label13.Text = "From";
+            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnSearch.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnSearch.IconColor = System.Drawing.Color.Black;
+            this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSearch.IconSize = 31;
+            this.btnSearch.Location = new System.Drawing.Point(232, 13);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(32, 33);
+            this.btnSearch.TabIndex = 105;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // CrystalReportViewer1
             // 

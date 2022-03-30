@@ -42,8 +42,12 @@ namespace EcoPOSv2
         private void Inventory_Load(object sender, EventArgs e)
         {
             new CreateParams();
-            SetDoubleBuffered(guna2Panel1);
+            if (Properties.Settings.Default.ShowInventoryEditor)
+            {
+                btnInventoryEditor.Visible = true;
+            }
 
+            SetDoubleBuffered(guna2Panel1);
             currentChildForm = new AInventory();
             currentButton = btnInventory;
 
@@ -78,6 +82,11 @@ namespace EcoPOSv2
         private void BtnOR_Click(object sender, EventArgs e)
         {
             OL.changeFormWithButton(new AOperation(), ref currentChildForm, btnOR, ref currentButton, ref pnlChild);
+        }
+
+        private void btnInventoryEditor_Click(object sender, EventArgs e)
+        {
+            OL.changeFormWithButton(new AStockEditor(), ref currentChildForm, btnInventoryEditor, ref currentButton, ref pnlChild);
         }
     }
 }

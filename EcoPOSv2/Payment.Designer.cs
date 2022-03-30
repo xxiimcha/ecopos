@@ -393,6 +393,7 @@
             "GCash",
             "PayMaya",
             "Lyka Gem(s)",
+            "ShopeePay",
             "PayPal",
             "American Express",
             "BancNet",

@@ -304,6 +304,7 @@ WHERE product_name LIKE '%" + output+ "%' AND io.date_time BETWEEN @from AND @to
 
                     CrystalReportViewer1.ReportSource = report;
                     CrystalReportViewer1.Refresh();
+                    CrystalReportViewer1.Zoom(2);
                 }
             }
             else

@@ -32,6 +32,7 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.btnInventoryEditor = new FontAwesome.Sharp.IconButton();
             this.btnOR = new FontAwesome.Sharp.IconButton();
             this.btnWarehouse = new FontAwesome.Sharp.IconButton();
             this.btnSupplier = new FontAwesome.Sharp.IconButton();
@@ -69,6 +70,7 @@
             // Panel1
             // 
             this.Panel1.BackColor = System.Drawing.Color.White;
+            this.Panel1.Controls.Add(this.btnInventoryEditor);
             this.Panel1.Controls.Add(this.btnOR);
             this.Panel1.Controls.Add(this.btnWarehouse);
             this.Panel1.Controls.Add(this.btnSupplier);
@@ -80,6 +82,29 @@
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(1090, 39);
             this.Panel1.TabIndex = 6;
+            // 
+            // btnInventoryEditor
+            // 
+            this.btnInventoryEditor.BackColor = System.Drawing.Color.White;
+            this.btnInventoryEditor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnInventoryEditor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
+            this.btnInventoryEditor.FlatAppearance.BorderSize = 2;
+            this.btnInventoryEditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventoryEditor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventoryEditor.ForeColor = System.Drawing.Color.Black;
+            this.btnInventoryEditor.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnInventoryEditor.IconColor = System.Drawing.Color.White;
+            this.btnInventoryEditor.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnInventoryEditor.IconSize = 30;
+            this.btnInventoryEditor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInventoryEditor.Location = new System.Drawing.Point(870, 0);
+            this.btnInventoryEditor.Name = "btnInventoryEditor";
+            this.btnInventoryEditor.Size = new System.Drawing.Size(145, 39);
+            this.btnInventoryEditor.TabIndex = 14;
+            this.btnInventoryEditor.Text = "INVENTORY EDITOR";
+            this.btnInventoryEditor.UseVisualStyleBackColor = false;
+            this.btnInventoryEditor.Visible = false;
+            this.btnInventoryEditor.Click += new System.EventHandler(this.btnInventoryEditor_Click);
             // 
             // btnOR
             // 
@@ -244,5 +269,6 @@
         internal FontAwesome.Sharp.IconButton btnReturn;
         internal FontAwesome.Sharp.IconButton btnPurchase;
         internal FontAwesome.Sharp.IconButton btnInventory;
+        internal FontAwesome.Sharp.IconButton btnInventoryEditor;
     }
 }

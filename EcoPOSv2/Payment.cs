@@ -23,6 +23,7 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+
         //VARIABLES
         private SQLControl SQL = new SQLControl();
         private FormLoad OL = new FormLoad();

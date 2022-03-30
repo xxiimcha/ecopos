@@ -418,8 +418,7 @@ namespace EcoPOSv2
                 }
 
                 GlobalVariables.LoadPurchaseProducts();
-                
-
+                dgvProducts.DataSource = GlobalVariables.dtPurchaseProducts;
                 //ENABLING PURCHASE BUTTON
                 btnSave.Enabled = true;
             }
