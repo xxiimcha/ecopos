@@ -178,7 +178,7 @@ namespace EcoPOSv2
 
                     try
                     {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE terminal_id=" + Properties.Settings.Default.Terminal_id + " and order_ref = (SELECT MAX(order_ref) FROM transaction_details where terminal_id=" + Properties.Settings.Default.Terminal_id + ")", SQL.DBCon);
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 1, quantity, CAST(ROUND(quantity,0) as int)) AS varchar(20)) + unit as 'quantity', description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE terminal_id=" + Properties.Settings.Default.Terminal_id + " and order_ref = (SELECT MAX(order_ref) FROM transaction_details where terminal_id=" + Properties.Settings.Default.Terminal_id + ")", SQL.DBCon);
                         SQL.DBDA.Fill(ds, "transaction_items");
 
                         report.SetDataSource(ds);
@@ -678,10 +678,10 @@ namespace EcoPOSv2
 
                         INSERT INTO transaction_items (order_ref, itemID, productID, description, name, type, static_price_exclusive,
                            static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
-                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id)
+                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id, unit)
                            SELECT (SELECT MAX(order_ref) FROM transaction_details where terminal_id=@terminal_id), itemID, productID, description, name, type, static_price_exclusive,
                            static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,
-                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id FROM order_cart where terminal_id=@terminal_id;
+                           quantity, discount, is_less_vat, less_vat, is_vat_exempt, is_disc_percent, disc_percent, is_refund, is_return,cost,terminal_id,(SELECT unit_name FROM units WHERE unit_id = (SELECT unit_id FROM products WHERE products.productID = order_cart.productID)) FROM order_cart where terminal_id=@terminal_id;
 
                         " + inventory_query + " COMMIT;");
                     success = true;

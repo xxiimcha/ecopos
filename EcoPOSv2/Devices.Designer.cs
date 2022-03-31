@@ -31,6 +31,8 @@ namespace EcoPOSv2
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devices));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbRePrintPrinter = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbReceiptCopies = new System.Windows.Forms.ComboBox();
             this.moreOptionContainer = new System.Windows.Forms.Panel();
@@ -50,8 +52,6 @@ namespace EcoPOSv2
             this.cmbReportPrinter = new System.Windows.Forms.ComboBox();
             this.Label8 = new System.Windows.Forms.Label();
             this.cmbReceiptPrinter = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbRePrintPrinter = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.moreOptionContainer.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +77,32 @@ namespace EcoPOSv2
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(607, 637);
             this.panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(31, 87);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(130, 25);
+            this.label7.TabIndex = 98;
+            this.label7.Text = "Re-Print Printer";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbRePrintPrinter
+            // 
+            this.cmbRePrintPrinter.BackColor = System.Drawing.Color.White;
+            this.cmbRePrintPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRePrintPrinter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbRePrintPrinter.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRePrintPrinter.ForeColor = System.Drawing.Color.Black;
+            this.cmbRePrintPrinter.FormattingEnabled = true;
+            this.cmbRePrintPrinter.Location = new System.Drawing.Point(202, 84);
+            this.cmbRePrintPrinter.MaxDropDownItems = 10;
+            this.cmbRePrintPrinter.Name = "cmbRePrintPrinter";
+            this.cmbRePrintPrinter.Size = new System.Drawing.Size(372, 31);
+            this.cmbRePrintPrinter.TabIndex = 99;
             // 
             // label6
             // 
@@ -349,32 +375,6 @@ namespace EcoPOSv2
             this.cmbReceiptPrinter.Name = "cmbReceiptPrinter";
             this.cmbReceiptPrinter.Size = new System.Drawing.Size(372, 31);
             this.cmbReceiptPrinter.TabIndex = 71;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(31, 87);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 25);
-            this.label7.TabIndex = 98;
-            this.label7.Text = "Re-Print Printer";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cmbRePrintPrinter
-            // 
-            this.cmbRePrintPrinter.BackColor = System.Drawing.Color.White;
-            this.cmbRePrintPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRePrintPrinter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbRePrintPrinter.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRePrintPrinter.ForeColor = System.Drawing.Color.Black;
-            this.cmbRePrintPrinter.FormattingEnabled = true;
-            this.cmbRePrintPrinter.Location = new System.Drawing.Point(202, 84);
-            this.cmbRePrintPrinter.MaxDropDownItems = 10;
-            this.cmbRePrintPrinter.Name = "cmbRePrintPrinter";
-            this.cmbRePrintPrinter.Size = new System.Drawing.Size(372, 31);
-            this.cmbRePrintPrinter.TabIndex = 99;
             // 
             // Devices
             // 

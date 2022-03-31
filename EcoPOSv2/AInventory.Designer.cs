@@ -35,6 +35,7 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Panel1 = new System.Windows.Forms.Panel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSort = new FontAwesome.Sharp.IconButton();
@@ -49,7 +50,6 @@
             this.cmbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cmbWarehouse = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dgvInventory = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.guna2Panel1.SuspendLayout();
             this.TableLayoutPanel1.SuspendLayout();
             this.Panel1.SuspendLayout();
@@ -99,6 +99,16 @@
             this.Panel1.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.Panel1.Size = new System.Drawing.Size(277, 728);
             this.Panel1.TabIndex = 7;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.Location = new System.Drawing.Point(14, 11);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(101, 21);
+            this.gunaLabel1.TabIndex = 37;
+            this.gunaLabel1.Text = "INVENTORY";
             // 
             // TableLayoutPanel2
             // 
@@ -406,16 +416,6 @@
             this.dgvInventory.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             this.dgvInventory.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgvInventory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvInventory_CellClick);
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.Location = new System.Drawing.Point(14, 11);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(101, 21);
-            this.gunaLabel1.TabIndex = 37;
-            this.gunaLabel1.Text = "INVENTORY";
             // 
             // AInventory
             // 

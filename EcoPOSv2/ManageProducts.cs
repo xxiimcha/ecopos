@@ -5,11 +5,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EcoPOSv2.ControlBehavior;
 using static EcoPOSv2.GroupAction;
@@ -30,6 +27,7 @@ namespace EcoPOSv2
             this.dgvCategory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCat_Category.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+
         }
 
         SQLControl SQL = new SQLControl();
@@ -318,8 +316,10 @@ namespace EcoPOSv2
             //LoadProducts();
             loadCat_Category();
 
+            OL.ComboValues(cmbProductUnit, "unit_id", "unit_name", "units");
             OL.ComboValues(cmbCategory, "categoryID", "name", "product_category");
             OL.ComboValues(cmbWarehouse, "warehouseID", "name", "warehouse");
+            cmbProductUnit.SelectedValue = 1;
 
             //VAT-NONVAT
             if (Properties.Settings.Default.vatnonvat == true && Properties.Settings.Default.nonvat_registered == false)
@@ -410,6 +410,7 @@ namespace EcoPOSv2
                         txtBarcode1.Text = r["barcode1"].ToString();
                         txtBarcode2.Text = r["barcode2"].ToString();
                         cmbWarehouse.SelectedValue = r["warehouseID"].ToString();
+                        cmbProductUnit.SelectedValue = r["unit_id"].ToString();
                         cbxDiscRegular.Checked = Convert.ToBoolean(r["s_discR"].ToString());
                         cbxDiscPWD.Checked = Convert.ToBoolean(r["s_discPWD_SC"].ToString());
                         cbxDiscAthlete.Checked = Convert.ToBoolean(r["s_discAth"].ToString());
@@ -454,6 +455,7 @@ namespace EcoPOSv2
             //VISIBLE ON IN PRODUCT INVENTORY QUANTITY
             lblStock.Visible = true;
             txtProductStock.Visible = true;
+            cmbProductUnit.SelectedValue = 1;
 
             //lblCost.Visible = true;
             //tbProductCost.Visible = true;
@@ -559,13 +561,14 @@ namespace EcoPOSv2
                                             SQL.AddParam("@cost", tbProductCost.Text);
                                             SQL.AddParam("@has_expiry", cbxHasExpiry.CheckState);
                                             SQL.AddParam("@expiration_date", dtpExpiry.Value.ToShortDateString());
+                                            SQL.AddParam("@unit_id", cmbProductUnit.SelectedValue);
 
                                             SQL.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
-                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth,is_vatable, s_ask_qty,cost,has_expiry,expiration_date)
+                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth,is_vatable, s_ask_qty,cost,has_expiry,expiration_date, unit_id)
                                    VALUES
                                    (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
-                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@is_vatable,@cost,@has_expiry,@expiration_date)");
+                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@is_vatable,@cost,@has_expiry,@expiration_date, @unit_id)");
 
                                             if (SQL.HasException(true))
                                                 return;
@@ -588,13 +591,14 @@ namespace EcoPOSv2
                                             SQL.AddParam("@cost", tbProductCost.Text);
                                             SQL.AddParam("@has_expiry", cbxHasExpiry.CheckState);
                                             SQL.AddParam("@expiration_date", dtpExpiry.Value.ToShortDateString());
+                                            SQL.AddParam("@unit_id", cmbProductUnit.SelectedValue);
 
                                             SQL.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
                                     s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty,cost,has_expiry,expiration_date)
                                    VALUES
                                    (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
-                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@cost,@has_expiry,@expiration_date)");
+                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@cost,@has_expiry,@expiration_date, @unit_id)");
 
                                             if (SQL.HasException(true))
                                                 return;
@@ -695,12 +699,13 @@ namespace EcoPOSv2
                                             SQL.AddParam("@cost", tbProductCost.Text);
                                             SQL.AddParam("@has_expiry", cbxHasExpiry.Checked);
                                             SQL.AddParam("@expiration_date", dtpExpiry.Value.ToShortDateString());
+                                            SQL.AddParam("@unit_id", cmbProductUnit.SelectedValue);
 
                                             SQL.Query(@"UPDATE products SET
                                    description = @description, name = @name, categoryID = @categoryID, rp_inclusive = @rp_inclusive,
                                    wp_inclusive = @wp_inclusive, barcode1 = @barcode1, barcode2 = @barcode2, warehouseID = @warehouseID, 
                                    s_discR = @s_discR, s_discPWD_SC = @s_discPWD_SC, s_PWD_SC_perc = @s_PWD_SC_perc,
-                                   s_discAth = @s_discAth, s_ask_qty = @s_ask_qty,is_vatable=@is_vatable, cost = @cost, has_expiry=@has_expiry,expiration_date=@expiration_date
+                                   s_discAth = @s_discAth, s_ask_qty = @s_ask_qty,is_vatable=@is_vatable, cost = @cost, has_expiry=@has_expiry,expiration_date=@expiration_date, unit_id=@unit_id
                                    WHERE productID = @productID");
 
                                             if (SQL.HasException(true))
@@ -726,12 +731,13 @@ namespace EcoPOSv2
                                             SQL.AddParam("@cost", tbProductCost.Text);
                                             SQL.AddParam("@has_expiry", cbxHasExpiry.Checked);
                                             SQL.AddParam("@expiration_date", dtpExpiry.Value.ToShortDateString());
+                                            SQL.AddParam("@unit_id", cmbProductUnit.SelectedValue);
 
                                             SQL.Query(@"UPDATE products SET
                                    description = @description, name = @name, categoryID = @categoryID, rp_inclusive = @rp_inclusive,
                                    wp_inclusive = @wp_inclusive, barcode1 = @barcode1, barcode2 = @barcode2, warehouseID = @warehouseID, 
                                    s_discR = @s_discR, s_discPWD_SC = @s_discPWD_SC, s_PWD_SC_perc = @s_PWD_SC_perc,
-                                   s_discAth = @s_discAth, s_ask_qty = @s_ask_qty,is_vatable=@is_vatable, cost = @cost, has_expiry=@has_expiry,expiration_date=@expiration_date
+                                   s_discAth = @s_discAth, s_ask_qty = @s_ask_qty,is_vatable=@is_vatable, cost = @cost, has_expiry=@has_expiry,expiration_date=@expiration_date, unit_id=@unit_id
                                    WHERE productID = @productID");
 
                                             if (SQL.HasException(true))
@@ -1423,6 +1429,17 @@ namespace EcoPOSv2
             }
         }
 
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnManageUnit_Click(object sender, EventArgs e)
+        {
+            MeasurementUnitManager mum = new MeasurementUnitManager();
+            mum.ShowDialog();
+        }
+
         private void CbxVatable_CheckedChanged(object sender, EventArgs e)
         {
             //if(Properties.Settings.Default.vatnonvat == true)
@@ -1446,7 +1463,6 @@ namespace EcoPOSv2
         private void txtCat_SearchCategory_KeyUp(object sender, KeyEventArgs e)
         {
             SQL.AddParam("@find", txtCat_SearchCategory.Text + "%");
-
             SQL.Query("SELECT categoryID, name FROM product_category WHERE name LIKE @find ORDER BY name ASC");
 
             if (SQL.HasException(true))
@@ -1456,5 +1472,7 @@ namespace EcoPOSv2
 
             dgvCat_Category.Columns[0].Visible = false;
         }
+
+        
     }
 }

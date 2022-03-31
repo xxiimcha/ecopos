@@ -33,7 +33,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -41,7 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -175,6 +175,12 @@
     </Compile>
     <Compile Include="AReturn.Designer.cs">
       <DependentUpon>AReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AStockEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AStockEditor.Designer.cs">
+      <DependentUpon>AStockEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="ASupplier.cs">
       <SubType>Form</SubType>
@@ -344,6 +350,12 @@
     </Compile>
     <Compile Include="InvoiceEditor.Designer.cs">
       <DependentUpon>InvoiceEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeasurementUnitManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeasurementUnitManager.Designer.cs">
+      <DependentUpon>MeasurementUnitManager.cs</DependentUpon>
     </Compile>
     <Compile Include="OptionConfirmation.cs">
       <SubType>Form</SubType>
@@ -802,6 +814,9 @@
     <None Include="Resources\OnlineGreenIcon.png" />
     <None Include="Resources\more-white.png" />
     <None Include="Resources\more-black.png" />
+    <EmbeddedResource Include="AStockEditor.resx">
+      <DependentUpon>AStockEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Calculator.resx">
       <DependentUpon>Calculator.cs</DependentUpon>
     </EmbeddedResource>
@@ -840,6 +855,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoiceEditor.resx">
       <DependentUpon>InvoiceEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeasurementUnitManager.resx">
+      <DependentUpon>MeasurementUnitManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionConfirmation.resx">
       <DependentUpon>OptionConfirmation.cs</DependentUpon>
