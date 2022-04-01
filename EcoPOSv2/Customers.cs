@@ -918,27 +918,6 @@ namespace EcoPOSv2
                 ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["change1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
 
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tcustomerinfo"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tname"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["cusname1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tpwd"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["cusscpwdid1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["ttin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tsign"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["sign"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["taddress"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["addr"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tbstyle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["bstyle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-
-                //Footer
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["wno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["dateissued"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["validtil"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["ptu"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["validity1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
                 ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
 
@@ -956,13 +935,13 @@ namespace EcoPOSv2
 
                     if (order == "1")
                     {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                         if (SQL.HasException(true))
                             return;
                     }
                     else
                     {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                         if (SQL.HasException(true))
                             return;
                     }
@@ -1130,7 +1109,7 @@ namespace EcoPOSv2
 
                 try
                 {
-                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                     SQL.DBDA.Fill(ds, "transaction_items");
 
                     reprint_receipt80.SetDataSource(ds);
@@ -1327,11 +1306,11 @@ namespace EcoPOSv2
                     string order = SQL.ReturnResult("SELECT action FROM transaction_details WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
                     if (order == "1")
                     {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref =  " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref =  " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                     }
                     else
                     {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive as static_price_inclusive, selling_price_inclusive as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive as static_price_inclusive, selling_price_inclusive as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
 
                     }
 
@@ -1488,7 +1467,7 @@ namespace EcoPOSv2
                 {
                     CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
 
-                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                     SQL.DBDA.Fill(ds, "transaction_items");
 
                     report80.SetDataSource(ds);

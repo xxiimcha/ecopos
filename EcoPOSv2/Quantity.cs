@@ -23,9 +23,14 @@ namespace EcoPOSv2
         public string itemID;
         public string productID;
         public decimal currentQty;
+        public Boolean isDecimal = false;
 
         private void Quantity_Load(object sender, EventArgs e)
         {
+            SQL.AddParam("@productID", productID);
+            isDecimal = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE units.unit_id = (SELECT products.unit_id FROM products WHERE productID = @productID)"));
+            if (SQL.HasException(true)) return;
+
             this.ActiveControl = txtQuantity;
         }
 
@@ -93,11 +98,22 @@ namespace EcoPOSv2
 
         private void TxtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
+            if (isDecimal)
             {
-                e.Handled = true;
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+                    {
+                        e.Handled = true;
+                    }
             }
+            else
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+            }
+            
 
             // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as Guna.UI2.WinForms.Guna2TextBox).Text.IndexOf('.') > -1))

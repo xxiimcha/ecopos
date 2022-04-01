@@ -114,7 +114,9 @@ namespace EcoPOSv2
                        ,[selling_price_exclusive]
                        ,[selling_price_vat]
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
-                       ,CONVERT(DECIMAL(18,2),[quantity]) as 'Quantity'
+                       ,IIF((SELECT isDecimal FROM units WHERE units.unit_id = (SELECT products.unit_id FROM products WHERE products.productID = order_cart.productID)) = 1, 
+                            CONVERT(Varchar(20),[quantity]), 
+                            CONVERT(Varchar(20), FLOOR([quantity]))) as 'Quantity'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
                         FROM order_cart where terminal_id=@terminal_id ORDER BY ABS(productID - @itemScanned), Difference([type], @pricing) DESC");
 
@@ -216,13 +218,12 @@ namespace EcoPOSv2
 
 
                 decimal quantity = decimal.Parse(r["Qty"].ToString());
-                lblItems.Text = quantity.ToString("G29");
+                lblItems.Text = quantity.ToString("N2");
                 decimal subtotal = decimal.Parse(r["Subtotal"].ToString());
                 lblSubtotal.Text = subtotal.ToString("N2");
                 lblDiscount.Text = discount.ToString();
                 decimal Total = decimal.Parse(r["Total"].ToString());
                 lblTotal.Text = Total.ToString("N2");
-                //lblTotal.Text = r["Total"].ToString();
                 decimal VAT = decimal.Parse(r["VAT"].ToString());
                 lblVAT.Text = VAT.ToString("N2");
                 lblLessVAT.Text = r["LessVAT"].ToString();
@@ -667,12 +668,18 @@ namespace EcoPOSv2
 
             if (dgvCart.SelectedRows.Count > 0)
             {
+                
+
                 Quantity frmQuantity = new Quantity();
                 frmQuantity.frmOrder = this;
+                SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
+                frmQuantity.isDecimal = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE units.unit_id = (SELECT products.unit_id FROM products WHERE productID = @productID)"));
+                if (SQL.HasException(true)) return;
+
                 frmQuantity.itemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
                 frmQuantity.productID = dgvCart.CurrentRow.Cells[1].Value.ToString();
                 frmQuantity.lblItem.Text = dgvCart.CurrentRow.Cells[2].Value.ToString();
-                frmQuantity.txtQuantity.Text = dgvCart.CurrentRow.Cells[11].Value.ToString();
+                frmQuantity.txtQuantity.Text = frmQuantity.isDecimal ? dgvCart.CurrentRow.Cells[11].Value.ToString() : Convert.ToDecimal(dgvCart.CurrentRow.Cells[11].Value).ToString("N0");
                 decimal x = decimal.Parse(dgvCart.CurrentRow.Cells[11].Value.ToString());
                 frmQuantity.currentQty = x;
                 frmQuantity.ShowDialog();

@@ -81,14 +81,18 @@
             this.TableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.rb5PWD = new System.Windows.Forms.RadioButton();
             this.rb20PWD = new System.Windows.Forms.RadioButton();
-            this.txtProductStock = new System.Windows.Forms.TextBox();
-            this.lblCost = new System.Windows.Forms.Label();
-            this.lblStock = new System.Windows.Forms.Label();
-            this.tbProductCost = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.cbxHasExpiry = new System.Windows.Forms.CheckBox();
             this.dtpExpiry = new System.Windows.Forms.DateTimePicker();
+            this.lblStock = new System.Windows.Forms.Label();
+            this.txtProductStock = new System.Windows.Forms.TextBox();
+            this.tbProductCost = new System.Windows.Forms.TextBox();
+            this.lblCost = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnManageUnit = new Guna.UI2.WinForms.Guna2Button();
+            this.cmbProductUnit = new Guna.UI.WinForms.GunaComboBox();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnProduct_Save = new Guna.UI2.WinForms.Guna2Button();
@@ -138,10 +142,6 @@
             this.btnCategory = new FontAwesome.Sharp.IconButton();
             this.btnProduct = new FontAwesome.Sharp.IconButton();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.label16 = new System.Windows.Forms.Label();
-            this.btnManageUnit = new Guna.UI2.WinForms.Guna2Button();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.cmbProductUnit = new Guna.UI.WinForms.GunaComboBox();
             this.guna2Panel1.SuspendLayout();
             this.pnlParent.SuspendLayout();
             this.pnlProducts.SuspendLayout();
@@ -157,6 +157,7 @@
             this.TableLayoutPanel1.SuspendLayout();
             this.TableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
             this.Panel3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.pnlExpiration.SuspendLayout();
@@ -174,7 +175,6 @@
             this.Panel7.SuspendLayout();
             this.TableLayoutPanel5.SuspendLayout();
             this.Panel1.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -855,61 +855,6 @@
             this.rb20PWD.Text = "20%";
             this.rb20PWD.UseVisualStyleBackColor = false;
             // 
-            // txtProductStock
-            // 
-            this.txtProductStock.BackColor = System.Drawing.Color.White;
-            this.txtProductStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProductStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtProductStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductStock.ForeColor = System.Drawing.Color.Black;
-            this.txtProductStock.Location = new System.Drawing.Point(108, 595);
-            this.txtProductStock.Name = "txtProductStock";
-            this.txtProductStock.Size = new System.Drawing.Size(348, 29);
-            this.txtProductStock.TabIndex = 11;
-            this.txtProductStock.Text = "0";
-            this.txtProductStock.Enter += new System.EventHandler(this.txtProductStock_Enter);
-            this.txtProductStock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductStock_KeyDown);
-            this.txtProductStock.Leave += new System.EventHandler(this.txtProductStock_Leave);
-            // 
-            // lblCost
-            // 
-            this.lblCost.BackColor = System.Drawing.Color.White;
-            this.lblCost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.ForeColor = System.Drawing.Color.Black;
-            this.lblCost.Location = new System.Drawing.Point(3, 565);
-            this.lblCost.Name = "lblCost";
-            this.lblCost.Size = new System.Drawing.Size(99, 27);
-            this.lblCost.TabIndex = 48;
-            this.lblCost.Text = "Cost:";
-            this.lblCost.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblStock
-            // 
-            this.lblStock.BackColor = System.Drawing.Color.White;
-            this.lblStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStock.ForeColor = System.Drawing.Color.Black;
-            this.lblStock.Location = new System.Drawing.Point(3, 592);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(99, 34);
-            this.lblStock.TabIndex = 48;
-            this.lblStock.Text = "Stock:";
-            this.lblStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbProductCost
-            // 
-            this.tbProductCost.BackColor = System.Drawing.Color.White;
-            this.tbProductCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbProductCost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbProductCost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProductCost.ForeColor = System.Drawing.Color.Black;
-            this.tbProductCost.Location = new System.Drawing.Point(108, 568);
-            this.tbProductCost.Name = "tbProductCost";
-            this.tbProductCost.Size = new System.Drawing.Size(348, 29);
-            this.tbProductCost.TabIndex = 10;
-            this.tbProductCost.Text = "0";
-            this.tbProductCost.Enter += new System.EventHandler(this.txtProductStock_Enter);
-            this.tbProductCost.Leave += new System.EventHandler(this.txtProductStock_Leave);
-            // 
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.White;
@@ -963,6 +908,131 @@
             this.dtpExpiry.Name = "dtpExpiry";
             this.dtpExpiry.Size = new System.Drawing.Size(221, 31);
             this.dtpExpiry.TabIndex = 32;
+            // 
+            // lblStock
+            // 
+            this.lblStock.BackColor = System.Drawing.Color.White;
+            this.lblStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStock.ForeColor = System.Drawing.Color.Black;
+            this.lblStock.Location = new System.Drawing.Point(3, 592);
+            this.lblStock.Name = "lblStock";
+            this.lblStock.Size = new System.Drawing.Size(99, 34);
+            this.lblStock.TabIndex = 48;
+            this.lblStock.Text = "Stock:";
+            this.lblStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtProductStock
+            // 
+            this.txtProductStock.BackColor = System.Drawing.Color.White;
+            this.txtProductStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProductStock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtProductStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductStock.ForeColor = System.Drawing.Color.Black;
+            this.txtProductStock.Location = new System.Drawing.Point(108, 595);
+            this.txtProductStock.Name = "txtProductStock";
+            this.txtProductStock.Size = new System.Drawing.Size(348, 29);
+            this.txtProductStock.TabIndex = 11;
+            this.txtProductStock.Text = "0";
+            this.txtProductStock.Enter += new System.EventHandler(this.txtProductStock_Enter);
+            this.txtProductStock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProductStock_KeyDown);
+            this.txtProductStock.Leave += new System.EventHandler(this.txtProductStock_Leave);
+            // 
+            // tbProductCost
+            // 
+            this.tbProductCost.BackColor = System.Drawing.Color.White;
+            this.tbProductCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbProductCost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbProductCost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProductCost.ForeColor = System.Drawing.Color.Black;
+            this.tbProductCost.Location = new System.Drawing.Point(108, 568);
+            this.tbProductCost.Name = "tbProductCost";
+            this.tbProductCost.Size = new System.Drawing.Size(348, 29);
+            this.tbProductCost.TabIndex = 10;
+            this.tbProductCost.Text = "0";
+            this.tbProductCost.Enter += new System.EventHandler(this.txtProductStock_Enter);
+            this.tbProductCost.Leave += new System.EventHandler(this.txtProductStock_Leave);
+            // 
+            // lblCost
+            // 
+            this.lblCost.BackColor = System.Drawing.Color.White;
+            this.lblCost.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCost.ForeColor = System.Drawing.Color.Black;
+            this.lblCost.Location = new System.Drawing.Point(3, 565);
+            this.lblCost.Name = "lblCost";
+            this.lblCost.Size = new System.Drawing.Size(99, 27);
+            this.lblCost.TabIndex = 48;
+            this.lblCost.Text = "Cost:";
+            this.lblCost.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 522);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(99, 43);
+            this.label16.TabIndex = 51;
+            this.label16.Text = "Unit:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.36781F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.63218F));
+            this.tableLayoutPanel9.Controls.Add(this.btnManageUnit, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.cmbProductUnit, 0, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(108, 525);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(348, 37);
+            this.tableLayoutPanel9.TabIndex = 52;
+            // 
+            // btnManageUnit
+            // 
+            this.btnManageUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnManageUnit.BackColor = System.Drawing.Color.White;
+            this.btnManageUnit.BorderColor = System.Drawing.Color.Silver;
+            this.btnManageUnit.BorderRadius = 3;
+            this.btnManageUnit.BorderThickness = 1;
+            this.btnManageUnit.CheckedState.Parent = this.btnManageUnit;
+            this.btnManageUnit.CustomImages.Parent = this.btnManageUnit;
+            this.btnManageUnit.FillColor = System.Drawing.Color.Transparent;
+            this.btnManageUnit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageUnit.ForeColor = System.Drawing.Color.Black;
+            this.btnManageUnit.HoverState.Parent = this.btnManageUnit;
+            this.btnManageUnit.Location = new System.Drawing.Point(227, 3);
+            this.btnManageUnit.Name = "btnManageUnit";
+            this.btnManageUnit.ShadowDecoration.Parent = this.btnManageUnit;
+            this.btnManageUnit.Size = new System.Drawing.Size(118, 31);
+            this.btnManageUnit.TabIndex = 1;
+            this.btnManageUnit.Text = "MANAGE";
+            this.btnManageUnit.Click += new System.EventHandler(this.btnManageUnit_Click);
+            // 
+            // cmbProductUnit
+            // 
+            this.cmbProductUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbProductUnit.BackColor = System.Drawing.Color.Transparent;
+            this.cmbProductUnit.BaseColor = System.Drawing.Color.White;
+            this.cmbProductUnit.BorderColor = System.Drawing.Color.Silver;
+            this.cmbProductUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbProductUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProductUnit.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbProductUnit.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cmbProductUnit.ForeColor = System.Drawing.Color.Black;
+            this.cmbProductUnit.FormattingEnabled = true;
+            this.cmbProductUnit.Location = new System.Drawing.Point(3, 3);
+            this.cmbProductUnit.Name = "cmbProductUnit";
+            this.cmbProductUnit.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cmbProductUnit.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.cmbProductUnit.Size = new System.Drawing.Size(218, 30);
+            this.cmbProductUnit.TabIndex = 2;
             // 
             // Panel3
             // 
@@ -1766,76 +1836,6 @@
             this.btnProduct.UseVisualStyleBackColor = false;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // label16
-            // 
-            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 522);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(99, 43);
-            this.label16.TabIndex = 51;
-            this.label16.Text = "Unit:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnManageUnit
-            // 
-            this.btnManageUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnManageUnit.BackColor = System.Drawing.Color.White;
-            this.btnManageUnit.BorderColor = System.Drawing.Color.Silver;
-            this.btnManageUnit.BorderRadius = 3;
-            this.btnManageUnit.BorderThickness = 1;
-            this.btnManageUnit.CheckedState.Parent = this.btnManageUnit;
-            this.btnManageUnit.CustomImages.Parent = this.btnManageUnit;
-            this.btnManageUnit.FillColor = System.Drawing.Color.Transparent;
-            this.btnManageUnit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageUnit.ForeColor = System.Drawing.Color.Black;
-            this.btnManageUnit.HoverState.Parent = this.btnManageUnit;
-            this.btnManageUnit.Location = new System.Drawing.Point(226, 3);
-            this.btnManageUnit.Name = "btnManageUnit";
-            this.btnManageUnit.ShadowDecoration.Parent = this.btnManageUnit;
-            this.btnManageUnit.Size = new System.Drawing.Size(119, 31);
-            this.btnManageUnit.TabIndex = 1;
-            this.btnManageUnit.Text = "MANAGE";
-            this.btnManageUnit.Click += new System.EventHandler(this.btnManageUnit_Click);
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.36781F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.63218F));
-            this.tableLayoutPanel9.Controls.Add(this.btnManageUnit, 1, 0);
-            this.tableLayoutPanel9.Controls.Add(this.cmbProductUnit, 0, 0);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(108, 525);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(348, 37);
-            this.tableLayoutPanel9.TabIndex = 52;
-            // 
-            // cmbProductUnit
-            // 
-            this.cmbProductUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbProductUnit.BackColor = System.Drawing.Color.Transparent;
-            this.cmbProductUnit.BaseColor = System.Drawing.Color.White;
-            this.cmbProductUnit.BorderColor = System.Drawing.Color.Silver;
-            this.cmbProductUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbProductUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProductUnit.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbProductUnit.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.cmbProductUnit.ForeColor = System.Drawing.Color.Black;
-            this.cmbProductUnit.FormattingEnabled = true;
-            this.cmbProductUnit.Location = new System.Drawing.Point(3, 3);
-            this.cmbProductUnit.Name = "cmbProductUnit";
-            this.cmbProductUnit.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.cmbProductUnit.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.cmbProductUnit.Size = new System.Drawing.Size(217, 30);
-            this.cmbProductUnit.TabIndex = 2;
-            // 
             // ManageProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1869,6 +1869,7 @@
             this.TableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
             this.Panel3.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.pnlExpiration.ResumeLayout(false);
@@ -1889,7 +1890,6 @@
             this.Panel7.ResumeLayout(false);
             this.TableLayoutPanel5.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
