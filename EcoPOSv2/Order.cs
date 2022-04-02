@@ -88,6 +88,7 @@ namespace EcoPOSv2
         public bool is_return = false;
 
         public string last_item_scanned = "";
+        public Boolean isItemScalable = false;
 
         string type, insert_type_query;
         //METHODS
@@ -132,7 +133,11 @@ namespace EcoPOSv2
             dgvCart.Columns[9].Visible = false;
             dgvCart.Columns[12].Visible = false;
 
-         
+            if (isItemScalable)
+            {
+                btnQuantity.PerformClick();
+                isItemScalable = false;
+            }
 
             this.ActiveControl = tbBarcode;
         }
@@ -472,7 +477,18 @@ namespace EcoPOSv2
                     btnVoidItem.PerformClick();
             }
 
-            if(e.KeyCode == Keys.F5)
+            if (e.Control && e.KeyCode == Keys.W)
+            {
+                if (btnWholeSale.Enabled)
+                    btnWholeSale.PerformClick();
+            }
+            if (e.Control && e.KeyCode == Keys.R)
+            {
+                if (btnRetail.Enabled)
+                    btnRetail.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.F5)
             {
                 //MessageBox.Show("f5 price editor");
                 if(btnPriceEditor.Visible == true)
@@ -668,20 +684,19 @@ namespace EcoPOSv2
 
             if (dgvCart.SelectedRows.Count > 0)
             {
-                
-
                 Quantity frmQuantity = new Quantity();
                 frmQuantity.frmOrder = this;
-                SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
+                SQL.AddParam("@productID", dgvCart.SelectedRows[0].Cells[1].Value.ToString());
                 frmQuantity.isDecimal = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE units.unit_id = (SELECT products.unit_id FROM products WHERE productID = @productID)"));
                 if (SQL.HasException(true)) return;
 
-                frmQuantity.itemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
-                frmQuantity.productID = dgvCart.CurrentRow.Cells[1].Value.ToString();
-                frmQuantity.lblItem.Text = dgvCart.CurrentRow.Cells[2].Value.ToString();
-                frmQuantity.txtQuantity.Text = frmQuantity.isDecimal ? dgvCart.CurrentRow.Cells[11].Value.ToString() : Convert.ToDecimal(dgvCart.CurrentRow.Cells[11].Value).ToString("N0");
-                decimal x = decimal.Parse(dgvCart.CurrentRow.Cells[11].Value.ToString());
+                frmQuantity.itemID = dgvCart.SelectedRows[0].Cells[0].Value.ToString();
+                frmQuantity.productID = dgvCart.SelectedRows[0].Cells[1].Value.ToString();
+                frmQuantity.lblItem.Text = dgvCart.SelectedRows[0].Cells[2].Value.ToString();
+                frmQuantity.txtQuantity.Text = frmQuantity.isDecimal ? dgvCart.SelectedRows[0].Cells[11].Value.ToString() : Convert.ToDecimal(dgvCart.SelectedRows[0].Cells[11].Value).ToString("N0");
+                decimal x = decimal.Parse(dgvCart.SelectedRows[0].Cells[11].Value.ToString());
                 frmQuantity.currentQty = x;
+                frmQuantity.txtQuantity.SelectAll();
                 frmQuantity.ShowDialog();
             }
             tbBarcode.Clear();
@@ -1147,7 +1162,10 @@ namespace EcoPOSv2
                         if (SQL.HasException(true))
                             return;
 
-
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        isItemScalable = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE unit_id = (SELECT unit_id FROM products WHERE productID = @productID)"));
+                        if (SQL.HasException(true))
+                            return;
 
                         #region "customer display"
                         //customer display
@@ -1236,7 +1254,6 @@ namespace EcoPOSv2
                     GetTotal();
                     tbBarcode.Clear();
                     tbBarcode.Focus();
-
                 }
 
                 else if (check_product > 1)
@@ -1301,8 +1318,7 @@ namespace EcoPOSv2
             Order.Instance.dgvCart.ClearSelection();
 
             new SeeItem().ShowDialog();
-
-            SeeItem.Instance.ActiveControl = SeeItem.Instance.txtBarcode;
+            Order.Instance.tbBarcode.Focus();
         }
 
         private void btnBarcode_Click(object sender, EventArgs e)

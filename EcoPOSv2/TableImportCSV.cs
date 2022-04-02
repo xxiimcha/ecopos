@@ -23,12 +23,11 @@ namespace EcoPOSv2
         }
 
         private SQLControl SQL = new SQLControl();
-
         public int table_import_type;
-
         private DataTableCollection tables;
-
         string file = ""; //variable for the Excel File Location
+        Boolean toClose = false;
+        Boolean isImporting = false;
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -100,6 +99,19 @@ namespace EcoPOSv2
             {
                 e.Cancel = true;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (isImporting)
+            {
+                toClose = true;
+            }
+            else
+            {
+                Close();
+            }
+            
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -198,9 +210,14 @@ namespace EcoPOSv2
         private void WorkerCategory_DoWork(object sender, DoWorkEventArgs e)
         {
             SQLControl sql = new SQLControl();
-
+            isImporting = true;
             for (int i = 0; i < dgItems.Rows.Count - 1; i++)
             {
+                if (toClose)
+                {
+                    break;
+                }
+
                 lblImportedProducts.Invoke(new System.Action(() => {
                     int total = i + 1;
                     lblImportedProducts.Text = total.ToString();
@@ -224,6 +241,7 @@ namespace EcoPOSv2
                 if (SQL.HasException(true))
                     return;
             }
+            isImporting = false;
         }
 
         private void WorkerCSV_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -235,9 +253,14 @@ namespace EcoPOSv2
         private void WorkerCSV_DoWork(object sender, DoWorkEventArgs e)
         {
             SQLControl Psql = new SQLControl();
-
+            isImporting = true;
             for (int i = 0; i < dgItems.Rows.Count -1; i++)
             {
+                if (toClose)
+                {
+                    break;
+                }
+
                 lblImportedProducts.Invoke(new System.Action(() => {
                     int total = i + 1;
                     lblImportedProducts.Text = total.ToString();
@@ -321,15 +344,16 @@ namespace EcoPOSv2
                 Psql.AddParam("@s_ask_qty", dgItems.Rows[i].Cells[12].Value.ToString());
                 Psql.AddParam("@cost", dgItems.Rows[i].Cells[14].Value.ToString());
                 Psql.AddParam("@has_expiry", dgItems.Rows[i].Cells[15].Value.ToString());
+                Psql.AddParam("@unit_id", 1);
                 Psql.AddParam("@expiration_date", DateTime.Parse(dgItems.Rows[i].Cells[16].Value.ToString()));
                 //INSERT INTO DATABASE
 
                 Psql.Query(@"INSERT INTO products
                                    (description, name, categoryID, rp_inclusive, wp_inclusive, barcode1, barcode2, warehouseID, 
-                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty,cost,has_expiry,expiration_date)
+                                    s_discR, s_discPWD_SC, s_PWD_SC_perc, s_discAth, s_ask_qty,cost,has_expiry,expiration_date, unit_id)
                                    VALUES
                                    (@description, @name, @categoryID, @rp_inclusive, @wp_inclusive, @barcode1, @barcode2, @warehouseID, 
-                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@cost,@has_expiry,@expiration_date)");
+                                    @s_discR, @s_discPWD_SC, @s_PWD_SC_perc, @s_discAth, @s_ask_qty,@cost,@has_expiry,@expiration_date, @unit_id)");
 
                 if (Psql.HasException(true))
                     return;
@@ -345,7 +369,7 @@ namespace EcoPOSv2
                     return;
                 }
             }
-
+            isImporting = false;
             GlobalVariables.LoadPurchaseProducts();
         }
     }

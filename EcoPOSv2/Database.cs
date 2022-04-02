@@ -166,10 +166,22 @@ namespace EcoPOSv2
 
         private void btnImportProducts_Click(object sender, EventArgs e)
         {
-            TableImportCSV frmTableImport = new TableImportCSV();
-
-            frmTableImport.table_import_type = 1;
-            frmTableImport.ShowDialog();
+            FormCollection fc = Application.OpenForms;
+            Boolean isOpened = false;
+            foreach (Form frm in fc)
+            {
+                //iterate through
+                if (frm.Name == "TableImportCSV")
+                {
+                    isOpened = true;
+                }
+            }
+            if (!isOpened)
+            {
+                TableImportCSV frmTableImport = new TableImportCSV();
+                frmTableImport.table_import_type = 1;
+                frmTableImport.Show();
+            }
         }
 
         private void btnExportCategory_Click(object sender, EventArgs e)
@@ -206,10 +218,22 @@ namespace EcoPOSv2
 
         private void btnImportCategory_Click(object sender, EventArgs e)
         {
-            TableImportCSV frmTableImport = new TableImportCSV();
-
-            frmTableImport.table_import_type = 2;
-            frmTableImport.ShowDialog();
+            FormCollection fc = Application.OpenForms;
+            Boolean isOpened = false;
+            foreach (Form frm in fc)
+            {
+                //iterate through
+                if (frm.Name == "TableImportCSV")
+                {
+                    isOpened = true;
+                }
+            }
+            if (!isOpened)
+            {
+                TableImportCSV frmTableImport = new TableImportCSV();
+                frmTableImport.table_import_type = 2;
+                frmTableImport.ShowDialog();
+            }
         }
 
         private void btnExportCustomer_Click(object sender, EventArgs e)

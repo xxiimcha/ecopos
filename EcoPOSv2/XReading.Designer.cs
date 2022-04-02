@@ -185,10 +185,11 @@
             this.pnlPreview.Controls.Add(this.btnPrint);
             this.pnlPreview.Controls.Add(this.Label1);
             this.pnlPreview.Controls.Add(this.btnBack);
+            this.pnlPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPreview.Location = new System.Drawing.Point(0, 0);
             this.pnlPreview.Name = "pnlPreview";
             this.pnlPreview.ShadowDecoration.Parent = this.pnlPreview;
-            this.pnlPreview.Size = new System.Drawing.Size(950, 558);
+            this.pnlPreview.Size = new System.Drawing.Size(956, 562);
             this.pnlPreview.TabIndex = 0;
             // 
             // lblAdjustments

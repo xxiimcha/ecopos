@@ -52,6 +52,10 @@ namespace EcoPOSv2
                 loadTable();
                 dgvProducts.Focus();
             }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         //Loads the data in the table
@@ -135,6 +139,11 @@ namespace EcoPOSv2
                        SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive) FROM products WHERE productID = @productID");
                     if (SQL.HasException(true))
                         return;
+
+                    SQL.AddParam("@productID", Convert.ToInt32(r.Cells[0].Value.ToString()));
+                    Order.Instance.isItemScalable = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE unit_id = (SELECT unit_id FROM products WHERE productID = @productID)"));
+                    if (SQL.HasException(true))
+                        return;
                 }
                 else
                 {
@@ -190,7 +199,7 @@ namespace EcoPOSv2
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                txtBarcode.Focus();
             }
         }
 
@@ -213,6 +222,10 @@ namespace EcoPOSv2
                 {
                     selectProduct();
                 }
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtBarcode.Focus();
             }
         }
 
