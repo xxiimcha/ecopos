@@ -40,6 +40,8 @@
             this.MainFormElipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.lbTables = new System.Windows.Forms.ListBox();
             this.dgv = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.btnExecute = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -59,21 +61,22 @@
             this.tbQuery.ForeColor = System.Drawing.Color.Black;
             this.tbQuery.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbQuery.HoverState.Parent = this.tbQuery;
-            this.tbQuery.Location = new System.Drawing.Point(123, 8);
+            this.tbQuery.Location = new System.Drawing.Point(78, 4);
             this.tbQuery.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbQuery.Multiline = true;
             this.tbQuery.Name = "tbQuery";
             this.tbQuery.PasswordChar = '\0';
             this.tbQuery.PlaceholderText = "";
             this.tbQuery.SelectedText = "";
             this.tbQuery.ShadowDecoration.Parent = this.tbQuery;
-            this.tbQuery.Size = new System.Drawing.Size(1107, 33);
+            this.tbQuery.Size = new System.Drawing.Size(978, 88);
             this.tbQuery.TabIndex = 0;
             this.tbQuery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbQuery_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 14);
+            this.label1.Location = new System.Drawing.Point(13, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 1;
@@ -82,12 +85,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnExecute);
             this.panel1.Controls.Add(this.gunaControlBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.tbQuery);
-            this.panel1.Location = new System.Drawing.Point(-44, 0);
+            this.panel1.Location = new System.Drawing.Point(13, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1300, 50);
+            this.panel1.Size = new System.Drawing.Size(1229, 95);
             this.panel1.TabIndex = 2;
             // 
             // gunaControlBox1
@@ -97,17 +101,17 @@
             this.gunaControlBox1.AnimationSpeed = 0.03F;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(1237, 0);
+            this.gunaControlBox1.Location = new System.Drawing.Point(1179, 1);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
             this.gunaControlBox1.OnPressedColor = System.Drawing.Color.Black;
-            this.gunaControlBox1.Size = new System.Drawing.Size(63, 50);
+            this.gunaControlBox1.Size = new System.Drawing.Size(50, 25);
             this.gunaControlBox1.TabIndex = 3;
             // 
             // MainFormElipse
             // 
-            this.MainFormElipse.BorderRadius = 25;
+            this.MainFormElipse.BorderRadius = 5;
             this.MainFormElipse.TargetControl = this;
             // 
             // lbTables
@@ -115,9 +119,9 @@
             this.lbTables.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTables.FormattingEnabled = true;
             this.lbTables.ItemHeight = 15;
-            this.lbTables.Location = new System.Drawing.Point(13, 57);
+            this.lbTables.Location = new System.Drawing.Point(13, 104);
             this.lbTables.Name = "lbTables";
-            this.lbTables.Size = new System.Drawing.Size(181, 574);
+            this.lbTables.Size = new System.Drawing.Size(181, 589);
             this.lbTables.TabIndex = 3;
             this.lbTables.SelectedIndexChanged += new System.EventHandler(this.LbTables_SelectedIndexChanged);
             // 
@@ -152,13 +156,13 @@
             this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.EnableHeadersVisualStyles = false;
             this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgv.Location = new System.Drawing.Point(201, 57);
+            this.dgv.Location = new System.Drawing.Point(201, 109);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1041, 634);
+            this.dgv.Size = new System.Drawing.Size(1041, 589);
             this.dgv.TabIndex = 4;
             this.dgv.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -182,6 +186,26 @@
             this.dgv.ThemeStyle.RowsStyle.Height = 22;
             this.dgv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
             this.dgv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.panel1;
+            // 
+            // btnExecute
+            // 
+            this.btnExecute.CheckedState.Parent = this.btnExecute;
+            this.btnExecute.CustomImages.Parent = this.btnExecute;
+            this.btnExecute.FillColor = System.Drawing.Color.Green;
+            this.btnExecute.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExecute.ForeColor = System.Drawing.Color.White;
+            this.btnExecute.HoverState.Parent = this.btnExecute;
+            this.btnExecute.Location = new System.Drawing.Point(1063, 29);
+            this.btnExecute.Name = "btnExecute";
+            this.btnExecute.ShadowDecoration.Parent = this.btnExecute;
+            this.btnExecute.Size = new System.Drawing.Size(97, 34);
+            this.btnExecute.TabIndex = 4;
+            this.btnExecute.Text = "EXECUTE";
+            this.btnExecute.Click += new System.EventHandler(this.btnExecute_Click);
             // 
             // SQLManualQuery
             // 
@@ -214,5 +238,7 @@
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
         private System.Windows.Forms.ListBox lbTables;
         private Guna.UI2.WinForms.Guna2DataGridView dgv;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2Button btnExecute;
     }
 }

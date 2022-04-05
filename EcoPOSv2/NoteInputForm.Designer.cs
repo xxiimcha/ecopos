@@ -94,9 +94,9 @@ namespace EcoPOSv2
             this.Label2.ForeColor = System.Drawing.Color.Black;
             this.Label2.Location = new System.Drawing.Point(18, 20);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(62, 25);
+            this.Label2.Size = new System.Drawing.Size(111, 25);
             this.Label2.TabIndex = 61;
-            this.Label2.Text = "Name";
+            this.Label2.Text = "Enter Name";
             // 
             // txtInputNote
             // 

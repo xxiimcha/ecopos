@@ -52,7 +52,8 @@
             this.txtContactNo = new System.Windows.Forms.TextBox();
             this.TableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.splCustomer = new System.Windows.Forms.SplitContainer();
-            this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSupplier)).BeginInit();
             this.Panel2.SuspendLayout();
@@ -61,7 +62,7 @@
             this.splCustomer.Panel1.SuspendLayout();
             this.splCustomer.Panel2.SuspendLayout();
             this.splCustomer.SuspendLayout();
-            this.TableLayoutPanel1.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNew
@@ -133,22 +134,20 @@
             // 
             this.txtAddress.BackColor = System.Drawing.Color.White;
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAddress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.ForeColor = System.Drawing.Color.Black;
-            this.txtAddress.Location = new System.Drawing.Point(142, 35);
+            this.txtAddress.Location = new System.Drawing.Point(174, 103);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(648, 29);
+            this.txtAddress.Size = new System.Drawing.Size(382, 29);
             this.txtAddress.TabIndex = 25;
             // 
             // Label1
             // 
-            this.Label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(3, 32);
+            this.Label1.Location = new System.Drawing.Point(35, 103);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(133, 33);
+            this.Label1.Size = new System.Drawing.Size(133, 29);
             this.Label1.TabIndex = 24;
             this.Label1.Text = "Address";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,22 +156,20 @@
             // 
             this.txtSupplierName.BackColor = System.Drawing.Color.White;
             this.txtSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSupplierName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSupplierName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSupplierName.ForeColor = System.Drawing.Color.Black;
-            this.txtSupplierName.Location = new System.Drawing.Point(142, 3);
+            this.txtSupplierName.Location = new System.Drawing.Point(174, 60);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(648, 27);
+            this.txtSupplierName.Size = new System.Drawing.Size(382, 27);
             this.txtSupplierName.TabIndex = 23;
             // 
             // Label4
             // 
-            this.Label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.Color.Black;
-            this.Label4.Location = new System.Drawing.Point(3, 0);
+            this.Label4.Location = new System.Drawing.Point(35, 60);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(133, 32);
+            this.Label4.Size = new System.Drawing.Size(133, 27);
             this.Label4.TabIndex = 22;
             this.Label4.Text = "Supplier Name";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -272,33 +269,31 @@
             // 
             this.Label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 133);
+            this.Label13.Location = new System.Drawing.Point(35, 238);
             this.Label13.Name = "Label13";
-            this.Label13.Size = new System.Drawing.Size(133, 32);
+            this.Label13.Size = new System.Drawing.Size(133, 29);
             this.Label13.TabIndex = 26;
             this.Label13.Text = "Contact Person\'s #:";
             this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label3
             // 
-            this.Label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(3, 65);
+            this.Label3.Location = new System.Drawing.Point(35, 148);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(133, 34);
+            this.Label3.Size = new System.Drawing.Size(133, 27);
             this.Label3.TabIndex = 39;
             this.Label3.Text = "Contact No.";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Label5
             // 
-            this.Label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.Black;
-            this.Label5.Location = new System.Drawing.Point(3, 99);
+            this.Label5.Location = new System.Drawing.Point(35, 193);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(133, 34);
+            this.Label5.Size = new System.Drawing.Size(133, 29);
             this.Label5.TabIndex = 40;
             this.Label5.Text = "Contact Person";
             this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -307,36 +302,33 @@
             // 
             this.txtContactPerson.BackColor = System.Drawing.Color.White;
             this.txtContactPerson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContactPerson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContactPerson.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactPerson.ForeColor = System.Drawing.Color.Black;
-            this.txtContactPerson.Location = new System.Drawing.Point(142, 102);
+            this.txtContactPerson.Location = new System.Drawing.Point(174, 193);
             this.txtContactPerson.Name = "txtContactPerson";
-            this.txtContactPerson.Size = new System.Drawing.Size(648, 29);
+            this.txtContactPerson.Size = new System.Drawing.Size(382, 29);
             this.txtContactPerson.TabIndex = 44;
             // 
             // txtContactPersonNo
             // 
             this.txtContactPersonNo.BackColor = System.Drawing.Color.White;
             this.txtContactPersonNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContactPersonNo.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtContactPersonNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactPersonNo.ForeColor = System.Drawing.Color.Black;
-            this.txtContactPersonNo.Location = new System.Drawing.Point(142, 136);
+            this.txtContactPersonNo.Location = new System.Drawing.Point(174, 238);
             this.txtContactPersonNo.Name = "txtContactPersonNo";
-            this.txtContactPersonNo.Size = new System.Drawing.Size(648, 29);
+            this.txtContactPersonNo.Size = new System.Drawing.Size(382, 29);
             this.txtContactPersonNo.TabIndex = 45;
             // 
             // txtContactNo
             // 
             this.txtContactNo.BackColor = System.Drawing.Color.White;
             this.txtContactNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContactNo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtContactNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContactNo.ForeColor = System.Drawing.Color.Black;
-            this.txtContactNo.Location = new System.Drawing.Point(142, 68);
+            this.txtContactNo.Location = new System.Drawing.Point(174, 148);
             this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.Size = new System.Drawing.Size(648, 29);
+            this.txtContactNo.Size = new System.Drawing.Size(382, 29);
             this.txtContactNo.TabIndex = 43;
             // 
             // TableLayoutPanel2
@@ -367,42 +359,42 @@
             // 
             // splCustomer.Panel2
             // 
-            this.splCustomer.Panel2.Controls.Add(this.TableLayoutPanel1);
+            this.splCustomer.Panel2.Controls.Add(this.guna2Panel1);
             this.splCustomer.Panel2.Controls.Add(this.Panel3);
             this.splCustomer.Size = new System.Drawing.Size(1090, 695);
             this.splCustomer.SplitterDistance = 293;
             this.splCustomer.TabIndex = 4;
             // 
-            // TableLayoutPanel1
+            // guna2Panel1
             // 
-            this.TableLayoutPanel1.ColumnCount = 2;
-            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.55725F));
-            this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.44275F));
-            this.TableLayoutPanel1.Controls.Add(this.txtAddress, 1, 1);
-            this.TableLayoutPanel1.Controls.Add(this.Label1, 0, 1);
-            this.TableLayoutPanel1.Controls.Add(this.txtSupplierName, 1, 0);
-            this.TableLayoutPanel1.Controls.Add(this.Label4, 0, 0);
-            this.TableLayoutPanel1.Controls.Add(this.Label13, 0, 4);
-            this.TableLayoutPanel1.Controls.Add(this.Label3, 0, 2);
-            this.TableLayoutPanel1.Controls.Add(this.Label5, 0, 3);
-            this.TableLayoutPanel1.Controls.Add(this.txtContactPerson, 1, 3);
-            this.TableLayoutPanel1.Controls.Add(this.txtContactNo, 1, 2);
-            this.TableLayoutPanel1.Controls.Add(this.txtContactPersonNo, 1, 4);
-            this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanel1.Name = "TableLayoutPanel1";
-            this.TableLayoutPanel1.RowCount = 6;
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.03937F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.19685F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.354331F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.354331F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.661417F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.77401F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanel1.Size = new System.Drawing.Size(793, 635);
-            this.TableLayoutPanel1.TabIndex = 0;
+            this.guna2Panel1.Controls.Add(this.label2);
+            this.guna2Panel1.Controls.Add(this.txtSupplierName);
+            this.guna2Panel1.Controls.Add(this.txtAddress);
+            this.guna2Panel1.Controls.Add(this.Label5);
+            this.guna2Panel1.Controls.Add(this.Label1);
+            this.guna2Panel1.Controls.Add(this.txtContactPerson);
+            this.guna2Panel1.Controls.Add(this.Label3);
+            this.guna2Panel1.Controls.Add(this.txtContactNo);
+            this.guna2Panel1.Controls.Add(this.Label4);
+            this.guna2Panel1.Controls.Add(this.Label13);
+            this.guna2Panel1.Controls.Add(this.txtContactPersonNo);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(793, 635);
+            this.guna2Panel1.TabIndex = 46;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(21, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(283, 27);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "SUPPLIER DETAILS";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ASupplier
             // 
@@ -426,8 +418,8 @@
             this.splCustomer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splCustomer)).EndInit();
             this.splCustomer.ResumeLayout(false);
-            this.TableLayoutPanel1.ResumeLayout(false);
-            this.TableLayoutPanel1.PerformLayout();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -454,6 +446,7 @@
         internal System.Windows.Forms.TextBox txtContactNo;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel2;
         internal System.Windows.Forms.SplitContainer splCustomer;
-        internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        internal System.Windows.Forms.Label label2;
     }
 }

@@ -23,6 +23,7 @@ namespace EcoPOSv2
         {
             InitializeComponent();
         }
+        FormLoad OL = new FormLoad();
         SQLControl SQL = new SQLControl();
         ExportImport EI = new ExportImport();
 
@@ -39,8 +40,29 @@ namespace EcoPOSv2
         {
             dtpFrom.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
             dtpTo.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
-            cmbType.SelectedIndex = 0;
 
+            if (Properties.Settings.Default.servertype)
+            {
+                cmbTerminalNames.Items.Clear();
+                cmbTerminalNames.Items.Add("All");
+
+                SQL.Query(@"SELECT terminal_name FROM terminals ORDER BY terminal_id ASC");
+                if (SQL.DBDT.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in SQL.DBDT.Rows)
+                    {
+                        cmbTerminalNames.Items.Add(dr["terminal_name"].ToString());
+                    }
+                }
+                cmbTerminalNames.SelectedIndex = 0;
+            }
+            else
+            {
+                lblterminal.Visible = false;
+                cmbTerminalNames.Visible = false;
+            }
+
+            cmbType.SelectedIndex = 0;
 
             SearchTransactions();
         }
@@ -59,10 +81,12 @@ namespace EcoPOSv2
             if (cmbType.SelectedIndex != 0)
                 where_query = "action = " + action;
 
-            SQL.AddParam("@from", dtpFrom.Value);
-            SQL.AddParam("@to", dtpTo.Value);
+            string terminal_query = cmbTerminalNames.Text == "" || cmbTerminalNames.Text == "All" || !Properties.Settings.Default.servertype ? "" : "AND terminal_id = " + cmbTerminalNames.Text;
+            
 
-            SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice No.', date_time as 'Date',
+                SQL.AddParam("@from", dtpFrom.Value);
+                SQL.AddParam("@to", dtpTo.Value);
+                SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice No.', date_time as 'Date',
 				      (CASE WHEN [action] = 1 THEN 'Order'
 							 WHEN [action] = 4 THEN 'Void'
 					   END) AS 'Transaction',
@@ -74,10 +98,9 @@ namespace EcoPOSv2
                              WHEN cus_type = 0 THEN 'Member' END) AS 'Customer Type', 
                              payment_method as 'Payment Method', CONVERT(DECIMAL(18,2), ABS(disc_amt + cus_pts_deducted + giftcard_deducted)) as 'Deductions', CONVERT(DECIMAL(18,2), grand_total) as 'Total',
                              CONVERT(DECIMAL(18,2), vatable_sale) as 'VATable Sale', CONVERT(DECIMAL(18,2), vat_12) as 'VAT', CONVERT(DECIMAL(18,2), less_vat) as 'Less VAT', 
-                             CONVERT(DECIMAL(18,2), vat_exempt_sale) as 'VAT Exempt' FROM transaction_details WHERE " + where_query + " AND date_time BETWEEN @from AND @to ORDER BY date_time DESC");
-
-            if (SQL.HasException(true))
-                return;
+                             CONVERT(DECIMAL(18,2), vat_exempt_sale) as 'VAT Exempt' FROM transaction_details WHERE " + where_query + " " + terminal_query + " AND date_time BETWEEN @from AND @to ORDER BY date_time DESC");
+                if (SQL.HasException(true))
+                    return;
 
             dgvRecords.DataSource = SQL.DBDT;
             dgvRecords.Columns[0].Visible = false;
@@ -706,6 +729,14 @@ namespace EcoPOSv2
         private void cmbType_SelectedValueChanged(object sender, EventArgs e)
         {
             SearchTransactions();
+        }
+
+        private void cmbTerminalNames_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbTerminalNames.Text != "")
+            {
+                SearchTransactions();
+            }
         }
 
         private void TableLayoutPanel3_Paint(object sender, PaintEventArgs e)

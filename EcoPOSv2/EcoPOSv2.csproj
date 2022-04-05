@@ -9,7 +9,7 @@
     <ProjectGuid>{AC87371D-77BA-4BC9-A8B7-B9D0564F6F6C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>EcoPOSv2</RootNamespace>
-    <AssemblyName>EcoPOSv2</AssemblyName>
+    <AssemblyName>EcoPOS</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,7 +36,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>

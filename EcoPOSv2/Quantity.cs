@@ -23,13 +23,29 @@ namespace EcoPOSv2
         public string itemID;
         public string productID;
         public decimal currentQty;
+        public decimal inclusiveprice;
         public Boolean isDecimal = false;
 
         private void Quantity_Load(object sender, EventArgs e)
         {
+            if (CheckOpened("SeeItem"))
+            {
+                SeeItem.Instance.Close();
+            }
             SQL.AddParam("@productID", productID);
             isDecimal = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE units.unit_id = (SELECT products.unit_id FROM products WHERE productID = @productID)"));
             if (SQL.HasException(true)) return;
+
+            string[] wholenumber = txtQuantity.Text.Split('.');
+            if (wholenumber[0].Length < 7)
+            {
+                decimal qty = txtQuantity.Text != "" && txtQuantity.Text != "." ? Convert.ToDecimal(txtQuantity.Text) : 0;
+                lblAmount.Text = (inclusiveprice * qty).ToString("N2");
+            }
+            else
+            {
+                lblAmount.Text = "Quantity is too high";
+            }
 
             this.ActiveControl = txtQuantity;
         }
@@ -120,6 +136,34 @@ namespace EcoPOSv2
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtQuantity_KeyUp(object sender, KeyEventArgs e)
+        {
+            string[] wholenumber = txtQuantity.Text.Split('.');
+            if (wholenumber[0].Length < 7)
+            {
+                decimal qty = txtQuantity.Text != "" && txtQuantity.Text != "." ? Convert.ToDecimal(txtQuantity.Text) : 0;
+                lblAmount.Text = (inclusiveprice * qty).ToString("N2");
+            }
+            else
+            {
+                lblAmount.Text = "Quantity is too high";
+            }
+        }
+
+        public bool CheckOpened(string name)
+        {
+            FormCollection fc = Application.OpenForms;
+
+            foreach (Form frm in fc)
+            {
+                if (frm.Text == name)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -41,8 +41,12 @@ namespace EcoPOSv2
 
         private void TbQuery_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
-            {
+            
+        }
+
+        private void btnExecute_Click(object sender, EventArgs e)
+        {
+
                 SQL.Query(tbQuery.Text);
                 if (SQL.HasException(true)) return;
 
@@ -51,7 +55,6 @@ namespace EcoPOSv2
                 //if (SQL.HasException(true)) return;
 
                 dgv.DataSource = SQL.DBDT;
-            }
         }
     }
 }

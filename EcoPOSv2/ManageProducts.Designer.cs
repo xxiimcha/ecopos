@@ -91,8 +91,8 @@
             this.lblCost = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbProductUnit = new System.Windows.Forms.ComboBox();
             this.btnManageUnit = new Guna.UI2.WinForms.Guna2Button();
-            this.cmbProductUnit = new Guna.UI.WinForms.GunaComboBox();
             this.Panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btnProduct_Save = new Guna.UI2.WinForms.Guna2Button();
@@ -966,7 +966,6 @@
             // 
             // label16
             // 
-            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(3, 522);
             this.label16.Name = "label16";
@@ -980,8 +979,8 @@
             this.tableLayoutPanel9.ColumnCount = 2;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.36781F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.63218F));
-            this.tableLayoutPanel9.Controls.Add(this.btnManageUnit, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.cmbProductUnit, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.btnManageUnit, 1, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(108, 525);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -989,6 +988,21 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(348, 37);
             this.tableLayoutPanel9.TabIndex = 52;
+            // 
+            // cmbProductUnit
+            // 
+            this.cmbProductUnit.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmbProductUnit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbProductUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProductUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbProductUnit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbProductUnit.ForeColor = System.Drawing.Color.Black;
+            this.cmbProductUnit.FormattingEnabled = true;
+            this.cmbProductUnit.Location = new System.Drawing.Point(3, 3);
+            this.cmbProductUnit.MaxDropDownItems = 10;
+            this.cmbProductUnit.Name = "cmbProductUnit";
+            this.cmbProductUnit.Size = new System.Drawing.Size(218, 29);
+            this.cmbProductUnit.TabIndex = 53;
             // 
             // btnManageUnit
             // 
@@ -1012,27 +1026,6 @@
             this.btnManageUnit.TabIndex = 1;
             this.btnManageUnit.Text = "MANAGE";
             this.btnManageUnit.Click += new System.EventHandler(this.btnManageUnit_Click);
-            // 
-            // cmbProductUnit
-            // 
-            this.cmbProductUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbProductUnit.BackColor = System.Drawing.Color.Transparent;
-            this.cmbProductUnit.BaseColor = System.Drawing.Color.White;
-            this.cmbProductUnit.BorderColor = System.Drawing.Color.Silver;
-            this.cmbProductUnit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbProductUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProductUnit.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbProductUnit.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.cmbProductUnit.ForeColor = System.Drawing.Color.Black;
-            this.cmbProductUnit.FormattingEnabled = true;
-            this.cmbProductUnit.Location = new System.Drawing.Point(3, 3);
-            this.cmbProductUnit.Name = "cmbProductUnit";
-            this.cmbProductUnit.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.cmbProductUnit.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.cmbProductUnit.Size = new System.Drawing.Size(218, 30);
-            this.cmbProductUnit.TabIndex = 2;
             // 
             // Panel3
             // 
@@ -1927,7 +1920,6 @@
         internal System.Windows.Forms.CheckBox cbxDiscAthlete;
         internal System.Windows.Forms.Label Label7;
         internal System.Windows.Forms.TextBox txtBarcode2;
-        internal System.Windows.Forms.ComboBox cmbWarehouse;
         internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label18;
@@ -1996,6 +1988,7 @@
         private System.Windows.Forms.Label label16;
         private Guna.UI2.WinForms.Guna2Button btnManageUnit;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private Guna.UI.WinForms.GunaComboBox cmbProductUnit;
+        internal System.Windows.Forms.ComboBox cmbWarehouse;
+        internal System.Windows.Forms.ComboBox cmbProductUnit;
     }
 }

@@ -114,6 +114,17 @@ namespace EcoPOSv2
             
         }
 
+        private void bulkImport()
+        {
+            SQL.AddParam("@dir", txtFile.Text);
+            SQL.Query(@"BULK INSERT products FROM @dir WITH (
+                        FORMAT = 'CSV',
+                        FIRSTROW = 2,
+                        FIELDTERMINATOR = ',',
+                        ROWTERMINATOR = '\n'
+                    )");
+        }
+
         private void btnImport_Click(object sender, EventArgs e)
         {
             if(int.Parse(lblTotalNumberOfItems.Text) > 1)

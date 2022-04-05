@@ -42,7 +42,7 @@ namespace EcoPOSv2
         }
         private void ClearFields()
         {
-            GA.DoThis(ref allTxt, TableLayoutPanel1, ControlType.TextBox, GroupAction.Action.Clear);
+            GA.DoThis(ref allTxt, guna2Panel1, ControlType.TextBox, GroupAction.Action.Clear);
             supplierID = "";
         }
         private void TextValidation()

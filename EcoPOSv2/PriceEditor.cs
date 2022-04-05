@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Guna.UI2.WinForms;
 namespace EcoPOSv2
 {
     public partial class PriceEditor : Form
@@ -67,7 +67,7 @@ namespace EcoPOSv2
             }
 
             // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as Guna2TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -95,8 +95,6 @@ namespace EcoPOSv2
                 Order.Instance.LoadOrder();
                 Order.Instance.GetTotal();
                 Close();
-                Order.Instance.tbBarcode.Focus();
-                Order.Instance.ActiveControl = Order.Instance.tbBarcode;
             }
             catch (Exception) { }
         }

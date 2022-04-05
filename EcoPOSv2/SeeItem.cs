@@ -129,19 +129,19 @@ namespace EcoPOSv2
                         new Notification().PopUp("Insufficient stock", "", "error");
                         return;
                     }
+                    SQL.AddParam("@productID", Convert.ToInt32(r.Cells[0].Value.ToString()));
+                    Order.Instance.isItemScalable = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE unit_id = (SELECT unit_id FROM products WHERE productID = @productID)"));
+                    if (SQL.HasException(true))
+                        return;
 
                     //Adds item to cart
                     SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                     SQL.AddParam("@type", type);
+                    SQL.AddParam("@time_updated", DateTime.Now);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id,is_vatable, base_price_inclusive, base_price_exclusive) 
-                       SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive) FROM products WHERE productID = @productID");
-                    if (SQL.HasException(true))
-                        return;
-
-                    SQL.AddParam("@productID", Convert.ToInt32(r.Cells[0].Value.ToString()));
-                    Order.Instance.isItemScalable = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE unit_id = (SELECT unit_id FROM products WHERE productID = @productID)"));
+                    SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, discount,cost,terminal_id,is_vatable, base_price_inclusive, base_price_exclusive, time_updated) 
+                       SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), @time_updated FROM products WHERE productID = @productID");
                     if (SQL.HasException(true))
                         return;
                 }
@@ -171,20 +171,15 @@ namespace EcoPOSv2
 
                     SQL.AddParam("@productID", r.Cells[0].Value.ToString());
                     SQL.AddParam("@type", type);
+                    SQL.AddParam("@time_updated", DateTime.Now);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    SQL.Query("UPDATE order_cart SET quantity = quantity + 1 WHERE productID = @productID AND type = @type AND terminal_id=@terminal_id");
+                    SQL.Query("UPDATE order_cart SET quantity = quantity + 1, time_updated = @time_updated WHERE productID = @productID AND type = @type AND terminal_id=@terminal_id");
                     if (SQL.HasException(true))
                         return;
                 }
 
                 Order.Instance.last_item_scanned = r.Cells[0].Value.ToString();
-
-                Order.Instance.LoadOrder();
-                Order.Instance.GetTotal();
-
-                Order.Instance.ActiveControl = Order.Instance.tbBarcode;
-
                 Close();
             }
         }

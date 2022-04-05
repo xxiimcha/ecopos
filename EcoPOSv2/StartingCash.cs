@@ -160,10 +160,15 @@ namespace EcoPOSv2
 
                         sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                         int order_ref = max != "" ? int.Parse(sql.ReturnResult("SELECT MAX(order_ref) FROM order_no WHERE terminal_id = @terminal_id")) : 1;
-                        sql.Query("SELECT order_ref FROM transaction_items WHERE order_ref = " + order_ref + " ");
                         if (sql.HasException(true)) return;
+
+                        sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                        sql.Query("SELECT order_ref FROM transaction_items WHERE order_ref = " + order_ref + " AND terminal_id = @terminal_id");
+                        if (sql.HasException(true)) return;
+
                         if (sql.DBDT.Rows.Count == 1)
                         {
+                            sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                             sql.Query("INSERT INTO order_no (order_no, terminal_id) VALUES (1, @terminal_id)");
 
                             if (sql.HasException(true))

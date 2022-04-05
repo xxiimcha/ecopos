@@ -36,6 +36,8 @@
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvRecords = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.cmbTerminalNames = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblterminal = new System.Windows.Forms.Label();
             this.dtpFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.Label13 = new System.Windows.Forms.Label();
             this.dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -152,6 +154,8 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.cmbTerminalNames);
+            this.guna2Panel1.Controls.Add(this.lblterminal);
             this.guna2Panel1.Controls.Add(this.dtpFrom);
             this.guna2Panel1.Controls.Add(this.Label13);
             this.guna2Panel1.Controls.Add(this.dtpTo);
@@ -164,6 +168,42 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(811, 45);
             this.guna2Panel1.TabIndex = 122;
+            // 
+            // cmbTerminalNames
+            // 
+            this.cmbTerminalNames.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTerminalNames.BackColor = System.Drawing.Color.Transparent;
+            this.cmbTerminalNames.BorderColor = System.Drawing.Color.Black;
+            this.cmbTerminalNames.BorderRadius = 3;
+            this.cmbTerminalNames.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbTerminalNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTerminalNames.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbTerminalNames.FocusedState.Parent = this.cmbTerminalNames;
+            this.cmbTerminalNames.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbTerminalNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbTerminalNames.FormattingEnabled = true;
+            this.cmbTerminalNames.HoverState.Parent = this.cmbTerminalNames;
+            this.cmbTerminalNames.ItemHeight = 30;
+            this.cmbTerminalNames.ItemsAppearance.Parent = this.cmbTerminalNames;
+            this.cmbTerminalNames.Location = new System.Drawing.Point(562, 4);
+            this.cmbTerminalNames.Name = "cmbTerminalNames";
+            this.cmbTerminalNames.ShadowDecoration.Parent = this.cmbTerminalNames;
+            this.cmbTerminalNames.Size = new System.Drawing.Size(86, 36);
+            this.cmbTerminalNames.TabIndex = 135;
+            this.cmbTerminalNames.SelectedValueChanged += new System.EventHandler(this.cmbTerminalNames_SelectedValueChanged);
+            // 
+            // lblterminal
+            // 
+            this.lblterminal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblterminal.BackColor = System.Drawing.Color.Transparent;
+            this.lblterminal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblterminal.ForeColor = System.Drawing.Color.Black;
+            this.lblterminal.Location = new System.Drawing.Point(474, 1);
+            this.lblterminal.Name = "lblterminal";
+            this.lblterminal.Size = new System.Drawing.Size(98, 42);
+            this.lblterminal.TabIndex = 136;
+            this.lblterminal.Text = "TERMINAL";
+            this.lblterminal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dtpFrom
             // 
@@ -178,7 +218,7 @@
             this.dtpFrom.ForeColor = System.Drawing.Color.Black;
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.HoverState.Parent = this.dtpFrom;
-            this.dtpFrom.Location = new System.Drawing.Point(62, 4);
+            this.dtpFrom.Location = new System.Drawing.Point(58, 4);
             this.dtpFrom.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFrom.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFrom.Name = "dtpFrom";
@@ -196,7 +236,7 @@
             this.Label13.BackColor = System.Drawing.Color.Transparent;
             this.Label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label13.ForeColor = System.Drawing.Color.Black;
-            this.Label13.Location = new System.Drawing.Point(3, 4);
+            this.Label13.Location = new System.Drawing.Point(-1, 4);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(59, 36);
             this.Label13.TabIndex = 110;
@@ -216,7 +256,7 @@
             this.dtpTo.ForeColor = System.Drawing.Color.Black;
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTo.HoverState.Parent = this.dtpTo;
-            this.dtpTo.Location = new System.Drawing.Point(284, 4);
+            this.dtpTo.Location = new System.Drawing.Point(269, 4);
             this.dtpTo.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpTo.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpTo.Name = "dtpTo";
@@ -233,7 +273,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label14.ForeColor = System.Drawing.Color.Black;
-            this.Label14.Location = new System.Drawing.Point(251, 1);
+            this.Label14.Location = new System.Drawing.Point(236, 1);
             this.Label14.Name = "Label14";
             this.Label14.Size = new System.Drawing.Size(41, 42);
             this.Label14.TabIndex = 112;
@@ -260,10 +300,10 @@
             "Order",
             "Void"});
             this.cmbType.ItemsAppearance.Parent = this.cmbType;
-            this.cmbType.Location = new System.Drawing.Point(631, 4);
+            this.cmbType.Location = new System.Drawing.Point(698, 4);
             this.cmbType.Name = "cmbType";
             this.cmbType.ShadowDecoration.Parent = this.cmbType;
-            this.cmbType.Size = new System.Drawing.Size(176, 36);
+            this.cmbType.Size = new System.Drawing.Size(110, 36);
             this.cmbType.TabIndex = 123;
             this.cmbType.SelectedValueChanged += new System.EventHandler(this.cmbType_SelectedValueChanged);
             // 
@@ -272,9 +312,9 @@
             this.Label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(584, 4);
+            this.Label1.Location = new System.Drawing.Point(653, 4);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(59, 36);
+            this.Label1.Size = new System.Drawing.Size(58, 36);
             this.Label1.TabIndex = 120;
             this.Label1.Text = "TYPE";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -453,5 +493,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         public Guna.UI2.WinForms.Guna2Button btnExportDGVToExcel;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer CrystalReportViewer1;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbTerminalNames;
+        internal System.Windows.Forms.Label lblterminal;
     }
 }

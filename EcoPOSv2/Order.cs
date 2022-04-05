@@ -119,7 +119,7 @@ namespace EcoPOSv2
                             CONVERT(Varchar(20),[quantity]), 
                             CONVERT(Varchar(20), FLOOR([quantity]))) as 'Quantity'
                        ,CONVERT(DECIMAL(18,2),[discount]) as 'Disc'
-                        FROM order_cart where terminal_id=@terminal_id ORDER BY ABS(productID - @itemScanned), Difference([type], @pricing) DESC");
+                        FROM order_cart where terminal_id=@terminal_id ORDER BY time_updated DESC");
 
             if (SQL.HasException(true))
                 return;
@@ -520,7 +520,19 @@ namespace EcoPOSv2
                     btnVoid.PerformClick();
             }
 
-            if(e.Control && e.KeyCode == Keys.P)
+            if (e.Control && e.KeyCode == Keys.K)
+            {
+                if (btnKeep.Enabled)
+                    btnKeep.PerformClick();
+            }
+
+            if (e.Control && e.KeyCode == Keys.R)
+            {
+                if (btnViewKeeps.Enabled)
+                    btnViewKeeps.PerformClick();
+            }
+
+            if (e.Control && e.KeyCode == Keys.P)
             {
                 if (btnPayment.Enabled)
                     btnPayment.PerformClick();
@@ -690,11 +702,17 @@ namespace EcoPOSv2
                 frmQuantity.isDecimal = Convert.ToBoolean(SQL.ReturnResult("SELECT isDecimal FROM units WHERE units.unit_id = (SELECT products.unit_id FROM products WHERE productID = @productID)"));
                 if (SQL.HasException(true)) return;
 
+                SQL.AddParam("@productID", dgvCart.SelectedRows[0].Cells[1].Value.ToString());
+                String unitname = SQL.ReturnResult("SELECT unit_name FROM units WHERE units.unit_id = (SELECT products.unit_id FROM products WHERE productID = @productID)");
+                if (SQL.HasException(true)) return;
+
                 frmQuantity.itemID = dgvCart.SelectedRows[0].Cells[0].Value.ToString();
                 frmQuantity.productID = dgvCart.SelectedRows[0].Cells[1].Value.ToString();
-                frmQuantity.lblItem.Text = dgvCart.SelectedRows[0].Cells[2].Value.ToString();
+                frmQuantity.lblItem.Text = dgvCart.SelectedRows[0].Cells[2].Value.ToString() + " (" + dgvCart.SelectedRows[0].Cells[7].Value.ToString() + "/" + unitname + ")";
                 frmQuantity.txtQuantity.Text = frmQuantity.isDecimal ? dgvCart.SelectedRows[0].Cells[11].Value.ToString() : Convert.ToDecimal(dgvCart.SelectedRows[0].Cells[11].Value).ToString("N0");
                 decimal x = decimal.Parse(dgvCart.SelectedRows[0].Cells[11].Value.ToString());
+                frmQuantity.inclusiveprice = Convert.ToDecimal(dgvCart.SelectedRows[0].Cells[7].Value.ToString());
+
                 frmQuantity.currentQty = x;
                 frmQuantity.txtQuantity.SelectAll();
                 frmQuantity.ShowDialog();
@@ -973,10 +991,6 @@ namespace EcoPOSv2
 
         private void btnPriceEditor_Click(object sender, EventArgs e)
         {
-            if (CheckOpened("PriceEditor") == true)
-            {
-                return;
-            }
 
             if (dgvCart.SelectedRows.Count > 0)
             {
@@ -1151,14 +1165,13 @@ namespace EcoPOSv2
                             return;
                         }
 
-
-
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@productID", Convert.ToInt32(productID));
                         SQL.AddParam("@quantity", quantity);
+                        SQL.AddParam("@time_updated", DateTime.Now);
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive,selling_price_exclusive, quantity, base_price_inclusive, base_price_exclusive, discount,cost,terminal_id,is_vatable) 
-                                   SELECT productID, description, name, @type," + insert_type_query + ",0, @quantity, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), 0,cost, @terminal_id,is_vatable FROM products WHERE productID = @productID");
+                        SQL.Query(@"INSERT INTO order_cart (productID , description, name, type, static_price_exclusive, static_price_vat, static_price_inclusive,selling_price_exclusive, quantity, base_price_inclusive, base_price_exclusive, discount,cost,terminal_id,is_vatable, time_updated) 
+                                   SELECT productID, description, name, @type," + insert_type_query + ",0, @quantity, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), 0,cost, @terminal_id,is_vatable, @time_updated FROM products WHERE productID = @productID");
                         if (SQL.HasException(true))
                             return;
 
@@ -1218,9 +1231,10 @@ namespace EcoPOSv2
                         SQL.AddParam("@productID", productID);
                         SQL.AddParam("@type", type);
                         SQL.AddParam("@quantity", quantity);
+                        SQL.AddParam("@time_updated", DateTime.Now);
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                        SQL.Query("UPDATE order_cart SET quantity = quantity + @quantity WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
+                        SQL.Query("UPDATE order_cart SET quantity = quantity + @quantity, time_updated = @time_updated WHERE terminal_id=@terminal_id AND productID = @productID AND type = @type AND is_return = 0");
                         if (SQL.HasException(true))
                             return;
 
@@ -1296,10 +1310,6 @@ namespace EcoPOSv2
 
         private void tbBarcode_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F5)
-            {
-                btnPriceEditor.PerformClick();
-            }
         }
 
         private void btnSeeItem_Click(object sender, EventArgs e)
@@ -1316,8 +1326,11 @@ namespace EcoPOSv2
                 return;
             }
             Order.Instance.dgvCart.ClearSelection();
-
             new SeeItem().ShowDialog();
+            Order.Instance.LoadOrder();
+            Order.Instance.GetTotal();
+
+            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
             Order.Instance.tbBarcode.Focus();
         }
 
