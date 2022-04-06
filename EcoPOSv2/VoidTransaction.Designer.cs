@@ -63,19 +63,20 @@
             // 
             this.tbTerminalNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTerminalNo.ForeColor = System.Drawing.Color.Black;
-            this.tbTerminalNo.Location = new System.Drawing.Point(130, 26);
+            this.tbTerminalNo.Location = new System.Drawing.Point(130, 27);
             this.tbTerminalNo.Name = "tbTerminalNo";
             this.tbTerminalNo.Size = new System.Drawing.Size(386, 33);
             this.tbTerminalNo.TabIndex = 0;
             this.tbTerminalNo.Tag = "";
             this.tbTerminalNo.Click += new System.EventHandler(this.tbTerminalNo_Click);
+            this.tbTerminalNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbTerminalNo_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(17, 28);
+            this.label1.Location = new System.Drawing.Point(17, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 28);
             this.label1.TabIndex = 59;
@@ -96,7 +97,7 @@
             this.btnCancel.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCancel.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnCancel.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnCancel.Location = new System.Drawing.Point(19, 124);
+            this.btnCancel.Location = new System.Drawing.Point(19, 125);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(238, 46);
@@ -120,7 +121,7 @@
             this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnConfirm.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnConfirm.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnConfirm.Location = new System.Drawing.Point(275, 124);
+            this.btnConfirm.Location = new System.Drawing.Point(275, 125);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(238, 46);
@@ -133,7 +134,7 @@
             // 
             this.txtORNo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtORNo.ForeColor = System.Drawing.Color.Black;
-            this.txtORNo.Location = new System.Drawing.Point(130, 71);
+            this.txtORNo.Location = new System.Drawing.Point(130, 72);
             this.txtORNo.Multiline = true;
             this.txtORNo.Name = "txtORNo";
             this.txtORNo.Size = new System.Drawing.Size(386, 33);
@@ -146,7 +147,7 @@
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(17, 74);
+            this.Label3.Location = new System.Drawing.Point(17, 75);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(75, 28);
             this.Label3.TabIndex = 57;

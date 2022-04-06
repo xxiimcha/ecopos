@@ -39,9 +39,10 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblTerminalName = new System.Windows.Forms.Label();
+            this.pnlType = new Guna.UI2.WinForms.Guna2Panel();
             this.lblType = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
+            this.lblTerminalName = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblBypassedBy = new Guna.UI.WinForms.GunaLabel();
             this.btnUserRole = new Guna.UI.WinForms.GunaButton();
@@ -56,13 +57,12 @@
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
-            this.pnlType = new Guna.UI2.WinForms.Guna2Panel();
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
+            this.pnlType.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
-            this.pnlType.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -198,20 +198,16 @@
             this.guna2Panel2.Size = new System.Drawing.Size(208, 90);
             this.guna2Panel2.TabIndex = 17;
             // 
-            // lblTerminalName
+            // pnlType
             // 
-            this.lblTerminalName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTerminalName.BackColor = System.Drawing.Color.Transparent;
-            this.lblTerminalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerminalName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.lblTerminalName.Location = new System.Drawing.Point(2, 6);
-            this.lblTerminalName.Name = "lblTerminalName";
-            this.lblTerminalName.Size = new System.Drawing.Size(204, 22);
-            this.lblTerminalName.TabIndex = 15;
-            this.lblTerminalName.Text = "Terminal";
-            this.lblTerminalName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pnlType.BackColor = System.Drawing.Color.Transparent;
+            this.pnlType.Controls.Add(this.lblType);
+            this.pnlType.Controls.Add(this.Label3);
+            this.pnlType.Location = new System.Drawing.Point(0, 28);
+            this.pnlType.Name = "pnlType";
+            this.pnlType.ShadowDecoration.Parent = this.pnlType;
+            this.pnlType.Size = new System.Drawing.Size(208, 62);
+            this.pnlType.TabIndex = 16;
             // 
             // lblType
             // 
@@ -241,6 +237,21 @@
             this.Label3.Text = "Provided By:\r\nWNO ELECTRONICS TRADING";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Label3.Click += new System.EventHandler(this.Label3_Click);
+            // 
+            // lblTerminalName
+            // 
+            this.lblTerminalName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTerminalName.BackColor = System.Drawing.Color.Transparent;
+            this.lblTerminalName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTerminalName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.lblTerminalName.Location = new System.Drawing.Point(2, 6);
+            this.lblTerminalName.Name = "lblTerminalName";
+            this.lblTerminalName.Size = new System.Drawing.Size(204, 22);
+            this.lblTerminalName.TabIndex = 15;
+            this.lblTerminalName.Text = "Terminal";
+            this.lblTerminalName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // guna2Panel1
             // 
@@ -332,7 +343,8 @@
             // 
             // lblVersion
             // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.ForeColor = System.Drawing.Color.Black;
@@ -340,7 +352,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(47, 17);
             this.lblVersion.TabIndex = 8;
-            this.lblVersion.Text = "ver 2.0";
+            this.lblVersion.Text = "ver 3.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -464,11 +476,11 @@
             // 
             // pbLogo
             // 
-            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbLogo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pbLogo.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
-            this.pbLogo.Location = new System.Drawing.Point(0, 628);
+            this.pbLogo.Location = new System.Drawing.Point(0, 627);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(210, 105);
+            this.pbLogo.Size = new System.Drawing.Size(208, 105);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLogo.TabIndex = 3;
             this.pbLogo.TabStop = false;
@@ -485,17 +497,6 @@
             // 
             this.tmrCurrentDateTime.Enabled = true;
             this.tmrCurrentDateTime.Tick += new System.EventHandler(this.tmrCurrentDateTime_Tick);
-            // 
-            // pnlType
-            // 
-            this.pnlType.BackColor = System.Drawing.Color.Transparent;
-            this.pnlType.Controls.Add(this.lblType);
-            this.pnlType.Controls.Add(this.Label3);
-            this.pnlType.Location = new System.Drawing.Point(0, 28);
-            this.pnlType.Name = "pnlType";
-            this.pnlType.ShadowDecoration.Parent = this.pnlType;
-            this.pnlType.Size = new System.Drawing.Size(208, 62);
-            this.pnlType.TabIndex = 16;
             // 
             // Main
             // 
@@ -520,9 +521,9 @@
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
+            this.pnlType.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            this.pnlType.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

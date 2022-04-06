@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiscountOption));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnCancel = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnSpecial = new Guna.UI2.WinForms.Guna2TileButton();
             this.btnRegular = new Guna.UI2.WinForms.Guna2TileButton();
-            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,6 +145,5 @@
         private Guna.UI2.WinForms.Guna2TileButton btnCancel;
         private Guna.UI2.WinForms.Guna2TileButton btnSpecial;
         private Guna.UI2.WinForms.Guna2TileButton btnRegular;
-        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

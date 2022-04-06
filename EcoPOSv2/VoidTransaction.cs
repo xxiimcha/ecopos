@@ -197,7 +197,7 @@ namespace EcoPOSv2
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void txtORNo_KeyDown(object sender, KeyEventArgs e)
@@ -205,6 +205,10 @@ namespace EcoPOSv2
             if(e.KeyCode == Keys.Enter)
             {
                 btnConfirm.PerformClick();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
 
@@ -235,6 +239,14 @@ namespace EcoPOSv2
             {
                 txtORNo.Focus();
                 this.ActiveControl = txtORNo;
+            }
+        }
+
+        private void tbTerminalNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
     }

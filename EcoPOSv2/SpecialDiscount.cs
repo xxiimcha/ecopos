@@ -33,6 +33,7 @@ namespace EcoPOSv2
             if(txtIDNo.Text == "" || txtName.Text == "")
             {
                 new Notification().PopUp("Please complete all the field(s)","Error","error");
+                cmbDesc.Focus();
                 return;
             }
 
@@ -138,10 +139,21 @@ namespace EcoPOSv2
 
         private void txtIDNo_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Escape) this.Close();
+            if (e.KeyCode == Keys.Enter)
             {
                 btnConfirm.PerformClick();
             }
+        }
+
+        private void cmbDesc_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
+        }
+
+        private void txtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
         }
     }
 }

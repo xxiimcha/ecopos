@@ -50,10 +50,17 @@ namespace EcoPOSv2
         {
             tmrClose.Stop();
             isRePrint = true;
-            Payment.Instance.report.SetParameterValue("note", "###REPRINT###");
-            //Payment.Instance.report80.SetParameterValue("note", "###REPRINT###");
-
-            Payment.Instance.PrintReceipt();
+            if (Properties.Settings.Default.papersize == "58MM")
+            {
+                Payment.Instance.report.SetParameterValue("note", "###REPRINT###");
+                Payment.Instance.PrintReceipt();
+            }
+            else
+            {
+                Payment.Instance.report80.SetParameterValue("note", "###REPRINT###");
+            }
+           
+            
 
             tmrClose.Start();
         }
@@ -102,7 +109,12 @@ namespace EcoPOSv2
                 btnConfirm.PerformClick();
             }
 
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.R)
+            {
+                btnReprint.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.Escape)
             {
                 btnConfirm.PerformClick();
             }

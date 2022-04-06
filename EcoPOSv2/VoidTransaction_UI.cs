@@ -514,8 +514,6 @@ namespace EcoPOSv2
             if (lblNoOfItemsToVoid.Text == "0")
                 btnVoid.Enabled = false;
 
-
-
             //COMPUTE TOTAL RETURN MONEY
             decimal Total = 0;
 

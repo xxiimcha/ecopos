@@ -163,7 +163,7 @@
             this.dgvProducts.RowTemplate.Height = 35;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(784, 567);
-            this.dgvProducts.TabIndex = 61;
+            this.dgvProducts.TabIndex = 2;
             this.dgvProducts.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvProducts.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvProducts.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -196,9 +196,11 @@
             this.cmbPricemode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbPricemode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPricemode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbPricemode.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbPricemode.FocusedColor = System.Drawing.Color.Fuchsia;
+            this.cmbPricemode.FocusedState.BorderColor = System.Drawing.Color.Fuchsia;
+            this.cmbPricemode.FocusedState.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPricemode.FocusedState.Parent = this.cmbPricemode;
-            this.cmbPricemode.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPricemode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPricemode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cmbPricemode.FormattingEnabled = true;
             this.cmbPricemode.HoverState.Parent = this.cmbPricemode;
@@ -212,7 +214,7 @@
             this.cmbPricemode.ShadowDecoration.Parent = this.cmbPricemode;
             this.cmbPricemode.Size = new System.Drawing.Size(144, 36);
             this.cmbPricemode.StartIndex = 0;
-            this.cmbPricemode.TabIndex = 60;
+            this.cmbPricemode.TabIndex = 1;
             // 
             // textPanel
             // 
@@ -267,7 +269,7 @@
             this.txtBarcode.SelectedText = "";
             this.txtBarcode.ShadowDecoration.Parent = this.txtBarcode;
             this.txtBarcode.Size = new System.Drawing.Size(391, 35);
-            this.txtBarcode.TabIndex = 58;
+            this.txtBarcode.TabIndex = 0;
             this.txtBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBarcode_KeyDown);
             // 
             // Label3

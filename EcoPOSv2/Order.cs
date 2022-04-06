@@ -477,15 +477,17 @@ namespace EcoPOSv2
                     btnVoidItem.PerformClick();
             }
 
-            if (e.Control && e.KeyCode == Keys.W)
+            if (e.Control && e.KeyCode == Keys.Tab)
             {
-                if (btnWholeSale.Enabled)
+                if (btnRetail.Checked)
+                {
                     btnWholeSale.PerformClick();
-            }
-            if (e.Control && e.KeyCode == Keys.R)
-            {
-                if (btnRetail.Enabled)
+                }
+                else
+                {
                     btnRetail.PerformClick();
+                }
+                    
             }
 
             if (e.KeyCode == Keys.F5)
@@ -495,10 +497,6 @@ namespace EcoPOSv2
                 {
                     if (btnPriceEditor.Enabled)
                         btnPriceEditor.PerformClick();
-                }
-                else
-                {
-                    return;
                 }
             }
 
@@ -512,6 +510,8 @@ namespace EcoPOSv2
             {
                 if (btnCancel.Enabled)
                     btnCancel.PerformClick();
+                tbBarcode.Focus();
+                tbBarcode.Clear();
             }
 
             if (e.KeyCode == Keys.F3)
@@ -635,6 +635,7 @@ namespace EcoPOSv2
                     LoadOrderNo();
                     LoadOrder();
                     GetTotal();
+                    tbBarcode.Focus();
 
                     return;
                 }
@@ -684,7 +685,7 @@ namespace EcoPOSv2
             frmDiscountOption.frmOrder = this;
             frmDiscountOption.ShowDialog();
             tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
+            tbBarcode.Focus();
         }
 
         private void btnQuantity_Click(object sender, EventArgs e)
@@ -723,9 +724,6 @@ namespace EcoPOSv2
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
-
             apply_regular_discount_fix_amt = false;
             apply_special_discount = false;
             apply_member = false;
@@ -761,7 +759,6 @@ namespace EcoPOSv2
             btnDiscount.Enabled = true;
             btnCustomer.Enabled = true;
             btnQuantity.Enabled = true;
-
             tbBarcode.Clear();
             tbBarcode.Focus();
         }
@@ -785,9 +782,8 @@ namespace EcoPOSv2
             OCustomer frmOCustomer = new OCustomer();
             frmOCustomer.frmOrder = this;
             frmOCustomer.ShowDialog();
-
             tbBarcode.Clear();
-            this.ActiveControl = tbBarcode;
+            tbBarcode.Focus();
         }
 
         private void Order_Load(object sender, EventArgs e)

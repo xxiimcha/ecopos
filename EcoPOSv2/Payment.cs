@@ -598,9 +598,10 @@ namespace EcoPOSv2
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            //Warns the user if the amount tendered is higher than 100,000 (To avoid scanning of barcode)
             DateTime currentDate = DateTime.Now;
             string[] wholenumber = txtAmount.Text.Split('.');
-            if (wholenumber[0].Length > 5)
+            if (wholenumber[0].Length > (wholenumber[0].Contains(',') ? 6 : 5))
             {
                 DialogResult dialogResult = MessageBox.Show("You have entered a price higher than 100,000. Would you like to proceed?", "High Amount Tendered", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
@@ -608,12 +609,25 @@ namespace EcoPOSv2
                     return;
                 }
             }
+
+            //CHECKS IF AMOUNT TENDERED IS LOWER THAN NEEDED
             if(txtAmount.Text == "")
             {
+                new Notification().PopUp("Please enter a valid amount.", "Error", "error");
+                txtAmount.Focus();
                 return;
             }
 
-            int max_invoice = int.Parse(SQL.ReturnResult("SELECT IIF( (SELECT COUNT(order_ref_temp) FROM transaction_details) > 0,(SELECT MAX(order_ref_temp) FROM transaction_details),0)"));
+            if (action == 1)
+            {
+                if (change < 0)
+                {
+                    new Notification().PopUp("Insufficient Amount.", "Error", "error");
+                    txtAmount.Focus();
+                    return;
+                }
+            }
+
             if (txtAmount.Text == "") return;
 
             #region remove/add to inventory
@@ -626,6 +640,7 @@ namespace EcoPOSv2
                 MessageBox.Show("Inventory Error");
                 return;
             }
+
             foreach (DataRow r in SQL.DBDT.Rows)
             {
                 if (Convert.ToBoolean(r["is_return"].ToString()) || Convert.ToBoolean(r["is_refund"].ToString()))
@@ -640,38 +655,7 @@ namespace EcoPOSv2
             #endregion
 
             #region transaction_details and transaction_items
-
-            if (action == 1)
-            {
-                if (change < 0)
-                    return;
-            }
-
             btnPay.Enabled = false;
-            SQL.AddParam("@no_of_items", Convert.ToDecimal(frmOrder.lblItems.Text));
-            SQL.AddParam("@order_ref_temp", String.Format("{0:D8}", (max_invoice + 1)));
-            SQL.AddParam("@cus_pts_deducted", lblDeductPoints.Text);
-            SQL.AddParam("@giftcard_deducted", lblDeductGC.Text);
-            SQL.AddParam("@subtotal", Convert.ToDecimal(frmOrder.lblSubtotal.Text));
-            SQL.AddParam("@fix_discount", Convert.ToDecimal(frmOrder.regular_disc_amt));
-            SQL.AddParam("@total", Convert.ToDecimal(frmOrder.lblTotal.Text));
-            SQL.AddParam("@grand_total", Convert.ToDecimal(lblGrandTotal.Text));
-            SQL.AddParam("@payment_amt", Convert.ToDecimal(txtAmount.Text));
-            SQL.AddParam("@change", change);
-            SQL.AddParam("@payment_method", cmbMethod.Text);
-            SQL.AddParam("@giftcard_no", lblGCNo.Text);
-            SQL.AddParam("@less_vat", Convert.ToDecimal(frmOrder.lblLessVAT.Text));
-            SQL.AddParam("@vatable_sale", Convert.ToDecimal(frmOrder.lblVATSale.Text));
-            SQL.AddParam("@vat_12", Convert.ToDecimal(frmOrder.lblVAT.Text));
-            SQL.AddParam("@vat_exempt_sale", Convert.ToDecimal(frmOrder.lblVATExempt.Text));
-            SQL.AddParam("@zero_rated_sale", Convert.ToDecimal(frmOrder.lblZeroRated.Text));
-            SQL.AddParam("@userID", Main.Instance.current_id);
-            SQL.AddParam("@user_first_name", Main.Instance.current_user_first_name);
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-            //ReferenceNo
-            SQL.AddParam("@ReferenceNo", tbReferenceNo.Text);
-            SQL.AddParam("@date", currentDate);
 
             //SQL SERVER BLOCKING
             int retryCount = 5;
@@ -680,6 +664,29 @@ namespace EcoPOSv2
             {
                 try
                 {
+                    SQL.AddParam("@no_of_items", Convert.ToDecimal(frmOrder.lblItems.Text));
+                    SQL.AddParam("@cus_pts_deducted", lblDeductPoints.Text);
+                    SQL.AddParam("@giftcard_deducted", lblDeductGC.Text);
+                    SQL.AddParam("@subtotal", Convert.ToDecimal(frmOrder.lblSubtotal.Text));
+                    SQL.AddParam("@fix_discount", Convert.ToDecimal(frmOrder.regular_disc_amt));
+                    SQL.AddParam("@total", Convert.ToDecimal(frmOrder.lblTotal.Text));
+                    SQL.AddParam("@grand_total", Convert.ToDecimal(lblGrandTotal.Text));
+                    SQL.AddParam("@payment_amt", Convert.ToDecimal(txtAmount.Text));
+                    SQL.AddParam("@change", change);
+                    SQL.AddParam("@payment_method", cmbMethod.Text);
+                    SQL.AddParam("@giftcard_no", lblGCNo.Text);
+                    SQL.AddParam("@less_vat", Convert.ToDecimal(frmOrder.lblLessVAT.Text));
+                    SQL.AddParam("@vatable_sale", Convert.ToDecimal(frmOrder.lblVATSale.Text));
+                    SQL.AddParam("@vat_12", Convert.ToDecimal(frmOrder.lblVAT.Text));
+                    SQL.AddParam("@vat_exempt_sale", Convert.ToDecimal(frmOrder.lblVATExempt.Text));
+                    SQL.AddParam("@zero_rated_sale", Convert.ToDecimal(frmOrder.lblZeroRated.Text));
+                    SQL.AddParam("@userID", Main.Instance.current_id);
+                    SQL.AddParam("@user_first_name", Main.Instance.current_user_first_name);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                    //ReferenceNo
+                    SQL.AddParam("@ReferenceNo", tbReferenceNo.Text);
+                    SQL.AddParam("@date", currentDate);
                     SQL.Query(@"BEGIN TRAN
 
                         INSERT INTO transaction_details 
@@ -723,9 +730,7 @@ namespace EcoPOSv2
             #endregion
 
             #region calculate profit
-            string profit_query = "";
-
-            SQL.AddParam("@date", currentDate);
+            SQL.AddParam("@date", currentDate.ToString("yyy-MM-dd"));
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
             int check = int.Parse(SQL.ReturnResult("select count(*) from profit where date=@date and terminal_id=@terminal_id"));
@@ -735,11 +740,18 @@ namespace EcoPOSv2
                 return;
             }
 
-            if(check == 0)
+            if (check == 0)
             {
-                //profit insertion
-                profit_query = "Insert into profit (Sales,Total_Cost,Gross,date,terminal_id) VALUES (0,0,0,"+ currentDate + "," + Properties.Settings.Default.Terminal_id + ";";
+                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                SQL.AddParam("@date", currentDate.ToString("yyy-MM-dd"));
+                SQL.Query("Insert into profit (Sales,Total_Cost,Gross,date,terminal_id) VALUES (0,0,0,@date,@terminal_id) ");
+                if (SQL.HasException(true))
+                {
+                    MessageBox.Show("5.0.1");
+                    return;
+                }
             }
+
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             decimal Total_Sales_Per_Transaction = decimal.Parse(SQL.ReturnResult("select SUM(selling_price_inclusive) from order_cart where terminal_id=@terminal_id"));
@@ -766,15 +778,41 @@ namespace EcoPOSv2
                 return;
             }
 
+            //SQL SERVER BLOCKING
+            int ProfitRetryCount = 5;
+            bool ProfitSuccess = false;
+            while (ProfitRetryCount > 0 && !ProfitSuccess)
+            {
+                try
+                {
+                    SQL.AddParam("@Sales", Total_Sales_Per_Transaction);
+                    SQL.AddParam("@Total_Cost", Total_Total_Cost_Transaction);
+                    SQL.AddParam("@date", currentDate.ToString("yyy-MM-dd"));
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    SQL.Query(@"BEGIN TRAN
+                        UPDATE profit set 
+                        Sales = Sales + @Sales, 
+                        Total_Cost = Total_Cost + @Total_Cost,
+                        Gross = (Sales + @Sales) - (Total_Cost + @Total_Cost)
+                        WHERE date = @date AND terminal_id=@terminal_id; 
+                        COMMIT;");
+                    ProfitSuccess = true;
+                }
+                catch (SqlException exception)
+                {
+                    if (exception.Number != 1205)
+                    {
+                        new Notification().PopUp("Profit Computation Failed", "Error", "error");
+                        throw;
+                    }
 
-            string profitUpdate_query = "UPDATE profit set Sales = Sales + " + Total_Sales_Per_Transaction + ", Total_Cost = Total_Cost + " + Total_Total_Cost_Transaction + " where date= " + currentDate + " AND terminal_id=" + Properties.Settings.Default.Terminal_id + ";";
-            string profitCompute_query = "UPDATE profit set Gross = Sales - Total_Cost where date=" + currentDate + " AND terminal_id = " + Properties.Settings.Default.Terminal_id + ";";
-
-
+                    Thread.Sleep(1000);
+                    ProfitRetryCount--;
+                    if (ProfitRetryCount == 0) throw;
+                }
+            }
             #endregion
 
-            string customerreward_query = "";
-            string customerbalance_query = "";
             #region increase customer points
 
             if (action == 1 && lblCustomerID.Text != "0" && cbxUsePoints.Checked == false)
@@ -793,70 +831,62 @@ namespace EcoPOSv2
                     decimal cus_amt_per_pt = Convert.ToDecimal(SQL.ReturnResult("SELECT cus_amt_per_pt FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)").ToString());
                     if (SQL.HasException(true))
                         return;
+                    SQL.AddParam("@customerID", lblCustomerID.Text);
+                    SQL.AddParam("@cash_paid", decimal.Parse(txtAmount.Text));
+                    SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
-                    //insert points awarded
-                    customerreward_query = @"INSERT INTO points_award (order_ref, cus_ID_no, cash_paid, pts_earned)
-                           SELECT MAX(order_ref), " + lblCustomerID.Text + ", " + decimal.Parse(txtAmount.Text) + ", (" + decimal.Parse(txtAmount.Text) + " / " + cus_amt_per_pt + ") FROM transaction_details where terminal_id=" + Properties.Settings.Default.Terminal_id + ";";
+                    SQL.Query(@"INSERT INTO points_award (order_ref, cus_ID_no, cash_paid, pts_earned)
+                           SELECT MAX(order_ref), @customerID, @cash_paid, (@cash_paid / @cus_amt_per_pt) FROM transaction_details where terminal_id=@terminal_id");
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("6");
+                        return;
+                    }
 
                     // update card balance
-                    customerbalance_query = "UPDATE member_card SET card_balance = card_balance + (" + lblCustomerID.Text + " / " + decimal.Parse(txtAmount.Text) + ") WHERE customerID = " + lblCustomerID.Text + ";";
+                    SQL.AddParam("@customerID", lblCustomerID.Text);
+                    SQL.AddParam("@cash_paid", decimal.Parse(txtAmount.Text));
+                    SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
+                    SQL.Query("UPDATE member_card SET card_balance = card_balance + (@cash_paid / @cus_amt_per_pt) WHERE customerID = @customerID");
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("7");
+                        return;
+                    }
                 }
             }
 
-
-            string membercardbalance_query = "";
             if (action == 1 && cbxUsePoints.Checked == true)
             {
                 // update card balance
-                membercardbalance_query = "UPDATE member_card SET card_balance = card_balance - " + lblGrandTotal.Text + " WHERE customerID = " + lblCustomerID.Text + ";";
+
+                SQL.AddParam("@customerID", lblCustomerID.Text);
+                SQL.AddParam("@cash_paid", lblGrandTotal.Text);
+                SQL.Query("UPDATE member_card SET card_balance = card_balance - @cash_paid WHERE customerID = @customerID");
+                if (SQL.HasException(true))
+                {
+                    MessageBox.Show("8");
+                    return;
+                }
             }
 
             #endregion
 
             #region gift card
-            string gc_query = "";
+
             if (lblGCNo.Text != "0")
             {
-                //update status of claimed giftcard
-                gc_query = "UPDATE giftcard SET status = 'Used' WHERE giftcard_no = " + lblGCNo.Text + ";";
+                SQL.AddParam("@giftcard_no", lblGCNo.Text);
+                SQL.Query("UPDATE giftcard SET status = 'Used' WHERE giftcard_no = @giftcard_no");
+                if (SQL.HasException(true))
+                {
+                    MessageBox.Show("9");
+                    return;
+                }
             }
 
             #endregion
-
-            //QUERY EXECUTION
-            //SQL SERVER BLOCKING
-            int retryCountProfit = 5;
-            bool successProfit = false;
-            while (retryCountProfit > 0 && !successProfit)
-            {
-                try
-                {
-                    SQL.Query("BEGIN TRAN " +
-
-                            profit_query+
-                            profitUpdate_query+
-                            profitCompute_query+
-                            customerreward_query+
-                            customerbalance_query+
-                            membercardbalance_query+
-                            gc_query+
-
-                         " COMMIT;");
-                    successProfit = true;
-                }
-                catch (SqlException exception)
-                {
-                    if (exception.Number != 1205)
-                    {
-                        new Notification().PopUp("Profit Computation Failed", "Error", "error");
-                        throw;
-                    }
-
-                    Thread.Sleep(1000);
-                    retryCountProfit--;
-                    if (retryCountProfit == 0) throw;
-                }
-            }
 
             #region clear cart
 

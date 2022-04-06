@@ -24,13 +24,6 @@ namespace EcoPOSv2
             
         }
 
-        private void Escape(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Order.Instance.ActiveControl = Order.Instance.tbBarcode;
-        }
-
         private void LoadCustomer()
         {
             SQL.AddParam("@find", "%" + txtNameCard.Text + "%");
@@ -90,6 +83,7 @@ namespace EcoPOSv2
                                                     WHERE c.customerID = @customerID AND m.discountable = 1 AND disc_type = 2"));
             if (SQL.HasException(true))
                 return;
+
             if (result == 1)
             {
                 SQL.AddParam("@customerID", dgvCustomer.SelectedRows[0].Cells[0].Value.ToString());
@@ -132,7 +126,6 @@ namespace EcoPOSv2
             #endregion
 
             #region discountable and fix amount
-
             SQL.AddParam("@customerID", dgvCustomer.SelectedRows[0].Cells[0].Value.ToString());
             int result_fx = Convert.ToInt32(SQL.ReturnResult(@"SELECT COUNT(*) FROM membership as m 
                                                     INNER JOIN customer as c ON m.member_type_ID = c.member_type_ID
@@ -147,8 +140,6 @@ namespace EcoPOSv2
                     return;
                 frmOrder.apply_regular_discount_fix_amt = true;
             }
-
-
             #endregion
 
             frmOrder.lblCustomer.Text = dgvCustomer.SelectedRows[0].Cells[1].Value.ToString();
@@ -156,7 +147,7 @@ namespace EcoPOSv2
             frmOrder.GetTotal();
             new Notification().PopUp("Discount applied.", "","information");
             frmOrder.apply_member = true;
-            Close();
+            this.Close();
         }
 
         private void TxtNameCard_KeyUp(object sender, KeyEventArgs e)
@@ -171,7 +162,7 @@ namespace EcoPOSv2
 
         private void OCustomer_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) Close();
+            if (e.KeyCode == Keys.Escape) this.Close();
         }
 
         private void gunaControlBox1_Click(object sender, EventArgs e)

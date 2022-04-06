@@ -17,11 +17,6 @@ namespace EcoPOSv2
             InitializeComponent();
         }
         //HOTKEYS
-        private void Escape(object sender, EventArgs e)
-        {
-            Close();
-        }
-        //HOTKEYS
 
         public Order frmOrder;
 
@@ -53,7 +48,11 @@ namespace EcoPOSv2
 
         private void DiscountOption_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) Close();
+            if (e.KeyCode == Keys.Escape) this.Close();
+
+            if (e.KeyCode == Keys.D1) btnRegular.PerformClick();
+
+            if (e.KeyCode == Keys.D2) btnSpecial.PerformClick();
         }
     }
 }

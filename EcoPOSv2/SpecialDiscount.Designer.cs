@@ -87,6 +87,7 @@
             this.txtIDNo.ShadowDecoration.Parent = this.txtIDNo;
             this.txtIDNo.Size = new System.Drawing.Size(363, 36);
             this.txtIDNo.TabIndex = 2;
+            this.txtIDNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIDNo_KeyDown);
             // 
             // txtName
             // 
@@ -114,6 +115,7 @@
             this.txtName.ShadowDecoration.Parent = this.txtName;
             this.txtName.Size = new System.Drawing.Size(363, 36);
             this.txtName.TabIndex = 1;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // cmbDesc
             // 
@@ -122,7 +124,11 @@
             this.cmbDesc.BorderRadius = 3;
             this.cmbDesc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbDesc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDesc.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbDesc.FocusedColor = System.Drawing.Color.Fuchsia;
+            this.cmbDesc.FocusedState.BorderColor = System.Drawing.Color.Fuchsia;
+            this.cmbDesc.FocusedState.FillColor = System.Drawing.Color.White;
+            this.cmbDesc.FocusedState.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDesc.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.cmbDesc.FocusedState.Parent = this.cmbDesc;
             this.cmbDesc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(73)))));
@@ -140,6 +146,7 @@
             this.cmbDesc.Size = new System.Drawing.Size(363, 36);
             this.cmbDesc.StartIndex = 0;
             this.cmbDesc.TabIndex = 0;
+            this.cmbDesc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbDesc_KeyDown);
             // 
             // guna2Button1
             // 

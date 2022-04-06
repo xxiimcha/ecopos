@@ -206,9 +206,13 @@ namespace EcoPOSv2
             {
                 btn1.PerformClick();
             }
-            if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Delete)
             {
                 btn2.PerformClick();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                btnCLose.PerformClick();
             }
         }
     }

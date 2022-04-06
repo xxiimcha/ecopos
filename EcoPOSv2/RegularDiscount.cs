@@ -33,6 +33,7 @@ namespace EcoPOSv2
 
             dgvDiscount.DataSource = SQL.DBDT;
             dgvDiscount.Columns[0].Visible = false;
+            this.ActiveControl = dgvDiscount;
         }
 
         //METHODS
@@ -118,6 +119,7 @@ namespace EcoPOSv2
         private void RegularDiscount_Load(object sender, EventArgs e)
         {
             LoadDiscount();
+            
         }
 
         private void dgvDiscount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -128,6 +130,17 @@ namespace EcoPOSv2
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void RegularDiscount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
+        }
+
+        private void dgvDiscount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
+            if (e.KeyCode == Keys.Enter) btnConfirm.PerformClick();
         }
     }
 }
