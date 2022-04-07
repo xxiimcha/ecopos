@@ -88,6 +88,7 @@ namespace EcoPOSv2
             //frmStartCash.ActiveControl = frmStartCash.tbCash;
             frmStartCash.ShowDialog();
         }
+
         public void LoadPermissions(int roleID)
         {
             sql.AddParam("@roleID", roleID);

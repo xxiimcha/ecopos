@@ -111,7 +111,7 @@ namespace EcoPOSv2
                        ,[type] as 'Type'
                        ,[static_price_exclusive] 
                        ,[static_price_vat]
-                       ,CONVERT(DECIMAL(18,2),[static_price_inclusive]) as 'Price'
+                       ,CONVERT(DECIMAL(18,2),[base_price_inclusive]) as 'Price'
                        ,[selling_price_exclusive]
                        ,[selling_price_vat]
                        ,CONVERT(DECIMAL(18,2),[selling_price_inclusive]) as 'Total'
@@ -312,6 +312,7 @@ namespace EcoPOSv2
             if (Main.Instance.lblUser.Text == "Bypassed")
             {
                 MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbBarcode.Focus();
                 return;
             }
 
@@ -324,6 +325,7 @@ namespace EcoPOSv2
 
                 Devices d = new Devices();
                 d.Show();
+                tbBarcode.Focus();
                 return;
             }
             else
@@ -331,6 +333,7 @@ namespace EcoPOSv2
                 if (dgvCart.Rows.Count == 0)
                 {
                     new Notification().PopUp("Orders cart is empty.", "Error", "error");
+                    tbBarcode.Focus();
                     return;
                 }
 
@@ -1332,7 +1335,7 @@ namespace EcoPOSv2
 
         private void btnBarcode_Click(object sender, EventArgs e)
         {
-            this.ActiveControl = tbBarcode;
+            tbBarcode.Focus();
         }
 
         private void Order_Activated(object sender, EventArgs e)

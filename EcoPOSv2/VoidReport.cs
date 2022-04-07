@@ -33,9 +33,12 @@ namespace EcoPOSv2
             SQL.AddParam("@to", dtpTo.Value);
 
             SQL.Query(@"SELECT vi.voidID, vi.productID, td.order_ref_temp as 'Invoice No.', vi.description as 'Description',vi. name as 'Name', vi.type as 'Type', 
-                       vi.static_price_exclusive as 'Vatable Sale', vi.static_price_vat as 'VAT', vi.static_price_inclusive as 'Price', 
-                       vi.quantity as 'Qty', vi.date_time as 'Date' FROM void_item as vi INNER JOIN transaction_details as td ON vi.order_no = td.order_ref
-                       WHERE vi.date_time BETWEEN @from AND @to ORDER BY vi.date_time DESC");
+                        vi.static_price_exclusive as 'Vatable Sale', vi.static_price_vat as 'VAT', vi.static_price_inclusive as 'Price', 
+                        vi.quantity as 'Qty', vi.date_time as 'Date' 
+                        FROM void_item as vi 
+                        INNER JOIN transaction_items as ti ON vi.itemID = ti.itemID
+                        INNER JOIN transaction_details as td ON ti.order_ref = td.order_ref
+                        WHERE vi.date_time BETWEEN @from AND @to ORDER BY vi.date_time DESC");
 
             if (SQL.HasException(true))
                 return;

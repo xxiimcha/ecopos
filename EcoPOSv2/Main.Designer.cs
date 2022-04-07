@@ -167,17 +167,17 @@
             // gunaPanel1
             // 
             this.gunaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gunaPanel1.Controls.Add(this.guna2Panel2);
-            this.gunaPanel1.Controls.Add(this.guna2Panel1);
-            this.gunaPanel1.Controls.Add(this.btnOrder);
+            this.gunaPanel1.Controls.Add(this.btnMore);
+            this.gunaPanel1.Controls.Add(this.btnCalculator);
+            this.gunaPanel1.Controls.Add(this.btnXReading);
             this.gunaPanel1.Controls.Add(this.lblVersion);
             this.gunaPanel1.Controls.Add(this.label6);
             this.gunaPanel1.Controls.Add(this.label2);
             this.gunaPanel1.Controls.Add(this.label1);
-            this.gunaPanel1.Controls.Add(this.btnMore);
-            this.gunaPanel1.Controls.Add(this.btnCalculator);
-            this.gunaPanel1.Controls.Add(this.btnXReading);
             this.gunaPanel1.Controls.Add(this.pbLogo);
+            this.gunaPanel1.Controls.Add(this.btnOrder);
+            this.gunaPanel1.Controls.Add(this.guna2Panel2);
+            this.gunaPanel1.Controls.Add(this.guna2Panel1);
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 34);
             this.gunaPanel1.Name = "gunaPanel1";
@@ -187,8 +187,8 @@
             // guna2Panel2
             // 
             this.guna2Panel2.BorderColor = System.Drawing.Color.DimGray;
-            this.guna2Panel2.Controls.Add(this.pnlType);
             this.guna2Panel2.Controls.Add(this.lblTerminalName);
+            this.guna2Panel2.Controls.Add(this.pnlType);
             this.guna2Panel2.CustomBorderColor = System.Drawing.Color.Black;
             this.guna2Panel2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -322,6 +322,7 @@
             this.btnOrder.CheckedState.Image = global::EcoPOSv2.Properties.Resources.cart_white;
             this.btnOrder.CheckedState.Parent = this.btnOrder;
             this.btnOrder.CustomImages.Parent = this.btnOrder;
+            this.btnOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOrder.FillColor = System.Drawing.Color.Transparent;
             this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
@@ -331,11 +332,11 @@
             this.btnOrder.Image = global::EcoPOSv2.Properties.Resources.cart_black;
             this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnOrder.Location = new System.Drawing.Point(-1, 237);
+            this.btnOrder.Location = new System.Drawing.Point(0, 236);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
-            this.btnOrder.Size = new System.Drawing.Size(210, 60);
+            this.btnOrder.Size = new System.Drawing.Size(208, 60);
             this.btnOrder.TabIndex = 6;
             this.btnOrder.Text = "Order (F2)";
             this.btnOrder.TextOffset = new System.Drawing.Point(5, 0);
@@ -401,6 +402,7 @@
             this.btnMore.CheckedState.Image = global::EcoPOSv2.Properties.Resources.more_white;
             this.btnMore.CheckedState.Parent = this.btnMore;
             this.btnMore.CustomImages.Parent = this.btnMore;
+            this.btnMore.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMore.FillColor = System.Drawing.Color.Transparent;
             this.btnMore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
@@ -410,11 +412,11 @@
             this.btnMore.Image = global::EcoPOSv2.Properties.Resources.more_black;
             this.btnMore.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMore.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnMore.Location = new System.Drawing.Point(0, 417);
+            this.btnMore.Location = new System.Drawing.Point(0, 416);
             this.btnMore.Name = "btnMore";
             this.btnMore.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnMore.ShadowDecoration.Parent = this.btnMore;
-            this.btnMore.Size = new System.Drawing.Size(210, 60);
+            this.btnMore.Size = new System.Drawing.Size(208, 60);
             this.btnMore.TabIndex = 9;
             this.btnMore.Text = "More (F10)";
             this.btnMore.TextOffset = new System.Drawing.Point(5, 0);
@@ -428,6 +430,7 @@
             this.btnCalculator.CheckedState.Image = global::EcoPOSv2.Properties.Resources.calculator_white;
             this.btnCalculator.CheckedState.Parent = this.btnCalculator;
             this.btnCalculator.CustomImages.Parent = this.btnCalculator;
+            this.btnCalculator.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCalculator.FillColor = System.Drawing.Color.Transparent;
             this.btnCalculator.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalculator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
@@ -437,11 +440,11 @@
             this.btnCalculator.Image = global::EcoPOSv2.Properties.Resources.calculator_black;
             this.btnCalculator.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCalculator.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnCalculator.Location = new System.Drawing.Point(-1, 357);
+            this.btnCalculator.Location = new System.Drawing.Point(0, 356);
             this.btnCalculator.Name = "btnCalculator";
             this.btnCalculator.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
-            this.btnCalculator.Size = new System.Drawing.Size(210, 60);
+            this.btnCalculator.Size = new System.Drawing.Size(208, 60);
             this.btnCalculator.TabIndex = 8;
             this.btnCalculator.Text = "Calculator (F9)";
             this.btnCalculator.TextOffset = new System.Drawing.Point(5, 0);
@@ -455,6 +458,7 @@
             this.btnXReading.CheckedState.Image = global::EcoPOSv2.Properties.Resources.switchcashier_white;
             this.btnXReading.CheckedState.Parent = this.btnXReading;
             this.btnXReading.CustomImages.Parent = this.btnXReading;
+            this.btnXReading.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnXReading.FillColor = System.Drawing.Color.Transparent;
             this.btnXReading.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXReading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
@@ -464,11 +468,11 @@
             this.btnXReading.Image = global::EcoPOSv2.Properties.Resources.switchcashier_black;
             this.btnXReading.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnXReading.ImageSize = new System.Drawing.Size(32, 32);
-            this.btnXReading.Location = new System.Drawing.Point(-1, 297);
+            this.btnXReading.Location = new System.Drawing.Point(0, 296);
             this.btnXReading.Name = "btnXReading";
             this.btnXReading.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
             this.btnXReading.ShadowDecoration.Parent = this.btnXReading;
-            this.btnXReading.Size = new System.Drawing.Size(210, 60);
+            this.btnXReading.Size = new System.Drawing.Size(208, 60);
             this.btnXReading.TabIndex = 7;
             this.btnXReading.Text = "Switch Cashier (F8)";
             this.btnXReading.TextOffset = new System.Drawing.Point(20, 0);

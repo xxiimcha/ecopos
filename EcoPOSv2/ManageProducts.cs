@@ -86,9 +86,9 @@ namespace EcoPOSv2
         }
         private void ClearFields_Cat()
         {
-            GA.DoThis(ref allTxt, TableLayoutPanel4, ControlType.TextBox, GroupAction.Action.Clear);
+            GA.DoThis(ref allTxt, guna2Panel2, ControlType.TextBox, GroupAction.Action.Clear);
             cbxCat_DiscPWD.Checked = false;
-            GA.DoThis(ref allTxt, TableLayoutPanel4, ControlType.CheckBox, GroupAction.Action.Uncheck);
+            GA.DoThis(ref allTxt, guna2Panel2, ControlType.CheckBox, GroupAction.Action.Uncheck);
         }
         protected override CreateParams CreateParams
         {

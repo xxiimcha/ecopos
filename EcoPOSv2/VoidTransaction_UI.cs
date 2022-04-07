@@ -660,9 +660,9 @@ namespace EcoPOSv2
                     SQL.AddParam("@order_ref", r["order_ref"].ToString());
 
                     SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
-                       static_price_vat, static_price_inclusive, quantity, userID) SELECT itemID, productID, 
+                       static_price_vat, static_price_inclusive, quantity, userID, terminal_id) SELECT itemID, productID, 
                        (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
-                       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID
+                       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID, terminal_id
                        FROM transaction_items WHERE productID = @productID AND order_ref = @order_ref");
 
                     if (SQL.HasException(true))
@@ -862,6 +862,7 @@ namespace EcoPOSv2
         private void VoidTransaction_UI_Load(object sender, EventArgs e)
         {
             _VoidTransaction_UI = this;
+            terminalNo = Properties.Settings.Default.Terminal_id;
 
             //Font for reprinting process
             report.Dispose();
@@ -872,7 +873,6 @@ namespace EcoPOSv2
             LoadToVoidItems();
             LoadToBeVoid();
 
-            lblInvoice.Text = order_ref_temp;
             lblTerminalNo.Text = "Terminal " + terminalNo;
         }
     }
