@@ -69,7 +69,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.BorderRadius = 9;
+            this.btnLogin.BorderRadius = 5;
             this.btnLogin.CheckedState.Parent = this.btnLogin;
             this.btnLogin.CustomImages.Parent = this.btnLogin;
             this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -88,7 +88,7 @@
             // tbPassword
             // 
             this.tbPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbPassword.BorderRadius = 10;
+            this.tbPassword.BorderRadius = 5;
             this.tbPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tbPassword.DefaultText = "";
             this.tbPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -117,7 +117,7 @@
             // tbUsername
             // 
             this.tbUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbUsername.BorderRadius = 10;
+            this.tbUsername.BorderRadius = 5;
             this.tbUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.tbUsername.DefaultText = "";
             this.tbUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -144,21 +144,21 @@
             // lblDateTime
             // 
             this.lblDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.Green;
             this.lblDateTime.Location = new System.Drawing.Point(210, 0);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(960, 54);
             this.lblDateTime.TabIndex = 49;
             this.lblDateTime.Text = "12:00:00 PM";
-            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::EcoPOSv2.Properties.Resources.wno;
             this.pictureBox2.Location = new System.Drawing.Point(3, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(186, 112);
+            this.pictureBox2.Size = new System.Drawing.Size(157, 112);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 50;
             this.pictureBox2.TabStop = false;

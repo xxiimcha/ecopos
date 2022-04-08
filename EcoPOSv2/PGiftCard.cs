@@ -58,5 +58,17 @@ namespace EcoPOSv2
         {
             this.ActiveControl = txtGCNo;
         }
+
+        private void txtGCNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnConfirm.PerformClick();
+            }
+            if(e.KeyCode == Keys.Escape)
+            {
+                btnCancel.PerformClick();
+            }
+        }
     }
 }

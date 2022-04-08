@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PGiftCard));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtGCNo = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.Label3 = new System.Windows.Forms.Label();
-            this.txtGCNo = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,34 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(513, 170);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // txtGCNo
+            // 
+            this.txtGCNo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtGCNo.BorderRadius = 3;
+            this.txtGCNo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtGCNo.DefaultText = "";
+            this.txtGCNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtGCNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtGCNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGCNo.DisabledState.Parent = this.txtGCNo;
+            this.txtGCNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGCNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGCNo.FocusedState.Parent = this.txtGCNo;
+            this.txtGCNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGCNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtGCNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGCNo.HoverState.Parent = this.txtGCNo;
+            this.txtGCNo.Location = new System.Drawing.Point(22, 51);
+            this.txtGCNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtGCNo.Name = "txtGCNo";
+            this.txtGCNo.PasswordChar = '\0';
+            this.txtGCNo.PlaceholderText = "";
+            this.txtGCNo.SelectedText = "";
+            this.txtGCNo.ShadowDecoration.Parent = this.txtGCNo;
+            this.txtGCNo.Size = new System.Drawing.Size(468, 33);
+            this.txtGCNo.TabIndex = 60;
+            this.txtGCNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGCNo_KeyDown);
             // 
             // btnCancel
             // 
@@ -110,33 +138,6 @@
             this.Label3.Size = new System.Drawing.Size(75, 25);
             this.Label3.TabIndex = 51;
             this.Label3.Text = "GC NO.";
-            // 
-            // txtGCNo
-            // 
-            this.txtGCNo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtGCNo.BorderRadius = 3;
-            this.txtGCNo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtGCNo.DefaultText = "";
-            this.txtGCNo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtGCNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtGCNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtGCNo.DisabledState.Parent = this.txtGCNo;
-            this.txtGCNo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtGCNo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGCNo.FocusedState.Parent = this.txtGCNo;
-            this.txtGCNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGCNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtGCNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGCNo.HoverState.Parent = this.txtGCNo;
-            this.txtGCNo.Location = new System.Drawing.Point(22, 51);
-            this.txtGCNo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtGCNo.Name = "txtGCNo";
-            this.txtGCNo.PasswordChar = '\0';
-            this.txtGCNo.PlaceholderText = "";
-            this.txtGCNo.SelectedText = "";
-            this.txtGCNo.ShadowDecoration.Parent = this.txtGCNo;
-            this.txtGCNo.Size = new System.Drawing.Size(468, 33);
-            this.txtGCNo.TabIndex = 60;
             // 
             // PGiftCard
             // 

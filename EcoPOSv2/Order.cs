@@ -1179,6 +1179,25 @@ namespace EcoPOSv2
                         if (SQL.HasException(true))
                             return;
 
+                        SQL.AddParam("@productID", Convert.ToInt32(productID));
+                        Boolean has_expiry = Convert.ToBoolean(SQL.ReturnResult(@"SELECT has_expiry FROM products WHERE productID = @productID"));
+                        if (SQL.HasException(true))
+                            return;
+                        if (has_expiry)
+                        {
+                            SQL.AddParam("@productID", Convert.ToInt32(productID));
+                            DateTime expiration = Convert.ToDateTime(SQL.ReturnResult(@"SELECT expiration_date FROM products WHERE productID = @productID"));
+                            if (SQL.HasException(true))
+                                return;
+                            if (expiration <= DateTime.Now)
+                            {
+                                new Notification(5).PopUp("The Product scanned is already expired.", "Warning", "error");
+                            }else if(expiration <= DateTime.Now.AddDays(7))
+                            {
+                                new Notification(5).PopUp("The Product scanned is near expiration.", "Warning", "warning");
+                            }
+                        }
+
                         #region "customer display"
                         //customer display
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);

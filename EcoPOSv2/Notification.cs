@@ -12,11 +12,21 @@ namespace EcoPOSv2
 {
     public partial class Notification : Form
     {
+        int counter = 0;
+        int time = 2;
+
         public Notification()
         {
             InitializeComponent();
         }
-        int counter = 0;
+
+        public Notification(int time)
+        {
+            InitializeComponent();
+            time = time;
+        }
+
+        
         public static Notification _Notification;
         //METHODS
         public static Notification Instance
@@ -30,6 +40,7 @@ namespace EcoPOSv2
                 return _Notification;
             }
         }
+
         public void PopUp(string text = "", string title = "", string type = "")
         {
             if(type == "success")
@@ -53,6 +64,13 @@ namespace EcoPOSv2
                 lblText.BackColor = Color.FromArgb(0, 90, 156);
                 this.BackColor = Color.FromArgb(0, 90, 156);
             }
+            else if (type == "warning")
+            {
+                tbllayout.BackColor = Color.FromArgb(255, 121, 0);
+                lblTitle.BackColor = Color.FromArgb(255, 121, 0);
+                lblText.BackColor = Color.FromArgb(255, 121, 0);
+                this.BackColor = Color.FromArgb(255, 121, 0);
+            }
 
             TopMost = true;
             ShowInTaskbar = false;
@@ -70,7 +88,7 @@ namespace EcoPOSv2
         {
             counter++;
 
-            if (counter == 2)
+            if (counter == time)
             {
                 Close();
             }

@@ -388,6 +388,7 @@ namespace EcoPOSv2
                 }
             }
         }
+
         public void OpenDrawer()
         {
             EmptyReceipt receipt = new EmptyReceipt();
@@ -415,6 +416,7 @@ namespace EcoPOSv2
                 }
             }
         }
+
         public void PrintReceipt()
         {
             if (Main.Instance.pd_receipt_printer == "")
@@ -482,7 +484,6 @@ namespace EcoPOSv2
 
         private void FontSetter()
         {
-            #region Font
             int fontSize_regular = int.Parse(Properties.Settings.Default.RegularTextFont);
             int fontSize_products = int.Parse(Properties.Settings.Default.ProductListFont);
             int fontSize_bname = int.Parse(Properties.Settings.Default.TitleTextFont);
@@ -511,9 +512,8 @@ namespace EcoPOSv2
 
             //Product List
             ((TextObject)report.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
+
             ((TextObject)report.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-            //((FieldObject)report.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
             ((FieldObject)report.ReportDefinition.ReportObjects["description1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
             ((TextObject)report.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
             ((TextObject)report.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
@@ -551,88 +551,20 @@ namespace EcoPOSv2
             ((TextObject)report.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
             ((FieldObject)report.ReportDefinition.ReportObjects["change1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
 
-            //((TextObject)report.ReportDefinition.ReportObjects["tcustomerinfo"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["tname"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((FieldObject)report.ReportDefinition.ReportObjects["cusname1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["tpwd"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((FieldObject)report.ReportDefinition.ReportObjects["cusscpwdid1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["ttin"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["tin"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["tsign"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["sign"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["taddress"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["addr"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["tbstyle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["bstyle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-
-            //Footer
-            //((TextObject)report.ReportDefinition.ReportObjects["wno"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["dateissued"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["validtil"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["ptu"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
             ((FieldObject)report.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["validity1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
             ((FieldObject)report.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-
-            #endregion
+           
+            FontDone = true;
         }
 
-        //METHODS
-        private void Payment_Load(object sender, EventArgs e)
+        bool rewardable;
+        int check;
+        decimal Total_Sales_Per_Transaction, Total_Total_Cost_Transaction, Total_Discount_Transaction;
+        string inventory_query = "";
+        private void LoadData()
         {
-            report = new PaymentR58();
-            Thread setFont = new Thread(FontSetter);
-            setFont.Start();
-
-            _Payment = this;
-
-            cmbMethod.SelectedIndex = 0;
-            this.ActiveControl = txtAmount;
-        }
-
-        private void btnExact_Click(object sender, EventArgs e)
-        {
-            txtAmount.Text = lblGrandTotal.Text;
-            txtAmount.Focus();
-        }
-
-        private void btnPay_Click(object sender, EventArgs e)
-        {
-            //Warns the user if the amount tendered is higher than 100,000 (To avoid scanning of barcode)
-            DateTime currentDate = DateTime.Now;
-            string[] wholenumber = txtAmount.Text.Split('.');
-            if (wholenumber[0].Length > (wholenumber[0].Contains(',') ? 6 : 5))
-            {
-                DialogResult dialogResult = MessageBox.Show("You have entered a price higher than 100,000. Would you like to proceed?", "High Amount Tendered", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.No)
-                {
-                    return;
-                }
-            }
-
-            //CHECKS IF AMOUNT TENDERED IS LOWER THAN NEEDED
-            if(txtAmount.Text == "")
-            {
-                new Notification().PopUp("Please enter a valid amount.", "Error", "error");
-                txtAmount.Focus();
-                return;
-            }
-
-            if (action == 1)
-            {
-                if (change < 0)
-                {
-                    new Notification().PopUp("Insufficient Amount.", "Error", "error");
-                    txtAmount.Focus();
-                    return;
-                }
-            }
-
-            if (txtAmount.Text == "") return;
-
             #region remove/add to inventory
-            string inventory_query = "";
-
+            inventory_query = "";
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             SQL.Query("SELECT productID, quantity, is_return, is_refund FROM order_cart where terminal_id=@terminal_id;");
             if (SQL.HasException(true))
@@ -654,10 +586,163 @@ namespace EcoPOSv2
             }
             #endregion
 
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            Total_Sales_Per_Transaction = decimal.Parse(SQL.ReturnResult("select SUM(selling_price_inclusive) from order_cart where terminal_id=@terminal_id"));
+            if (SQL.HasException(true))
+            {
+                MessageBox.Show("5.0.2");
+                return;
+            }
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            Total_Total_Cost_Transaction = decimal.Parse(SQL.ReturnResult("select SUM(cost * quantity) from order_cart where terminal_id=@terminal_id"));
+            if (SQL.HasException(true))
+            {
+                MessageBox.Show("5.0.3");
+                return;
+            }
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            Total_Discount_Transaction = decimal.Parse(SQL.ReturnResult("select sum(discount) from order_cart where terminal_id=@terminal_id"));
+            if (SQL.HasException(true))
+            {
+                MessageBox.Show("5.0.4");
+                return;
+            }
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            rewardable = Convert.ToBoolean(SQL.ReturnResult("SELECT cus_rewardable FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)".ToString()));
+            if (SQL.HasException(true))
+            {
+                return;
+            }
+
+            SQL.AddParam("@date", currentDate.ToString("yyy-MM-dd"));
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            check = int.Parse(SQL.ReturnResult("select count(*) from profit where date=@date and terminal_id=@terminal_id"));
+            if (SQL.HasException(true))
+            {
+                MessageBox.Show("5.0");
+                return;
+            }
+
+            ValidateExpiration();
+
+            DataDone = true;
+        }
+
+        DateTime currentDate;
+        Boolean FontDone, DataDone = false;
+        //METHODS
+        private void Payment_Load(object sender, EventArgs e)
+        {
+            currentDate = DateTime.Now;
+            report = new PaymentR58();
+
+            Thread setFont = new Thread(FontSetter);
+            setFont.Start();
+
+            Thread loadData = new Thread(LoadData);
+            loadData.Start();
+
+            _Payment = this;
+
+            cmbMethod.SelectedIndex = 0;
+            this.ActiveControl = txtAmount;
+        }
+
+        List<string> expiredProductList = new List<string>();
+        private void ValidateExpiration()
+        {
+            expiredProductList.Clear();
+
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            SQL.Query("SELECT productID, description FROM order_cart WHERE terminal_id = @terminal_id");
+            foreach (DataRow r in SQL.DBDT.Rows)
+            {
+                SQL.AddParam("@productID", r["productID"].ToString());
+                Boolean has_expiry = Convert.ToBoolean(SQL.ReturnResult(@"SELECT has_expiry FROM products WHERE productID = @productID"));
+                if (SQL.HasException(true))
+                    return;
+
+                if (has_expiry)
+                {
+                    SQL.AddParam("@productID", r["productID"].ToString());
+                    DateTime expiration = Convert.ToDateTime(SQL.ReturnResult(@"SELECT expiration_date FROM products WHERE productID = @productID"));
+                    if (SQL.HasException(true))
+                        return;
+                    if (expiration <= DateTime.Now)
+                    {
+                        expiredProductList.Add(r["description"].ToString());
+                    }
+                }
+            }
+        }
+
+        private void btnExact_Click(object sender, EventArgs e)
+        {
+            txtAmount.Text = lblGrandTotal.Text;
+            txtAmount.Focus();
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            //Warns that data are still being loaded by the system
+            if (!DataDone || !FontDone)
+            {
+                new Notification().PopUp("Data still being loaded.", "Loading...", "information");
+                txtAmount.Focus();
+                return;
+            }
+
+            //CHECKS IF AMOUNT TENDERED IS LOWER THAN NEEDED
+            if(txtAmount.Text == "")
+            {
+                new Notification().PopUp("Please enter a valid amount.", "Error", "error");
+                txtAmount.Focus();
+                return;
+            }
+
+            if (action == 1)
+            {
+                if (change < 0)
+                {
+                    new Notification().PopUp("Insufficient Amount.", "Error", "error");
+                    txtAmount.Focus();
+                    return;
+                }
+            }
+
+            //Warns the user if the amount tendered is higher than 100,000 (To avoid scanning of barcode)
+            string[] wholenumber = txtAmount.Text.Split('.');
+            if (wholenumber[0].Length > (wholenumber[0].Contains(',') ? 6 : 5))
+            {
+                DialogResult dialogResult = MessageBox.Show("You have entered a price higher than 100,000. Would you like to proceed?", "High Amount Tendered", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            //Validates if user still wants to procceed even if there are expired products.
+            if (expiredProductList.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Expired Products: " + string.Join(", ", expiredProductList) + ".\nDo you still want to procceed?", "Expiration Warning", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //proceed
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    txtAmount.Focus();
+                    return;
+                }
+            }
+
             #region transaction_details and transaction_items
             btnPay.Enabled = false;
 
-            //SQL SERVER BLOCKING
+            //SQL SERVER BLOCKING FOR TRANSACTION
             int retryCount = 5;
             bool success = false;
             while (retryCount > 0 && !success)
@@ -730,16 +815,6 @@ namespace EcoPOSv2
             #endregion
 
             #region calculate profit
-            SQL.AddParam("@date", currentDate.ToString("yyy-MM-dd"));
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-            int check = int.Parse(SQL.ReturnResult("select count(*) from profit where date=@date and terminal_id=@terminal_id"));
-            if (SQL.HasException(true))
-            {
-                MessageBox.Show("5.0");
-                return;
-            }
-
             if (check == 0)
             {
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -752,33 +827,7 @@ namespace EcoPOSv2
                 }
             }
 
-
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            decimal Total_Sales_Per_Transaction = decimal.Parse(SQL.ReturnResult("select SUM(selling_price_inclusive) from order_cart where terminal_id=@terminal_id"));
-            if (SQL.HasException(true))
-            {
-                MessageBox.Show("5.0.2");
-                return;
-            }
-
-
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            decimal Total_Total_Cost_Transaction = decimal.Parse(SQL.ReturnResult("select SUM(cost * quantity) from order_cart where terminal_id=@terminal_id"));
-            if (SQL.HasException(true))
-            {
-                MessageBox.Show("5.0.3");
-                return;
-            }
-
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            decimal Total_Discount_Transaction = decimal.Parse(SQL.ReturnResult("select sum(discount) from order_cart where terminal_id=@terminal_id"));
-            if (SQL.HasException(true))
-            {
-                MessageBox.Show("5.0.4");
-                return;
-            }
-
-            //SQL SERVER BLOCKING
+            //SQL SERVER BLOCKING FOR PROFIT COMPUTATION
             int ProfitRetryCount = 5;
             bool ProfitSuccess = false;
             while (ProfitRetryCount > 0 && !ProfitSuccess)
@@ -811,20 +860,17 @@ namespace EcoPOSv2
                     if (ProfitRetryCount == 0) throw;
                 }
             }
+
+            if (!ProfitSuccess)
+            {
+                new Notification().PopUp("Profit Computation Failed", "Error", "error");
+                return;
+            }
             #endregion
 
             #region increase customer points
-
             if (action == 1 && lblCustomerID.Text != "0" && cbxUsePoints.Checked == false)
             {
-                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                bool rewardable = Convert.ToBoolean(SQL.ReturnResult("SELECT cus_rewardable FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)".ToString()));
-                if (SQL.HasException(true))
-                {
-                    return;
-                }
-
                 if (rewardable)
                 {
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -832,7 +878,7 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
                     SQL.AddParam("@customerID", lblCustomerID.Text);
-                    SQL.AddParam("@cash_paid", decimal.Parse(txtAmount.Text));
+                    SQL.AddParam("@cash_paid", txtAmount.Text);
                     SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
@@ -846,7 +892,7 @@ namespace EcoPOSv2
 
                     // update card balance
                     SQL.AddParam("@customerID", lblCustomerID.Text);
-                    SQL.AddParam("@cash_paid", decimal.Parse(txtAmount.Text));
+                    SQL.AddParam("@cash_paid", txtAmount.Text);
                     SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
                     SQL.Query("UPDATE member_card SET card_balance = card_balance + (@cash_paid / @cus_amt_per_pt) WHERE customerID = @customerID");
                     if (SQL.HasException(true))
@@ -860,7 +906,6 @@ namespace EcoPOSv2
             if (action == 1 && cbxUsePoints.Checked == true)
             {
                 // update card balance
-
                 SQL.AddParam("@customerID", lblCustomerID.Text);
                 SQL.AddParam("@cash_paid", lblGrandTotal.Text);
                 SQL.Query("UPDATE member_card SET card_balance = card_balance - @cash_paid WHERE customerID = @customerID");
@@ -870,11 +915,9 @@ namespace EcoPOSv2
                     return;
                 }
             }
-
             #endregion
 
             #region gift card
-
             if (lblGCNo.Text != "0")
             {
                 SQL.AddParam("@giftcard_no", lblGCNo.Text);
@@ -885,7 +928,6 @@ namespace EcoPOSv2
                     return;
                 }
             }
-
             #endregion
 
             #region clear cart
@@ -940,6 +982,7 @@ namespace EcoPOSv2
             PGiftCard frmPGiftCard = new PGiftCard();
             frmPGiftCard.frmPayment = this;
             frmPGiftCard.ShowDialog();
+            txtAmount.Focus();
         }
 
         private void txtAmount_TextChanged(object sender, EventArgs e)

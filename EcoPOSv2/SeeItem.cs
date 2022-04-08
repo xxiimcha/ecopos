@@ -144,6 +144,26 @@ namespace EcoPOSv2
                        SELECT productID, description, name, @type," + type_query + ", 1, 0,cost,@terminal_id,is_vatable, IIF(@type='R', rp_inclusive, wp_inclusive), IIF(@type='R', rp_exclusive, wp_exclusive), @time_updated FROM products WHERE productID = @productID");
                     if (SQL.HasException(true))
                         return;
+
+                    SQL.AddParam("@productID", Convert.ToInt32(r.Cells[0].Value.ToString()));
+                    Boolean has_expiry = Convert.ToBoolean(SQL.ReturnResult(@"SELECT has_expiry FROM products WHERE productID = @productID"));
+                    if (SQL.HasException(true))
+                        return;
+                    if (has_expiry)
+                    {
+                        SQL.AddParam("@productID", Convert.ToInt32(r.Cells[0].Value.ToString()));
+                        DateTime expiration = Convert.ToDateTime(SQL.ReturnResult(@"SELECT expiration_date FROM products WHERE productID = @productID"));
+                        if (SQL.HasException(true))
+                            return;
+                        if (expiration <= DateTime.Now)
+                        {                                          
+                            new Notification(5).PopUp("The Product scanned is already expired.", "Warning", "error");
+                        }
+                        else if (expiration <= DateTime.Now.AddDays(7))
+                        {
+                            new Notification(5).PopUp("The Product scanned is near expiration.", "Warning", "warning");
+                        }
+                    }
                 }
                 else
                 {
