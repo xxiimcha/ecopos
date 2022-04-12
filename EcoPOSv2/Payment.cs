@@ -878,7 +878,7 @@ namespace EcoPOSv2
                     if (SQL.HasException(true))
                         return;
                     SQL.AddParam("@customerID", lblCustomerID.Text);
-                    SQL.AddParam("@cash_paid", txtAmount.Text);
+                    SQL.AddParam("@cash_paid", Convert.ToDecimal(txtAmount.Text));
                     SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
@@ -892,7 +892,7 @@ namespace EcoPOSv2
 
                     // update card balance
                     SQL.AddParam("@customerID", lblCustomerID.Text);
-                    SQL.AddParam("@cash_paid", txtAmount.Text);
+                    SQL.AddParam("@cash_paid", Convert.ToDecimal(txtAmount.Text));
                     SQL.AddParam("@cus_amt_per_pt", cus_amt_per_pt);
                     SQL.Query("UPDATE member_card SET card_balance = card_balance + (@cash_paid / @cus_amt_per_pt) WHERE customerID = @customerID");
                     if (SQL.HasException(true))

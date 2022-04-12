@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prompt));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
@@ -36,24 +35,23 @@
             this.txtUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnProceed = new Guna.UI2.WinForms.Guna2TileButton();
-            this.MainFormElipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.gunaControlBox1);
             this.guna2Panel1.Controls.Add(this.txtPass);
             this.guna2Panel1.Controls.Add(this.txtUser);
             this.guna2Panel1.Controls.Add(this.label3);
             this.guna2Panel1.Controls.Add(this.btnProceed);
-            this.guna2Panel1.Location = new System.Drawing.Point(12, 12);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(425, 271);
+            this.guna2Panel1.Size = new System.Drawing.Size(451, 297);
             this.guna2Panel1.TabIndex = 10;
             // 
             // gunaControlBox1
@@ -63,7 +61,7 @@
             this.gunaControlBox1.AnimationSpeed = 0.03F;
             this.gunaControlBox1.IconColor = System.Drawing.Color.Black;
             this.gunaControlBox1.IconSize = 15F;
-            this.gunaControlBox1.Location = new System.Drawing.Point(373, 3);
+            this.gunaControlBox1.Location = new System.Drawing.Point(399, 3);
             this.gunaControlBox1.Name = "gunaControlBox1";
             this.gunaControlBox1.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(58)))), ((int)(((byte)(183)))));
             this.gunaControlBox1.OnHoverIconColor = System.Drawing.Color.White;
@@ -89,7 +87,7 @@
             this.txtPass.ForeColor = System.Drawing.Color.Black;
             this.txtPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPass.HoverState.Parent = this.txtPass;
-            this.txtPass.Location = new System.Drawing.Point(24, 156);
+            this.txtPass.Location = new System.Drawing.Point(35, 158);
             this.txtPass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '\0';
@@ -120,7 +118,7 @@
             this.txtUser.ForeColor = System.Drawing.Color.Black;
             this.txtUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUser.HoverState.Parent = this.txtUser;
-            this.txtUser.Location = new System.Drawing.Point(24, 110);
+            this.txtUser.Location = new System.Drawing.Point(35, 112);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
@@ -135,7 +133,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(50, 52);
+            this.label3.Location = new System.Drawing.Point(61, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(335, 32);
             this.label3.TabIndex = 2;
@@ -150,18 +148,13 @@
             this.btnProceed.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProceed.ForeColor = System.Drawing.Color.White;
             this.btnProceed.HoverState.Parent = this.btnProceed;
-            this.btnProceed.Location = new System.Drawing.Point(123, 211);
+            this.btnProceed.Location = new System.Drawing.Point(134, 218);
             this.btnProceed.Name = "btnProceed";
             this.btnProceed.ShadowDecoration.Parent = this.btnProceed;
             this.btnProceed.Size = new System.Drawing.Size(182, 35);
             this.btnProceed.TabIndex = 2;
             this.btnProceed.Text = "PROCEED";
             this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click);
-            // 
-            // MainFormElipse
-            // 
-            this.MainFormElipse.BorderRadius = 20;
-            this.MainFormElipse.TargetControl = this;
             // 
             // Prompt
             // 
@@ -190,7 +183,6 @@
         private Guna.UI2.WinForms.Guna2TileButton btnProceed;
         private Guna.UI2.WinForms.Guna2TextBox txtUser;
         private Guna.UI2.WinForms.Guna2TextBox txtPass;
-        private Guna.UI2.WinForms.Guna2Elipse MainFormElipse;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
     }
 }

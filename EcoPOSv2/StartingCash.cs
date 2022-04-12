@@ -142,7 +142,6 @@ namespace EcoPOSv2
                     {
                         sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                         sql.Query("INSERT INTO order_no (order_no, terminal_id) VALUES (1, @terminal_id)");
-                        MessageBox.Show("Inserted");
                         if (sql.HasException(true))
                         {
                             MessageBox.Show("Error in Start Order no");
@@ -151,7 +150,6 @@ namespace EcoPOSv2
                     }
                     else
                     {
-                        MessageBox.Show("nag rurun");
                         string or = sql.ReturnResult("SELECT MAX(order_ref) FROM order_no WHERE terminal_id =" + Properties.Settings.Default.Terminal_id);
                         int order_ref = or != "" 
                             ? int.Parse(sql.ReturnResult("SELECT MAX(order_ref) FROM order_no WHERE terminal_id = " + Properties.Settings.Default.Terminal_id)) 
@@ -166,7 +164,6 @@ namespace EcoPOSv2
                         {
                             sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                             sql.Query("INSERT INTO order_no (order_no, terminal_id) VALUES (1, @terminal_id)");
-                            MessageBox.Show("Inserted");
                             if (sql.HasException(true))
                             {
                                 MessageBox.Show("Error in Start Order no");
@@ -177,7 +174,6 @@ namespace EcoPOSv2
                         {
                             sql.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                             sql.Query("UPDATE order_no SET order_no = 1 WHERE terminal_id = @terminal_id AND order_ref =" + order_ref);
-                            MessageBox.Show("Updated");
                             if (sql.HasException(true))
                             {
                                 MessageBox.Show("Error in Updating");
