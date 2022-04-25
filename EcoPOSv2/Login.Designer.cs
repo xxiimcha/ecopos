@@ -80,7 +80,7 @@
             this.btnLogin.Location = new System.Drawing.Point(3, 3);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
-            this.btnLogin.Size = new System.Drawing.Size(237, 48);
+            this.btnLogin.Size = new System.Drawing.Size(221, 48);
             this.btnLogin.TabIndex = 8;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -102,14 +102,14 @@
             this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbPassword.HoverState.Parent = this.tbPassword;
-            this.tbPassword.Location = new System.Drawing.Point(521, 5);
+            this.tbPassword.Location = new System.Drawing.Point(489, 5);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '\0';
             this.tbPassword.PlaceholderText = "Password";
             this.tbPassword.SelectedText = "";
             this.tbPassword.ShadowDecoration.Parent = this.tbPassword;
-            this.tbPassword.Size = new System.Drawing.Size(337, 44);
+            this.tbPassword.Size = new System.Drawing.Size(315, 44);
             this.tbPassword.TabIndex = 5;
             this.tbPassword.UseSystemPasswordChar = true;
             this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
@@ -131,14 +131,14 @@
             this.tbUsername.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbUsername.HoverState.Parent = this.tbUsername;
-            this.tbUsername.Location = new System.Drawing.Point(521, 5);
+            this.tbUsername.Location = new System.Drawing.Point(489, 5);
             this.tbUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.PasswordChar = '\0';
             this.tbUsername.PlaceholderText = "Username";
             this.tbUsername.SelectedText = "";
             this.tbUsername.ShadowDecoration.Parent = this.tbUsername;
-            this.tbUsername.Size = new System.Drawing.Size(337, 44);
+            this.tbUsername.Size = new System.Drawing.Size(315, 44);
             this.tbUsername.TabIndex = 4;
             // 
             // lblDateTime
@@ -146,9 +146,9 @@
             this.lblDateTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.Green;
-            this.lblDateTime.Location = new System.Drawing.Point(210, 0);
+            this.lblDateTime.Location = new System.Drawing.Point(197, 0);
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(960, 54);
+            this.lblDateTime.Size = new System.Drawing.Size(899, 54);
             this.lblDateTime.TabIndex = 49;
             this.lblDateTime.Text = "12:00:00 PM";
             this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -167,10 +167,10 @@
             // 
             this.lblVersion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(693, 0);
+            this.lblVersion.Location = new System.Drawing.Point(650, 0);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.lblVersion.Size = new System.Drawing.Size(684, 118);
+            this.lblVersion.Size = new System.Drawing.Size(641, 118);
             this.lblVersion.TabIndex = 51;
             this.lblVersion.Text = "v2.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -187,7 +187,7 @@
             this.lblStoreIsClosed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.lblStoreIsClosed.Location = new System.Drawing.Point(3, 604);
             this.lblStoreIsClosed.Name = "lblStoreIsClosed";
-            this.lblStoreIsClosed.Size = new System.Drawing.Size(1380, 60);
+            this.lblStoreIsClosed.Size = new System.Drawing.Size(1294, 60);
             this.lblStoreIsClosed.TabIndex = 53;
             this.lblStoreIsClosed.Text = "Store is closed for today. Come back tomorrow!";
             this.lblStoreIsClosed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -215,7 +215,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.57167F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.66678F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.33356F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1386, 788);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1300, 788);
             this.tableLayoutPanel1.TabIndex = 54;
             // 
             // tableLayoutPanel6
@@ -230,7 +230,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1380, 54);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1294, 54);
             this.tableLayoutPanel6.TabIndex = 56;
             // 
             // tableLayoutPanel2
@@ -245,16 +245,16 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1380, 319);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1294, 319);
             this.tableLayoutPanel2.TabIndex = 50;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox3.Image = global::EcoPOSv2.Properties.Resources.eco_pos;
-            this.pictureBox3.Location = new System.Drawing.Point(348, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(326, 3);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(684, 313);
+            this.pictureBox3.Size = new System.Drawing.Size(641, 313);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
@@ -271,7 +271,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1380, 118);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1294, 118);
             this.tableLayoutPanel3.TabIndex = 51;
             // 
             // tableLayoutPanel4
@@ -286,7 +286,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1380, 93);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1294, 93);
             this.tableLayoutPanel4.TabIndex = 54;
             // 
             // tableLayoutPanel7
@@ -297,11 +297,11 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.76041F));
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(348, 3);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(326, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(684, 87);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(641, 87);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -311,12 +311,12 @@
             this.tableLayoutPanel8.Controls.Add(this.lbLoginCard, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.btnLogin, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(220, 3);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(206, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(243, 81);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(227, 81);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // lbLoginCard
@@ -325,7 +325,7 @@
             this.lbLoginCard.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoginCard.Location = new System.Drawing.Point(3, 54);
             this.lbLoginCard.Name = "lbLoginCard";
-            this.lbLoginCard.Size = new System.Drawing.Size(237, 27);
+            this.lbLoginCard.Size = new System.Drawing.Size(221, 27);
             this.lbLoginCard.TabIndex = 10;
             this.lbLoginCard.TabStop = true;
             this.lbLoginCard.Text = "LOGIN VIA CARD";
@@ -344,7 +344,7 @@
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1380, 54);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1294, 54);
             this.tableLayoutPanel5.TabIndex = 55;
             // 
             // tableLayoutPanel9
@@ -361,7 +361,7 @@
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1380, 54);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1294, 54);
             this.tableLayoutPanel9.TabIndex = 57;
             // 
             // panel1
@@ -369,9 +369,9 @@
             this.panel1.Controls.Add(this.btnMinimize);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(1176, 3);
+            this.panel1.Location = new System.Drawing.Point(1102, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(201, 48);
+            this.panel1.Size = new System.Drawing.Size(189, 48);
             this.panel1.TabIndex = 50;
             // 
             // btnMinimize
@@ -382,7 +382,7 @@
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMinimize.IconColor = System.Drawing.Color.Black;
             this.btnMinimize.IconSize = 15F;
-            this.btnMinimize.Location = new System.Drawing.Point(53, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(41, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(213)))), ((int)(((byte)(254)))));
             this.btnMinimize.OnHoverIconColor = System.Drawing.Color.White;
@@ -397,7 +397,7 @@
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnClose.IconColor = System.Drawing.Color.Black;
             this.btnClose.IconSize = 15F;
-            this.btnClose.Location = new System.Drawing.Point(127, 0);
+            this.btnClose.Location = new System.Drawing.Point(115, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
@@ -413,7 +413,7 @@
             this.lblTerminal.ForeColor = System.Drawing.Color.Green;
             this.lblTerminal.Location = new System.Drawing.Point(3, 0);
             this.lblTerminal.Name = "lblTerminal";
-            this.lblTerminal.Size = new System.Drawing.Size(201, 54);
+            this.lblTerminal.Size = new System.Drawing.Size(188, 54);
             this.lblTerminal.TabIndex = 51;
             this.lblTerminal.Text = "Terminal";
             this.lblTerminal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -423,7 +423,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1300, 788);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

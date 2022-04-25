@@ -38,13 +38,15 @@
             this.lblByPassUser = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
+            this.btnHide = new Guna.UI2.WinForms.Guna2Button();
+            this.pnlShortcut = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnMore = new Guna.UI2.WinForms.Guna2Button();
             this.btnCalculator = new Guna.UI2.WinForms.Guna2Button();
             this.btnXReading = new Guna.UI2.WinForms.Guna2Button();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnOrder = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
@@ -52,17 +54,18 @@
             this.pnlType = new Guna.UI2.WinForms.Guna2Panel();
             this.lblType = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnlUser = new Guna.UI2.WinForms.Guna2Panel();
             this.lblBypassedBy = new Guna.UI.WinForms.GunaLabel();
             this.btnUserRole = new Guna.UI.WinForms.GunaButton();
             this.pnlChild = new System.Windows.Forms.Panel();
             this.tmrCurrentDateTime = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
+            this.pnlShortcut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             this.pnlType.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
+            this.pnlUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,7 +78,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1366, 34);
+            this.panel1.Size = new System.Drawing.Size(1300, 34);
             this.panel1.TabIndex = 0;
             // 
             // btnMinimize
@@ -85,7 +88,7 @@
             this.btnMinimize.FillColor = System.Drawing.Color.Transparent;
             this.btnMinimize.HoverState.Parent = this.btnMinimize;
             this.btnMinimize.IconColor = System.Drawing.Color.White;
-            this.btnMinimize.Location = new System.Drawing.Point(1275, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(1209, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.PressedColor = System.Drawing.Color.Gray;
             this.btnMinimize.ShadowDecoration.Parent = this.btnMinimize;
@@ -101,7 +104,7 @@
             this.btnclosetemp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnclosetemp.HoverState.Parent = this.btnclosetemp;
             this.btnclosetemp.IconColor = System.Drawing.Color.White;
-            this.btnclosetemp.Location = new System.Drawing.Point(1320, 0);
+            this.btnclosetemp.Location = new System.Drawing.Point(1254, 0);
             this.btnclosetemp.Name = "btnclosetemp";
             this.btnclosetemp.PressedColor = System.Drawing.Color.Firebrick;
             this.btnclosetemp.ShadowDecoration.Parent = this.btnclosetemp;
@@ -118,7 +121,7 @@
             this.lblTraningMode.ForeColor = System.Drawing.Color.White;
             this.lblTraningMode.Location = new System.Drawing.Point(592, 5);
             this.lblTraningMode.Name = "lblTraningMode";
-            this.lblTraningMode.Size = new System.Drawing.Size(182, 25);
+            this.lblTraningMode.Size = new System.Drawing.Size(116, 25);
             this.lblTraningMode.TabIndex = 12;
             this.lblTraningMode.Text = "TRAINING MODE";
             this.lblTraningMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,22 +170,87 @@
             // gunaPanel1
             // 
             this.gunaPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gunaPanel1.Controls.Add(this.btnHide);
+            this.gunaPanel1.Controls.Add(this.pnlShortcut);
             this.gunaPanel1.Controls.Add(this.btnMore);
             this.gunaPanel1.Controls.Add(this.btnCalculator);
             this.gunaPanel1.Controls.Add(this.btnXReading);
             this.gunaPanel1.Controls.Add(this.lblVersion);
-            this.gunaPanel1.Controls.Add(this.label6);
-            this.gunaPanel1.Controls.Add(this.label2);
-            this.gunaPanel1.Controls.Add(this.label1);
             this.gunaPanel1.Controls.Add(this.pbLogo);
             this.gunaPanel1.Controls.Add(this.btnOrder);
             this.gunaPanel1.Controls.Add(this.guna2Panel2);
-            this.gunaPanel1.Controls.Add(this.guna2Panel1);
+            this.gunaPanel1.Controls.Add(this.pnlUser);
             this.gunaPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.gunaPanel1.Location = new System.Drawing.Point(0, 34);
             this.gunaPanel1.Name = "gunaPanel1";
             this.gunaPanel1.Size = new System.Drawing.Size(210, 734);
             this.gunaPanel1.TabIndex = 1;
+            // 
+            // btnHide
+            // 
+            this.btnHide.CheckedState.Parent = this.btnHide;
+            this.btnHide.CustomImages.Parent = this.btnHide;
+            this.btnHide.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHide.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHide.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnHide.ForeColor = System.Drawing.Color.White;
+            this.btnHide.HoverState.Parent = this.btnHide;
+            this.btnHide.Location = new System.Drawing.Point(0, 590);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.ShadowDecoration.Parent = this.btnHide;
+            this.btnHide.Size = new System.Drawing.Size(208, 13);
+            this.btnHide.TabIndex = 12;
+            this.btnHide.Text = "HIDE";
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
+            // pnlShortcut
+            // 
+            this.pnlShortcut.Controls.Add(this.label1);
+            this.pnlShortcut.Controls.Add(this.label2);
+            this.pnlShortcut.Controls.Add(this.label6);
+            this.pnlShortcut.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlShortcut.Location = new System.Drawing.Point(0, 476);
+            this.pnlShortcut.Name = "pnlShortcut";
+            this.pnlShortcut.ShadowDecoration.Parent = this.pnlShortcut;
+            this.pnlShortcut.Size = new System.Drawing.Size(208, 114);
+            this.pnlShortcut.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
+            this.label1.Location = new System.Drawing.Point(19, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 21);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "HOTKEY SHORTCUT(S)";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
+            this.label2.Location = new System.Drawing.Point(40, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 15);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "USER BYPASS          (F11)";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
+            this.label6.Location = new System.Drawing.Point(40, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(137, 15);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "REMOVE BYPASS    (F12)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnMore
             // 
@@ -209,6 +277,7 @@
             this.btnMore.ShadowDecoration.Parent = this.btnMore;
             this.btnMore.Size = new System.Drawing.Size(208, 60);
             this.btnMore.TabIndex = 9;
+            this.btnMore.Tag = "More";
             this.btnMore.Text = "More (F10)";
             this.btnMore.TextOffset = new System.Drawing.Point(5, 0);
             this.btnMore.Click += new System.EventHandler(this.btnMore_Click);
@@ -237,6 +306,7 @@
             this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
             this.btnCalculator.Size = new System.Drawing.Size(208, 60);
             this.btnCalculator.TabIndex = 8;
+            this.btnCalculator.Tag = "Calculator";
             this.btnCalculator.Text = "Calculator (F9)";
             this.btnCalculator.TextOffset = new System.Drawing.Point(5, 0);
             this.btnCalculator.Click += new System.EventHandler(this.btnCalculator_Click);
@@ -265,6 +335,7 @@
             this.btnXReading.ShadowDecoration.Parent = this.btnXReading;
             this.btnXReading.Size = new System.Drawing.Size(208, 60);
             this.btnXReading.TabIndex = 7;
+            this.btnXReading.Tag = "Switch Cashier";
             this.btnXReading.Text = "Switch Cashier (F8)";
             this.btnXReading.TextOffset = new System.Drawing.Point(20, 0);
             this.btnXReading.Click += new System.EventHandler(this.btnXReading_Click);
@@ -282,43 +353,6 @@
             this.lblVersion.TabIndex = 8;
             this.lblVersion.Text = "ver 3.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
-            this.label6.Location = new System.Drawing.Point(36, 573);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(137, 15);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "REMOVE BYPASS    (F12)";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(114)))), ((int)(((byte)(114)))));
-            this.label2.Location = new System.Drawing.Point(36, 550);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 15);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "USER BYPASS          (F11)";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
-            this.label1.Location = new System.Drawing.Point(15, 521);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 21);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "HOTKEY SHORTCUT(S)";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pbLogo
             // 
@@ -356,6 +390,7 @@
             this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
             this.btnOrder.Size = new System.Drawing.Size(208, 60);
             this.btnOrder.TabIndex = 6;
+            this.btnOrder.Tag = "Order";
             this.btnOrder.Text = "Order (F2)";
             this.btnOrder.TextOffset = new System.Drawing.Point(5, 0);
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
@@ -429,21 +464,21 @@
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Label3.Click += new System.EventHandler(this.Label3_Click);
             // 
-            // guna2Panel1
+            // pnlUser
             // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.DimGray;
-            this.guna2Panel1.Controls.Add(this.lblBypassedBy);
-            this.guna2Panel1.Controls.Add(this.btnUserRole);
-            this.guna2Panel1.Controls.Add(this.lblByPassUser);
-            this.guna2Panel1.Controls.Add(this.lblUser);
-            this.guna2Panel1.CustomBorderColor = System.Drawing.Color.Black;
-            this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(208, 146);
-            this.guna2Panel1.TabIndex = 16;
+            this.pnlUser.BorderColor = System.Drawing.Color.DimGray;
+            this.pnlUser.Controls.Add(this.lblBypassedBy);
+            this.pnlUser.Controls.Add(this.btnUserRole);
+            this.pnlUser.Controls.Add(this.lblByPassUser);
+            this.pnlUser.Controls.Add(this.lblUser);
+            this.pnlUser.CustomBorderColor = System.Drawing.Color.Black;
+            this.pnlUser.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlUser.Location = new System.Drawing.Point(0, 0);
+            this.pnlUser.Name = "pnlUser";
+            this.pnlUser.ShadowDecoration.Parent = this.pnlUser;
+            this.pnlUser.Size = new System.Drawing.Size(208, 146);
+            this.pnlUser.TabIndex = 16;
             // 
             // lblBypassedBy
             // 
@@ -494,7 +529,7 @@
             this.pnlChild.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChild.Location = new System.Drawing.Point(210, 34);
             this.pnlChild.Name = "pnlChild";
-            this.pnlChild.Size = new System.Drawing.Size(1156, 734);
+            this.pnlChild.Size = new System.Drawing.Size(1090, 734);
             this.pnlChild.TabIndex = 2;
             // 
             // tmrCurrentDateTime
@@ -507,7 +542,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1366, 768);
+            this.ClientSize = new System.Drawing.Size(1300, 768);
             this.Controls.Add(this.pnlChild);
             this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.panel1);
@@ -524,10 +559,12 @@
             this.panel1.ResumeLayout(false);
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
+            this.pnlShortcut.ResumeLayout(false);
+            this.pnlShortcut.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.pnlType.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
+            this.pnlUser.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -554,12 +591,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTerminalName;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel pnlUser;
         private Guna.UI.WinForms.GunaButton btnUserRole;
         public Guna.UI.WinForms.GunaLabel lblBypassedBy;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2ControlBox btnclosetemp;
         private Guna.UI2.WinForms.Guna2ControlBox btnMinimize;
         private Guna.UI2.WinForms.Guna2Panel pnlType;
+        private Guna.UI2.WinForms.Guna2Button btnHide;
+        private Guna.UI2.WinForms.Guna2Panel pnlShortcut;
     }
 }

@@ -463,6 +463,39 @@ namespace EcoPOSv2
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            if (btnHide.Text == "HIDE")
+            {
+                pnlUser.Visible = false;
+                guna2Panel2.Visible = false;
+                pnlShortcut.Visible = false;
+                gunaPanel1.Width = 55;
+
+                btnOrder.Text = "";
+                btnXReading.Text = "";
+                btnCalculator.Text = "";
+                btnMore.Text = "";
+                
+                btnHide.Text = "SHOW";
+            }
+            else
+            {
+                pnlUser.Visible = true;
+                guna2Panel2.Visible = true;
+                pnlShortcut.Visible = true;
+                gunaPanel1.Width = 210;
+
+                btnOrder.Text = "Order (F2)";
+                btnXReading.Text = "Switch Cashier (F8)";
+                btnCalculator.Text = "Calculator (F9)";
+                btnMore.Text = "More (F10)";
+
+                btnHide.Text = "HIDE";
+            }
+            
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
