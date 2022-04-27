@@ -193,12 +193,12 @@
             this.btnHide.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHide.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnHide.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnHide.ForeColor = System.Drawing.Color.White;
+            this.btnHide.ForeColor = System.Drawing.Color.DimGray;
             this.btnHide.HoverState.Parent = this.btnHide;
             this.btnHide.Location = new System.Drawing.Point(0, 590);
             this.btnHide.Name = "btnHide";
             this.btnHide.ShadowDecoration.Parent = this.btnHide;
-            this.btnHide.Size = new System.Drawing.Size(208, 13);
+            this.btnHide.Size = new System.Drawing.Size(208, 31);
             this.btnHide.TabIndex = 12;
             this.btnHide.Text = "HIDE";
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);

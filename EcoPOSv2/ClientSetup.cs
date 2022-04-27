@@ -52,18 +52,6 @@ namespace EcoPOSv2
                 Properties.Settings.Default.Save();
             }
 
-            //BIR Accredited
-            if (checkBoxBirAccredited.Checked)
-            {
-                Properties.Settings.Default.isBirAccredited = true;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.isBirAccredited = false;
-                Properties.Settings.Default.Save();
-            }
-
             new Notification().PopUp("Setup Settings Saved", "Success", "success");
         }
 
@@ -94,16 +82,6 @@ namespace EcoPOSv2
                 btnStaticIP.Enabled = false;
                 btnEnableTCP.Enabled = false;
                 checkBoxServerPC.Enabled = false;
-            }
-
-            //BIR ACCREDITED
-            if (Properties.Settings.Default.isBirAccredited == true)
-            {
-                checkBoxBirAccredited.Checked = true;
-            }
-            else
-            {
-                checkBoxBirAccredited.Checked = false;
             }
         }
 
@@ -156,7 +134,7 @@ namespace EcoPOSv2
             else { 
                 if (MessageBox.Show(this, "Do you want to set your IP to a static IP?\n"+ GetLocalIPAddress(), "Set Static IP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ExecuteAsAdmin("IPtoStatic.bat");
+                    ExecuteAsAdmin(@"C:\EcoPOS\ServerSetup\1_IPtoStatic.bat");
                 }
             }
         }
@@ -217,7 +195,9 @@ namespace EcoPOSv2
 
         private void btnEnableTCP_Click(object sender, EventArgs e)
         {
-            ExecuteAsAdmin("RunTCP.bat");
+            ExecuteAsAdmin(@"C:\EcoPOS\ServerSetup\2_RunTCP.bat");
+            ExecuteAsAdmin(@"C:\EcoPOS\ServerSetup\3_SetPort.bat");
+            ExecuteAsAdmin(@"C:\EcoPOS\ServerSetup\4_SetFirewallRule.bat");
         }
     }
 }

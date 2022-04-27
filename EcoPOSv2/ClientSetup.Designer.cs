@@ -31,8 +31,6 @@ namespace EcoPOSv2
         {
             this.checkBoxServerType = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.checkBoxBirAccredited = new Guna.UI2.WinForms.Guna2CustomCheckBox();
-            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.btnSaveSettings = new Guna.UI2.WinForms.Guna2TileButton();
             this.checkBoxServerPC = new Guna.UI2.WinForms.Guna2CustomCheckBox();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
@@ -49,7 +47,7 @@ namespace EcoPOSv2
             this.checkBoxServerType.CheckedState.BorderThickness = 0;
             this.checkBoxServerType.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
             this.checkBoxServerType.CheckedState.Parent = this.checkBoxServerType;
-            this.checkBoxServerType.Location = new System.Drawing.Point(61, 41);
+            this.checkBoxServerType.Location = new System.Drawing.Point(26, 35);
             this.checkBoxServerType.Name = "checkBoxServerType";
             this.checkBoxServerType.ShadowDecoration.Parent = this.checkBoxServerType;
             this.checkBoxServerType.Size = new System.Drawing.Size(30, 30);
@@ -65,40 +63,11 @@ namespace EcoPOSv2
             // 
             this.gunaLabel1.AutoSize = true;
             this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.Location = new System.Drawing.Point(96, 44);
+            this.gunaLabel1.Location = new System.Drawing.Point(61, 38);
             this.gunaLabel1.Name = "gunaLabel1";
             this.gunaLabel1.Size = new System.Drawing.Size(91, 21);
             this.gunaLabel1.TabIndex = 25;
             this.gunaLabel1.Text = "Server Type";
-            // 
-            // checkBoxBirAccredited
-            // 
-            this.checkBoxBirAccredited.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxBirAccredited.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.checkBoxBirAccredited.CheckedState.BorderRadius = 2;
-            this.checkBoxBirAccredited.CheckedState.BorderThickness = 0;
-            this.checkBoxBirAccredited.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.checkBoxBirAccredited.CheckedState.Parent = this.checkBoxBirAccredited;
-            this.checkBoxBirAccredited.Location = new System.Drawing.Point(399, 38);
-            this.checkBoxBirAccredited.Name = "checkBoxBirAccredited";
-            this.checkBoxBirAccredited.ShadowDecoration.Parent = this.checkBoxBirAccredited;
-            this.checkBoxBirAccredited.Size = new System.Drawing.Size(30, 30);
-            this.checkBoxBirAccredited.TabIndex = 28;
-            this.checkBoxBirAccredited.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.checkBoxBirAccredited.UncheckedState.BorderRadius = 2;
-            this.checkBoxBirAccredited.UncheckedState.BorderThickness = 0;
-            this.checkBoxBirAccredited.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.checkBoxBirAccredited.UncheckedState.Parent = this.checkBoxBirAccredited;
-            // 
-            // gunaLabel2
-            // 
-            this.gunaLabel2.AutoSize = true;
-            this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel2.Location = new System.Drawing.Point(434, 41);
-            this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(110, 21);
-            this.gunaLabel2.TabIndex = 27;
-            this.gunaLabel2.Text = "BIR Accredited";
             // 
             // btnSaveSettings
             // 
@@ -111,7 +80,7 @@ namespace EcoPOSv2
             this.btnSaveSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveSettings.ForeColor = System.Drawing.Color.White;
             this.btnSaveSettings.HoverState.Parent = this.btnSaveSettings;
-            this.btnSaveSettings.Location = new System.Drawing.Point(206, 155);
+            this.btnSaveSettings.Location = new System.Drawing.Point(217, 92);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.ShadowDecoration.Parent = this.btnSaveSettings;
             this.btnSaveSettings.Size = new System.Drawing.Size(205, 45);
@@ -127,7 +96,7 @@ namespace EcoPOSv2
             this.checkBoxServerPC.CheckedState.BorderThickness = 0;
             this.checkBoxServerPC.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
             this.checkBoxServerPC.CheckedState.Parent = this.checkBoxServerPC;
-            this.checkBoxServerPC.Location = new System.Drawing.Point(61, 87);
+            this.checkBoxServerPC.Location = new System.Drawing.Point(333, 37);
             this.checkBoxServerPC.Name = "checkBoxServerPC";
             this.checkBoxServerPC.ShadowDecoration.Parent = this.checkBoxServerPC;
             this.checkBoxServerPC.Size = new System.Drawing.Size(30, 30);
@@ -143,7 +112,7 @@ namespace EcoPOSv2
             // 
             this.gunaLabel3.AutoSize = true;
             this.gunaLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel3.Location = new System.Drawing.Point(96, 90);
+            this.gunaLabel3.Location = new System.Drawing.Point(368, 40);
             this.gunaLabel3.Name = "gunaLabel3";
             this.gunaLabel3.Size = new System.Drawing.Size(78, 21);
             this.gunaLabel3.TabIndex = 38;
@@ -158,7 +127,7 @@ namespace EcoPOSv2
             this.btnStaticIP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStaticIP.ForeColor = System.Drawing.Color.White;
             this.btnStaticIP.HoverState.Parent = this.btnStaticIP;
-            this.btnStaticIP.Location = new System.Drawing.Point(180, 85);
+            this.btnStaticIP.Location = new System.Drawing.Point(452, 35);
             this.btnStaticIP.Name = "btnStaticIP";
             this.btnStaticIP.ShadowDecoration.Parent = this.btnStaticIP;
             this.btnStaticIP.Size = new System.Drawing.Size(75, 32);
@@ -175,7 +144,7 @@ namespace EcoPOSv2
             this.btnDatabaseSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDatabaseSettings.ForeColor = System.Drawing.Color.White;
             this.btnDatabaseSettings.HoverState.Parent = this.btnDatabaseSettings;
-            this.btnDatabaseSettings.Location = new System.Drawing.Point(193, 41);
+            this.btnDatabaseSettings.Location = new System.Drawing.Point(158, 35);
             this.btnDatabaseSettings.Name = "btnDatabaseSettings";
             this.btnDatabaseSettings.ShadowDecoration.Parent = this.btnDatabaseSettings;
             this.btnDatabaseSettings.Size = new System.Drawing.Size(148, 32);
@@ -192,7 +161,7 @@ namespace EcoPOSv2
             this.btnEnableTCP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnableTCP.ForeColor = System.Drawing.Color.White;
             this.btnEnableTCP.HoverState.Parent = this.btnEnableTCP;
-            this.btnEnableTCP.Location = new System.Drawing.Point(261, 85);
+            this.btnEnableTCP.Location = new System.Drawing.Point(533, 35);
             this.btnEnableTCP.Name = "btnEnableTCP";
             this.btnEnableTCP.ShadowDecoration.Parent = this.btnEnableTCP;
             this.btnEnableTCP.Size = new System.Drawing.Size(80, 32);
@@ -204,15 +173,13 @@ namespace EcoPOSv2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 222);
+            this.ClientSize = new System.Drawing.Size(638, 157);
             this.Controls.Add(this.btnEnableTCP);
             this.Controls.Add(this.btnDatabaseSettings);
             this.Controls.Add(this.btnStaticIP);
             this.Controls.Add(this.checkBoxServerPC);
             this.Controls.Add(this.gunaLabel3);
             this.Controls.Add(this.btnSaveSettings);
-            this.Controls.Add(this.checkBoxBirAccredited);
-            this.Controls.Add(this.gunaLabel2);
             this.Controls.Add(this.checkBoxServerType);
             this.Controls.Add(this.gunaLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -229,8 +196,6 @@ namespace EcoPOSv2
 
         private Guna.UI2.WinForms.Guna2CustomCheckBox checkBoxServerType;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
-        private Guna.UI2.WinForms.Guna2CustomCheckBox checkBoxBirAccredited;
-        private Guna.UI.WinForms.GunaLabel gunaLabel2;
         private Guna.UI2.WinForms.Guna2TileButton btnSaveSettings;
         private Guna.UI2.WinForms.Guna2CustomCheckBox checkBoxServerPC;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;

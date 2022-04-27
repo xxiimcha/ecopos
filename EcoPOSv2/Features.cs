@@ -90,6 +90,16 @@ namespace EcoPOSv2
                 checkBox_InventoryEditor.Checked = false;
             }
 
+            //BIR ACCREDITED
+            if (Properties.Settings.Default.isBirAccredited == true)
+            {
+                checkBoxBirAccredited.Checked = true;
+            }
+            else
+            {
+                checkBoxBirAccredited.Checked = false;
+            }
+
 
             if (DVOptions.Instance.login == 1)
             {
@@ -222,6 +232,18 @@ namespace EcoPOSv2
             else
             {
                 Properties.Settings.Default.ShowInventoryEditor = false;
+                Properties.Settings.Default.Save();
+            }
+
+            //if BIR Accredited
+            if (checkBoxBirAccredited.Checked)
+            {
+                Properties.Settings.Default.isBirAccredited = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.isBirAccredited = false;
                 Properties.Settings.Default.Save();
             }
 
