@@ -46,8 +46,9 @@ namespace EcoPOSv2
             if (check_password == 1)
             {
                 this.Close();
-                var frmZReading = new ZReading();
-                frmZReading.Show();
+                var frmXreading = new XReading();
+                frmXreading.isZread = true;
+                frmXreading.ShowDialog();
             }
             else
             {

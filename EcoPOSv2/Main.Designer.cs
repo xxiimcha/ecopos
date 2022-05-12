@@ -73,8 +73,8 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(74)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.btnMinimize);
             this.panel1.Controls.Add(this.btnclosetemp);
-            this.panel1.Controls.Add(this.lblTraningMode);
             this.panel1.Controls.Add(this.lblDateTime);
+            this.panel1.Controls.Add(this.lblTraningMode);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -114,14 +114,12 @@
             // 
             // lblTraningMode
             // 
-            this.lblTraningMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTraningMode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTraningMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTraningMode.ForeColor = System.Drawing.Color.White;
-            this.lblTraningMode.Location = new System.Drawing.Point(592, 5);
+            this.lblTraningMode.Location = new System.Drawing.Point(0, 0);
             this.lblTraningMode.Name = "lblTraningMode";
-            this.lblTraningMode.Size = new System.Drawing.Size(116, 25);
+            this.lblTraningMode.Size = new System.Drawing.Size(1300, 34);
             this.lblTraningMode.TabIndex = 12;
             this.lblTraningMode.Text = "TRAINING MODE";
             this.lblTraningMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

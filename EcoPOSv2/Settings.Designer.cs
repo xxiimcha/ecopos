@@ -98,7 +98,6 @@
             // 
             this.btnDatabaseManagement.BackColor = System.Drawing.Color.White;
             this.btnDatabaseManagement.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDatabaseManagement.Enabled = false;
             this.btnDatabaseManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnDatabaseManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDatabaseManagement.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,7 +113,6 @@
             this.btnDatabaseManagement.TabIndex = 14;
             this.btnDatabaseManagement.Text = "DATABASE MANAGEMENT";
             this.btnDatabaseManagement.UseVisualStyleBackColor = false;
-            this.btnDatabaseManagement.Visible = false;
             this.btnDatabaseManagement.Click += new System.EventHandler(this.btnDatabackup_Click);
             // 
             // btnDeveloper

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XReading));
             this.pnlPreview = new Guna.UI2.WinForms.Guna2Panel();
             this.lblAdjustments = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             this.lblStoreOpen = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
-            this.Label1 = new System.Windows.Forms.Label();
+            this.lblXread = new System.Windows.Forms.Label();
             this.btnBack = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.pnlCD = new System.Windows.Forms.Panel();
             this.lblPayMaya = new System.Windows.Forms.Label();
@@ -183,7 +183,7 @@
             this.pnlPreview.Controls.Add(this.lblStoreOpen);
             this.pnlPreview.Controls.Add(this.Label2);
             this.pnlPreview.Controls.Add(this.btnPrint);
-            this.pnlPreview.Controls.Add(this.Label1);
+            this.pnlPreview.Controls.Add(this.lblXread);
             this.pnlPreview.Controls.Add(this.btnBack);
             this.pnlPreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPreview.Location = new System.Drawing.Point(0, 0);
@@ -354,28 +354,28 @@
             this.dgvPaymentMethod.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPaymentMethod.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPaymentMethod.ColumnHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPaymentMethod.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvPaymentMethod.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.dgvPaymentMethod.Location = new System.Drawing.Point(617, 191);
             this.dgvPaymentMethod.Name = "dgvPaymentMethod";
             this.dgvPaymentMethod.ReadOnly = true;
             this.dgvPaymentMethod.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPaymentMethod.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPaymentMethod.Size = new System.Drawing.Size(309, 350);
             this.dgvPaymentMethod.TabIndex = 69;
             // 
@@ -607,17 +607,17 @@
             this.btnPrint.TextOffset = new System.Drawing.Point(20, 0);
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // Label1
+            // lblXread
             // 
-            this.Label1.AutoSize = true;
-            this.Label1.BackColor = System.Drawing.Color.White;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.ForeColor = System.Drawing.Color.Black;
-            this.Label1.Location = new System.Drawing.Point(93, 13);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(231, 32);
-            this.Label1.TabIndex = 9;
-            this.Label1.Text = "X-Reading Preview";
+            this.lblXread.AutoSize = true;
+            this.lblXread.BackColor = System.Drawing.Color.White;
+            this.lblXread.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblXread.ForeColor = System.Drawing.Color.Black;
+            this.lblXread.Location = new System.Drawing.Point(93, 13);
+            this.lblXread.Name = "lblXread";
+            this.lblXread.Size = new System.Drawing.Size(231, 32);
+            this.lblXread.TabIndex = 9;
+            this.lblXread.Text = "X-Reading Preview";
             // 
             // btnBack
             // 
@@ -1642,7 +1642,7 @@
 
         private Guna.UI2.WinForms.Guna2Panel pnlPreview;
         private Guna.UI2.WinForms.Guna2Button btnPrint;
-        internal System.Windows.Forms.Label Label1;
+        internal System.Windows.Forms.Label lblXread;
         private Guna.UI2.WinForms.Guna2CirclePictureBox btnBack;
         internal System.Windows.Forms.Label lblAdjustments;
         internal System.Windows.Forms.Label Label21;

@@ -592,6 +592,7 @@ namespace EcoPOSv2
                     Boolean EnableSaveByTime = Boolean.Parse(sql.ReturnResult("SELECT backup_by_time FROM backup_setting"));
                     if (EnableSaveByTime)
                     {
+                        DatabaseManagement.Instance.backup_type = "time";
                         DatabaseManagement.Instance.BackupDatabaseInFolder();
                     }
                 }

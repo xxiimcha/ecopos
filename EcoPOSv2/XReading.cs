@@ -15,6 +15,19 @@ namespace EcoPOSv2
 {
     public partial class XReading : Form
     {
+        public static XReading _xread;
+        public static XReading Instance
+        {
+            get
+            {
+                if (_xread == null)
+                {
+                    _xread = new XReading();
+                }
+                return _xread;
+            }
+        }
+
         public void OpenDrawer()
         {
             EmptyReceipt receipt = new EmptyReceipt();
@@ -57,12 +70,20 @@ namespace EcoPOSv2
         int store_open_userID;
         int shift_start_userID;
 
+        public Boolean isZread = false;
+
         private void XReading_Load(object sender, EventArgs e)
         {
             guna2ShadowForm1.SetShadowForm(this);
 
             LoadXReadingRecords();
             TextboxValidation();
+
+            if (isZread)
+            {
+                lblXread.Text = "Shift Preview";
+                btnPrint.Text = "Proceed to ZReading";
+            }
         }
         private void TextboxValidation()
         {
@@ -93,7 +114,7 @@ namespace EcoPOSv2
             AssignValidation(ref txtPayMaya, ValidationType.Price);
         }
 
-        private void LoadXReadingRecords()
+        public void LoadXReadingRecords()
         {
             //string datetime_now = DateTime.Now.ToString("yyyy - MM - dd HH: mm:ss");
             string datetime_now = DateTime.Now.ToString("MM/d/yyyy HH:mm:ss tt");
@@ -391,7 +412,7 @@ namespace EcoPOSv2
             dgvPaymentMethod.DataSource = SQL.DBDT;
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
+        public void xreadPrint()
         {
             //check xreading ref
             int xreading_ref = 1;
@@ -436,7 +457,7 @@ namespace EcoPOSv2
                 MessageBox.Show("1");
                 return;
             }
-                
+
             // save cashier declaration
 
             decimal GC = 0;
@@ -506,21 +527,37 @@ namespace EcoPOSv2
                 return;
             }
 
-            Main.Instance.close = true;
-            Main.Instance.Close();
-
-            //Main.Instance.UpdateMemberCards();
-            //Main.Instance.UpdateGiftCards();
-            SQLControl sql = new SQLControl();
-            Boolean EnableSaveByTime = Boolean.Parse(sql.ReturnResult("SELECT backup_by_end_shift FROM backup_setting"));
-            if (EnableSaveByTime)
-            {
-                DatabaseManagement.Instance.BackupDatabaseInFolder();
-            }
-
-            Environment.Exit(0);
-            System.Diagnostics.Process.Start(Application.ExecutablePath);
+            
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (isZread)
+            {
+                var frmZreading = new ZReading();
+                frmZreading.Show();
+            }
+            else
+            {
+                xreadPrint();
+                Main.Instance.close = true;
+                Main.Instance.Close();
+
+                //Main.Instance.UpdateMemberCards();
+                //Main.Instance.UpdateGiftCards();
+                SQLControl sql = new SQLControl();
+                Boolean EnableSaveByTime = Boolean.Parse(sql.ReturnResult("SELECT backup_by_end_shift FROM backup_setting"));
+                if (EnableSaveByTime)
+                {
+                    DatabaseManagement.Instance.backup_type = "xread";
+                    DatabaseManagement.Instance.BackupDatabaseInFolder();
+                }
+
+                Environment.Exit(0);
+                System.Diagnostics.Process.Start(Application.ExecutablePath);
+            }
+        }
+
         private void GenerateReport()
         {
             if (Properties.Settings.Default.papersize == "58MM")
@@ -555,27 +592,6 @@ namespace EcoPOSv2
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
                     ////ORIGINAL
-                    //report.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
-                    //report.SetParameterValue("store_open_date_time", r["store_open_date_time"].ToString());
-                    //report.SetParameterValue("store_open_userID", r["store_userID"].ToString());
-                    //report.SetParameterValue("shift_start_date_time", r["shift_start_date_time"].ToString());
-                    //report.SetParameterValue("shift_start_userID", r["shift_userID"].ToString());
-                    //report.SetParameterValue("beginning_invoice", r["beginning_invoice"].ToString());
-                    //report.SetParameterValue("ending_invoice", r["ending_invoice"].ToString());
-                    //report.SetParameterValue("void_beginning_no", r["void_beginning_no"].ToString());
-                    //report.SetParameterValue("void_ending_no", r["void_ending_no"].ToString());
-                    //report.SetParameterValue("starting_cash", Math.Round(decimal.Parse(r["starting_cash"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("no_of_transactions", r["no_of_transactions"].ToString());
-                    //report.SetParameterValue("sales", Math.Round(decimal.Parse(r["sales"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("discount_deductions", Math.Round(decimal.Parse(r["discount_deductions"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("adjustments", Math.Round(decimal.Parse(r["adjustments"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("net_sales", Math.Round(decimal.Parse(r["net_sales"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("expected_drawer", Math.Round(decimal.Parse(r["expected_drawer"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("terminal_No", Properties.Settings.Default.Terminal_id);
-                    //report.SetParameterValue("declared_drawer", Math.Round(decimal.Parse(r["declared_drawer"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("short_over", Math.Round(decimal.Parse(r["short_over"].ToString()), 2).ToString("N2"));
-                    //report.SetParameterValue("printed_on", datetime_now);
-
                     report.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
                     report.SetParameterValue("store_open_date_time", store_open_date_time);
                     report.SetParameterValue("store_open_userID", r["store_userID"].ToString());
@@ -597,7 +613,6 @@ namespace EcoPOSv2
                     report.SetParameterValue("short_over", lblShortOver.Text);
                     report.SetParameterValue("printed_on", datetime_now);
                 }
-
                 PrintReceipt();
             }
             else
@@ -631,27 +646,6 @@ namespace EcoPOSv2
 
                 foreach (DataRow r in SQL.DBDT.Rows)
                 {
-                    //report80.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
-                    //report80.SetParameterValue("store_open_date_time", r["store_open_date_time"].ToString());
-                    //report80.SetParameterValue("store_open_userID", r["store_userID"].ToString());
-                    //report80.SetParameterValue("shift_start_date_time", r["shift_start_date_time"].ToString());
-                    //report80.SetParameterValue("shift_start_userID", r["shift_userID"].ToString());
-                    //report80.SetParameterValue("beginning_invoice", r["beginning_invoice"].ToString());
-                    //report80.SetParameterValue("ending_invoice", r["ending_invoice"].ToString());
-                    //report80.SetParameterValue("void_beginning_no", r["void_beginning_no"].ToString());
-                    //report80.SetParameterValue("void_ending_no", r["void_ending_no"].ToString());
-                    //report80.SetParameterValue("starting_cash", Math.Round(decimal.Parse(r["starting_cash"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("no_of_transactions", r["no_of_transactions"].ToString());
-                    //report80.SetParameterValue("sales", Math.Round(decimal.Parse(r["sales"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("discount_deductions", Math.Round(decimal.Parse(r["discount_deductions"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("adjustments", Math.Round(decimal.Parse(r["adjustments"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("net_sales", Math.Round(decimal.Parse(r["net_sales"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("expected_drawer", Math.Round(decimal.Parse(r["expected_drawer"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("terminal_No", Properties.Settings.Default.Terminal_id);
-                    //report80.SetParameterValue("declared_drawer", Math.Round(decimal.Parse(r["declared_drawer"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("short_over", Math.Round(decimal.Parse(r["short_over"].ToString()), 2).ToString("N2"));
-                    //report80.SetParameterValue("printed_on", datetime_now);
-
                     report80.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
                     report80.SetParameterValue("store_open_date_time", store_open_date_time);
                     report80.SetParameterValue("store_open_userID", r["store_userID"].ToString());

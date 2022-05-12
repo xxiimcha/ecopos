@@ -14,6 +14,19 @@ namespace EcoPOSv2
 {
     public partial class ZReading : Form
     {
+        public static ZReading _zread;
+        public static ZReading Instance
+        {
+            get
+            {
+                if (_zread == null)
+                {
+                    _zread = new ZReading();
+                }
+                return _zread;
+            }
+        }
+
         public void OpenDrawer()
         {
             EmptyReceipt receipt = new EmptyReceipt();
@@ -781,6 +794,8 @@ namespace EcoPOSv2
                 MessageBox.Show("Please perform switch cashier(ZReading) before you proceed in ZReading", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            XReading.Instance.LoadXReadingRecords();
+            XReading.Instance.xreadPrint();
 
             SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
             int zreading_ref = Convert.ToInt32(SQL.ReturnResult("SELECT zreading_ref FROM store_start WHERE zreading_ref = (SELECT MAX(zreading_ref) FROM store_start WHERE terminal_id=@terminal_id) AND store_status = 'Open'"));
@@ -832,20 +847,23 @@ namespace EcoPOSv2
             // generate report
             GenerateReport();
 
-            //// log out shift
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query("UPDATE shift SET ended = (SELECT GETDATE()) WHERE terminal_id=@terminal_id AND shiftID = (SELECT MAX(shiftID) FROM shift WHERE terminal_id=@terminal_id)");
+            ////// log out shift
+            //SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            //SQL.Query("UPDATE shift SET ended = (SELECT GETDATE()) WHERE terminal_id=@terminal_id AND shiftID = (SELECT MAX(shiftID) FROM shift WHERE terminal_id=@terminal_id)");
 
-            if (SQL.HasException(true))
-                return;
+            //if (SQL.HasException(true))
+            //    return;
 
 
             SQLControl sql = new SQLControl();
             Boolean EnableSaveByTime = Boolean.Parse(sql.ReturnResult("SELECT backup_by_end_day FROM backup_setting"));
             if (EnableSaveByTime)
             {
+                DatabaseManagement.Instance.backup_type = "zread";
                 DatabaseManagement.Instance.BackupDatabaseInFolder();
             }
+
+            
 
             Environment.Exit(0);
         }

@@ -179,6 +179,9 @@ namespace EcoPOSv2
         //    }
         //}
         ////TEMPORARY
+
+        public String backup_type = "";
+
         public void BackupDatabaseInFolder()
         {
             try
@@ -187,27 +190,29 @@ namespace EcoPOSv2
                 SQLControl sql = new SQLControl();
                 string directory = "";
 
-                if (Main.Instance.endOfShift)
+                if (backup_type.Equals("xread"))
                 {
                     directory = sql.ReturnResult("SELECT backup_end_of_shift_destination FROM backup_setting");
                 }
-                else if (Main.Instance.endOfDay)
+                else if (backup_type.Equals("zread"))
                 {
                     directory = sql.ReturnResult("SELECT backup_end_of_day_destination FROM backup_setting");
                 }
-                else if (Main.Instance.bytime)
+                else if (backup_type.Equals("time"))
                 {
                     directory = sql.ReturnResult("SELECT backup_time_destination FROM backup_setting");
                 }
                 String folderName = "EcoPOS BACKUP (" + DateTime.Now.ToString("MM-dd-yyyy hh mm tt") + ")";
-                String location = @"" + directory + "";
-                String path = Path.Combine(location, folderName);
-                Directory.CreateDirectory(path);
+                String location = directory;
 
                 SQLMasterControl SQLMaster = new SQLMasterControl();
 
-                SQLMaster.Query("Backup database EcoPOS to disk= '" + directory + "\\" + folderName + "\\EcoPOS.bak' ");
-
+                SQLMaster.Query("Backup database EcoPOS to disk= '" + directory + @"\EcoPOS-"+ DateTime.Now.ToString("MM-dd-yyyy hh mm tt") + ".bak' ");
+                if (SQLMaster.HasException(true))
+                {
+                    MessageBox.Show("Backup Failed");
+                    return;
+                }
                 //string ApplicationPath = AppDomain.CurrentDomain.BaseDirectory;
 
                 //string EcoPOS_Filename = "EcoPOS.mdf";
@@ -288,38 +293,37 @@ namespace EcoPOSv2
 
             }).Start();
         }
-        //EMAIL DATABASE
-        void Clear()
-        {
-            txtUsername.Text = "";
-            txtTo.Text = "";
-            txtSubject.Text = "";
-            txtPassword.Text = "";
-            txtMessage.Text = "";
-            txtFileName.Text = "";
-        }
-        //METHODS
+        
+        ////EMAIL DATABASE
+        //void Clear()
+        //{
+        //    txtUsername.Text = "";
+        //    txtTo.Text = "";
+        //    txtSubject.Text = "";
+        //    txtPassword.Text = "";
+        //    txtMessage.Text = "";
+        //    txtFileName.Text = "";
+        //}
+        ////METHODS
 
-        private void btnAutoBackup_Click(object sender, EventArgs e)
-        {
-            pIndicator.Location = new Point(225, 74);
+        //private void btnAutoBackup_Click(object sender, EventArgs e)
+        //{
+        //    pIndicator.Location = new Point(225, 74);
 
-            tControl.SelectedIndex = 0;
-        }
+        //    tControl.SelectedIndex = 0;
+        //}
 
-        private void btnEmailDatabase_Click(object sender, EventArgs e)
-        {
-            pIndicator.Location = new Point(225, 119);
+        //private void btnEmailDatabase_Click(object sender, EventArgs e)
+        //{
+        //    pIndicator.Location = new Point(225, 119);
 
-            tControl.SelectedIndex = 1;
+        //    tControl.SelectedIndex = 1;
 
-            firstContainer.BringToFront();
-        }
+        //    firstContainer.BringToFront();
+        //}
 
         private void DatabaseManagement_Load(object sender, EventArgs e)
         {
-            HideAllTabsOnTabControl(tControl);
-
             loadSettings();
 
             _DatabaseManagement = this;
@@ -479,7 +483,7 @@ namespace EcoPOSv2
                 txtDirectoryEndDay.Text = fbd.SelectedPath;
             }
         }
-
+        /*
         private void btn1_Click(object sender, EventArgs e)
         {
             btn1.FillColor = ColorTranslator.FromHtml("#97D5FE");
@@ -605,6 +609,6 @@ namespace EcoPOSv2
             {
                 btnNext.PerformClick();
             }
-        }
+        }*/
     }
 }
