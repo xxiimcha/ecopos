@@ -1191,10 +1191,10 @@ namespace EcoPOSv2
                                 return;
                             if (expiration <= DateTime.Now)
                             {
-                                new Notification(5).PopUp("The Product scanned is already expired.", "Warning", "error");
+                                new Notification(8).PopUp("The Product scanned is already expired.", "Warning", "error");
                             }else if(expiration <= DateTime.Now.AddDays(7))
                             {
-                                new Notification(5).PopUp("The Product scanned is near expiration.", "Warning", "warning");
+                                new Notification(8).PopUp("The Product scanned is near expiration.", "Warning", "warning");
                             }
                         }
 
@@ -1307,13 +1307,38 @@ namespace EcoPOSv2
                     new Notification().PopUp("There is duplicate barcode found in the products", "Please try again", "error");
                     return;
                 }
-
                 else
                 {
+                    SQL.AddParam("@find", "%" + tbBarcode.Text + "%");
+                    SQL.Query(@"SELECT TOP 5 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
+                       INNER JOIN inventory as i ON p.productID = i.productID
+                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
+                    if (SQL.DBDT.Rows.Count > 0) 
+                    {
+                        if (Main.Instance.lblUser.Text == "Bypassed")
+                        {
+                            MessageBox.Show("Please login properly to proceed.", "Error(No user found)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (Order.Instance.CheckOpened("SeeItem") == true)
+                        {
+                            return;
+                        }
 
+                        SeeItem seeItem = new SeeItem();
+                        seeItem.txtBarcode.Text = tbBarcode.Text;
+                        seeItem.autoNonBarcodeSearch = true;
+                        seeItem.ShowDialog();
+                        Order.Instance.LoadOrder();
+                        Order.Instance.GetTotal();
 
-                    new Notification().PopUp("No item found!", "Barcode not registered.", "error");
-                    //MessageBox.Show("No item found!", "Barcode not registered.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Order.Instance.ActiveControl = Order.Instance.tbBarcode;
+                        Order.Instance.tbBarcode.Focus();
+                    }
+                    else
+                    {
+                        new Notification().PopUp("No item found!", "Barcode not registered.", "error");
+                    } 
 
                     tbBarcode.Clear();
                     tbBarcode.Focus();

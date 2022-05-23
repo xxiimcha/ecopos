@@ -277,7 +277,7 @@ namespace EcoPOSv2
                         decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
                         reprint_receipt.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
                         decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
-                        reprint_receipt.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
+                        reprint_receipt.SetParameterValue("giftcard_no", giftcard_no.ToString("N0"));
                         decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                         reprint_receipt.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
@@ -648,7 +648,7 @@ namespace EcoPOSv2
                 decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
                 report.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
                 decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
-                report.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
+                report.SetParameterValue("giftcard_no", giftcard_no.ToString("N0"));
                 decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                 report.SetParameterValue("cash", payment_amt.ToString("N2"));
                 decimal change = decimal.Parse(r["change"].ToString());

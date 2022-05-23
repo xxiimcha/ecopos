@@ -46,6 +46,8 @@ namespace EcoPOSv2
             else
             {
                 MessageBox.Show("Gift card does not exist or has been used.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                txtGCNo.SelectAll();
+                txtGCNo.Focus();
             }
         }
 

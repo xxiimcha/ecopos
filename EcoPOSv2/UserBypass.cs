@@ -21,34 +21,81 @@ namespace EcoPOSv2
         public More frmMore;
         public bool fromOrder;
         public bool fromMore;
+        bool isCardBypass = false;
 
         public UserBypass()
         {
             InitializeComponent();
         }
 
+        int check_admin, check_user;
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
+            //login through username and keycode
             SQL.AddParam("@user_name", txtUsername.Text);
             SQL.AddParam("@keycode", txtKeycode.Text);
-            int check_user = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) as 'count' FROM users WHERE user_name = @user_name AND keycode = @keycode"));
+            check_user = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) as 'count' FROM users WHERE user_name = @user_name AND keycode = @keycode"));
             if (SQL.HasException(true))
                 return;
             SQL.AddParam("@user_name", txtUsername.Text);
             SQL.AddParam("@keycode", txtKeycode.Text);
-            int check_admin = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) as 'count' FROM admin_accts WHERE user_name = @user_name AND keycode = @keycode"));
+            check_admin = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) as 'count' FROM admin_accts WHERE user_name = @user_name AND keycode = @keycode"));
             if (SQL.HasException(true))
                 return;
+            ProceedByPass();
+        }
+
+        private void txtCardBypass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                //login through card no
+                SQL.AddParam("@card_no", txtCardBypass.Text);
+                check_user = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) as 'count' FROM users WHERE card_no = @card_no"));
+                if (SQL.HasException(true))
+                    return;
+                SQL.AddParam("@card_no", txtCardBypass.Text);
+                check_admin = Convert.ToInt32(SQL.ReturnResult("SELECT COUNT(*) as 'count' FROM admin_accts WHERE card_no = @card_no"));
+                if (SQL.HasException(true))
+                    return;
+                isCardBypass = true;
+
+                if(check_user <= 0 && check_admin <= 0)
+                {
+                    new Notification(5).PopUp("Card not registered.", "", "error");
+                    txtCardBypass.Clear();
+                    txtCardBypass.Focus();
+                }
+                else
+                {
+                    ProceedByPass();
+                }
+            }
+        }
+
+        void ProceedByPass()
+        {
             if (check_user == 1 | check_admin == 1)
             {
                 if (check_user == 1)
                 {
                     var roleID = default(int);
-                    SQL.AddParam("@user_name", txtUsername.Text);
-                    SQL.AddParam("@keycode", txtKeycode.Text);
-                    SQL.Query("SELECT * FROM users WHERE user_name = @user_name AND keycode = @keycode");
-                    if (SQL.HasException(true))
-                        return;
+
+                    if (isCardBypass)
+                    {
+                        SQL.AddParam("@card_no", txtCardBypass.Text);
+                        SQL.Query("SELECT * FROM users WHERE card_no = @card_no");
+                        if (SQL.HasException(true))
+                            return;
+                    }else
+                    {
+                        SQL.AddParam("@user_name", txtUsername.Text);
+                        SQL.AddParam("@keycode", txtKeycode.Text);
+                        SQL.Query("SELECT * FROM users WHERE user_name = @user_name AND keycode = @keycode");
+                        if (SQL.HasException(true))
+                            return;
+                    }
+
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         Main.Instance.by_pass_userID = Convert.ToInt32(r["userID"].ToString());
@@ -96,15 +143,27 @@ namespace EcoPOSv2
                         RP.Order(Order.Instance);
                     if (fromMore)
                         RP.More(frmMore);
-                    Close();    
+                    Close();
                 }
                 else if (check_admin == 1)
                 {
-                    SQL.AddParam("@user_name", txtUsername.Text);
-                    SQL.AddParam("@keycode", txtKeycode.Text);
-                    SQL.Query("SELECT * FROM admin_accts WHERE user_name = @user_name AND keycode = @keycode");
-                    if (SQL.HasException(true))
-                        return;
+
+                    if (isCardBypass)
+                    {
+                        SQL.AddParam("@card_no", txtCardBypass.Text);
+                        SQL.Query("SELECT * FROM admin_accts WHERE card_no = @card_no");
+                        if (SQL.HasException(true))
+                            return;
+                    }
+                    else
+                    {
+                        SQL.AddParam("@user_name", txtUsername.Text);
+                        SQL.AddParam("@keycode", txtKeycode.Text);
+                        SQL.Query("SELECT * FROM admin_accts WHERE user_name = @user_name AND keycode = @keycode");
+                        if (SQL.HasException(true))
+                            return;
+                    }
+
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         Main.Instance.by_pass_userID = int.Parse(r["adminID"].ToString());
@@ -150,8 +209,9 @@ namespace EcoPOSv2
             }
             else
             {
-                new Notification().PopUp("Incorrect username or password.", "","error");
+                new Notification().PopUp("Incorrect username or password.", "", "error");
             }
+            isCardBypass = false;
         }
 
         private void TxtUsername_KeyDown(object sender, KeyEventArgs e)
@@ -172,15 +232,38 @@ namespace EcoPOSv2
 
         private void UserBypass_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                Close();
             }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void lbLoginCard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new Notification(5).PopUp("Tap your card.", "", "information");
+            txtCardBypass.Clear();
+            txtCardBypass.Focus();
+        }
+
+        private void txtUsername_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.cardlogin)
+            {
+                txtCardBypass.Enabled = true;
+                lbLoginCard.Visible = true;
+                lbLoginCard.Focus();
+            }
+            else
+            {
+                txtCardBypass.Enabled = false;
+                lbLoginCard.Visible = false;
+                txtUsername.Focus();
+            }
         }
     }
 }

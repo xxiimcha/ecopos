@@ -203,6 +203,8 @@ namespace EcoPOSv2
                                                      FROM transaction_details WHERE terminal_id=" + cmbTerminalNames.Text + " AND (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      AND grand_total > 0 GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
             }
+
+            
             SQL.DBDA.Fill(ds1, "transaction_details");
             terminal_report.Subreports["Sales"].SetDataSource(ds1);
 
@@ -1254,6 +1256,7 @@ namespace EcoPOSv2
             #endregion
 
             #region special discount
+
 
             SQL.AddParam("@from", dtpFrom.Value);
             SQL.AddParam("@to", dtpTo.Value);

@@ -132,7 +132,7 @@ namespace EcoPOSv2
                             report.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
 
                             decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
-                            report.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
+                            report.SetParameterValue("giftcard_no", giftcard_no.ToString("N0"));
 
                             decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                             report.SetParameterValue("cash", payment_amt.ToString("N2"));
@@ -905,15 +905,29 @@ namespace EcoPOSv2
 
             if (action == 1 && cbxUsePoints.Checked == true)
             {
-                // update card balance
-                SQL.AddParam("@customerID", lblCustomerID.Text);
-                SQL.AddParam("@cash_paid", lblGrandTotal.Text);
-                SQL.Query("UPDATE member_card SET card_balance = card_balance - @cash_paid WHERE customerID = @customerID");
-                if (SQL.HasException(true))
+                if(Convert.ToDecimal(cbxUsePoints.Text) <= Convert.ToDecimal(lblTotal.Text))
                 {
-                    MessageBox.Show("8");
-                    return;
+                    SQL.AddParam("@customerID", lblCustomerID.Text);
+                    SQL.Query("UPDATE member_card SET card_balance = card_balance - card_balance WHERE customerID = @customerID");
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("8");
+                        return;
+                    }
                 }
+                else
+                {
+                    SQL.AddParam("@customerID", lblCustomerID.Text);
+                    SQL.AddParam("@points_used", lblTotal.Text);
+                    SQL.Query("UPDATE member_card SET card_balance = card_balance - @points_used WHERE customerID = @customerID");
+                    if (SQL.HasException(true))
+                    {
+                        MessageBox.Show("8");
+                        return;
+                    }
+                }
+                // update card balance
+                
             }
             #endregion
 
@@ -968,13 +982,26 @@ namespace EcoPOSv2
 
         private void btnRemoveGC_Click(object sender, EventArgs e)
         {
-            decimal deduct_gc = decimal.Parse(lblDeductGC.Text);
-            //grand_total = grand_total + deduct_gc;
-            lblGrandTotal.Text = grand_total.ToString("N2");
+            //Resets the Gift Card to 0 and re-enables other buttons
             lblGCNo.Text = "0";
             lblDeductGC.Text = "0.00";
+
             btnExact.Enabled = true;
             txtAmount.Enabled = true;
+            cbxUsePoints.Enabled = true;
+
+            lblGrandTotal.Text = (Convert.ToDecimal(lblTotal.Text) - Convert.ToDecimal(lblDeductPoints.Text)).ToString("N2");
+            lblChange.Text = "-" + lblGrandTotal.Text;
+
+            //Focuses back to the amount text field / payment button
+            if (txtAmount.Enabled)
+            {
+                txtAmount.Focus();
+            }
+            else
+            {
+                btnPay.Focus();
+            }
         }
 
         private void btnGC_Click(object sender, EventArgs e)
@@ -982,7 +1009,22 @@ namespace EcoPOSv2
             PGiftCard frmPGiftCard = new PGiftCard();
             frmPGiftCard.frmPayment = this;
             frmPGiftCard.ShowDialog();
-            txtAmount.Focus();
+
+            //Disables the use point button when the grand total is 0
+            if (Convert.ToDecimal(lblGrandTotal.Text) <= 0)
+            {
+                cbxUsePoints.Enabled = false;
+            }
+
+            //Focuses back to the amount text field / payment button
+            if (txtAmount.Enabled)
+            {
+                txtAmount.Focus();
+            }
+            else
+            {
+                btnPay.Focus();
+            }
         }
 
         private void txtAmount_TextChanged(object sender, EventArgs e)
@@ -1027,7 +1069,11 @@ namespace EcoPOSv2
 
             if(e.KeyCode == Keys.Space)
             {
-                btnExact.PerformClick();
+                if (btnExact.Enabled)
+                {
+                    btnExact.PerformClick();
+                }
+                
             }
         }
 
@@ -1038,36 +1084,38 @@ namespace EcoPOSv2
 
         private void cbxUsePoints_CheckedChanged(object sender, EventArgs e)
         {
-            decimal deduct_points = decimal.Parse(lblDeductPoints.Text);
-            decimal total = decimal.Parse(lblTotal.Text);
+            txtAmount.Text = "";
+
+            decimal total = Convert.ToDecimal(lblTotal.Text);
+            decimal available_points = Convert.ToDecimal(cbxUsePoints.Text);
 
             if (cbxUsePoints.Checked == true)
             {
-                lblDeductPoints.Text = cbxUsePoints.Text;
-                lblChange.Text = /*"-" +*/ lblGrandTotal.Text;
+                lblDeductPoints.Text = available_points <= Convert.ToDecimal(lblGrandTotal.Text) ? cbxUsePoints.Text : lblGrandTotal.Text;
+                lblGrandTotal.Text = (Convert.ToDecimal(lblTotal.Text) - Convert.ToDecimal(lblDeductGC.Text) - Convert.ToDecimal(lblDeductPoints.Text)).ToString("N2");
+                lblChange.Text = "-" + lblGrandTotal.Text;
+                lblRemainingPoints.Text = (Convert.ToDecimal(cbxUsePoints.Text) - Convert.ToDecimal(lblDeductPoints.Text)).ToString("N2");
             }
-            else if (cbxUsePoints.Checked == false/* && total > deduct_points*/)
+            else if (cbxUsePoints.Checked == false)
             {
                 txtAmount.Enabled = true;
                 btnExact.Enabled = true;
 
-                //grand_total = grand_total + deduct_points;
-
-                lblRemainingPoints.Text = "0.00";
-                lblGrandTotal.Text = total.ToString("N2");
-                lblChange.Text = "-" + lblGrandTotal.Text;
+                lblGrandTotal.Text = (Convert.ToDecimal(lblTotal.Text) - Convert.ToDecimal(lblDeductGC.Text)).ToString("N2");
+                lblChange.Text = "-"+lblGrandTotal.Text;
                 lblDeductPoints.Text = "0.00";
-                txtAmount.Text = "";
+                lblRemainingPoints.Text = "0.00";
             }
-            //else
-            //{
-            //    txtAmount.Enabled = true;
-            //    btnExact.Enabled = true;
 
-            //    lblRemainingPoints.Text = "0.00";
-            //    lblGrandTotal.Text = lblTotal.Text;
-            //    lblDeductPoints.Text = "0.00";
-            //}
+            //Focuses back to the amount text field / payment button
+            if (txtAmount.Enabled)
+            {
+                txtAmount.Focus();
+            }
+            else
+            {
+                btnPay.Focus();
+            }
         }
         private void lblDeductPoints_TextChanged_1(object sender, EventArgs e)
         {
@@ -1160,7 +1208,10 @@ namespace EcoPOSv2
         {
             if(e.KeyCode == Keys.Space)
             {
-                btnExact.PerformClick();
+                if (btnExact.Enabled)
+                {
+                    btnExact.PerformClick();
+                }
             }
 
             if (e.KeyCode == Keys.F2)

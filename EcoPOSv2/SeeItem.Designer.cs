@@ -332,10 +332,10 @@
         private Guna.UI2.WinForms.Guna2Panel textPanel;
         private Guna.UI2.WinForms.Guna2ComboBox cmbPricemode;
         public Guna.UI2.WinForms.Guna2TextBox txtBarcode;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvProducts;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2Panel pnlTitle;
         private Guna.UI.WinForms.GunaControlBox btnClose;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        public Guna.UI2.WinForms.Guna2DataGridView dgvProducts;
     }
 }

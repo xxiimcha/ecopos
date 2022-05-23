@@ -30,6 +30,7 @@ namespace EcoPOSv2
         private void SeeItem_Load(object sender, EventArgs e)
         {
             _SeeItem = this;
+
             if (Properties.Settings.Default.Pricing == "Wholesale")
             {
                 cmbPricemode.SelectedIndex = 1;
@@ -39,10 +40,20 @@ namespace EcoPOSv2
                 cmbPricemode.SelectedIndex = 0;
             }
 
+            if (!autoNonBarcodeSearch)
+            {
+                this.ActiveControl = txtBarcode;
+                txtBarcode.Focus();
+            }
+
             loadTable();
-            
-            this.ActiveControl = txtBarcode;
-            txtBarcode.Focus();
+
+            if (autoNonBarcodeSearch)
+            {
+                autoNonBarcodeSearch = false;
+                this.ActiveControl = dgvProducts;
+                dgvProducts.Focus();
+            }
         }
        
         private void txtBarcode_KeyDown(object sender, KeyEventArgs e)
@@ -58,17 +69,28 @@ namespace EcoPOSv2
             }
         }
 
+        public Boolean autoNonBarcodeSearch = false;
         //Loads the data in the table
-        private void loadTable()
+        public void loadTable()
         {
-            SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
-
-            SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
+            if (autoNonBarcodeSearch)
+            {
+                SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
+                SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
+                       INNER JOIN inventory as i ON p.productID = i.productID
+                       WHERE description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
+                if (SQL.HasException(true))
+                    return; 
+            }
+            else
+            {
+                SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
+                SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
                        INNER JOIN inventory as i ON p.productID = i.productID
                        WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
-
-            if (SQL.HasException(true))
-                return;
+                if (SQL.HasException(true))
+                    return;
+            }
 
             dgvProducts.DataSource = SQL.DBDT;
 
@@ -81,7 +103,7 @@ namespace EcoPOSv2
             }
 
             txtBarcode.Clear();
-            txtBarcode.Focus();
+            txtBarcode.Focus();  
         }
 
         private void dgvProducts_Click(object sender, EventArgs e)
@@ -94,6 +116,7 @@ namespace EcoPOSv2
 
         private void selectProduct()
         {
+            //initiates when a product is selected
             if (dgvProducts.SelectedRows.Count == 0)
                 return;
 
@@ -157,11 +180,11 @@ namespace EcoPOSv2
                             return;
                         if (expiration <= DateTime.Now)
                         {                                          
-                            new Notification(5).PopUp("The Product scanned is already expired.", "Warning", "error");
+                            new Notification(10).PopUp("The Product scanned is already expired.", "Warning", "error");
                         }
                         else if (expiration <= DateTime.Now.AddDays(7))
                         {
-                            new Notification(5).PopUp("The Product scanned is near expiration.", "Warning", "warning");
+                            new Notification(10).PopUp("The Product scanned is near expiration.", "Warning", "warning");
                         }
                     }
                 }
@@ -221,12 +244,6 @@ namespace EcoPOSv2
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtBarcode.Clear();
-            //(dgvProducts.DataSource as DataTable).DefaultView.RowFilter =
-            //            string.Format("Barcode1 LIKE '{0}%'", "");
-
-            //txtBarcode.Clear();
-            //txtBarcode.Focus();
-            //txtBarcode.Text = txtBarcode.Text.Replace(" ", "");
         }
 
         private void dgvProducts_KeyDown(object sender, KeyEventArgs e)
