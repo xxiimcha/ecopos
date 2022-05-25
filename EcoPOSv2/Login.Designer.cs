@@ -172,7 +172,7 @@
             this.lblVersion.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.lblVersion.Size = new System.Drawing.Size(641, 118);
             this.lblVersion.TabIndex = 51;
-            this.lblVersion.Text = "v2.0";
+            this.lblVersion.Text = "v3.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tClock

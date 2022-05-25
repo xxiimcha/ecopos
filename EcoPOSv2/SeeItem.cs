@@ -31,6 +31,15 @@ namespace EcoPOSv2
         {
             _SeeItem = this;
 
+            if (Properties.Settings.Default.AutoSearchEnabled)
+            {
+                checkBox_Autosearch.Checked = true;
+            }
+            else
+            {
+                checkBox_Autosearch.Checked = false;
+            }
+
             if (Properties.Settings.Default.Pricing == "Wholesale")
             {
                 cmbPricemode.SelectedIndex = 1;
@@ -40,7 +49,7 @@ namespace EcoPOSv2
                 cmbPricemode.SelectedIndex = 0;
             }
 
-            if (!autoNonBarcodeSearch)
+            if (!autoNonBarcodeSearch && !isDuplicateBarcode)
             {
                 this.ActiveControl = txtBarcode;
                 txtBarcode.Focus();
@@ -51,6 +60,13 @@ namespace EcoPOSv2
             if (autoNonBarcodeSearch)
             {
                 autoNonBarcodeSearch = false;
+                this.ActiveControl = dgvProducts;
+                dgvProducts.Focus();
+            }
+
+            if (isDuplicateBarcode)
+            {
+                isDuplicateBarcode = false;
                 this.ActiveControl = dgvProducts;
                 dgvProducts.Focus();
             }
@@ -70,6 +86,7 @@ namespace EcoPOSv2
         }
 
         public Boolean autoNonBarcodeSearch = false;
+        public Boolean isDuplicateBarcode = false;
         //Loads the data in the table
         public void loadTable()
         {
@@ -84,12 +101,25 @@ namespace EcoPOSv2
             }
             else
             {
-                SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
-                SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
+                if (isDuplicateBarcode)
+                {
+                    new Notification().PopUp("There is duplicate barcode found in the products", "", "warning");
+                    SQL.AddParam("@find", txtBarcode.Text);
+                    SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
+                       INNER JOIN inventory as i ON p.productID = i.productID
+                       WHERE barcode1 = @find OR barcode2 = @find");
+                    if (SQL.HasException(true))
+                        return;
+                }
+                else
+                {
+                    SQL.AddParam("@find", "%" + txtBarcode.Text + "%");
+                    SQL.Query(@"SELECT TOP 100 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
                        INNER JOIN inventory as i ON p.productID = i.productID
                        WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
-                if (SQL.HasException(true))
-                    return;
+                    if (SQL.HasException(true))
+                        return;
+                }
             }
 
             dgvProducts.DataSource = SQL.DBDT;
@@ -264,6 +294,20 @@ namespace EcoPOSv2
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void checkBox_Autosearch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Autosearch.Checked)
+            {
+                Properties.Settings.Default.AutoSearchEnabled = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.AutoSearchEnabled = false;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

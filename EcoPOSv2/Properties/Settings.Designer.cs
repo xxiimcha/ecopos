@@ -427,5 +427,20 @@ namespace EcoPOSv2.Properties {
                 this["Pricing"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoSearchEnabled
+        {
+            get
+            {
+                return ((bool)(this["AutoSearchEnabled"]));
+            }
+            set
+            {
+                this["AutoSearchEnabled"] = value;
+            }
+        }
     }
 }

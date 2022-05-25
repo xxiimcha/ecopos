@@ -46,6 +46,8 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.lblPricemode = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.checkBox_Autosearch = new Guna.UI2.WinForms.Guna2CustomCheckBox();
+            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.guna2Panel1.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -56,6 +58,8 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.checkBox_Autosearch);
+            this.guna2Panel1.Controls.Add(this.gunaLabel2);
             this.guna2Panel1.Controls.Add(this.pnlTitle);
             this.guna2Panel1.Controls.Add(this.dgvProducts);
             this.guna2Panel1.Controls.Add(this.cmbPricemode);
@@ -66,7 +70,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(830, 680);
+            this.guna2Panel1.Size = new System.Drawing.Size(830, 703);
             this.guna2Panel1.TabIndex = 0;
             // 
             // pnlTitle
@@ -298,12 +302,44 @@
             // 
             this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
+            // checkBox_Autosearch
+            // 
+            this.checkBox_Autosearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_Autosearch.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox_Autosearch.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
+            this.checkBox_Autosearch.CheckedState.BorderRadius = 2;
+            this.checkBox_Autosearch.CheckedState.BorderThickness = 0;
+            this.checkBox_Autosearch.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
+            this.checkBox_Autosearch.CheckedState.Parent = this.checkBox_Autosearch;
+            this.checkBox_Autosearch.Location = new System.Drawing.Point(23, 670);
+            this.checkBox_Autosearch.Name = "checkBox_Autosearch";
+            this.checkBox_Autosearch.ShadowDecoration.Parent = this.checkBox_Autosearch;
+            this.checkBox_Autosearch.Size = new System.Drawing.Size(20, 20);
+            this.checkBox_Autosearch.TabIndex = 131;
+            this.checkBox_Autosearch.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.checkBox_Autosearch.UncheckedState.BorderRadius = 2;
+            this.checkBox_Autosearch.UncheckedState.BorderThickness = 0;
+            this.checkBox_Autosearch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.checkBox_Autosearch.UncheckedState.Parent = this.checkBox_Autosearch;
+            this.checkBox_Autosearch.CheckedChanged += new System.EventHandler(this.checkBox_Autosearch_CheckedChanged);
+            // 
+            // gunaLabel2
+            // 
+            this.gunaLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gunaLabel2.AutoSize = true;
+            this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel2.Location = new System.Drawing.Point(47, 670);
+            this.gunaLabel2.Name = "gunaLabel2";
+            this.gunaLabel2.Size = new System.Drawing.Size(150, 20);
+            this.gunaLabel2.TabIndex = 130;
+            this.gunaLabel2.Text = "Barcode Auto-Search";
+            // 
             // SeeItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(830, 680);
+            this.ClientSize = new System.Drawing.Size(830, 703);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -315,6 +351,7 @@
             this.Load += new System.EventHandler(this.SeeItem_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SeeItem_KeyDown);
             this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
@@ -337,5 +374,7 @@
         private Guna.UI.WinForms.GunaControlBox btnClose;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
         public Guna.UI2.WinForms.Guna2DataGridView dgvProducts;
+        private Guna.UI2.WinForms.Guna2CustomCheckBox checkBox_Autosearch;
+        private Guna.UI.WinForms.GunaLabel gunaLabel2;
     }
 }

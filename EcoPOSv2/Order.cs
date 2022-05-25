@@ -1290,22 +1290,25 @@ namespace EcoPOSv2
 
                 else if (check_product > 1)
                 {
-                    SQL.AddParam("@barcode", barcode);
-                    SQL.Query("SELECT description FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
-                    if (SQL.HasException(true))
-                        return;
+                    //SQL.AddParam("@barcode", barcode);
+                    //SQL.Query("SELECT description FROM products WHERE barcode1 = @barcode OR barcode2 = @barcode");
+                    //if (SQL.HasException(true))
+                    //    return;
 
-                    string duplicatebarcode = "";
+                    //string duplicatebarcode = "";
 
-                    foreach (DataRow r in SQL.DBDT.Rows)
-                    {
-                        duplicatebarcode = duplicatebarcode + (r["description"].ToString()) + "\n";
-                    }
+                    //foreach (DataRow r in SQL.DBDT.Rows)
+                    //{
+                    //    duplicatebarcode = duplicatebarcode + (r["description"].ToString()) + "\n";
+                    //}
 
-                    MessageBox.Show("Duplicate barcodes:\n" + duplicatebarcode);
+                    SeeItem seeItem = new SeeItem();
+                    seeItem.txtBarcode.Text = tbBarcode.Text;
+                    seeItem.isDuplicateBarcode = true;
+                    seeItem.ShowDialog();
 
-                    new Notification().PopUp("There is duplicate barcode found in the products", "Please try again", "error");
-                    return;
+                    tbBarcode.Clear();
+                    tbBarcode.Focus();
                 }
                 else
                 {
@@ -1325,13 +1328,20 @@ namespace EcoPOSv2
                             return;
                         }
 
-                        SeeItem seeItem = new SeeItem();
-                        seeItem.txtBarcode.Text = tbBarcode.Text;
-                        seeItem.autoNonBarcodeSearch = true;
-                        seeItem.ShowDialog();
+                        if (Properties.Settings.Default.AutoSearchEnabled)
+                        {
+                            SeeItem seeItem = new SeeItem();
+                            seeItem.txtBarcode.Text = tbBarcode.Text;
+                            seeItem.autoNonBarcodeSearch = true;
+                            seeItem.ShowDialog();
+                        }
+                        else
+                        {
+                            new Notification().PopUp("No item found!", "Barcode not registered.", "error");
+                        }
+
                         Order.Instance.LoadOrder();
                         Order.Instance.GetTotal();
-
                         Order.Instance.ActiveControl = Order.Instance.tbBarcode;
                         Order.Instance.tbBarcode.Focus();
                     }
