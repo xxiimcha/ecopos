@@ -506,7 +506,6 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.Color.Black;
             this.txtName.Location = new System.Drawing.Point(108, 69);
-            this.txtName.MaxLength = 16;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(348, 29);
             this.txtName.TabIndex = 1;

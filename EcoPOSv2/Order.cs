@@ -233,8 +233,8 @@ namespace EcoPOSv2
                 lblVAT.Text = VAT.ToString("N2");
                 lblLessVAT.Text = r["LessVAT"].ToString();
             }
-            
-            if(lblDiscount.Text == "0.00")
+
+            if (lblDiscount.Text == "0.00")
             {
                 SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
                 decimal vatsale = decimal.Parse(SQL.ReturnResult(@"SELECT IIF((SELECT COUNT(*) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1) > 0,(SELECT CONVERT(DECIMAL(18,2),SUM(selling_price_exclusive)) FROM order_cart WHERE terminal_id=@terminal_id AND is_vatable = 1),0)".ToString()));
@@ -266,9 +266,9 @@ namespace EcoPOSv2
             if (SQL.HasException(true))
                 return;
 
-            lblVATExempt.Text = (vatexempt_nonvat + vatexempt_vatdiscount).ToString("N2");
+            lblVATExempt.Text = (vatexempt_nonvat).ToString("N2");
 
-        
+
 
             if (apply_regular_discount_fix_amt)
             {
@@ -1306,6 +1306,8 @@ namespace EcoPOSv2
                     seeItem.txtBarcode.Text = tbBarcode.Text;
                     seeItem.isDuplicateBarcode = true;
                     seeItem.ShowDialog();
+                    Order.Instance.LoadOrder();
+                    Order.Instance.GetTotal();
 
                     tbBarcode.Clear();
                     tbBarcode.Focus();
@@ -1313,9 +1315,9 @@ namespace EcoPOSv2
                 else
                 {
                     SQL.AddParam("@find", "%" + tbBarcode.Text + "%");
-                    SQL.Query(@"SELECT TOP 5 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
+                    SQL.Query(@"SELECT TOP 20 p.productID, p.barcode1 as 'Barcode 1', p.barcode2 as 'Barcode 2', p.description as 'Name', p.rp_inclusive as 'SRP', p.wp_inclusive as 'Wholesale', i.stock_qty as 'Stock' FROM products as p 
                        INNER JOIN inventory as i ON p.productID = i.productID
-                       WHERE barcode1 LIKE @find OR barcode2 LIKE @find OR description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
+                       WHERE description LIKE @find OR name LIKE @find ORDER BY Difference(name, @find) DESC");
                     if (SQL.DBDT.Rows.Count > 0) 
                     {
                         if (Main.Instance.lblUser.Text == "Bypassed")

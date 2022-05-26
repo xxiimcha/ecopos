@@ -473,7 +473,6 @@ namespace EcoPOSv2
             this.ActiveControl = txtDescription;
         }
         string description, name;
-        int checkerforduplicateB1 = 0, checkerforduplicateB2 = 0;
         private void btnProduct_Save_Click(object sender, EventArgs e)
         {
             new Thread(() =>
@@ -516,31 +515,31 @@ namespace EcoPOSv2
                                     if (SQL.HasException(true))
                                         return;
 
-                                    if (txtBarcode1.Text != "")
-                                    {
-                                        SQL.AddParam("@barcode1", txtBarcode1.Text);
-                                        checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1)"));
-                                        if (SQL.HasException(true)) return;
-                                    }
-                                    else
-                                    {
-                                        checkerforduplicateB1 = 0;
-                                    }
+                                    //if (txtBarcode1.Text != "")
+                                    //{
+                                    //    SQL.AddParam("@barcode1", txtBarcode1.Text);
+                                    //    checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1)"));
+                                    //    if (SQL.HasException(true)) return;
+                                    //}
+                                    //else
+                                    //{
+                                    //    checkerforduplicateB1 = 0;
+                                    //}
 
 
-                                    if (txtBarcode2.Text != "")
-                                    {
-                                        SQL.AddParam("@barcode2", txtBarcode2.Text);
-                                        checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2)"));
+                                    //if (txtBarcode2.Text != "")
+                                    //{
+                                    //    SQL.AddParam("@barcode2", txtBarcode2.Text);
+                                    //    checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2)"));
 
-                                        if (SQL.HasException(true)) return;
-                                    }
-                                    else
-                                    {
-                                        checkerforduplicateB2 = 0;
-                                    }
+                                    //    if (SQL.HasException(true)) return;
+                                    //}
+                                    //else
+                                    //{
+                                    //    checkerforduplicateB2 = 0;
+                                    //}
 
-                                    if (result == 0 && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
+                                    if (result == 0)
                                     {
                                         if (Properties.Settings.Default.vatnonvat == true)
                                         {
@@ -622,7 +621,7 @@ namespace EcoPOSv2
                                     }
                                     else
                                     {
-                                        new Notification().PopUp("Duplicate name/barcode found.", "Save failed", "error");
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
                                         return;
                                     }
                                     break;
@@ -649,35 +648,35 @@ namespace EcoPOSv2
 
 
 
-                                    if (txtBarcode1.Text != "")
-                                    {
-                                        SQL.AddParam("@productid", txtProductID.Text);
-                                        SQL.AddParam("@barcode1", txtBarcode1.Text);
-                                        checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1) AND ProductID <>@productid"));
-                                        if (SQL.HasException(true)) return;
-                                    }
-                                    else
-                                    {
-                                        checkerforduplicateB1 = 0;
-                                    }
+                                    //if (txtBarcode1.Text != "")
+                                    //{
+                                    //    SQL.AddParam("@productid", txtProductID.Text);
+                                    //    SQL.AddParam("@barcode1", txtBarcode1.Text);
+                                    //    checkerforduplicateB1 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode1 OR barcode2 = @barcode1) AND ProductID <>@productid"));
+                                    //    if (SQL.HasException(true)) return;
+                                    //}
+                                    //else
+                                    //{
+                                    //    checkerforduplicateB1 = 0;
+                                    //}
 
 
-                                    if (txtBarcode2.Text != "")
-                                    {
-                                        SQL.AddParam("@productid", txtProductID.Text);
-                                        SQL.AddParam("@barcode2", txtBarcode2.Text);
-                                        checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2) AND ProductID <> @productid"));
+                                    //if (txtBarcode2.Text != "")
+                                    //{
+                                    //    SQL.AddParam("@productid", txtProductID.Text);
+                                    //    SQL.AddParam("@barcode2", txtBarcode2.Text);
+                                    //    checkerforduplicateB2 = int.Parse(SQL.ReturnResult("SELECT COUNT(*) FROM products WHERE(barcode1 = @barcode2 OR barcode2 = @barcode2) AND ProductID <> @productid"));
 
-                                        if (SQL.HasException(true)) return;
-                                    }
-                                    else
-                                    {
-                                        checkerforduplicateB2 = 0;
-                                    }
+                                    //    if (SQL.HasException(true)) return;
+                                    //}
+                                    //else
+                                    //{
+                                    //    checkerforduplicateB2 = 0;
+                                    //}
 
                                     //MessageBox.Show(checkerforduplicateB1 + " " + checkerforduplicateB2);
 
-                                    if (result == "0" && checkerforduplicateB1 == 0 && checkerforduplicateB2 == 0)
+                                    if (result == "0")
                                     {
                                         if (Properties.Settings.Default.vatnonvat == true)
                                         {
@@ -749,7 +748,7 @@ namespace EcoPOSv2
                                     }
                                     else
                                     {
-                                        new Notification().PopUp("Duplicate name/barcode found.", "Save failed", "error");
+                                        new Notification().PopUp("Duplicate name found.", "Save failed", "error");
                                         return;
                                     }
 
