@@ -482,15 +482,17 @@ namespace EcoPOSv2
 
             if (e.Control && e.KeyCode == Keys.Tab)
             {
-                if (btnRetail.Checked)
+                if (!Properties.Settings.Default.DisableWholesale)
                 {
-                    btnWholeSale.PerformClick();
+                    if (btnRetail.Checked && btnWholeSale.Enabled)
+                    {
+                        btnWholeSale.PerformClick();
+                    }
+                    else
+                    {
+                        btnRetail.PerformClick();
+                    }
                 }
-                else
-                {
-                    btnRetail.PerformClick();
-                }
-                    
             }
 
             if (e.KeyCode == Keys.F5)
@@ -545,52 +547,6 @@ namespace EcoPOSv2
             {
                 tbBarcode.Focus();
             }
-
-            //if (e.KeyCode != Keys.Modifiers == Keys.D && e.Modifiers == Keys.Control)
-            //    btnDiscount.PerformClick();
-            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.C && e.Modifiers == Keys.Control)
-            //    btnCustomer.PerformClick();
-            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.Q && e.Modifiers == Keys.Control)
-            //    btnQuantity.PerformClick();
-            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.I && e.Modifiers == Keys.Control)
-            //    btnSeeItem.PerformClick();
-            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.V && e.Modifiers == Keys.Control)
-            //    btnVoidItem.PerformClick();
-            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.P && e.Modifiers == Keys.Control)
-            //    btnPayment.PerformClick();
-            //else if (e.KeyCode == Keys.F3)
-            //    btnVoid.PerformClick();
-            //else if (e.KeyCode == Keys.F4)
-            //    btnCancel.PerformClick();
-            //else if (e.KeyCode == Keys.F7)
-            //    btnRedeem.PerformClick();
-            //else if (e.KeyCode == Keys.F11)
-            //{
-            //    UserBypass frmUserBypass = new UserBypass();
-            //    frmUserBypass.frmOrder = this;
-            //    frmUserBypass.fromOrder = true;
-            //    frmUserBypass.ShowDialog();
-            //}
-            //else if (e.KeyCode == Keys.F12)
-            //{
-            //    foreach (var item in Main.Instance.bypass_list)
-
-            //        item = false;
-
-            //    Main.Instance.by_pass_user = false;
-            //    Main.Instance.by_pass_userID = 0;
-            //    Main.Instance.by_pass_user_name = "";
-            //    Main.Instance.lblByPassUser.Text = "";
-
-            //    RP.Order(this);
-            //    RP.Home(Main.Instance);
-            //}
-            //else if ((e.KeyCode & !Keys.Modifiers) == Keys.X && e.Modifiers == Keys.Control)
-            //{
-            //    Form2 frmForm2 = new Form2();
-            //    frmForm2.frmOrder = this;
-            //    frmForm2.ShowDialog();
-            //}
         }
 
         private void btnDiscount_Click(object sender, EventArgs e)
@@ -838,11 +794,20 @@ namespace EcoPOSv2
                 lblVATSalet.Visible = false;
             }
 
+            if (Properties.Settings.Default.DisableWholesale == true)
+            {
+                btnWholeSale.Enabled = false;
+            }
+            else
+            {
+                btnWholeSale.Enabled = true;
+            }
+
             _order = this;
 
             btnPayment.Text = "PAYMENT" + Environment.NewLine + "(CTRL + P)";
 
-            if (Properties.Settings.Default.Pricing == "Wholesale")
+            if (Properties.Settings.Default.Pricing == "Wholesale" && btnWholeSale.Enabled)
             {
                 btnWholeSale.PerformClick();
             }

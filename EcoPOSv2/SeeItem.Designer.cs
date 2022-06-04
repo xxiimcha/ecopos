@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeeItem));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.checkBox_Autosearch = new Guna.UI2.WinForms.Guna2CustomCheckBox();
+            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
@@ -46,8 +48,8 @@
             this.Label3 = new System.Windows.Forms.Label();
             this.lblPricemode = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.checkBox_Autosearch = new Guna.UI2.WinForms.Guna2CustomCheckBox();
-            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
+            this.checkBox_DisableWholesale = new Guna.UI2.WinForms.Guna2CustomCheckBox();
+            this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.guna2Panel1.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -58,6 +60,8 @@
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.checkBox_DisableWholesale);
+            this.guna2Panel1.Controls.Add(this.gunaLabel3);
             this.guna2Panel1.Controls.Add(this.checkBox_Autosearch);
             this.guna2Panel1.Controls.Add(this.gunaLabel2);
             this.guna2Panel1.Controls.Add(this.pnlTitle);
@@ -72,6 +76,38 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(830, 703);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // checkBox_Autosearch
+            // 
+            this.checkBox_Autosearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_Autosearch.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox_Autosearch.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
+            this.checkBox_Autosearch.CheckedState.BorderRadius = 2;
+            this.checkBox_Autosearch.CheckedState.BorderThickness = 0;
+            this.checkBox_Autosearch.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
+            this.checkBox_Autosearch.CheckedState.Parent = this.checkBox_Autosearch;
+            this.checkBox_Autosearch.Location = new System.Drawing.Point(23, 670);
+            this.checkBox_Autosearch.Name = "checkBox_Autosearch";
+            this.checkBox_Autosearch.ShadowDecoration.Parent = this.checkBox_Autosearch;
+            this.checkBox_Autosearch.Size = new System.Drawing.Size(20, 20);
+            this.checkBox_Autosearch.TabIndex = 131;
+            this.checkBox_Autosearch.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.checkBox_Autosearch.UncheckedState.BorderRadius = 2;
+            this.checkBox_Autosearch.UncheckedState.BorderThickness = 0;
+            this.checkBox_Autosearch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.checkBox_Autosearch.UncheckedState.Parent = this.checkBox_Autosearch;
+            this.checkBox_Autosearch.CheckedChanged += new System.EventHandler(this.checkBox_Autosearch_CheckedChanged);
+            // 
+            // gunaLabel2
+            // 
+            this.gunaLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gunaLabel2.AutoSize = true;
+            this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel2.Location = new System.Drawing.Point(47, 670);
+            this.gunaLabel2.Name = "gunaLabel2";
+            this.gunaLabel2.Size = new System.Drawing.Size(150, 20);
+            this.gunaLabel2.TabIndex = 130;
+            this.gunaLabel2.Text = "Barcode Auto-Search";
             // 
             // pnlTitle
             // 
@@ -302,37 +338,37 @@
             // 
             this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
-            // checkBox_Autosearch
+            // checkBox_DisableWholesale
             // 
-            this.checkBox_Autosearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox_Autosearch.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox_Autosearch.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.checkBox_Autosearch.CheckedState.BorderRadius = 2;
-            this.checkBox_Autosearch.CheckedState.BorderThickness = 0;
-            this.checkBox_Autosearch.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.checkBox_Autosearch.CheckedState.Parent = this.checkBox_Autosearch;
-            this.checkBox_Autosearch.Location = new System.Drawing.Point(23, 670);
-            this.checkBox_Autosearch.Name = "checkBox_Autosearch";
-            this.checkBox_Autosearch.ShadowDecoration.Parent = this.checkBox_Autosearch;
-            this.checkBox_Autosearch.Size = new System.Drawing.Size(20, 20);
-            this.checkBox_Autosearch.TabIndex = 131;
-            this.checkBox_Autosearch.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.checkBox_Autosearch.UncheckedState.BorderRadius = 2;
-            this.checkBox_Autosearch.UncheckedState.BorderThickness = 0;
-            this.checkBox_Autosearch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.checkBox_Autosearch.UncheckedState.Parent = this.checkBox_Autosearch;
-            this.checkBox_Autosearch.CheckedChanged += new System.EventHandler(this.checkBox_Autosearch_CheckedChanged);
+            this.checkBox_DisableWholesale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_DisableWholesale.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox_DisableWholesale.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
+            this.checkBox_DisableWholesale.CheckedState.BorderRadius = 2;
+            this.checkBox_DisableWholesale.CheckedState.BorderThickness = 0;
+            this.checkBox_DisableWholesale.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
+            this.checkBox_DisableWholesale.CheckedState.Parent = this.checkBox_DisableWholesale;
+            this.checkBox_DisableWholesale.Location = new System.Drawing.Point(210, 670);
+            this.checkBox_DisableWholesale.Name = "checkBox_DisableWholesale";
+            this.checkBox_DisableWholesale.ShadowDecoration.Parent = this.checkBox_DisableWholesale;
+            this.checkBox_DisableWholesale.Size = new System.Drawing.Size(20, 20);
+            this.checkBox_DisableWholesale.TabIndex = 133;
+            this.checkBox_DisableWholesale.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.checkBox_DisableWholesale.UncheckedState.BorderRadius = 2;
+            this.checkBox_DisableWholesale.UncheckedState.BorderThickness = 0;
+            this.checkBox_DisableWholesale.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.checkBox_DisableWholesale.UncheckedState.Parent = this.checkBox_DisableWholesale;
+            this.checkBox_DisableWholesale.CheckedChanged += new System.EventHandler(this.checkBox_DisableWholesale_CheckedChanged);
             // 
-            // gunaLabel2
+            // gunaLabel3
             // 
-            this.gunaLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.gunaLabel2.AutoSize = true;
-            this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel2.Location = new System.Drawing.Point(47, 670);
-            this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(150, 20);
-            this.gunaLabel2.TabIndex = 130;
-            this.gunaLabel2.Text = "Barcode Auto-Search";
+            this.gunaLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gunaLabel3.AutoSize = true;
+            this.gunaLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel3.Location = new System.Drawing.Point(234, 670);
+            this.gunaLabel3.Name = "gunaLabel3";
+            this.gunaLabel3.Size = new System.Drawing.Size(132, 20);
+            this.gunaLabel3.TabIndex = 132;
+            this.gunaLabel3.Text = "Disable Wholesale";
             // 
             // SeeItem
             // 
@@ -376,5 +412,7 @@
         public Guna.UI2.WinForms.Guna2DataGridView dgvProducts;
         private Guna.UI2.WinForms.Guna2CustomCheckBox checkBox_Autosearch;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
+        private Guna.UI2.WinForms.Guna2CustomCheckBox checkBox_DisableWholesale;
+        private Guna.UI.WinForms.GunaLabel gunaLabel3;
     }
 }
