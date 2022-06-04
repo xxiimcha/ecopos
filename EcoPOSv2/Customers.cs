@@ -1584,6 +1584,36 @@ namespace EcoPOSv2
             new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvMT_Records), "Customer Report", "Customer Report");
         }
 
+        private void btnAddPoints_Click(object sender, EventArgs e)
+        {
+            if(txtMC_Status.Text == "Active")
+            {
+                MemberCardPointsAdder addPoints = new MemberCardPointsAdder();
+                addPoints.memberName = txtMC_Owner.Text;
+                addPoints.currentPoints = txtMC_Balance.Text;
+                addPoints.memberCard = txtMC_CardNo.Text;
+                addPoints.ShowDialog();
+
+
+                SQL.AddParam("@card_no", txtMC_CardNo.Text);
+                SQL.Query(@"SELECT member_card.cardID, member_card.card_no, membership.name, member_card.customer_name, member_card.card_balance, member_card.status FROM member_card
+                        INNER JOIN membership ON member_card.member_type_ID = membership.member_type_ID
+                        WHERE member_card.card_no = @card_no");
+                if (SQL.HasException(true))
+                    return;
+
+                foreach (DataRow r in SQL.DBDT.Rows)
+                {
+                    card_id = r["cardID"].ToString();
+                    txtMC_CardNo.Text = r["card_no"].ToString();
+                    txtMC_Membership.Text = r["name"].ToString();
+                    txtMC_Owner.Text = r["customer_name"].ToString();
+                    txtMC_Balance.Text = r["card_balance"].ToString();
+                    txtMC_Status.Text = r["status"].ToString();
+                }
+            }
+        }
+
         private void btnMembership_Click(object sender, EventArgs e)
         {
             clickMembership = true;

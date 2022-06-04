@@ -31,6 +31,7 @@ namespace EcoPOSv2
         {
             _SeeItem = this;
 
+            //autosearch enabler
             if (Properties.Settings.Default.AutoSearchEnabled)
             {
                 checkBox_Autosearch.Checked = true;
@@ -38,6 +39,16 @@ namespace EcoPOSv2
             else
             {
                 checkBox_Autosearch.Checked = false;
+            }
+
+            //wholesale disabler
+            if (Properties.Settings.Default.DisableWholesale)
+            {
+                checkBox_DisableWholesale.Checked = true;
+            }
+            else
+            {
+                checkBox_DisableWholesale.Checked = false;
             }
 
             if (Properties.Settings.Default.Pricing == "Wholesale")
@@ -306,6 +317,20 @@ namespace EcoPOSv2
             else
             {
                 Properties.Settings.Default.AutoSearchEnabled = false;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void checkBox_DisableWholesale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_DisableWholesale.Checked)
+            {
+                Properties.Settings.Default.DisableWholesale = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.DisableWholesale = false;
                 Properties.Settings.Default.Save();
             }
         }

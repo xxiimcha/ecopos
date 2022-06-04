@@ -442,5 +442,20 @@ namespace EcoPOSv2.Properties {
                 this["AutoSearchEnabled"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisableWholesale
+        {
+            get
+            {
+                return ((bool)(this["DisableWholesale"]));
+            }
+            set
+            {
+                this["DisableWholesale"] = value;
+            }
+        }
     }
 }

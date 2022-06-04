@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Quantity));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.lblAmount = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnQuantity = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.lblItem = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnClose = new Guna.UI.WinForms.GunaControlBox();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel1.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +66,73 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(533, 245);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // pnlTitle
+            // 
+            this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
+            this.pnlTitle.BorderThickness = 1;
+            this.pnlTitle.Controls.Add(this.btnClose);
+            this.pnlTitle.Controls.Add(this.gunaLabel1);
+            this.pnlTitle.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.ShadowDecoration.Depth = 40;
+            this.pnlTitle.ShadowDecoration.Enabled = true;
+            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
+            this.pnlTitle.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.pnlTitle.Size = new System.Drawing.Size(533, 35);
+            this.pnlTitle.TabIndex = 130;
+            // 
+            // btnClose
+            // 
+            this.btnClose.AnimationHoverSpeed = 0.07F;
+            this.btnClose.AnimationSpeed = 0.03F;
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.IconColor = System.Drawing.Color.Black;
+            this.btnClose.IconSize = 15F;
+            this.btnClose.Location = new System.Drawing.Point(491, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
+            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
+            this.btnClose.Size = new System.Drawing.Size(42, 35);
+            this.btnClose.TabIndex = 102;
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(140, 21);
+            this.gunaLabel1.TabIndex = 103;
+            this.gunaLabel1.Text = "QUANTITY EDITOR";
+            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount.ForeColor = System.Drawing.Color.Black;
+            this.lblAmount.Location = new System.Drawing.Point(112, 133);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(399, 33);
+            this.lblAmount.TabIndex = 60;
+            this.lblAmount.Text = "0.00";
+            this.lblAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(12, 133);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 33);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Amount";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtQuantity
             // 
@@ -174,72 +243,9 @@
             this.Label3.Text = "Quantity";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // guna2DragControl1
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 133);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 33);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "Amount";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblAmount
-            // 
-            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.ForeColor = System.Drawing.Color.Black;
-            this.lblAmount.Location = new System.Drawing.Point(112, 133);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(399, 33);
-            this.lblAmount.TabIndex = 60;
-            this.lblAmount.Text = "0.00";
-            this.lblAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnlTitle
-            // 
-            this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
-            this.pnlTitle.BorderThickness = 1;
-            this.pnlTitle.Controls.Add(this.btnClose);
-            this.pnlTitle.Controls.Add(this.gunaLabel1);
-            this.pnlTitle.CustomBorderColor = System.Drawing.Color.Transparent;
-            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.ShadowDecoration.Depth = 40;
-            this.pnlTitle.ShadowDecoration.Enabled = true;
-            this.pnlTitle.ShadowDecoration.Parent = this.pnlTitle;
-            this.pnlTitle.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.pnlTitle.Size = new System.Drawing.Size(533, 35);
-            this.pnlTitle.TabIndex = 130;
-            // 
-            // btnClose
-            // 
-            this.btnClose.AnimationHoverSpeed = 0.07F;
-            this.btnClose.AnimationSpeed = 0.03F;
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.IconColor = System.Drawing.Color.Black;
-            this.btnClose.IconSize = 15F;
-            this.btnClose.Location = new System.Drawing.Point(491, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnClose.OnHoverIconColor = System.Drawing.Color.White;
-            this.btnClose.OnPressedColor = System.Drawing.Color.Black;
-            this.btnClose.Size = new System.Drawing.Size(42, 35);
-            this.btnClose.TabIndex = 102;
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(140, 21);
-            this.gunaLabel1.TabIndex = 103;
-            this.gunaLabel1.Text = "QUANTITY EDITOR";
-            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
             // Quantity
             // 
@@ -278,5 +284,6 @@
         private Guna.UI2.WinForms.Guna2Panel pnlTitle;
         private Guna.UI.WinForms.GunaControlBox btnClose;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
