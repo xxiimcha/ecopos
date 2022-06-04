@@ -32,6 +32,12 @@ namespace EcoPOSv2
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (txtPoints.Text == "" || txtPoints.Text == null)
+            {
+
+                return;
+            }
+
             //Updates the card's balance
             SQL.AddParam("@points", Decimal.Parse(txtPoints.Text));
             SQL.AddParam("@card_no", memberCard);
@@ -40,9 +46,22 @@ namespace EcoPOSv2
             {
                 return;
             }
+
+            //Add to topup transaction
+            SQL.AddParam("@points", Decimal.Parse(txtPoints.Text));
+            SQL.AddParam("@card_no", memberCard);
+            SQL.AddParam("@currentPoints", Decimal.Parse(currentPoints));
+            SQL.AddParam("@date_time", DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy HH:mm:ss")));
+            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+            SQL.Query("INSERT INTO topup_transaction(topup_cardNo, topup_cusID, topup_amount, topup_beggining_amount, topup_ending_amount, topup_datetime, terminal_id) " +
+                "VALUES(@card_no, (SELECT customerID FROM member_card WHERE card_no = @card_no), @points, @currentPoints, (@currentPoints + @points), @date_time, @terminal_id)");
+            if (SQL.HasException(true))
+            {
+                return;
+            }
             else
             {
-                new Notification().PopUp("Points Added", "", "success");
+                new Notification().PopUp("Points Added ", "", "success");
                 Close();
             }
         }

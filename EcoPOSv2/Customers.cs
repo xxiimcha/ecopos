@@ -54,7 +54,7 @@ namespace EcoPOSv2
         private List<Control> allTxt = new List<Control>();
         private List<TextBox> requiredFields = new List<TextBox>();
 
-        Boolean clickbtnCustomer, clickMembership, clickMemberTransactions, clickMC = false;
+        Boolean clickbtnCustomer, clickMembership, clickMemberTransactions, clickMC, clickTopupTransactions = false;
 
         public static Customers _Customers;
         public static Customers Instance
@@ -92,6 +92,13 @@ namespace EcoPOSv2
         private void LoadMT_Customers()
         {
             OL.ComboValuesQuery(cmbMT_Customer, @"SELECT customerID, name FROM
+                                         (
+                                          SELECT 0 as 'customerID', 'All customers' as 'name', 1 as ord
+                                          UNION ALL
+                                          SELECT customerID, (name + ' (' + card_no + ')'), 2 as ord FROM customer
+                                         ) x ORDER BY ord, name ASC", "customerID", "name");
+
+            OL.ComboValuesQuery(cmbTopupCustomer, @"SELECT customerID, name FROM
                                          (
                                           SELECT 0 as 'customerID', 'All customers' as 'name', 1 as ord
                                           UNION ALL
@@ -149,7 +156,7 @@ namespace EcoPOSv2
             dgvMembership.Columns[0].Visible = false;
         }
 
-        void SelectedButtonContainer(Button getButtonCustomer, Button getButtonMembership, Button getButtonMemberTransactions, Button getButtonMC)
+        void SelectedButtonContainer(Button getButtonCustomer, Button getButtonMembership, Button getButtonMemberTransactions, Button getButtonMC, Button getButtonTopupTransaction)
         {
             Color col = ColorTranslator.FromHtml("#383838");
             if (clickbtnCustomer)
@@ -161,6 +168,8 @@ namespace EcoPOSv2
                 getButtonMemberTransactions.ForeColor = Color.Black;
                 getButtonMC.BackColor = Color.White;
                 getButtonMC.ForeColor = Color.Black;
+                getButtonTopupTransaction.BackColor = Color.White;
+                getButtonTopupTransaction.ForeColor = Color.Black;
                 //change color of selected button
                 getButtonCustomer.BackColor = col;
                 getButtonCustomer.ForeColor = Color.White;
@@ -175,6 +184,8 @@ namespace EcoPOSv2
                 getButtonMemberTransactions.ForeColor = Color.Black;
                 getButtonMC.BackColor = Color.White;
                 getButtonMC.ForeColor = Color.Black;
+                getButtonTopupTransaction.BackColor = Color.White;
+                getButtonTopupTransaction.ForeColor = Color.Black;
                 //change color of selected button
                 getButtonMembership.BackColor = col;
                 getButtonMembership.ForeColor = Color.White;
@@ -190,6 +201,8 @@ namespace EcoPOSv2
                 getButtonMembership.ForeColor = Color.Black;
                 getButtonMC.BackColor = Color.White;
                 getButtonMC.ForeColor = Color.Black;
+                getButtonTopupTransaction.BackColor = Color.White;
+                getButtonTopupTransaction.ForeColor = Color.Black;
                 //change color of selected button
                 getButtonMemberTransactions.BackColor = col;
                 getButtonMemberTransactions.ForeColor = Color.White;
@@ -204,10 +217,28 @@ namespace EcoPOSv2
                 getButtonMembership.ForeColor = Color.Black;
                 getButtonMemberTransactions.BackColor = Color.White;
                 getButtonMemberTransactions.ForeColor = Color.Black;
+                getButtonTopupTransaction.BackColor = Color.White;
+                getButtonTopupTransaction.ForeColor = Color.Black;
                 //change color of selected button
                 getButtonMC.BackColor = col;
                 getButtonMC.ForeColor = Color.White;
                 clickMC = false;
+            }
+            if (clickTopupTransactions)
+            {
+                //back to normal color
+                getButtonCustomer.BackColor = Color.White;
+                getButtonCustomer.ForeColor = Color.Black;
+                getButtonMembership.BackColor = Color.White;
+                getButtonMembership.ForeColor = Color.Black;
+                getButtonMemberTransactions.BackColor = Color.White;
+                getButtonMemberTransactions.ForeColor = Color.Black;
+                getButtonMC.BackColor = Color.White;
+                getButtonMC.ForeColor = Color.Black;
+                //change color of selected button
+                getButtonTopupTransaction.BackColor = col;
+                getButtonTopupTransaction.ForeColor = Color.White;
+                clickTopupTransactions = false;
             }
         }
 
@@ -265,7 +296,7 @@ namespace EcoPOSv2
             clickbtnCustomer = true;
             currentBtn = btnMC;
             currentPanel = pnlMC;
-            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC, btnTopupTransaction);
 
             currentBtn = btnCustomer;
             currentPanel = pnlCustomer;
@@ -282,6 +313,9 @@ namespace EcoPOSv2
             LoadMT_Customers();
             dtpMT_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
             dtpMT_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+            dtpTopup_From.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 00:00:01"));
+            dtpTopup_To.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
+
             cmbMT_Customer.SelectedIndex = 0;
 
             TextboxValidation();
@@ -291,7 +325,7 @@ namespace EcoPOSv2
         {
             pnlCustomer.BringToFront();
             clickbtnCustomer = true;
-            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC, btnTopupTransaction);
 
             LoadCustomer();
             OL.changePanel(pnlCustomer, ref currentPanel, btnCustomer, ref currentBtn);
@@ -414,6 +448,7 @@ namespace EcoPOSv2
                                 }
                                 LoadCustomer();
                                 LoadCard();
+                                LoadMT_Customers();
                             }
                         }
                     }
@@ -715,8 +750,18 @@ namespace EcoPOSv2
 
         private void dgvCard_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            card_id = "";
+            txtMC_CardNo.Clear();
+            txtMC_Membership.Clear();
+            txtMC_Owner.Clear();
+            txtMC_Balance.Clear();
+            txtMC_Status.Clear();
+
             if (e.RowIndex == -1)
+            {
                 return;
+            }
+                
 
             SQL.AddParam("@cardID", dgvCard.CurrentRow.Cells[0].Value.ToString());
 
@@ -724,7 +769,24 @@ namespace EcoPOSv2
                         INNER JOIN membership ON member_card.member_type_ID = membership.member_type_ID
                         WHERE member_card.cardID = @cardID");
             if (SQL.HasException(true))
+            {
                 return;
+            }else if (SQL.DBDT.Rows.Count == 0)
+            {
+                SQL.AddParam("@cardID", dgvCard.CurrentRow.Cells[0].Value.ToString());
+                SQL.Query(@"SELECT member_card.cardID, member_card.card_no, member_card.customer_name, member_card.card_balance, member_card.status FROM member_card
+                        WHERE member_card.cardID = @cardID");
+                foreach (DataRow r in SQL.DBDT.Rows)
+                {
+                    card_id = r["cardID"].ToString();
+                    txtMC_CardNo.Text = r["card_no"].ToString();
+                    txtMC_Membership.Text = "UNASSIGNED";
+                    txtMC_Owner.Text = "UNASSIGNED";
+                    txtMC_Balance.Text = r["card_balance"].ToString();
+                    txtMC_Status.Text = r["status"].ToString();
+                }
+                return;
+            }
 
             foreach (DataRow r in SQL.DBDT.Rows)
             {
@@ -749,7 +811,11 @@ namespace EcoPOSv2
 
                     if (requiredFieldsMet == 1)
                     {
-
+                        if (txtMC_CardNo.Text == "0")
+                        {
+                            new Notification().PopUp("0 cannot be used.", "Save failed", "error");
+                            return;
+                        }
                         // check for duplicate names
                         SQL.AddParam("@card_no", txtMC_CardNo.Text);
                         int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM member_card WHERE card_no = @card_no) > 0,'1', '0') as result"));
@@ -958,7 +1024,7 @@ namespace EcoPOSv2
                             FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
                             UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
-                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
+                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, remaining_points, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
                             payment_method, action,referenceNo, terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             WHERE transaction_details.order_ref = @order_ref");
@@ -973,7 +1039,7 @@ namespace EcoPOSv2
                             FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
                             UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
-                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
+                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, remaining_points, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
                             payment_method, action,referenceNo, vt.void_order_ref_temp, transaction_details.terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             INNER JOIN void_transaction as vt ON vt.order_ref = transaction_details.order_ref WHERE transaction_details.order_ref = @order_ref");
@@ -1016,6 +1082,8 @@ namespace EcoPOSv2
                         reprint_receipt.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
                         reprint_receipt.SetParameterValue("change", change.ToString("N2"));
+                        decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                        report.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
 
                         //REFERENCE NO
                         reprint_receipt.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
@@ -1265,6 +1333,23 @@ namespace EcoPOSv2
             EI.ExportDgvToPDF("Member Transactions", dgvMT_Records);
         }
 
+        private void loadTopupDGV()
+        {
+            string cus_query = "topup_cusID <> 0";
+
+            if (cmbTopupCustomer.SelectedIndex != 0)
+                cus_query = "topup_cusID = " + cmbTopupCustomer.SelectedValue;
+
+            SQL.AddParam("@from", dtpTopup_From.Value);
+            SQL.AddParam("@to", dtpTopup_To.Value);
+            SQL.Query(@"SELECT topupID as 'Topup No', topup_datetime as 'Date', (SELECT name FROM customer WHERE customerID = topup_cusID) as 'Customer Name', topup_amount as 'Topup Amount', topup_beggining_amount as 'Beginning Amount', topup_ending_amount as 'Ending Amount', terminal_id as 'Terminal Number' FROM topup_transaction WHERE topup_datetime BETWEEN @from AND @to AND " + cus_query + " ORDER BY topup_datetime DESC");
+            if (SQL.HasException(true))
+                return;
+
+            dgvTopupReport.DataSource = SQL.DBDT;
+            dgvTopupReport.Columns[0].Visible = false;
+        }
+
         private void loadDGVdata()
         {
             string cus_query = "cus_ID_no <> 0";
@@ -1389,6 +1474,8 @@ namespace EcoPOSv2
                         report.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
                         report.SetParameterValue("change", change.ToString("N2"));
+                        decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                        report.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
 
                         //REFERENCE NO
                         report.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
@@ -1584,6 +1671,11 @@ namespace EcoPOSv2
             new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvMT_Records), "Customer Report", "Customer Report");
         }
 
+        private void btnTopupExportoExcel_Click(object sender, EventArgs e)
+        {
+            new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgvTopupReport), "Topup Report", "Topup Report");
+        }
+
         private void btnAddPoints_Click(object sender, EventArgs e)
         {
             if(txtMC_Status.Text == "Active")
@@ -1611,13 +1703,50 @@ namespace EcoPOSv2
                     txtMC_Balance.Text = r["card_balance"].ToString();
                     txtMC_Status.Text = r["status"].ToString();
                 }
+
+                loadTopupDGV();
             }
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpTopup_To_ValueChanged(object sender, EventArgs e)
+        {
+            loadTopupDGV();
+        }
+
+        private void dtpTopup_From_ValueChanged(object sender, EventArgs e)
+        {
+            loadTopupDGV();
+        }
+
+        private void cmbTopupCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadTopupDGV();
+        }
+
+        private void btnTopupExportReport_Click(object sender, EventArgs e)
+        {
+            EI.ExportDgvToPDF("Topup Transactions", dgvTopupReport);
+        }
+
+        private void btnTopupTransaction_Click(object sender, EventArgs e)
+        {
+            clickTopupTransactions = true;
+            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC, btnTopupTransaction);
+
+            LoadMembership();
+
+            OL.changePanel(pnlTopupTran, ref currentPanel, btnTopupTransaction, ref currentBtn);
         }
 
         private void btnMembership_Click(object sender, EventArgs e)
         {
             clickMembership = true;
-            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC, btnTopupTransaction);
 
             LoadMembership();
 
@@ -1628,7 +1757,7 @@ namespace EcoPOSv2
         private void btnMemberTransactions_Click(object sender, EventArgs e)
         {
             clickMemberTransactions = true;
-            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC, btnTopupTransaction);
 
             LoadMT_Customers();
             OL.changePanel(pnlMT, ref currentPanel, btnMemberTransactions, ref currentBtn);
@@ -1637,7 +1766,7 @@ namespace EcoPOSv2
         private void btnMC_Click(object sender, EventArgs e)
         {
             clickMC = true;
-            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC);
+            SelectedButtonContainer(btnCustomer, btnMembership, btnMemberTransactions, btnMC, btnTopupTransaction);
 
             LoadCard();
             OL.changePanel(pnlMC, ref currentPanel, btnMC, ref currentBtn);

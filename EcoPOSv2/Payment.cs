@@ -88,7 +88,7 @@ namespace EcoPOSv2
                         report.SetDataSource(ds);
 
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-                        SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, payment_method, terminal_id FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM transaction_details where terminal_id=@terminal_id)");
+                        SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; SELECT date_time,order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat,  disc_amt,  cus_pts_deducted,  grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt,  change, remaining_points, giftcard_no,giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, payment_method, terminal_id FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM transaction_details where terminal_id=@terminal_id)");
 
                         if (SQL.HasException(true))
                             return;
@@ -139,6 +139,9 @@ namespace EcoPOSv2
 
                             decimal change = decimal.Parse(r["change"].ToString());
                             report.SetParameterValue("change", change.ToString("N2"));
+
+                            decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                            report.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
 
                             if (r["cus_name"].ToString() == "0")
                             {
@@ -551,6 +554,8 @@ namespace EcoPOSv2
             ((FieldObject)report.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
             ((TextObject)report.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
             ((FieldObject)report.ReportDefinition.ReportObjects["change1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+            ((TextObject)report.ReportDefinition.ReportObjects["trpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails , FontStyle.Regular));
+            ((FieldObject)report.ReportDefinition.ReportObjects["trpoints1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
 
             ((FieldObject)report.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
             ((FieldObject)report.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
@@ -766,6 +771,7 @@ namespace EcoPOSv2
                     SQL.AddParam("@vat_12", Convert.ToDecimal(frmOrder.lblVAT.Text));
                     SQL.AddParam("@vat_exempt_sale", Convert.ToDecimal(frmOrder.lblVATExempt.Text));
                     SQL.AddParam("@zero_rated_sale", Convert.ToDecimal(frmOrder.lblZeroRated.Text));
+                    SQL.AddParam("@remaining_points", Convert.ToDecimal(lblRemainingPoints.Text));
                     SQL.AddParam("@userID", Main.Instance.current_id);
                     SQL.AddParam("@user_first_name", Main.Instance.current_user_first_name);
                     SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
@@ -778,11 +784,11 @@ namespace EcoPOSv2
                         INSERT INTO transaction_details 
                            (order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref, 
                            no_of_items, subtotal, disc_amt, total, cus_pts_deducted, giftcard_deducted, grand_total, payment_amt, change, payment_method, giftcard_no, 
-                           less_vat, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, userID, user_first_name,terminal_id,referenceNo) 
+                           less_vat, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, remaining_points, userID, user_first_name,terminal_id,referenceNo) 
                            SELECT order_ref, order_no, action, discountID, cus_ID_no, cus_special_ID_no, cus_type, cus_name, cus_mem_ID, cus_rewardable, cus_amt_per_pt, refund_order_ref, return_order_ref,  
                            @no_of_items, @subtotal, IIF((SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id) > 1300, 1300, (SELECT SUM(discount) + @fix_discount FROM order_cart WHERE terminal_id = @terminal_id)), @total, @cus_pts_deducted, 
                            @giftcard_deducted, @grand_total, @payment_amt, @change, @payment_method, @giftcard_no, @less_vat, @vatable_sale, @vat_12, @vat_exempt_sale, 
-                           @zero_rated_sale, @userID, @user_first_name,@terminal_id,@ReferenceNo FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id);
+                           @zero_rated_sale, @remaining_points, @userID, @user_first_name,@terminal_id,@ReferenceNo FROM order_no WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id);
 
                         INSERT INTO transaction_items (order_ref, itemID, productID, description, name, type, static_price_exclusive,
                            static_price_vat, static_price_inclusive, selling_price_exclusive, selling_price_vat, selling_price_inclusive,

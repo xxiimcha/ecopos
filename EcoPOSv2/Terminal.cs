@@ -583,7 +583,7 @@ namespace EcoPOSv2
                         }
                         else
                         {
-                            subtotal = decimal.Parse(r["subtotal"].ToString());
+                                subtotal = decimal.Parse(r["subtotal"].ToString());
                         }
 
                         if (r["discount_deductions"].ToString() == "" & r["discount_deductions"].ToString() == null)

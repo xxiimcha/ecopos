@@ -221,7 +221,7 @@ namespace EcoPOSv2
                             FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
                             UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
-                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
+                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, remaining_points, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
                             payment_method, action,referenceNo, terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             WHERE transaction_details.order_ref = @order_ref");
@@ -235,7 +235,7 @@ namespace EcoPOSv2
                             FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
                             UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
-                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
+                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, remaining_points, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
                             payment_method, action,referenceNo, vt.void_order_ref_temp, transaction_details.terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             INNER JOIN void_transaction as vt ON vt.order_ref = transaction_details.order_ref WHERE transaction_details.order_ref = @order_ref");
@@ -281,6 +281,8 @@ namespace EcoPOSv2
                         reprint_receipt.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
                         reprint_receipt.SetParameterValue("change", change.ToString("N2"));
+                        decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                        reprint_receipt.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
 
                         //REFERENCE NO
                         reprint_receipt.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
@@ -669,6 +671,8 @@ namespace EcoPOSv2
                 report.SetParameterValue("cash", payment_amt.ToString("N2"));
                 decimal change = decimal.Parse(r["change"].ToString());
                 report.SetParameterValue("change", change.ToString("N2"));
+                decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                report.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
 
                 //REFERENCE NO
                 report.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
