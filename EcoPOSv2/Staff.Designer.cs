@@ -80,6 +80,7 @@
             // Panel4
             // 
             this.Panel4.BackColor = System.Drawing.Color.White;
+            this.Panel4.Controls.Add(this.btnStaffType);
             this.Panel4.Controls.Add(this.label10);
             this.Panel4.Controls.Add(this.txtKeyPass);
             this.Panel4.Controls.Add(this.tbCardNo);
@@ -195,7 +196,7 @@
             this.cmbStaffType.Location = new System.Drawing.Point(148, 217);
             this.cmbStaffType.Name = "cmbStaffType";
             this.cmbStaffType.ShadowDecoration.Parent = this.cmbStaffType;
-            this.cmbStaffType.Size = new System.Drawing.Size(365, 36);
+            this.cmbStaffType.Size = new System.Drawing.Size(247, 36);
             this.cmbStaffType.TabIndex = 125;
             // 
             // txtLastName
@@ -701,7 +702,6 @@
             this.TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanel4.Controls.Add(this.btnStaffType, 2, 0);
             this.TableLayoutPanel4.Controls.Add(this.txtSearchUser, 0, 0);
             this.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.TableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
@@ -713,7 +713,6 @@
             // 
             // btnStaffType
             // 
-            this.btnStaffType.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnStaffType.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(165)))), ((int)(((byte)(177)))));
             this.btnStaffType.FlatAppearance.BorderSize = 0;
             this.btnStaffType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -724,10 +723,10 @@
             this.btnStaffType.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnStaffType.IconSize = 25;
             this.btnStaffType.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStaffType.Location = new System.Drawing.Point(974, 3);
+            this.btnStaffType.Location = new System.Drawing.Point(401, 217);
             this.btnStaffType.Name = "btnStaffType";
             this.btnStaffType.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.btnStaffType.Size = new System.Drawing.Size(113, 32);
+            this.btnStaffType.Size = new System.Drawing.Size(122, 36);
             this.btnStaffType.TabIndex = 47;
             this.btnStaffType.Text = "Staff Type";
             this.btnStaffType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

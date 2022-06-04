@@ -31,7 +31,7 @@ namespace EcoPOSv2
         PaymentR58 reprint_receipt = new PaymentR58();
 
         TransactionsReport80 report80 = new TransactionsReport80();
-        PaymentReceipt80 reprint_receipt80 = new PaymentReceipt80();
+        PaymentR80 reprint_receipt80 = new PaymentR80();
         bool dgvClickedOnce = false;
         //METHODS
 
@@ -200,7 +200,6 @@ namespace EcoPOSv2
 
                 try
                 {
-
                     if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
                     {
                         SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
@@ -370,20 +369,17 @@ namespace EcoPOSv2
             }
             else
             {
-                reprint_receipt80 = new PaymentReceipt80();
-
                 DataSet ds = new DataSet();
 
                 try
                 {
-
                     if (dgvRecords.CurrentRow.Cells[3].Value.ToString() == "Order")
                     {
                         SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                     }
                     else
                     {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive as static_price_inclusive, selling_price_inclusive as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
                     }
 
                     //SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
@@ -400,7 +396,7 @@ namespace EcoPOSv2
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
                             cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
-                            payment_method, action,referenceNo FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                            payment_method, action,referenceNo, terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             WHERE transaction_details.order_ref = @order_ref");
 
                     }
@@ -414,11 +410,10 @@ namespace EcoPOSv2
                             SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
                             cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, giftcard_no, 
                             giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
-                            payment_method, action,referenceNo, vt.void_order_ref_temp FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
+                            payment_method, action,referenceNo, vt.void_order_ref_temp, transaction_details.terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                             INNER JOIN void_transaction as vt ON vt.order_ref = transaction_details.order_ref WHERE transaction_details.order_ref = @order_ref");
 
                     }
-
 
                     if (SQL.HasException(true))
                         return;
@@ -430,32 +425,44 @@ namespace EcoPOSv2
                         reprint_receipt80.SetParameterValue("user_first_name", r["user_first_name"].ToString());
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
                         reprint_receipt80.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
-                        reprint_receipt80.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
+                        reprint_receipt80.SetParameterValue("Terminal_No", r["tid"].ToString()); ;
                         //reprint_receipt.SetParameterValue("")
 
                         decimal subtotal = decimal.Parse(r["subtotal"].ToString());
                         reprint_receipt80.SetParameterValue("subtotal", subtotal.ToString("N2"));
+
                         decimal less_vat = decimal.Parse(r["less_vat"].ToString());
                         reprint_receipt80.SetParameterValue("less_vat", less_vat.ToString("N2"));
+
                         decimal disc_amt = decimal.Parse(r["disc_amt"].ToString());
                         reprint_receipt80.SetParameterValue("discount", disc_amt.ToString("N2"));
+
                         decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
                         reprint_receipt80.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
+
                         decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
                         reprint_receipt80.SetParameterValue("giftcard_deduct", giftcard_deducted.ToString("N2"));
+
                         decimal grand_total = decimal.Parse(r["grand_total"].ToString());
                         reprint_receipt80.SetParameterValue("total", grand_total.ToString("N2"));
+
                         decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
                         reprint_receipt80.SetParameterValue("vatable_sales", vatable_sale.ToString("N2"));
+
                         decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
                         reprint_receipt80.SetParameterValue("vat_12", vat_12.ToString("N2"));
+
                         decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
                         reprint_receipt80.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
+
                         decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
                         reprint_receipt80.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
+
                         reprint_receipt80.SetParameterValue("giftcard_no", r["giftcard_no"].ToString());
+
                         decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                         reprint_receipt80.SetParameterValue("cash", payment_amt.ToString("N2"));
+
                         decimal change = decimal.Parse(r["change"].ToString());
                         reprint_receipt80.SetParameterValue("change", change.ToString("N2"));
 
@@ -532,14 +539,13 @@ namespace EcoPOSv2
                   
 
                 bool checkprinter = Main.PrinterExists(Main.Instance.pd_reprint_printer);
-
                 if (checkprinter == false)
                 {
                     new Notification().PopUp("Printer is offline", "Error", "error");
                     return;
                 }
 
-
+                reprint_receipt80.PrintOptions.NoPrinter = false;
                 reprint_receipt80.PrintOptions.PrinterName = Main.Instance.pd_reprint_printer;
                 reprint_receipt80.PrintOptions.PaperSource = PaperSource.Auto;
                 reprint_receipt80.PrintToPrinter(1, false, 0, 0);
@@ -554,9 +560,18 @@ namespace EcoPOSv2
 
             report.Dispose();
 
+            if (Properties.Settings.Default.papersize == "58MM")
+            {
+                reprint_receipt.Dispose();
+                reprint_receipt = new PaymentR58();
+            }
+            else
+            {
+                reprint_receipt80.Dispose();
+                reprint_receipt80 = new PaymentR80();
+            }
+
             //Font for reprinting process
-            reprint_receipt.Dispose();
-            reprint_receipt = new PaymentR58();
             Thread setFont = new Thread(FontSetter);
             setFont.Start();
 
@@ -574,6 +589,7 @@ namespace EcoPOSv2
             {
                 SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive as static_price_inclusive, selling_price_inclusive as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
             }
+
             SQL.DBDA.Fill(ds, "transaction_items");
             report.SetDataSource(ds);
 

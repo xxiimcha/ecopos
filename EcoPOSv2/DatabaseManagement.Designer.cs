@@ -167,11 +167,12 @@ namespace EcoPOSv2
             // 
             // gunaLabel1
             // 
+            this.gunaLabel1.AutoSize = true;
             this.gunaLabel1.BackColor = System.Drawing.Color.White;
             this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.Location = new System.Drawing.Point(448, 9);
+            this.gunaLabel1.Location = new System.Drawing.Point(31, 9);
             this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(388, 32);
+            this.gunaLabel1.Size = new System.Drawing.Size(177, 32);
             this.gunaLabel1.TabIndex = 2;
             this.gunaLabel1.Text = "AUTO BACKUP";
             this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -244,9 +245,9 @@ namespace EcoPOSv2
             this.flowLayoutPanel1.Controls.Add(this.guna2Panel4);
             this.flowLayoutPanel1.Controls.Add(this.guna2Panel5);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 96);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 79);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(826, 635);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(826, 615);
             this.flowLayoutPanel1.TabIndex = 4;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -642,6 +643,7 @@ namespace EcoPOSv2
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DatabaseManagement_Load);
             this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);

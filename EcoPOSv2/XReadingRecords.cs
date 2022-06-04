@@ -222,7 +222,7 @@ namespace EcoPOSv2
                            SELECT userID, user_name, first_name FROM users
                            ) x
                            ) as a;
-                           SELECT xreading.*, u.user_name as 'store_userID', us.user_name as 'shift_userID' 
+                           SELECT xreading.*, u.user_name as 'store_userID', us.user_name as 'shift_userID', terminal_id 
                            FROM xreading INNER JOIN #Temp_users as u
                            ON xreading.store_open_userID = u.ID INNER JOIN
                            #Temp_users as us ON xreading.shift_start_userID = us.ID WHERE 
@@ -264,6 +264,7 @@ namespace EcoPOSv2
 
                     CrystalReportViewer1.ReportSource = report;
                     CrystalReportViewer1.Refresh();
+                    CrystalReportViewer1.Zoom(2);
                 }
                 catch (Exception ex)
                 {

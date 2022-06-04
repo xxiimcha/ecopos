@@ -53,15 +53,12 @@ namespace EcoPOSv2
             if (Properties.Settings.Default.papersize == "58MM")
             {
                 Payment.Instance.report.SetParameterValue("note", "###REPRINT###");
-                Payment.Instance.PrintReceipt();
             }
             else
             {
                 Payment.Instance.report80.SetParameterValue("note", "###REPRINT###");
             }
-           
-            
-
+            Payment.Instance.PrintReceipt();
             tmrClose.Start();
         }
 

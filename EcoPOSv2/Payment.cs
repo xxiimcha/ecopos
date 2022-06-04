@@ -332,6 +332,7 @@ namespace EcoPOSv2
 
                         //Online Payment Reference No
                         report80.SetParameterValue("ReferenceNumber", tbReferenceNo.Text);
+
                         report80.SetParameterValue("business_name", Main.Instance.sd_business_name);
                         report80.SetParameterValue("business_address", Main.Instance.sd_business_address);
                         report80.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
