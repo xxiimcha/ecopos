@@ -95,10 +95,10 @@
       <HintPath>..\packages\FontAwesome.Sharp.5.15.4\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI">
-      <HintPath>..\..\..\..\..\Desktop\EcoPos Installers\Guna.UI.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Guna Folder\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>..\..\..\..\..\Desktop\EcoPos Installers\Guna.UI2.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Guna Folder\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
@@ -229,6 +229,12 @@
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlBehavior.cs" />
+    <Compile Include="TopupReport58.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TopupReport58.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Customers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -836,6 +842,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CodePlayGround.resx">
       <DependentUpon>CodePlayGround.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopupReport58.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TopupReport58.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseManagement.resx">
       <DependentUpon>DatabaseManagement.cs</DependentUpon>

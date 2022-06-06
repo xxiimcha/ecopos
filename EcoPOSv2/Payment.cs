@@ -654,6 +654,11 @@ namespace EcoPOSv2
             _Payment = this;
 
             cmbMethod.SelectedIndex = 0;
+
+            if (cbxUsePoints.Text == "0.00")
+            {
+                cbxUsePoints.Enabled = false;
+            }
             this.ActiveControl = txtAmount;
         }
 
@@ -1102,6 +1107,7 @@ namespace EcoPOSv2
                 lblGrandTotal.Text = (Convert.ToDecimal(lblTotal.Text) - Convert.ToDecimal(lblDeductGC.Text) - Convert.ToDecimal(lblDeductPoints.Text)).ToString("N2");
                 lblChange.Text = "-" + lblGrandTotal.Text;
                 lblRemainingPoints.Text = (Convert.ToDecimal(cbxUsePoints.Text) - Convert.ToDecimal(lblDeductPoints.Text)).ToString("N2");
+                cmbMethod.SelectedIndex = 1;
             }
             else if (cbxUsePoints.Checked == false)
             {
@@ -1112,6 +1118,7 @@ namespace EcoPOSv2
                 lblChange.Text = "-"+lblGrandTotal.Text;
                 lblDeductPoints.Text = "0.00";
                 lblRemainingPoints.Text = "0.00";
+                cmbMethod.SelectedIndex = 0;
             }
 
             //Focuses back to the amount text field / payment button

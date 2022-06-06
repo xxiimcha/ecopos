@@ -154,6 +154,7 @@ namespace EcoPOSv2
                            payment_amt,
                            payment_method,
                            change,
+                           remaining_points,
                            giftcard_no, 
                            giftcard_deducted,
                            IIF(cus_name = '', '0', cus_name) as 'cus_name',
@@ -176,8 +177,6 @@ namespace EcoPOSv2
                         report.SetParameterValue("date_time", r["date_time"].ToString());
                         report.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
                         report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                        //report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                        //report.SetParameterValue("Terminal_No", terminalNo);
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
                         report.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
                         decimal subtotal = decimal.Parse(r["subtotal"].ToString());
@@ -206,6 +205,10 @@ namespace EcoPOSv2
                         report.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
                         report.SetParameterValue("change", change.ToString("N2"));
+                        decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                        report.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
+
+
                         if (r["cus_name"].ToString() == "0" || r["cus_name"].ToString() == "")
                         {
                             report.SetParameterValue("cus_name", "________________________________________________________");
@@ -708,6 +711,7 @@ namespace EcoPOSv2
                 }
 
                 SQL.AddParam("@date", DateTime.Now.ToString("yyy-MM-dd"));
+                
                 SQL.AddParam("@terminal_id", terminalNo);
                 SQL.Query("UPDATE profit set Gross = Sales-Total_Cost where terminal_id=@terminal_id AND date=@date");
                 if (SQL.HasException(true))
@@ -852,6 +856,8 @@ namespace EcoPOSv2
             ((FieldObject)report.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
             ((TextObject)report.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
             ((FieldObject)report.ReportDefinition.ReportObjects["change1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+            ((TextObject)report.ReportDefinition.ReportObjects["trpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+            ((FieldObject)report.ReportDefinition.ReportObjects["trpoints1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
 
             //Footer
             ((FieldObject)report.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));

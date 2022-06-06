@@ -1360,10 +1360,9 @@ namespace EcoPOSv2
             SQL.AddParam("@from", dtpMT_From.Value);
             SQL.AddParam("@to", dtpMT_To.Value);
 
-            SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Date', cus_name as 'Customer', 
-                       mc.card_no as 'Card #', CONVERT(DECIMAL(18,2), grand_total) as 'Total' FROM transaction_details INNER JOIN member_card as mc ON transaction_details.cus_ID_no = mc.customerID
+            SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Date', cus_name as 'Customer', (SELECT name FROM membership WHERE member_type_ID = cus_mem_ID) as 'Membership',
+                       mc.card_no as 'Card #', CONVERT(DECIMAL(18,2), grand_total) as 'Paid Amount', cus_pts_deducted as 'Points Used', remaining_points as 'Points Remaining' FROM transaction_details INNER JOIN member_card as mc ON transaction_details.cus_ID_no = mc.customerID
                        WHERE date_time BETWEEN @from AND @to AND cus_type = 4 AND " + cus_query + " ORDER BY date_time DESC");
-
             if (SQL.HasException(true))
                 return;
 
