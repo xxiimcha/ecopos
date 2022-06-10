@@ -36,7 +36,9 @@ namespace EcoPOSv2
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnlTitle.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTitle
@@ -104,7 +106,7 @@ namespace EcoPOSv2
             this.tbReason.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.tbReason.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbReason.HoverState.Parent = this.tbReason;
-            this.tbReason.Location = new System.Drawing.Point(14, 78);
+            this.tbReason.Location = new System.Drawing.Point(17, 79);
             this.tbReason.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbReason.Name = "tbReason";
             this.tbReason.PasswordChar = '\0';
@@ -120,7 +122,7 @@ namespace EcoPOSv2
             this.gunaLabel2.AutoSize = true;
             this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel2.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel2.Location = new System.Drawing.Point(10, 45);
+            this.gunaLabel2.Location = new System.Drawing.Point(13, 46);
             this.gunaLabel2.Name = "gunaLabel2";
             this.gunaLabel2.Size = new System.Drawing.Size(163, 21);
             this.gunaLabel2.TabIndex = 132;
@@ -142,13 +144,13 @@ namespace EcoPOSv2
             this.btnConfirm.HoverState.BorderColor = System.Drawing.Color.Green;
             this.btnConfirm.HoverState.FillColor = System.Drawing.Color.Green;
             this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Location = new System.Drawing.Point(319, 135);
+            this.btnConfirm.Location = new System.Drawing.Point(322, 136);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnConfirm.ShadowDecoration.Depth = 50;
             this.btnConfirm.ShadowDecoration.Parent = this.btnConfirm;
             this.btnConfirm.Size = new System.Drawing.Size(110, 41);
-            this.btnConfirm.TabIndex = 133;
+            this.btnConfirm.TabIndex = 1;
             this.btnConfirm.Text = "CONFIRM";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -167,7 +169,7 @@ namespace EcoPOSv2
             this.btnCancel.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnCancel.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Location = new System.Drawing.Point(203, 135);
+            this.btnCancel.Location = new System.Drawing.Point(206, 136);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.BorderRadius = 3;
             this.btnCancel.ShadowDecoration.Depth = 50;
@@ -179,25 +181,38 @@ namespace EcoPOSv2
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Gray;
+            this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.btnCancel);
+            this.guna2Panel1.Controls.Add(this.tbReason);
+            this.guna2Panel1.Controls.Add(this.btnConfirm);
+            this.guna2Panel1.Controls.Add(this.gunaLabel2);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(444, 190);
+            this.guna2Panel1.TabIndex = 135;
+            // 
             // CancelPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(444, 190);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnConfirm);
-            this.Controls.Add(this.gunaLabel2);
-            this.Controls.Add(this.tbReason);
             this.Controls.Add(this.pnlTitle);
+            this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CancelPopup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CancelPopup";
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -210,5 +225,6 @@ namespace EcoPOSv2
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         public Guna.UI2.WinForms.Guna2Button btnConfirm;
         public Guna.UI2.WinForms.Guna2Button btnCancel;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }
