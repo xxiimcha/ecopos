@@ -76,7 +76,7 @@ namespace EcoPOSv2
         private void LoadStaff()
         {
             SQL.Query(@"SELECT userID, user_name as 'Username', first_name as 'First Name', last_name as 'Last Name', user_role.name as 'Role'
-                       FROM users INNER JOIN user_role ON users.roleID = user_role.roleID");
+                       FROM users INNER JOIN user_role ON users.roleID = user_role.roleID WHERE acc_status = 'Active'");
 
             if (SQL.HasException(true))
                 return;
@@ -178,8 +178,8 @@ namespace EcoPOSv2
                                 SQL.AddParam("@keycode", txtKeyPass.Text);
                                 SQL.AddParam("@card_no", tbCardNo.Text);
 
-                                SQL.Query(@"INSERT INTO users (user_name, password, first_name, last_name, roleID, allow_keycode, keycode, card_no) VALUES
-                              (@user_name, @password, @first_name, @last_name, @roleID, @allow_keycode, @keycode, @card_no)");
+                                SQL.Query(@"INSERT INTO users (user_name, password, first_name, last_name, roleID, allow_keycode, keycode, card_no, acc_status) VALUES
+                              (@user_name, @password, @first_name, @last_name, @roleID, @allow_keycode, @keycode, @card_no, 'Active')");
 
                                 if (SQL.HasException(true))
                                     return;
@@ -197,8 +197,8 @@ namespace EcoPOSv2
                             SQL.AddParam("@user_name", txtUsername.Text);
 
                             string result = Convert.ToInt32(SQL.ReturnResult(@"SELECT IIF((
-                SELECT COUNT(*) as duplicatecount FROM users WHERE user_name = @user_name AND userID <> @userID) > 0,
-                1, 0) as result")).ToString();
+                                SELECT COUNT(*) as duplicatecount FROM users WHERE user_name = @user_name AND userID <> @userID) > 0,
+                                1, 0) as result")).ToString();
 
                             if (SQL.HasException(true))
                                 return;
@@ -264,7 +264,13 @@ namespace EcoPOSv2
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo);
+            if (Main.Instance.current_id == userID.ToString() || Main.Instance.by_pass_userID.ToString() == userID.ToString())
+            {
+                new Notification(5).PopUp("You cannot delete a user that is currently logged in.", "Error", "error");
+                return;
+            }
+
+            DialogResult approval = MessageBox.Show("Are you sure that you want to delete this user? Doing so will disable the account permanently.", "DELETE WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
 
             if (approval == DialogResult.Yes)
             {
@@ -275,7 +281,7 @@ namespace EcoPOSv2
                 }
 
                 SQL.AddParam("@userID", userID);
-                SQL.Query("DELETE FROM users WHERE userID = @userID");
+                SQL.Query("UPDATE users SET acc_status = 'Disabled', user_name = '', password = '' WHERE userID = @userID");
 
                 if (SQL.HasException(true))
                     return;
@@ -329,7 +335,7 @@ namespace EcoPOSv2
 
             SQL.Query(@"SELECT userID, user_name as 'Username', first_name as 'First Name', last_name as 'Last Name', user_role.name as 'Role'
                        FROM users INNER JOIN user_role ON users.roleID = user_role.roleID
-                       WHERE user_name LIKE @find OR first_name LIKE @find OR last_name LIKE @find");
+                       WHERE acc_status = 'Active' AND (user_name LIKE @find OR first_name LIKE @find OR last_name LIKE @find)");
 
             if (SQL.HasException(true))
                 return;

@@ -312,8 +312,11 @@ namespace EcoPOSv2
                         string note = "###REPRINT###";
 
                         if (r["action"].ToString() == "4")
-                            note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString();
-
+                            note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString() + Constants.vbCrLf +
+                                "Reason: " + (SQL.ReturnResult("SELECT void_reason FROM void_transaction WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                "Voided by: " + (SQL.ReturnResult("SELECT voided_by FROM void_transaction WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                (SQL.ReturnResult("SELECT void_date_time FROM void_transaction WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString())).ToString();
+                        
                         reprint_receipt.SetParameterValue("note", note);
                     }
 
@@ -702,7 +705,10 @@ namespace EcoPOSv2
                 string note = "###REPRINT###";
 
                 if (r["action"].ToString() == "4")
-                    note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString();
+                    note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString() + Constants.vbCrLf +
+                                "Reason: " + (SQL.ReturnResult("SELECT void_reason FROM void_transaction WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                "Voided by: " + (SQL.ReturnResult("SELECT voided_by FROM void_transaction WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                (SQL.ReturnResult("SELECT void_date_time FROM void_transaction WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString())).ToString();
 
                 report.SetParameterValue("note", note);
 

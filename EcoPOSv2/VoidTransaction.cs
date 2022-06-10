@@ -68,6 +68,13 @@ namespace EcoPOSv2
                 return;
             }
 
+            if (txtReason.Text == "" || txtReason.Text == null)
+            {
+                new Notification(5).PopUp("Please add a void reason first.", "Reason Required", "error");
+                txtReason.Focus();
+                return;
+            }
+
             //// check if within shift
             //if(int.Parse(SQL.ReturnResult("select count(*) from shift")) == 1)
             //{
@@ -119,7 +126,7 @@ namespace EcoPOSv2
                     return;
 
                 VoidTransaction_UI vtu = new VoidTransaction_UI();
-
+                vtu.void_reason = txtReason.Text;
                 vtu.terminalNo = tbTerminalNo.Text;
                 vtu.order_ref = order_ref.ToString();
                 vtu.order_ref_temp = txtORNo.Text;

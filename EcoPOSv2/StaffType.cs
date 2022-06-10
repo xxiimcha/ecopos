@@ -303,8 +303,10 @@ namespace EcoPOSv2
                 cbxMore_CloseStore.Checked = Convert.ToBoolean(r["more_close_store"].ToString());
                 cbxMore_Database.Checked = Convert.ToBoolean(r["more_database"].ToString());
                 cbxMore_Settings.Checked = Convert.ToBoolean(r["more_settings"].ToString());
+                cbxMore_CustomerMembership.Checked = Convert.ToBoolean(r["more_customer_membership"].ToString());
                 cbxPay_PaymentMethod.Checked = Convert.ToBoolean(r["pay_payment_method"].ToString());
                 cbxPay_GiftCertificate.Checked = Convert.ToBoolean(r["pay_gift_certificate"].ToString());
+
             }
         }
 

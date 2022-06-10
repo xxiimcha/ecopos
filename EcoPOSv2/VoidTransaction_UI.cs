@@ -24,10 +24,13 @@ namespace EcoPOSv2
         public string order_ref_temp, order_ref;
 
         SQLControl SQL = new SQLControl();
-        decimal currentQuantity = 0;
+        
         PaymentR58 report = new PaymentR58();
         PaymentReceipt80 report80 = new PaymentReceipt80();
         public static VoidTransaction_UI _VoidTransaction_UI;
+
+        public String void_reason;
+        decimal currentQuantity = 0;
 
         public string terminalNo;
         public static VoidTransaction_UI Instance
@@ -159,8 +162,10 @@ namespace EcoPOSv2
                            giftcard_deducted,
                            IIF(cus_name = '', '0', cus_name) as 'cus_name',
                            cus_special_ID_no,
-                           transaction_details.terminal_id,transaction_details.referenceNo,
-                           vt.void_order_ref_temp as 'void_order_ref_temp'
+                           transaction_details.terminal_id,
+                           transaction_details.referenceNo,
+                           vt.void_order_ref_temp as 'void_order_ref_temp',
+                           vt.void_date_time as 'void_date_time'
                            FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                            INNER JOIN void_transaction as vt ON transaction_details.order_ref = vt.order_ref
                            WHERE transaction_details.terminal_id=@terminal_id AND transaction_details.order_ref_temp = @order_ref_temp");
@@ -228,7 +233,11 @@ namespace EcoPOSv2
                             report.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
                         }
                         report.SetParameterValue("payment_method", r["payment_method"].ToString());
-                        report.SetParameterValue("note", "VOID # " + r["void_order_ref_temp"].ToString());
+                        string c_user = Main.Instance.by_pass_user ? Main.Instance.lblByPassUser.Text : Main.Instance.lblUser.Text;
+                        report.SetParameterValue("note", "VOID # " + r["void_order_ref_temp"].ToString() +
+                            "\r\nReason: " + void_reason +
+                            "\r\nVoided by: " + c_user +
+                            "\r\n" + r["void_date_time"].ToString());
                         
                         //Online Payment Reference No
                         report.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
@@ -620,11 +629,15 @@ namespace EcoPOSv2
                 MessageBox.Show("1");
                 return;
             }
-                
 
+            //Staff responsible for the void transaction
+            string c_user = Main.Instance.by_pass_user ? Main.Instance.lblByPassUser.Text : Main.Instance.lblUser.Text;
             SQL.AddParam("@order_ref", order_ref);
             SQL.AddParam("@terminal_id", terminalNo);
-            SQL.Query("INSERT INTO void_transaction (order_ref,terminal_id) VALUES (@order_ref,@terminal_id)");
+            SQL.AddParam("@void_reason", void_reason);
+            SQL.AddParam("@cashier_online", Main.Instance.lblUser.Text);
+            SQL.AddParam("@voided_by", c_user);
+            SQL.Query("INSERT INTO void_transaction (order_ref,terminal_id, void_reason, cashier_online, voided_by) VALUES (@order_ref,@terminal_id, @void_reason, @cashier_online, @voided_by)");
             if (SQL.HasException(true))
             {
                 MessageBox.Show("2");
@@ -657,9 +670,10 @@ namespace EcoPOSv2
                         return;
                     }
 
+                    String voided_by = Main.Instance.by_pass_user ? Main.Instance.by_pass_userID.ToString() : Main.Instance.current_id.ToString();
                     // save to void item
                     SQL.AddParam("@productID", r["productID"].ToString());
-                    SQL.AddParam("@userID", Main.Instance.current_id);
+                    SQL.AddParam("@userID", voided_by);
                     SQL.AddParam("@order_ref", r["order_ref"].ToString());
 
                     SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,

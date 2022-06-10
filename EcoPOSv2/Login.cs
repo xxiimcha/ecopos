@@ -138,7 +138,7 @@ namespace EcoPOSv2
                 string attempt_status = "";
 
                 sql.AddParam("@user_name", tbUsername.Text);
-                string checkuser = sql.ReturnResult("SELECT COUNT(*) as result FROM users WHERE user_name = @user_name");
+                string checkuser = sql.ReturnResult("SELECT COUNT(*) as result FROM users WHERE user_name = @user_name AND acc_status = 'Active'");
 
                 if (sql.HasException(true)) return;
 
@@ -224,7 +224,7 @@ namespace EcoPOSv2
                     sql.AddParam("@user_name", tbUsername.Text);
                     sql.AddParam("@password", HP.Encrypt(tbPassword.Text));
 
-                    sql.Query("SELECT * FROM users WHERE user_name = @user_name AND password = @password");
+                    sql.Query("SELECT * FROM users WHERE user_name = @user_name AND password = @password AND acc_status = 'Active'");
                     if (sql.HasException(true))return;
 
                     if(sql.DBDT.Rows.Count > 0)
