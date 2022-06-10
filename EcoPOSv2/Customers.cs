@@ -909,6 +909,8 @@ namespace EcoPOSv2
 
         private void btnMT_PrintReceipt_Click(object sender, EventArgs e)
         {
+            if (cbxSummary.Checked)
+                return;
             if (dgvMT_ClickedOnce == false)
                 return;
 
@@ -1352,19 +1354,42 @@ namespace EcoPOSv2
 
         private void loadDGVdata()
         {
-            string cus_query = "cus_ID_no <> 0";
+            if (cbxSummary.Checked)
+            {
+                SQL.AddParam("@from", dtpMT_From.Value);
+                SQL.AddParam("@to", dtpMT_To.Value);
 
-            if (cmbMT_Customer.SelectedIndex != 0)
-                cus_query = "cus_ID_no = " + cmbMT_Customer.SelectedValue;
+                SQL.Query(@"SELECT customerID, name as 'Name', 
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(vatable_sale) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Vatable Sale',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(vat_12) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'VAT',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(vat_exempt_sale) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'VAT Exempt',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(less_vat) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Less VAT',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(disc_amt) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Discount',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(subtotal) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Subtotal', 
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Total Amount Paid',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(cus_pts_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Points Used',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND NOT payment_method = 'Salary Deduction')) as 'Salary Deduction Total',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND payment_method = 'Salary Deduction')) as 'Other Payment'
+                        FROM customer ");
+                if (SQL.HasException(true))
+                    return;
+            }
+            else
+            {
+                string cus_query = "cus_ID_no <> 0";
 
-            SQL.AddParam("@from", dtpMT_From.Value);
-            SQL.AddParam("@to", dtpMT_To.Value);
+                if (cmbMT_Customer.SelectedIndex != 0)
+                    cus_query = "cus_ID_no = " + cmbMT_Customer.SelectedValue;
 
-            SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Date', cus_name as 'Customer', (SELECT name FROM membership WHERE member_type_ID = cus_mem_ID) as 'Membership',
-                       mc.card_no as 'Card #', CONVERT(DECIMAL(18,2), grand_total) as 'Paid Amount', cus_pts_deducted as 'Points Used', remaining_points as 'Points Remaining' FROM transaction_details INNER JOIN member_card as mc ON transaction_details.cus_ID_no = mc.customerID
+                SQL.AddParam("@from", dtpMT_From.Value);
+                SQL.AddParam("@to", dtpMT_To.Value);
+
+                SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Date', cus_name as 'Customer', (SELECT name FROM membership WHERE member_type_ID = cus_mem_ID) as 'Membership',
+                       mc.card_no as 'Card #', payment_method as 'Payment', CONVERT(DECIMAL(18,2), grand_total) as 'Paid Amount', cus_pts_deducted as 'Points Used', remaining_points as 'Points Remaining' FROM transaction_details INNER JOIN member_card as mc ON transaction_details.cus_ID_no = mc.customerID
                        WHERE date_time BETWEEN @from AND @to AND cus_type = 4 AND " + cus_query + " ORDER BY date_time DESC");
-            if (SQL.HasException(true))
-                return;
+                if (SQL.HasException(true))
+                    return;
+            }
 
             dgvMT_Records.DataSource = SQL.DBDT;
             dgvMT_Records.Columns[0].Visible = false;
@@ -1372,6 +1397,11 @@ namespace EcoPOSv2
 
         private void dgvMT_Records_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (cbxSummary.Checked)
+            {
+                return;
+            }
+
             if (e.RowIndex == -1)
                 return;
 
@@ -1730,6 +1760,12 @@ namespace EcoPOSv2
         private void btnTopupExportReport_Click(object sender, EventArgs e)
         {
             EI.ExportDgvToPDF("Topup Transactions", dgvTopupReport);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            loadDGVdata();
+            LoadMT_Customers();
         }
 
         private void btnTopupTransaction_Click(object sender, EventArgs e)
