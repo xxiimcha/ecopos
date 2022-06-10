@@ -46,8 +46,7 @@ namespace EcoPOSv2
         private PaymentR58 report = new PaymentR58();
         private PaymentR58 reprint_receipt = new PaymentR58();
 
-        private TransactionsReport80 report80 = new TransactionsReport80();
-        private PaymentReceipt80 reprint_receipt80 = new PaymentReceipt80();
+        private PaymentR80 report80 = new PaymentR80();
 
         private bool dgvMT_ClickedOnce = false;
 
@@ -916,240 +915,6 @@ namespace EcoPOSv2
 
             if (Properties.Settings.Default.papersize == "58MM")
             {
-                reprint_receipt = new PaymentR58();
-
-                int fontSize_regular = int.Parse(Properties.Settings.Default.RegularTextFont);
-                int fontSize_products = int.Parse(Properties.Settings.Default.ProductListFont);
-                int fontSize_bname = int.Parse(Properties.Settings.Default.TitleTextFont);
-                int fontSize_bheader = int.Parse(Properties.Settings.Default.BusinessDetailsFont);
-                int fontSize_transactionDetails = int.Parse(Properties.Settings.Default.TransactionDetailsFont);
-
-                #region Font
-                //header
-
-                //Business Name
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bname, FontStyle.Bold));
-                //Business details
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["businessaddress1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["bcontact"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["btin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["bsn"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["bmin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
-
-                //Regular
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["rnote"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tdatetitle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tinvoicetitle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tcashier"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tterminal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-
-                //Product List
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
-                //((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
-                //((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["description1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
-
-                //Transaction Details
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tnoofitems"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["noofitems1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
-
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tsubtotal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["subtotal1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tlessvat"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["lessvat1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tdiscount"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["discount1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tpoints"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["pointsdeduct1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tgiftcard"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["giftcarddeduct1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["ttotal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["total1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tvatablesales"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["vatablesales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tvatamount"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["vat121"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tvatexempt"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["vatexemptsales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tzerorated"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["zeroratedsales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tgcno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["giftcardno1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tpaymentmethod"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["cash1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["trefno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-                ((TextObject)reprint_receipt.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["change1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-                ((FieldObject)reprint_receipt.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
-
-                #endregion
-
-
-
-                DataSet ds = new DataSet();
-                
-                try
-                {
-                    string order = SQL.ReturnResult("SELECT action FROM transaction_details WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
-                    if (SQL.HasException(true))
-                        return;
-
-                    if (order == "1")
-                    {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-                        if (SQL.HasException(true))
-                            return;
-                    }
-                    else
-                    {
-                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-                        if (SQL.HasException(true))
-                            return;
-                    }
-
-                    //SQL.DBDA.SelectCommand = new SqlCommand("SELECT quantity, description, (-1 * static_price_inclusive) as static_price_inclusive, (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvRecords.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-                    SQL.DBDA.Fill(ds, "transaction_items");
-                    reprint_receipt.SetDataSource(ds);
-
-                    if (order == "1")
-                    {
-                        SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
-                        SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users 
-                            SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name 
-                            FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
-                            UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
-                            SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
-                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, remaining_points, giftcard_no, 
-                            giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
-                            payment_method, action,referenceNo, terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
-                            WHERE transaction_details.order_ref = @order_ref");
-                        if (SQL.HasException(true))
-                            return;
-                    }
-                    else
-                    {
-                        SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
-                        SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users 
-                            SELECT * INTO #Temp_users FROM (SELECT ID, user_name, first_name 
-                            FROM(SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts 
-                            UNION ALL SELECT userID, user_name, first_name FROM users ) x ) as a; 
-                            SELECT date_time,transaction_details.order_ref_temp, u.first_name as 'user_first_name',  no_of_items,  subtotal,  less_vat, disc_amt, 
-                            cus_pts_deducted, grand_total, vatable_sale, vat_12, vat_exempt_sale, zero_rated_sale, payment_amt, change, remaining_points, giftcard_no, 
-                            giftcard_deducted, IIF(cus_name = '', '0', cus_name) as 'cus_name', cus_special_ID_no, refund_order_ref_temp, return_order_ref_temp, 
-                            payment_method, action,referenceNo, vt.void_order_ref_temp, transaction_details.terminal_id as 'tid' FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
-                            INNER JOIN void_transaction as vt ON vt.order_ref = transaction_details.order_ref WHERE transaction_details.order_ref = @order_ref");
-                        if (SQL.HasException(true))
-                            return;
-                    }
-
-                    foreach (DataRow r in SQL.DBDT.Rows)
-                    {
-
-                        reprint_receipt.SetParameterValue("date_time", r["date_time"].ToString());
-                        reprint_receipt.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-                        reprint_receipt.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
-                        reprint_receipt.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
-                        reprint_receipt.SetParameterValue("Terminal_No", r["tid"].ToString());
-                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-                        reprint_receipt.SetParameterValue("subtotal", subtotal.ToString("N2"));
-                        decimal less_vat = decimal.Parse(r["less_vat"].ToString());
-                        reprint_receipt.SetParameterValue("less_vat", less_vat.ToString("N2"));
-                        decimal disc_amt = decimal.Parse(r["disc_amt"].ToString());
-                        reprint_receipt.SetParameterValue("discount", disc_amt.ToString("N2"));
-                        decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
-                        reprint_receipt.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
-                        decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
-                        reprint_receipt.SetParameterValue("giftcard_deduct", giftcard_deducted.ToString("N2"));
-                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
-                        reprint_receipt.SetParameterValue("total", grand_total.ToString("N2"));
-                        decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
-                        reprint_receipt.SetParameterValue("vatable_sales", vatable_sale.ToString("N2"));
-                        decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
-                        reprint_receipt.SetParameterValue("vat_12", vat_12.ToString("N2"));
-                        decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
-                        reprint_receipt.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
-                        decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
-                        reprint_receipt.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-                        decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
-                        reprint_receipt.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
-                        decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
-                        reprint_receipt.SetParameterValue("cash", payment_amt.ToString("N2"));
-                        decimal change = decimal.Parse(r["change"].ToString());
-                        reprint_receipt.SetParameterValue("change", change.ToString("N2"));
-                        decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
-                        report.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
-
-                        //REFERENCE NO
-                        reprint_receipt.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
-
-                        if (r["cus_name"].ToString() == "0")
-                        {
-                            reprint_receipt.SetParameterValue("cus_name", "________________________________________________________");
-                        }
-                        else
-                        {
-                            reprint_receipt.SetParameterValue("cus_name", r["cus_name"].ToString());
-                        }
-
-
-                        if (r["cus_special_ID_no"].ToString() == "0")
-                        {
-                            reprint_receipt.SetParameterValue("cus_sc_pwd_id", "________________________________________________________");
-                        }
-                        else
-                        {
-                            reprint_receipt.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
-                        }
-
-                        reprint_receipt.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
-                        string note = "###REPRINT###";
-
-                        if (r["action"].ToString() == "4")
-                            note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString();
-
-                        reprint_receipt.SetParameterValue("note", note);
-                    }
-
-                    reprint_receipt.SetParameterValue("business_name", Main.Instance.sd_business_name);
-                    reprint_receipt.SetParameterValue("business_address", Main.Instance.sd_business_address);
-                    reprint_receipt.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
-                    reprint_receipt.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
-                    reprint_receipt.SetParameterValue("sn", Main.Instance.sd_sn);
-                    reprint_receipt.SetParameterValue("min", Main.Instance.sd_min);
-                    reprint_receipt.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
-                    reprint_receipt.SetParameterValue("ptu_no", Main.Instance.sd_ptu_no);
-
-                    DateTime dateissue = DateTime.Parse(Main.Instance.sd_pn_date_issued);
-                    reprint_receipt.SetParameterValue("date_issued", dateissue.ToString("MM/dd/yyyy"));
-
-                    DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
-                    reprint_receipt.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
-
-                    if (Properties.Settings.Default.isBirAccredited)
-                    {
-                        reprint_receipt.SetParameterValue("is_vatable", true);
-                        reprint_receipt.SetParameterValue("txt_footer", "THIS SERVES AS OFFICIAL RECEIPT.");
-                    }
-                    else
-                    {
-                        reprint_receipt.SetParameterValue("is_vatable", false);
-                        reprint_receipt.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Interaction.MsgBox(ex.Message);
-                    reprint_receipt.Dispose();
-                }
-
                 // print
                 if (Main.Instance.pd_receipt_printer == "")
                 {
@@ -1167,146 +932,12 @@ namespace EcoPOSv2
                 }
 
 
-                reprint_receipt.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-                reprint_receipt.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
-                reprint_receipt.PrintToPrinter(1, false, 0, 0);
+                report.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                report.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                report.PrintToPrinter(1, false, 0, 0);
             }
             else
             {
-                reprint_receipt80 = new PaymentReceipt80();
-
-                DataSet ds = new DataSet();
-
-                try
-                {
-                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-                    SQL.DBDA.Fill(ds, "transaction_items");
-
-                    reprint_receipt80.SetDataSource(ds);
-
-                    SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
-
-                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
-                           SELECT * INTO #Temp_users
-                           FROM
-                           (
-                           SELECT ID, user_name, first_name FROM
-                           (
-                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
-                           UNION ALL
-                           SELECT userID, user_name, first_name FROM users
-                           ) x
-                           ) as a;
-                           SELECT date_time,
-                           order_ref_temp, 
-                           u.first_name as 'user_first_name', 
-                           no_of_items, 
-                           subtotal, 
-                           less_vat, 
-                           disc_amt, 
-                           cus_pts_deducted, 
-                           grand_total,
-                           vatable_sale,
-                           vat_12,
-                           vat_exempt_sale,
-                           zero_rated_sale,
-                           payment_amt, 
-                           change,
-                           giftcard_no, 
-                           giftcard_deducted,
-                           IIF(cus_name = '', '0', cus_name) as 'cus_name',
-                           cus_special_ID_no,
-                           refund_order_ref_temp, 
-                           return_order_ref_temp, 
-                           action,
-                           payment_method 
-                           FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
-                           WHERE order_ref = @order_ref");
-
-                    if (SQL.HasException(true))
-                        return;
-
-                    foreach (DataRow r in SQL.DBDT.Rows)
-                    {
-                        reprint_receipt80.SetParameterValue("date_time", r["date_time"].ToString());
-                        reprint_receipt80.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-                        reprint_receipt80.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
-                        reprint_receipt80.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
-                        reprint_receipt80.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
-                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
-                        reprint_receipt80.SetParameterValue("subtotal", subtotal.ToString("N2"));
-                        decimal less_vat = decimal.Parse(r["less_vat"].ToString());
-                        reprint_receipt80.SetParameterValue("less_vat", less_vat.ToString("N2"));
-                        decimal disc_amt = decimal.Parse(r["disc_amt"].ToString());
-                        reprint_receipt80.SetParameterValue("discount", disc_amt.ToString("N2"));
-                        decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
-                        reprint_receipt80.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
-                        decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
-                        reprint_receipt80.SetParameterValue("giftcard_deduct", giftcard_deducted.ToString("N2"));
-                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
-                        reprint_receipt80.SetParameterValue("total", grand_total.ToString("N2"));
-                        decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
-                        reprint_receipt80.SetParameterValue("vatable_sales", vatable_sale.ToString("N2"));
-                        decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
-                        reprint_receipt80.SetParameterValue("vat_12", vat_12.ToString("N2"));
-                        decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
-                        reprint_receipt80.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
-                        decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
-                        reprint_receipt80.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-                        reprint_receipt80.SetParameterValue("giftcard_no", r["giftcard_no"].ToString());
-                        decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
-                        reprint_receipt80.SetParameterValue("cash", payment_amt.ToString("N2"));
-                        decimal change = decimal.Parse(r["change"].ToString());
-                        reprint_receipt80.SetParameterValue("change", change.ToString("N2"));
-                        reprint_receipt80.SetParameterValue("cus_name", r["cus_name"].ToString());
-                        reprint_receipt80.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
-                        reprint_receipt80.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
-
-                        string note = "###REPRINT###";
-
-                        if (Convert.ToInt32(r["action"].ToString()) == 2)
-                            note = note + Constants.vbCrLf + "REFUND FROM INVOICE # " + r["refund_order_ref_temp"].ToString();
-                        else if (Convert.ToInt32(r["action"].ToString()) == 3)
-                            note = note + Constants.vbCrLf + "RETURN ITEM FROM INVOICE # " + r["return_order_ref_temp"].ToString();
-                        else if (Convert.ToInt32(r["action"].ToString()) == 4)
-                            note = note + Constants.vbCrLf + "VOID TRANSACTION";
-
-                        reprint_receipt80.SetParameterValue("note", note);
-                    }
-
-                    reprint_receipt80.SetParameterValue("business_name", Main.Instance.sd_business_name);
-                    reprint_receipt80.SetParameterValue("business_address", Main.Instance.sd_business_address);
-                    reprint_receipt80.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
-                    reprint_receipt80.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
-                    reprint_receipt80.SetParameterValue("sn", Main.Instance.sd_sn);
-                    reprint_receipt80.SetParameterValue("min", Main.Instance.sd_min);
-                    reprint_receipt80.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
-                    reprint_receipt80.SetParameterValue("ptu_no", Main.Instance.sd_ptu_no);
-
-                    DateTime dateissue = DateTime.Parse(Main.Instance.sd_pn_date_issued);
-                    reprint_receipt80.SetParameterValue("date_issued", dateissue.ToString("MM/dd/yyyy"));
-
-                    DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
-                    reprint_receipt80.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
-
-                    if (Properties.Settings.Default.isBirAccredited)
-                    {
-                        reprint_receipt80.SetParameterValue("is_vatable", true);
-                        reprint_receipt80.SetParameterValue("txt_footer", "This serves as Official Receipt.");
-                    }
-                    else
-                    {
-                        reprint_receipt80.SetParameterValue("is_vatable", false);
-                        reprint_receipt80.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Interaction.MsgBox(ex.Message);
-                    reprint_receipt80.Dispose();
-                }
-
                 // print
                 if (Main.Instance.pd_receipt_printer == "")
                 {
@@ -1324,9 +955,9 @@ namespace EcoPOSv2
                 }
 
 
-                reprint_receipt80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-                reprint_receipt80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
-                reprint_receipt80.PrintToPrinter(1, false, 0, 0);
+                report80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                report80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                report80.PrintToPrinter(1, false, 0, 0);
             }
         }
 
@@ -1393,6 +1024,155 @@ namespace EcoPOSv2
 
             dgvMT_Records.DataSource = SQL.DBDT;
             dgvMT_Records.Columns[0].Visible = false;
+        }
+
+        void setFont()
+        {
+            int fontSize_regular = int.Parse(Properties.Settings.Default.RegularTextFont);
+            int fontSize_products = int.Parse(Properties.Settings.Default.ProductListFont);
+            int fontSize_bname = int.Parse(Properties.Settings.Default.TitleTextFont);
+            int fontSize_bheader = int.Parse(Properties.Settings.Default.BusinessDetailsFont);
+            int fontSize_transactionDetails = int.Parse(Properties.Settings.Default.TransactionDetailsFont);
+            if (Properties.Settings.Default.papersize == "58MM")
+            {
+                #region Font
+                //header
+
+                //Business Name
+                ((FieldObject)report.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bname, FontStyle.Bold));
+                //Business details
+                ((FieldObject)report.ReportDefinition.ReportObjects["businessaddress1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["bcontact"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["btin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["bsn"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["bmin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+
+                //Regular
+                ((FieldObject)report.ReportDefinition.ReportObjects["rnote"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+
+                ((TextObject)report.ReportDefinition.ReportObjects["tdatetitle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tinvoicetitle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tcashier"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tterminal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+
+                //Product List
+                ((TextObject)report.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
+                //((TextObject)report.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
+                //((FieldObject)report.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["description1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+
+                //Transaction Details
+                ((TextObject)report.ReportDefinition.ReportObjects["tnoofitems"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["noofitems1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+
+                ((TextObject)report.ReportDefinition.ReportObjects["tsubtotal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["subtotal1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tlessvat"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["lessvat1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tdiscount"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["discount1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tpoints"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["pointsdeduct1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tgiftcard"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["giftcarddeduct1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["ttotal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["total1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tvatablesales"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["vatablesales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tvatamount"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["vat121"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tvatexempt"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["vatexemptsales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tzerorated"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["zeroratedsales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tgcno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["giftcardno1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tpaymentmethod"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["cash1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["trefno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["change1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["trpoints"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["trpoints1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+
+                ((FieldObject)report.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                #endregion
+            }
+            else
+            {
+                #region Font
+                //header
+
+                //Business Name
+                ((FieldObject)report80.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bname, FontStyle.Bold));
+                //Business details
+                ((FieldObject)report80.ReportDefinition.ReportObjects["businessaddress1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["bcontact"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["btin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["bsn"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["bmin"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_bheader, FontStyle.Regular));
+
+                //Regular
+                ((FieldObject)report80.ReportDefinition.ReportObjects["rnote"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+
+                ((TextObject)report80.ReportDefinition.ReportObjects["tdatetitle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tinvoicetitle"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tcashier"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tterminal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+
+                //Product List
+                ((TextObject)report80.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
+                //((TextObject)report80.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Bold));
+                //((FieldObject)report80.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["description1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_products, FontStyle.Regular));
+
+                //Transaction Details
+                ((TextObject)report80.ReportDefinition.ReportObjects["tnoofitems"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["noofitems1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+
+                ((TextObject)report80.ReportDefinition.ReportObjects["tsubtotal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["subtotal1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tlessvat"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["lessvat1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tdiscount"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["discount1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tpoints"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["pointsdeduct1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tgiftcard"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["giftcarddeduct1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["ttotal"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["total1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tvatablesales"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["vatablesales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tvatamount"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["vat121"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tvatexempt"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["vatexemptsales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tzerorated"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["zeroratedsales1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tgcno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["giftcardno1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tpaymentmethod"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["cash1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["trefno"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["change1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["trpoints"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["trpoints1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+
+                ((FieldObject)report80.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new System.Drawing.Font("Arial", fontSize_regular, FontStyle.Bold));
+                #endregion
+            }
         }
 
         private void dgvMT_Records_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1532,7 +1312,11 @@ namespace EcoPOSv2
                         string note = "###REPRINT###";
 
                         if (r["action"].ToString() == "4")
-                            note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString();
+                            note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString() + Constants.vbCrLf +
+                                "Reason: " + (SQL.ReturnResult("SELECT void_reason FROM void_transaction WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                "Voided by: " + (SQL.ReturnResult("SELECT voided_by FROM void_transaction WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                (SQL.ReturnResult("SELECT void_date_time FROM void_transaction WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString())).ToString();
+
 
                         report.SetParameterValue("note", note);
 
@@ -1561,7 +1345,7 @@ namespace EcoPOSv2
                             report.SetParameterValue("is_vatable", false);
                             report.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
                         }
-
+                        setFont();
                         CrystalReportViewer1.ReportSource = report;
                         CrystalReportViewer1.Refresh();
                         CrystalReportViewer1.Zoom(1);
@@ -1575,7 +1359,7 @@ namespace EcoPOSv2
             }
             else
             {
-                report80 = new TransactionsReport80();
+                report80 = new PaymentR80();
 
                 DataSet ds = new DataSet();
 
@@ -1583,14 +1367,24 @@ namespace EcoPOSv2
                 {
                     CrystalReportViewer1.ReuseParameterValuesOnRefresh = false;
 
-                    SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
-                    SQL.DBDA.Fill(ds, "transaction_items");
+                    string order = SQL.ReturnResult("SELECT action FROM transaction_details WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
+                    if (order == "1")
+                    {
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive, selling_price_inclusive FROM transaction_items WHERE order_ref =  " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
+                    }
+                    else
+                    {
+                        SQL.DBDA.SelectCommand = new SqlCommand("SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive as static_price_inclusive, selling_price_inclusive as selling_price_inclusive FROM transaction_items WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString(), SQL.DBCon);
 
+                    }
+
+                    SQL.DBDA.Fill(ds, "transaction_items");
                     report80.SetDataSource(ds);
 
-                    SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
-
-                    SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                    if (order == "1")
+                    {
+                        SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
+                        SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
                            SELECT * INTO #Temp_users
                            FROM
                            (
@@ -1601,39 +1395,131 @@ namespace EcoPOSv2
                            SELECT userID, user_name, first_name FROM users
                            ) x
                            ) as a;
-                           SELECT td.*, u.first_name as 'user_first_name' FROM transaction_details as td 
-                           INNER JOIN #Temp_users as u ON td.userID = u.ID
+                           SELECT td.*, u.first_name as 'user_first_name', td.terminal_id as 'tid'
+                           FROM transaction_details as td INNER JOIN #Temp_users as u ON td.userID = u.ID
                            WHERE order_ref = @order_ref");
-
-                    if (SQL.HasException(true))
-                        return;
+                    }
+                    else
+                    {
+                        SQL.AddParam("@order_ref", dgvMT_Records.CurrentRow.Cells[0].Value.ToString());
+                        SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
+                           SELECT * INTO #Temp_users
+                           FROM
+                           (
+                           SELECT ID, user_name, first_name FROM
+                           (
+                           SELECT adminID as 'ID', user_name as 'user_name', first_name as 'first_name' FROM admin_accts
+                           UNION ALL
+                           SELECT userID, user_name, first_name FROM users
+                           ) x
+                           ) as a;
+                           SELECT td.*, u.first_name as 'user_first_name', vt.void_order_ref_temp, td.terminal_id as 'tid'
+                           FROM transaction_details as td INNER JOIN #Temp_users as u ON td.userID = u.ID 
+                           INNER JOIN void_transaction as vt ON vt.order_ref = td.order_ref
+                           WHERE td.order_ref = @order_ref");
+                    }
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
                         report80.SetParameterValue("date_time", r["date_time"].ToString());
                         report80.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
                         report80.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                        report80.SetParameterValue("no_of_items", r["no_of_items"].ToString());
-                        report80.SetParameterValue("subtotal", Math.Round(decimal.Parse(r["subtotal"].ToString()), 2).ToString());
-                        report80.SetParameterValue("less_vat", Math.Round(decimal.Parse(r["less_vat"].ToString()), 2).ToString());
-                        report80.SetParameterValue("discount", Math.Round(decimal.Parse(r["disc_amt"].ToString()), 2).ToString());
-                        report80.SetParameterValue("points_deduct", Math.Round(decimal.Parse(r["cus_pts_deducted"].ToString()), 2).ToString());
-                        report80.SetParameterValue("gift_card_deduct", Math.Round(decimal.Parse(r["giftcard_deducted"].ToString()), 2).ToString());
-                        report80.SetParameterValue("total", Math.Round(decimal.Parse(r["grand_total"].ToString()), 2).ToString());
-                        report80.SetParameterValue("vatable_sales", Math.Round(decimal.Parse(r["vatable_sale"].ToString()), 2).ToString());
-                        report80.SetParameterValue("vat_12", Math.Round(decimal.Parse(r["vat_12"].ToString()), 2).ToString());
-                        report80.SetParameterValue("vat_exempt_sales", Math.Round(decimal.Parse(r["vat_exempt_sale"].ToString()), 2).ToString());
-                        report80.SetParameterValue("zero_rated_sales", Math.Round(decimal.Parse(r["zero_rated_sale"].ToString()), 2).ToString());
-                        report80.SetParameterValue("gift_card_no", Math.Round(decimal.Parse(r["giftcard_no"].ToString()), 2).ToString());
-                        report80.SetParameterValue("cash", Math.Round(decimal.Parse(r["payment_amt"].ToString()), 2).ToString());
-                        report80.SetParameterValue("change", Math.Round(decimal.Parse(r["change"].ToString()), 2).ToString());
-                        report80.SetParameterValue("cus_name", r["cus_name"].ToString());
-                        report80.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                        decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
+                        report80.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
+                        report80.SetParameterValue("Terminal_No", r["tid"].ToString());
+                        decimal subtotal = decimal.Parse(r["subtotal"].ToString());
+                        report80.SetParameterValue("subtotal", subtotal.ToString("N2"));
+                        decimal less_vat = decimal.Parse(r["less_vat"].ToString());
+                        report80.SetParameterValue("less_vat", less_vat.ToString("N2"));
+                        decimal disc_amt = decimal.Parse(r["disc_amt"].ToString());
+                        report80.SetParameterValue("discount", disc_amt.ToString("N2"));
+                        decimal cus_pts_deducted = decimal.Parse(r["cus_pts_deducted"].ToString());
+                        report80.SetParameterValue("points_deduct", cus_pts_deducted.ToString("N2"));
+                        decimal giftcard_deducted = decimal.Parse(r["giftcard_deducted"].ToString());
+                        report80.SetParameterValue("giftcard_deduct", giftcard_deducted.ToString("N2"));
+                        decimal grand_total = decimal.Parse(r["grand_total"].ToString());
+                        report80.SetParameterValue("total", grand_total.ToString("N2"));
+                        decimal vatable_sale = decimal.Parse(r["vatable_sale"].ToString());
+                        report80.SetParameterValue("vatable_sales", vatable_sale.ToString("N2"));
+                        decimal vat_12 = decimal.Parse(r["vat_12"].ToString());
+                        report80.SetParameterValue("vat_12", vat_12.ToString("N2"));
+                        decimal vat_exempt_sale = decimal.Parse(r["vat_exempt_sale"].ToString());
+                        report80.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
+                        decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
+                        report80.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
+                        decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
+                        report80.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
+                        decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
+                        report80.SetParameterValue("cash", payment_amt.ToString("N2"));
+                        decimal change = decimal.Parse(r["change"].ToString());
+                        report80.SetParameterValue("change", change.ToString("N2"));
+                        decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                        report80.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
+
+                        //REFERENCE NO
+                        report80.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
+
+                        if (r["cus_name"].ToString() == "0" || r["cus_name"].ToString() == "")
+                        {
+                            report80.SetParameterValue("cus_name", "________________________________________________________");
+                        }
+                        else
+                        {
+                            report80.SetParameterValue("cus_name", r["cus_name"].ToString());
+                        }
+
+
+                        if (r["cus_special_ID_no"].ToString() == "0")
+                        {
+                            report80.SetParameterValue("cus_sc_pwd_id", "________________________________________________________");
+                        }
+                        else
+                        {
+                            report80.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                        }
+
                         report80.SetParameterValue("payment_method", r["payment_method"].ToString().ToUpper());
+                        string note = "###REPRINT###";
+
+                        if (r["action"].ToString() == "4")
+                            note = note + Constants.vbCrLf + "VOID # " + r["void_order_ref_temp"].ToString() + Constants.vbCrLf +
+                                "Reason: " + (SQL.ReturnResult("SELECT void_reason FROM void_transaction WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                "Voided by: " + (SQL.ReturnResult("SELECT voided_by FROM void_transaction WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString())) + Constants.vbCrLf +
+                                (SQL.ReturnResult("SELECT void_date_time FROM void_transaction WHERE order_ref = " + dgvMT_Records.CurrentRow.Cells[0].Value.ToString())).ToString();
 
 
+                        report80.SetParameterValue("note", note);
+
+                        report80.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                        report80.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                        report80.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+                        report80.SetParameterValue("vat_reg_tin", Main.Instance.sd_vat_reg_tin);
+                        report80.SetParameterValue("sn", Main.Instance.sd_sn);
+                        report80.SetParameterValue("min", Main.Instance.sd_min);
+                        report80.SetParameterValue("footer_text", Main.Instance.sd_footer_text);
+                        report80.SetParameterValue("ptu_no", Main.Instance.sd_ptu_no);
+
+                        DateTime dateissue = DateTime.Parse(Main.Instance.sd_pn_date_issued);
+                        report80.SetParameterValue("date_issued", dateissue.ToString("MM/dd/yyyy"));
+
+                        DateTime validuntil = DateTime.Parse(Main.Instance.sd_pn_valid_until);
+                        report80.SetParameterValue("valid_until", validuntil.ToString("MM/dd/yyyy"));
+
+                        if (Properties.Settings.Default.isBirAccredited)
+                        {
+                            report80.SetParameterValue("is_vatable", true);
+                            report80.SetParameterValue("txt_footer", "THIS SERVES AS OFFICIAL RECEIPT.");
+                        }
+                        else
+                        {
+                            report80.SetParameterValue("is_vatable", false);
+                            report80.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
+                        }
+
+                        setFont();
                         CrystalReportViewer1.ReportSource = report80;
                         CrystalReportViewer1.Refresh();
+                        CrystalReportViewer1.Zoom(1);
                     }
                 }
                 catch (Exception ex)
@@ -1641,8 +1527,10 @@ namespace EcoPOSv2
                     Interaction.MsgBox(ex.ToString());
                     report80.Dispose();
                 }
+            
+                }
             }
-        }
+        
 
         private void txtMem_Search_KeyUp(object sender, KeyEventArgs e)
         {

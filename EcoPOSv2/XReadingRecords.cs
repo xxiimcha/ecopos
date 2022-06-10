@@ -233,6 +233,8 @@ namespace EcoPOSv2
 
                     foreach (DataRow r in SQL.DBDT.Rows)
                     {
+                        report80.SetParameterValue("Terminal_No", r["terminal_id"].ToString());
+
                         report80.SetParameterValue("xreading_ref_temp", r["xreading_ref_temp"].ToString());
                         report80.SetParameterValue("store_open_date_time", r["store_open_date_time"].ToString());
                         report80.SetParameterValue("store_open_userID", r["store_userID"].ToString());
@@ -262,7 +264,7 @@ namespace EcoPOSv2
                         report80.SetParameterValue("printed_on", datetime_now);
                     }
 
-                    CrystalReportViewer1.ReportSource = report;
+                    CrystalReportViewer1.ReportSource = report80;
                     CrystalReportViewer1.Refresh();
                     CrystalReportViewer1.Zoom(2);
                 }

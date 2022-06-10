@@ -273,8 +273,9 @@ namespace EcoPOSv2
                         report80.SetParameterValue("zero_rated_sales", zero_rated_sales.ToString("N2"));
                         report80.SetParameterValue("printed_on", datetime_now);
 
-                        CrystalReportViewer1.ReportSource = report;
+                        CrystalReportViewer1.ReportSource = report80;
                         CrystalReportViewer1.Refresh();
+                        CrystalReportViewer1.Zoom(2);
                     }
                 }
                 catch (Exception ex)

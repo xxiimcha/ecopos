@@ -26,7 +26,7 @@ namespace EcoPOSv2
         SQLControl SQL = new SQLControl();
         
         PaymentR58 report = new PaymentR58();
-        PaymentReceipt80 report80 = new PaymentReceipt80();
+        PaymentR80 report80 = new PaymentR80();
         public static VoidTransaction_UI _VoidTransaction_UI;
 
         public String void_reason;
@@ -293,18 +293,13 @@ namespace EcoPOSv2
             else
             {
                 DataSet ds = new DataSet();
-                report80 = new PaymentReceipt80();
 
                 try
                 {
-                    SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, (-1 * static_price_inclusive) as static_price_inclusive, 
-                                                         (-1 * selling_price_inclusive) as selling_price_inclusive FROM transaction_items
-                                                         INNER JOIN transaction_details ON transaction_details.order_ref = transaction_items.order_ref
-                                                         WHERE transaction_details.order_ref_temp = " + order_ref_temp, SQL.DBCon);
+                    SQL.DBDA.SelectCommand = new SqlCommand(@"SELECT CAST(IIF((SELECT isDecimal FROM units WHERE unit_name = unit) = 0, CAST(CAST(ROUND(quantity,0) as int) AS varchar(20)), CAST(quantity AS varchar(20)) + unit) AS varchar(20)) as 'quantity', description, static_price_inclusive as static_price_inclusive, selling_price_inclusive as selling_price_inclusive FROM transaction_items    INNER JOIN transaction_details ON transaction_details.order_ref = transaction_items.order_ref  WHERE transaction_details.order_ref_temp = " + order_ref_temp, SQL.DBCon);
                     SQL.DBDA.Fill(ds, "transaction_items");
 
                     report80.SetDataSource(ds);
-
                     SQL.AddParam("@terminal_id", terminalNo);
                     SQL.AddParam("@order_ref_temp", order_ref_temp);
                     SQL.Query(@"IF OBJECT_ID('tempdb..#Temp_users') IS NOT NULL DROP TABLE #Temp_users
@@ -334,12 +329,15 @@ namespace EcoPOSv2
                            payment_amt,
                            payment_method,
                            change,
+                           remaining_points,
                            giftcard_no, 
                            giftcard_deducted,
                            IIF(cus_name = '', '0', cus_name) as 'cus_name',
                            cus_special_ID_no,
-                           transaction_details.terminal_id,transaction_details.referenceNo,
-                           vt.void_order_ref_temp as 'void_order_ref_temp'
+                           transaction_details.terminal_id,
+                           transaction_details.referenceNo,
+                           vt.void_order_ref_temp as 'void_order_ref_temp',
+                           vt.void_date_time as 'void_date_time'
                            FROM transaction_details INNER JOIN #Temp_users as u ON transaction_details.userID = u.ID
                            INNER JOIN void_transaction as vt ON transaction_details.order_ref = vt.order_ref
                            WHERE transaction_details.terminal_id=@terminal_id AND transaction_details.order_ref_temp = @order_ref_temp");
@@ -355,10 +353,7 @@ namespace EcoPOSv2
                         report80.SetParameterValue("Terminal_No", r["terminal_id"].ToString());
                         report80.SetParameterValue("date_time", r["date_time"].ToString());
                         report80.SetParameterValue("invoice_no", r["order_ref_temp"].ToString());
-                        report80.SetParameterValue("user_first_name", Main.Instance.current_username);
-                        report80.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
-                        //report.SetParameterValue("user_first_name", r["user_first_name"].ToString());
-                        //report.SetParameterValue("Terminal_No", terminalNo);
+                        report80.SetParameterValue("user_first_name", r["user_first_name"].ToString());
                         decimal no_of_items = decimal.Parse(r["no_of_items"].ToString());
                         report80.SetParameterValue("no_of_items", no_of_items.ToString("N2"));
                         decimal subtotal = decimal.Parse(r["subtotal"].ToString());
@@ -381,20 +376,45 @@ namespace EcoPOSv2
                         report80.SetParameterValue("vat_exempt_sales", vat_exempt_sale.ToString("N2"));
                         decimal zero_rated_sale = decimal.Parse(r["zero_rated_sale"].ToString());
                         report80.SetParameterValue("zero_rated_sales", zero_rated_sale.ToString("N2"));
-                        report80.SetParameterValue("giftcard_no", r["giftcard_no"].ToString());
+                        decimal giftcard_no = decimal.Parse(r["giftcard_no"].ToString());
+                        report80.SetParameterValue("giftcard_no", giftcard_no.ToString("N2"));
                         decimal payment_amt = decimal.Parse(r["payment_amt"].ToString());
                         report80.SetParameterValue("cash", payment_amt.ToString("N2"));
                         decimal change = decimal.Parse(r["change"].ToString());
                         report80.SetParameterValue("change", change.ToString("N2"));
-                        report80.SetParameterValue("cus_name", r["cus_name"].ToString());
-                        report80.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
-                        report80.SetParameterValue("payment_method", r["payment_method"].ToString());
+                        decimal remaining_points = decimal.Parse(r["remaining_points"].ToString());
+                        report80.SetParameterValue("remaining_points", remaining_points.ToString("N2"));
 
-                        report80.SetParameterValue("note", "VOID # " + r["void_order_ref_temp"].ToString());
+
+                        if (r["cus_name"].ToString() == "0" || r["cus_name"].ToString() == "")
+                        {
+                            report80.SetParameterValue("cus_name", "________________________________________________________");
+                        }
+                        else
+                        {
+                            report80.SetParameterValue("cus_name", r["cus_name"].ToString());
+                        }
+
+
+                        if (r["cus_special_ID_no"].ToString() == "0")
+                        {
+                            report80.SetParameterValue("cus_sc_pwd_id", "________________________________________________________");
+                        }
+                        else
+                        {
+                            report80.SetParameterValue("cus_sc_pwd_id", r["cus_special_ID_no"].ToString());
+                        }
+                        report80.SetParameterValue("payment_method", r["payment_method"].ToString());
+                        string c_user = Main.Instance.by_pass_user ? Main.Instance.lblByPassUser.Text : Main.Instance.lblUser.Text;
+                        report80.SetParameterValue("note", "VOID # " + r["void_order_ref_temp"].ToString() +
+                            "\r\nReason: " + void_reason +
+                            "\r\nVoided by: " + c_user +
+                            "\r\n" + r["void_date_time"].ToString());
 
                         //Online Payment Reference No
-                        report80.SetParameterValue("ReferenceNo", r["referenceNo"].ToString());
+                        report80.SetParameterValue("ReferenceNumber", r["referenceNo"].ToString());
                     }
+
 
                     report80.SetParameterValue("business_name", Main.Instance.sd_business_name);
                     report80.SetParameterValue("business_address", Main.Instance.sd_business_address);
@@ -414,12 +434,12 @@ namespace EcoPOSv2
                     if (Properties.Settings.Default.isBirAccredited)
                     {
                         report80.SetParameterValue("is_vatable", true);
-                        report80.SetParameterValue("txt_footer", "This serves as Official Receipt.");
+                        report80.SetParameterValue("txt_footer", "THIS SERVES AS OFFICIAL RECEIPT.");
                     }
                     else
                     {
                         report80.SetParameterValue("is_vatable", false);
-                        report80.SetParameterValue("txt_footer", "This serves as Demo Receipt.");
+                        report80.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
                     }
                 }
                 catch (Exception ex)
@@ -441,7 +461,6 @@ namespace EcoPOSv2
                 new Notification().PopUp("Transaction voided.", "", "information");
 
                 Close();
-                //PrintReceipt();
             }
         }
         //METHODS
@@ -809,74 +828,140 @@ namespace EcoPOSv2
             int fontSize_bheader = int.Parse(Properties.Settings.Default.BusinessDetailsFont);
             int fontSize_transactionDetails = int.Parse(Properties.Settings.Default.TransactionDetailsFont);
 
-            #region Font
-            //header
+            if (Properties.Settings.Default.papersize == "58MM")
+            {
+                //Header
 
-            //Business Name
-            ((FieldObject)report.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new Font("Arial", fontSize_bname, FontStyle.Bold));
-            //Business details
-            ((FieldObject)report.ReportDefinition.ReportObjects["businessaddress1"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["bcontact"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["btin"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["bsn"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["bmin"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                //Business Name
+                ((FieldObject)report.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new Font("Arial", fontSize_bname, FontStyle.Bold));
+                //Business details
+                ((FieldObject)report.ReportDefinition.ReportObjects["businessaddress1"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["bcontact"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["btin"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["bsn"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["bmin"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
 
-            //Regular
-            ((FieldObject)report.ReportDefinition.ReportObjects["rnote"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                //Regular
+                ((FieldObject)report.ReportDefinition.ReportObjects["rnote"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
 
-            ((TextObject)report.ReportDefinition.ReportObjects["tdatetitle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            ((TextObject)report.ReportDefinition.ReportObjects["tinvoicetitle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            ((TextObject)report.ReportDefinition.ReportObjects["tcashier"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            ((TextObject)report.ReportDefinition.ReportObjects["tterminal"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tdatetitle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tinvoicetitle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tcashier"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tterminal"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
 
-            //Product List
-            ((TextObject)report.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-            //((TextObject)report.ReportDefinition.ReportObjects["tproducts"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-            ((TextObject)report.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
-            //((FieldObject)report.ReportDefinition.ReportObjects["quantity1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["description1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                //Product List
+                ((TextObject)report.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
 
-            //Transaction Details
-            ((TextObject)report.ReportDefinition.ReportObjects["tnoofitems"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
-            ((FieldObject)report.ReportDefinition.ReportObjects["noofitems1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["description1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
 
-            ((TextObject)report.ReportDefinition.ReportObjects["tsubtotal"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["subtotal1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tlessvat"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["lessvat1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tdiscount"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["discount1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["pointsdeduct1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tgiftcard"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["giftcarddeduct1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["ttotal"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-            ((FieldObject)report.ReportDefinition.ReportObjects["total1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-            ((TextObject)report.ReportDefinition.ReportObjects["tvatablesales"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["vatablesales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tvatamount"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["vat121"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tvatexempt"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["vatexemptsales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tzerorated"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["zeroratedsales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tgcno"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["giftcardno1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tpaymentmethod"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-            ((FieldObject)report.ReportDefinition.ReportObjects["cash1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-            ((TextObject)report.ReportDefinition.ReportObjects["trefno"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((TextObject)report.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-            ((FieldObject)report.ReportDefinition.ReportObjects["change1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
-            ((TextObject)report.ReportDefinition.ReportObjects["trpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
-            ((FieldObject)report.ReportDefinition.ReportObjects["trpoints1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                //Transaction Details
+                ((TextObject)report.ReportDefinition.ReportObjects["tnoofitems"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["noofitems1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
 
-            //Footer
-            ((FieldObject)report.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            ((FieldObject)report.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
-            #endregion
+                ((TextObject)report.ReportDefinition.ReportObjects["tsubtotal"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["subtotal1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tlessvat"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["lessvat1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tdiscount"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["discount1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["pointsdeduct1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tgiftcard"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["giftcarddeduct1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["ttotal"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["total1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["tvatablesales"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["vatablesales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tvatamount"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["vat121"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tvatexempt"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["vatexemptsales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tzerorated"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["zeroratedsales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tgcno"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["giftcardno1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tpaymentmethod"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["cash1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["trefno"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["change1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report.ReportDefinition.ReportObjects["trpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report.ReportDefinition.ReportObjects["trpoints1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+
+                ((FieldObject)report.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((FieldObject)report.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+            }
+            else
+            {
+                //Header
+
+                //Business Name
+                ((FieldObject)report80.ReportDefinition.ReportObjects["businessname1"]).ApplyFont(new Font("Arial", fontSize_bname, FontStyle.Bold));
+                //Business details
+                ((FieldObject)report80.ReportDefinition.ReportObjects["businessaddress1"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["bcontact"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["btin"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["bsn"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["bmin"]).ApplyFont(new Font("Arial", fontSize_bheader, FontStyle.Regular));
+
+                //Regular
+                ((FieldObject)report80.ReportDefinition.ReportObjects["rnote"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+
+                ((TextObject)report80.ReportDefinition.ReportObjects["tdatetitle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tinvoicetitle"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tcashier"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tterminal"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+
+                //Product List
+                ((TextObject)report80.ReportDefinition.ReportObjects["tqty"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
+
+                ((TextObject)report80.ReportDefinition.ReportObjects["tprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["description1"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["sellingprice"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["txtstaticpriceinclusive"]).ApplyFont(new Font("Arial", fontSize_products, FontStyle.Regular));
+
+                //Transaction Details
+                ((TextObject)report80.ReportDefinition.ReportObjects["tnoofitems"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["noofitems1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Bold));
+
+                ((TextObject)report80.ReportDefinition.ReportObjects["tsubtotal"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["subtotal1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tlessvat"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["lessvat1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tdiscount"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["discount1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["pointsdeduct1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tgiftcard"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["giftcarddeduct1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["ttotal"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["total1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tvatablesales"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["vatablesales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tvatamount"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["vat121"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tvatexempt"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["vatexemptsales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tzerorated"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["zeroratedsales1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tgcno"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["giftcardno1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tpaymentmethod"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["cash1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["trefno"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["ReferenceNumber1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((TextObject)report80.ReportDefinition.ReportObjects["tchange"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["change1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails + 1, FontStyle.Bold));
+                ((TextObject)report80.ReportDefinition.ReportObjects["trpoints"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["trpoints1"]).ApplyFont(new Font("Arial", fontSize_transactionDetails, FontStyle.Regular));
+
+                ((FieldObject)report80.ReportDefinition.ReportObjects["footertext1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+                ((FieldObject)report80.ReportDefinition.ReportObjects["txtfooter1"]).ApplyFont(new Font("Arial", fontSize_regular, FontStyle.Bold));
+            }
         }
 
         private void VoidTransaction_UI_Load(object sender, EventArgs e)
@@ -885,8 +970,17 @@ namespace EcoPOSv2
             terminalNo = Properties.Settings.Default.Terminal_id;
 
             //Font for reprinting process
-            report.Dispose();
-            report = new PaymentR58();
+            if (Properties.Settings.Default.papersize == "58MM")
+            {
+                report.Dispose();
+                report = new PaymentR58();
+            }
+            else
+            {
+                report80.Dispose();
+                report80 = new PaymentR80();
+            }
+            
             Thread setFont = new Thread(FontSetter);
             setFont.Start();
 
