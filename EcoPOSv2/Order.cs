@@ -683,43 +683,63 @@ namespace EcoPOSv2
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            apply_regular_discount_fix_amt = false;
-            apply_special_discount = false;
-            apply_member = false;
-            regular_disc_amt = 0;
+            if (dgvCart.Rows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("You are about to cancel/void Transaction. Proceed?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    using (CancelPopup frm = new CancelPopup())
+                    {
+                        frm.ShowDialog();
+                    }
+                    apply_regular_discount_fix_amt = false;
+                    apply_special_discount = false;
+                    apply_member = false;
+                    regular_disc_amt = 0;
 
-            is_refund = false;
-            is_return = false;
+                    is_refund = false;
+                    is_return = false;
 
-            lblCustomer.Text = "";
-            lblOperation.Text = "Order/Payment";
-            tbBarcode.Enabled = true;
-            
-            if (dgvCart.Rows.Count == 0)
-                return;
+                    lblCustomer.Text = "";
+                    lblOperation.Text = "Order/Payment";
+                    tbBarcode.Enabled = true;
 
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query("DELETE FROM order_cart where terminal_id=@terminal_id");
+                    if (dgvCart.Rows.Count == 0)
+                        return;
 
-            if (SQL.HasException(true))
-                return;
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    SQL.Query("DELETE FROM order_cart where terminal_id=@terminal_id");
 
-            SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-            SQL.Query(@"UPDATE order_no SET action = 1, discountID = 0, cus_type = 0, cus_name = '',
+                    if (SQL.HasException(true))
+                        return;
+
+                    SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+                    SQL.Query(@"UPDATE order_no SET action = 1, discountID = 0, cus_type = 0, cus_name = '',
                        cus_ID_no = 0, cus_mem_ID = 0, disc_amt = 0, cus_rewardable = 0, cus_amt_per_pt = 0, 
                        return_order_ref = 0, refund_order_ref = 0 WHERE terminal_id=@terminal_id AND order_ref = (SELECT MAX(order_ref) FROM order_no where terminal_id=@terminal_id)");
 
-            if (SQL.HasException(true))
-                return;
+                    if (SQL.HasException(true))
+                        return;
 
-            LoadOrder();
-            GetTotal();
+                    LoadOrder();
+                    GetTotal();
 
-            btnDiscount.Enabled = true;
-            btnCustomer.Enabled = true;
-            btnQuantity.Enabled = true;
-            tbBarcode.Clear();
-            tbBarcode.Focus();
+                    btnDiscount.Enabled = true;
+                    btnCustomer.Enabled = true;
+                    btnQuantity.Enabled = true;
+                    tbBarcode.Clear();
+                    tbBarcode.Focus();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show(this, "You cannot cancel transaction if the cart is empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
+         
+
+           
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
