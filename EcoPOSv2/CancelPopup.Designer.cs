@@ -31,7 +31,7 @@ namespace EcoPOSv2
         {
             this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
             this.btnClose = new Guna.UI.WinForms.GunaControlBox();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
+            this.lblTitle = new Guna.UI.WinForms.GunaLabel();
             this.tbReason = new Guna.UI2.WinForms.Guna2TextBox();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
@@ -44,7 +44,7 @@ namespace EcoPOSv2
             this.pnlTitle.BorderColor = System.Drawing.Color.DarkGray;
             this.pnlTitle.BorderThickness = 1;
             this.pnlTitle.Controls.Add(this.btnClose);
-            this.pnlTitle.Controls.Add(this.gunaLabel1);
+            this.pnlTitle.Controls.Add(this.lblTitle);
             this.pnlTitle.CustomBorderColor = System.Drawing.Color.Transparent;
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(0, 0);
@@ -72,17 +72,17 @@ namespace EcoPOSv2
             this.btnClose.Size = new System.Drawing.Size(42, 35);
             this.btnClose.TabIndex = 102;
             // 
-            // gunaLabel1
+            // lblTitle
             // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel1.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel1.Location = new System.Drawing.Point(10, 7);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(187, 21);
-            this.gunaLabel1.TabIndex = 103;
-            this.gunaLabel1.Text = "CANCEL TRANSACTION";
-            this.gunaLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.Black;
+            this.lblTitle.Location = new System.Drawing.Point(10, 7);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(187, 21);
+            this.lblTitle.TabIndex = 103;
+            this.lblTitle.Text = "CANCEL TRANSACTION";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbReason
             // 
@@ -205,7 +205,7 @@ namespace EcoPOSv2
 
         private Guna.UI2.WinForms.Guna2Panel pnlTitle;
         private Guna.UI.WinForms.GunaControlBox btnClose;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
+        private Guna.UI.WinForms.GunaLabel lblTitle;
         public Guna.UI2.WinForms.Guna2TextBox tbReason;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         public Guna.UI2.WinForms.Guna2Button btnConfirm;
