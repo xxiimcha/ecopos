@@ -204,6 +204,12 @@
     <Compile Include="CancelPopup.Designer.cs">
       <DependentUpon>CancelPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="CancelReceipt58.cs">
+      <DependentUpon>CancelReceipt58.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="CardLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,12 @@
       <DependentUpon>ContinueSession.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlBehavior.cs" />
+    <Compile Include="CancelReceipt80.cs">
+      <DependentUpon>CancelReceipt80.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="TopupReport58.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -840,6 +852,10 @@
     <EmbeddedResource Include="CancelPopup.resx">
       <DependentUpon>CancelPopup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CancelReceipt58.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CancelReceipt58.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardLogin.resx">
       <DependentUpon>CardLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -851,6 +867,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CodePlayGround.resx">
       <DependentUpon>CodePlayGround.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CancelReceipt80.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CancelReceipt80.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TopupReport58.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

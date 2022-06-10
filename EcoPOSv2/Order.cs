@@ -685,7 +685,7 @@ namespace EcoPOSv2
         {
             if (dgvCart.Rows.Count > 0)
             {
-                using (CancelPopup frm = new CancelPopup())
+                using (CancelPopup frm = new CancelPopup("CANCEL TRANSACTION"))
                 {
                     frm.ShowDialog();
                 }
@@ -854,73 +854,97 @@ namespace EcoPOSv2
 
         private void btnVoidItem_Click(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.cardlogin == true)
+            if (dgvCart.Rows.Count > 0)
             {
-                
-                try
+                CancelPopup.itemQuantity = decimal.Parse(dgvCart.CurrentRow.Cells[11].Value.ToString());
+                CancelPopup.itemName = dgvCart.CurrentRow.Cells[2].Value.ToString();
+                CancelPopup.itemPrice = decimal.Parse(dgvCart.CurrentRow.Cells[10].Value.ToString());
+
+                using (CancelPopup frm = new CancelPopup("VOID TRANSACTION"))
                 {
-                    tbBarcode.Clear();
-                    this.ActiveControl = tbBarcode;
+                    frm.ShowDialog();
                 }
-                catch (Exception) { }
+                if (CancelPopup.ConfirmedToCancel)
+                {
+                    CancelPopup.ConfirmedToCancel = false;
+                    if (Properties.Settings.Default.cardlogin == true)
+                    {
 
-                if (dgvCart.SelectedRows.Count == 0)
-                    return;
+                        try
+                        {
+                            tbBarcode.Clear();
+                            this.ActiveControl = tbBarcode;
+                        }
+                        catch (Exception) { }
 
-                CardLogin cl = new CardLogin();
+                        if (dgvCart.SelectedRows.Count == 0)
+                            return;
+
+                        CardLogin cl = new CardLogin();
 
 
-                cl.ItemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
-                cl.ProductID = dgvCart.CurrentRow.Cells[1].Value.ToString();
-                cl.type = "Void";
-                tbBarcode.Clear();
-                tbBarcode.Focus();
-                return;
+                        cl.ItemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
+                        cl.ProductID = dgvCart.CurrentRow.Cells[1].Value.ToString();
+                        cl.type = "Void";
+                        tbBarcode.Clear();
+                        tbBarcode.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            tbBarcode.Clear();
+                            tbBarcode.Focus();
+                        }
+                        catch (Exception) { }
+
+                        if (dgvCart.SelectedRows.Count == 0)
+                            return;
+
+                        // save to void item
+                        //SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
+                        //SQL.AddParam("@userID", Main.Instance.current_id);
+                        //SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        //SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
+                        //       static_price_vat, static_price_inclusive, quantity, userID, terminal_id) SELECT itemID, productID, 
+                        //       (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
+                        //       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID, @terminal_id
+                        //       FROM order_cart WHERE terminal_id=@terminal_id and productID = @productID");
+
+                        //if (SQL.HasException(true))
+                        //{
+                        //    MessageBox.Show("Error In Inserting Void Item");
+                        //    return;
+                        //}
+
+                        SQL.AddParam("@itemID", dgvCart.CurrentRow.Cells[0].Value.ToString());
+                        SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
+
+                        SQL.Query("DELETE FROM order_cart WHERE itemID = @itemID AND terminal_id=@terminal_id");
+
+                        if (SQL.HasException(true))
+                            return;
+
+                        LoadOrder();
+                        GetTotal();
+
+                        tbBarcode.Clear();
+                        tbBarcode.Focus();
+                    }
+                    tbBarcode.Focus();
+
+                    CancelPopup.itemQuantity = 0;
+                    CancelPopup.itemName = "";
+                    CancelPopup.itemPrice = 0;
+                }
             }
             else
             {
-                try
-                {
-                    tbBarcode.Clear();
-                    tbBarcode.Focus();
-                }
-                catch (Exception) { }
-
-                if (dgvCart.SelectedRows.Count == 0)
-                    return;
-
-                // save to void item
-                //SQL.AddParam("@productID", dgvCart.CurrentRow.Cells[1].Value.ToString());
-                //SQL.AddParam("@userID", Main.Instance.current_id);
-                //SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                //SQL.Query(@"INSERT INTO void_item (itemID, productID, order_no, description, name, type, static_price_exclusive,
-                //       static_price_vat, static_price_inclusive, quantity, userID, terminal_id) SELECT itemID, productID, 
-                //       (SELECT order_no FROM order_no WHERE order_ref = (SELECT MAX(order_ref) FROM order_no)), description, 
-                //       name, type, static_price_exclusive, static_price_vat, static_price_inclusive, quantity, @userID, @terminal_id
-                //       FROM order_cart WHERE terminal_id=@terminal_id and productID = @productID");
-
-                //if (SQL.HasException(true))
-                //{
-                //    MessageBox.Show("Error In Inserting Void Item");
-                //    return;
-                //}
-
-                SQL.AddParam("@itemID", dgvCart.CurrentRow.Cells[0].Value.ToString());
-                SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
-
-                SQL.Query("DELETE FROM order_cart WHERE itemID = @itemID AND terminal_id=@terminal_id");
-
-                if (SQL.HasException(true))
-                    return;
-
-                LoadOrder();
-                GetTotal();
-
-                tbBarcode.Clear();
-                tbBarcode.Focus();
+                MessageBox.Show(this, "You cannot void transaction if the cart is empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            tbBarcode.Focus();
+           
         }
         private void btnRetail_Click(object sender, EventArgs e)
         {

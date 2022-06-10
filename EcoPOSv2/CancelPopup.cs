@@ -1,4 +1,5 @@
 ﻿using EcoPOSControl;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,194 @@ namespace EcoPOSv2
     {
         SQLControl sql = new SQLControl();
         public static Boolean ConfirmedToCancel { get; set; }
+        public static decimal itemQuantity { get; set; }
+        public static String itemName{ get; set; }
+        public static decimal itemPrice{ get; set; }
+
+        public long GenerateTransactionID()
+        {
+            var finalString = "";
+            var chars = "1234567890";
+            var stringChars = new char[16];
+            var random = new Random();
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            finalString = new String(stringChars);
+
+            sql.Query("SELECT * FROM tbl_order_details WHERE transaction_id ='" + finalString + "' ");
+
+            if (sql.DBDT.Rows.Count == 0)
+            {
+                return long.Parse(finalString);
+            }
+            else
+            {
+                return GenerateTransactionID();
+            }
+        }
+        void PrintCancelReceipt(Guna2DataGridView dataGrid, String cashierName, String canceled_by, String cancelReason, String currentOrderNumber, String latest_invoice)
+        {
+            if (Properties.Settings.Default.papersize == "58MM")
+            {
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+
+                dt.Columns.Add("Qty", typeof(string));
+                dt.Columns.Add("Name", typeof(string));
+                dt.Columns.Add("Price", typeof(string));
+
+                if (lblTitle.Text.Equals("CANCEL TRANSACTION"))
+                {
+                    foreach (DataGridViewRow dgv in dataGrid.Rows)
+                    {
+                        dt.Rows.Add(dgv.Cells[11].Value, dgv.Cells[2].Value, dgv.Cells[10].Value);
+                    }
+                    ds.Tables.Add(dt);
+                }
+                else
+                {
+                    dt.Rows.Add(itemQuantity,itemName, itemPrice);
+                    ds.Tables.Add(dt);
+                }
+
+                CancelReceipt58 cancelReceipt80 = new CancelReceipt58();
+                cancelReceipt80.SetDataSource(dt);
+
+                cancelReceipt80.SetParameterValue("date_time", DateTime.Now.ToString());
+                cancelReceipt80.SetParameterValue("cashierName", cashierName);
+                cancelReceipt80.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
+
+                cancelReceipt80.SetParameterValue("canceled_by", canceled_by);
+                cancelReceipt80.SetParameterValue("cancelReason", cancelReason);
+                cancelReceipt80.SetParameterValue("currentOrderNumber", currentOrderNumber);
+                cancelReceipt80.SetParameterValue("latest_invoice", latest_invoice);
+
+                if (lblTitle.Text.Equals("CANCEL TRANSACTION"))
+                {
+                    cancelReceipt80.SetParameterValue("title", "CANCEL TRANSACTION RECEIPT");
+                    decimal sum = 0;
+                    for (int i = 0; i < dataGrid.Rows.Count; ++i)
+                    {
+                        sum += Convert.ToDecimal(dataGrid.Rows[i].Cells[10].Value);
+                    }
+                    cancelReceipt80.SetParameterValue("total", sum.ToString("N2"));
+                }
+                else
+                {
+                    cancelReceipt80.SetParameterValue("title", "VOID TRANSACTION RECEIPT");
+                    cancelReceipt80.SetParameterValue("total", itemPrice.ToString("N2"));
+                }
+
+
+
+                try
+                {
+                    cancelReceipt80.PrintOptions.NoPrinter = false;
+                    cancelReceipt80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    cancelReceipt80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    cancelReceipt80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    cancelReceipt80.PrintToPrinter(1, false, 0, 0);
+                }
+                catch (Exception)
+                {
+
+                    cancelReceipt80.PrintOptions.NoPrinter = false;
+                    cancelReceipt80.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                    cancelReceipt80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    cancelReceipt80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    cancelReceipt80.PrintToPrinter(0, false, 0, 0);
+
+                }
+                finally
+                {
+                    if (cancelReceipt80.IsLoaded)
+                    {
+                        cancelReceipt80.Close();
+                        //rpt.Dispose();
+                    }
+                }
+            }
+            else
+            {
+                DataSet ds = new DataSet();
+                DataTable dt = new DataTable();
+
+                dt.Columns.Add("Qty", typeof(string));
+                dt.Columns.Add("Name", typeof(string));
+                dt.Columns.Add("Price", typeof(string));
+
+                if (lblTitle.Text.Equals("CANCEL TRANSACTION"))
+                {
+                    foreach (DataGridViewRow dgv in dataGrid.Rows)
+                    {
+                        dt.Rows.Add(dgv.Cells[11].Value, dgv.Cells[2].Value, dgv.Cells[10].Value);
+                    }
+                    ds.Tables.Add(dt);
+                }
+                else
+                {
+                    dt.Rows.Add(itemQuantity, itemName, itemPrice);
+                    ds.Tables.Add(dt);
+                }
+                CancelReceipt80 cancelReceipt80 = new CancelReceipt80();
+                cancelReceipt80.SetDataSource(dt);
+
+                cancelReceipt80.SetParameterValue("date_time", DateTime.Now.ToString());
+                cancelReceipt80.SetParameterValue("cashierName", cashierName);
+                cancelReceipt80.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
+
+                cancelReceipt80.SetParameterValue("canceled_by", canceled_by);
+                cancelReceipt80.SetParameterValue("cancelReason", cancelReason);
+                cancelReceipt80.SetParameterValue("currentOrderNumber", currentOrderNumber);
+                cancelReceipt80.SetParameterValue("latest_invoice", latest_invoice);
+
+                if (lblTitle.Text.Equals("CANCEL TRANSACTION"))
+                {
+                    cancelReceipt80.SetParameterValue("title", "CANCEL TRANSACTION RECEIPT");
+                    decimal sum = 0;
+                    for (int i = 0; i < dataGrid.Rows.Count; ++i)
+                    {
+                        sum += Convert.ToDecimal(dataGrid.Rows[i].Cells[10].Value);
+                    }
+                    cancelReceipt80.SetParameterValue("total", sum.ToString("N2"));
+                }
+                else
+                {
+                    cancelReceipt80.SetParameterValue("title", "VOID TRANSACTION RECEIPT");
+                    cancelReceipt80.SetParameterValue("total", itemPrice.ToString("N2"));
+                }
+
+                try
+                {
+                    cancelReceipt80.PrintOptions.NoPrinter = false;
+                    cancelReceipt80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    cancelReceipt80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    cancelReceipt80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    cancelReceipt80.PrintToPrinter(1, false, 0, 0);
+                }
+                catch (Exception)
+                {
+
+                    cancelReceipt80.PrintOptions.NoPrinter = false;
+                    cancelReceipt80.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                    cancelReceipt80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    cancelReceipt80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    cancelReceipt80.PrintToPrinter(0, false, 0, 0);
+
+                }
+                finally
+                {
+                    if (cancelReceipt80.IsLoaded)
+                    {
+                        cancelReceipt80.Close();
+                        //rpt.Dispose();
+                    }
+                }
+            }
+        }
+        String title;
         #region
         //DROP SHADOW START HERE===================================================================================
         private bool Drag;
@@ -113,10 +302,13 @@ namespace EcoPOSv2
         }
         //DROP SHADOW ENDS HERE===================================================================================
         #endregion
-        public CancelPopup()
+        public CancelPopup(String title)
         {
             InitializeComponent();
             ConfirmedToCancel = false;
+            this.title = title;
+            lblTitle.Text = title;
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -133,59 +325,106 @@ namespace EcoPOSv2
             }
             else
             {
-                DateTime date = DateTime.Today;
-                String current_invoice_number = sql.ReturnResult("SELECT TOP 1 order_ref_temp FROM transaction_details ORDER BY order_ref DESC");
-                ConfirmedToCancel = true;
-                sql.Query($"select * from order_cart where terminal_id = {int.Parse(Properties.Settings.Default.Terminal_id)} ");
-                if (sql.HasException(true)) return;
-                if (sql.DBDT.Rows.Count > 0)
+                if (lblTitle.Text.Equals("CANCEL TRANSACTION"))
                 {
-                    foreach (DataRow dr in sql.DBDT.Rows)
+                    //Cancel transaction
+                    String cancelTransactionID = GenerateTransactionID().ToString();
+                    String current_invoice_number = sql.ReturnResult("SELECT TOP 1 order_ref_temp FROM transaction_details ORDER BY order_ref DESC");
+                    ConfirmedToCancel = true;
+                    sql.Query($"select * from order_cart where terminal_id = {int.Parse(Properties.Settings.Default.Terminal_id)} ");
+                    if (sql.HasException(true)) return;
+                    if (sql.DBDT.Rows.Count > 0)
                     {
-                        if (Main.Instance.by_pass_user)
+                        foreach (DataRow dr in sql.DBDT.Rows)
                         {
-                            //bypass insert
-                            sql.AddParam("@date", date);
-                            sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
-                            sql.AddParam("@canceledBy", Main.Instance.lblByPassUser.Text);
-                            sql.AddParam("@cancelReason", tbReason.Text);
-                            sql.AddParam("@canceled_item", dr["name"].ToString());
-                            sql.AddParam("@quantity", dr["quantity"].ToString());
-                            sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
-                            sql.AddParam("@latestInvoiceNumber", current_invoice_number);
-                            sql.AddParam("@sellingPriceInclusive", decimal.Parse(dr["selling_price_inclusive"].ToString()));
-                            sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
-
-                            //normal insert
-                            sql.Query($"insert into canceled_items(date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no) values " +
-                            $"(@date,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID)");
-                            if (sql.HasException(true)) return;
+                            if (Main.Instance.by_pass_user)
+                            {
+                                //bypass insert
+                                sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
+                                sql.AddParam("@canceledBy", Main.Instance.lblByPassUser.Text);
+                                sql.AddParam("@cancelReason", tbReason.Text);
+                                sql.AddParam("@canceled_item", dr["name"].ToString());
+                                sql.AddParam("@quantity", dr["quantity"].ToString());
+                                sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
+                                sql.AddParam("@latestInvoiceNumber", current_invoice_number);
+                                sql.AddParam("@sellingPriceInclusive", decimal.Parse(dr["selling_price_inclusive"].ToString()));
+                                sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
+                                sql.AddParam("@canceltransactionID", cancelTransactionID);
+                                sql.AddParam("@Status", "Canceled_Order");
+                                //normal insert
+                                sql.Query($"insert into canceled_items(status,date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no,cancel_transaction_id) values " +
+                                $"(@Status,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID, @canceltransactionID)");
+                            }
+                            else
+                            {
+                                sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
+                                sql.AddParam("@canceledBy", Main.Instance.lblUser.Text);
+                                sql.AddParam("@cancelReason", tbReason.Text);
+                                sql.AddParam("@canceled_item", dr["name"].ToString());
+                                sql.AddParam("@quantity", dr["quantity"].ToString());
+                                sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
+                                sql.AddParam("@latestInvoiceNumber", current_invoice_number);
+                                sql.AddParam("@sellingPriceInclusive", decimal.Parse(dr["selling_price_inclusive"].ToString()));
+                                sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
+                                sql.AddParam("@canceltransactionID", cancelTransactionID);
+                                sql.AddParam("@Status", "Canceled_Order");
+                                //normal insert
+                                sql.Query($"insert into canceled_items(status,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no,cancel_transaction_id) values " +
+                                $"(@Status,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID, @canceltransactionID )");
+                            }
                         }
-                        else
-                        {
-                            sql.AddParam("@date", date);
-                            sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
-                            sql.AddParam("@canceledBy", Main.Instance.lblUser.Text);
-                            sql.AddParam("@cancelReason", tbReason.Text);
-                            sql.AddParam("@canceled_item", dr["name"].ToString());
-                            sql.AddParam("@quantity", dr["quantity"].ToString());
-                            sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
-                            sql.AddParam("@latestInvoiceNumber", current_invoice_number);
-                            sql.AddParam("@sellingPriceInclusive", decimal.Parse(dr["selling_price_inclusive"].ToString()));
-                            sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
-
-                            //normal insert
-                            sql.Query($"insert into canceled_items(date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no) values " +
-                            $"(@date,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID)");
-                            if (sql.HasException(true)) return;
-                        }
-
                     }
+                    PrintCancelReceipt(Order.Instance.dgvCart, Main.Instance.lblUser.Text, Main.Instance.lblUser.Text, tbReason.Text, Order.Instance.lblOrderNumber.Text, current_invoice_number);
+                    MessageBox.Show(this, "Canceled transaction successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
                 }
-                MessageBox.Show(this, "Cancel transaction successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
+                else
+                {
+                    //Void Transaction
+                    String cancelTransactionID = GenerateTransactionID().ToString();
+                    String current_invoice_number = sql.ReturnResult("SELECT TOP 1 order_ref_temp FROM transaction_details ORDER BY order_ref DESC");
+                    ConfirmedToCancel = true;
+                    if (Main.Instance.by_pass_user)
+                    {
+                        //bypass insert
+                        sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
+                        sql.AddParam("@canceledBy", Main.Instance.lblByPassUser.Text);
+                        sql.AddParam("@cancelReason", tbReason.Text);
+                        sql.AddParam("@canceled_item", itemName);
+                        sql.AddParam("@quantity", itemQuantity);
+                        sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
+                        sql.AddParam("@latestInvoiceNumber", current_invoice_number);
+                        sql.AddParam("@sellingPriceInclusive", itemPrice);
+                        sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
+                        sql.AddParam("@canceltransactionID", cancelTransactionID);
+                        sql.AddParam("@Status", "Void_Order");
+                        //normal insert
+                        sql.Query($"insert into canceled_items(status,date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no,cancel_transaction_id) values " +
+                        $"(@Status,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID, @canceltransactionID)");
+                    }
+                    else
+                    {
+                        sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
+                        sql.AddParam("@canceledBy", Main.Instance.lblUser.Text);
+                        sql.AddParam("@cancelReason", tbReason.Text);
+                        sql.AddParam("@canceled_item", itemName);
+                        sql.AddParam("@quantity", itemQuantity);
+                        sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
+                        sql.AddParam("@latestInvoiceNumber", current_invoice_number);
+                        sql.AddParam("@sellingPriceInclusive", itemPrice);
+                        sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
+                        sql.AddParam("@canceltransactionID", cancelTransactionID);
+                        sql.AddParam("@Status", "Void_Order");
+                        //normal insert
+                        sql.Query($"insert into canceled_items(status,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no,cancel_transaction_id) values " +
+                        $"(@Status,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID, @canceltransactionID )");
+                    }
+                    PrintCancelReceipt(Order.Instance.dgvCart, Main.Instance.lblUser.Text, Main.Instance.lblUser.Text, tbReason.Text, Order.Instance.lblOrderNumber.Text, current_invoice_number);
+                    MessageBox.Show(this, "Voided Item successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+              
             }
-            
         }
 
         private void tbReason_KeyUp(object sender, KeyEventArgs e)
