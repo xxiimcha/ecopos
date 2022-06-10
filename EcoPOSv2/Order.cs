@@ -685,13 +685,13 @@ namespace EcoPOSv2
         {
             if (dgvCart.Rows.Count > 0)
             {
-                DialogResult result = MessageBox.Show("You are about to cancel/void Transaction. Proceed?", "Confirmation", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                using (CancelPopup frm = new CancelPopup())
                 {
-                    using (CancelPopup frm = new CancelPopup())
-                    {
-                        frm.ShowDialog();
-                    }
+                    frm.ShowDialog();
+                }
+                if (CancelPopup.ConfirmedToCancel)
+                {
+                    CancelPopup.ConfirmedToCancel = false;
                     apply_regular_discount_fix_amt = false;
                     apply_special_discount = false;
                     apply_member = false;
@@ -729,7 +729,6 @@ namespace EcoPOSv2
                     btnQuantity.Enabled = true;
                     tbBarcode.Clear();
                     tbBarcode.Focus();
-
                 }
             }
             else

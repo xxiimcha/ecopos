@@ -126,37 +126,78 @@ namespace EcoPOSv2
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            DateTime date = DateTime.Today;
-            String current_invoice_number = sql.ReturnResult("SELECT TOP 1 order_ref_temp FROM transaction_details ORDER BY order_ref DESC");
-            ConfirmedToCancel = true;
-            sql.Query($"select * from order_cart where terminal_id = {int.Parse(Properties.Settings.Default.Terminal_id)} ");
-            if (sql.HasException(true)) return;
-            if(sql.DBDT.Rows.Count > 0)
+            if (tbReason.Text.Equals(""))
             {
-                foreach(DataRow dr in sql.DBDT.Rows)
-                {
-                    if (Main.Instance.by_pass_user)
-                    {
-                        //bypass insert
-                        sql.Query($"insert into canceled_items(date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no) values " +
-                        $"('{date}','{Main.Instance.lblUser.Text}','{Main.Instance.lblByPassUser.Text}','{tbReason.Text}','{dr["name"].ToString()}',{int.Parse(dr["quantity"].ToString())}," +
-                        $"'{Order.Instance.lblOrderNumber.Text}','{current_invoice_number}' " +
-                        $",{decimal.Parse(dr["selling_price_inclusive"].ToString())},{int.Parse(Properties.Settings.Default.Terminal_id)})");
-                        if (sql.HasException(true)) return;
-                    }
-                    else
-                    {
-                        //normal insert
-                        sql.Query($"insert into canceled_items(date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no) values " +
-                        $"('{date}','{Main.Instance.lblUser.Text}','{Main.Instance.lblUser.Text}','{tbReason.Text}','{dr["name"].ToString()}',{int.Parse(dr["quantity"].ToString())}," +
-                        $"'{Order.Instance.lblOrderNumber.Text}','{current_invoice_number}' " +
-                        $",{decimal.Parse(dr["selling_price_inclusive"].ToString())},{int.Parse(Properties.Settings.Default.Terminal_id)})");
-                        if (sql.HasException(true)) return;
-                    }
-
-                }
+                MessageBox.Show(this, "Please enter valid reason first!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tbReason.Focus();
             }
-            MessageBox.Show(this, "Cancel transaction successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                DateTime date = DateTime.Today;
+                String current_invoice_number = sql.ReturnResult("SELECT TOP 1 order_ref_temp FROM transaction_details ORDER BY order_ref DESC");
+                ConfirmedToCancel = true;
+                sql.Query($"select * from order_cart where terminal_id = {int.Parse(Properties.Settings.Default.Terminal_id)} ");
+                if (sql.HasException(true)) return;
+                if (sql.DBDT.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in sql.DBDT.Rows)
+                    {
+                        if (Main.Instance.by_pass_user)
+                        {
+                            //bypass insert
+                            sql.AddParam("@date", date);
+                            sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
+                            sql.AddParam("@canceledBy", Main.Instance.lblByPassUser.Text);
+                            sql.AddParam("@cancelReason", tbReason.Text);
+                            sql.AddParam("@canceled_item", dr["name"].ToString());
+                            sql.AddParam("@quantity", dr["quantity"].ToString());
+                            sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
+                            sql.AddParam("@latestInvoiceNumber", current_invoice_number);
+                            sql.AddParam("@sellingPriceInclusive", decimal.Parse(dr["selling_price_inclusive"].ToString()));
+                            sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
+
+                            //normal insert
+                            sql.Query($"insert into canceled_items(date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no) values " +
+                            $"(@date,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID)");
+                            if (sql.HasException(true)) return;
+                        }
+                        else
+                        {
+                            sql.AddParam("@date", date);
+                            sql.AddParam("@cashierName", Main.Instance.lblUser.Text);
+                            sql.AddParam("@canceledBy", Main.Instance.lblUser.Text);
+                            sql.AddParam("@cancelReason", tbReason.Text);
+                            sql.AddParam("@canceled_item", dr["name"].ToString());
+                            sql.AddParam("@quantity", dr["quantity"].ToString());
+                            sql.AddParam("@currentOrderNumber", Order.Instance.lblOrderNumber.Text);
+                            sql.AddParam("@latestInvoiceNumber", current_invoice_number);
+                            sql.AddParam("@sellingPriceInclusive", decimal.Parse(dr["selling_price_inclusive"].ToString()));
+                            sql.AddParam("@terminalID", Properties.Settings.Default.Terminal_id);
+
+                            //normal insert
+                            sql.Query($"insert into canceled_items(date_time,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no) values " +
+                            $"(@date,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID)");
+                            if (sql.HasException(true)) return;
+                        }
+
+                    }
+                }
+                MessageBox.Show(this, "Cancel transaction successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            
+        }
+
+        private void tbReason_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnConfirm.PerformClick();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                btnCancel.PerformClick();
+            }
         }
     }
 }

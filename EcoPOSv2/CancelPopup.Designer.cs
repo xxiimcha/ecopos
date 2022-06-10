@@ -112,7 +112,8 @@ namespace EcoPOSv2
             this.tbReason.SelectedText = "";
             this.tbReason.ShadowDecoration.Parent = this.tbReason;
             this.tbReason.Size = new System.Drawing.Size(415, 45);
-            this.tbReason.TabIndex = 131;
+            this.tbReason.TabIndex = 0;
+            this.tbReason.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbReason_KeyUp);
             // 
             // gunaLabel2
             // 
