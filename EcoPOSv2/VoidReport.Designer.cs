@@ -40,8 +40,9 @@
             this.dtpTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.Label14 = new System.Windows.Forms.Label();
             this.btnSaveReport = new FontAwesome.Sharp.IconButton();
-            this.dgv_VoidReport = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnExportDGVToExcel = new Guna.UI2.WinForms.Guna2Button();
+            this.dgv_VoidReport = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.cbxMode = new Guna.UI2.WinForms.Guna2ComboBox();
             this.TableLayoutPanel1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_VoidReport)).BeginInit();
@@ -64,6 +65,7 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.cbxMode);
             this.guna2Panel1.Controls.Add(this.dtpFrom);
             this.guna2Panel1.Controls.Add(this.Label13);
             this.guna2Panel1.Controls.Add(this.dtpTo);
@@ -174,6 +176,31 @@
             this.btnSaveReport.UseVisualStyleBackColor = true;
             this.btnSaveReport.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnExportDGVToExcel
+            // 
+            this.btnExportDGVToExcel.BackColor = System.Drawing.Color.White;
+            this.btnExportDGVToExcel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnExportDGVToExcel.BorderRadius = 5;
+            this.btnExportDGVToExcel.BorderThickness = 2;
+            this.btnExportDGVToExcel.CheckedState.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.CustomImages.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExportDGVToExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
+            this.btnExportDGVToExcel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportDGVToExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportDGVToExcel.HoverState.BorderColor = System.Drawing.Color.Green;
+            this.btnExportDGVToExcel.HoverState.FillColor = System.Drawing.Color.Green;
+            this.btnExportDGVToExcel.HoverState.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.Location = new System.Drawing.Point(919, 0);
+            this.btnExportDGVToExcel.Name = "btnExportDGVToExcel";
+            this.btnExportDGVToExcel.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnExportDGVToExcel.ShadowDecoration.Depth = 50;
+            this.btnExportDGVToExcel.ShadowDecoration.Parent = this.btnExportDGVToExcel;
+            this.btnExportDGVToExcel.Size = new System.Drawing.Size(165, 45);
+            this.btnExportDGVToExcel.TabIndex = 134;
+            this.btnExportDGVToExcel.Text = "EXPORT TO EXCEL";
+            this.btnExportDGVToExcel.Click += new System.EventHandler(this.btnExportDGVToExcel_Click);
+            // 
             // dgv_VoidReport
             // 
             this.dgv_VoidReport.AllowUserToAddRows = false;
@@ -248,30 +275,31 @@
             this.dgv_VoidReport.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv_VoidReport.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // btnExportDGVToExcel
+            // cbxMode
             // 
-            this.btnExportDGVToExcel.BackColor = System.Drawing.Color.White;
-            this.btnExportDGVToExcel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
-            this.btnExportDGVToExcel.BorderRadius = 5;
-            this.btnExportDGVToExcel.BorderThickness = 2;
-            this.btnExportDGVToExcel.CheckedState.Parent = this.btnExportDGVToExcel;
-            this.btnExportDGVToExcel.CustomImages.Parent = this.btnExportDGVToExcel;
-            this.btnExportDGVToExcel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnExportDGVToExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
-            this.btnExportDGVToExcel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportDGVToExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExportDGVToExcel.HoverState.BorderColor = System.Drawing.Color.Green;
-            this.btnExportDGVToExcel.HoverState.FillColor = System.Drawing.Color.Green;
-            this.btnExportDGVToExcel.HoverState.Parent = this.btnExportDGVToExcel;
-            this.btnExportDGVToExcel.Location = new System.Drawing.Point(919, 0);
-            this.btnExportDGVToExcel.Name = "btnExportDGVToExcel";
-            this.btnExportDGVToExcel.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnExportDGVToExcel.ShadowDecoration.Depth = 50;
-            this.btnExportDGVToExcel.ShadowDecoration.Parent = this.btnExportDGVToExcel;
-            this.btnExportDGVToExcel.Size = new System.Drawing.Size(165, 45);
-            this.btnExportDGVToExcel.TabIndex = 134;
-            this.btnExportDGVToExcel.Text = "EXPORT TO EXCEL";
-            this.btnExportDGVToExcel.Click += new System.EventHandler(this.btnExportDGVToExcel_Click);
+            this.cbxMode.BackColor = System.Drawing.Color.Transparent;
+            this.cbxMode.BorderColor = System.Drawing.Color.Black;
+            this.cbxMode.BorderRadius = 5;
+            this.cbxMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbxMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMode.FocusedColor = System.Drawing.Color.Empty;
+            this.cbxMode.FocusedState.Parent = this.cbxMode;
+            this.cbxMode.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbxMode.ForeColor = System.Drawing.Color.Black;
+            this.cbxMode.FormattingEnabled = true;
+            this.cbxMode.HoverState.Parent = this.cbxMode;
+            this.cbxMode.ItemHeight = 30;
+            this.cbxMode.Items.AddRange(new object[] {
+            "Voided Transaction",
+            "Canceled Items"});
+            this.cbxMode.ItemsAppearance.Parent = this.cbxMode;
+            this.cbxMode.Location = new System.Drawing.Point(478, 4);
+            this.cbxMode.Name = "cbxMode";
+            this.cbxMode.ShadowDecoration.Parent = this.cbxMode;
+            this.cbxMode.Size = new System.Drawing.Size(165, 36);
+            this.cbxMode.StartIndex = 0;
+            this.cbxMode.TabIndex = 135;
+            this.cbxMode.SelectedIndexChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // VoidReport
             // 
@@ -304,5 +332,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpTo;
         internal System.Windows.Forms.Label Label14;
         public Guna.UI2.WinForms.Guna2Button btnExportDGVToExcel;
+        private Guna.UI2.WinForms.Guna2ComboBox cbxMode;
     }
 }

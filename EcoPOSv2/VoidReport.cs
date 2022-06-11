@@ -52,6 +52,26 @@ namespace EcoPOSv2
             dgv_VoidReport.Columns[8].Width = 50;
         }
 
+        private void loadCanceledData()
+        {
+            SQL.AddParam("@from", dtpFrom.Value);
+            SQL.AddParam("@to", dtpTo.Value);
+
+            SQL.Query(@"SELECT cancel_id, cashier_name as 'Cashier Online', canceled_by as 'Canceled By', cancel_reason as 'Reason', date_time as 'Date',
+                canceled_item as 'Item Voided', quantity as 'Qty', current_order_no as 'Order No.', latest_invoice as 'Lastest Invoice', 
+                canceled_amount as 'Amount', terminal_no 'Terminal', cancel_transaction_id as 'Cancel ID', status as 'Status' FROM canceled_items
+                        WHERE date_time BETWEEN @from AND @to ORDER BY date_time DESC");
+
+            if (SQL.HasException(true))
+                return;
+
+            dgv_VoidReport.DataSource = SQL.DBDT;
+            dgv_VoidReport.Columns[0].Visible = false;
+            dgv_VoidReport.Columns[6].Width = 50;
+            dgv_VoidReport.Columns[7].Width = 50;
+            dgv_VoidReport.Columns[10].Width = 50;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             EI.ExportDgvToPDF("Void Report", dgv_VoidReport);
@@ -59,17 +79,43 @@ namespace EcoPOSv2
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            loadData();
+            if (cbxMode.Text == "Voided Transaction")
+            {
+                loadData();
+            }
+            else
+            {
+                loadCanceledData();
+            }
         }
 
         private void dtpTo_ValueChanged(object sender, EventArgs e)
         {
-            loadData();
+            if (cbxMode.Text == "Voided Transaction")
+            {
+                loadData();
+            }
+            else
+            {
+                loadCanceledData();
+            }
         }
 
         private void btnExportDGVToExcel_Click(object sender, EventArgs e)
         {
             new ExportDGVToExcel().ExportToExcel(new ExportDGVToExcel().DataGridViewToDataTable(dgv_VoidReport), "Void Report", "Void Report");
+        }
+
+        private void cbxMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxMode.Text == "Voided Transaction")
+            {
+                loadData();
+            }
+            else
+            {
+                loadCanceledData();
+            }
         }
     }
 }
