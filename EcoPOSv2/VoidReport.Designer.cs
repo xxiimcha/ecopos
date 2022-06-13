@@ -49,6 +49,8 @@
             this.Label1 = new System.Windows.Forms.Label();
             this.TableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_VoidReport = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnGenerateRprt = new FontAwesome.Sharp.IconButton();
+            this.btnExportExcel = new FontAwesome.Sharp.IconButton();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -294,6 +296,8 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.btnExportExcel);
+            this.guna2Panel1.Controls.Add(this.btnGenerateRprt);
             this.guna2Panel1.Controls.Add(this.dtpFrom);
             this.guna2Panel1.Controls.Add(this.Label13);
             this.guna2Panel1.Controls.Add(this.dtpTo);
@@ -411,6 +415,50 @@
             this.dgv_VoidReport.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgv_VoidReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_VoidReport_CellClick);
             // 
+            // btnGenerateRprt
+            // 
+            this.btnGenerateRprt.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnGenerateRprt.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnGenerateRprt.FlatAppearance.BorderSize = 0;
+            this.btnGenerateRprt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateRprt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateRprt.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerateRprt.IconChar = FontAwesome.Sharp.IconChar.FileInvoice;
+            this.btnGenerateRprt.IconColor = System.Drawing.Color.DimGray;
+            this.btnGenerateRprt.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGenerateRprt.IconSize = 31;
+            this.btnGenerateRprt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerateRprt.Location = new System.Drawing.Point(666, 0);
+            this.btnGenerateRprt.Name = "btnGenerateRprt";
+            this.btnGenerateRprt.Size = new System.Drawing.Size(145, 45);
+            this.btnGenerateRprt.TabIndex = 124;
+            this.btnGenerateRprt.Text = "Generate Report";
+            this.btnGenerateRprt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerateRprt.UseVisualStyleBackColor = true;
+            this.btnGenerateRprt.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExportExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(203)))), ((int)(((byte)(65)))));
+            this.btnExportExcel.FlatAppearance.BorderSize = 0;
+            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportExcel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportExcel.ForeColor = System.Drawing.Color.Black;
+            this.btnExportExcel.IconChar = FontAwesome.Sharp.IconChar.FileCsv;
+            this.btnExportExcel.IconColor = System.Drawing.Color.DimGray;
+            this.btnExportExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnExportExcel.IconSize = 31;
+            this.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportExcel.Location = new System.Drawing.Point(521, 0);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Size = new System.Drawing.Size(145, 45);
+            this.btnExportExcel.TabIndex = 125;
+            this.btnExportExcel.Text = "Export To Excel";
+            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportDGVToExcel_Click);
+            // 
             // VoidReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -452,5 +500,7 @@
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.TableLayoutPanel TableLayoutPanel1;
         internal Guna.UI2.WinForms.Guna2DataGridView dgv_VoidReport;
+        internal FontAwesome.Sharp.IconButton btnGenerateRprt;
+        internal FontAwesome.Sharp.IconButton btnExportExcel;
     }
 }

@@ -332,6 +332,8 @@ namespace EcoPOSv2
                 TableLayoutPanel1.ColumnStyles[0].Width = 100;
                 TableLayoutPanel1.ColumnStyles[1].SizeType = SizeType.Percent;
                 TableLayoutPanel1.ColumnStyles[1].Width = 0;
+                btnGenerateRprt.Visible = true;
+                btnExportExcel.Visible = true;
             }
             else if (cbxMode.Text == "Canceled Transaction")
             {
@@ -340,7 +342,8 @@ namespace EcoPOSv2
                 TableLayoutPanel1.ColumnStyles[0].Width = 75;
                 TableLayoutPanel1.ColumnStyles[1].SizeType = SizeType.Percent;
                 TableLayoutPanel1.ColumnStyles[1].Width = 25;
-
+                btnGenerateRprt.Visible = false;
+                btnExportExcel.Visible = false;
             }
             else
             {
@@ -349,7 +352,8 @@ namespace EcoPOSv2
                 TableLayoutPanel1.ColumnStyles[0].Width = 75;
                 TableLayoutPanel1.ColumnStyles[1].SizeType = SizeType.Percent;
                 TableLayoutPanel1.ColumnStyles[1].Width = 25;
-
+                btnGenerateRprt.Visible = false;
+                btnExportExcel.Visible = false;
             }
         }
 
