@@ -975,18 +975,36 @@ namespace EcoPOSv2
 
             SQL.AddParam("@from", dtpTopup_From.Value);
             SQL.AddParam("@to", dtpTopup_To.Value);
-            SQL.Query(@"SELECT topupID as 'Topup No', topup_datetime as 'Date', (SELECT name FROM customer WHERE customerID = topup_cusID) as 'Customer Name', topup_amount as 'Topup Amount', topup_beggining_amount as 'Beginning Amount', topup_ending_amount as 'Ending Amount', terminal_id as 'Terminal Number' FROM topup_transaction WHERE topup_datetime BETWEEN @from AND @to AND " + cus_query + " ORDER BY topup_datetime DESC");
+            SQL.Query(@"SELECT 
+                    topupID as 'Topup No', 
+                    topup_cardNo,
+                    topup_datetime as 'Date', 
+                    (SELECT name FROM customer WHERE customerID = topup_cusID) as 'Customer Name', 
+                    payment_by as 'Paid By',
+                    topup_amount as 'Topup Amount', 
+                    topup_beggining_amount as 'Beginning Amount', 
+                    topup_ending_amount as 'Ending Amount', 
+                    (SELECT IIF((SELECT COUNT(adminID) FROM admin_accts WHERE adminID = cashierID) > 0, (SELECT (first_name + ' ' + last_name) FROM admin_accts WHERE adminID = cashierID), (SELECT (first_name + ' ' + last_name) FROM users WHERE userID = cashierID))) as 'Cashier Name',
+                    terminal_id as 'Terminal #' FROM topup_transaction 
+                    WHERE topup_datetime BETWEEN @from AND @to AND " + cus_query + " ORDER BY topup_datetime DESC");
             if (SQL.HasException(true))
                 return;
 
             dgvTopupReport.DataSource = SQL.DBDT;
-            dgvTopupReport.Columns[0].Visible = false;
+            dgvTopupReport.Columns[1].Visible = false;
+
+            dgvTopupReport.Columns[0].Width = 50;
+            dgvTopupReport.Columns[9].Width = 50;
         }
 
         private void loadDGVdata()
         {
             if (cbxSummary.Checked)
             {
+                //Salary Deduction Client
+                //CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND NOT payment_method = 'Salary Deduction')) as 'Salary Deduction Total',
+                //CONVERT(DECIMAL(18, 2), (SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND payment_method = 'Salary Deduction')) as 'Other Payment'
+
                 SQL.AddParam("@from", dtpMT_From.Value);
                 SQL.AddParam("@to", dtpMT_To.Value);
 
@@ -998,9 +1016,7 @@ namespace EcoPOSv2
                         CONVERT(DECIMAL(18,2),(SELECT SUM(disc_amt) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Discount',
                         CONVERT(DECIMAL(18,2),(SELECT SUM(subtotal) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Subtotal', 
                         CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Total Amount Paid',
-                        CONVERT(DECIMAL(18,2),(SELECT SUM(cus_pts_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Points Used',
-                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND NOT payment_method = 'Salary Deduction')) as 'Salary Deduction Total',
-                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND payment_method = 'Salary Deduction')) as 'Other Payment'
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(cus_pts_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Points Used'
                         FROM customer ");
                 if (SQL.HasException(true))
                     return;
@@ -1654,6 +1670,117 @@ namespace EcoPOSv2
         {
             loadDGVdata();
             LoadMT_Customers();
+        }
+
+        TopupReceipt58 topupreport = new TopupReceipt58();
+        TopupReceipt58 topup_reprint58 = new TopupReceipt58();
+        TopupReceipt80 topup_reprint80 = new TopupReceipt80();
+        private void dgvTopupReport_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+
+            topupreport.Dispose();
+            topupreport = new TopupReceipt58();
+            topupreport.SetParameterValue("invoice_no", dgvTopupReport.SelectedRows[0].Cells[0].Value.ToString());
+            topupreport.SetParameterValue("date_time", dgvTopupReport.SelectedRows[0].Cells[2].Value.ToString());
+            topupreport.SetParameterValue("user_first_name", dgvTopupReport.SelectedRows[0].Cells[8].Value.ToString());
+            topupreport.SetParameterValue("Terminal_no", dgvTopupReport.SelectedRows[0].Cells[9].Value.ToString());
+            topupreport.SetParameterValue("member_name", dgvTopupReport.SelectedRows[0].Cells[3].Value.ToString());
+            topupreport.SetParameterValue("card_no", dgvTopupReport.SelectedRows[0].Cells[1].Value.ToString());
+            topupreport.SetParameterValue("paid_by", dgvTopupReport.SelectedRows[0].Cells[4].Value.ToString());
+            topupreport.SetParameterValue("total", dgvTopupReport.SelectedRows[0].Cells[5].Value.ToString());
+            topupreport.SetParameterValue("beggining_points", dgvTopupReport.SelectedRows[0].Cells[6].Value.ToString());
+            topupreport.SetParameterValue("final_points", dgvTopupReport.SelectedRows[0].Cells[7].Value.ToString());
+
+            topupreport.SetParameterValue("business_name", Main.Instance.sd_business_name);
+            topupreport.SetParameterValue("business_address", Main.Instance.sd_business_address);
+            topupreport.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+
+            crvTopup.ReportSource = topupreport;
+            crvTopup.Refresh();
+            crvTopup.Zoom(2);
+        }
+
+        private void btnTopupPrintReceipt_Click(object sender, EventArgs e)
+        {
+            if (dgvTopupReport.RowCount == -1)
+                return;
+            if (dgvTopupReport.SelectedRows.Count <= 0)
+                return;
+
+            if (Properties.Settings.Default.papersize == "58MM")
+            {
+                topup_reprint58.Dispose();
+                topup_reprint58 = new TopupReceipt58();
+                topup_reprint58.SetParameterValue("invoice_no", dgvTopupReport.SelectedRows[0].Cells[0].Value.ToString());
+                topup_reprint58.SetParameterValue("date_time", dgvTopupReport.SelectedRows[0].Cells[2].Value.ToString());
+                topup_reprint58.SetParameterValue("user_first_name", dgvTopupReport.SelectedRows[0].Cells[8].Value.ToString());
+                topup_reprint58.SetParameterValue("Terminal_no", dgvTopupReport.SelectedRows[0].Cells[9].Value.ToString());
+                topup_reprint58.SetParameterValue("member_name", dgvTopupReport.SelectedRows[0].Cells[3].Value.ToString());
+                topup_reprint58.SetParameterValue("card_no", dgvTopupReport.SelectedRows[0].Cells[1].Value.ToString());
+                topup_reprint58.SetParameterValue("paid_by", dgvTopupReport.SelectedRows[0].Cells[4].Value.ToString());
+                topup_reprint58.SetParameterValue("total", dgvTopupReport.SelectedRows[0].Cells[5].Value.ToString());
+                topup_reprint58.SetParameterValue("beggining_points", dgvTopupReport.SelectedRows[0].Cells[6].Value.ToString());
+                topup_reprint58.SetParameterValue("final_points", dgvTopupReport.SelectedRows[0].Cells[7].Value.ToString());
+
+                topup_reprint58.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                topup_reprint58.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                topup_reprint58.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+
+                try
+                {
+                    topup_reprint58.PrintOptions.NoPrinter = false;
+                    topup_reprint58.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    topup_reprint58.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    topup_reprint58.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    topup_reprint58.PrintToPrinter(1, false, 0, 0);
+                }
+                catch (Exception)
+                {
+                    topup_reprint58.PrintOptions.NoPrinter = false;
+                    topup_reprint58.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                    topup_reprint58.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    topup_reprint58.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    topup_reprint58.PrintToPrinter(0, false, 0, 0);
+                }
+            }
+            else
+            {
+                topup_reprint80.Dispose();
+                topup_reprint80 = new TopupReceipt80();
+                topup_reprint80.SetParameterValue("invoice_no", dgvTopupReport.SelectedRows[0].Cells[0].Value.ToString());
+                topup_reprint80.SetParameterValue("date_time", dgvTopupReport.SelectedRows[0].Cells[2].Value.ToString());
+                topup_reprint80.SetParameterValue("user_first_name", dgvTopupReport.SelectedRows[0].Cells[8].Value.ToString());
+                topup_reprint80.SetParameterValue("Terminal_no", dgvTopupReport.SelectedRows[0].Cells[9].Value.ToString());
+                topup_reprint80.SetParameterValue("member_name", dgvTopupReport.SelectedRows[0].Cells[3].Value.ToString());
+                topup_reprint80.SetParameterValue("card_no", dgvTopupReport.SelectedRows[0].Cells[1].Value.ToString());
+                topup_reprint80.SetParameterValue("paid_by", dgvTopupReport.SelectedRows[0].Cells[4].Value.ToString());
+                topup_reprint80.SetParameterValue("total", dgvTopupReport.SelectedRows[0].Cells[5].Value.ToString());
+                topup_reprint80.SetParameterValue("beggining_points", dgvTopupReport.SelectedRows[0].Cells[6].Value.ToString());
+                topup_reprint80.SetParameterValue("final_points", dgvTopupReport.SelectedRows[0].Cells[7].Value.ToString());
+
+                topup_reprint80.SetParameterValue("business_name", Main.Instance.sd_business_name);
+                topup_reprint80.SetParameterValue("business_address", Main.Instance.sd_business_address);
+                topup_reprint80.SetParameterValue("business_contact_no", Main.Instance.sd_business_contact_no);
+
+                try
+                {
+                    topup_reprint80.PrintOptions.NoPrinter = false;
+                    topup_reprint80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    topup_reprint80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    topup_reprint80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    topup_reprint80.PrintToPrinter(1, false, 0, 0);
+                }
+                catch (Exception)
+                {
+                    topup_reprint80.PrintOptions.NoPrinter = false;
+                    topup_reprint80.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                    topup_reprint80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    topup_reprint80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    topup_reprint80.PrintToPrinter(0, false, 0, 0);
+                }
+            }
         }
 
         private void btnTopupTransaction_Click(object sender, EventArgs e)

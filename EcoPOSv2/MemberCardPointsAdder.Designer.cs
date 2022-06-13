@@ -45,6 +45,8 @@ namespace EcoPOSv2
             this.lblMember = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.txtPaymentby = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +55,8 @@ namespace EcoPOSv2
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.txtPaymentby);
+            this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.lblPointsAfter);
             this.guna2Panel1.Controls.Add(this.label5);
             this.guna2Panel1.Controls.Add(this.pnlTitle);
@@ -67,14 +71,14 @@ namespace EcoPOSv2
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(500, 275);
+            this.guna2Panel1.Size = new System.Drawing.Size(500, 312);
             this.guna2Panel1.TabIndex = 1;
             // 
             // lblPointsAfter
             // 
             this.lblPointsAfter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPointsAfter.ForeColor = System.Drawing.Color.Black;
-            this.lblPointsAfter.Location = new System.Drawing.Point(221, 161);
+            this.lblPointsAfter.Location = new System.Drawing.Point(221, 202);
             this.lblPointsAfter.Name = "lblPointsAfter";
             this.lblPointsAfter.Size = new System.Drawing.Size(259, 33);
             this.lblPointsAfter.TabIndex = 132;
@@ -85,7 +89,7 @@ namespace EcoPOSv2
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(21, 162);
+            this.label5.Location = new System.Drawing.Point(21, 203);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(198, 33);
             this.label5.TabIndex = 131;
@@ -141,7 +145,7 @@ namespace EcoPOSv2
             // 
             this.lblCurrentPoints.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentPoints.ForeColor = System.Drawing.Color.Black;
-            this.lblCurrentPoints.Location = new System.Drawing.Point(221, 128);
+            this.lblCurrentPoints.Location = new System.Drawing.Point(221, 169);
             this.lblCurrentPoints.Name = "lblCurrentPoints";
             this.lblCurrentPoints.Size = new System.Drawing.Size(259, 33);
             this.lblCurrentPoints.TabIndex = 60;
@@ -152,7 +156,7 @@ namespace EcoPOSv2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(21, 128);
+            this.label2.Location = new System.Drawing.Point(21, 169);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(196, 33);
             this.label2.TabIndex = 59;
@@ -176,7 +180,7 @@ namespace EcoPOSv2
             this.txtPoints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.txtPoints.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPoints.HoverState.Parent = this.txtPoints;
-            this.txtPoints.Location = new System.Drawing.Point(95, 82);
+            this.txtPoints.Location = new System.Drawing.Point(95, 79);
             this.txtPoints.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPoints.Name = "txtPoints";
             this.txtPoints.PasswordChar = '\0';
@@ -203,7 +207,7 @@ namespace EcoPOSv2
             this.btnQuantity.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnQuantity.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnQuantity.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnQuantity.Location = new System.Drawing.Point(18, 211);
+            this.btnQuantity.Location = new System.Drawing.Point(18, 250);
             this.btnQuantity.Name = "btnQuantity";
             this.btnQuantity.ShadowDecoration.Parent = this.btnQuantity;
             this.btnQuantity.Size = new System.Drawing.Size(229, 49);
@@ -226,12 +230,12 @@ namespace EcoPOSv2
             this.btnAdd.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAdd.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnAdd.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnAdd.Location = new System.Drawing.Point(253, 211);
+            this.btnAdd.Location = new System.Drawing.Point(253, 250);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShadowDecoration.Parent = this.btnAdd;
             this.btnAdd.Size = new System.Drawing.Size(229, 49);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "ADD";
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "ADD/PAY";
             this.btnAdd.TextOffset = new System.Drawing.Point(10, 0);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -250,7 +254,7 @@ namespace EcoPOSv2
             // 
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.Black;
-            this.Label3.Location = new System.Drawing.Point(21, 82);
+            this.Label3.Location = new System.Drawing.Point(21, 79);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(93, 33);
             this.Label3.TabIndex = 53;
@@ -261,12 +265,52 @@ namespace EcoPOSv2
             // 
             this.guna2DragControl1.TargetControl = this.pnlTitle;
             // 
+            // txtPaymentby
+            // 
+            this.txtPaymentby.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtPaymentby.BorderRadius = 3;
+            this.txtPaymentby.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPaymentby.DefaultText = "";
+            this.txtPaymentby.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPaymentby.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPaymentby.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPaymentby.DisabledState.Parent = this.txtPaymentby;
+            this.txtPaymentby.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPaymentby.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPaymentby.FocusedState.Parent = this.txtPaymentby;
+            this.txtPaymentby.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaymentby.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtPaymentby.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPaymentby.HoverState.Parent = this.txtPaymentby;
+            this.txtPaymentby.Location = new System.Drawing.Point(95, 124);
+            this.txtPaymentby.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPaymentby.Name = "txtPaymentby";
+            this.txtPaymentby.PasswordChar = '\0';
+            this.txtPaymentby.PlaceholderText = "";
+            this.txtPaymentby.SelectedText = "";
+            this.txtPaymentby.ShadowDecoration.Parent = this.txtPaymentby;
+            this.txtPaymentby.Size = new System.Drawing.Size(385, 33);
+            this.txtPaymentby.TabIndex = 1;
+            this.txtPaymentby.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPoints_KeyPress);
+            this.txtPaymentby.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPoints_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(21, 124);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 33);
+            this.label1.TabIndex = 134;
+            this.label1.Text = "PAID BY:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // MemberCardPointsAdder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(500, 275);
+            this.ClientSize = new System.Drawing.Size(500, 312);
             this.Controls.Add(this.guna2Panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -299,5 +343,7 @@ namespace EcoPOSv2
         public System.Windows.Forms.Label lblMember;
         internal System.Windows.Forms.Label Label3;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        internal Guna.UI2.WinForms.Guna2TextBox txtPaymentby;
+        internal System.Windows.Forms.Label label1;
     }
 }

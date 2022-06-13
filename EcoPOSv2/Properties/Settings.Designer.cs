@@ -457,5 +457,35 @@ namespace EcoPOSv2.Properties {
                 this["DisableWholesale"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CurrentOrderCancelPrintReceipt
+        {
+            get
+            {
+                return ((bool)(this["CurrentOrderCancelPrintReceipt"]));
+            }
+            set
+            {
+                this["CurrentOrderCancelPrintReceipt"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VoidItemPrintReceipt
+        {
+            get
+            {
+                return ((bool)(this["VoidItemPrintReceipt"]));
+            }
+            set
+            {
+                this["VoidItemPrintReceipt"] = value;
+            }
+        }
     }
 }

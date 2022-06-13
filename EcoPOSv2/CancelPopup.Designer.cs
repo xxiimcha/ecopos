@@ -37,6 +37,7 @@ namespace EcoPOSv2
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.cbxPrintReceipt = new Guna.UI2.WinForms.Guna2CheckBox();
             this.pnlTitle.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -131,7 +132,7 @@ namespace EcoPOSv2
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfirm.BackColor = System.Drawing.Color.White;
             this.btnConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(165)))), ((int)(((byte)(93)))));
             this.btnConfirm.BorderRadius = 5;
@@ -144,7 +145,7 @@ namespace EcoPOSv2
             this.btnConfirm.HoverState.BorderColor = System.Drawing.Color.Green;
             this.btnConfirm.HoverState.FillColor = System.Drawing.Color.Green;
             this.btnConfirm.HoverState.Parent = this.btnConfirm;
-            this.btnConfirm.Location = new System.Drawing.Point(322, 136);
+            this.btnConfirm.Location = new System.Drawing.Point(322, 147);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnConfirm.ShadowDecoration.Depth = 50;
@@ -156,7 +157,7 @@ namespace EcoPOSv2
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(214)))));
             this.btnCancel.BorderRadius = 3;
@@ -169,7 +170,7 @@ namespace EcoPOSv2
             this.btnCancel.HoverState.FillColor = System.Drawing.Color.Gainsboro;
             this.btnCancel.HoverState.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.HoverState.Parent = this.btnCancel;
-            this.btnCancel.Location = new System.Drawing.Point(206, 136);
+            this.btnCancel.Location = new System.Drawing.Point(206, 147);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.BorderRadius = 3;
             this.btnCancel.ShadowDecoration.Depth = 50;
@@ -185,6 +186,7 @@ namespace EcoPOSv2
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Gray;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.cbxPrintReceipt);
             this.guna2Panel1.Controls.Add(this.btnCancel);
             this.guna2Panel1.Controls.Add(this.tbReason);
             this.guna2Panel1.Controls.Add(this.btnConfirm);
@@ -193,15 +195,36 @@ namespace EcoPOSv2
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(444, 190);
+            this.guna2Panel1.Size = new System.Drawing.Size(444, 199);
             this.guna2Panel1.TabIndex = 135;
+            // 
+            // cbxPrintReceipt
+            // 
+            this.cbxPrintReceipt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbxPrintReceipt.AutoSize = true;
+            this.cbxPrintReceipt.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbxPrintReceipt.CheckedState.BorderRadius = 2;
+            this.cbxPrintReceipt.CheckedState.BorderThickness = 0;
+            this.cbxPrintReceipt.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbxPrintReceipt.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPrintReceipt.Location = new System.Drawing.Point(17, 170);
+            this.cbxPrintReceipt.Name = "cbxPrintReceipt";
+            this.cbxPrintReceipt.Size = new System.Drawing.Size(91, 17);
+            this.cbxPrintReceipt.TabIndex = 135;
+            this.cbxPrintReceipt.Text = "Print Receipt";
+            this.cbxPrintReceipt.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.cbxPrintReceipt.UncheckedState.BorderRadius = 2;
+            this.cbxPrintReceipt.UncheckedState.BorderThickness = 0;
+            this.cbxPrintReceipt.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.cbxPrintReceipt.UseVisualStyleBackColor = true;
+            this.cbxPrintReceipt.CheckedChanged += new System.EventHandler(this.cbxPrintReceipt_CheckedChanged);
             // 
             // CancelPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(444, 190);
+            this.ClientSize = new System.Drawing.Size(444, 199);
             this.Controls.Add(this.pnlTitle);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -226,5 +249,6 @@ namespace EcoPOSv2
         public Guna.UI2.WinForms.Guna2Button btnConfirm;
         public Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2CheckBox cbxPrintReceipt;
     }
 }

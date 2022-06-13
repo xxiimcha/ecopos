@@ -1162,7 +1162,23 @@ namespace EcoPOSv2
                 this.Close();
             }
 
-            if(e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.R)
+            {
+                if (cbxUsePoints.Enabled)
+                {
+                    if(cbxUsePoints.Checked == false)
+                    {
+                        cbxUsePoints.Checked = true;
+                    }
+                    else
+                    {
+                        cbxUsePoints.Checked = false;
+                    }
+                    txtAmount.Focus();
+                }
+            }
+
+            if (e.KeyCode == Keys.Space)
             {
                 if (btnExact.Enabled)
                 {

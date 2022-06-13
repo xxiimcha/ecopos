@@ -68,59 +68,59 @@ namespace EcoPOSv2
                     ds.Tables.Add(dt);
                 }
 
-                CancelReceipt58 cancelReceipt80 = new CancelReceipt58();
-                cancelReceipt80.SetDataSource(dt);
+                CancelReceipt58 cancelReceipt58 = new CancelReceipt58();
+                cancelReceipt58.SetDataSource(dt);
 
-                cancelReceipt80.SetParameterValue("date_time", DateTime.Now.ToString());
-                cancelReceipt80.SetParameterValue("cashierName", cashierName);
-                cancelReceipt80.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
+                cancelReceipt58.SetParameterValue("date_time", DateTime.Now.ToString());
+                cancelReceipt58.SetParameterValue("cashierName", cashierName);
+                cancelReceipt58.SetParameterValue("Terminal_No", Properties.Settings.Default.Terminal_id);
 
-                cancelReceipt80.SetParameterValue("canceled_by", canceled_by);
-                cancelReceipt80.SetParameterValue("cancelReason", cancelReason);
-                cancelReceipt80.SetParameterValue("currentOrderNumber", currentOrderNumber);
-                cancelReceipt80.SetParameterValue("latest_invoice", latest_invoice);
+                cancelReceipt58.SetParameterValue("canceled_by", canceled_by);
+                cancelReceipt58.SetParameterValue("cancelReason", cancelReason);
+                cancelReceipt58.SetParameterValue("currentOrderNumber", currentOrderNumber);
+                cancelReceipt58.SetParameterValue("latest_invoice", latest_invoice);
 
                 if (lblTitle.Text.Equals("CANCEL TRANSACTION"))
                 {
-                    cancelReceipt80.SetParameterValue("title", "CANCEL TRANSACTION RECEIPT");
+                    cancelReceipt58.SetParameterValue("title", "CANCEL TRANSACTION RECEIPT");
                     decimal sum = 0;
                     for (int i = 0; i < dataGrid.Rows.Count; ++i)
                     {
                         sum += Convert.ToDecimal(dataGrid.Rows[i].Cells[10].Value);
                     }
-                    cancelReceipt80.SetParameterValue("total", sum.ToString("N2"));
+                    cancelReceipt58.SetParameterValue("total", sum.ToString("N2"));
                 }
                 else
                 {
-                    cancelReceipt80.SetParameterValue("title", "VOID TRANSACTION RECEIPT");
-                    cancelReceipt80.SetParameterValue("total", itemPrice.ToString("N2"));
+                    cancelReceipt58.SetParameterValue("title", "VOID TRANSACTION RECEIPT");
+                    cancelReceipt58.SetParameterValue("total", itemPrice.ToString("N2"));
                 }
 
 
 
                 try
                 {
-                    cancelReceipt80.PrintOptions.NoPrinter = false;
-                    cancelReceipt80.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
-                    cancelReceipt80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
-                    cancelReceipt80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                    cancelReceipt80.PrintToPrinter(1, false, 0, 0);
+                    cancelReceipt58.PrintOptions.NoPrinter = false;
+                    cancelReceipt58.PrintOptions.PrinterName = Main.Instance.pd_receipt_printer;
+                    cancelReceipt58.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    cancelReceipt58.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    cancelReceipt58.PrintToPrinter(1, false, 0, 0);
                 }
                 catch (Exception)
                 {
 
-                    cancelReceipt80.PrintOptions.NoPrinter = false;
-                    cancelReceipt80.PrintOptions.PrinterName = "Microsoft Print to PDF";
-                    cancelReceipt80.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
-                    cancelReceipt80.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
-                    cancelReceipt80.PrintToPrinter(0, false, 0, 0);
+                    cancelReceipt58.PrintOptions.NoPrinter = false;
+                    cancelReceipt58.PrintOptions.PrinterName = "Microsoft Print to PDF";
+                    cancelReceipt58.PrintOptions.PaperSource = CrystalDecisions.Shared.PaperSource.Auto;
+                    cancelReceipt58.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.DefaultPaperSize;
+                    cancelReceipt58.PrintToPrinter(0, false, 0, 0);
 
                 }
                 finally
                 {
-                    if (cancelReceipt80.IsLoaded)
+                    if (cancelReceipt58.IsLoaded)
                     {
-                        cancelReceipt80.Close();
+                        cancelReceipt58.Close();
                         //rpt.Dispose();
                     }
                 }
@@ -308,7 +308,55 @@ namespace EcoPOSv2
             ConfirmedToCancel = false;
             this.title = title;
             lblTitle.Text = title;
+            if(lblTitle.Text.Equals("CANCEL TRANSACTION"))
+            {
+                if (Properties.Settings.Default.CurrentOrderCancelPrintReceipt) 
+                {
+                    cbxPrintReceipt.Checked = true;
+                }
+                else
+                {
+                    cbxPrintReceipt.Checked = false;
+                }
+            }
+            else
+            {
+                if (Properties.Settings.Default.VoidItemPrintReceipt)
+                {
+                    cbxPrintReceipt.Checked = true;
+                }
+                else
+                {
+                    cbxPrintReceipt.Checked = false;
+                }
+            }
+        }
 
+        private void cbxPrintReceipt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (lblTitle.Text.Equals("CANCEL TRANSACTION"))
+            {
+                if (cbxPrintReceipt.Checked)
+                {
+                    Properties.Settings.Default.CurrentOrderCancelPrintReceipt = true;
+                }
+                else
+                {
+                    Properties.Settings.Default.CurrentOrderCancelPrintReceipt = false;
+                }
+            }
+            else
+            {
+                if (cbxPrintReceipt.Checked)
+                {
+                    Properties.Settings.Default.VoidItemPrintReceipt = true;
+                }
+                else
+                {
+                    Properties.Settings.Default.VoidItemPrintReceipt = false;
+                }
+            }
+            Properties.Settings.Default.Save();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -374,7 +422,11 @@ namespace EcoPOSv2
                             }
                         }
                     }
-                    PrintCancelReceipt(Order.Instance.dgvCart, Main.Instance.lblUser.Text, Main.Instance.lblUser.Text, tbReason.Text, Order.Instance.lblOrderNumber.Text, current_invoice_number);
+                    if (Properties.Settings.Default.CurrentOrderCancelPrintReceipt)
+                    {
+                        PrintCancelReceipt(Order.Instance.dgvCart, Main.Instance.lblUser.Text, Main.Instance.lblUser.Text, tbReason.Text, Order.Instance.lblOrderNumber.Text, current_invoice_number);
+
+                    }
                     MessageBox.Show(this, "Canceled transaction successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
@@ -419,7 +471,10 @@ namespace EcoPOSv2
                         sql.Query($"insert into canceled_items(status,cashier_name,canceled_by, cancel_reason, canceled_item,quantity,current_order_no,latest_invoice,canceled_amount,terminal_no,cancel_transaction_id) values " +
                         $"(@Status,@cashierName,@canceledBy,@cancelReason,@canceled_item,@quantity,@currentOrderNumber,@latestInvoiceNumber,@sellingPriceInclusive,@terminalID, @canceltransactionID )");
                     }
-                    PrintCancelReceipt(Order.Instance.dgvCart, Main.Instance.lblUser.Text, Main.Instance.lblUser.Text, tbReason.Text, Order.Instance.lblOrderNumber.Text, current_invoice_number);
+                    if (Properties.Settings.Default.VoidItemPrintReceipt)
+                    {
+                        PrintCancelReceipt(Order.Instance.dgvCart, Main.Instance.lblUser.Text, Main.Instance.lblUser.Text, tbReason.Text, Order.Instance.lblOrderNumber.Text, current_invoice_number);
+                    }
                     MessageBox.Show(this, "Voided Item successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
@@ -438,5 +493,7 @@ namespace EcoPOSv2
                 btnCancel.PerformClick();
             }
         }
+
+        
     }
 }
