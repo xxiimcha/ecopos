@@ -32,6 +32,8 @@ namespace EcoPOSv2
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberCardPointsAdder));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtPaymentby = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblPointsAfter = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pnlTitle = new Guna.UI2.WinForms.Guna2Panel();
@@ -45,8 +47,6 @@ namespace EcoPOSv2
             this.lblMember = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.txtPaymentby = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +73,45 @@ namespace EcoPOSv2
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(500, 312);
             this.guna2Panel1.TabIndex = 1;
+            // 
+            // txtPaymentby
+            // 
+            this.txtPaymentby.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtPaymentby.BorderRadius = 3;
+            this.txtPaymentby.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPaymentby.DefaultText = "";
+            this.txtPaymentby.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPaymentby.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPaymentby.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPaymentby.DisabledState.Parent = this.txtPaymentby;
+            this.txtPaymentby.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPaymentby.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPaymentby.FocusedState.Parent = this.txtPaymentby;
+            this.txtPaymentby.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaymentby.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtPaymentby.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPaymentby.HoverState.Parent = this.txtPaymentby;
+            this.txtPaymentby.Location = new System.Drawing.Point(95, 124);
+            this.txtPaymentby.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPaymentby.Name = "txtPaymentby";
+            this.txtPaymentby.PasswordChar = '\0';
+            this.txtPaymentby.PlaceholderText = "";
+            this.txtPaymentby.SelectedText = "";
+            this.txtPaymentby.ShadowDecoration.Parent = this.txtPaymentby;
+            this.txtPaymentby.Size = new System.Drawing.Size(385, 33);
+            this.txtPaymentby.TabIndex = 1;
+            this.txtPaymentby.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPaymentby_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(21, 124);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 33);
+            this.label1.TabIndex = 134;
+            this.label1.Text = "PAID BY:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPointsAfter
             // 
@@ -264,46 +303,6 @@ namespace EcoPOSv2
             // guna2DragControl1
             // 
             this.guna2DragControl1.TargetControl = this.pnlTitle;
-            // 
-            // txtPaymentby
-            // 
-            this.txtPaymentby.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtPaymentby.BorderRadius = 3;
-            this.txtPaymentby.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPaymentby.DefaultText = "";
-            this.txtPaymentby.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPaymentby.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPaymentby.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPaymentby.DisabledState.Parent = this.txtPaymentby;
-            this.txtPaymentby.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPaymentby.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPaymentby.FocusedState.Parent = this.txtPaymentby;
-            this.txtPaymentby.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPaymentby.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.txtPaymentby.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPaymentby.HoverState.Parent = this.txtPaymentby;
-            this.txtPaymentby.Location = new System.Drawing.Point(95, 124);
-            this.txtPaymentby.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPaymentby.Name = "txtPaymentby";
-            this.txtPaymentby.PasswordChar = '\0';
-            this.txtPaymentby.PlaceholderText = "";
-            this.txtPaymentby.SelectedText = "";
-            this.txtPaymentby.ShadowDecoration.Parent = this.txtPaymentby;
-            this.txtPaymentby.Size = new System.Drawing.Size(385, 33);
-            this.txtPaymentby.TabIndex = 1;
-            this.txtPaymentby.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPoints_KeyPress);
-            this.txtPaymentby.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPoints_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(21, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 33);
-            this.label1.TabIndex = 134;
-            this.label1.Text = "PAID BY:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MemberCardPointsAdder
             // 

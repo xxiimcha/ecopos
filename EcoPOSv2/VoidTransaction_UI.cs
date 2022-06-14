@@ -708,6 +708,27 @@ namespace EcoPOSv2
                     }
                 }
 
+
+                //UPDATE POINTS
+                SQL.AddParam("@order_ref", order_ref);
+                SQL.AddParam("@terminal_id", terminalNo);
+                decimal used_points_only = decimal.Parse(SQL.ReturnResult(@"select count(total) from transaction_details 
+                                where terminal_id = @terminal_id
+                                AND order_ref = @order_ref
+                                AND total = cus_pts_deducted"));
+
+                if (used_points_only > 0)
+                {
+                    SQL.AddParam("@order_ref", order_ref);
+                    SQL.AddParam("@terminal_id", terminalNo);
+                    int cus_id_no = int.Parse(SQL.ReturnResult(@"select cus_ID_no from transaction_details 
+                                where terminal_id = @terminal_id
+                                AND order_ref = @order_ref
+                                AND total = cus_pts_deducted"));
+
+                    SQL.Query($@"UPDATE member_card SET card_balance = card_balance + {decimal.Parse(lblCashReturn.Text)} WHERE customerID = {cus_id_no} AND status = 'Active'");
+                }
+
                 //UPDATE PROFIT
                 SQL.AddParam("@order_ref", order_ref);
                 SQL.AddParam("@itemID", dr.Cells[1].Value);

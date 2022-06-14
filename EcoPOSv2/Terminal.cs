@@ -191,7 +191,7 @@ namespace EcoPOSv2
                                                      SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
                                                      SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
                                                      FROM transaction_details WHERE (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
-                                                     AND grand_total > 0 GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+                                                     GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
             }
             else
             {
@@ -201,7 +201,7 @@ namespace EcoPOSv2
                                                      SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
                                                      SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
                                                      FROM transaction_details WHERE terminal_id=" + cmbTerminalNames.Text + " AND (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
-                                                     AND grand_total > 0 GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
+                                                     GROUP BY dateadd(DAY,0, datediff(day,0, date_time))", SQL.DBCon);
             }
 
             
@@ -559,7 +559,7 @@ namespace EcoPOSv2
                         CONVERT(DECIMAL(18,2), SUM(grand_total)) as 'grand_total', CONVERT(DECIMAL(18,2), SUM(less_vat)) as 'less_vat',
                         CONVERT(DECIMAL(18,2), SUM(vatable_sale)) as 'vatable_sale', CONVERT(DECIMAL(18,2), SUM(vat_12)) as 'vat_12', 
                         CONVERT(DECIMAL(18,2), SUM(vat_exempt_sale)) as 'vat_exempt_sale'
-                        FROM transaction_details WHERE grand_total > 0 AND date_time BETWEEN @from AND @to AND (action = 1 OR action = 4)");
+                        FROM transaction_details WHERE date_time BETWEEN @from AND @to AND (action = 1 OR action = 4)");
                     if (SQL.HasException(true))
                     {
                         MessageBox.Show("Sales 1");
@@ -685,7 +685,7 @@ namespace EcoPOSv2
                         CONVERT(DECIMAL(18,2), SUM(grand_total)) as 'grand_total', CONVERT(DECIMAL(18,2), SUM(less_vat)) as 'less_vat',
                         CONVERT(DECIMAL(18,2), SUM(vatable_sale)) as 'vatable_sale', CONVERT(DECIMAL(18,2), SUM(vat_12)) as 'vat_12', 
                         CONVERT(DECIMAL(18,2), SUM(vat_exempt_sale)) as 'vat_exempt_sale'
-                        FROM transaction_details WHERE terminal_id=@terminal_id AND grand_total > 0 AND date_time BETWEEN @from AND @to AND (action = 1 OR action = 4)");
+                        FROM transaction_details WHERE terminal_id=@terminal_id AND date_time BETWEEN @from AND @to AND (action = 1 OR action = 4)");
 
                     if (SQL.HasException(true))
                     {
@@ -1608,7 +1608,7 @@ namespace EcoPOSv2
                                                      SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
                                                      SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
                                                      FROM transaction_details WHERE (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
-                                                     AND grand_total > 0 GROUP BY dateadd(DAY,0, datediff(day,0, date_time))");
+                                                     GROUP BY dateadd(DAY,0, datediff(day,0, date_time))");
                     }
                     else
                     {
@@ -1618,7 +1618,7 @@ namespace EcoPOSv2
                                                      SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
                                                      SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
                                                      FROM transaction_details WHERE terminal_id=" + cmbTerminalNames.Text + " AND (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
-                                                     AND grand_total > 0 GROUP BY dateadd(DAY,0, datediff(day,0, date_time))");
+                                                     GROUP BY dateadd(DAY,0, datediff(day,0, date_time))");
                     }
                     dt.DataSource = psql.DBDT;
 

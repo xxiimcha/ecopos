@@ -181,5 +181,13 @@ namespace EcoPOSv2
                 lblPointsAfter.ForeColor = Color.Red;
             }
         }
+
+        private void txtPaymentby_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnAdd.PerformClick();
+            }
+        }
     }
 }

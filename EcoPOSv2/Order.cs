@@ -867,31 +867,35 @@ namespace EcoPOSv2
                 if (CancelPopup.ConfirmedToCancel)
                 {
                     CancelPopup.ConfirmedToCancel = false;
-                    if (Properties.Settings.Default.cardlogin == true)
-                    {
+                    //if (Properties.Settings.Default.cardlogin == true)
+                    //{
 
-                        try
-                        {
-                            tbBarcode.Clear();
-                            this.ActiveControl = tbBarcode;
-                        }
-                        catch (Exception) { }
+                    //    try
+                    //    {
+                    //        tbBarcode.Clear();
+                    //        this.ActiveControl = tbBarcode;
+                    //    }
+                    //    catch (Exception) { }
 
-                        if (dgvCart.SelectedRows.Count == 0)
-                            return;
+                    //    if (dgvCart.SelectedRows.Count == 0)
+                    //        return;
 
-                        CardLogin cl = new CardLogin();
+                    //    CardLogin cl = new CardLogin();
+
+                    //    cl.ItemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
+                    //    cl.ProductID = dgvCart.CurrentRow.Cells[1].Value.ToString();
+                    //    cl.type = "Void";
+                    //    cl.ShowDialog();
 
 
-                        cl.ItemID = dgvCart.CurrentRow.Cells[0].Value.ToString();
-                        cl.ProductID = dgvCart.CurrentRow.Cells[1].Value.ToString();
-                        cl.type = "Void";
-                        tbBarcode.Clear();
-                        tbBarcode.Focus();
-                        return;
-                    }
-                    else
-                    {
+                       
+
+                    //    tbBarcode.Clear();
+                    //    tbBarcode.Focus();
+                    //    return;
+                    //}
+                    //else
+                    //{
                         try
                         {
                             tbBarcode.Clear();
@@ -923,10 +927,8 @@ namespace EcoPOSv2
                         SQL.AddParam("@terminal_id", Properties.Settings.Default.Terminal_id);
 
                         SQL.Query("DELETE FROM order_cart WHERE itemID = @itemID AND terminal_id=@terminal_id");
-
                         if (SQL.HasException(true))
                             return;
-
                         LoadOrder();
                         GetTotal();
 
@@ -938,7 +940,7 @@ namespace EcoPOSv2
                     CancelPopup.itemQuantity = 0;
                     CancelPopup.itemName = "";
                     CancelPopup.itemPrice = 0;
-                }
+                //}
             }
             else
             {

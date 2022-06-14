@@ -51,8 +51,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnSelectAll = new FontAwesome.Sharp.IconButton();
             this.panelInfo = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblPointsReturn = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lblCashReturn = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnVoid = new Guna.UI2.WinForms.Guna2Button();
@@ -87,7 +85,7 @@
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.ShadowDecoration.Parent = this.MainPanel;
-            this.MainPanel.Size = new System.Drawing.Size(934, 738);
+            this.MainPanel.Size = new System.Drawing.Size(934, 697);
             this.MainPanel.TabIndex = 0;
             // 
             // dgvVoidList
@@ -211,7 +209,7 @@
             this.dgvToVoidList.RowTemplate.DividerHeight = 1;
             this.dgvToVoidList.RowTemplate.Height = 35;
             this.dgvToVoidList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvToVoidList.Size = new System.Drawing.Size(317, 631);
+            this.dgvToVoidList.Size = new System.Drawing.Size(317, 589);
             this.dgvToVoidList.TabIndex = 0;
             this.dgvToVoidList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvToVoidList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -391,8 +389,6 @@
             this.panelInfo.BorderColor = System.Drawing.Color.Silver;
             this.panelInfo.BorderRadius = 5;
             this.panelInfo.BorderThickness = 1;
-            this.panelInfo.Controls.Add(this.lblPointsReturn);
-            this.panelInfo.Controls.Add(this.label8);
             this.panelInfo.Controls.Add(this.lblCashReturn);
             this.panelInfo.Controls.Add(this.label4);
             this.panelInfo.Controls.Add(this.btnVoid);
@@ -403,31 +399,8 @@
             this.panelInfo.Location = new System.Drawing.Point(21, 544);
             this.panelInfo.Name = "panelInfo";
             this.panelInfo.ShadowDecoration.Parent = this.panelInfo;
-            this.panelInfo.Size = new System.Drawing.Size(556, 175);
+            this.panelInfo.Size = new System.Drawing.Size(556, 133);
             this.panelInfo.TabIndex = 85;
-            // 
-            // lblPointsReturn
-            // 
-            this.lblPointsReturn.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointsReturn.ForeColor = System.Drawing.Color.Black;
-            this.lblPointsReturn.Location = new System.Drawing.Point(14, 139);
-            this.lblPointsReturn.Name = "lblPointsReturn";
-            this.lblPointsReturn.Size = new System.Drawing.Size(243, 25);
-            this.lblPointsReturn.TabIndex = 63;
-            this.lblPointsReturn.Text = "0";
-            this.lblPointsReturn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(15, 118);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(204, 21);
-            this.label8.TabIndex = 62;
-            this.label8.Text = "TOTAL POINTS TO RETURN";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCashReturn
             // 
@@ -468,7 +441,7 @@
             this.btnVoid.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnVoid.ImageOffset = new System.Drawing.Point(10, 0);
             this.btnVoid.ImageSize = new System.Drawing.Size(33, 33);
-            this.btnVoid.Location = new System.Drawing.Point(297, 113);
+            this.btnVoid.Location = new System.Drawing.Point(297, 70);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.ShadowDecoration.Parent = this.btnVoid;
             this.btnVoid.Size = new System.Drawing.Size(238, 46);
@@ -530,7 +503,7 @@
             // VoidTransaction_UI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(934, 738);
+            this.ClientSize = new System.Drawing.Size(934, 697);
             this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -575,8 +548,6 @@
         internal Guna.UI2.WinForms.Guna2DataGridView dgvToVoidList;
         internal Guna.UI2.WinForms.Guna2DataGridView dgvVoidList;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        internal System.Windows.Forms.Label lblPointsReturn;
-        internal System.Windows.Forms.Label label8;
         internal Guna.UI2.WinForms.Guna2Button btnVoid;
     }
 }
