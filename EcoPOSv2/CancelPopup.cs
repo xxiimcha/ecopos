@@ -494,6 +494,9 @@ namespace EcoPOSv2
             }
         }
 
-        
+        private void CancelPopup_Load(object sender, EventArgs e)
+        {
+            tbReason.Focus();
+        }
     }
 }

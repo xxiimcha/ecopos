@@ -221,7 +221,6 @@
             // btnExportCustomer
             // 
             this.btnExportCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExportCustomer.Enabled = false;
             this.btnExportCustomer.FlatAppearance.BorderSize = 0;
             this.btnExportCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportCustomer.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -244,7 +243,6 @@
             // btnImportCustomer
             // 
             this.btnImportCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnImportCustomer.Enabled = false;
             this.btnImportCustomer.FlatAppearance.BorderSize = 0;
             this.btnImportCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportCustomer.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

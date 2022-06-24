@@ -231,6 +231,7 @@ namespace EcoPOSv2
             this.Name = "CancelPopup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CancelPopup";
+            this.Load += new System.EventHandler(this.CancelPopup_Load);
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);

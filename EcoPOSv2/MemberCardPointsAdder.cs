@@ -67,7 +67,7 @@ namespace EcoPOSv2
             }
             else
             {
-                new Notification().PopUp("Points Added ", "", "success");
+                new Notification().PopUp("Points Added", "", "success");
                 PrintPointsAddedReceipt();
                 Close();
             }

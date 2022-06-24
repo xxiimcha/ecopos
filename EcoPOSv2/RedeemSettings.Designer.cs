@@ -1450,8 +1450,8 @@
             // 
             // pnlParent
             // 
-            this.pnlParent.Controls.Add(this.pnlRI);
             this.pnlParent.Controls.Add(this.pnlGC);
+            this.pnlParent.Controls.Add(this.pnlRI);
             this.pnlParent.Controls.Add(this.pnlAPT);
             this.pnlParent.Controls.Add(this.pnlRT);
             this.pnlParent.Dock = System.Windows.Forms.DockStyle.Fill;

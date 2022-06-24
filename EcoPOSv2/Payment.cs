@@ -1178,6 +1178,21 @@ namespace EcoPOSv2
                 }
             }
 
+            if (e.KeyCode == Keys.S)
+            {
+                if (lblCustomerID.Text != "0")
+                {
+                    cmbMethod.SelectedIndex = 7;
+                    txtAmount.Focus();
+                }
+            }
+
+            if (e.KeyCode == Keys.C)
+            {
+                cmbMethod.SelectedIndex = 0;
+                txtAmount.Focus();
+            }
+
             if (e.KeyCode == Keys.Space)
             {
                 if (btnExact.Enabled)

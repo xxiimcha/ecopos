@@ -23,7 +23,7 @@ namespace EcoPOSv2
         //METHODS
 
         //METHODS
-        BackgroundWorker workerEProducts,workerECategory;
+        BackgroundWorker workerEProducts,workerECategory, workerECustomer;
         private void btnExportProducts_Click(object sender, EventArgs e)
         {
             workerEProducts = new BackgroundWorker();
@@ -92,6 +92,7 @@ namespace EcoPOSv2
 
             writeCSV(dgv, "Product.csv");
             MessageBox.Show("Converted successfully to *.csv format");
+            #region hide
             //if (dgv.Rows.Count > 0)
             //{
             //    SaveFileDialog sfd = new SaveFileDialog();
@@ -147,6 +148,7 @@ namespace EcoPOSv2
             //{
             //    MessageBox.Show("No Record To Export !!!", "Info");
             //}
+            #endregion
         }
 
         private void WorkerEProducts_DoWork(object sender, DoWorkEventArgs e)
@@ -164,7 +166,42 @@ namespace EcoPOSv2
             }));
         }
 
-        private void btnImportProducts_Click(object sender, EventArgs e)
+        private void WorkerECustomer_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Invoke(new MethodInvoker(delegate ()
+            {
+                SQLControl pSQL = new SQLControl();
+                //pSQL.Query("SELECT products.name,products.description,product_category.name as 'Category',products.rp_inclusive,products.wp_inclusive,products.barcode1,products.barcode2,warehouse.name as 'Warehouse',products.s_discR,products.s_discPWD_SC,products.s_PWD_SC_perc,products.s_discAth,products.s_ask_qty FROM products INNER JOIN product_category ON products.categoryID = product_category.categoryID INNER JOIN warehouse ON products.warehouseID = warehouse.warehouseID");
+
+                pSQL.Query(@"SELECT name as 'Name', 
+                            contact as 'Contact', 
+                            birthday as 'Birthday', 
+                            add1 as 'Address 1', 
+                            add2 as 'Address 2', 
+                            email as 'Email', (SELECT ms.name FROM membership as ms WHERE ms.member_type_ID = c.member_type_ID) as 'Membership', 
+                            card_no as 'Card No.' 
+                            FROM customer as c
+                            ");
+
+                if (pSQL.HasException(true)) return;
+
+                dgv.DataSource = pSQL.DBDT;
+            }));
+        }
+
+        private void WorkerECustomer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (dgv.Rows.Count == 0)
+            {
+                new Notification().PopUp("There are no Customers in our database.", "", "error");
+                return;
+            }
+
+            writeCSV(dgv, "Customer.csv");
+            MessageBox.Show("Converted successfully to *.csv format");
+        }
+
+            private void btnImportProducts_Click(object sender, EventArgs e)
         {
             FormCollection fc = Application.OpenForms;
             Boolean isOpened = false;
@@ -238,21 +275,30 @@ namespace EcoPOSv2
 
         private void btnExportCustomer_Click(object sender, EventArgs e)
         {
-            SQL.Query("SELECT * FROM customer");
-            if (SQL.HasException(true))
-                return;
-
-            dgv.DataSource = SQL.DBDT;
-
-            EI.ExportDgvToExcel(dgv,"Customer");
+            workerECustomer = new BackgroundWorker();
+            workerECustomer.DoWork += WorkerECustomer_DoWork;
+            workerECustomer.RunWorkerCompleted += WorkerECustomer_RunWorkerCompleted;
+            workerECustomer.RunWorkerAsync();
         }
 
         private void btnImportCustomer_Click(object sender, EventArgs e)
         {
-            TableImport frmTableImport = new TableImport();
-
-            frmTableImport.table_import_type = 3;
-            frmTableImport.ShowDialog();
+            FormCollection fc = Application.OpenForms;
+            Boolean isOpened = false;
+            foreach (Form frm in fc)
+            {
+                //iterate through
+                if (frm.Name == "TableImportCSV")
+                {
+                    isOpened = true;
+                }
+            }
+            if (!isOpened)
+            {
+                TableImportCSV frmTableImport = new TableImportCSV();
+                frmTableImport.table_import_type = 3;
+                frmTableImport.ShowDialog();
+            }
         }
 
         private void btnExportMC_Click(object sender, EventArgs e)

@@ -735,10 +735,7 @@ namespace EcoPOSv2
             {
                 MessageBox.Show(this, "You cannot cancel transaction if the cart is empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
-         
-
-           
+            tbBarcode.Focus();
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
@@ -946,7 +943,7 @@ namespace EcoPOSv2
             {
                 MessageBox.Show(this, "You cannot void transaction if the cart is empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-           
+            tbBarcode.Focus();
         }
         private void btnRetail_Click(object sender, EventArgs e)
         {

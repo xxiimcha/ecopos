@@ -125,6 +125,9 @@ namespace EcoPOSv2
             txtMem_Search.Clear();
             txtMC_Membership.Clear();
             membership_id = "";
+            txtMem_DiscAmount.Text = (0.00).ToString();
+            txtMem_Expiration.Text = (0).ToString();
+            txtMem_AmtPerPoint.Text = (0).ToString();
 
             rbMem_DiscNo.Checked = false;
             rbMem_DiscYes.Checked = false;
@@ -1001,9 +1004,34 @@ namespace EcoPOSv2
         {
             if (cbxSummary.Checked)
             {
-                //Salary Deduction Client
-                //CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND NOT payment_method = 'Salary Deduction')) as 'Salary Deduction Total',
-                //CONVERT(DECIMAL(18, 2), (SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND payment_method = 'Salary Deduction')) as 'Other Payment'
+                //if (cbxPerItem.Checked == false && Convert.ToInt32(cmbMT_Customer.SelectedValue) != 0) {
+                //    //Salary Deduction Client
+
+
+
+                //} else
+                //{
+                //    string cs = "";
+                //    if (cmbMT_Customer.SelectedIndex != 0)
+                //        cs = "  AND td.cus_mem_ID = " + cmbMT_Customer.SelectedValue;
+
+                //    SQL.AddParam("@from", dtpMT_From.Value);
+                //    SQL.AddParam("@to", dtpMT_To.Value);
+                //    SQL.Query($@"SELECT
+                //                        ti.order_ref as 'ID', 
+                //                        td.order_ref_temp as 'Invoice No.', 
+                //                        ti.description as 'Product Description', 
+                //                        ti.type as 'Type', 
+                //                        ti.static_price_inclusive as 'Price', 
+                //                        ti.quantity as 'Qty', 
+                //                        ti.selling_price_inclusive as 'Total'
+                //                    FROM
+                //                        transaction_items AS ti
+                //                    INNER JOIN transaction_details AS td
+                //                        ON ti.order_ref = td.order_ref
+                //                    WHERE
+                //                        td.cus_mem_ID != 0 {cs} AND td.date_time BETWEEN @from AND @to AND cus_type = 4 ORDER BY date_time DESC");
+                //}
 
                 SQL.AddParam("@from", dtpMT_From.Value);
                 SQL.AddParam("@to", dtpMT_To.Value);
@@ -1015,11 +1043,17 @@ namespace EcoPOSv2
                         CONVERT(DECIMAL(18,2),(SELECT SUM(less_vat) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Less VAT',
                         CONVERT(DECIMAL(18,2),(SELECT SUM(disc_amt) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Discount',
                         CONVERT(DECIMAL(18,2),(SELECT SUM(subtotal) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Subtotal', 
-                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Total Amount Paid',
-                        CONVERT(DECIMAL(18,2),(SELECT SUM(cus_pts_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Points Used'
-                        FROM customer ");
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(cus_pts_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Points Used',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(giftcard_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Giftcard Deduction',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND payment_method = 'Salary Deduction')) as 'Salary Deduction Total',
+                        CONVERT(DECIMAL(18, 2), (SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND NOT payment_method = 'Salary Deduction')) as 'Other Payment',
+                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Total Amount Paid'
+                        FROM customer 
+                        ORDER BY 13 DESC");
                 if (SQL.HasException(true))
+                {
                     return;
+                }
             }
             else
             {
@@ -1028,14 +1062,50 @@ namespace EcoPOSv2
                 if (cmbMT_Customer.SelectedIndex != 0)
                     cus_query = "cus_ID_no = " + cmbMT_Customer.SelectedValue;
 
-                SQL.AddParam("@from", dtpMT_From.Value);
-                SQL.AddParam("@to", dtpMT_To.Value);
-
-                SQL.Query(@"SELECT order_ref as 'ID', order_ref_temp as 'Invoice #', date_time as 'Date', cus_name as 'Customer', (SELECT name FROM membership WHERE member_type_ID = cus_mem_ID) as 'Membership',
-                       mc.card_no as 'Card #', payment_method as 'Payment', CONVERT(DECIMAL(18,2), grand_total) as 'Paid Amount', cus_pts_deducted as 'Points Used', remaining_points as 'Points Remaining' FROM transaction_details INNER JOIN member_card as mc ON transaction_details.cus_ID_no = mc.customerID
+                if (cbxPerItem.Checked == false)
+                {
+                    SQL.AddParam("@from", dtpMT_From.Value);
+                    SQL.AddParam("@to", dtpMT_To.Value);
+                    SQL.Query(@"SELECT order_ref as 'ID', 
+                                order_ref_temp as 'Invoice #', 
+                                date_time as 'Date', 
+                                cus_name as 'Customer', 
+                                (SELECT name FROM membership WHERE member_type_ID = cus_mem_ID) as 'Membership',
+                                mc.card_no as 'Card #', 
+                                payment_method as 'Payment', 
+                                CONVERT(DECIMAL(18,2), grand_total) as 'Paid Amount', 
+                                cus_pts_deducted as 'Points Used', 
+                                remaining_points as 'Points Remaining'
+                                FROM transaction_details 
+                                INNER JOIN member_card as mc ON transaction_details.cus_ID_no = mc.customerID
                        WHERE date_time BETWEEN @from AND @to AND cus_type = 4 AND " + cus_query + " ORDER BY date_time DESC");
-                if (SQL.HasException(true))
-                    return;
+                    if (SQL.HasException(true))
+                        return;
+                }
+                else
+                {
+                    string cs = "";
+                    if (cmbMT_Customer.SelectedIndex != 0)
+                        cs = "  AND td.cus_mem_ID = " + cmbMT_Customer.SelectedValue;
+
+                    SQL.AddParam("@from", dtpMT_From.Value);
+                    SQL.AddParam("@to", dtpMT_To.Value);
+                    SQL.Query($@"SELECT
+                                    ti.order_ref as 'ID', 
+                                    td.cus_name as 'Customer Name', 
+                                    td.order_ref_temp as 'Invoice No.', 
+                                    ti.description as 'Product Description', 
+                                    ti.type as 'Type', 
+                                    ti.static_price_inclusive as 'Price', 
+                                    ti.quantity as 'Qty', 
+                                    ti.selling_price_inclusive as 'Total'
+                                FROM
+                                    transaction_items AS ti
+                                INNER JOIN transaction_details AS td
+                                    ON ti.order_ref = td.order_ref
+                                WHERE
+                                    td.cus_mem_ID != 0 {cs} AND td.date_time BETWEEN @from AND @to AND cus_type = 4 ORDER BY date_time DESC");
+                }
             }
 
             dgvMT_Records.DataSource = SQL.DBDT;
@@ -1672,6 +1742,21 @@ namespace EcoPOSv2
             LoadMT_Customers();
         }
 
+        private void cbxPerItem_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbxPerItem.Checked == true)
+            {
+                cbxSummary.Checked = false;
+                cbxSummary.Enabled = false;
+            }
+            else
+            {
+                cbxSummary.Enabled = true;
+            }
+            loadDGVdata();
+            LoadMT_Customers();
+        }
+
         TopupReceipt58 topupreport = new TopupReceipt58();
         TopupReceipt58 topup_reprint58 = new TopupReceipt58();
         TopupReceipt80 topup_reprint80 = new TopupReceipt80();
@@ -1823,3 +1908,5 @@ namespace EcoPOSv2
         }
     }
 }
+
+

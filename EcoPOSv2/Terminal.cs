@@ -1602,21 +1602,21 @@ namespace EcoPOSv2
 
                     if (cmbTerminalNames.Text == "All terminals")
                     {
-                        psql.Query(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time', 
-                                                     COUNT(*) as 'no_of_items', SUM(subtotal) as 'subtotal', 
-                                                     (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt', 
-                                                     SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
-                                                     SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
+                        psql.Query(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'Date', 
+                                                     COUNT(*) as 'No of Items', SUM(subtotal) as 'Subtotal', 
+                                                     SUM(disc_amt) as 'Discount Amount', SUM(cus_pts_deducted) as 'Points Used',  SUM(giftcard_deducted) as 'Giftcard Deduction',
+                                                     SUM(grand_total) as 'Grand Total', SUM(less_vat) as 'Less VAT', SUM(vatable_sale) as 'Vatable Sale',
+                                                     SUM(vat_12) as 'VAT', SUM(vat_exempt_sale) as 'VAT Exempt Sale'
                                                      FROM transaction_details WHERE (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      GROUP BY dateadd(DAY,0, datediff(day,0, date_time))");
                     }
                     else
                     {
-                        psql.Query(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'date_time', 
-                                                     COUNT(*) as 'no_of_items', SUM(subtotal) as 'subtotal', 
-                                                     (SUM(disc_amt) + SUM(cus_pts_deducted) + SUM(giftcard_deducted)) as 'disc_amt', 
-                                                     SUM(grand_total) as 'grand_total', SUM(less_vat) as 'less_vat', SUM(vatable_sale) as 'vatable_sale',
-                                                     SUM(vat_12) as 'vat_12', SUM(vat_exempt_sale) as 'vat_exempt_sale'
+                        psql.Query(@"SELECT convert(varchar, dateadd(DAY,0, datediff(day,0, date_time)), 110) as 'Date', 
+                                                     COUNT(*) as 'No of Items', SUM(subtotal) as 'Subtotal', 
+                                                     SUM(disc_amt) as 'Discount Amount', SUM(cus_pts_deducted) as 'Points Used',  SUM(giftcard_deducted) as 'Giftcard Deduction',
+                                                     SUM(grand_total) as 'Grand Total', SUM(less_vat) as 'Less VAT', SUM(vatable_sale) as 'Vatable Sale',
+                                                     SUM(vat_12) as 'VAT', SUM(vat_exempt_sale) as 'VAT Exempt Sale
                                                      FROM transaction_details WHERE terminal_id=" + cmbTerminalNames.Text + " AND (action = 1 OR Action = 4) AND date_time BETWEEN '" + this.dtpFrom.Value + "' AND '" + this.dtpTo.Value + @"' 
                                                      GROUP BY dateadd(DAY,0, datediff(day,0, date_time))");
                     }

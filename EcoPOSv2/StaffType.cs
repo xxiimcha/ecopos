@@ -74,7 +74,14 @@ namespace EcoPOSv2
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
-        {
+        { 
+            int user_count = int.Parse(SQL.ReturnResult($"SELECT COUNT(roleID) FROM users WHERE roleID = {roleID} and acc_status = 'Active'"));
+            if (user_count > 0)
+            {
+                new Notification(8).PopUp("There are users that is assigned in this role. Please change their role first before deleting", "USER WARNING", "warning");
+                return;
+            }
+
             DialogResult approval = MessageBox.Show("Delete this item?", "", MessageBoxButtons.YesNo);
 
             if (approval == DialogResult.Yes)
