@@ -23,7 +23,7 @@ namespace EcoPOSv2
         //METHODS
 
         //METHODS
-        BackgroundWorker workerEProducts,workerECategory, workerECustomer;
+        BackgroundWorker workerEProducts,workerECategory, workerECustomer, workerEGC;
         private void btnExportProducts_Click(object sender, EventArgs e)
         {
             workerEProducts = new BackgroundWorker();
@@ -201,7 +201,33 @@ namespace EcoPOSv2
             MessageBox.Show("Converted successfully to *.csv format");
         }
 
-            private void btnImportProducts_Click(object sender, EventArgs e)
+        private void WorkerEGC_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Invoke(new MethodInvoker(delegate ()
+            {
+                SQLControl pSQL = new SQLControl();
+                //pSQL.Query("SELECT products.name,products.description,product_category.name as 'Category',products.rp_inclusive,products.wp_inclusive,products.barcode1,products.barcode2,warehouse.name as 'Warehouse',products.s_discR,products.s_discPWD_SC,products.s_PWD_SC_perc,products.s_discAth,products.s_ask_qty FROM products INNER JOIN product_category ON products.categoryID = product_category.categoryID INNER JOIN warehouse ON products.warehouseID = warehouse.warehouseID");
+
+                pSQL.Query(@"SELECT giftcard_no as 'Name', amount as 'Amount', expiration as 'Expiration' FROM giftcard");
+                if (pSQL.HasException(true)) return;
+
+                dgv.DataSource = pSQL.DBDT;
+            }));
+        }
+
+        private void WorkerEGC_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (dgv.Rows.Count == 0)
+            {
+                new Notification().PopUp("There are no Giftcard in our database.", "", "error");
+                return;
+            }
+
+            writeCSV(dgv, "Giftcard.csv");
+            MessageBox.Show("Converted successfully to *.csv format");
+        }
+
+        private void btnImportProducts_Click(object sender, EventArgs e)
         {
             FormCollection fc = Application.OpenForms;
             Boolean isOpened = false;
@@ -341,18 +367,15 @@ namespace EcoPOSv2
 
         private void btnExportGC_Click(object sender, EventArgs e)
         {
-            SQL.Query("SELECT * FROM giftcard");
-            if (SQL.HasException(true))
-                return;
-
-            dgv.DataSource = SQL.DBDT;
-
-            EI.ExportDgvToExcel(dgv,"Giftcard");
+            workerEGC = new BackgroundWorker();
+            workerEGC.DoWork += WorkerEGC_DoWork;
+            workerEGC.RunWorkerCompleted += WorkerEGC_RunWorkerCompleted;
+            workerEGC.RunWorkerAsync();
         }
 
         private void btnImportGC_Click(object sender, EventArgs e)
         {
-            TableImport frmTableImport = new TableImport();
+            TableImportCSV frmTableImport = new TableImportCSV();
 
             frmTableImport.table_import_type = 6;
             frmTableImport.ShowDialog();

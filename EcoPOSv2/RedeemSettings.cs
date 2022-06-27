@@ -232,6 +232,8 @@ namespace EcoPOSv2
 
             btnRI_SearchItems.PerformClick();
             btnRI_SearchRedeem.PerformClick();
+
+            dtpGC_Expiration.Value = DateTime.Parse(DateTime.Now.ToString("MMMM dd, yyyy 23:59:59"));
         }
 
         private void btnRT_Click(object sender, EventArgs e)

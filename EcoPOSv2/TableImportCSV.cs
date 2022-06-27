@@ -192,10 +192,10 @@ namespace EcoPOSv2
                     case 3 // customer
                     :
                         {
-                            workerCategory = new BackgroundWorker();
-                            workerCategory.WorkerReportsProgress = true;
-                            workerCategory.DoWork += WorkerMembers_DoWork;
-                            workerCategory.RunWorkerCompleted += WorkerMembers_RunWorkerCompleted;
+                            workerCustomer = new BackgroundWorker();
+                            workerCustomer.WorkerReportsProgress = true;
+                            workerCustomer.DoWork += WorkerMembers_DoWork;
+                            workerCustomer.RunWorkerCompleted += WorkerMembers_RunWorkerCompleted;
 
                             workerCategory.RunWorkerAsync();
 
@@ -220,7 +220,28 @@ namespace EcoPOSv2
                     case 6 // gift card
                     :
                         {
+                            if (MessageBox.Show("Are you sure you want to import the Giftcard in the CSV file?", "Giftcard", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                            {
+                                if (MessageBox.Show("Do you want to overwrite your current Giftcards? Doing so will remove all current Giftcard and replace it with the data in the CSV file.", "Overwrite Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                                {
+                                    SQL.Query("DELETE FROM giftcard");
+                                    overwrite = true;
+                                }
+                                else
+                                {
+                                    overwrite = false;
+                                }
 
+                                workerGiftCard = new BackgroundWorker();
+                                workerGiftCard.WorkerReportsProgress = true;
+                                workerGiftCard.DoWork += WorkerGC_DoWork;
+                                workerGiftCard.RunWorkerCompleted += WorkerGC_RunWorkerCompleted;
+
+                                workerGiftCard.RunWorkerAsync();
+
+                                btnBrowse.Enabled = false;
+                                btnImport.Enabled = false;
+                            }
                             break;
                         }
                 }
@@ -566,6 +587,74 @@ namespace EcoPOSv2
             if (duplicateName.Count > 0)
             {
                 MessageBox.Show("Unable to import the following names: \n(" + String.Join(", ", duplicateName) + ")");
+            }
+
+            isImporting = false;
+        }
+        #endregion
+
+        #region GC
+        private void WorkerGC_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Imported Gift Card successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnImport.Enabled = true;
+            this.Close();
+        }
+        private void WorkerGC_DoWork(object sender, DoWorkEventArgs e)
+        {
+            DateTime currentDT = DateTime.Now;
+            SQLControl Psql = new SQLControl();
+
+            int numberOfItemsFailed = 0;
+
+            isImporting = true;
+            for (int i = 0; i < dgItems.Rows.Count - 1; i++)
+            {
+                if (toClose)
+                {
+                    break;
+                }
+
+                lblImportedProducts.Invoke(new System.Action(() =>
+                {
+                    int total = i + 1;
+                    lblImportedProducts.Text = total.ToString();
+                    pbLoad.Value = total;
+                }));
+
+                numberOfItemsFailed++;
+
+                if(dgItems.Rows[i].Cells[0].Value.ToString() == "" || dgItems.Rows[i].Cells[0].Value.ToString() == null)
+                {
+                    return;
+                }
+
+                // check for duplicate names
+                SQL.AddParam("@giftcard_no", dgItems.Rows[i].Cells[0].Value.ToString());
+                int result = Convert.ToInt32(SQL.ReturnResult("SELECT IIF((SELECT COUNT(*) FROM giftcard WHERE giftcard_no = @giftcard_no) > 0,'1', '0') as result"));
+
+                if (SQL.HasException(true))
+                    return;
+
+                if (result == 0)
+                {
+                    SQL.AddParam("@giftcard_no", dgItems.Rows[i].Cells[0].Value.ToString());
+                    SQL.AddParam("@amount", dgItems.Rows[i].Cells[1].Value.ToString() != "" ? dgItems.Rows[i].Cells[1].Value.ToString() : "1");
+                    SQL.AddParam("@expiration", dgItems.Rows[i].Cells[2].Value.ToString() != "" ? dgItems.Rows[i].Cells[2].Value.ToString() : currentDT.ToString());
+
+                    SQL.Query(@"INSERT INTO giftcard (giftcard_no, amount, status, expiration)
+                                       VALUES (@giftcard_no, @amount, 'Available', @expiration)");
+
+                    if (SQL.HasException(true))
+                        return;
+                }
+
+                numberOfItemsFailed--;
+            }
+
+            if (numberOfItemsFailed > 0)
+            {
+                MessageBox.Show($"{numberOfItemsFailed} items were not imported due to: Duplicate name, Incomplete fields");
             }
 
             isImporting = false;

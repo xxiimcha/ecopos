@@ -51,7 +51,6 @@
             // btnImportGC
             // 
             this.btnImportGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnImportGC.Enabled = false;
             this.btnImportGC.FlatAppearance.BorderSize = 0;
             this.btnImportGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImportGC.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,7 +109,6 @@
             // btnExportGC
             // 
             this.btnExportGC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExportGC.Enabled = false;
             this.btnExportGC.FlatAppearance.BorderSize = 0;
             this.btnExportGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportGC.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
