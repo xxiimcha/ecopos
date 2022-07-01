@@ -197,7 +197,7 @@ namespace EcoPOSv2
                             workerCustomer.DoWork += WorkerMembers_DoWork;
                             workerCustomer.RunWorkerCompleted += WorkerMembers_RunWorkerCompleted;
 
-                            workerCategory.RunWorkerAsync();
+                            workerCustomer.RunWorkerAsync();
 
                             btnBrowse.Enabled = false;
                             btnImport.Enabled = false;

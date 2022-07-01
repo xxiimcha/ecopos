@@ -196,7 +196,7 @@ namespace EcoPOSv2
                         else
                         {
                             report.SetParameterValue("is_vatable", false);
-                            report.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
+                            report.SetParameterValue("txt_footer", "ORDER RECEIPT.");
                         }
 
 
@@ -359,7 +359,7 @@ namespace EcoPOSv2
                         else
                         {
                             report80.SetParameterValue("is_vatable", false);
-                            report80.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
+                            report80.SetParameterValue("txt_footer", "ORDER RECEIPT.");
                         }
 
 

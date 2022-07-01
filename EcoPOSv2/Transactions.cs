@@ -416,7 +416,7 @@ namespace EcoPOSv2
                     else
                     {
                         reprint_receipt.SetParameterValue("is_vatable", false);
-                        reprint_receipt.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
+                        reprint_receipt.SetParameterValue("txt_footer", "ORDER RECEIPT.");
                     }
                 }
                 catch (Exception ex)
@@ -594,7 +594,7 @@ namespace EcoPOSv2
                     else
                     {
                         reprint_receipt80.SetParameterValue("is_vatable", false);
-                        reprint_receipt80.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
+                        reprint_receipt80.SetParameterValue("txt_footer", "ORDER RECEIPT.");
                     }
                 }
                 catch (Exception ex)
@@ -803,7 +803,7 @@ namespace EcoPOSv2
                 else
                 {
                     report.SetParameterValue("is_vatable", false);
-                    report.SetParameterValue("txt_footer", "THIS SERVES AS DEMO RECEIPT.");
+                    report.SetParameterValue("txt_footer", "ORDER RECEIPT.");
                 }
 
                 CrystalReportViewer1.ReportSource = report;
