@@ -1864,7 +1864,6 @@ namespace EcoPOSv2
                                             SUM(ti.quantity) as 'NO. ITEMS SOLD', 
                                             SUM(ti.selling_price_inclusive) as 'GRAND TOTAL AMOUNT', 
                                             (SELECT SUM(CASE WHEN td.payment_method='Cash' THEN 1 ELSE 0 END)) as 'NO. CASH TRANSACTION',
-                                            (SELECT SUM(CASE WHEN td.payment_method='Salary Deduction' THEN 1 ELSE 0 END)) as 'NO. OF SD TRANSACTION',
                                             (SELECT SUM(CASE WHEN td.payment_method='Gift Certificate' THEN 1 ELSE 0 END)) as 'NO. OF GC TRANSACTION'
                                             FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
                                             WHERE td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' AND selling_price_inclusive > 0
@@ -1877,7 +1876,6 @@ namespace EcoPOSv2
                                                     SUM(ti.quantity) as 'NO. ITEMS SOLD', 
                                                     SUM(ti.selling_price_inclusive) as 'GRAND TOTAL AMOUNT', 
                                                     (SELECT SUM(CASE WHEN td.payment_method='Cash' THEN 1 ELSE 0 END)) as 'NO. CASH TRANSACTION',
-                                                    (SELECT SUM(CASE WHEN td.payment_method='Salary Deduction' THEN 1 ELSE 0 END)) as 'NO. OF SD TRANSACTION',
                                                     (SELECT SUM(CASE WHEN td.payment_method='Gift Certificate' THEN 1 ELSE 0 END)) as 'NO. OF GC TRANSACTION'
                                                     FROM transaction_details as td INNER JOIN transaction_items as ti ON td.order_ref = ti.order_ref
                                                     WHERE td.terminal_id=" + cmbTerminalNames.Text + " AND td.date_time BETWEEN '" + dtpFrom.Value + "' AND '" + dtpTo.Value + @"' AND selling_price_inclusive > 0

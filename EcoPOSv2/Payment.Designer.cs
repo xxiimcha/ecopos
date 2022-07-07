@@ -394,7 +394,6 @@
             "PayMaya",
             "Lyka Gem(s)",
             "ShopeePay",
-            "Salary Deduction",
             "PayPal",
             "American Express",
             "BancNet",

@@ -1045,11 +1045,9 @@ namespace EcoPOSv2
                         CONVERT(DECIMAL(18,2),(SELECT SUM(subtotal) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Subtotal', 
                         CONVERT(DECIMAL(18,2),(SELECT SUM(cus_pts_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Points Used',
                         CONVERT(DECIMAL(18,2),(SELECT SUM(giftcard_deducted) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Giftcard Deduction',
-                        CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND payment_method = 'Salary Deduction')) as 'Salary Deduction Total',
-                        CONVERT(DECIMAL(18, 2), (SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to AND NOT payment_method = 'Salary Deduction')) as 'Other Payment',
                         CONVERT(DECIMAL(18,2),(SELECT SUM(total) FROM transaction_details WHERE cus_id_no = customerID AND date_time BETWEEN @from AND @to)) as 'Total Amount Paid'
                         FROM customer 
-                        ORDER BY 13 DESC");
+                        ORDER BY 11 DESC");
                 if (SQL.HasException(true))
                 {
                     return;
