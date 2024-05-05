@@ -34,7 +34,6 @@ namespace EcoPOSv2
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblType = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.CountDownTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -78,18 +77,6 @@ namespace EcoPOSv2
             this.lblType.TabIndex = 2;
             this.lblType.Text = "STAND-ALONE POS SYSTEM  ";
             this.lblType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(923, 0);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.lblVersion.Size = new System.Drawing.Size(454, 113);
-            this.lblVersion.TabIndex = 3;
-            this.lblVersion.Text = "v3.0";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CountDownTimer
             // 
@@ -149,7 +136,6 @@ namespace EcoPOSv2
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Controls.Add(this.lblVersion, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblType, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -193,7 +179,6 @@ namespace EcoPOSv2
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        public System.Windows.Forms.Label lblVersion;
         private Guna.UI.WinForms.GunaControlBox gunaControlBox1;
     }
 }

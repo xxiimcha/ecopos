@@ -33,8 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMinimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.btnclosetemp = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.lblTraningMode = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
+            this.lblTraningMode = new System.Windows.Forms.Label();
             this.lblByPassUser = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
@@ -46,7 +46,6 @@
             this.btnMore = new Guna.UI2.WinForms.Guna2Button();
             this.btnCalculator = new Guna.UI2.WinForms.Guna2Button();
             this.btnXReading = new Guna.UI2.WinForms.Guna2Button();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnOrder = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
@@ -86,12 +85,10 @@
             this.btnMinimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMinimize.FillColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.HoverState.Parent = this.btnMinimize;
             this.btnMinimize.IconColor = System.Drawing.Color.White;
             this.btnMinimize.Location = new System.Drawing.Point(1209, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.PressedColor = System.Drawing.Color.Gray;
-            this.btnMinimize.ShadowDecoration.Parent = this.btnMinimize;
             this.btnMinimize.Size = new System.Drawing.Size(45, 34);
             this.btnMinimize.TabIndex = 15;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click_1);
@@ -102,15 +99,24 @@
             this.btnclosetemp.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnclosetemp.FillColor = System.Drawing.Color.Transparent;
             this.btnclosetemp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnclosetemp.HoverState.Parent = this.btnclosetemp;
             this.btnclosetemp.IconColor = System.Drawing.Color.White;
             this.btnclosetemp.Location = new System.Drawing.Point(1254, 0);
             this.btnclosetemp.Name = "btnclosetemp";
             this.btnclosetemp.PressedColor = System.Drawing.Color.Firebrick;
-            this.btnclosetemp.ShadowDecoration.Parent = this.btnclosetemp;
             this.btnclosetemp.Size = new System.Drawing.Size(46, 34);
             this.btnclosetemp.TabIndex = 14;
             this.btnclosetemp.Click += new System.EventHandler(this.btnclosetemp_Click_1);
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateTime.ForeColor = System.Drawing.Color.White;
+            this.lblDateTime.Location = new System.Drawing.Point(11, 1);
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(359, 32);
+            this.lblDateTime.TabIndex = 1;
+            this.lblDateTime.Text = "Current Date and Time";
+            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTraningMode
             // 
@@ -123,17 +129,6 @@
             this.lblTraningMode.TabIndex = 12;
             this.lblTraningMode.Text = "TRAINING MODE";
             this.lblTraningMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDateTime
-            // 
-            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(11, 1);
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(359, 32);
-            this.lblDateTime.TabIndex = 1;
-            this.lblDateTime.Text = "Current Date and Time";
-            this.lblDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblByPassUser
             // 
@@ -173,7 +168,6 @@
             this.gunaPanel1.Controls.Add(this.btnMore);
             this.gunaPanel1.Controls.Add(this.btnCalculator);
             this.gunaPanel1.Controls.Add(this.btnXReading);
-            this.gunaPanel1.Controls.Add(this.lblVersion);
             this.gunaPanel1.Controls.Add(this.pbLogo);
             this.gunaPanel1.Controls.Add(this.btnOrder);
             this.gunaPanel1.Controls.Add(this.guna2Panel2);
@@ -186,16 +180,12 @@
             // 
             // btnHide
             // 
-            this.btnHide.CheckedState.Parent = this.btnHide;
-            this.btnHide.CustomImages.Parent = this.btnHide;
             this.btnHide.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHide.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnHide.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnHide.ForeColor = System.Drawing.Color.DimGray;
-            this.btnHide.HoverState.Parent = this.btnHide;
             this.btnHide.Location = new System.Drawing.Point(0, 590);
             this.btnHide.Name = "btnHide";
-            this.btnHide.ShadowDecoration.Parent = this.btnHide;
             this.btnHide.Size = new System.Drawing.Size(208, 31);
             this.btnHide.TabIndex = 12;
             this.btnHide.Text = "HIDE";
@@ -209,7 +199,6 @@
             this.pnlShortcut.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlShortcut.Location = new System.Drawing.Point(0, 476);
             this.pnlShortcut.Name = "pnlShortcut";
-            this.pnlShortcut.ShadowDecoration.Parent = this.pnlShortcut;
             this.pnlShortcut.Size = new System.Drawing.Size(208, 114);
             this.pnlShortcut.TabIndex = 18;
             // 
@@ -257,22 +246,18 @@
             this.btnMore.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMore.CheckedState.ForeColor = System.Drawing.Color.White;
             this.btnMore.CheckedState.Image = global::EcoPOSv2.Properties.Resources.more_white;
-            this.btnMore.CheckedState.Parent = this.btnMore;
-            this.btnMore.CustomImages.Parent = this.btnMore;
             this.btnMore.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnMore.FillColor = System.Drawing.Color.Transparent;
             this.btnMore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnMore.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
             this.btnMore.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMore.HoverState.Parent = this.btnMore;
             this.btnMore.Image = global::EcoPOSv2.Properties.Resources.more_black;
             this.btnMore.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMore.ImageSize = new System.Drawing.Size(32, 32);
             this.btnMore.Location = new System.Drawing.Point(0, 416);
             this.btnMore.Name = "btnMore";
             this.btnMore.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            this.btnMore.ShadowDecoration.Parent = this.btnMore;
             this.btnMore.Size = new System.Drawing.Size(208, 60);
             this.btnMore.TabIndex = 9;
             this.btnMore.Tag = "More";
@@ -286,22 +271,18 @@
             this.btnCalculator.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalculator.CheckedState.ForeColor = System.Drawing.Color.White;
             this.btnCalculator.CheckedState.Image = global::EcoPOSv2.Properties.Resources.calculator_white;
-            this.btnCalculator.CheckedState.Parent = this.btnCalculator;
-            this.btnCalculator.CustomImages.Parent = this.btnCalculator;
             this.btnCalculator.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCalculator.FillColor = System.Drawing.Color.Transparent;
             this.btnCalculator.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalculator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnCalculator.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
             this.btnCalculator.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalculator.HoverState.Parent = this.btnCalculator;
             this.btnCalculator.Image = global::EcoPOSv2.Properties.Resources.calculator_black;
             this.btnCalculator.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCalculator.ImageSize = new System.Drawing.Size(30, 30);
             this.btnCalculator.Location = new System.Drawing.Point(0, 356);
             this.btnCalculator.Name = "btnCalculator";
             this.btnCalculator.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            this.btnCalculator.ShadowDecoration.Parent = this.btnCalculator;
             this.btnCalculator.Size = new System.Drawing.Size(208, 60);
             this.btnCalculator.TabIndex = 8;
             this.btnCalculator.Tag = "Calculator";
@@ -315,42 +296,24 @@
             this.btnXReading.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXReading.CheckedState.ForeColor = System.Drawing.Color.White;
             this.btnXReading.CheckedState.Image = global::EcoPOSv2.Properties.Resources.switchcashier_white;
-            this.btnXReading.CheckedState.Parent = this.btnXReading;
-            this.btnXReading.CustomImages.Parent = this.btnXReading;
             this.btnXReading.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnXReading.FillColor = System.Drawing.Color.Transparent;
             this.btnXReading.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXReading.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnXReading.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
             this.btnXReading.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXReading.HoverState.Parent = this.btnXReading;
             this.btnXReading.Image = global::EcoPOSv2.Properties.Resources.switchcashier_black;
             this.btnXReading.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnXReading.ImageSize = new System.Drawing.Size(32, 32);
             this.btnXReading.Location = new System.Drawing.Point(0, 296);
             this.btnXReading.Name = "btnXReading";
             this.btnXReading.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            this.btnXReading.ShadowDecoration.Parent = this.btnXReading;
             this.btnXReading.Size = new System.Drawing.Size(208, 60);
             this.btnXReading.TabIndex = 7;
             this.btnXReading.Tag = "Switch Cashier";
             this.btnXReading.Text = "Switch Cashier (F8)";
             this.btnXReading.TextOffset = new System.Drawing.Point(20, 0);
             this.btnXReading.Click += new System.EventHandler(this.btnXReading_Click);
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.ForeColor = System.Drawing.Color.Black;
-            this.lblVersion.Location = new System.Drawing.Point(81, 708);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(47, 17);
-            this.lblVersion.TabIndex = 8;
-            this.lblVersion.Text = "ver 3.0";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pbLogo
             // 
@@ -370,22 +333,18 @@
             this.btnOrder.CheckedState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrder.CheckedState.ForeColor = System.Drawing.Color.White;
             this.btnOrder.CheckedState.Image = global::EcoPOSv2.Properties.Resources.cart_white;
-            this.btnOrder.CheckedState.Parent = this.btnOrder;
-            this.btnOrder.CustomImages.Parent = this.btnOrder;
             this.btnOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnOrder.FillColor = System.Drawing.Color.Transparent;
             this.btnOrder.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(49)))), ((int)(((byte)(49)))));
             this.btnOrder.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
             this.btnOrder.HoverState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.HoverState.Parent = this.btnOrder;
             this.btnOrder.Image = global::EcoPOSv2.Properties.Resources.cart_black;
             this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.ImageSize = new System.Drawing.Size(32, 32);
             this.btnOrder.Location = new System.Drawing.Point(0, 236);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            this.btnOrder.ShadowDecoration.Parent = this.btnOrder;
             this.btnOrder.Size = new System.Drawing.Size(208, 60);
             this.btnOrder.TabIndex = 6;
             this.btnOrder.Tag = "Order";
@@ -403,7 +362,6 @@
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 146);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
             this.guna2Panel2.Size = new System.Drawing.Size(208, 90);
             this.guna2Panel2.TabIndex = 17;
             // 
@@ -429,7 +387,6 @@
             this.pnlType.Controls.Add(this.Label3);
             this.pnlType.Location = new System.Drawing.Point(0, 28);
             this.pnlType.Name = "pnlType";
-            this.pnlType.ShadowDecoration.Parent = this.pnlType;
             this.pnlType.Size = new System.Drawing.Size(208, 62);
             this.pnlType.TabIndex = 16;
             // 
@@ -474,7 +431,6 @@
             this.pnlUser.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUser.Location = new System.Drawing.Point(0, 0);
             this.pnlUser.Name = "pnlUser";
-            this.pnlUser.ShadowDecoration.Parent = this.pnlUser;
             this.pnlUser.Size = new System.Drawing.Size(208, 146);
             this.pnlUser.TabIndex = 16;
             // 
@@ -556,7 +512,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.panel1.ResumeLayout(false);
             this.gunaPanel1.ResumeLayout(false);
-            this.gunaPanel1.PerformLayout();
             this.pnlShortcut.ResumeLayout(false);
             this.pnlShortcut.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
@@ -574,7 +529,6 @@
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label lblType;
-        internal System.Windows.Forms.Label lblVersion;
         public System.Windows.Forms.Label lblUser;
         public Guna.UI2.WinForms.Guna2Button btnXReading;
         public Guna.UI2.WinForms.Guna2Button btnCalculator;
